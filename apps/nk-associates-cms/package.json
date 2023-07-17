@@ -1,0 +1,32 @@
+{
+  "name": "nk-associates-cms",
+  "private": true,
+  "version": "0.1.0",
+  "description": "A Strapi application",
+  "scripts": {
+    "dev": "strapi develop",
+    "start": "strapi start",
+    "build": "strapi build",
+    "strapi": "strapi"
+  },
+  "devDependencies": {
+    "eslint-config-custom": "*"
+  },
+  "dependencies": {
+    "@strapi/strapi": "4.11.5",
+    "@strapi/plugin-users-permissions": "4.11.5",
+    "@strapi/plugin-i18n": "4.11.5",
+    "pg": "8.8.0"
+  },
+  "author": {
+    "name": "A Strapi developer"
+  },
+  "strapi": {
+    "uuid": "a4660c26-1540-4a79-8f90-48baa434c6c0"
+  },
+  "engines": {
+    "node": ">=14.19.1 <=18.x.x",
+    "npm": ">=6.0.0"
+  },
+  "license": "MIT"
+}
