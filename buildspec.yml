@@ -20,4 +20,4 @@ phases:
 
 artifacts:
   files:
-    - "apps/nk-associates-cms/build/*"
+    - "apps/nk-associates-cms/build/**/*"
