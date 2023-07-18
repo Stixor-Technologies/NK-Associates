@@ -5,6 +5,7 @@ phases:
     runtime-versions:
       nodejs: 18
     commands:
+      - cd apps/nk-associates-cms
       - npm install
   pre_build:
     commands:
@@ -19,4 +20,4 @@ phases:
 
 artifacts:
   files:
-    - "**/*"
+    - "apps/nk-associates-cms/build/*"
