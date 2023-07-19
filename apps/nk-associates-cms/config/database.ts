@@ -12,7 +12,7 @@ export default ({ env }) => {
         database: env("DATABASE_NAME", "strapi"),
         user: env("DATABASE_USERNAME", "strapi"),
         password: env("DATABASE_PASSWORD", "strapi"),
-        ssl: JSON.parse(env("DATABASE_SSL_SELF", false)),
+        ssl: false//JSON.parse(env("DATABASE_SSL_SELF", false)),
         // ssl: false, // Set SSL to false to disable SSL for PostgreSQL
         // schema: env("DATABASE_SCHEMA", "public"),
       },
