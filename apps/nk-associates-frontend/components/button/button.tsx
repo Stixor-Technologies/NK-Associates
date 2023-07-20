@@ -2,7 +2,7 @@ import React, { FC } from "react";
 
 interface ButtonProps {
   text: string;
-  type?: 'transparent' | 'inverted' | 'solid';
+  type?: 'transparent' | 'inverted' | 'solid' | 'gradient';
   width?: string;
   additionalStyles?: string;
   onClick?: () => void;
