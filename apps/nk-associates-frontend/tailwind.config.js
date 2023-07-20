@@ -13,7 +13,7 @@ module.exports = {
           'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
       },
       fontFamily: {
-        'vietnam-pro': ['Be Vietnam Pro', 'sans-serif'],
+        'metropolis': ['var(--font-metroplis)'],
       },
       colors: {
         'nk-red': '#E74451',
