@@ -1,14 +1,21 @@
-import React, {FC} from 'react'
+import React, { FC } from "react";
 
 interface ButtonProps {
-   text: string,
-   type?: "solid" | "transparent" | "inverted",
+  text: string;
+  type?: 'transparent' | 'inverted' | 'solid';
+  width?: string;
+  additionalStyles?: string;
+  onClick?: () => void;
 }
 
-const Button:FC<ButtonProps> = ({text, type = "default"}) => {
+const Button: FC<ButtonProps> = ({ text, type = 'gradient', additionalStyles}) => {
   return (
-    <button className={`rounded-full px-4 py-2 w-56 lg:py-3 text-lg font-vietnam-pro ${type === 'solid' ? 'bg-red-700' : type === 'inverted' ? 'bg-green-200' : 'bg-transparent'}`}>{text}</button>
-  )
-}
+    <button className={`rounded-full font-vietnam-pro transition-all ease-in-out duration-300 hover:shadow-lg hover:delay-100 ${type === 'transparent' ? 'bg-transparent text-nk-gray border border-nk-red' : type === 'inverted' ? 'bg-white' : type === 'solid' ? 'bg-nk-red text-white' : 'bg-gradient-to-b bg-nk-gradient-red-one to-nk-gradient-red-two text-white'} py-1 w-[16.25rem] md:w-[25rem] text-base md:text-lg ${additionalStyles}`}>
+      <span className={`${type === 'inverted' && 'bg-gradient-to-b bg-nk-gradient-red-one to-nk-gradient-red-two bg-clip-text text-transparent'}`}>
+       {text}
+      </span>
+    </button>
+  );
+};
 
 export default Button;
