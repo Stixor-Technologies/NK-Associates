@@ -16,7 +16,11 @@ module.exports = {
         "gradient-conic":
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
       },
+      fontFamily: {
+        'metropolis': ['var(--font-metroplis)'],
+      },
       colors: {
+        'nk-red': '#E74451',
         "nk-gradient-red-one": "#E4404A",
         "nk-gradient-red-two": "#EB4B5E",
         "nk-gradient-red-sharp-one": "#ED1C24",
