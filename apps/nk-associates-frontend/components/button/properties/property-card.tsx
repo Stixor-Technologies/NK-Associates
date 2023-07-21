@@ -11,7 +11,7 @@ const PropertyCard = () => {
         <Image src={"/card_img.svg"} width={400} height={400} alt="" />
       </Link>
       <div className="my-2 flex justify-between">
-        <div className="mt-2 flex items-center gap-2">
+        <div className="flex items-center gap-2">
           <span className="rounded-full bg-white px-4 py-1 text-sm font-medium text-nk-gray shadow-lg md:text-xs">
             Residential
           </span>
