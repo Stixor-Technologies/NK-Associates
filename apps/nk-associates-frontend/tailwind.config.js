@@ -8,9 +8,6 @@ module.exports = {
   ],
   theme: {
     extend: {
-      fontFamily: {
-        metropolis: ["Metropolis", "sans-serif"],
-      },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
         "gradient-conic":
@@ -18,6 +15,11 @@ module.exports = {
       },
       fontFamily: {
         'metropolis': ['var(--font-metroplis)'],
+        'metropolis-semibold': ['var(--font-metroplis-semiBold)'],
+        'metropolis-bold': ['var(--font-metroplis-bold)'],
+        'metropolis-extrabold': ['var(--font-metroplis-extraBold)'],
+        'metropolis-light': ['var(--font-metroplis-light)'],
+        'metropolis-medium': ['var(--font-metroplis-medium)'],
       },
       colors: {
         'nk-red': '#E74451',
