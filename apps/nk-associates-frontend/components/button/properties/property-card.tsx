@@ -8,7 +8,7 @@ const PropertyCard = () => {
   return (
     <div>
       <Link href={"#"} className="rounded-xl">
-        <Image src={"/card_img.svg"} width={400} height={400} alt="" />
+        <Image src={"/card_img.svg"} width={600} height={600} alt="" />
       </Link>
       <div className="my-3 flex items-center justify-between">
         <div className="flex items-center gap-2">
