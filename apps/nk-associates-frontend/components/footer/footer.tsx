@@ -29,7 +29,7 @@ const footer = () => {
 
 						<div className="grid grid-cols-2 p-1  sm:m-1 sm:grid-cols-4  sm:gap-4 lg:px-16  xl:px-24 2xl:px-36">
 							<div className="text-lg">
-								<h2 className="mb-2  text-base  tracking-wider dark:text-white	 ">
+								<h2 className="mb-2  font-metropolis-medium  text-base tracking-widest	dark:text-white ">
 									COMPANY
 								</h2>
 								<div>
@@ -37,35 +37,35 @@ const footer = () => {
 										<li className="mb-3">
 											<Link
 												href="#"
-												className="bg-gradient-to-r from-white to-white bg-[length:0%_2px] bg-left-bottom bg-no-repeat transition-all duration-500 ease-out hover:bg-[length:100%_2px]">
+												className=" bg-gradient-to-r from-white to-white bg-[length:0%_2px] bg-left-bottom bg-no-repeat font-metropolis-light  transition-all duration-500 ease-out hover:bg-[length:100%_2px]">
 												About
 											</Link>
 										</li>
 										<li className="mb-3">
 											<Link
 												href="#"
-												className="bg-gradient-to-r from-white to-white bg-[length:0%_2px] bg-left-bottom bg-no-repeat transition-all duration-500 ease-out hover:bg-[length:100%_2px]">
+												className="bg-gradient-to-r from-white to-white bg-[length:0%_2px] bg-left-bottom bg-no-repeat font-metropolis-light transition-all duration-500 ease-out hover:bg-[length:100%_2px]">
 												Property
 											</Link>
 										</li>
 										<li className="mb-3">
 											<Link
 												href="#"
-												className="bg-gradient-to-r from-white to-white bg-[length:0%_2px] bg-left-bottom bg-no-repeat transition-all duration-500 ease-out hover:bg-[length:100%_2px]">
+												className="bg-gradient-to-r from-white to-white bg-[length:0%_2px] bg-left-bottom bg-no-repeat font-metropolis-light transition-all duration-500 ease-out hover:bg-[length:100%_2px]">
 												Jobs
 											</Link>
 										</li>
 										<li className="mb-3">
 											<Link
 												href="#"
-												className="bg-gradient-to-r from-white to-white bg-[length:0%_2px] bg-left-bottom bg-no-repeat transition-all duration-500 ease-out hover:bg-[length:100%_2px]">
+												className="bg-gradient-to-r from-white to-white bg-[length:0%_2px] bg-left-bottom bg-no-repeat font-metropolis-light transition-all duration-500 ease-out hover:bg-[length:100%_2px]">
 												Projects
 											</Link>
 										</li>
 										<li className="mb-3">
 											<Link
 												href="#"
-												className="bg-gradient-to-r from-white to-white bg-[length:0%_2px] bg-left-bottom bg-no-repeat transition-all duration-500 ease-out hover:bg-[length:100%_2px]">
+												className="bg-gradient-to-r from-white to-white bg-[length:0%_2px] bg-left-bottom bg-no-repeat font-metropolis-light transition-all duration-500 ease-out hover:bg-[length:100%_2px]">
 												Maps
 											</Link>
 										</li>
@@ -79,7 +79,7 @@ const footer = () => {
 								<div className=" md:hidden lg:hidden">
 									{/* social added for responsive mobile view */}
 									<div className="">
-										<h2 className="mb-2  text-base  tracking-wider  dark:text-white	">
+										<h2 className="dark:text-medium  mb-2  font-metropolis-light  text-base tracking-widest	">
 											SOCIAL
 										</h2>
 										<div className="text-lg">
@@ -87,21 +87,21 @@ const footer = () => {
 												<li className="mb-3">
 													<Link
 														href="#"
-														className="bg-gradient-to-r from-white to-white bg-[length:0%_2px] bg-left-bottom bg-no-repeat transition-all duration-500 ease-out hover:bg-[length:100%_2px]">
+														className="bg-gradient-to-r from-white to-white bg-[length:0%_2px] bg-left-bottom bg-no-repeat font-metropolis-light transition-all duration-500 ease-out hover:bg-[length:100%_2px]">
 														Facebook
 													</Link>
 												</li>
 												<li className="mb-3">
 													<Link
 														href="#"
-														className="bg-gradient-to-r from-white to-white bg-[length:0%_2px] bg-left-bottom bg-no-repeat transition-all duration-500 ease-out hover:bg-[length:100%_2px]">
+														className="bg-gradient-to-r from-white to-white bg-[length:0%_2px] bg-left-bottom bg-no-repeat font-metropolis-light transition-all duration-500 ease-out hover:bg-[length:100%_2px]">
 														Twitter
 													</Link>
 												</li>
 												<li className="mb-3">
 													<Link
 														href="#"
-														className="bg-gradient-to-r from-white to-white bg-[length:0%_2px] bg-left-bottom bg-no-repeat transition-all duration-500 ease-out hover:bg-[length:100%_2px]">
+														className="bg-gradient-to-r from-white to-white bg-[length:0%_2px] bg-left-bottom bg-no-repeat font-metropolis-light transition-all duration-500 ease-out hover:bg-[length:100%_2px]">
 														Instagram
 													</Link>
 												</li>
@@ -109,19 +109,21 @@ const footer = () => {
 										</div>
 									</div>
 								</div>
-								<h2 className="mb-2  text-base dark:text-white">SELL</h2>
+								<h2 className="mb-2  font-metropolis-medium text-base tracking-widest dark:text-white">
+									SELL
+								</h2>
 								<ul className=" ">
 									<li className="mb-3">
 										<Link
 											href="#"
-											className="bg-gradient-to-r from-white to-white bg-[length:0%_2px] bg-left-bottom bg-no-repeat transition-all duration-500 ease-out hover:bg-[length:100%_2px]">
+											className="bg-gradient-to-r from-white to-white bg-[length:0%_2px] bg-left-bottom bg-no-repeat font-metropolis-light transition-all duration-500 ease-out hover:bg-[length:100%_2px]">
 											Sell on NK
 										</Link>
 									</li>
 								</ul>
 							</div>
 
-							<div className="hidden text-base md:block lg:block ">
+							<div className="hidden font-metropolis-medium text-base md:block lg:block ">
 								<h2 className="mb-2  text-base  tracking-widest dark:text-white 	">
 									DOWNLOAD
 								</h2>
@@ -146,9 +148,9 @@ const footer = () => {
 									</ul>
 								</div>
 							</div>
-
+							{/* dummy links here  */}
 							<div className="hidden md:block lg:block ">
-								<h2 className="mb-2 text-base tracking-wider dark:text-white	">
+								<h2 className="mb-2 font-metropolis-medium text-base tracking-widest dark:text-white	">
 									SOCIAL
 								</h2>
 								<div className="flex flex-wrap ">
@@ -181,7 +183,6 @@ const footer = () => {
 										<Image src={Linkedin} alt="LinkedIn" />
 									</Link>
 
-									{/* dummy links here  */}
 									<Link
 										href="https://www.snapchat.com/"
 										target="_blank"
@@ -202,7 +203,7 @@ const footer = () => {
 
 						{/* Responsive  mobile view elements here */}
 						<div className=" pt-4   sm:hidden">
-							{/* here are the m-1 media buttons with dummy links*/}
+							{/* here are the social media buttons with dummy links*/}
 							<div className=" flex justify-center ">
 								<Link
 									href="https://www.facebook.com/"
@@ -240,7 +241,7 @@ const footer = () => {
 
 							<div>
 								<div className="text-base ">
-									<h2 className="m-2  flex  justify-center text-sm/[16px] tracking-widest dark:text-white	">
+									<h2 className="m-2 flex  justify-center  font-metropolis-medium text-sm tracking-widest dark:text-white	">
 										DOWNLOAD
 									</h2>
 									<div className="flex justify-center ">
@@ -272,7 +273,7 @@ const footer = () => {
 					</div>
 				</div>
 			</div>
-			<div className=" container mx-auto font-normal">
+			<div className=" container mx-auto font-metropolis-light">
 				<hr className="border-gray-200 dark:border-gray-700 sm:mx-auto lg:my-2" />
 
 				<div className=" mx-auto flex flex-col justify-center gap-8 p-4 sm:text-xs md:flex-row md:items-center md:justify-between lg:mx-24 lg:text-lg ">
@@ -289,13 +290,13 @@ const footer = () => {
 
 						<Link
 							href="#"
-							className=" font-roboto relative ease-in-out after:absolute after:bottom-0 after:left-0 after:block after:h-px after:w-0 after:bg-white after:content-[''] hover:after:w-full hover:after:transition-all hover:after:duration-500 lg:text-lg">
+							className=" relative font-metropolis-light ease-in-out after:absolute after:bottom-0 after:left-0 after:block after:h-px after:w-0 after:bg-white after:content-[''] hover:after:w-full hover:after:transition-all hover:after:duration-500 lg:text-lg">
 							Privacy Policy
 						</Link>
 
 						<Link
 							href="#"
-							className=" font-roboto relative ease-in-out after:absolute after:bottom-0 after:left-0 after:block after:h-px after:w-0 after:bg-white after:content-[''] hover:after:w-full hover:after:transition-all hover:after:duration-500 lg:text-lg">
+							className=" relative font-metropolis-light ease-in-out after:absolute after:bottom-0 after:left-0 after:block after:h-px after:w-0 after:bg-white after:content-[''] hover:after:w-full hover:after:transition-all hover:after:duration-500 lg:text-lg">
 							Site Map
 						</Link>
 					</div>
