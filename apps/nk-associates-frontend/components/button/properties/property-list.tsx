@@ -6,8 +6,7 @@ import { ImageData } from "../../../utils/types/types";
 
 const PropertyList = () => {
   const [properties, setProperties] = useState<Properties[]>();
-  const [imageData, setImage] = useState<ImageData[]>([]);
-
+  
   useEffect(() => {
     const getProperties = async () => {
       const resp = await fetch(

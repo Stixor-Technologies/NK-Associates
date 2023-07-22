@@ -32,7 +32,8 @@ module.exports = {
         "nk-gray": "#969696", //also used for faded font
         "nk-light-gray": "#EDEDED", //modal
         "nk-dark-gray": "#303030", //footer
-        "nk-grey": "#727272"
+        "nk-grey": "#727272",
+        "nk-background": "#f5f5f5"
       },
     },
   },
