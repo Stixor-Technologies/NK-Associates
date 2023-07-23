@@ -1,8 +1,8 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-import Area_Icon from "../../../public/assets/icons/area-icon.svg"
-import Area_Marker from "../../../public/assets/icons/area-marker.svg"
+import Area_Icon from "../../public/assets/icons/area-icon.svg"
+import Area_Marker from "../../public/assets/icons/area-marker.svg"
 
 const PropertyCard = () => {
   return (
