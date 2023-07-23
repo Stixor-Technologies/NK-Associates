@@ -36,12 +36,12 @@
     "area_type": {
       "type": "enumeration",
       "enum": [
-        "Sq.Yards",
+        "Sq.Yds",
         "Sq.Ft",
-        "Sq.Meters"
+        "Sq.M"
       ],
       "required": true,
-      "default": "Sq.Yards"
+      "default": "Sq.Yds"
     },
     "price": {
       "type": "string",
