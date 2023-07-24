@@ -33,7 +33,7 @@ const PropertyList = () => {
 
   return (
     <>
-    <Link href={"/properties/property-map"} className="fixed flex items-center gap-2 bottom-16 left-1/2 -translate-x-1/2 rounded-full text-center capitalize text-sm py-2 px-4 transition-all ease-in-out duration-300 hover:shadow-lg hover:delay-100 bg-gradient-to-b bg-nk-gradient-red-one to-nk-gradient-red-two text-white md:text-2xl md:py-3 md:px-6 md:gap-4">
+    <Link href={"/properties/property-map"} className="z-10 fixed flex items-center gap-2 bottom-16 left-1/2 -translate-x-1/2 rounded-full text-center capitalize text-sm py-2 px-4 transition-all ease-in-out duration-300 hover:shadow-lg hover:delay-100 bg-gradient-to-b bg-nk-gradient-red-one to-nk-gradient-red-two text-white md:text-2xl md:py-3 md:px-6 md:gap-4">
         <span>Show Map</span>
         <div className="relative max-w-[1.375rem] w-full md:max-w-[2.188rem]">
         <Image src={List_Icon} width={35} height={35} alt="" className="mx-auto" />
@@ -51,7 +51,7 @@ const PropertyList = () => {
             </p>
           }
         >
-          <div className="grid gap-x-7 gap-y-12 py-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+          <div className="grid gap-x-7 gap-y-12 py-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 overflow-hidden">
             {properties &&
               properties.map((property, index) => (
                  <PropertyCard key={index} property = {property} />
