@@ -1,9 +1,12 @@
 "use client";
 import React, { useState, useEffect } from "react";
-import PropertyCard from "./property-card";
-import { Properties } from "../../utils/types/types";
+import PropertyCard from "../property-card";
+import { Properties } from "../../../utils/types/types";
 import InfiniteScroll from "react-infinite-scroll-component";
-import Spinner from "../spinner";
+import Spinner from "../../spinner";
+import Link from "next/link";
+import Image from "next/image";
+import List_Icon from "../../../public/assets/icons/list-icon.svg"
 
 const PropertyList = () => {
   const [properties, setProperties] = useState<Properties[]>([]);
@@ -30,6 +33,12 @@ const PropertyList = () => {
 
   return (
     <>
+    <Link href={"/properties/property-map"} className="fixed flex items-center gap-2 bottom-16 left-1/2 -translate-x-1/2 rounded-full text-center capitalize text-sm py-2 px-4 transition-all ease-in-out duration-300 hover:shadow-lg hover:delay-100 bg-gradient-to-b bg-nk-gradient-red-one to-nk-gradient-red-two text-white md:text-2xl md:py-3 md:px-6 md:gap-4">
+        <span>Show Map</span>
+        <div className="relative max-w-[1.375rem] w-full md:max-w-[2.188rem]">
+        <Image src={List_Icon} width={35} height={35} alt="" className="mx-auto" />
+    </div>
+    </Link>
       {properties.length > 0 ? (
         <InfiniteScroll
           dataLength={properties.length}

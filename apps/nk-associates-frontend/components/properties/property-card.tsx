@@ -10,7 +10,7 @@ interface CardProps {
 }
 
 const PropertyCard: FC<CardProps> = ({property}) => {
-  const {title, type, purpose, area, area_type, price}  = property?.attributes;
+  const {title, type, purpose, area, area_type, property_price}  = property?.attributes;
   return (
     <div>
       <Link href={"#"} className="rounded-xl">
@@ -37,7 +37,7 @@ const PropertyCard: FC<CardProps> = ({property}) => {
       <h2 className="text-xl text-nk-black md:text-base">
        {title}
       </h2>
-      <p className="my-1 text-[1.375rem] text-nk-black font-metropolis-bold md:text-lg">{price}</p>
+      <p className="my-1 text-[1.375rem] text-nk-black font-metropolis-bold md:text-lg">{`Rs. ${property_price}`}</p>
       <div className="mt-1 flex items-center gap-2">
         <Image src={Area_Marker} width={12} height={18} alt="" />
         <p className="text-sm text-nk-grey font-metropolis-light md:text-xs">

@@ -14,7 +14,7 @@ export interface Properties {
     image_thumbnail: ImageData;
     latitude: number;
     longitude: number;
-    price: string;
+    property_price: number;
     property_images: ImageData;
     purpose: string;
     title: string;

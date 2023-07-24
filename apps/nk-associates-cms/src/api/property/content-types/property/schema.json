@@ -43,10 +43,6 @@
       "required": true,
       "default": "Sq.Yds"
     },
-    "price": {
-      "type": "string",
-      "required": true
-    },
     "latitude": {
       "type": "float",
       "required": true
@@ -70,6 +66,10 @@
       "allowedTypes": [
         "images"
       ]
+    },
+    "property_price": {
+      "type": "biginteger",
+      "required": true
     }
   }
 }

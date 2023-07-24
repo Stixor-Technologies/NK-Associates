@@ -1,5 +1,5 @@
 import React from "react";
-import PropertyList from "../../components/properties/property-list";
+import PropertyList from "../../../components/properties/property-list/property-list";
 
 const Properties = () => {
   return (
