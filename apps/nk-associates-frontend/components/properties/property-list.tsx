@@ -9,7 +9,6 @@ const PropertyList = () => {
   const [properties, setProperties] = useState<Properties[]>([]);
   const [total, setTotal] = useState<number | null>(null);
   const [isLoading, setIsLoading] = useState<boolean>(false);
-  const name = ''
 
   const getProperties = async () => {
     setIsLoading(true);
@@ -22,7 +21,7 @@ const PropertyList = () => {
       setProperties([...properties, ...data.data]);
       setTotal(data.meta.pagination.total);
       setIsLoading(false);
-    }, 6000);
+    }, 3000);
   };
 
   useEffect(() => {
@@ -45,12 +44,9 @@ const PropertyList = () => {
         >
           <div className="grid gap-x-7 gap-y-12 py-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
             {properties &&
-              properties.map((property, index) => {
-                console.log(property.id);
-                // console.log(property.attributes.property_images.data)
-                // console.log(properties);
-                return <PropertyCard key={index} />;
-              })}
+              properties.map((property, index) => (
+                 <PropertyCard key={index} property = {property} />
+                 ))}
           </div>
         </InfiniteScroll>
       ) : (
