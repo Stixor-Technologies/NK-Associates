@@ -24,9 +24,9 @@ const Spinner: FC = () => {
               r="26"
               fill="transparent"
               stroke="#fff"
-              stroke-linecap="round"
-              stroke-dasharray="122.52211349000194 40.840704496667314"
-              stroke-width="9"
+              strokeLinecap="round"
+              strokeDasharray="122.52211349000194 40.840704496667314"
+              strokeWidth="9"
             />
           </mask>
         </defs>
