@@ -13,7 +13,7 @@ import Snap from "../../../nk-associates-frontend/app/assets/images/snapchat-but
 import YT from "../../../nk-associates-frontend/app/assets/images/youtube-button.svg";
 import AppGallery from "../../../nk-associates-frontend/app/assets/images/app-gallery.svg";
 
-// all images have links in this page, including the logo.
+// images have links in this page, including the logo.
 
 // social media links have temp links that go to their respective homepage.
 // I have written "dummy links here " in case you need to find them.
@@ -84,7 +84,7 @@ const footer = () => {
 
 							<div>
 								<div className=" md:hidden lg:hidden">
-									{/* social added for responsive mobile view */}
+									{/* responsive / mobile view elements  */}
 									<div className="">
 										<h2 className="dark:text-medium  mb-2  font-metropolis-bold text-base tracking-widest	">
 											SOCIAL
