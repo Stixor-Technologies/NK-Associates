@@ -13,6 +13,11 @@ import Snap from "../../../nk-associates-frontend/app/assets/images/snapchat-but
 import YT from "../../../nk-associates-frontend/app/assets/images/youtube-button.svg";
 import AppGallery from "../../../nk-associates-frontend/app/assets/images/app-gallery.svg";
 
+// social media links have temp links that go to their respective homepage.
+// I have written "dummy links here " in case you need to find them.
+
+// all other links that go the NK associates site pages # has links.
+
 const footer = () => {
 	return (
 		<footer className=" sm:min-h bg-nk-dark-gray font-metropolis dark:text-white ">
@@ -35,45 +40,45 @@ const footer = () => {
 								<div>
 									<ul>
 										<li className="mb-3">
-											<Link
-												href="#"
-												className=" bg-gradient-to-r from-white to-white bg-[length:0%_8%] bg-left-bottom bg-no-repeat font-metropolis-light  transition-all duration-500 ease-out hover:bg-[length:100%_8%]  ">
-												About
+											<Link href="#" className="  ">
+												<div className="inline-block bg-gradient-to-r from-white to-white bg-[length:0%_8%] bg-left-bottom bg-no-repeat font-metropolis-light  transition-all duration-500 ease-out hover:bg-[length:100%_8%]   ">
+													About
+												</div>
 											</Link>
 										</li>
 										<li className="mb-3">
-											<Link
-												href="#"
-												className="bg-gradient-to-r from-white to-white bg-[length:0%_8%] bg-left-bottom bg-no-repeat font-metropolis-light  transition-all duration-500 ease-out hover:bg-[length:100%_8%]  ">
-												Property
+											<Link href="#">
+												<div className="inline-block bg-gradient-to-r from-white to-white bg-[length:0%_8%] bg-left-bottom bg-no-repeat font-metropolis-light  transition-all duration-500 ease-out hover:bg-[length:100%_8%]   ">
+													Property
+												</div>
 											</Link>
 										</li>
 										<li className="mb-3">
-											<Link
-												href="#"
-												className="bg-gradient-to-r from-white to-white bg-[length:0%_8%] bg-left-bottom bg-no-repeat font-metropolis-light  transition-all duration-500 ease-out hover:bg-[length:100%_8%]  ">
-												Jobs
+											<Link href="#">
+												<div className="inline-block bg-gradient-to-r from-white to-white bg-[length:0%_8%] bg-left-bottom bg-no-repeat font-metropolis-light  transition-all duration-500 ease-out hover:bg-[length:100%_8%]   ">
+													Jobs
+												</div>
 											</Link>
 										</li>
 										<li className="mb-3">
-											<Link
-												href="#"
-												className="bg-gradient-to-r from-white to-white bg-[length:0%_8%] bg-left-bottom bg-no-repeat font-metropolis-light  transition-all duration-500 ease-out hover:bg-[length:100%_8%]  ">
-												Projects
+											<Link href="#">
+												<div className="inline-block bg-gradient-to-r from-white to-white bg-[length:0%_8%] bg-left-bottom bg-no-repeat font-metropolis-light  transition-all duration-500 ease-out hover:bg-[length:100%_8%]   ">
+													Projects
+												</div>
 											</Link>
 										</li>
 										<li className="mb-3">
-											<Link
-												href="#"
-												className="bg-gradient-to-r from-white to-white bg-[length:0%_8%] bg-left-bottom bg-no-repeat font-metropolis-light  transition-all duration-500 ease-out hover:bg-[length:100%_8%]  ">
-												Maps
+											<Link href="#">
+												<div className="inline-block bg-gradient-to-r from-white to-white bg-[length:0%_8%] bg-left-bottom bg-no-repeat font-metropolis-light  transition-all duration-500 ease-out hover:bg-[length:100%_8%]   ">
+													Maps
+												</div>
 											</Link>
 										</li>
 									</ul>
 								</div>
 							</div>
 
-							{/* here */}
+							{/* dummy links here */}
 
 							<div>
 								<div className=" md:hidden lg:hidden">
@@ -86,23 +91,27 @@ const footer = () => {
 											<ul className="">
 												<li className="mb-3">
 													<Link
-														href="#"
-														className="bg-gradient-to-r from-white to-white bg-[length:0%_8%] bg-left-bottom bg-no-repeat font-metropolis-light  transition-all duration-500 ease-out hover:bg-[length:100%_8%]  ">
-														Facebook
+														href="https://www.facebook.com/"
+														target="_blank">
+														<div className="inline-block bg-gradient-to-r from-white to-white bg-[length:0%_8%] bg-left-bottom bg-no-repeat font-metropolis-light  transition-all duration-500 ease-out hover:bg-[length:100%_8%]   ">
+															Facebook
+														</div>
+													</Link>
+												</li>
+												<li className="mb-3">
+													<Link href="https://www.twitter.com/" target="_blank">
+														<div className="inline-block bg-gradient-to-r from-white to-white bg-[length:0%_8%] bg-left-bottom bg-no-repeat font-metropolis-light  transition-all duration-500 ease-out hover:bg-[length:100%_8%]   ">
+															Twitter
+														</div>
 													</Link>
 												</li>
 												<li className="mb-3">
 													<Link
-														href="#"
-														className="bg-gradient-to-r from-white to-white bg-[length:0%_8%] bg-left-bottom bg-no-repeat font-metropolis-light  transition-all duration-500 ease-out hover:bg-[length:100%_8%]  ">
-														Twitter
-													</Link>
-												</li>
-												<li className="mb-3">
-													<Link
-														href="#"
-														className="bg-gradient-to-r from-white to-white bg-[length:0%_8%] bg-left-bottom bg-no-repeat font-metropolis-light  transition-all duration-500 ease-out hover:bg-[length:100%_8%]  ">
-														Instagram
+														href="https://www.instagram.com/"
+														target="_blank">
+														<div className="inline-block bg-gradient-to-r from-white to-white bg-[length:0%_8%] bg-left-bottom bg-no-repeat font-metropolis-light  transition-all duration-500 ease-out hover:bg-[length:100%_8%]   ">
+															Instagram
+														</div>
 													</Link>
 												</li>
 											</ul>
@@ -114,10 +123,10 @@ const footer = () => {
 								</h2>
 								<ul className=" text-lg">
 									<li className="mb-3">
-										<Link
-											href="#"
-											className="  bg-gradient-to-r from-white to-white bg-[length:0%_8%] bg-left-bottom bg-no-repeat font-metropolis-light  transition-all duration-500 ease-out hover:bg-[length:100%_8%]  ">
-											Sell on NK
+										<Link href="#">
+											<div className="inline-block bg-gradient-to-r from-white to-white bg-[length:0%_8%] bg-left-bottom bg-no-repeat font-metropolis-light  transition-all duration-500 ease-out hover:bg-[length:100%_8%]   ">
+												Sell on NK
+											</div>
 										</Link>
 									</li>
 								</ul>
@@ -148,6 +157,7 @@ const footer = () => {
 									</ul>
 								</div>
 							</div>
+
 							{/* dummy links here  */}
 							<div className="hidden md:block lg:block ">
 								<h2 className="mb-2  text-base tracking-widest dark:text-white md:font-metropolis-medium	">
@@ -284,7 +294,7 @@ const footer = () => {
 					<div className="mt-3 flex items-center justify-center gap-6 sm:mt-0  ">
 						<Link
 							href="#"
-							className=" bg-gradient-to-r from-white to-white bg-[length:0%_8%] bg-left-bottom bg-no-repeat font-metropolis-light  transition-all duration-500 ease-out hover:bg-[length:100%_8%] lg:text-base">
+							className="  bg-gradient-to-r from-white to-white bg-[length:0%_8%] bg-left-bottom bg-no-repeat font-metropolis-light  transition-all duration-500 ease-out hover:bg-[length:100%_8%] lg:text-base">
 							Terms of Use
 						</Link>
 
