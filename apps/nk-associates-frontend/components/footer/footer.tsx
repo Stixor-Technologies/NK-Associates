@@ -13,6 +13,8 @@ import Snap from "../../../nk-associates-frontend/app/assets/images/snapchat-but
 import YT from "../../../nk-associates-frontend/app/assets/images/youtube-button.svg";
 import AppGallery from "../../../nk-associates-frontend/app/assets/images/app-gallery.svg";
 
+// all images have links in this page, including the logo.
+
 // social media links have temp links that go to their respective homepage.
 // I have written "dummy links here " in case you need to find them.
 
