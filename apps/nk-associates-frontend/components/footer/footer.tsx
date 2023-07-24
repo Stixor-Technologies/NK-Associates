@@ -276,7 +276,7 @@ const footer = () => {
 			<div className=" container mx-auto font-metropolis-light">
 				<hr className="border-gray-200 dark:border-gray-700 sm:mx-auto lg:my-2" />
 
-				<div className=" mx-auto flex flex-col justify-center gap-8 p-4 text-xs md:flex-row md:items-center md:justify-between md:text-lg lg:mx-24 lg:text-lg ">
+				<div className=" mx-auto flex flex-col justify-center gap-2 p-4 text-xs md:flex-row md:items-center md:justify-between md:text-lg lg:mx-24 lg:gap-8 lg:text-lg ">
 					<span className=" text-center md:text-base  ">
 						Copyright © 2023. All Rights Reserved on nkaccosiate.
 					</span>
