@@ -83,10 +83,10 @@ const footer = () => {
 							{/* dummy links here */}
 
 							<div>
-								<div className=" md:hidden lg:hidden">
-									{/* responsive / mobile view elements  */}
+								<div className=" md:hidden ">
+									{/* responsive / mobile view elements */}
 									<div className="">
-										<h2 className="dark:text-medium  mb-2  font-metropolis-bold text-base tracking-widest	">
+										<h2 className="dark:text-medium mb-2 font-metropolis-bold text-base tracking-widest	">
 											SOCIAL
 										</h2>
 										<div className="text-lg">
@@ -134,7 +134,7 @@ const footer = () => {
 								</ul>
 							</div>
 
-							<div className="hidden font-metropolis-medium text-base md:block lg:block ">
+							<div className="hidden font-metropolis-medium text-base md:block  ">
 								<h2 className="mb-2  text-base  tracking-widest dark:text-white 	">
 									DOWNLOAD
 								</h2>
@@ -161,7 +161,7 @@ const footer = () => {
 							</div>
 
 							{/* dummy links here  */}
-							<div className="hidden md:block lg:block ">
+							<div className="hidden md:block ">
 								<h2 className="mb-2  text-base tracking-widest dark:text-white md:font-metropolis-medium	">
 									SOCIAL
 								</h2>
