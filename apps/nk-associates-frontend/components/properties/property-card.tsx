@@ -10,24 +10,22 @@ interface CardProps {
 }
 
 const PropertyCard: FC<CardProps> = ({ property }) => {
-  const { title, type, purpose, area, area_type, property_price } =
+  const { title, category, purpose, area, area_type, price } =
     property?.attributes;
   const thumbnailImage =
     property?.attributes?.image_thumbnail.data.attributes.url;
-  console.log(thumbnailImage);
-  // console.log(property)
   return (
     <div>
-      <Link href={"#"} className="">
-        <div className="aspect-w-1 aspect-h-1 relative ma-w w-full h-[300px] rounded-xl">
-        <Image src={`http://localhost:1337${thumbnailImage}`} fill alt="" objectFit="cover" className="rounded-xl" />
+      <Link href={"#"}>
+        <div className="aspect-w-1 aspect-h-1 relative max-w-[37.5.rem] w-full h-[17.5rem] rounded-xl">
+        <Image src={`http://localhost:1337${thumbnailImage}`} fill alt="" className="rounded-xl object-cover"  />
         </div>
         {/* <Image src={`http://localhost:1337${thumbnailImage}`} width={600} height={600} alt="" className="rounded-xl" /> */}
       </Link>
       <div className="my-3 flex items-center justify-between">
         <div className="flex items-center gap-2">
           <span className="rounded-full bg-white px-4 py-1 text-sm font-medium text-nk-gray shadow-lg md:text-xs">
-            {type}
+            {category}
           </span>
           <span className="rounded-full bg-white px-4 py-1 text-sm font-medium text-nk-gray shadow-lg md:text-xs">
             {purpose}
@@ -43,9 +41,11 @@ const PropertyCard: FC<CardProps> = ({ property }) => {
       </div>
 
       <h2 className="text-xl text-nk-black md:text-base">{title}</h2>
-      <p className="my-1 font-metropolis-bold text-[1.375rem] text-nk-black md:text-lg">{`Rs. ${property_price}`}</p>
+      <p className="my-1 font-metropolis-bold text-[1.375rem] text-nk-black md:text-lg">{`Rs. ${price}`}</p>
       <div className="mt-1 flex items-center gap-2">
         <Image src={Area_Marker} width={12} height={18} alt="" />
+
+        {/* need to change, it will be done when I'll integrate google maps api on details page */}
         <p className="font-metropolis-light text-sm text-nk-grey md:text-xs">
           Garden City phase 7 Bahria Town
         </p>

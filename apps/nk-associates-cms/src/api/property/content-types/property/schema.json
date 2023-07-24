@@ -17,10 +17,6 @@
       "required": true,
       "maxLength": 40
     },
-    "type": {
-      "type": "string",
-      "required": true
-    },
     "purpose": {
       "type": "string",
       "required": true
@@ -67,9 +63,39 @@
         "images"
       ]
     },
-    "property_price": {
+    "price": {
       "type": "biginteger",
       "required": true
+    },
+    "bedrooms": {
+      "type": "integer"
+    },
+    "baths": {
+      "type": "integer"
+    },
+    "category": {
+      "type": "enumeration",
+      "enum": [
+        "Residential",
+        "Commercial"
+      ],
+      "default": "Residential"
+    },
+    "type": {
+      "type": "enumeration",
+      "enum": [
+        "Plot",
+        "Flat",
+        "House"
+      ],
+      "default": "Plot"
+    },
+    "property_pdf": {
+      "allowedTypes": [
+        "files"
+      ],
+      "type": "media",
+      "multiple": false
     }
   }
 }

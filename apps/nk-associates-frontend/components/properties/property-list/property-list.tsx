@@ -4,6 +4,7 @@ import PropertyCard from "../property-card";
 import { Properties } from "../../../utils/types/types";
 import InfiniteScroll from "react-infinite-scroll-component";
 import Spinner from "../../spinner";
+import { getProperties } from "../../../utils/api-calls";
 import Link from "next/link";
 import Image from "next/image";
 import List_Icon from "../../../public/assets/icons/list-icon.svg"
@@ -13,22 +14,17 @@ const PropertyList = () => {
   const [total, setTotal] = useState<number | null>(null);
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
-  const getProperties = async () => {
-    setIsLoading(true);
-    const resp = await fetch(
-      `http://localhost:1337/api/properties?populate=*&pagination[start]=${properties.length}&pagination[limit]=9&sort[1]=id`
-    );
-    const data = await resp.json();
-    setTimeout(() => {
-      console.log(data.data);
-      setProperties([...properties, ...data.data]);
-      setTotal(data.meta.pagination.total);
-      setIsLoading(false);
-    }, 3000);
-  };
 
-  useEffect(() => {
-    getProperties();
+  const fetchData = async () => {
+    setIsLoading(true);
+    const resp = await getProperties(properties.length, 9);
+    setProperties([...properties, ...resp.data]);
+    setTotal(resp.meta.pagination.total);
+    setIsLoading(false);
+  }
+
+  useEffect( () => {   
+    fetchData();
   }, []);
 
   return (
@@ -42,7 +38,7 @@ const PropertyList = () => {
       {properties.length > 0 ? (
         <InfiniteScroll
           dataLength={properties.length}
-          next={() => getProperties()}
+          next={() => fetchData()}
           hasMore={total !== properties.length}
           loader={isLoading && <Spinner />}
           endMessage={
