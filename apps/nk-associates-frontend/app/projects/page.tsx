@@ -3,12 +3,35 @@ import { useEffect, useState } from "react";
 import ProjectCard from "../../components/projectcard/project-card";
 import { getProjects } from "../../utils/api-calls";
 import LinkButton from "../../components/button/link-button";
+
+interface Project {
+  attributes: {
+    Pictures: {
+      data: Array<{ attributes: { url: string } }>;
+    };
+    Title: string;
+    PlotSize: string;
+    PlotSizeUnits: string;
+    PlotNumber: string;
+    CoveredArea: string;
+    CoveredAreaUnits: string;
+    Address: string;
+    City: string;
+    Description: string;
+    Category: string;
+  };
+}
+
 export default function Projects() {
-  const [selectedButton, setSelectedButton] = useState("All");
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(false);
-  const [projectsData, setProjectsData] = useState([]);
-  const getProjectsData = async (category?) => {
+  const [selectedButton, setSelectedButton] = useState<
+    "All" | "Residential" | "Commercial" | "Hotel"
+  >("All");
+  const [loading, setLoading] = useState<boolean>(true);
+  const [error, setError] = useState<boolean>(false);
+  const [projectsData, setProjectsData] = useState<Array<Project>>([]);
+  const getProjectsData = async (
+    category?: "Residential" | "Commercial" | "Hotel"
+  ) => {
     try {
       setError(false);
       setLoading(true);
