@@ -7,7 +7,7 @@ import Spinner from "../../spinner";
 import { getProperties } from "../../../utils/api-calls";
 import Link from "next/link";
 import Image from "next/image";
-import List_Icon from "../../../public/assets/icons/list-icon.svg";
+import List_Icon from "../../../app/assets/icons/list-icon.svg"
 
 const PropertyList = () => {
   const [properties, setProperties] = useState<Properties[]>([]);
@@ -16,7 +16,7 @@ const PropertyList = () => {
 
   const fetchData = async () => {
     setIsLoading(true);
-    const resp = await getProperties(properties.length, 9);
+    const resp = await getProperties(properties.length, 12);
       setProperties((prevProperties) => [...prevProperties, ...resp.data]);
       setTotal(resp.meta.pagination.total);
       setIsLoading(false);
@@ -54,11 +54,6 @@ const PropertyList = () => {
           next={fetchData}
           hasMore={total !== properties.length}
           loader={isLoading && <Spinner />}
-          endMessage={
-            <p style={{ textAlign: "center" }}>
-              <b>Yay! You have seen it all</b>
-            </p>
-          }
         >
           <div className="grid gap-x-7 gap-y-12 overflow-hidden py-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
             {properties.map((property, index) => (
