@@ -3,7 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { Properties } from "../../utils/types/types";
 import { convertToPakistaniNumbering } from "../../utils/utils";
-import Area_Icon from "../../app/assets/icons/area-marker.svg";
+import Area_Icon from "../../app/assets/icons/area-icon.svg";
 import Area_Marker from "../../app/assets/icons/area-marker.svg";
 
 interface CardProps {
@@ -20,7 +20,7 @@ const PropertyCard: FC<CardProps> = ({ property }) => {
       <Link href={"#"}>
         <div className="aspect-w-1 aspect-h-1 relative h-[17.5rem] w-full max-w-[37.5.rem] rounded-xl">
           <Image
-            src={`http://localhost:1337${thumbnailImage}`}
+            src={`${process.env["NEXT_PUBLIC_BACKEND_URL"]}${thumbnailImage}`}
             fill
             alt=""
             className="rounded-xl object-cover"
