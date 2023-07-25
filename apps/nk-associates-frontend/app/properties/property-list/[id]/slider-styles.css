@@ -31,14 +31,14 @@
 
 
 .swiper-pagination {
-    bottom: -1.5rem !important;
+    bottom: -2.5rem !important;
   }
   
   .swiper-pagination-bullet{
-    background-color: rgba(228, 64, 74, 0.7);
+    background-color: #e4404ab3;
   }
   
   .swiper-pagination-bullet-active {
-    background-color: rgba(228, 64, 74, 1);
-    box-shadow: 0rem 0rem 0rem 0.156rem rgba(228, 64, 74, 0.4)
+    background-color: #e4404a;
+    box-shadow: 0rem 0rem 0rem 0.156rem #e4404a66
   }
