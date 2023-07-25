@@ -31,10 +31,11 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
     ? "bg-gradient-to-b bg-nk-gradient-red-one to-nk-gradient-red-two"
     : "bg-white";
   const textColor = primaryColor ? "text-white" : "text-black";
+  const flexDirection = primaryColor ? "md:flex-row-reverse" : "md:flex-row";
 
   return (
     <div
-      className={`m-5 flex flex-col rounded-2xl shadow-md md:flex-row-reverse md:rounded-3xl ${backgroundColor} ${textColor}`}
+      className={`m-5 flex flex-col rounded-2xl shadow-md ${flexDirection} md:rounded-3xl ${backgroundColor} ${textColor}`}
     >
       <div className="relative h-80 w-full rounded-2xl   md:flex md:h-auto md:w-1/2 lg:h-auto ">
         <Image
