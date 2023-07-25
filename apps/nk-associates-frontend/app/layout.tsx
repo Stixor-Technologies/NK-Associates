@@ -1,8 +1,37 @@
 import './globals.css'
 import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
+import localFont from 'next/font/local'
 
-const inter = Inter({ subsets: ['latin'] })
+
+const metropolisRegular = localFont({
+  src: './assets/fonts/Metropolis-Regular.otf',
+  variable: '--font-metroplis',
+})
+
+const metropolisSemiBold = localFont({
+  src: './assets/fonts/Metropolis-SemiBold.otf',
+  variable: '--font-metroplis-semiBold',
+})
+
+const metropolisBold = localFont({
+  src: './assets/fonts/Metropolis-Bold.otf',
+  variable: '--font-metroplis-bold',
+})
+
+const metropolisExtraBold = localFont({
+  src: './assets/fonts/Metropolis-ExtraBold.otf',
+  variable: '--font-metroplis-extraBold',
+})
+
+const metropolisLight = localFont({
+  src: './assets/fonts/Metropolis-Light.otf',
+  variable: '--font-metroplis-light',
+})
+
+const metropolisMedium = localFont({
+  src: './assets/fonts/Metropolis-Medium.otf',
+  variable: '--font-metroplis-medium',
+})
 
 export const metadata: Metadata = {
   title: 'Create Next App',
@@ -16,7 +45,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={`${metropolisRegular.variable} ${metropolisMedium.variable} ${metropolisSemiBold.variable} ${metropolisBold.variable} ${metropolisExtraBold.variable} ${metropolisLight.variable}`}>{children}</body>
     </html>
   )
 }
