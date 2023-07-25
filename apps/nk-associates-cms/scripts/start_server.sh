@@ -10,4 +10,4 @@ yarn install
 
 # Navigate to your project directory and start the app
 cd /home/ubuntu/app/apps/nk-associates-cms
-pm2 start yarn --interpreter bash --name stixor-cms -- start
+pm2 start yarn --name nk-associates-cms -- start
