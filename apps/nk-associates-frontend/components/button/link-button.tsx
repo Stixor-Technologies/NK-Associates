@@ -27,8 +27,7 @@ const LinkButton: FC<Props> = (props) => {
   };
 
   const classes = `rounded-full text-center capitalize font-metropolis transition-all ease-in-out duration-300 hover:shadow-lg hover:delay-100 
-  ${typeStyles[type || "gradient"]} 
-  py-2 w-[16.25rem] md:w-[25rem] text-base md:text-lg ${additionalStyles || ""}`;
+  ${typeStyles[type || "gradient"]} py-2 w-[16.25rem] md:w-[25rem] text-base md:text-lg block ${additionalStyles || ""}`;
 
   if ("clickEvent" in props) {
     return (
