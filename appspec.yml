@@ -1,0 +1,26 @@
+version: 0.0
+os: linux
+files:
+  - source: /
+    destination: /home/ubuntu/app
+    overwrite: yes
+permissions:
+  - object: /home/ubuntu/app/apps/nk-associates-cms/scripts
+    pattern: "*.sh"
+    owner: ubuntu
+    mode: 755
+    type:
+      - file
+hooks:
+  ApplicationStop:
+    - location: apps/nk-associates-cms/scripts/stop_server.sh
+      runas: ubuntu
+      timeout: 300
+  BeforeInstall:
+    - location: apps/nk-associates-cms/scripts/install_dependencies.sh
+      runas: ubuntu
+      timeout: 300
+  ApplicationStart:
+    - location: apps/nk-associates-cms/scripts/start_server.sh
+      runas: ubuntu
+      timeout: 600
