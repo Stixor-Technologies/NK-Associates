@@ -14,36 +14,44 @@ interface PropertyDetailProps {
 const PropertyDetail: FC<PropertyDetailProps> = ({ params: { id } }) => {
   console.log(id);
   return (
-    <section>
+    <section className="container mx-auto h-screen">
       <div>
-        <div>
-          <h2>DHA-III Residential Plots</h2>
+        <div className="md:flex md:items-center md:justify-between">
+          <div className="flex lg:gap-10 xl:gap-20">
+            <h2 className="font-metropolis-semibold text-4xl">
+              DHA-III Residential Plots
+            </h2>
 
-          <div>
-            <div className="flex items-center gap-1">
-              <Image src={Bath_Icon} width={13} height={13} alt="" />
-              <span className="text-nk-grey font-metropolis-light text-sm md:text-[0.625rem]">
-                7
-              </span>
-            </div>
+            <div className="flex gap-4">
+              <div className="flex items-center gap-1">
+                <Image src={Bath_Icon} width={27} height={27} alt="" />
+                <span className="text-nk-grey font-metropolis-medium text-lg">
+                  7
+                </span>
+              </div>
 
-            <div className="flex items-center gap-1">
-              <Image src={Bedroom_Icon} width={13} height={13} alt="" />
-              <span className="text-nk-grey font-metropolis-light text-sm md:text-[0.625rem]">
-                6
-              </span>
-            </div>
+              <div className="flex items-center gap-1">
+                <Image src={Bedroom_Icon} width={27} height={27} alt="" />
+                <span className="text-nk-grey font-metropolis-medium text-lg">
+                  6
+                </span>
+              </div>
 
-            <div className="flex items-center gap-1">
-              <Image src={Bath_Icon} width={13} height={13} alt="" />
-              <span className="text-nk-grey font-metropolis-light text-sm md:text-[0.625rem]">
-                4500 sq.ft
-              </span>
+              <div className="flex items-center gap-1">
+                <Image src={Bath_Icon} width={27} height={27} alt="" />
+                <span className="text-nk-grey font-metropolis-medium text-lg">
+                  4500 sq.ft
+                </span>
+              </div>
             </div>
           </div>
-         
-         <LinkButton text="Inquires" type="solid" navigateTo="#" />
 
+          <LinkButton
+            text="Inquires"
+            type="solid"
+            navigateTo="#"
+            className="w-[11.75rem] md:w-[11.75rem] text-lg"
+          />
         </div>
       </div>
     </section>
