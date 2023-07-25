@@ -1,7 +1,6 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-
 import Logo from "../../../nk-associates-frontend/app/assets/images/nk-logo.svg";
 import GooglePlay from "../../../nk-associates-frontend/app/assets/images/google-play.svg";
 import AppStore from "../../../nk-associates-frontend/app/assets/images/app-store.svg";
@@ -13,111 +12,96 @@ import Snap from "../../../nk-associates-frontend/app/assets/images/snapchat-but
 import YT from "../../../nk-associates-frontend/app/assets/images/youtube-button.svg";
 import AppGallery from "../../../nk-associates-frontend/app/assets/images/app-gallery.svg";
 
-// images have links in this page, including the logo.
-
 // social media links have temp links that go to their respective homepage.
 // I have written "dummy links here " in case you need to find them.
 
-// all other links that go the NK associates site pages # has links.
-
 const footer = () => {
 	return (
-		<footer className=" sm:min-h bg-nk-dark-gray font-metropolis dark:text-white ">
-			<div className="container  mx-auto py-6 pb-2 lg:py-8 ">
+		<footer className="min-h-fit  bg-nk-dark-gray font-metropolis dark:text-white ">
+			<div className="container mx-auto py-6 pb-2 lg:py-8 ">
 				<div className="mx-5 sm:mx-auto ">
 					<div className="md:flex md:justify-between">
 						<div className="mb-2 sm:px-8 md:mb-0 md:px-16 ">
 							<Link
 								href="#"
 								className="m-1 flex w-20 items-center pb-4  md:w-32 ">
-								<Image src={Logo} alt="logo"></Image>
+								<Image src={Logo} alt="logo" />
 							</Link>
 						</div>
-
 						<div className="grid grid-cols-2 p-1  sm:m-1 sm:grid-cols-4  sm:gap-4 lg:px-16  xl:px-24 2xl:px-36">
 							<div className="text-lg">
 								<h2 className="mb-2  font-metropolis-bold text-base  tracking-widest dark:text-white	md:font-metropolis-medium ">
 									COMPANY
 								</h2>
-								<div>
-									<ul>
-										<li className="mb-3">
-											<Link href="#" className="  ">
-												<div className="inline-block bg-gradient-to-r from-white to-white bg-[length:0%_8%] bg-left-bottom bg-no-repeat font-metropolis-light  transition-all duration-500 ease-out hover:bg-[length:100%_8%]   ">
-													About
-												</div>
-											</Link>
-										</li>
-										<li className="mb-3">
-											<Link href="#">
-												<div className="inline-block bg-gradient-to-r from-white to-white bg-[length:0%_8%] bg-left-bottom bg-no-repeat font-metropolis-light  transition-all duration-500 ease-out hover:bg-[length:100%_8%]   ">
-													Property
-												</div>
-											</Link>
-										</li>
-										<li className="mb-3">
-											<Link href="#">
-												<div className="inline-block bg-gradient-to-r from-white to-white bg-[length:0%_8%] bg-left-bottom bg-no-repeat font-metropolis-light  transition-all duration-500 ease-out hover:bg-[length:100%_8%]   ">
-													Jobs
-												</div>
-											</Link>
-										</li>
-										<li className="mb-3">
-											<Link href="#">
-												<div className="inline-block bg-gradient-to-r from-white to-white bg-[length:0%_8%] bg-left-bottom bg-no-repeat font-metropolis-light  transition-all duration-500 ease-out hover:bg-[length:100%_8%]   ">
-													Projects
-												</div>
-											</Link>
-										</li>
-										<li className="mb-3">
-											<Link href="#">
-												<div className="inline-block bg-gradient-to-r from-white to-white bg-[length:0%_8%] bg-left-bottom bg-no-repeat font-metropolis-light  transition-all duration-500 ease-out hover:bg-[length:100%_8%]   ">
-													Maps
-												</div>
-											</Link>
-										</li>
-									</ul>
-								</div>
-							</div>
 
-							{/* dummy links here */}
+								<ul>
+									<li className="mb-3">
+										<Link
+											href="#"
+											className="inline-block bg-gradient-to-r from-white to-white bg-[length:0%_8%] bg-left-bottom bg-no-repeat font-metropolis-light  transition-all duration-500 ease-out hover:bg-[length:100%_8%]   ">
+											About
+										</Link>
+									</li>
+									<li className="mb-3">
+										<Link
+											href="#"
+											className="inline-block bg-gradient-to-r from-white to-white bg-[length:0%_8%] bg-left-bottom bg-no-repeat font-metropolis-light  transition-all duration-500 ease-out hover:bg-[length:100%_8%]   ">
+											Property
+										</Link>
+									</li>
+									<li className="mb-3">
+										<Link
+											href="#"
+											className="inline-block bg-gradient-to-r from-white to-white bg-[length:0%_8%] bg-left-bottom bg-no-repeat font-metropolis-light  transition-all duration-500 ease-out hover:bg-[length:100%_8%]   ">
+											Jobs
+										</Link>
+									</li>
+									<li className="mb-3">
+										<Link
+											href="#"
+											className="inline-block bg-gradient-to-r from-white to-white bg-[length:0%_8%] bg-left-bottom bg-no-repeat font-metropolis-light  transition-all duration-500 ease-out hover:bg-[length:100%_8%]   ">
+											Projects
+										</Link>
+									</li>
+									<li className="mb-3">
+										<Link
+											href="#"
+											className="inline-block bg-gradient-to-r from-white to-white bg-[length:0%_8%] bg-left-bottom bg-no-repeat font-metropolis-light  transition-all duration-500 ease-out hover:bg-[length:100%_8%]   ">
+											Maps
+										</Link>
+									</li>
+								</ul>
+							</div>
 
 							<div>
 								<div className=" md:hidden ">
-									{/* responsive / mobile view elements */}
-									<div className="">
-										<h2 className="dark:text-medium mb-2 font-metropolis-bold text-base tracking-widest	">
-											SOCIAL
-										</h2>
-										<div className="text-lg">
-											<ul className="">
-												<li className="mb-3">
-													<Link
-														href="https://www.facebook.com/"
-														target="_blank">
-														<div className="inline-block bg-gradient-to-r from-white to-white bg-[length:0%_8%] bg-left-bottom bg-no-repeat font-metropolis-light  transition-all duration-500 ease-out hover:bg-[length:100%_8%]   ">
-															Facebook
-														</div>
-													</Link>
-												</li>
-												<li className="mb-3">
-													<Link href="https://www.twitter.com/" target="_blank">
-														<div className="inline-block bg-gradient-to-r from-white to-white bg-[length:0%_8%] bg-left-bottom bg-no-repeat font-metropolis-light  transition-all duration-500 ease-out hover:bg-[length:100%_8%]   ">
-															Twitter
-														</div>
-													</Link>
-												</li>
-												<li className="mb-3">
-													<Link
-														href="https://www.instagram.com/"
-														target="_blank">
-														<div className="inline-block bg-gradient-to-r from-white to-white bg-[length:0%_8%] bg-left-bottom bg-no-repeat font-metropolis-light  transition-all duration-500 ease-out hover:bg-[length:100%_8%]   ">
-															Instagram
-														</div>
-													</Link>
-												</li>
-											</ul>
-										</div>
+									<h2 className="dark:text-medium mb-2 font-metropolis-bold text-base tracking-widest	">
+										SOCIAL
+									</h2>
+									<div className="text-lg">
+										<ul>
+											<li className="mb-3">
+												<Link href="https://www.facebook.com/" target="_blank">
+													<div className="inline-block bg-gradient-to-r from-white to-white bg-[length:0%_8%] bg-left-bottom bg-no-repeat font-metropolis-light  transition-all duration-500 ease-out hover:bg-[length:100%_8%]   ">
+														Facebook
+													</div>
+												</Link>
+											</li>
+											<li className="mb-3">
+												<Link href="https://www.twitter.com/" target="_blank">
+													<div className="inline-block bg-gradient-to-r from-white to-white bg-[length:0%_8%] bg-left-bottom bg-no-repeat font-metropolis-light  transition-all duration-500 ease-out hover:bg-[length:100%_8%]   ">
+														Twitter
+													</div>
+												</Link>
+											</li>
+											<li className="mb-3">
+												<Link href="https://www.instagram.com/" target="_blank">
+													<div className="inline-block bg-gradient-to-r from-white to-white bg-[length:0%_8%] bg-left-bottom bg-no-repeat font-metropolis-light  transition-all duration-500 ease-out hover:bg-[length:100%_8%]   ">
+														Instagram
+													</div>
+												</Link>
+											</li>
+										</ul>
 									</div>
 								</div>
 								<h2 className="mb-2  font-metropolis-bold text-base tracking-widest dark:text-white md:font-metropolis-medium">
@@ -139,13 +123,14 @@ const footer = () => {
 									DOWNLOAD
 								</h2>
 								<div>
-									<ul className="">
+									<ul>
 										<li className="mb-3">
 											<Link href="#">
 												<Image
 													src={GooglePlay}
 													alt="Google Play"
-													className=" w-32  object-cover transition duration-500 ease-in-out hover:translate-y-1 hover:opacity-90"></Image>
+													className=" w-32  object-cover transition duration-500 ease-in-out hover:translate-y-1 hover:opacity-90"
+												/>
 											</Link>
 										</li>
 										<li className="mb-3">
@@ -153,7 +138,8 @@ const footer = () => {
 												<Image
 													src={AppStore}
 													alt="Google Play"
-													className=" w-32 object-cover transition duration-500 ease-in-out hover:translate-y-1 hover:opacity-90"></Image>
+													className=" w-32 object-cover transition duration-500 ease-in-out hover:translate-y-1 hover:opacity-90"
+												/>
 											</Link>
 										</li>
 									</ul>
@@ -215,7 +201,7 @@ const footer = () => {
 
 						{/* Responsive  mobile view elements here */}
 						<div className=" pt-4   sm:hidden">
-							{/* here are the social media buttons with dummy links*/}
+							{/* dummy links here*/}
 							<div className=" flex justify-center ">
 								<Link
 									href="https://www.facebook.com/"
@@ -261,14 +247,16 @@ const footer = () => {
 											<Image
 												src={GooglePlay}
 												alt="Google Play"
-												className="object-cover transition duration-500 ease-in-out hover:translate-y-1 hover:opacity-90 md:w-44"></Image>
+												className="object-cover transition duration-500 ease-in-out hover:translate-y-1 hover:opacity-90 md:w-44"
+											/>
 										</Link>
 
 										<Link href="#" className="mx-2  ">
 											<Image
 												src={AppStore}
 												alt="Google Play"
-												className="hover:opacity-90md:w-44 object-cover transition duration-500 ease-in-out hover:translate-y-1"></Image>
+												className="hover:opacity-90md:w-44 object-cover transition duration-500 ease-in-out hover:translate-y-1"
+											/>
 										</Link>
 									</div>
 									<div className="flex justify-center">
@@ -276,7 +264,8 @@ const footer = () => {
 											<Image
 												src={AppGallery}
 												alt="App Gallery"
-												className="object-cover transition duration-500 ease-in-out hover:translate-y-1 hover:opacity-90 md:w-44"></Image>
+												className="object-cover transition duration-500 ease-in-out hover:translate-y-1 hover:opacity-90 md:w-44"
+											/>
 										</Link>
 									</div>
 								</div>
