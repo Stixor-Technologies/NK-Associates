@@ -1,4 +1,4 @@
-export const getPropertyDetail = async () => {
+export const getPropertyDetail = async (id: string) => {
     try {
       const resp = await fetch(
         `${process.env["NEXT_PUBLIC_BACKEND_URL"]}/api/properties?populate=*`

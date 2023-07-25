@@ -1,0 +1,46 @@
+.swiper {
+  overflow-y: unset;
+}
+
+.swiper-button-next,
+.swiper-button-prev {
+  background-color: #33333380;
+  padding: 3rem 1.5rem;
+  border-radius: 0.5rem;
+  color: white;
+}
+
+.swiper-button-next:after {
+    font-weight: bolder;
+    content: url("/assets/icons/right-arrow.svg");
+}
+
+.swiper-button-prev:after {
+    font-weight: bolder;
+    content: url("/assets/icons/left-arrow.svg");
+}
+
+
+
+.swiper-pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    bottom: -1.5rem !important;
+  }
+  
+  .swiper-pagination-bullet{
+    background-color: rgba(228, 64, 74, 0.2);
+    /* width: 20px !important;
+    height: 20px !important;
+    background-color: #E4404A !important;
+    opacity: 0.2; */
+  }
+  
+  .swiper-pagination-bullet-active::before {
+    /* width: 35px !important;
+    height: 35px !important;
+    border: 5px solid #360e119d; */
+    
+  }
