@@ -7,30 +7,25 @@ import Link from "next/link";
 import Image from "next/image";
 
 const navbar = () => {
-	return (
-		<div className="bg-nk-white">
-			<div className="mx-auto flex max-w-screen-xl flex-wrap items-center justify-between  p-4">
-				<div className="w-16">
-					<Link href="#">
-						<Image src={Logo} alt="NK logo"></Image>
-					</Link>
-				</div>
-				<div className="flex flex-wrap gap-8">
-					<button>
-						<Image src={SearchIcon} alt="Search" />{" "}
-					</button>
-					<button>
-						<Image src={GetInTouchIcon} alt="Get in touch" />
-					</button>
+  return (
+    <div className="fixed top-0 flex w-full flex-row items-center justify-between bg-nk-white px-5 pb-8 pt-5">
+      <Link href="#">
+        <Image width={50} height={50} src={Logo} alt="NK logo" className="" />
+      </Link>
+      <div className=" flex flex-row">
+        <div className="hidden flex-row md:flex">
+          <button className="pr-4">
+            <Image src={SearchIcon} alt="Search" />{" "}
+          </button>
+          <button className="pr-4">
+            <Image src={GetInTouchIcon} alt="Get in touch" />
+          </button>
+        </div>
 
-					<div>
-						<Image src={SidebarIcon} alt="SidebarIcon" />
-						
-					</div>
-				</div>
-			</div>
-		</div>
-	);
+        <Image src={SidebarIcon} alt="SidebarIcon" />
+      </div>
+    </div>
+  );
 };
 
 export default navbar;
