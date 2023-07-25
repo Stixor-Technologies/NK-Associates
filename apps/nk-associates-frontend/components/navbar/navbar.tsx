@@ -4,9 +4,6 @@ import SearchIcon from "../../../nk-associates-frontend/app/assets/images/search
 import GetInTouchIcon from "../../../nk-associates-frontend/app/assets/images/get-in-touch-button.svg";
 import SidebarIcon from "../../../nk-associates-frontend/app/assets/images/sidebar-icon.svg";
 import Link from "next/link";
-import classNames from "classnames";
-import SidebarButton from "./sidebar"; // Import the SidebarButton component
-
 import Image from "next/image";
 
 const navbar = () => {
