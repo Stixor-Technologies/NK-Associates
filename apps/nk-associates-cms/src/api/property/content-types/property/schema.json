@@ -34,7 +34,9 @@
       "enum": [
         "Sq.Yds",
         "Sq.Ft",
-        "Sq.M"
+        "Sq.M",
+        "Marla",
+        "Kanal"
       ],
       "required": true,
       "default": "Sq.Yds"
@@ -91,11 +93,12 @@
       "default": "Plot"
     },
     "property_pdf": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
       "allowedTypes": [
         "files"
-      ],
-      "type": "media",
-      "multiple": false
+      ]
     }
   }
 }

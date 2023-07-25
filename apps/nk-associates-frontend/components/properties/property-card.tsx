@@ -17,7 +17,7 @@ const PropertyCard: FC<CardProps> = ({ property }) => {
     property?.attributes?.image_thumbnail.data.attributes.url;
   return (
     <div>
-      <Link href={"#"}>
+      <Link href="#">
         <div className="aspect-w-1 aspect-h-1 relative h-[17.5rem] w-full max-w-[37.5.rem] rounded-xl">
           <Image
             src={`${process.env["NEXT_PUBLIC_BACKEND_URL"]}${thumbnailImage}`}
