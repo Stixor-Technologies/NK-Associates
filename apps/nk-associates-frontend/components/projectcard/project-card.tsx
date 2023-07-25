@@ -1,8 +1,7 @@
 import React from "react";
 import Image from "next/image";
-import LocationIcon from "../../app/assets/images/LocationIcon.svg";
-import LocationIconSecondary from "../../app/assets/images/LocationIconSecondary.svg";
-import ProjectImage from "../../app/assets/images/ProjectSampleImage.png";
+import LocationIcon from "../../public/assets/icons/area-marker.svg";
+import LocationIconSecondary from "../../public/assets/images/LocationIconSecondary.svg";
 
 interface ProjectCardProps {
   image: string;

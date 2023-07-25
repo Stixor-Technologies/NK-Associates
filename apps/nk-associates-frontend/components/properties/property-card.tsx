@@ -3,8 +3,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { Properties } from "../../utils/types/types";
 import { convertToPakistaniNumbering } from "../../utils/utils";
-import Area_Icon from "../../app/assets/icons/area-icon.svg";
-import Area_Marker from "../../app/assets/icons/area-marker.svg";
+import Area_Icon from "../../public/assets/icons/area-icon.svg";
+import Area_Marker from "../../public/assets/icons/area-marker.svg";
 
 interface CardProps {
   property: Properties;

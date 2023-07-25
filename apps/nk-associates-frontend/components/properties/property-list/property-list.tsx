@@ -7,7 +7,7 @@ import Spinner from "../../spinner";
 import { getProperties } from "../../../utils/api-calls";
 import Link from "next/link";
 import Image from "next/image";
-import List_Icon from "../../../app/assets/icons/list-icon.svg"
+import List_Icon from "../../../public/assets/icons/list-icon.svg";
 
 const PropertyList = () => {
   const [properties, setProperties] = useState<Properties[]>([]);
@@ -17,10 +17,11 @@ const PropertyList = () => {
   const fetchData = async () => {
     setIsLoading(true);
     const resp = await getProperties(properties.length, 12);
+    if (resp.data) {
       setProperties((prevProperties) => [...prevProperties, ...resp.data]);
       setTotal(resp.meta.pagination.total);
-      setIsLoading(false);
-   
+    }
+    setIsLoading(false);
   };
 
   useEffect(() => {
