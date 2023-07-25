@@ -10,6 +10,14 @@
   color: white;
 }
 
+.swiper-button-prev {
+   left: 4rem;
+}
+
+.swiper-button-next {
+  right: 4rem;
+}
+
 .swiper-button-next:after {
     font-weight: bolder;
     content: url("/assets/icons/right-arrow.svg");
@@ -23,24 +31,14 @@
 
 
 .swiper-pagination {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: absolute;
     bottom: -1.5rem !important;
   }
   
   .swiper-pagination-bullet{
-    background-color: rgba(228, 64, 74, 0.2);
-    /* width: 20px !important;
-    height: 20px !important;
-    background-color: #E4404A !important;
-    opacity: 0.2; */
+    background-color: rgba(228, 64, 74, 0.7);
   }
   
-  .swiper-pagination-bullet-active::before {
-    /* width: 35px !important;
-    height: 35px !important;
-    border: 5px solid #360e119d; */
-    
+  .swiper-pagination-bullet-active {
+    background-color: rgba(228, 64, 74, 1);
+    box-shadow: 0rem 0rem 0rem 0.156rem rgba(228, 64, 74, 0.4)
   }

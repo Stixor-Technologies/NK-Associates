@@ -78,10 +78,10 @@ async function PropertyDetail({ params: { id } }) {
   const data = await getPropertyDetail(id);
 
   return (
-    <section className="container mx-auto h-screen">
+    <section className="">
      <DetailSlider />
 
-      <div className="mt-20">
+      <div className="container mx-auto mt-20">
         <div className="md:flex md:items-center md:justify-between">
           <div className="flex lg:gap-10 xl:gap-20">
             <h2 className="font-metropolis-semibold text-4xl">

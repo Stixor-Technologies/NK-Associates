@@ -2,14 +2,10 @@
 import React from "react";
 import Image from "next/image";
 import { Swiper, SwiperSlide } from "swiper/react";
-
-// Import Swiper styles
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
-
-// import required modules
-import { Navigation, Pagination, Mousewheel, Keyboard } from "swiper/modules";
+import { Navigation, Pagination, Keyboard } from "swiper/modules";
 
 const DetailSlider = () => {
   const imga = [1, 2, 3, 4];
@@ -17,22 +13,22 @@ const DetailSlider = () => {
     <Swiper
       cssMode={true}
       navigation={true}
-      pagination={true}
-      mousewheel={true}
       keyboard={true}
-      modules={[Navigation, Pagination, Mousewheel, Keyboard]}
+      loop = {true}
+      pagination={{
+        clickable: true,
+      }}
+      modules={[Navigation, Pagination, Keyboard]}
       className="mySwiper"
     >
       {imga.map((index) => {
         return (
           <SwiperSlide key={index}>
-            <div className=" aspect-w-1 aspect-h-1 container w-full h-[80vh]">
+            <div className="relative aspect-w-1 aspect-h-1 w-full h-[100vh] block bg-slate-100">
               <Image
               className=" object-cover"
                 src={"/assets/images/5.svg"}
                 fill
-                // width={600}
-                // height={600}
                 alt=""
               />
             </div>
