@@ -1,7 +1,7 @@
-export const getPropertyDetail = async (start: number, limit = 12) => {
+export const getPropertyDetail = async () => {
     try {
       const resp = await fetch(
-        `${process.env["NEXT_PUBLIC_BACKEND_URL"]}/api/properties?populate=*&pagination[start]=${start}&pagination[limit]=${limit}&sort[1]=id`
+        `${process.env["NEXT_PUBLIC_BACKEND_URL"]}/api/properties?populate=*`
       );
       const data = await resp.json();
       return data;
