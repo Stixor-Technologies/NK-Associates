@@ -255,7 +255,7 @@ const footer = () => {
 											<Image
 												src={AppStore}
 												alt="Google Play"
-												className="hover:opacity-90md:w-44 object-cover transition duration-500 ease-in-out hover:translate-y-1"
+												className="hover:opacity-90 md:w-44 object-cover transition duration-500 ease-in-out hover:translate-y-1"
 											/>
 										</Link>
 									</div>
