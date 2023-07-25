@@ -12,14 +12,15 @@ import List_Icon from "../../../public/assets/icons/list-icon.svg";
 const PropertyList = () => {
   const [properties, setProperties] = useState<Properties[]>([]);
   const [total, setTotal] = useState<number | null>(null);
-  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [isLoading, setIsLoading] = useState<boolean>(true);
 
   const fetchData = async () => {
     setIsLoading(true);
     const resp = await getProperties(properties.length, 9);
-    setProperties([...properties, ...resp.data]);
-    setTotal(resp.meta.pagination.total);
-    setIsLoading(false);
+      setProperties((prevProperties) => [...prevProperties, ...resp.data]);
+      setTotal(resp.meta.pagination.total);
+      setIsLoading(false);
+   
   };
 
   useEffect(() => {
@@ -43,10 +44,14 @@ const PropertyList = () => {
           />
         </div>
       </Link>
-      {properties.length > 0 ? (
+      {isLoading && properties.length === 0 ? (
+        <div className="flex flex-1">
+          <Spinner />
+        </div>
+      ) : properties && properties.length > 0 ? (
         <InfiniteScroll
           dataLength={properties.length}
-          next={() => fetchData()}
+          next={fetchData}
           hasMore={total !== properties.length}
           loader={isLoading && <Spinner />}
           endMessage={
@@ -56,15 +61,14 @@ const PropertyList = () => {
           }
         >
           <div className="grid gap-x-7 gap-y-12 overflow-hidden py-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-            {properties &&
-              properties.map((property, index) => (
-                <PropertyCard key={index} property={property} />
-              ))}
+            {properties.map((property, index) => (
+              <PropertyCard key={index} property={property} />
+            ))}
           </div>
         </InfiniteScroll>
       ) : (
-        <div className="flex flex-1">
-          <Spinner />
+        <div className="flex flex-1 items-center justify-center text-nk-black">
+          <p className="text-center">No Properties Available</p>
         </div>
       )}
     </>
