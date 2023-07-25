@@ -1,8 +1,6 @@
 import path from "path";
-
 export default ({ env }) => {
   const client = env("DATABASE_CLIENT", "postgres");
-
   const connections = {
     postgres: {
       connection: {
@@ -21,6 +19,12 @@ export default ({ env }) => {
         max: env.int("DATABASE_POOL_MAX", 10),
       },
     },
-    debug: false,
-  },
-});
+  };
+  return {
+    connection: {
+      client,
+      ...connections[client],
+      acquireConnectionTimeout: env.int("DATABASE_CONNECTION_TIMEOUT", 60000),
+    },
+  };
+};
