@@ -49,9 +49,7 @@ export default function RootLayout({
       <body
         className={`${metropolisRegular.variable} ${metropolisMedium.variable} ${metropolisSemiBold.variable} ${metropolisBold.variable} ${metropolisExtraBold.variable} ${metropolisLight.variable}`}
       >
-        <Navbar />
         {children}
-        <Footer />
       </body>
     </html>
   );
