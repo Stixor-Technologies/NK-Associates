@@ -2,16 +2,15 @@ import React from "react";
 import Image from "next/image";
 import LocationIcon from "../../app/assets/images/LocationIcon.svg";
 import LocationIconSecondary from "../../app/assets/images/LocationIconSecondary.svg";
-import ProjectImage from "../../app/assets/images/ProjectSampleImage.png";
 
 interface ProjectCardProps {
   image: string;
   propertyName: string;
   plotSize: string;
-  plotNo: number;
+  plotNo: string;
   coveredArea: string;
   location: string;
-  propertyDescription?: string;
+  propertyDescription: string;
   propertyType: string;
   primaryColor?: boolean;
 }
