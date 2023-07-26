@@ -37,11 +37,11 @@ export default async function Home() {
     <div className="flex w-full flex-1 overflow-auto">
       <div className="h-auto min-h-screen w-full bg-nk-white-dark">
         <div className="mt-8 w-full rounded-lg p-4 shadow-lg md:rounded-lg md:p-20 md:shadow-none">
-          <div className="text-center text-3xl font-extrabold text-nk-black md:text-5xl">
+          <div className="text-center font-metropolis-extrabold text-3xl text-nk-black md:text-5xl">
             Unveiling Our Journey
           </div>
 
-          <div className="mt-7 text-center text-xl font-light text-gray-500 md:text-3xl">
+          <div className="mt-7 text-center font-metropolis-light text-xl text-gray-500 md:text-3xl">
             <span>
               Explore the Remarkable Journey that has Propelled us to the
               Forefront of the Industry
@@ -52,7 +52,7 @@ export default async function Home() {
             <Carousel images={images} />
           </div>
 
-          <div className="mt-6 text-center text-3xl font-extrabold text-black md:mt-16 md:text-left">
+          <div className="mt-6 text-center font-metropolis-extrabold text-3xl text-black md:mt-16 md:text-left">
             Latest News & Events
           </div>
 
