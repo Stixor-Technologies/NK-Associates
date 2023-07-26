@@ -35,7 +35,7 @@ export default async function Home() {
 
   return (
     <div className="flex w-full flex-1 overflow-auto">
-      <div className="h-auto min-h-screen w-full bg-nk-whitesmoke">
+      <div className="h-auto min-h-screen w-full bg-nk-white-dark">
         <div className="mt-8 w-full rounded-lg p-4 shadow-lg md:rounded-lg md:p-20 md:shadow-none">
           <div className="text-center text-3xl font-extrabold text-nk-black md:text-5xl">
             Unveiling Our Journey
