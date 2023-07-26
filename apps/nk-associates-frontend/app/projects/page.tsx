@@ -129,6 +129,7 @@ export default function Projects() {
                 location={`${value.attributes.Address}, ${value.attributes.City}`}
                 propertyDescription={value.attributes.Description}
                 propertyType={value.attributes.Category}
+                primaryColor={index % 2 == 0 ? true : false}
               />
             </div>
           ))
