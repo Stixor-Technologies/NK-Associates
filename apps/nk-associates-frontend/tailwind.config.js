@@ -1,5 +1,5 @@
 /** @type {import('tailwindcss').Config} */
-// import "@fontsource/metropolis";
+
 module.exports = {
   content: [
     "./pages/**/*.{js,ts,jsx,tsx,mdx}",
