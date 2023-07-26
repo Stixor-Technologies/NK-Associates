@@ -8,7 +8,7 @@ import Image from "next/image";
 
 const navbar = () => {
   return (
-    <div className="fixed top-0 z-20 flex w-full flex-row items-center justify-between bg-nk-white px-5 pb-8 pt-5">
+    <div className="fixed top-0 z-20 flex w-full flex-row items-center justify-between bg-nk-white-dark px-5 pb-8 pt-5">
       <Link href="#">
         <Image width={50} height={50} src={Logo} alt="NK logo" className="" />
       </Link>

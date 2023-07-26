@@ -5,6 +5,7 @@ import { Properties } from "../../utils/types/types";
 import { convertToPakistaniNumbering } from "../../utils/utils";
 import Area_Icon from "../../public/assets/icons/area-icon.svg";
 import Area_Marker from "../../public/assets/icons/area-marker.svg";
+import { BASE_URL } from "../../utils/constants";
 
 interface CardProps {
   property: Properties;
@@ -20,7 +21,7 @@ const PropertyCard: FC<CardProps> = ({ property }) => {
       <Link href="#">
         <div className="aspect-w-1 aspect-h-1 relative h-[17.5rem] w-full max-w-[37.5.rem] rounded-xl">
           <Image
-            src={`${process.env["NEXT_PUBLIC_BACKEND_URL"]}${thumbnailImage}`}
+            src={`${BASE_URL}${thumbnailImage}`}
             fill
             alt=""
             className="rounded-xl object-cover"

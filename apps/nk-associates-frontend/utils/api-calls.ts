@@ -24,7 +24,7 @@ export async function getProjects({
 
     const res = await fetch(
       //using concatenation because autosave causes linebreak in ` ` in the api call
-      `${process.env["NEXT_PUBLIC_BACKEND_API_URL"]}/projects?populate=*` +
+      `${BASE_URL}/api/projects?populate=*` +
         (category ? `&filters[Category]=${category}` : ""),
       fetchOptions
     );
