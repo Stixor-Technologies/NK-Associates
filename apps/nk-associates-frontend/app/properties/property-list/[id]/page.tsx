@@ -5,6 +5,7 @@ import { getPropertyDetail } from "../../../utils/api-calls";
 import DetailSlider from "../../../../components/properties/detail-slider";
 import Bath_Icon from "../../../../public/assets/icons/bath-icon.svg";
 import Bedroom_Icon from "../../../../public/assets/icons/bedrooms-icon.svg";
+import Tour_Icon from "../../../../public/assets/icons/360-icon.svg"
 import LinkButton from "../../../../components/button/link-button";
 import "./slider-styles.css"
 
@@ -81,7 +82,14 @@ async function PropertyDetail({ params: { id } }) {
     <section className="">
      <DetailSlider />
 
-      <div className="container mx-auto mt-20">
+     <button className="bg-white flex items-center gap-2 py-2 px-4 rounded-l">
+      <Image src={Tour_Icon} width={55} height={34} alt="360-tour" />
+      <span className="text-nk-black">View</span>
+     </button>
+
+     <div className="container mx-auto mt-20">
+
+      <div className="">
         <div className="md:flex md:items-center md:justify-between">
           <div className="flex lg:gap-10 xl:gap-20">
             <h2 className="font-metropolis-semibold text-4xl">
@@ -132,6 +140,10 @@ async function PropertyDetail({ params: { id } }) {
 
           <LinkButton text="Explore all" type="inverted" navigateTo="#" />
         </div> */}
+      </div>
+
+    
+
       </div>
     </section>
   );
