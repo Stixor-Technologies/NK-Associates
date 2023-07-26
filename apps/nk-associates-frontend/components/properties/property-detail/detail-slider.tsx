@@ -24,7 +24,7 @@ const DetailSlider = () => {
       {imga.map((index) => {
         return (
           <SwiperSlide key={index}>
-            <div className="relative aspect-w-1 aspect-h-1 w-full h-[92vh] block bg-slate-100">
+            <div className="relative aspect-w-1 aspect-h-1 w-full h-[80vh] block bg-slate-100">
               <Image
               className=" object-cover"
                 src={"/assets/images/1.jpeg"}

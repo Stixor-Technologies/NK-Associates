@@ -1,6 +1,6 @@
 "use client";
 import React, { useState, useEffect } from "react";
-import PropertyCard from "../property-card";
+import PropertyCard from "./property-card";
 import { Properties } from "../../../utils/types/types";
 import InfiniteScroll from "react-infinite-scroll-component";
 import Spinner from "../../spinner";
