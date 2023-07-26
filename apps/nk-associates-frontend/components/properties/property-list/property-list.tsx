@@ -17,7 +17,7 @@ const PropertyList = () => {
   const fetchData = async () => {
     setIsLoading(true);
     const resp = await getProperties(properties.length, 12);
-    if (resp.data) {
+    if (resp?.data) {
       setProperties((prevProperties) => [...prevProperties, ...resp.data]);
       setTotal(resp.meta.pagination.total);
     }
