@@ -1,4 +1,5 @@
-import React, { FC } from "react";
+import React, {FC} from "react";
+
 
 const Spinner: FC = () => {
   return (
@@ -6,7 +7,7 @@ const Spinner: FC = () => {
       <svg
         xmlns="http://www.w3.org/2000/svg"
         xmlnsXlink="http://www.w3.org/1999/xlink"
-        className={`inline-block h-14 w-14 animate-spin fill-nk-red text-gray-200 dark:text-gray-600`}
+        className={`inline-block w-14 h-14 animate-spin fill-nk-red text-gray-200 dark:text-gray-600`}
         width="80"
         height="80"
         viewBox="0 0 100 100"

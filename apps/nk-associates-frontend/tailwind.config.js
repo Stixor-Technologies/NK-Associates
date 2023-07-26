@@ -9,9 +9,7 @@ module.exports = {
   theme: {
     extend: {
       backgroundImage: {
-        "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
-        "gradient-conic":
-          "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
+          "nk-bg": "url('/assets/images/bg-property.svg')"
       },
       fontFamily: {
         metropolis: ["var(--font-metroplis)"],
@@ -33,6 +31,8 @@ module.exports = {
         "nk-gray": "#969696", //also used for faded font
         "nk-light-gray": "#EDEDED", //modal
         "nk-dark-gray": "#303030", //footer
+        "nk-grey": "#727272",
+        "nk-background": "#f5f5f5"
       },
     },
   },
