@@ -50,7 +50,7 @@ const EventCard: React.FC<EventProps> = ({ data }) => {
             </div>
 
             <div className="flex justify-between">
-              <div className="mb-3 max-w-full text-2xl font-bold tracking-tight text-gray-900 md:max-w-[70%] md:text-4xl">
+              <div className="mb-3 max-w-full font-metropolis-bold text-2xl tracking-tight text-gray-900 md:max-w-[70%] md:text-4xl">
                 {dataItem?.attributes?.event_title}
               </div>
 
@@ -64,7 +64,7 @@ const EventCard: React.FC<EventProps> = ({ data }) => {
                     className="flex-shrink-0"
                   />
                 </>
-                <div className="text-lg font-light text-red-500">
+                <div className="font-metropolis-light text-lg text-red-500">
                   {dataItem?.attributes?.event_location}
                 </div>
               </div>
@@ -77,14 +77,14 @@ const EventCard: React.FC<EventProps> = ({ data }) => {
               </span>
             </div>
 
-            <div className="custom-scrollbar mb-3 line-clamp-4 h-24 overflow-hidden font-normal text-nk-black hover:line-clamp-none hover:overflow-auto">
+            <div className="custom-scrollbar mb-3 line-clamp-4 h-24 overflow-hidden text-nk-black hover:line-clamp-none hover:overflow-auto">
               {dataItem?.attributes?.event_description}
             </div>
 
             <div className="flex justify-between">
-              <div className="mb-3 font-bold text-nk-black underline">
+              <div className="mb-3 font-metropolis-bold text-nk-black underline">
                 Date:
-                <span className="font-semibold text-nk-gray">
+                <span className="font-metropolis-semibold text-nk-gray">
                   {` ${dataItem?.attributes?.event_date}`}
                 </span>
               </div>
@@ -99,7 +99,7 @@ const EventCard: React.FC<EventProps> = ({ data }) => {
                     className="flex-shrink-0"
                   />
                 </>
-                <div className="text-lg font-normal text-red-500">
+                <div className="text-lg text-red-500">
                   {dataItem?.attributes?.event_location}
                 </div>
               </div>
