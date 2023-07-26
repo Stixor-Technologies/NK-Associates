@@ -72,8 +72,8 @@ const EventCard: React.FC<EventProps> = ({ data }) => {
 
             <div className="mb-3 text-nk-gray underline">
               Hosted by
-              <span className="ml-1 text-nk-black">
-                {dataItem?.attributes?.event_host}
+              <span className="text-nk-black">
+                {` ${dataItem?.attributes?.event_host}`}
               </span>
             </div>
 
@@ -84,8 +84,8 @@ const EventCard: React.FC<EventProps> = ({ data }) => {
             <div className="flex justify-between">
               <div className="mb-3 font-bold text-nk-black underline">
                 Date:
-                <span className="ml-1 font-semibold text-nk-black">
-                  {dataItem?.attributes?.event_date}
+                <span className="font-semibold text-nk-gray">
+                  {` ${dataItem?.attributes?.event_date}`}
                 </span>
               </div>
 
