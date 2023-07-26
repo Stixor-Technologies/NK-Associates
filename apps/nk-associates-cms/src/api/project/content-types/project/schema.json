@@ -1,0 +1,107 @@
+{
+  "kind": "collectionType",
+  "collectionName": "projects",
+  "info": {
+    "singularName": "project",
+    "pluralName": "projects",
+    "displayName": "Project",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Title": {
+      "type": "string",
+      "maxLength": 40,
+      "minLength": 6,
+      "required": true
+    },
+    "Address": {
+      "type": "string",
+      "maxLength": 40,
+      "minLength": 6,
+      "required": true
+    },
+    "Latitude": {
+      "type": "float",
+      "required": true
+    },
+    "Longitude": {
+      "type": "float",
+      "required": true
+    },
+    "Description": {
+      "type": "text",
+      "required": true
+    },
+    "CoveredArea": {
+      "type": "float",
+      "required": true
+    },
+    "UnitsAvailable": {
+      "type": "integer",
+      "required": true
+    },
+    "Price": {
+      "type": "float",
+      "required": true
+    },
+    "City": {
+      "type": "string",
+      "required": true
+    },
+    "PDF": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "files"
+      ]
+    },
+    "Pictures": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "CoveredAreaUnits": {
+      "type": "enumeration",
+      "enum": [
+        "Sq. Feet",
+        "Sq. Yard(s)",
+        "Sq. Meter(s)",
+        "Marla(s)",
+        "Kanal(s)"
+      ],
+      "required": true
+    },
+    "PlotSize": {
+      "type": "float"
+    },
+    "PlotSizeUnits": {
+      "type": "enumeration",
+      "enum": [
+        "Sq. Feet",
+        "Sq. Yard(s)",
+        "Sq. Meter(s)",
+        "Marla(s)",
+        "Kanal(s)"
+      ]
+    },
+    "Category": {
+      "type": "enumeration",
+      "enum": [
+        "Residential",
+        "Commercial",
+        "Hotel"
+      ]
+    },
+    "PlotNumber": {
+      "type": "string"
+    }
+  }
+}
