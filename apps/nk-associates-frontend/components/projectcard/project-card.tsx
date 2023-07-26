@@ -7,10 +7,10 @@ interface ProjectCardProps {
   image: string;
   propertyName: string;
   plotSize: string;
-  plotNo: number;
+  plotNo: string;
   coveredArea: string;
   location: string;
-  propertyDescription?: string;
+  propertyDescription: string;
   propertyType: string;
   primaryColor?: boolean;
 }

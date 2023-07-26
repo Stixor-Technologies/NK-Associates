@@ -1,23 +1,27 @@
 version: 0.2
 
+env:
+  secrets-manager:
+    # Secret will be assigned to env var name 'ENV'
+    ENV: dev/strapi
+
 phases:
   install:
-    runtime-versions:
-      nodejs: 18
     commands:
-      - cd apps/nk-associates-cms
-      - npm install
-  pre_build:
-    commands:
-      - npm run build
+      # Writing env var to .env file
+      - echo "$ENV" > apps/nk-associates-cms/.env
+      - echo "Installing source NVM"
+      - node -v
+      - npm -v
+      - echo "Installing dependencies"
+      - npm install -g yarn
+      - yarn install
+
   build:
     commands:
-      - echo Build started on `date`
-      - exit 0  # Placeholder command to indicate the build is complete and successful
-  post_build:
-    commands:
-      - echo Build completed on `date`
+      - echo "Building the Strapi application"
+      - yarn turbo build --filter=nk-associates-cms
 
 artifacts:
   files:
-    - "apps/nk-associates-cms/dist/**/*"
+    - '**/*'
