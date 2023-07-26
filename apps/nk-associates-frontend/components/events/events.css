@@ -1,0 +1,53 @@
+/* Carousel Styling by overriding SwiperJS at breakpoints */
+
+.swiper-pagination-bullet-active {
+  background-color: #666464 !important;
+}
+
+@media (max-width: 370px) {
+  .carousel-slider .swiper-slide {
+    width: 10rem !important;
+  }
+}
+
+@media (max-width: 1023px) {
+  .carousel-slider .swiper-slide {
+    width: 15rem !important;
+  }
+}
+
+/* Needs to be seen if in line with coding convention */
+@media (max-width: 600px) {
+  .carousel-slider .swiper-slide {
+    width: 8.5rem !important;
+  }
+}
+
+/* Scrollbar Styling */
+
+.custom-scrollbar::-webkit-scrollbar {
+  width: 0.5rem;
+  height: 0.3rem;
+}
+
+/* Styling for the scrollbar track */
+.custom-scrollbar::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+/* Styling for the scrollbar thumb */
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background-color: #d9d9d9;
+  border-radius: 4px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track-x {
+  background-color: transparent;
+  width: 2px;
+}
+
+/* Styling for the scrollbar thumb on the x-axis */
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background-color: #d9d9d9;
+  border-radius: 4px;
+}

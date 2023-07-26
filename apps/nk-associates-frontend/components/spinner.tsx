@@ -1,5 +1,6 @@
 import React, {FC} from "react";
 
+
 const Spinner: FC = () => {
   return (
     <div className="m-auto overflow-hidden text-center" role="status">
