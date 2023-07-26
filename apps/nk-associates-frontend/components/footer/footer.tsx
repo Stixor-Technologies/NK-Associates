@@ -22,7 +22,7 @@ const footer = () => {
           <div className="md:flex md:justify-between">
             <div className="mb-2 sm:px-8 md:mb-0 md:px-16 ">
               <Link
-                href="#"
+                href="/"
                 className="m-1 flex w-20 items-center pb-4 md:w-32 "
               >
                 <Image src={Logo} alt="logo" />
@@ -30,13 +30,13 @@ const footer = () => {
             </div>
             <div className="grid grid-cols-2 p-1 sm:m-1 sm:grid-cols-4 sm:gap-4 lg:px-16 xl:px-24 2xl:px-36">
               <div className="text-lg">
-                <h2 className="mb-2 font-metropolis-bold text-base tracking-widest text-nk-white	md:font-metropolis-medium ">
-                  COMPANY
+                <h2 className="mb-2 font-metropolis-bold text-base uppercase tracking-widest text-nk-white	md:font-metropolis-medium ">
+                  company
                 </h2>
                 <ul>
                   <li className="mb-3">
                     <Link
-                      href="#"
+                      href="/"
                       className="inline-block bg-gradient-to-r from-nk-white to-nk-white bg-[length:0%_8%] bg-left-bottom bg-no-repeat font-metropolis-light transition-all duration-500 ease-out hover:bg-[length:100%_8%]"
                     >
                       About
@@ -44,7 +44,7 @@ const footer = () => {
                   </li>
                   <li className="mb-3">
                     <Link
-                      href="#"
+                      href="/"
                       className="inline-block bg-gradient-to-r from-nk-white to-nk-white bg-[length:0%_8%] bg-left-bottom bg-no-repeat font-metropolis-light transition-all duration-500 ease-out hover:bg-[length:100%_8%]"
                     >
                       Property
@@ -52,7 +52,7 @@ const footer = () => {
                   </li>
                   <li className="mb-3">
                     <Link
-                      href="#"
+                      href="/"
                       className="inline-block bg-gradient-to-r from-nk-white to-nk-white bg-[length:0%_8%] bg-left-bottom bg-no-repeat font-metropolis-light transition-all duration-500 ease-out hover:bg-[length:100%_8%]"
                     >
                       Jobs
@@ -60,7 +60,7 @@ const footer = () => {
                   </li>
                   <li className="mb-3">
                     <Link
-                      href="#"
+                      href="/"
                       className="inline-block bg-gradient-to-r from-nk-white to-nk-white bg-[length:0%_8%] bg-left-bottom bg-no-repeat font-metropolis-light transition-all duration-500 ease-out hover:bg-[length:100%_8%]"
                     >
                       Projects
@@ -68,7 +68,7 @@ const footer = () => {
                   </li>
                   <li className="mb-3">
                     <Link
-                      href="#"
+                      href="/"
                       className="inline-block bg-gradient-to-r from-nk-white to-nk-white bg-[length:0%_8%] bg-left-bottom bg-no-repeat font-metropolis-light transition-all duration-500 ease-out hover:bg-[length:100%_8%]"
                     >
                       Maps
@@ -78,8 +78,8 @@ const footer = () => {
               </div>
               <div>
                 <div className="md:hidden ">
-                  <h2 className="text-medium mb-2 font-metropolis-bold text-base tracking-widest	">
-                    SOCIAL
+                  <h2 className="text-medium mb-2 font-metropolis-bold text-base uppercase tracking-widest	">
+                    social
                   </h2>
                   <div className="text-lg">
                     <ul>
@@ -107,12 +107,12 @@ const footer = () => {
                     </ul>
                   </div>
                 </div>
-                <h2 className="mb-2 font-metropolis-bold text-base tracking-widest text-nk-white md:font-metropolis-medium">
-                  SELL
+                <h2 className="mb-2 font-metropolis-bold text-base uppercase tracking-widest text-nk-white md:font-metropolis-medium">
+                  sell
                 </h2>
                 <ul className="text-lg">
                   <li className="mb-3">
-                    <Link href="#">
+                    <Link href="/">
                       <div className="inline-block bg-gradient-to-r from-nk-white to-nk-white bg-[length:0%_8%] bg-left-bottom bg-no-repeat font-metropolis-light transition-all duration-500 ease-out hover:bg-[length:100%_8%]">
                         Sell on NK
                       </div>
@@ -121,13 +121,13 @@ const footer = () => {
                 </ul>
               </div>
               <div className="hidden font-metropolis-medium text-base md:block ">
-                <h2 className="mb-2 text-base tracking-widest text-nk-white 	">
-                  DOWNLOAD
+                <h2 className="mb-2 text-base uppercase tracking-widest text-nk-white 	">
+                  download
                 </h2>
                 <div>
                   <ul>
                     <li className="mb-3">
-                      <Link href="#">
+                      <Link href="/">
                         <Image
                           src={GooglePlay}
                           alt="Google Play"
@@ -136,7 +136,7 @@ const footer = () => {
                       </Link>
                     </li>
                     <li className="mb-3">
-                      <Link href="#">
+                      <Link href="/">
                         <Image
                           src={AppStore}
                           alt="Google Play"
@@ -149,8 +149,8 @@ const footer = () => {
               </div>
               {/* dummy links here */}
               <div className="hidden md:block ">
-                <h2 className="mb-2 text-base tracking-widest text-nk-white md:font-metropolis-medium	">
-                  SOCIAL
+                <h2 className="mb-2 text-base uppercase tracking-widest text-nk-white md:font-metropolis-medium	">
+                  social
                 </h2>
                 <div className="flex flex-wrap ">
                   <Link
@@ -247,18 +247,18 @@ const footer = () => {
               </div>
               <div>
                 <div className="text-base ">
-                  <h2 className="m-2 flex justify-center font-metropolis-medium text-sm tracking-widest text-nk-white	">
-                    DOWNLOAD
+                  <h2 className="m-2 flex justify-center font-metropolis-medium text-sm uppercase tracking-widest text-nk-white	">
+                    download
                   </h2>
                   <div className="flex justify-center ">
-                    <Link href="#" className="mx-2">
+                    <Link href="/" className="mx-2">
                       <Image
                         src={GooglePlay}
                         alt="Google Play"
                         className="object-cover transition duration-500 ease-in-out hover:translate-y-1 hover:opacity-90 md:w-44"
                       />
                     </Link>
-                    <Link href="#" className="mx-2 ">
+                    <Link href="/" className="mx-2 ">
                       <Image
                         src={AppStore}
                         alt="Google Play"
@@ -267,7 +267,7 @@ const footer = () => {
                     </Link>
                   </div>
                   <div className="flex justify-center">
-                    <Link href="#" className="m-3 ">
+                    <Link href="/" className="m-3 ">
                       <Image
                         src={AppGallery}
                         alt="App Gallery"
@@ -289,19 +289,19 @@ const footer = () => {
           </span>
           <div className="mt-3 flex items-center justify-center gap-6 sm:mt-0 ">
             <Link
-              href="#"
+              href="/"
               className="bg-gradient-to-r from-nk-white to-nk-white bg-[length:0%_8%] bg-left-bottom bg-no-repeat font-metropolis-light transition-all duration-500 ease-out hover:bg-[length:100%_8%] lg:text-base"
             >
               Terms of Use
             </Link>
             <Link
-              href="#"
+              href="/"
               className="bg-gradient-to-r from-nk-white to-nk-white bg-[length:0%_8%] bg-left-bottom bg-no-repeat font-metropolis-light transition-all duration-500 ease-out hover:bg-[length:100%_8%] lg:text-base"
             >
               Privacy Policy
             </Link>
             <Link
-              href="#"
+              href="/"
               className="bg-gradient-to-r from-nk-white to-nk-white bg-[length:0%_8%] bg-left-bottom bg-no-repeat font-metropolis-light transition-all duration-500 ease-out hover:bg-[length:100%_8%] lg:text-base"
             >
               Site Map
