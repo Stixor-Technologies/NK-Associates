@@ -70,15 +70,14 @@ const Carousel: React.FC<CarouselProps> = ({ images }) => {
         modules={[EffectCoverflow, Pagination, Autoplay]}
         className="mySwiper carousel-slider mx-auto mt-7 h-full w-full"
       >
-        {images.slice(0, 10).map((image, index) => {
+        {images?.slice(0, 10).map((image, index) => {
           return (
             <SwiperSlide key={index} className="aspect-square drop-shadow-lg">
               <Image
                 src={`${BASE_URL}${image}`}
                 alt="Carousel Image"
                 fill
-                objectFit="cover"
-                className="h-full w-full border-8 border-white md:border-[1.5rem]"
+                className="h-full w-full border-8 border-white object-cover md:border-[1.5rem]"
               />
             </SwiperSlide>
           );
