@@ -1,0 +1,104 @@
+{
+  "kind": "collectionType",
+  "collectionName": "properties",
+  "info": {
+    "singularName": "property",
+    "pluralName": "properties",
+    "displayName": "Property",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true,
+      "maxLength": 40
+    },
+    "purpose": {
+      "type": "string",
+      "required": true
+    },
+    "description": {
+      "type": "text",
+      "required": true
+    },
+    "area": {
+      "type": "decimal",
+      "required": true
+    },
+    "area_type": {
+      "type": "enumeration",
+      "enum": [
+        "Sq.Yds",
+        "Sq.Ft",
+        "Sq.M",
+        "Marla",
+        "Kanal"
+      ],
+      "required": true,
+      "default": "Sq.Yds"
+    },
+    "latitude": {
+      "type": "float",
+      "required": true
+    },
+    "longitude": {
+      "type": "float",
+      "required": true
+    },
+    "image_thumbnail": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "property_images": {
+      "type": "media",
+      "multiple": true,
+      "required": true,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "price": {
+      "type": "biginteger",
+      "required": true
+    },
+    "bedrooms": {
+      "type": "integer"
+    },
+    "baths": {
+      "type": "integer"
+    },
+    "category": {
+      "type": "enumeration",
+      "enum": [
+        "Residential",
+        "Commercial"
+      ],
+      "default": "Residential"
+    },
+    "type": {
+      "type": "enumeration",
+      "enum": [
+        "Plot",
+        "Flat",
+        "House"
+      ],
+      "default": "Plot"
+    },
+    "property_pdf": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "files"
+      ]
+    }
+  }
+}
