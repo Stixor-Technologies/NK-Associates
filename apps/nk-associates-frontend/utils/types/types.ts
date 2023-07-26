@@ -1,4 +1,3 @@
-
 export interface EventsImage {
   data: {
     attributes: {
@@ -45,4 +44,22 @@ export interface Properties {
     type: string;
   };
   id: number;
+}
+
+export interface Project {
+  attributes: {
+    Pictures: {
+      data: Array<{ attributes: { url: string } }>;
+    };
+    Title: string;
+    PlotSize: string;
+    PlotSizeUnits: string;
+    PlotNumber: string;
+    CoveredArea: string;
+    CoveredAreaUnits: string;
+    Address: string;
+    City: string;
+    Description: string;
+    Category: string;
+  };
 }
