@@ -40,10 +40,7 @@ export default function Projects() {
   }, []);
 
   return (
-    <div
-      className="relative min-h-screen bg-nk-white-dark pt-6 md:bg-[url('/BackgroundImageTranslucent.png')] md:bg-auto md:bg-right-top md:bg-no-repeat md:pt-24"
-      style={{ backgroundSize: "56rem 42rem" }}
-    >
+    <div className="relative min-h-screen bg-nk-white-dark pt-6 md:bg-nk-bg md:bg-auto md:bg-right-top md:bg-no-repeat md:pt-24">
       <div className="mb-5 pt-6 text-center font-metropolis-bold text-3xl text-nk-black md:mb-10 md:pt-24 md:text-5xl">
         NK Projects
       </div>

@@ -19,7 +19,7 @@ const PropertyCard: FC<CardProps> = ({ property }) => {
   return (
     <div>
       <Link href="#">
-        <div className="aspect-w-1 aspect-h-1 relative h-[17.5rem] w-full max-w-[37.5.rem] rounded-xl">
+        <div className="aspect-w-1 aspect-h-1 max-w-[37.5 rem] relative h-[17.5rem] w-full rounded-xl">
           <Image
             src={`${BASE_URL}${thumbnailImage}`}
             fill
