@@ -19,12 +19,12 @@ const PropertyCard: FC<CardProps> = ({ property }) => {
   return (
     <div>
       <Link href="#">
-        <div className="aspect-w-1 aspect-h-1 relative h-[17.5rem] w-full max-w-[37.5rem] rounded-xl">
+        <div className="group aspect-w-1 aspect-h-1 relative h-[17.5rem] w-full max-w-[37.5rem] rounded-xl overflow-hidden">
           <Image
             src={`${BASE_URL}${thumbnailImage}`}
             fill
             alt=""
-            className="rounded-xl object-cover"
+            className="rounded-xl object-cover transition-all duration-700 ease-in-out hover:scale-110"
           />
         </div>
       </Link>
