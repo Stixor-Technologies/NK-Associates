@@ -8,40 +8,82 @@
   padding: 3rem 1.5rem;
   border-radius: 0.5rem;
   color: white;
+  transition: background-color 0.5s ease-in-out;
+}
+
+.swiper-button-next:hover,
+.swiper-button-prev:hover {
+  background-color: #333333b5;
 }
 
 .swiper-button-prev {
-   left: 4rem;
+  left: 3rem;
 }
 
 .swiper-button-next {
-  right: 4rem;
+  right: 3rem;
 }
 
-.swiper-button-next:after {
-    font-weight: bolder;
-    content: url("/assets/icons/right-arrow.svg");
+@media (max-width: 1024px) {
+  .swiper-button-next,
+  .swiper-button-prev {
+    padding: 2rem 1rem;
+    /* width: 2rem;
+    height: 3.8rem; */
+    border-radius: 0.3rem;
+  }
+
+  .swiper-button-next:before {
+    content: url("/assets/icons/arrow-right-sm.svg") !important;
+  }
+  .swiper-button-prev:before {
+    content: url("/assets/icons/arrow-left-sm.svg") !important;
+  }
+
+  .swiper-button-next:before,
+  .swiper-button-prev:before {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    right: 0;
+    bottom: 0;
+    transform: translate(-50%, -50%);
+  }
+
+  .swiper-button-next {
+    right: 1rem;
+  }
+
+  .swiper-button-prev {
+    left: 1rem;
+  }
 }
 
+.swiper-button-next::before {
+  content: url("/assets/icons/right-arrow.svg");
+}
+
+.swiper-button-prev::before {
+  content: url("/assets/icons/left-arrow.svg");
+}
+
+.swiper-button-next:after,
 .swiper-button-prev:after {
-    font-weight: bolder;
-    content: url("/assets/icons/left-arrow.svg");
+  content: none;
 }
-
-
 
 .swiper-pagination {
-    bottom: -2.5rem !important;
-    max-width: fit-content;
-    left: 50% !important;
-    transform: translateX(-50%);
-  }
-  
-  .swiper-pagination-bullet{
-    background-color: #e4404ab3;
-  }
-  
-  .swiper-pagination-bullet-active {
-    background-color: #e4404a;
-    box-shadow: 0rem 0rem 0rem 0.156rem #e4404a66
-  }
+  bottom: -2.5rem !important;
+  max-width: fit-content;
+  left: 50% !important;
+  transform: translateX(-50%);
+}
+
+.swiper-pagination-bullet {
+  background-color: #e4404ab3;
+}
+
+.swiper-pagination-bullet-active {
+  background-color: #e4404a;
+  box-shadow: 0rem 0rem 0rem 0.156rem #e4404a66;
+}

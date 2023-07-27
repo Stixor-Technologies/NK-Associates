@@ -39,6 +39,10 @@ module.exports = {
         "nk-grey": "#727272",
         "nk-background": "#f5f5f5"
       },
+
+       boxShadow: {
+        "3xl": "0.25rem 0.188rem 1.375rem 0rem rgba(0, 0, 0, 0.092)",
+      },
     },
   },
   plugins: [],
