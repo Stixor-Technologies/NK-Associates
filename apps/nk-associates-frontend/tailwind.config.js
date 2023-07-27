@@ -12,12 +12,14 @@ module.exports = {
           "nk-bg": "url('/assets/images/bg-property.svg')"
       },
       fontFamily: {
-        metropolis: ["var(--font-metroplis)"],
+        "metropolis": ["var(--font-metroplis)"],
         "metropolis-semibold": ["var(--font-metroplis-semiBold)"],
         "metropolis-bold": ["var(--font-metroplis-bold)"],
         "metropolis-extrabold": ["var(--font-metroplis-extraBold)"],
         "metropolis-light": ["var(--font-metroplis-light)"],
         "metropolis-medium": ["var(--font-metroplis-medium)"],
+        "metropolis-extralight": ["var(--font-metroplis-extraLight)"],
+        "metropolis-thin": ["var(--font-metroplis-Thin)"],
       },
       colors: {
         "nk-red": "#E74451",
