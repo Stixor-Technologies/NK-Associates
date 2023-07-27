@@ -8,7 +8,7 @@ import Bath_Icon from "../../../../public/assets/icons/bath-icon.svg";
 import Bedroom_Icon from "../../../../public/assets/icons/bedrooms-icon.svg";
 import Tour_Icon from "../../../../public/assets/icons/360-icon.svg";
 import Area_Icon from "../../../../public/assets/icons/area-icon.svg";
-import Area_Marker from "../../../../public/assets/icons/area-marker.svg"
+import Area_Marker from "../../../../public/assets/icons/area-marker.svg";
 import Map from "../../../../public/assets/images/map.svg";
 import LinkButton from "../../../../components/button/link-button";
 import "./slider-styles.css";
@@ -113,7 +113,7 @@ async function PropertyDetail({ params: { id } }) {
             </div>
           </div>
 
-          <p className="font-metropolis-light text-sm leading-tight text-nk-black md:py-3 md:text-[1.375rem]">
+          <p className="font-metropolis-thin text-sm leading-snug text-nk-black md:py-3 md:text-[1.375rem]">
             Experience prestigious living in DHA 3, Islamabad's most coveted
             housing society. Centrally located on the Islamabad GT Road, this 1
             kanal plot offers the perfect canvas for your dream home. Enjoy
@@ -124,7 +124,7 @@ async function PropertyDetail({ params: { id } }) {
           </p>
 
           <div className="">
-            <h3 className="pt-8 text-center font-metropolis-semibold md:text-4xl md:py-10">
+            <h3 className="pt-8 text-center font-metropolis-semibold text-[2rem] md:py-10 md:text-4xl">
               Location
             </h3>
             <Image
@@ -134,10 +134,16 @@ async function PropertyDetail({ params: { id } }) {
               alt="map"
               className="mx-auto py-3"
             />
-            <div className="flex items-center gap-4 py-1 md:py-3">
-              <Image src={Area_Marker} width={20} height={20} alt="address-marker" />
-              <h2 className="self-end font-metropolis-light text-sm text-nk-black md:text-[1.75rem]">
-              Street: 12, Secor- B, Plot #: 24-C, DHA-III, Islamabad
+            <div className="flex items-center gap-3 py-1 md:gap-3.5 md:py-3">
+              <Image
+                src={Area_Marker}
+                width={16}
+                height={16}
+                alt="address-marker"
+                className="w-3.5 md:w-5"
+              />
+              <h2 className="self-end font-metropolis-thin text-sm text-nk-black md:text-[1.75rem]">
+                Street: 12, Secor- B, Plot #: 24-C, DHA-III, Islamabad
               </h2>
             </div>
           </div>
