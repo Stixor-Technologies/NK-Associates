@@ -1,7 +1,7 @@
 import React from "react";
-import PropertyList from "../../../components/properties/property-list/property-list";
+import Properties from "../../components/properties/properties";
 
-const Properties = () => {
+const Home = () => {
   return (
     <section className="min-h-screen flex flex-col bg-right-top bg-no-repeat md:bg-nk-bg">
       <div className="container mx-auto px-4 py-6 flex-1 flex flex-col md:py-16">
@@ -13,10 +13,10 @@ const Properties = () => {
             Unlock Your Perfect Property, Find, Buy, Rent with Ease
           </p>
         </div>
-        <PropertyList />
+        <Properties/>
       </div>
     </section>
   );
 };
 
-export default Properties;
+export default Home;
