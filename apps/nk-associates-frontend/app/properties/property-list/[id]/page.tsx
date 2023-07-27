@@ -8,6 +8,8 @@ import Bath_Icon from "../../../../public/assets/icons/bath-icon.svg";
 import Bedroom_Icon from "../../../../public/assets/icons/bedrooms-icon.svg";
 import Tour_Icon from "../../../../public/assets/icons/360-icon.svg";
 import Area_Icon from "../../../../public/assets/icons/area-icon.svg";
+import Area_Marker from "../../../../public/assets/icons/area-marker.svg"
+import Map from "../../../../public/assets/images/map.svg";
 import LinkButton from "../../../../components/button/link-button";
 import "./slider-styles.css";
 
@@ -30,7 +32,7 @@ async function PropertyDetail({ params: { id } }) {
           <span className="text-[1.375rem] text-nk-black">View</span>
         </button>
 
-        <div className="container mx-auto h-[2000px] py-4 px-4">
+        <div className="container mx-auto h-[2000px] px-4 py-4">
           <div className="md:flex md:items-center md:justify-between">
             <div className="flex lg:gap-10 xl:gap-20">
               <h2 className="font-metropolis-semibold text-4xl">
@@ -79,23 +81,64 @@ async function PropertyDetail({ params: { id } }) {
             />
           </div>
 
-          {/* <div className="flex gap-1">
-            <Tile label="Category" value="Residential" round="left" />
-            <Tile label="Cover Area / Area" value="1 kanal (605yd2)" />
-            <Tile label="Types" value="Plot" />
-            <Tile label="Price" value="26000000" />
-            <Tile label="City" value="Islamabad" round="right" />
-          </div> */}
-
-          <div className="flex gap-3 flex-col lg:gap-1 lg:flex-row">
-            <div className="flex gap-1 flex-grow">
-              <Tile label="Category" value="Residential" className="rounded-l-lg flex-grow" />
-              <Tile label="Coverd Area / Area" value="1 kanal (605yd2)" className="flex-grow" />
-              <Tile label="Types" value="Plot" className="rounded-r-lg lg:rounded-r-none flex-grow"/>
+          <div className="flex flex-col gap-3 py-8 md:py-10 lg:flex-row lg:gap-1">
+            <div className="flex flex-grow gap-1">
+              <Tile
+                label="Category"
+                value="Residential"
+                className="flex-grow rounded-l-lg"
+              />
+              <Tile
+                label="Coverd Area / Area"
+                value="1 kanal (605yd2)"
+                className="flex-grow"
+              />
+              <Tile
+                label="Types"
+                value="Plot"
+                className="flex-grow rounded-r-lg lg:rounded-r-none"
+              />
             </div>
-            <div className="flex justify-center gap-1 max-w-[300px] sm:max-w-sm md:max-w-md w-full mx-auto lg:flex-grow">
-              <Tile label="Price" value="26000000" className="rounded-l-lg lg:rounded-l-none flex-grow"/>
-              <Tile label="City" value="Islamabad" className="rounded-r-lg flex-grow"/>
+            <div className="mx-auto flex w-full max-w-[300px] justify-center gap-1 sm:max-w-sm md:max-w-md lg:flex-grow">
+              <Tile
+                label="Price"
+                value="26000000"
+                className="flex-grow rounded-l-lg lg:rounded-l-none"
+              />
+              <Tile
+                label="City"
+                value="Islamabad"
+                className="flex-grow rounded-r-lg"
+              />
+            </div>
+          </div>
+
+          <p className="font-metropolis-light text-sm leading-tight text-nk-black md:py-3 md:text-[1.375rem]">
+            Experience prestigious living in DHA 3, Islamabad's most coveted
+            housing society. Centrally located on the Islamabad GT Road, this 1
+            kanal plot offers the perfect canvas for your dream home. Enjoy
+            proximity to renowned educational institutions, world-class
+            healthcare facilities, vibrant shopping centers, and lush
+            recreational areas. Embrace a serene and upscale lifestyle in DHA 3,
+            where luxury meets convenience.
+          </p>
+
+          <div className="">
+            <h3 className="pt-8 text-center font-metropolis-semibold md:text-4xl md:py-10">
+              Location
+            </h3>
+            <Image
+              src={Map}
+              width={1536}
+              height={900}
+              alt="map"
+              className="mx-auto py-3"
+            />
+            <div className="flex items-center gap-4 py-1 md:py-3">
+              <Image src={Area_Marker} width={20} height={20} alt="address-marker" />
+              <h2 className="self-end font-metropolis-light text-sm text-nk-black md:text-[1.75rem]">
+              Street: 12, Secor- B, Plot #: 24-C, DHA-III, Islamabad
+              </h2>
             </div>
           </div>
         </div>
