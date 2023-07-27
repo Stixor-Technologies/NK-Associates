@@ -101,18 +101,20 @@ const footer = () => {
 										</ul>
 									</div>
 								</div>
-								<h2 className="mb-2 font-metropolis-bold text-base uppercase tracking-[0.2rem] text-nk-white md:font-metropolis-medium">
-									sell
-								</h2>
-								<ul className="text-lg">
-									<li className="mb-3">
-										<Link href="/">
-											<div className="inline-block bg-gradient-to-r from-nk-white to-nk-white bg-[length:0%_8%] bg-left-bottom bg-no-repeat font-metropolis-thin transition-all duration-500 ease-out hover:bg-[length:100%_8%]">
-												Sell on NK
-											</div>
-										</Link>
-									</li>
-								</ul>
+								<div className="pt-2 sm:pt-0">
+									<h2 className="mb-2 font-metropolis-bold text-base uppercase tracking-[0.2rem] text-nk-white md:font-metropolis-medium">
+										sell
+									</h2>
+									<ul className="text-lg">
+										<li className="">
+											<Link href="/">
+												<div className="inline-block bg-gradient-to-r from-nk-white to-nk-white bg-[length:0%_8%] bg-left-bottom bg-no-repeat font-metropolis-thin transition-all duration-500 ease-out hover:bg-[length:100%_8%]">
+													Sell on NK
+												</div>
+											</Link>
+										</li>
+									</ul>
+								</div>
 							</div>
 							<div className="hidden font-metropolis-medium text-base md:block">
 								<h2 className="mb-2 text-base uppercase tracking-[0.2rem] text-nk-white 	">
