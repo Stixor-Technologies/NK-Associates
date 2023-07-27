@@ -27,6 +27,9 @@ module.exports = {
         "nk-gradient-red-two": "#EB4B5E",
         "nk-gradient-red-sharp-one": "#ED1C24",
         "nk-gradient-red-sharp-two": "#F42F4D",
+
+        "nk-gradient-red-sharp-one": "#ed1c24cf",
+        "nk-gradient-red-sharp-two": "#f42f4dcf",
         "nk-black": "#333333", //also used for font
         "nk-white": "#FFFFFF",
         "nk-white-dark": "#F5F5F5",

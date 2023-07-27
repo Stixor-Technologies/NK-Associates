@@ -10,6 +10,7 @@ import Tour_Icon from "../../../../public/assets/icons/360-icon.svg";
 import Area_Icon from "../../../../public/assets/icons/area-icon.svg";
 import Area_Marker from "../../../../public/assets/icons/area-marker.svg";
 import Map from "../../../../public/assets/images/map.svg";
+import PDF_Icon from "../../../../public/assets/icons/pdf-file-icon.svg";
 import LinkButton from "../../../../components/button/link-button";
 import "./slider-styles.css";
 
@@ -26,13 +27,13 @@ async function PropertyDetail({ params: { id } }) {
     <section className="">
       <DetailSlider />
 
-      <div className="bg-right-top bg-no-repeat md:bg-nk-bg">
-        <button className="ml-auto mt-3 hidden items-center gap-2 rounded-l-md bg-white px-4 py-2 shadow-lg md:flex">
+      <div className="mt-14 bg-right-top bg-no-repeat md:mt-3 md:bg-nk-bg">
+        <button className="ml-auto hidden items-center gap-2 rounded-l-md bg-white px-4 py-2 shadow-lg md:flex">
           <Image src={Tour_Icon} width={55} height={34} alt="360-tour" />
           <span className="text-[1.375rem] text-nk-black">View</span>
         </button>
 
-        <div className="container mx-auto h-[2000px] px-4 py-4">
+        <div className="container mx-auto px-4 py-4">
           <div className="md:flex md:items-center md:justify-between">
             <div className="flex lg:gap-10 xl:gap-20">
               <h2 className="font-metropolis-semibold text-4xl">
@@ -146,6 +147,68 @@ async function PropertyDetail({ params: { id } }) {
                 Street: 12, Secor- B, Plot #: 24-C, DHA-III, Islamabad
               </h2>
             </div>
+
+            <button className="mx-auto my-12 hidden items-center gap-4 rounded-full bg-nk-gradient-red-one bg-gradient-to-b to-nk-gradient-red-two px-20 py-2 text-lg text-nk-white md:flex">
+              Download Broucher
+              <Image src={PDF_Icon} alt="" width={17} height={17} />
+            </button>
+          </div>
+        </div>
+
+        {/* <div className="mt-4 bg-nk-gradient-red-sharp-one bg-gradient-to-b to-nk-gradient-red-sharp-two py-9 text-center text-nk-white opacity-80 md:text-left md:mt-0 md:py-20">
+          <div className="container mx-auto px-4">
+            <div className="max-w-4xl">
+              <h3 className=" font-metropolis-semibold text-[1.625rem] md:text-4xl">
+                NK Associates Services
+              </h3>
+              <p className="py-5 text-base md:font-metropolis-extralight md:text-lg">
+                Our core expertise lies in the meticulous design, precise
+                construction, and strategic enhancement of existing real estate
+                properties. We possess a remarkable proficiency in developing
+                unique, ground-up projects that showcase our innovative vision
+                and unwavering dedication to quality. We are committed to
+                excellence driving our specialized services and integrated
+                approach, resulting in unparalleled service and exceptional
+                value for our esteemed clients.
+              </p>
+              <LinkButton
+                text="Explore all"
+                type="inverted"
+                navigateTo="#"
+                className="mx-auto mt-3 w-64 md:mx-0 md:w-[25rem]"
+              />
+            </div>
+          </div>
+        </div> */}
+
+        <div className="relative bg-[url('/assets/images/detail-service-bg.svg')] bg-cover bg-right-top bg-no-repeat mt-4 py-9 text-center text-nk-white opacity-80 md:text-left md:mt-0 md:py-20">
+      
+        <div className="container mx-auto px-4">
+            <div className="max-w-4xl">
+              <h3 className=" font-metropolis-semibold text-[1.625rem] md:text-4xl">
+                NK Associates Services
+              </h3>
+              <p className="py-5 text-base md:font-metropolis-extralight md:text-lg">
+                Our core expertise lies in the meticulous design, precise
+                construction, and strategic enhancement of existing real estate
+                properties. We possess a remarkable proficiency in developing
+                unique, ground-up projects that showcase our innovative vision
+                and unwavering dedication to quality. We are committed to
+                excellence driving our specialized services and integrated
+                approach, resulting in unparalleled service and exceptional
+                value for our esteemed clients.
+              </p>
+              <LinkButton
+                text="Explore all"
+                type="inverted"
+                navigateTo="#"
+                className="mx-auto mt-3 w-64 md:mx-0 md:w-[25rem]"
+              />
+            </div>
+          </div>
+
+        <div className="absolute -z-10 inset-0 bg-gradient-to-b bg-nk-gradient-red-sharp-one to-nk-gradient-red-sharp-two">
+         
           </div>
         </div>
       </div>
