@@ -34,13 +34,13 @@ async function PropertyDetail({ params: { id } }) {
         </button>
 
         <div className="container mx-auto px-4 py-4">
-          <div className="md:flex md:items-center md:justify-between">
-            <div className="flex lg:gap-10 xl:gap-20">
-              <h2 className="font-metropolis-semibold text-4xl">
+          <div className="flex flex-col items-center gap-8 sm:flex-row sm:items-start sm:justify-between">
+            <div className="flex flex-col gap-5 md:flex-row lg:gap-10 xl:gap-20 ">
+              <h2 className="text-center font-metropolis-semibold text-4xl sm:text-left">
                 DHA-III Residential Plots
               </h2>
 
-              <div className="flex gap-6">
+              <div className="flex gap-6 justify-center sm:justify-start">
                 <div className="flex items-center gap-1">
                   <Image
                     src={Bath_Icon}
@@ -78,7 +78,7 @@ async function PropertyDetail({ params: { id } }) {
               text="Inquires"
               type="solid"
               navigateTo="#"
-              className="w-[11.75rem] text-lg md:w-[11.75rem]"
+              className="w-[11.75rem] text-lg md:w-[11.75rem] mb-2 sm:mb-0"
             />
           </div>
 
@@ -114,7 +114,7 @@ async function PropertyDetail({ params: { id } }) {
             </div>
           </div>
 
-          <p className="font-metropolis-thin text-sm leading-snug text-nk-black md:py-3 md:text-[1.375rem]">
+          <p className="font-metropolis-thin text-sm leading-snug text-nk-black text-center md:py-3 md:text-[1.375rem] md:text-left">
             Experience prestigious living in DHA 3, Islamabad's most coveted
             housing society. Centrally located on the Islamabad GT Road, this 1
             kanal plot offers the perfect canvas for your dream home. Enjoy
