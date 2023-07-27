@@ -17,12 +17,43 @@
       "required": true,
       "maxLength": 40
     },
-    "purpose": {
+    "address": {
+      "type": "string",
+      "required": true,
+      "maxLength": 40,
+      "minLength": 6
+    },
+    "city": {
       "type": "string",
       "required": true
     },
     "description": {
       "type": "text",
+      "required": true
+    },
+    "type": {
+      "type": "enumeration",
+      "enum": ["Plot", "Flat", "House"],
+      "default": "Plot"
+    },
+    "category": {
+      "type": "enumeration",
+      "enum": ["Residential", "Commercial"],
+      "default": "Residential"
+    },
+    "bedrooms": {
+      "type": "integer"
+    },
+    "baths": {
+      "type": "integer"
+    },
+    "purpose": {
+      "type": "enumeration",
+      "enum": ["Sale", "Rent"],
+      "required": true
+    },
+    "price": {
+      "type": "biginteger",
       "required": true
     },
     "area": {
@@ -31,16 +62,11 @@
     },
     "area_type": {
       "type": "enumeration",
-      "enum": [
-        "Sq.Yds",
-        "Sq.Ft",
-        "Sq.M",
-        "Marla",
-        "Kanal"
-      ],
+      "enum": ["Sq.Yd(s)", "Sq.Ft(s)", "Sq.M(s)", "Marla(s)", "Kanal(s)"],
       "required": true,
-      "default": "Sq.Yds"
+      "default": "Sq.Yd(s)"
     },
+
     "latitude": {
       "type": "float",
       "required": true
@@ -53,52 +79,19 @@
       "type": "media",
       "multiple": false,
       "required": true,
-      "allowedTypes": [
-        "images"
-      ]
+      "allowedTypes": ["images"]
     },
     "property_images": {
       "type": "media",
       "multiple": true,
       "required": true,
-      "allowedTypes": [
-        "images"
-      ]
-    },
-    "price": {
-      "type": "biginteger",
-      "required": true
-    },
-    "bedrooms": {
-      "type": "integer"
-    },
-    "baths": {
-      "type": "integer"
-    },
-    "category": {
-      "type": "enumeration",
-      "enum": [
-        "Residential",
-        "Commercial"
-      ],
-      "default": "Residential"
-    },
-    "type": {
-      "type": "enumeration",
-      "enum": [
-        "Plot",
-        "Flat",
-        "House"
-      ],
-      "default": "Plot"
+      "allowedTypes": ["images"]
     },
     "property_pdf": {
       "type": "media",
       "multiple": false,
       "required": false,
-      "allowedTypes": [
-        "files"
-      ]
+      "allowedTypes": ["files"]
     }
   }
 }
