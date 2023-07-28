@@ -43,6 +43,10 @@ module.exports = {
        boxShadow: {
         "3xl": "0.25rem 0.188rem 1.375rem 0rem rgba(0, 0, 0, 0.092)",
       },
+      spacing: {
+        '1/2': '30%',
+        // add more as needed
+      }
     },
   },
   plugins: [],
