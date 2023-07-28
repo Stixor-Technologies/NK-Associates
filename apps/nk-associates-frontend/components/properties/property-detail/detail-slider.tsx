@@ -10,32 +10,34 @@ import { Navigation, Pagination, Keyboard } from "swiper/modules";
 const DetailSlider = () => {
   const imga = [1, 2, 3, 4];
   return (
-    <Swiper
-      cssMode={true}
-      navigation={true}
-      keyboard={true}
-      loop = {true}
-      pagination={{
-        clickable: true,
-      }}
-      modules={[Navigation, Pagination, Keyboard]}
-      className="mySwiper"
-    >
-      {imga.map((index) => {
-        return (
-          <SwiperSlide key={index}>
-            <div className="relative aspect-w-1 aspect-h-1 w-full h-[80vh] block bg-slate-100">
+    // <div className="aspect-w-1 aspect-h-1 relative block h-[80vh] w-full bg-slate-100">
+      <Swiper
+        cssMode={true}
+        navigation={true}
+        keyboard={true}
+        loop={true}
+        pagination={{
+          clickable: true,
+        }}
+        modules={[Navigation, Pagination, Keyboard]}
+        className="mySwiper"
+      >
+        {imga.map((index) => {
+          return (
+            <SwiperSlide key={index}>
               <Image
-              className=" object-cover"
+                className="object-cover max-h-[80vh] w-full"
                 src={"/assets/images/1.jpeg"}
-                fill
+                // fill
+                width={1536}
+                height={900}
                 alt=""
               />
-            </div>
-          </SwiperSlide>
-        );
-      })}
-    </Swiper>
+            </SwiperSlide>
+          );
+        })}
+      </Swiper>
+    // </div>
   );
 };
 

@@ -5,7 +5,8 @@
 .swiper-button-next,
 .swiper-button-prev {
   background-color: #33333380;
-  padding: 3rem 1.5rem;
+  width: 3.211rem;
+  height: 5.362rem;
   border-radius: 0.5rem;
   color: white;
   transition: background-color 0.5s ease-in-out;
@@ -17,59 +18,28 @@
 }
 
 .swiper-button-prev {
-  left: 3rem;
+  left: 2rem;
 }
 
 .swiper-button-next {
-  right: 3rem;
+  right: 2rem;
 }
 
-@media (max-width: 1024px) {
-  .swiper-button-next,
-  .swiper-button-prev {
-    padding: 2rem 1rem;
-    /* width: 2rem;
-    height: 3.8rem; */
-    border-radius: 0.3rem;
-  }
-
-  .swiper-button-next:before {
-    content: url("/assets/icons/arrow-right-sm.svg") !important;
-  }
-  .swiper-button-prev:before {
-    content: url("/assets/icons/arrow-left-sm.svg") !important;
-  }
-
-  .swiper-button-next:before,
-  .swiper-button-prev:before {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    right: 0;
-    bottom: 0;
-    transform: translate(-50%, -50%);
-  }
-
-  .swiper-button-next {
-    right: 1rem;
-  }
-
-  .swiper-button-prev {
-    left: 1rem;
-  }
+.swiper-button-next:after {
+  content: "" !important;
+  background: url("/assets/icons/right-arrow.svg") no-repeat center/contain;
 }
 
-.swiper-button-next::before {
-  content: url("/assets/icons/right-arrow.svg");
-}
-
-.swiper-button-prev::before {
-  content: url("/assets/icons/left-arrow.svg");
+.swiper-button-prev::after {
+  content: "" !important;
+  background: url("/assets/icons/left-arrow.svg") no-repeat center/contain;
 }
 
 .swiper-button-next:after,
 .swiper-button-prev:after {
-  content: none;
+  width: 40px;
+  height: 40px;
+  display: block;
 }
 
 .swiper-pagination {
@@ -86,4 +56,35 @@
 .swiper-pagination-bullet-active {
   background-color: #e4404a;
   box-shadow: 0rem 0rem 0rem 0.156rem #e4404a66;
+}
+
+@media (max-width: 1024px) {
+  .swiper-button-next,
+  .swiper-button-prev {
+    width: 1.653rem;
+    height: 2.76rem;
+    border-radius: 0.3rem;
+  }
+
+  .swiper-button-next:after,
+  .swiper-button-prev:after {
+    width: 20px;
+    height: 20px;
+    display: block;
+  }
+
+  .swiper-button-next {
+    right: 1rem;
+  }
+
+  .swiper-button-prev {
+    left: 1rem;
+  }
+}
+
+@media (max-width: 425px) {
+  .swiper-button-next,
+  .swiper-button-prev {
+    padding: 1rem 0.5rem;
+  }
 }

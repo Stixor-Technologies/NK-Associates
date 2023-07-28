@@ -72,7 +72,7 @@ async function PropertyDetail({ params: { id } }) {
                     height={27}
                     alt="bath-icon"
                   />
-                  <span className="font-metropolis-medium text-lg text-nk-black">
+                  <span className="font-metropolis-semibold text-lg text-nk-black">
                     7
                   </span>
                 </div>
@@ -84,14 +84,14 @@ async function PropertyDetail({ params: { id } }) {
                     height={27}
                     alt="bed-icon"
                   />
-                  <span className="font-metropolis-medium text-lg text-nk-black">
+                  <span className="font-metropolis-semibold text-lg text-nk-black">
                     6
                   </span>
                 </div>
 
                 <div className="flex items-center gap-1">
                   <Image src={Area_Icon} width={27} height={27} alt="" />
-                  <span className="font-metropolis-medium text-lg text-nk-black">
+                  <span className="font-metropolis-semibold text-lg text-nk-black">
                     4500 sq.ft
                   </span>
                 </div>
