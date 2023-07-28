@@ -42,6 +42,8 @@ export interface Property {
     purpose: string;
     title: string;
     type: string;
+    address: string;
+    city: string;
   };
   id: number;
 }

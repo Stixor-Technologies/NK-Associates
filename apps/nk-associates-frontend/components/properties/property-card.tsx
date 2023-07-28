@@ -1,25 +1,25 @@
 import React, { FC } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { Properties } from "../../utils/types/types";
+import { Property } from "../../utils/types/types";
 import { convertToPakistaniNumbering } from "../../utils/utils";
 import Area_Icon from "../../public/assets/icons/area-icon.svg";
 import Area_Marker from "../../public/assets/icons/area-marker.svg";
 import { BASE_URL } from "../../utils/constants";
 
 interface CardProps {
-  property: Properties;
+  property: Property;
 }
 
 const PropertyCard: FC<CardProps> = ({ property }) => {
-  const { title, category, purpose, area, area_type, price } =
+  const { title, category, purpose, area, area_type, price, address, city } =
     property?.attributes;
   const thumbnailImage =
     property?.attributes?.image_thumbnail.data.attributes.url;
   return (
     <div>
       <Link href="#">
-        <div className="group aspect-w-1 aspect-h-1 relative h-[17.5rem] w-full max-w-[37.5rem] rounded-xl overflow-hidden">
+        <div className="aspect-w-1 aspect-h-1 group relative h-[17.5rem] w-full max-w-[37.5rem] overflow-hidden rounded-xl">
           <Image
             src={`${BASE_URL}${thumbnailImage}`}
             fill
@@ -46,16 +46,19 @@ const PropertyCard: FC<CardProps> = ({ property }) => {
         </div>
       </div>
 
-      <h2 className="text-xl text-nk-black md:text-base">{title}</h2>
+      <h2 className="text-xl text-nk-black md:text-base">
+        {title.length > 32 ? `${title.substring(0, 32)} ...` : title}
+      </h2>
+
       <p className="my-1 font-metropolis-bold text-[1.375rem] text-nk-black md:text-lg">
-        {convertToPakistaniNumbering(price)}
+        {`Rs. ${convertToPakistaniNumbering(price)}`}
       </p>
       <div className="mt-1 flex items-center gap-2">
         <Image src={Area_Marker} width={12} height={18} alt="" />
 
         {/* need to change, it will be done when I'll integrate google maps api on details page */}
         <p className="font-metropolis-light text-sm text-nk-grey md:text-xs">
-          Garden City phase 7 Bahria Town
+          {address}
         </p>
       </div>
     </div>
