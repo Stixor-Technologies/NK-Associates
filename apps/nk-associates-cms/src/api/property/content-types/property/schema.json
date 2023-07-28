@@ -15,7 +15,8 @@
     "title": {
       "type": "string",
       "required": true,
-      "maxLength": 40
+      "maxLength": 40,
+      "minLength": 6
     },
     "address": {
       "type": "string",
@@ -33,12 +34,18 @@
     },
     "type": {
       "type": "enumeration",
-      "enum": ["Plot", "Flat", "House"],
-      "default": "Plot"
+      "enum": [
+        "Plot",
+        "Flat",
+        "House"
+      ]
     },
     "category": {
       "type": "enumeration",
-      "enum": ["Residential", "Commercial"],
+      "enum": [
+        "Residential",
+        "Commercial"
+      ],
       "default": "Residential"
     },
     "bedrooms": {
@@ -49,7 +56,10 @@
     },
     "purpose": {
       "type": "enumeration",
-      "enum": ["Sale", "Rent"],
+      "enum": [
+        "Sale",
+        "Rent"
+      ],
       "required": true
     },
     "price": {
@@ -62,11 +72,15 @@
     },
     "area_type": {
       "type": "enumeration",
-      "enum": ["Sq.Yd(s)", "Sq.Ft(s)", "Sq.M(s)", "Marla(s)", "Kanal(s)"],
-      "required": true,
-      "default": "Sq.Yd(s)"
+      "enum": [
+        "Sq.Yd(s)",
+        "Sq.Ft(s)",
+        "Sq.M(s)",
+        "Marla(s)",
+        "Kanal(s)"
+      ],
+      "required": true
     },
-
     "latitude": {
       "type": "float",
       "required": true
@@ -79,19 +93,25 @@
       "type": "media",
       "multiple": false,
       "required": true,
-      "allowedTypes": ["images"]
+      "allowedTypes": [
+        "images"
+      ]
     },
     "property_images": {
       "type": "media",
       "multiple": true,
       "required": true,
-      "allowedTypes": ["images"]
+      "allowedTypes": [
+        "images"
+      ]
     },
     "property_pdf": {
       "type": "media",
       "multiple": false,
       "required": false,
-      "allowedTypes": ["files"]
+      "allowedTypes": [
+        "files"
+      ]
     }
   }
 }
