@@ -7,7 +7,8 @@ import Spinner from "../spinner";
 import InfiniteScroll from "react-infinite-scroll-component";
 import { getProperties } from "../../utils/api-calls";
 import { Property } from "../../utils/types/types";
-import List_Icon from "../../public/assets/icons/list-icon.svg";
+import Map_Btn from "../../public/assets/icons/map-list-icon.svg";
+import List_Icon from "../../public/assets/icons/list-icon.svg"
 
 const Properties = () => {
   const [isList, setIsList] = useState<boolean>(true);
@@ -32,19 +33,17 @@ const Properties = () => {
   return (
     <>
       <button
-        className="fixed bottom-16 left-1/2 z-10 flex -translate-x-1/2 items-center gap-2 rounded-full bg-nk-gradient-red-one bg-gradient-to-b to-nk-gradient-red-two px-4 py-2 text-center text-sm capitalize text-white transition-all duration-300 ease-in-out hover:shadow-lg hover:delay-100 md:gap-4 md:px-6 md:py-3 md:text-2xl"
+        className={`fixed bottom-16 left-1/2 z-10 flex items-center -translate-x-1/2 gap-2 rounded-full px-4 py-2 text-center text-sm capitalize text-nk-white transition-all duration-300 ease-in-out hover:shadow-lg hover:delay-100 md:gap-4 md:px-6 md:py-3 md:text-2xl ${isList ? "bg-gradient-to-b bg-nk-gradient-red-one to-nk-gradient-red-two" : "bg-nk-black"}`}
         onClick={() => setIsList(!isList)}
       >
-        <span>Show Map</span>
-        <div className="relative w-full max-w-[1.375rem] md:max-w-[2.188rem]">
+        <span>{`${isList ? "Show Map" : "Show List"}`}</span>
           <Image
-            src={List_Icon}
+            src={isList ? Map_Btn : List_Icon}
             width={35}
             height={35}
-            alt="map-properties"
-            className="mx-auto"
+            alt="properties-view"
+            className={`mx-auto ${isList ? "w-[1.375rem] md:w-[2.188rem]" : " w-4 md:w-[1.7rem]"} `}
           />
-        </div>
       </button>
 
       {isList ? (

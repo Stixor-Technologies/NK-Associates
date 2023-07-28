@@ -12,7 +12,7 @@ interface CardProps {
 }
 
 const PropertyCard: FC<CardProps> = ({ property }) => {
-  const { title, category, purpose, area, area_type, price, address, city } =
+  const { title, category, purpose, area, area_type, price, address } =
     property?.attributes;
   const thumbnailImage =
     property?.attributes?.image_thumbnail.data.attributes.url;
