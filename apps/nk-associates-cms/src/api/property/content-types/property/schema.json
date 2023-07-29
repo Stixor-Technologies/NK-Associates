@@ -38,7 +38,8 @@
         "Plot",
         "Flat",
         "House"
-      ]
+      ],
+      "required": true
     },
     "category": {
       "type": "enumeration",
@@ -46,7 +47,8 @@
         "Residential",
         "Commercial"
       ],
-      "default": "Residential"
+      "default": "Residential",
+      "required": true
     },
     "bedrooms": {
       "type": "integer"
