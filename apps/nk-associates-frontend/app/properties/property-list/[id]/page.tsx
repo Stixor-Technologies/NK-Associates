@@ -15,7 +15,6 @@ import Area_Icon from "../../../../public/assets/icons/area-icon.svg";
 import Area_Marker from "../../../../public/assets/icons/area-marker.svg";
 import PDF_Icon from "../../../../public/assets/icons/pdf-file-icon.svg";
 import LinkButton from "../../../../components/button/link-button";
-import "./slider-styles.css";
 
 interface PropertyDetailProps {
   params: {
@@ -27,10 +26,10 @@ function delay(time) {
   return new Promise((resolve) => setTimeout(resolve, time));
 }
 
-async function PropertyDetail({ params: { id } }) {
+async function PropertyDetail({ params: { id } }: PropertyDetailProps) {
   await delay(2000);
 
-  const data: Properties  = await getPropertyDetail(id);
+  const data: Properties = await getPropertyDetail(id);
   const {
     title,
     bedrooms,
@@ -43,7 +42,7 @@ async function PropertyDetail({ params: { id } }) {
     description,
     latitude,
     longitude,
-    property_images
+    property_images,
   } = data?.attributes;
 
   const pdfUrl: string = data?.attributes?.property_pdf?.data?.attributes?.url;
@@ -58,10 +57,8 @@ async function PropertyDetail({ params: { id } }) {
   ];
 
   return (
-    <>
-      {/* {data && ( */}
-      <section className="">
-        <DetailSlider property_images = {property_images.data}/>
+      <section>
+        <DetailSlider property_images={property_images.data} />
         <div className="mt-14 bg-right-top bg-no-repeat md:mt-3 md:bg-nk-bg">
           {/* 360 Tour Button */}
           <button className="group relative z-10 ml-auto hidden w-48 items-center gap-2 overflow-hidden rounded-l-lg bg-nk-white px-4 py-3.5 shadow-3xl transition-all md:flex">
@@ -79,7 +76,7 @@ async function PropertyDetail({ params: { id } }) {
               />
             </svg>
 
-            <span className="absolute bottom-0 left-0 -z-10 h-full w-full -translate-x-full translate-y-full rounded-l-lg bg-nk-red transition-all delay-200 duration-500 ease-in-out group-hover:mb-[63px] group-hover:translate-x-0"></span>
+            <span className="absolute bottom-0 left-0 -z-10 h-full w-full -translate-x-full translate-y-full rounded-l-lg bg-nk-red transition-all delay-200 duration-500 ease-in-out group-hover:translate-x-0 group-hover:translate-y-0" />
             <span className="text-[1.375rem] text-nk-black transition-all delay-200 duration-500 ease-in-out group-hover:text-nk-white">
               View
             </span>
@@ -145,7 +142,7 @@ async function PropertyDetail({ params: { id } }) {
                 text="Inquires"
                 type="solid"
                 navigateTo="#"
-                className="mb-2 w-[11.75rem] text-lg sm:mb-0 md:w-[11.75rem]"
+                className="mb-2 w-[11.75rem] text-lg border hover:border-nk-red sm:mb-0 md:w-[11.75rem]"
               />
             </div>
 
@@ -186,7 +183,7 @@ async function PropertyDetail({ params: { id } }) {
             {paragraphs.map((paragraph: string, index: number) => (
               <p
                 key={index}
-                className="text-center py-2 font-metropolis-thin text-sm leading-snug text-nk-black md:py-3 md:text-left md:text-[1.375rem]"
+                className="py-2 text-center font-metropolis-thin text-sm leading-snug text-nk-black md:py-3 md:text-left md:text-[1.375rem]"
               >
                 {paragraph}
               </p>
@@ -216,7 +213,7 @@ async function PropertyDetail({ params: { id } }) {
                   href={`${BASE_URL}${pdfUrl}`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="mx-auto my-12 hidden items-center gap-4 rounded-full bg-nk-gradient-red-one bg-gradient-to-b to-nk-gradient-red-two px-20 py-2 text-lg text-nk-white md:flex md:w-[25rem]"
+                  className="group relative z-10 mx-auto my-12 hidden items-center gap-4 rounded-full bg-gradient-to-b from-nk-gradient-red-one to-nk-gradient-red-two px-20 py-2.5 text-lg text-nk-white md:flex md:w-[25rem] md:justify-center transition-all duration-500 delay-200 border hover:shadow-lg hover:border-nk-red"
                 >
                   Download Broucher
                   <Image
@@ -230,8 +227,8 @@ async function PropertyDetail({ params: { id } }) {
             </div>
           </div>
 
-          <div className="relative mt-4 bg-[url('/assets/images/detail-service-bg.svg')] bg-cover bg-right-top bg-no-repeat py-9 text-center text-nk-white opacity-80 md:mt-0 md:py-20 md:text-left">
-            <div className="container mx-auto px-4">
+          <div className="relative mt-4 bg-[url('/assets/images/detail-service-bg.svg')] bg-cover bg-right-top bg-no-repeat py-9 text-center text-nk-white md:mt-0 md:py-20 md:text-left">
+            <div className="container relative z-20 mx-auto px-4">
               <div className="max-w-4xl">
                 <h3 className="font-metropolis-semibold text-[1.625rem] md:text-4xl">
                   NK Associates Services
@@ -250,17 +247,15 @@ async function PropertyDetail({ params: { id } }) {
                   text="Explore all"
                   type="inverted"
                   navigateTo="#"
-                  className="mx-auto mt-3 w-64 md:mx-0 md:w-[25rem]"
+                  className="mx-auto mt-3 w-64 border py-2.5 text-lg hover:border-nk-red md:mx-0 md:w-[25rem]"
                 />
               </div>
             </div>
 
-            <div className="absolute inset-0 -z-10 bg-nk-gradient-red-sharp-one bg-gradient-to-b to-nk-gradient-red-sharp-two"></div>
+            <div className="absolute inset-0 bg-gradient-to-b from-nk-gradient-red-sharp-one to-nk-gradient-red-sharp-two opacity-80" />
           </div>
         </div>
       </section>
-      {/* )} */}
-    </>
   );
 }
 
