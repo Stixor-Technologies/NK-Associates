@@ -18,30 +18,37 @@ export interface Events {
   id: number;
 }
 
-export interface ImageData {
-  data: {
+export interface MediaAttributes {
     attributes: {
       url: string;
       name: string;
     };
-  };
+
 }
 
 export interface Properties {
   attributes: {
     area: number;
     area_type: string;
-    image_thumbnail: ImageData;
+    image_thumbnail: {
+      data: MediaAttributes;
+    };
     baths: number;
     bedrooms: number;
     category: string;
     latitude: number;
     longitude: number;
     price: string;
-    property_images: ImageData;
+    property_images: {
+      data: MediaAttributes[]
+    };
     purpose: string;
     title: string;
     type: string;
+    property_pdf: {
+      data: MediaAttributes
+    };
+    description: string;
   };
   id: number;
 }

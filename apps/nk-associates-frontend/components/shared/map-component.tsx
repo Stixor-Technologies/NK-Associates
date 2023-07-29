@@ -1,11 +1,8 @@
 "use client";
-import React, {useEffect, useRef} from "react";
-import { GoogleMap, LoadScript, Marker, useJsApiLoader } from "@react-google-maps/api";
-
-// Define your API Key
-const apiKey = "AIzaSyBzm-kJDWBl_N5GWrj2p50N_4bg8mNeTTk"; // Replace this with your actual Google Maps API key
-
-// Define your API Key
+import React, { FC, useEffect, useRef, useMemo } from "react";
+import { GoogleMap, Marker, useJsApiLoader } from "@react-google-maps/api";
+import { MAP_KEY } from "../../utils/constants";
+import Spinner from "../spinner";
 
 interface Location {
   lat: number;
@@ -16,57 +13,63 @@ interface IProps {
   locations: Location | Location[];
 }
 
-const MapComponent: React.FC<IProps> = ({ locations }) => {
-    const mapRef = React.useRef<google.maps.Map | null>(null);
-    const { isLoaded } = useJsApiLoader({
-      id: 'google-map-script',
-      googleMapsApiKey: apiKey
-    })
-  
-    // Ensure locations is always an array
-    const allLocations = Array.isArray(locations) ? locations : [locations];
-  
-    const mapOptions = {
-      disableDefaultUI: false,
-      mapTypeControl: true,
-      zoomControl: true,
-      streetViewControl: true,
-      fullscreenControl: true,
-    };
-  
-    useEffect(() => {
-      if (isLoaded && mapRef.current) {
-        const bounds = new google.maps.LatLngBounds();
-  
-        allLocations.forEach((location) => {
-          bounds.extend(new google.maps.LatLng(location.lat, location.lng));
-        });
-  
-        mapRef.current.fitBounds(bounds);
-      }
-    }, [isLoaded, allLocations]);
+const MapComponent: FC<IProps> = ({ locations }) => {
+  const mapRef = useRef<google.maps.Map | null>(null);
+  const { isLoaded } = useJsApiLoader({
+    id: "google-map-script",
+    googleMapsApiKey: MAP_KEY,
+  });
+
+  const allLocations = useMemo(
+    () => (Array.isArray(locations) ? locations : [locations]),
+    [locations]
+  );
+
+  const mapOptions = {
+    disableDefaultUI: false,
+    mapTypeControl: true,
+    zoomControl: true,
+    streetViewControl: false,
+    fullscreenControl: true,
+    keyboardShortcuts: false,
+    // scrollwheel: true,
+  };
+
+  useEffect(() => {
+    if (isLoaded && mapRef.current) {
+      const bounds = new google.maps.LatLngBounds();
+
+      allLocations.forEach((location) => {
+        bounds.extend(new google.maps.LatLng(location.lat, location.lng));
+      });
+
+      mapRef.current.fitBounds(bounds);
+    }
+  }, [isLoaded, allLocations]);
   return (
-    <div className="relative h-[390px] w-full pb-1/2">
-           {isLoaded && (
+    <div className="relative flex items-center my-3 h-96 w-full sm:pb-1/2">
+      {isLoaded ? (
         <GoogleMap
-          id='google-map'
+          id="google-map"
           zoom={10}
-          center={allLocations[0]} // Center map around the first location
+          center={allLocations[0]}
           options={mapOptions}
           onLoad={(map) => {
             mapRef.current = map;
           }}
-          mapContainerClassName="absolute top-0 left-0 h-full w-full rounded-md"
+          mapContainerClassName="absolute top-0 left-0 h-full w-full rounded-2xl"
         >
           {allLocations.map((location, index) => (
             <Marker key={index} position={location} />
           ))}
         </GoogleMap>
+      ) : (
+        <div className="absolute top-0 left-0 h-full w-full flex items-center">
+        <Spinner />
+        </div>
       )}
-
     </div>
   );
 };
 
 export default MapComponent;
-
