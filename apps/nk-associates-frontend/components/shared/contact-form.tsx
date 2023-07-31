@@ -1,55 +1,19 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
 import { Formik, Field, Form } from "formik";
 import Input from "./input";
-import LinkButton from "../button/link-button";
 import { ContactFormSchema } from "../../utils/formik-schema";
+import Spinner from "../spinner";
 import Image from "next/image";
 import Area_Marker from "../../public/assets/icons/area-marker.svg";
 import Envelope from "../../public/assets/icons/envelope-icon.svg";
-// const ContactForm = () => {
-//   return (
-//     <Formik
-//       initialValues={{
-//         name: "",
-//         email: "",
-//         phone: "",
-//         category: "",
-//         message: "",
-//       }}
-//       onSubmit={(values) => {
-//         console.log(values);
-//       }}
-//     >
-//       {(formik) => (
-//         <div className="rounded-lg bg-nk-light-gray">
-//           <h4 className="text-center font-metropolis-bold text-[1.75rem] text-nk-black md:text-5xl">
-//             Contact Us
-//           </h4>
-//           <Form noValidate>
-//             {Object.keys(formik.values).map((fieldName) => (
-//               <Input
-//                 key={fieldName}
-//                 hasError={formik.errors[fieldName]}
-//                 isTouched={formik.touched[fieldName]}
-//                 label={fieldName[0].toUpperCase() + fieldName.substring(1)}
-//                 name={fieldName}
-//                 errorMessage={formik.errors[fieldName]}
-//               />
-//             ))}
-//           </Form>
-//         </div>
-//       )}
-//     </Formik>
-//   );
-// };
 
 const fieldTypes = {
   name: "text",
   email: "text",
   phone: "text",
-  category: "dropdown", // Assuming you have a dropdown component for this
-  message: "textarea", // Assuming you have a textarea component for this
+  category: "dropdown",
+  message: "textarea",
 };
 
 const placeholders = {
@@ -64,21 +28,31 @@ const initialValues = {
   phone: "",
   category: "",
   message: "",
-}
+};
 
 const ContactForm = () => {
+  const [loading, setLoading] = useState<boolean>(false);
+
   const formFields = ["name", "email", "phone", "category", "message"];
 
   const onSubmit = async (values) => {
-    console.log(values)
-    const formData = new FormData();
-    if (values?.name) {
-      formData.append("name", values.name);
-    }
-    if (values?.email) {
-      formData.append("email", values.email);
-    }
+    setLoading(true);
+    const res = await fetch("api/contact", {
+      headers: {
+        "Content-Type": "application/json",
+      },
+      method: "POST",
+      body: JSON.stringify({
+        name: values.name,
+        email: values.email,
+        phone: values.phone,
+        category: values.category,
+        message: values.message,
+      }),
+    });
 
+    const ah = await res.json();
+    console.log(ah);
   };
 
   return (
@@ -158,15 +132,25 @@ const ContactForm = () => {
                   );
                 })}
               </div>
+              {/* <button
+                type="submit"
+                className=" mx-auto inline-flex w-[22.5rem] rounded-full bg-nk-red py-3 text-center font-metropolis capitalize text-white transition-all duration-300 ease-in-out hover:shadow-lg hover:delay-100 h-12 md:w-[25rem]"
+              >
+                {loading ? <Spinner color="fill-white" height="h-10" width="w-10" /> : <span>Submit</span>}
+              <Spinner color="fill-nk-white" height="h-12" width="w-12" />
+              </button> */}
+
               <button
                 type="submit"
-                className="mx-auto block w-[22.5rem] rounded-full bg-nk-red py-3 text-center font-metropolis capitalize text-white transition-all duration-300 ease-in-out hover:shadow-lg hover:delay-100 md:w-[25rem]"
+                className={`bg-nk-red mx-auto my-5 rounded-md py-2 text-sm font-bold uppercase text-white shadow-md transition duration-200 ease-in-out md:w-96 h-12 lg:text-lg `}
               >
-                Submit
+                  <Spinner color="fill-white" height="h-10" width="w-10" />
+                {/* Submit */}
+             
               </button>
             </Form>
           </div>
-          <div className="mt-5">
+          {/* <div className="mt-5">
             <div>
               <Image
                 src={Area_Marker}
@@ -205,7 +189,7 @@ const ContactForm = () => {
               <span> +92-51-111099111</span>
               <span></span>
             </div>
-          </div>
+          </div> */}
         </>
       )}
     </Formik>

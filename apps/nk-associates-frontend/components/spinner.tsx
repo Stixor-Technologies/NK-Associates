@@ -1,13 +1,18 @@
 import React, {FC} from "react";
 
+interface SpinnerProps {
+  color?: string,
+  width?: string,
+  height?: string,
+}
 
-const Spinner: FC = () => {
+const Spinner: FC<SpinnerProps> = ({color = "fill-nk-red", width = "w-14", height = "h-14" }) => {
   return (
-    <div className="m-auto overflow-hidden text-center" role="status">
+    <div className="m-auto overflow-hidden text-center bg-slate-600" role="status">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         xmlnsXlink="http://www.w3.org/1999/xlink"
-        className={`inline-block w-14 h-14 animate-spin fill-nk-red text-gray-200 dark:text-gray-600`}
+        className={`inline-block ${width} ${height} animate-spin ${color} text-gray-200 dark:text-gray-600`}
         width="80"
         height="80"
         viewBox="0 0 100 100"
