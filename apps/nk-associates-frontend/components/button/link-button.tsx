@@ -5,6 +5,7 @@ interface BaseProps {
   text: string;
   type?: "transparent" | "inverted" | "solid" | "gradient";
   className?: string;
+  buttonType?: "submit" | "button";
 }
 
 interface LinkProps extends BaseProps {
@@ -18,7 +19,7 @@ interface ButtonProps extends BaseProps {
 type Props = LinkProps | ButtonProps;
 
 const LinkButton: FC<Props> = (props) => {
-   const {text, type, className} = props
+   const {text, type, buttonType, className} = props
   const typeStyles = {
     transparent: "bg-transparent text-nk-gray border border-nk-red",
     inverted: "bg-white text-nk-red",
@@ -32,7 +33,7 @@ const LinkButton: FC<Props> = (props) => {
 
   if ("clickEvent" in props) {
     return (
-      <button className={classes} onClick={props.clickEvent}>
+      <button type={buttonType || "button"} className={classes} onClick={props.clickEvent}>
         {text}
       </button>
     );
