@@ -61,7 +61,7 @@ const footer = () => {
 											Projects
 										</Link>
 									</li>
-									<li className="">
+									<li>
 										<Link
 											href="/"
 											className="inline-block bg-gradient-to-r from-nk-white to-nk-white bg-[length:0%_8%] bg-left-bottom bg-no-repeat font-metropolis-thin transition-all duration-500 ease-out hover:bg-[length:100%_8%]">
@@ -76,7 +76,7 @@ const footer = () => {
 										sell
 									</h2>
 									<ul className="text-lg">
-										<li className="">
+										<li>
 											<Link href="/">
 												<div className="inline-block bg-gradient-to-r from-nk-white to-nk-white bg-[length:0%_8%] bg-left-bottom bg-no-repeat font-metropolis-thin transition-all duration-500 ease-out hover:bg-[length:100%_8%]">
 													Sell on NK
@@ -87,7 +87,7 @@ const footer = () => {
 									<div className="pt-4 md:hidden">
 										{/* dummy links here*/}
 										<div className="flex flex-wrap">
-											<div className="my-2 mr-4 flex h-9 w-9 items-center justify-center rounded-full border-2 border-nk-red bg-nk-red transition-all duration-1000 hover:border-nk-red hover:bg-transparent">
+											<div className="my-2 mr-4 flex h-9 w-9 items-center justify-center rounded-full bg-nk-red transition-all duration-300 hover:bg-opacity-75">
 												<Link
 													href="https://www.facebook.com/"
 													target="_blank"
@@ -95,7 +95,7 @@ const footer = () => {
 													<Image src={FB} alt="Facebook" />
 												</Link>
 											</div>
-											<div className="my-2 mr-4 flex h-9 w-9 items-center justify-center rounded-full border-2 border-nk-red bg-nk-red transition-all duration-1000 hover:border-nk-red hover:bg-transparent">
+											<div className="my-2 mr-4 flex h-9 w-9 items-center justify-center rounded-full bg-nk-red transition-all duration-300 hover:bg-opacity-75">
 												<Link
 													href="https://twitter.com/"
 													target="_blank"
@@ -103,7 +103,7 @@ const footer = () => {
 													<Image src={Twitter} alt="Twitter" />
 												</Link>
 											</div>
-											<div className="my-2 mr-4 flex h-9 w-9 items-center justify-center rounded-full border-2 border-nk-red bg-nk-red transition-all duration-1000 hover:border-nk-red hover:bg-transparent">
+											<div className="my-2 mr-4 flex h-9 w-9 items-center justify-center rounded-full bg-nk-red transition-all duration-300 hover:bg-opacity-75">
 												<Link
 													href="https://www.instagram.com/"
 													target="_blank"
@@ -111,7 +111,7 @@ const footer = () => {
 													<Image src={Instagram} alt="Instagram" />
 												</Link>
 											</div>
-											<div className="my-2 mr-4 flex h-9 w-9 items-center justify-center rounded-full border-2 border-nk-red bg-nk-red transition-all duration-1000 hover:border-nk-red hover:bg-transparent">
+											<div className="my-2 mr-4 flex h-9 w-9 items-center justify-center rounded-full bg-nk-red transition-all duration-300 hover:bg-opacity-75">
 												<Link
 													href="https://www.linkedin.com/"
 													target="_blank"
@@ -119,7 +119,7 @@ const footer = () => {
 													<Image src={Linkedin} alt="LinkedIn" />
 												</Link>
 											</div>
-											<div className="my-2 mr-4 flex h-9 w-9 items-center justify-center rounded-full border-2 border-nk-red bg-nk-red transition-all duration-1000 hover:border-nk-red hover:bg-transparent">
+											<div className="my-2 mr-4 flex h-9 w-9 items-center justify-center rounded-full bg-nk-red transition-all duration-300 hover:bg-opacity-75">
 												<Link
 													href="https://www.snapchat.com/"
 													target="_blank"
@@ -127,7 +127,7 @@ const footer = () => {
 													<Image src={Snap} alt="Snapchat" />
 												</Link>
 											</div>
-											<div className="my-2 mr-4 flex h-9 w-9 items-center justify-center rounded-full border-2 border-nk-red bg-nk-red transition-all duration-1000 hover:border-nk-red hover:bg-transparent">
+											<div className="my-2 mr-4 flex h-9 w-9 items-center justify-center rounded-full bg-nk-red transition-all duration-300 hover:bg-opacity-75">
 												<Link
 													href="https://www.youtube.com/"
 													target="_blank"
@@ -146,7 +146,7 @@ const footer = () => {
 								<div>
 									<ul>
 										<li className="mb-5">
-											<div className="flex h-10 items-center justify-center rounded-md border-2 border-nk-red bg-nk-red transition-all duration-1000 hover:border-nk-red hover:bg-transparent lg:w-32 xl:h-12 xl:w-40">
+											<div className="flex h-10 items-center justify-center rounded-md bg-nk-red transition-all duration-300 hover:bg-opacity-75 lg:w-32 xl:h-12 xl:w-40">
 												<Link href="/">
 													<Image
 														src={GooglePlay}
@@ -157,7 +157,7 @@ const footer = () => {
 											</div>
 										</li>
 										<li className="mb-3">
-											<div className="flex h-10 items-center justify-center rounded-md border-2 border-nk-red bg-nk-red transition-all duration-1000 hover:border-nk-red hover:bg-transparent lg:w-32 xl:h-12 xl:w-40">
+											<div className="flex h-10 items-center justify-center rounded-md bg-nk-red transition-all duration-300 hover:bg-opacity-75 lg:w-32 xl:h-12 xl:w-40">
 												<Link href="/">
 													<Image
 														src={AppStore}
@@ -180,7 +180,7 @@ const footer = () => {
 										href="https://www.facebook.com/"
 										target="_blank"
 										rel="noopener noreferrer">
-										<div className="my-1 mr-3 flex h-9 w-9 items-center justify-center rounded-full border-2 border-nk-red bg-nk-red transition-all duration-1000 hover:border-nk-red hover:bg-transparent">
+										<div className="my-1 mr-3 flex h-9 w-9 items-center justify-center rounded-full bg-nk-red transition-all duration-300 hover:bg-opacity-75">
 											<Image src={FB} alt="Facebook" />
 										</div>
 									</Link>
@@ -188,7 +188,7 @@ const footer = () => {
 										href="https://twitter.com/"
 										target="_blank"
 										rel="noopener noreferrer">
-										<div className="my-1 mr-3 flex h-9 w-9 items-center justify-center rounded-full border-2 border-nk-red bg-nk-red transition-all duration-1000 hover:border-nk-red hover:bg-transparent">
+										<div className="my-1 mr-3 flex h-9 w-9 items-center justify-center rounded-full bg-nk-red transition-all duration-300 hover:bg-opacity-75">
 											<Image src={Twitter} alt="Twitter" />
 										</div>
 									</Link>
@@ -196,7 +196,7 @@ const footer = () => {
 										href="https://www.instagram.com/"
 										target="_blank"
 										rel="noopener noreferrer">
-										<div className="my-1 mr-3 flex h-9 w-9 items-center justify-center rounded-full border-2 border-nk-red bg-nk-red transition-all duration-1000 hover:border-nk-red hover:bg-transparent">
+										<div className="my-1 mr-3 flex h-9 w-9 items-center justify-center rounded-full bg-nk-red transition-all duration-300 hover:bg-opacity-75">
 											<Image src={Instagram} alt="Instagram" />
 										</div>
 									</Link>
@@ -204,7 +204,7 @@ const footer = () => {
 										href="https://www.linkedin.com/"
 										target="_blank"
 										rel="noopener noreferrer">
-										<div className="my-1 mr-3 flex h-9 w-9 items-center justify-center rounded-full border-2 border-nk-red bg-nk-red transition-all duration-1000 hover:border-nk-red hover:bg-transparent">
+										<div className="my-1 mr-3 flex h-9 w-9 items-center justify-center rounded-full bg-nk-red transition-all duration-300 hover:bg-opacity-75">
 											<Image src={Linkedin} alt="LinkedIn" />
 										</div>
 									</Link>
@@ -212,7 +212,7 @@ const footer = () => {
 										href="https://www.snapchat.com/"
 										target="_blank"
 										rel="noopener noreferrer">
-										<div className="my-1 mr-3 flex h-9 w-9 items-center justify-center rounded-full border-2 border-nk-red bg-nk-red transition-all duration-1000 hover:border-nk-red hover:bg-transparent">
+										<div className="my-1 mr-3 flex h-9 w-9 items-center justify-center rounded-full bg-nk-red transition-all duration-300 hover:bg-opacity-75">
 											<Image src={Snap} alt="Snapchat" />
 										</div>
 									</Link>
@@ -220,7 +220,7 @@ const footer = () => {
 										href="https://www.youtube.com/"
 										target="_blank"
 										rel="noopener noreferrer">
-										<div className="my-1 mr-3 flex h-9 w-9 items-center justify-center rounded-full border-2 border-nk-red bg-nk-red transition-all duration-1000 hover:border-nk-red hover:bg-transparent">
+										<div className="my-1 mr-3 flex h-9 w-9 items-center justify-center rounded-full bg-nk-red transition-all duration-300 hover:bg-opacity-75">
 											<Image src={YT} alt="YouTube" />
 										</div>
 									</Link>
@@ -240,7 +240,7 @@ const footer = () => {
 												<Image src={GooglePlay} alt="Google Play" />
 											</Link>
 										</div>
-										<div className="mx-2 flex h-12 w-44 items-center justify-center rounded-md border-2 border-nk-red bg-nk-red object-cover transition-all duration-1000 hover:border-nk-red hover:bg-transparent">
+										<div className="mx-2 flex h-12 w-44 items-center justify-center rounded-md bg-nk-red object-cover transition-all duration-300 hover:bg-opacity-75">
 											<Link href="/" className="mx-2">
 												<Image
 													src={AppStore}
@@ -251,7 +251,7 @@ const footer = () => {
 										</div>
 									</div>
 									<div className="flex justify-center">
-										<div className="m-4 flex h-12 w-44 items-center justify-center rounded-md border-2 border-nk-red bg-nk-red object-cover transition-all duration-1000 hover:border-nk-red hover:bg-transparent">
+										<div className="m-4 flex h-12 w-44 items-center justify-center rounded-md bg-nk-red object-cover transition-all duration-300 hover:bg-opacity-75">
 											<Link href="/">
 												<Image src={AppGallery} alt="App Gallery" />
 											</Link>
