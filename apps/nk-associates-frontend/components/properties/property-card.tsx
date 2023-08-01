@@ -1,11 +1,11 @@
 import React, { FC } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { Property } from "../../../utils/types/types";
-import { convertToPakistaniNumbering } from "../../../utils/utils";
+import { Property } from "../../utils/types/types";
+import { convertToPakistaniNumbering } from "../../utils/utils";
 import Area_Icon from "../../public/assets/icons/area-icon.svg";
 import Area_Marker from "../../public/assets/icons/area-marker.svg";
-import { BASE_URL } from "../../../utils/constants";
+import { BASE_URL } from "../../utils/constants";
 
 interface CardProps {
   property: Property;
