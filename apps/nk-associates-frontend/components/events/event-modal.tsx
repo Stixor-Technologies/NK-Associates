@@ -18,10 +18,10 @@ import { BASE_URL } from "../../utils/constants";
 interface ModalProps {
   open: boolean;
   onClose: () => void;
-  event_data: Events;
+  eventData: Events;
 }
 
-const EventModal: React.FC<ModalProps> = ({ open, onClose, event_data }) => {
+const EventModal: React.FC<ModalProps> = ({ open, onClose, eventData }) => {
   const modalElement: HTMLElement | null = document.querySelector("#modalEl");
   const modalOptions: ModalOptions = {
     placement: "center",
@@ -75,7 +75,7 @@ const EventModal: React.FC<ModalProps> = ({ open, onClose, event_data }) => {
             modules={[Pagination, Thumbs]}
             className="mySwiper2 h-[19.5rem] md:h-[32rem]"
           >
-            {event_data?.attributes?.event_image?.data?.map(
+            {eventData?.attributes?.event_image?.data?.map(
               (imageData, index) => {
                 return (
                   <SwiperSlide key={index} className="h-full w-full">
@@ -102,7 +102,7 @@ const EventModal: React.FC<ModalProps> = ({ open, onClose, event_data }) => {
               modules={[FreeMode, Navigation, Thumbs]}
               className="mySwiper3 h-[6rem]"
             >
-              {event_data?.attributes?.event_image?.data?.map(
+              {eventData?.attributes?.event_image?.data?.map(
                 (imageData, index) => {
                   return (
                     <SwiperSlide key={index} className="h-full w-full">
@@ -132,17 +132,17 @@ const EventModal: React.FC<ModalProps> = ({ open, onClose, event_data }) => {
 
         <div className="mt-5 flex flex-col items-center justify-center p-4">
           <div className=" text-center font-metropolis-bold text-2xl text-nk-black md:text-4xl">
-            {event_data?.attributes?.event_title}
+            {eventData?.attributes?.event_title}
           </div>
           <div className="font-metropolis-semibold text-sm text-nk-gray underline md:text-lg">
-            Hosted by{" "}
+            Hosted by
             <span className="mt-5 font-metropolis-light text-nk-black underline">
-              {event_data?.attributes?.event_host}
+              {` ${eventData?.attributes?.event_host}`}
             </span>
           </div>
 
           <div className="mt-1 p-4 text-center font-metropolis-extralight text-sm md:text-2xl">
-            {event_data?.attributes?.event_description}
+            {eventData?.attributes?.event_description}
           </div>
 
           <div className="mt-5 flex items-center gap-2 ">
@@ -156,14 +156,14 @@ const EventModal: React.FC<ModalProps> = ({ open, onClose, event_data }) => {
               />
             </>
             <div className="font-metropolis-light text-lg text-red-500 md:text-3xl">
-              {event_data?.attributes?.event_location}
+              {eventData?.attributes?.event_location}
             </div>
           </div>
 
           <div className="mt-4 text-sm text-nk-black underline md:text-lg">
-            Date:{" "}
+            Date:
             <span className="text-nk-grey">
-              {event_data?.attributes?.event_date}
+              {` ${eventData?.attributes?.event_date}`}
             </span>
           </div>
         </div>

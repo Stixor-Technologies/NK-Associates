@@ -45,7 +45,7 @@ const MobileCarousel: React.FC<CarouselProps> = ({ images }) => {
     <>
       <div className="container">
         <Swiper
-          effect={"coverflow"}
+          effect="coverflow"
           grabCursor={true}
           centeredSlides={true}
           autoplay={true}
@@ -68,7 +68,7 @@ const MobileCarousel: React.FC<CarouselProps> = ({ images }) => {
                   fill
                   className="h-full w-full object-cover"
                 />
-                <div className="gradient-overlay absolute bottom-[10rem] left-0 h-[10rem]  w-full"></div>
+                <div className="gradient-overlay absolute bottom-[10rem] left-0 h-[10rem] w-full"></div>
               </SwiperSlide>
             );
           })}

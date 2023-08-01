@@ -140,7 +140,7 @@ const EventCard: React.FC<EventProps> = ({ data }) => {
         onClose={() => {
           setIsOpen(false);
         }}
-        event_data={selectedCardData}
+        eventData={selectedCardData}
       />
     </>
   );
