@@ -19,7 +19,7 @@ const Input = ({
       </label>
       <Field
         name={name}
-        className={`mt-1 w-full rounded-lg px-4 py-4 placeholder-nk-gray shadow-md placeholder:font-metropolis-thin placeholder:text-base border focus:outline-none ${
+        className={`mt-1 w-full rounded-lg px-4 py-4 placeholder-nk-gray shadow-md placeholder:font-metropolis-thin placeholder:text-base text-nk-black font-metropolis-light border focus:outline-none ${
           isTouched && hasError
             ? "border-nk-red"
             : " focus:border-nk-gray focus:ring-nk-gray"

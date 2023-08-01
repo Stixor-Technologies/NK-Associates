@@ -7,40 +7,27 @@ sendgrid.setApiKey(EMAIL_API);
 
 export async function POST(request: NextRequest) {
   const data = await request.json();
-  console.log(data)
+  console.log(data);
   const msg = {
-    to: data.email, 
-    
+    to: data.email,
     // Change this to your verified sender
-    from: "fawad.mehmood@stixor.com", 
+    from: "fawad.mehmood@stixor.com",
     subject: "This is dummy email and sent via sendgrid",
     body: data.message,
-    html: `<div>You've got a mail</div>`,
+    html: `<div>${data.message}</div>`,
   };
 
-  console.log("first")
+  console.log("first");
   try {
-      // console.log("REQ.BODY", req.body);
-       const res = await sendgrid.send(msg);
-      //  return res;
-       return NextResponse.json(res)
-    } catch (error) {
-      console.log(error);
+    const res = await sendgrid.send(msg);
+    if (res[0]?.statusCode !== 202) {
+      // return NextResponse.json(res);
+      return NextResponse.json({message: 'Email has been sent'});
+    } else {
+      return NextResponse.json({ message: "Error sending email" });
+    }
+  } catch (error) {
+    console.log(error);
+    return NextResponse.json({ message: "Error sending email" });
   }
-
-//   sendgrid
-//     .send(msg)
-//     .then(() => {
-//       console.log("Email sent");
-//     })
-//     .catch((error) => {
-//       console.log(error);
-//     });
-// }
-
-
-// export async function GET(req: NextRequest) {
-//     return new Response("This is a new API route");
-//   }
-
 }

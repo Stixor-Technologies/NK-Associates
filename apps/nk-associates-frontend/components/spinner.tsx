@@ -8,7 +8,7 @@ interface SpinnerProps {
 
 const Spinner: FC<SpinnerProps> = ({color = "fill-nk-red", width = "w-14", height = "h-14" }) => {
   return (
-    <div className="m-auto overflow-hidden text-center bg-slate-600" role="status">
+    <div className="m-auto text-center h-full" role="status">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         xmlnsXlink="http://www.w3.org/1999/xlink"
