@@ -26,7 +26,7 @@ export interface MediaAttributes {
 
 }
 
-export interface Properties {
+export interface Property {
   attributes: {
     area: number;
     area_type: string;
@@ -45,10 +45,8 @@ export interface Properties {
     purpose: string;
     title: string;
     type: string;
-    property_pdf: {
-      data: MediaAttributes
-    };
-    description: string;
+    address: string;
+    city: string;
   };
   id: number;
 }
