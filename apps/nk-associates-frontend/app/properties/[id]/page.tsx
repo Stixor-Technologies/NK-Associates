@@ -3,18 +3,18 @@ import React, { FC } from "react";
 import { Suspense } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { getPropertyDetail } from "../../../../utils/api-calls";
-import DetailSlider from "../../../../components/properties/property-detail/detail-slider";
-import Tile from "../../../../components/shared/tile";
-import MapComponent from "../../../../components/shared/map-component";
-import { Properties } from "../../../../utils/types/types";
-import { BASE_URL } from "../../../../utils/constants";
-import Bath_Icon from "../../../../public/assets/icons/bath-icon.svg";
-import Bedroom_Icon from "../../../../public/assets/icons/bedrooms-icon.svg";
-import Area_Icon from "../../../../public/assets/icons/area-icon.svg";
-import Area_Marker from "../../../../public/assets/icons/area-marker.svg";
-import PDF_Icon from "../../../../public/assets/icons/pdf-file-icon.svg";
-import LinkButton from "../../../../components/button/link-button";
+import { getPropertyDetail } from "../../../utils/api-calls";
+import DetailSlider from "../../../components/properties/property-detail/detail-slider";
+import Tile from "../../../components/shared/tile";
+import MapComponent from "../../../components/shared/map-component";
+import { Property } from "../../../utils/types/types";
+import { BASE_URL } from "../../../utils/constants";
+import Bath_Icon from "../../../public/assets/icons/bath-icon.svg";
+import Bedroom_Icon from "../../../public/assets/icons/bedrooms-icon.svg";
+import Area_Icon from "../../../public/assets/icons/area-icon.svg";
+import Area_Marker from "../../../public/assets/icons/area-marker.svg";
+import PDF_Icon from "../../../public/assets/icons/pdf-file-icon.svg";
+import LinkButton from "../../../components/button/link-button";
 
 interface PropertyDetailProps {
   params: {
@@ -29,7 +29,7 @@ function delay(time) {
 async function PropertyDetail({ params: { id } }: PropertyDetailProps) {
   await delay(2000);
 
-  const data: Properties = await getPropertyDetail(id);
+  const data: Property = await getPropertyDetail(id);
   const {
     title,
     bedrooms,
@@ -45,7 +45,7 @@ async function PropertyDetail({ params: { id } }: PropertyDetailProps) {
     property_images,
   } = data?.attributes;
 
-  const pdfUrl: string = data?.attributes?.property_pdf?.data?.attributes?.url;
+  // const pdfUrl: string = data?.attributes?.property_pdf?.data?.attributes?.url;
   const paragraphs: string[] | string = description.split("\n\n");
 
   const center = { lat: latitude, lng: longitude };
@@ -208,7 +208,7 @@ async function PropertyDetail({ params: { id } }: PropertyDetailProps) {
                 </h2>
               </div>
 
-              {pdfUrl && (
+              {/* {pdfUrl && (
                 <Link
                   href={`${BASE_URL}${pdfUrl}`}
                   target="_blank"
@@ -223,7 +223,7 @@ async function PropertyDetail({ params: { id } }: PropertyDetailProps) {
                     height={17}
                   />
                 </Link>
-              )}
+              )} */}
             </div>
           </div>
 

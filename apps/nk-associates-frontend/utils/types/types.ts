@@ -47,6 +47,8 @@ export interface Property {
     type: string;
     address: string;
     city: string;
+    description: string;
+    property_pdf: string;
   };
   id: number;
 }
