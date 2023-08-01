@@ -1,16 +1,16 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-import Logo from "../../../nk-associates-frontend/app/assets/images/nk-logo.svg";
-import GooglePlay from "../../../nk-associates-frontend/app/assets/images/google-play.svg";
-import AppStore from "../../../nk-associates-frontend/app/assets/images/app-store.svg";
-import FB from "../../../nk-associates-frontend/app/assets/images/facebook.svg";
-import Twitter from "../../../nk-associates-frontend/app/assets/images/twitter.svg";
-import Instagram from "../../../nk-associates-frontend/app/assets/images/instagram.svg";
-import Linkedin from "../../../nk-associates-frontend/app/assets/images/linkedin.svg";
-import Snap from "../../../nk-associates-frontend/app/assets/images/snapchat.svg";
-import YT from "../../../nk-associates-frontend/app/assets/images/youtube.svg";
-import AppGallery from "../../../nk-associates-frontend/app/assets/images/app-gallery.svg";
+import Logo from "../../public/assets/icons/nk-logo.svg";
+import GooglePlay from "../../public/assets/icons/google-play.svg";
+import AppStore from "../../public/assets/icons/app-store.svg";
+import FB from "../../public/assets/icons/facebook.svg";
+import Twitter from "../../public/assets/icons/twitter.svg";
+import Instagram from "../../public/assets/icons/instagram.svg";
+import Linkedin from "../../public/assets/icons/linkedin.svg";
+import Snap from "../../public/assets/icons/snapchat.svg";
+import YT from "../../public/assets/icons/youtube.svg";
+import AppGallery from "../../public/assets/icons/app-gallery.svg";
 
 // social media links have temp links that go to their respective homepage.
 // I have written "dummy links here" in case you need to find them.
