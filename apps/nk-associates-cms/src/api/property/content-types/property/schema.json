@@ -75,11 +75,11 @@
     "area_type": {
       "type": "enumeration",
       "enum": [
-        "Sq.Yd(s)",
-        "Sq.Ft(s)",
-        "Sq.M(s)",
-        "Marla(s)",
-        "Kanal(s)"
+        "Sq.Yd",
+        "Sq.Ft",
+        "Sq.M",
+        "Marla",
+        "Kanal"
       ],
       "required": true
     },
