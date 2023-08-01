@@ -105,12 +105,12 @@ export default function Projects() {
       </div>
       <div className="mt-24 flex flex-col items-center md:mt-16">
         {error && !loading ? (
-          <div className="font-metropolis-bold text-xl text-nk-black">
-            Error
+          <div className="text-md font-metropolis-bold text-nk-black">
+            Error loading projects.
           </div>
         ) : projectsData.length == 0 && !loading ? (
-          <div className="font-metropolis-bold text-xl text-nk-black">
-            No Projects
+          <div className="text-md font-metropolis-bold text-nk-black">
+            No projects found.
           </div>
         ) : (
           <div className="mx-auto mb-11 w-full overflow-hidden md:mb-8">
