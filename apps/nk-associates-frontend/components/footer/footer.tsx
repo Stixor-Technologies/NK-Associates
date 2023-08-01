@@ -4,12 +4,12 @@ import Link from "next/link";
 import Logo from "../../public/assets/icons/nk-logo.svg";
 import GooglePlay from "../../public/assets/icons/google-play.svg";
 import AppStore from "../../public/assets/icons/app-store.svg";
-import FB from "../../public/assets/icons/facebook.svg";
-import Twitter from "../../public/assets/icons/twitter.svg";
-import Instagram from "../../public/assets/icons/instagram.svg";
-import Linkedin from "../../public/assets/icons/linkedin.svg";
-import Snap from "../../public/assets/icons/snapchat.svg";
-import YT from "../../public/assets/icons/youtube.svg";
+import FB from "../../public/assets/icons/Facebook.svg";
+import Twitter from "../../public/assets/icons/Twitter.svg";
+import Instagram from "../../public/assets/icons/Instagram.svg";
+import Linkedin from "../../public/assets/icons/LinkedIn.svg";
+import Snap from "../../public/assets/icons/Snapchat.svg";
+import YT from "../../public/assets/icons/YouTube.svg";
 import AppGallery from "../../public/assets/icons/app-gallery.svg";
 
 // social media links have temp links that go to their respective homepage.
