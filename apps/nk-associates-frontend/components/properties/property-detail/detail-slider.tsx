@@ -48,7 +48,7 @@ const DetailSlider: FC<SliderProps> = ({ property_images }) => {
         )}
       </Swiper>
 
-      <div className="absolute bottom-6 right-3 z-20 flex items-center justify-center gap-2 md:gap-2 lg:bottom-12 lg:right-8">
+      <div className="absolute bottom-6 right-3 z-10 flex items-center justify-center gap-2 md:gap-2 lg:bottom-12 lg:right-8">
       
         <button className="group relative z-10 flex h-10 w-12 items-center justify-center rounded-md bg-nk-white overflow-hidden transition-all sm:h-12 sm:w-14 md:h-14 md:w-16">
           <svg

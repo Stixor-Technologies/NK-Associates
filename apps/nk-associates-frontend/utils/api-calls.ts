@@ -16,11 +16,9 @@ export const getPropertyDetail = async (id: string) => {
     const resp = await fetch(`${BASE_URL}/api/properties/${id}?populate=*`, {
       cache: "no-store",
     });
-    const data = await resp.json();
-    return data?.data;
-
-    // await new Promise((resolve) => setTimeout(resolve, 11000));
-    // return resp.json();
+        const data = await resp.json();
+      console.log(data)
+      return data?.data;
   } catch (error) {
     console.error("There was an error getting the Property List", error);
   }

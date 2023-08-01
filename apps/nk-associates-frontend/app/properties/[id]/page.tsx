@@ -1,12 +1,12 @@
 // 'use client'
 import React, { FC } from "react";
-import { Suspense } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { getPropertyDetail } from "../../../utils/api-calls";
 import DetailSlider from "../../../components/properties/property-detail/detail-slider";
 import Tile from "../../../components/shared/tile";
 import MapComponent from "../../../components/shared/map-component";
+import { convertAreaToSqFeet } from "../../../utils/utils";
 import { Property } from "../../../utils/types/types";
 import { BASE_URL } from "../../../utils/constants";
 import Bath_Icon from "../../../public/assets/icons/bath-icon.svg";
@@ -27,7 +27,7 @@ function delay(time) {
 }
 
 async function PropertyDetail({ params: { id } }: PropertyDetailProps) {
-  await delay(2000);
+  // await delay(2000);
 
   const data: Property = await getPropertyDetail(id);
   const {
@@ -45,7 +45,7 @@ async function PropertyDetail({ params: { id } }: PropertyDetailProps) {
     property_images,
   } = data?.attributes;
 
-  // const pdfUrl: string = data?.attributes?.property_pdf?.data?.attributes?.url;
+  const pdfUrl: string = data?.attributes?.property_pdf?.data?.attributes?.url;
   const paragraphs: string[] | string = description.split("\n\n");
 
   const center = { lat: latitude, lng: longitude };
@@ -132,7 +132,7 @@ async function PropertyDetail({ params: { id } }: PropertyDetailProps) {
                   <div className="flex items-center gap-1">
                     <Image src={Area_Icon} width={27} height={27} alt="" />
                     <span className="font-metropolis-semibold text-lg text-nk-black">
-                      {`${area} ${area_type}`}
+                      {`${convertAreaToSqFeet(area, area_type)} Sq.Ft`}
                     </span>
                   </div>
                 </div>
@@ -208,7 +208,7 @@ async function PropertyDetail({ params: { id } }: PropertyDetailProps) {
                 </h2>
               </div>
 
-              {/* {pdfUrl && (
+              {pdfUrl && (
                 <Link
                   href={`${BASE_URL}${pdfUrl}`}
                   target="_blank"
@@ -223,7 +223,7 @@ async function PropertyDetail({ params: { id } }: PropertyDetailProps) {
                     height={17}
                   />
                 </Link>
-              )} */}
+              )}
             </div>
           </div>
 

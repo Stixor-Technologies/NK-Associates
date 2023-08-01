@@ -48,7 +48,9 @@ export interface Property {
     address: string;
     city: string;
     description: string;
-    property_pdf: string;
+    property_pdf: {
+      data: MediaAttributes;
+    };
   };
   id: number;
 }
