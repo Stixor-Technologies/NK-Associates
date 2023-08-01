@@ -1,7 +1,7 @@
 import React from "react";
 import Properties from "../../components/properties/properties";
 
-const Home = () => {
+const PropertyPage = () => {
   return (
     <section className="min-h-screen flex flex-col bg-right-top bg-no-repeat md:bg-nk-bg">
       <div className="container mx-auto px-4 py-6 flex-1 flex flex-col md:py-16">
@@ -19,4 +19,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default PropertyPage;
