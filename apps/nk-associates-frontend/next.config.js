@@ -1,8 +1,20 @@
 /** @type {import('next').NextConfig} */
+
 const nextConfig = {
-  images: {
-    domains: ["127.0.0.1", "strapi-dev.nkgroupofcompanies.com"],
-  },
+  reactStrictMode: false,
+  swcMinify: true,
+  output: "standalone",
 };
 
-module.exports = nextConfig;
+module.exports = {
+  ...nextConfig,
+  images: {
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "strapi-dev.nkgroupofcompanies.com",
+        pathname: "/uploads/**",
+      },
+    ],
+  },
+};

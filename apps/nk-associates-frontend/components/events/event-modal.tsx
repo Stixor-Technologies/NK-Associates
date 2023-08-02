@@ -2,7 +2,7 @@
 import { FreeMode, Navigation, Pagination, Thumbs } from "swiper/modules";
 import { Events } from "../../utils/types/types";
 import { ModalOptions, ModalInterface, Modal } from "flowbite";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useMemo, useRef, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import LocationMarker from "../../public/assets/icons/location-bar.svg";
 import Image from "next/image";
@@ -22,7 +22,8 @@ interface ModalProps {
 }
 
 const EventModal: React.FC<ModalProps> = ({ open, onClose, eventData }) => {
-  const modalElement: HTMLElement | null = document.querySelector("#modalEl");
+  const modalElement = useRef<HTMLDivElement | null>(null);
+
   const modalOptions: ModalOptions = {
     placement: "center",
     backdrop: "dynamic",
@@ -32,19 +33,36 @@ const EventModal: React.FC<ModalProps> = ({ open, onClose, eventData }) => {
       onClose();
     },
   };
-  const modal: ModalInterface = new Modal(modalElement, modalOptions);
+
   const [thumbsSwiper, setThumbsSwiper] = useState(null);
   const [mainSwiper, setMainSwiper] = useState(null);
 
+  const modal = useMemo(() => {
+    if (!modalElement.current) {
+      return null;
+    }
+    const modalOptions: ModalOptions = {
+      placement: "center",
+      backdrop: "dynamic",
+      backdropClasses: "bg-gray-900 bg-opacity-70 fixed inset-0 z-40",
+      closable: true,
+      onHide: () => {
+        onClose();
+      },
+    };
+
+    return new Modal(modalElement.current, modalOptions);
+  }, [onClose]);
+
   useEffect(() => {
-    if (!modalElement) {
+    if (!modalElement.current || !modal) {
       return;
     }
     if (open) {
       modal.show();
     } else {
       onClose();
-      modal.hide();
+      modal?.hide();
 
       if (mainSwiper) {
         mainSwiper.slideTo(0);
@@ -53,11 +71,11 @@ const EventModal: React.FC<ModalProps> = ({ open, onClose, eventData }) => {
         thumbsSwiper.slideTo(0);
       }
     }
-  }, [open]);
+  }, [mainSwiper, modal, onClose, open, thumbsSwiper]);
 
   return (
     <div
-      id="modalEl"
+      ref={modalElement}
       tabIndex={-1}
       aria-hidden="true"
       className="fixed inset-0 z-50 hidden w-full overflow-y-auto overflow-x-hidden p-4 md:h-full"
