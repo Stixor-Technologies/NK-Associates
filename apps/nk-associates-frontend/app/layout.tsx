@@ -1,8 +1,9 @@
 import "./globals.css";
 import type { Metadata } from "next";
 import localFont from "next/font/local";
-import Navbar from "../components/navbar/navbar";
+import Navbar from "../components/Navigation/navbar";
 import Footer from "../components/footer/footer";
+import Navigation from "../components/Navigation/navigation";
 
 const metropolisRegular = localFont({
   src: "./assets/fonts/Metropolis-Regular.otf",
@@ -34,7 +35,6 @@ const metropolisMedium = localFont({
   variable: "--font-metroplis-medium",
 });
 
-
 const metropolisExtraLight = localFont({
   src: "./assets/fonts/Metropolis-ExtraLight.otf",
   variable: "--font-metroplis-extraLight",
@@ -60,7 +60,7 @@ export default function RootLayout({
       <body
         className={`${metropolisRegular.variable} ${metropolisMedium.variable} ${metropolisSemiBold.variable} ${metropolisBold.variable} ${metropolisExtraBold.variable} ${metropolisLight.variable} ${metropolisExtraLight.variable} ${metropolisThin.variable} bg-nk-background font-metropolis`}
       >
-        <Navbar />
+        <Navigation />
         <main className="mt-24">{children}</main>
         <Footer />
       </body>

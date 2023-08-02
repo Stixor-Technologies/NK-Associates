@@ -44,55 +44,55 @@ const Hamburger = forwardRef<HTMLButtonElement, HamburgerProps>(
       return window.matchMedia("(hover: none)").matches;
     };
 
-    const handleMouseEnterBurg = () => {
-      if (isTouchDevice()) return;
+    // const handleMouseEnterBurg = () => {
+    //   if (isTouchDevice()) return;
 
-      setIsHover(true);
-      if (!isMenuOpen) {
-        gsap.to(menuHoverRef.current, {
-          scale: 1,
-          opacity: 0.6,
-          duration: 0.75,
-          ease: "elastic.out(1, 0.75)",
-        });
-      }
-    };
+    //   setIsHover(true);
+    //   if (!isMenuOpen) {
+    //     gsap.to(menuHoverRef.current, {
+    //       scale: 1,
+    //       opacity: 0.6,
+    //       duration: 0.75,
+    //       ease: "elastic.out(1, 0.75)",
+    //     });
+    //   }
+    // };
 
-    const handleMouseLeaveBurg = () => {
-      if (isTouchDevice()) return;
+    // const handleMouseLeaveBurg = () => {
+    //   if (isTouchDevice()) return;
 
-      setIsHover(false);
-      if (!isMenuOpen) {
-        gsap.to(menuHoverRef.current, {
-          scale: 0,
-          opacity: 0,
-          duration: 0.75,
-          ease: "power3.out",
-        });
-      }
+    //   setIsHover(false);
+    //   if (!isMenuOpen) {
+    //     gsap.to(menuHoverRef.current, {
+    //       scale: 0,
+    //       opacity: 0,
+    //       duration: 0.75,
+    //       ease: "power3.out",
+    //     });
+    //   }
 
-      gsap.to(localButtonRef.current, {
-        x: 0,
-        y: 0,
-        duration: 0.3,
-      });
-    };
+    //   gsap.to(localButtonRef.current, {
+    //     x: 0,
+    //     y: 0,
+    //     duration: 0.3,
+    //   });
+    // };
 
-    const handleMouseMoveBurg = (event: MouseEvent) => {
-      if (isTouchDevice()) return;
+    // const handleMouseMoveBurg = (event: MouseEvent) => {
+    //   if (isTouchDevice()) return;
 
-      const { clientX, clientY } = event;
-      const scaleFactor = 0.3;
+    //   const { clientX, clientY } = event;
+    //   const scaleFactor = 0.3;
 
-      if (!localButtonRef?.current) return;
+    //   if (!localButtonRef?.current) return;
 
-      const rect = localButtonRef.current.getBoundingClientRect();
-      gsap.to(localButtonRef.current, {
-        x: (clientX - rect.x - 5) * scaleFactor,
-        y: (clientY - rect.y - 5) * scaleFactor,
-        duration: 0.3,
-      });
-    };
+    //   const rect = localButtonRef.current.getBoundingClientRect();
+    //   gsap.to(localButtonRef.current, {
+    //     x: (clientX - rect.x - 5) * scaleFactor,
+    //     y: (clientY - rect.y - 5) * scaleFactor,
+    //     duration: 0.3,
+    //   });
+    // };
 
     useEffect(() => {
       isMenuOpen ? tl.current?.play() : tl.current?.reverse();
@@ -123,22 +123,27 @@ const Hamburger = forwardRef<HTMLButtonElement, HamburgerProps>(
       // timeline for menu button animation
       tl.current = gsap.timeline({ paused: true });
       tl.current
-        .to(menuTopRef.current, { y: "-2px", duration: 0.2 }, "initial")
-        .to(menuBottomRef.current, { y: "2px", duration: 0.2 }, "initial")
+        .to(menuTopRef.current, { y: "10px", duration: 0.4 }, "initial")
+        .to(menuBottomRef.current, { y: "10px", duration: 0.4 }, "initial")
         .to(
           menuMidRef.current,
-          { scale: 0.1, transformOrigin: "50% 50%", duration: 0.2 },
+          { scale: 0.01, transformOrigin: "50% 50%", duration: 0.3 },
+          0
+        )
+        .to(
+          menuBottomRef.current,
+          { attr: { width: 54.8962 }, duration: 0.2 },
           "initial"
         )
-        .to(menuTopRef.current, { y: 7, duration: 0.2 }, "rotate")
-        .to(menuBottomRef.current, { y: -7, duration: 0.2 }, "rotate")
+        // .to(menuTopRef.current, { y: 7, duration: 0.2 }, "rotate")
+        // .to(menuBottomRef.current, { y: -7, duration: 0.2 }, "rotate")
         .to(
           menuTopRef.current,
           {
             rotationZ: 45,
             transformOrigin: "50% 50%",
-            scale: 0.8,
-            duration: 0.2,
+            scale: 1,
+            duration: 0.5,
           },
           "rotate"
         )
@@ -147,11 +152,13 @@ const Hamburger = forwardRef<HTMLButtonElement, HamburgerProps>(
           {
             rotationZ: -45,
             transformOrigin: "50% 50%",
-            scale: 0.8,
-            duration: 0.2,
+            scale: 1,
+            duration: 0.5,
           },
           "rotate"
-        );
+        )
+        .to(menuTopRef.current, { fill: "white", duration: 1 }, 0)
+        .to(menuBottomRef.current, { fill: "white", duration: 1 }, 0);
     }, []);
 
     return (
@@ -161,20 +168,16 @@ const Hamburger = forwardRef<HTMLButtonElement, HamburgerProps>(
         onClick={() => {
           setIsMenuOpen(!isMenuOpen);
         }}
-        onMouseEnter={handleMouseEnterBurg}
-        onMouseLeave={handleMouseLeaveBurg}
-        onMouseMove={handleMouseMoveBurg}
+        // onMouseEnter={handleMouseEnterBurg}
+        // onMouseLeave={handleMouseLeaveBurg}
+        // onMouseMove={handleMouseMoveBurg}
         ref={assignRefs(
           localButtonRef,
           menuButtonRef as Ref<HTMLButtonElement>
         )}
       >
         {" "}
-        <div
-          ref={menuHoverRef}
-          className="absolute left-1/2 top-1/2 -z-10 h-[150%] w-[150%] -translate-x-1/2 
-              -translate-y-1/2 scale-0 transform rounded-full bg-red-500 opacity-60"
-        />
+        <div />
         <svg
           width="80"
           height="50"
