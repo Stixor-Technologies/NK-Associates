@@ -3,9 +3,6 @@ import Image from "next/image";
 import Job from "../../../nk-associates-frontend/app/assets/images/job-application.png";
 import LinkButton from "../../components/button/link-button";
 import JobList from "../../components/jobcard/job-list";
-import DropDown from "../../components/jobcard/dropdown";
-
-
 
 const page = () => {
 	return (
@@ -86,8 +83,6 @@ const page = () => {
 			</div>
 
 			{/* Working here */}
-			
-			<DropDown />
 			<JobList />
 			
 			<div className="my-8">
