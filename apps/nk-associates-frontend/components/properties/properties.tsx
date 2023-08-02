@@ -1,18 +1,20 @@
 "use client";
 import React, { useState, useEffect, useCallback, useRef } from "react";
 import Image from "next/image";
-import { GoogleMap, Marker, useJsApiLoader } from "@react-google-maps/api";
+import { GoogleMap, Marker, useJsApiLoader, InfoWindow, OverlayView } from "@react-google-maps/api";
 import PropertyList from "./property-list";
 import PropertyMap from "./map-view-list";
 import Spinner from "../spinner";
 import InfiniteScroll from "react-infinite-scroll-component";
-import { getGridProperties } from "../../utils/api-calls";
+import { getGridProperties, getMapProperties } from "../../utils/api-calls";
 import { Property } from "../../utils/types/types";
 import { MAP_KEY } from "../../utils/constants";
 import Map_Btn from "../../public/assets/icons/map-list-icon.svg";
 import List_Icon from "../../public/assets/icons/list-icon.svg";
 
 const libraries = ["places"];
+
+//   `${BASE_URL}/api/properties?fields[0]=latitude&fields[1]=longitude&filters[latitude][$between]=33.163800244565024&filters[latitude][$between]=34.003526069126345&filters[longitude][$between]=72.54161586642486&filters[longitude][$between]=73.55235805392486&sort[1]=id`
 
 const center = {
   lat: 33.58468464794478,
@@ -21,11 +23,15 @@ const center = {
 const Properties = () => {
   const [isList, setIsList] = useState<boolean>(true);
   const [gridProperties, setGridProperties] = useState<Property[]>([]);
-  const [mapProperties, setMapProperties] = useState<Property[]>([]);
-
   const [total, setTotal] = useState<number | null>(null);
+ 
+  const [mapProperties, setMapProperties] = useState<Property[]>([]);
   const [bounds, setBounds] = useState(null);
   const [isLoading, setIsLoading] = useState<boolean>(true);
+  const [selectedProperty, setSelectedProperty] = useState(null);
+  const [mapLoaded, setMapLoaded] = useState(false);
+
+
 
   const mapRef = useRef<google.maps.Map | null>(null);
 
@@ -45,19 +51,31 @@ const Properties = () => {
 
   const onMapLoad = useCallback((map) => {
     mapRef.current = map;
-    console.log(mapRef.current);
-    const bounds = new google.maps.LatLngBounds();
-    // console.log(bounds.toJSON());
+    setMapLoaded(true)
+  
   }, []);
 
-  const onBoundsChanged = useCallback(() => {
-    console.log(mapRef.current);
+  const onBoundsChanged = useCallback(async () => {
     const map = mapRef.current;
-    if (map) {
+    if (map && mapLoaded) {
       const newBounds = map.getBounds();
-      console.log(newBounds.toJSON());
+      const bounds = newBounds.toJSON();
+      setBounds(bounds);  // update mapBounds state
+      const resp = await getMapProperties(
+        bounds.south,
+        bounds.north,
+        bounds.west,
+        bounds.east
+      );
+      if (resp?.data) {
+        // console.log(resp?.data);
+        setMapProperties(resp?.data);
+        // setMapProperties((prevProperties) => [...prevProperties, ...resp.data]);
+      }
+
+      // console.log(newBounds.toJSON());
     }
-  }, []);
+  }, [mapLoaded]);
 
   const mapOptions = {
     disableDefaultUI: false,
@@ -67,23 +85,52 @@ const Properties = () => {
     fullscreenControl: false,
     keyboardShortcuts: false,
     scrollwheel: true,
+    // minZoom: 10,
+    // maxZoom: 40,
+    // restriction: {
+    //   latLngBounds: {
+    //     north: 37.1330309108,
+    //     south: 23.6919650335,
+    //     east: 77.8374507995,
+    //     west: 60.8742484882
+    //   },
+    //   strictBounds: true,
+    // },
   };
+
+  const getPixelPositionOffset = (width, height) => ({
+    x: -(width / 2),
+    y: -(height + 40),
+  });
 
   useEffect(() => {
     if (isList && gridProperties.length === 0) {
-      console.log("Fetch Grid Data");
+      // console.log("Fetch Grid Data");
       fetchGridData();
     } else if (!isList && bounds && mapProperties.length === 0) {
-      console.log("fetch Map Data");
+      const fetchMapData = async () => {
+        const resp = await getMapProperties(
+            bounds.south,
+            bounds.north,
+            bounds.west,
+            bounds.east
+        );
+        if (resp?.data) {
+            setMapProperties(resp?.data);
+        }
+    }
+    fetchMapData();
     }
 
-    if (isLoaded && mapRef.current) {
-      const bounds = new google.maps.LatLngBounds();
-      mapRef.current.fitBounds(bounds);
-    }
+    // if (isLoaded && mapRef.current) {
+    //   const bounds = new google.maps.LatLngBounds();
+    //   mapRef.current.fitBounds(bounds);
+    // }
 
     // fetchGridData();
   }, [isList, bounds]);
+
+  console.log(mapProperties);
 
   return (
     <>
@@ -93,7 +140,11 @@ const Properties = () => {
             ? "bg-nk-gradient-red-one bg-gradient-to-b to-nk-gradient-red-two"
             : "bg-nk-black"
         }`}
-        onClick={() => setIsList(!isList)}
+        onClick={() => {
+          console.log("map", mapProperties)
+          console.log("bounds", bounds)
+          setIsList(!isList)
+        }}
       >
         <span>{`${isList ? "Show Map" : "Show List"}`}</span>
         <Image
@@ -130,24 +181,53 @@ const Properties = () => {
         </>
       ) : (
         // <PropertyMap />
-        <div className="relative h-screen py-6">
-          <GoogleMap
-            // ref={mapRef}
-            // onLoad={(map) => {
-            //   mapRef.current = map;
-            // }}
-            zoom={10}
-            center={center}
-            onLoad={onMapLoad}
-            options={mapOptions}
-            mapContainerClassName="absolute top-0 left-0 h-full w-full my-6"
-            onBoundsChanged={onBoundsChanged}
-          >
-            <Marker position={center} />
+        <GoogleMap
+          zoom={10}
+          center={center}
+          onLoad={onMapLoad}
+          options={mapOptions}
+          mapContainerClassName="h-screen w-full mt-6"
+          onBoundsChanged={onBoundsChanged}
+        >
+          {mapProperties.map((location, index) => {
+            const position = {
+              lat: location.attributes.latitude,
+              lng: location.attributes.longitude,
+            };
+            return (
+              <Marker
+                key={index}
+                position={position}
+                icon={{
+                  url: "assets/icons/area-marker.svg",
+                  scaledSize: new window.google.maps.Size(30, 30),
+                }}
+                onClick={() => setSelectedProperty(location)}
+              />
+            );
+          })}
 
-            {/* <PropertyMap properties={mapProperties} /> */}
-          </GoogleMap>
-        </div>
+          {selectedProperty && (
+            <InfoWindow
+              position={{
+                lat: selectedProperty.attributes.latitude,
+                lng: selectedProperty.attributes.longitude,
+              }}
+              onCloseClick={() => setSelectedProperty(null)}
+            >
+              <div className=" bg-slate-500">
+                {/* Replace this with the content you want to display. */}
+                <h2>Property Information</h2>
+                <h2>Property Information</h2>
+                <h2>Property Information</h2>
+               
+
+                <p>{selectedProperty.name}</p>
+              </div>
+            </InfoWindow>
+            
+          )}
+        </GoogleMap>
       )}
     </>
   );

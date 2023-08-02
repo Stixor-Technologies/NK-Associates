@@ -12,11 +12,11 @@ export const getGridProperties = async (start: number, limit = 12) => {
 };
 
 
-export const getMapProperties = async () => {
+export const getMapProperties = async (southLat, northLat, westLng, eastLng) => {
   try {
     const resp = await fetch(
 
-      `${BASE_URL}/api/properties?fields[0]=latitude&fields[1]=longitude&filters[latitude][$between]=33.163800244565024&filters[latitude][$between]=34.003526069126345&filters[longitude][$between]=72.54161586642486&filters[longitude][$between]=73.55235805392486&sort[1]=id`
+      `${BASE_URL}/api/properties?fields[0]=latitude&fields[1]=longitude&filters[latitude][$between]=${southLat}&filters[latitude][$between]=${northLat}&filters[longitude][$between]=${westLng}&filters[longitude][$between]=${eastLng}&sort[1]=id`
     );
     const data = await resp.json();
     return data;
