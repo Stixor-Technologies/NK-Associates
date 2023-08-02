@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { Formik, Field, Form } from "formik";
 import Input from "./input";
 import { ContactFormSchema } from "../../utils/formik-schema";
+import { BASE_URL } from "../../utils/constants";
 import Spinner from "../spinner";
 import Toast from "./toast";
 import Image from "next/image";
@@ -41,7 +42,9 @@ const ContactForm = () => {
   const onSubmit = async (values) => {
     setLoading(true);
     try {
-      const res = await fetch("api/contact", {
+      // const res = await fetch("api/contact", {
+        const res = await fetch(`${BASE_URL}/api/send-email`, {
+
         headers: {
           "Content-Type": "application/json",
         },
@@ -56,7 +59,7 @@ const ContactForm = () => {
       });
 
       const data = await res.json();
-      setToastMessage(data?.message);
+      setToastMessage("sent successfully");
       setShowToast(true);
 
       setTimeout(() => {
@@ -65,9 +68,9 @@ const ContactForm = () => {
       console.log(data?.message);
     } catch (error) {
       console.log(error)
-      setToastMessage(`Error: ${error?.message}`);
+      setToastMessage(`Error: "errror"`);
       setShowToast(true);
-      setTimeout(() => setShowToast(false), 2000);
+      setTimeout(() => setShowToast(false), 22000);
       console.log("Error sending message");
     } finally {
       setLoading(false);
