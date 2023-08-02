@@ -1,23 +1,10 @@
+"use client";
+import { useEffect, useState } from "react";
 import EventCard from "../../components/events/EventCard";
 import Carousel from "../../components/events/carousel";
 import MobileCarousel from "../../components/events/mobile-carousel";
 import { BASE_URL } from "../../utils/constants";
 import { Events } from "../../utils/types/types";
-
-async function FetchData() {
-  try {
-    const response = await fetch(`${BASE_URL}/api/events?populate=*`, {
-      cache: "no-store",
-    });
-    if (!response.ok) {
-      throw new Error("Network response was not OK");
-    }
-    const data = await response.json();
-    return data?.data;
-  } catch (error) {
-    console.error(error);
-  }
-}
 
 const collectImages = (data: Events[]) => {
   let urls: string[] = [];
@@ -30,9 +17,29 @@ const collectImages = (data: Events[]) => {
   return urls;
 };
 
-export default async function Events() {
-  const data = await FetchData();
+function Events() {
+  const [data, setData] = useState();
   const images = collectImages(data);
+
+  async function FetchData() {
+    try {
+      const response = await fetch(`${BASE_URL}/api/events?populate=*`, {
+        cache: "no-store",
+      });
+      if (!response.ok) {
+        throw new Error("Network response was not OK");
+      }
+      const data = await response.json();
+      setData(data?.data);
+      return data?.data;
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
+  useEffect(() => {
+    FetchData();
+  });
 
   return (
     <div className="flex w-full flex-1 overflow-auto">
@@ -81,3 +88,4 @@ export default async function Events() {
     </div>
   );
 }
+export default Events;
