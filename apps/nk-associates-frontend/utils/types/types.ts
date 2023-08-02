@@ -27,7 +27,7 @@ export interface ImageData {
   };
 }
 
-export interface Properties {
+export interface Property {
   attributes: {
     area: number;
     area_type: string;
@@ -42,6 +42,8 @@ export interface Properties {
     purpose: string;
     title: string;
     type: string;
+    address: string;
+    city: string;
   };
   id: number;
 }
