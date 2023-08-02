@@ -42,8 +42,8 @@ const ContactForm = () => {
   const onSubmit = async (values) => {
     setLoading(true);
     try {
-      // const res = await fetch("api/contact", {
-        const res = await fetch(`${BASE_URL}/api/send-email`, {
+      const res = await fetch("api/contact", {
+        // const res = await fetch(`${BASE_URL}/api/send-email`, {
 
         headers: {
           "Content-Type": "application/json",
@@ -59,7 +59,9 @@ const ContactForm = () => {
       });
 
       const data = await res.json();
-      setToastMessage("sent successfully");
+      console.log(data)
+      // setToastMessage("sent successfully");
+      setToastMessage(data?.message);
       setShowToast(true);
 
       setTimeout(() => {
@@ -68,7 +70,8 @@ const ContactForm = () => {
       console.log(data?.message);
     } catch (error) {
       console.log(error)
-      setToastMessage(`Error: "errror"`);
+      setToastMessage(`Error: ${error?.message}`);
+      // setToastMessage(`Error: "errror"`);
       setShowToast(true);
       setTimeout(() => setShowToast(false), 22000);
       console.log("Error sending message");
