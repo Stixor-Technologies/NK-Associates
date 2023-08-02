@@ -30,7 +30,7 @@ const collectImages = (data: Events[]) => {
   return urls;
 };
 
-export default async function Home() {
+export default async function Events() {
   const data = await FetchData();
   const images = collectImages(data);
 
