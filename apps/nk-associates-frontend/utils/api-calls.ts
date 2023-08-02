@@ -38,3 +38,58 @@ export async function getProjects({
     throw error;
   }
 }
+
+
+
+export const getJobs = async (departmentName, location, ) => {
+  try {
+    let apiUrl = `${BASE_URL}/api/jobs?populate=*`;
+
+    if (departmentName) {
+      apiUrl += `&filters[department][name]=${encodeURIComponent(departmentName)}`;
+    }
+
+    if (location) {
+      apiUrl += `&filters[location]=${encodeURIComponent(location)}`;
+    }
+
+    const resp = await fetch(apiUrl);
+    const data = await resp.json();
+    return data;
+  } catch (error) {
+    console.error("There was an error getting the Property List", error);
+  }
+};
+
+export const getLocations = async () => {
+  try {
+    let apiUrl = `${BASE_URL}/api/jobs?populate=*`;
+    const resp = await fetch(apiUrl);
+    const data = await resp.json();
+
+    const locations = data.data.map(job => job.attributes.location);
+    const uniqueLocationsSet = new Set(locations);
+    const uniqueLocationsArray = Array.from(uniqueLocationsSet);
+
+    return uniqueLocationsArray;
+  } catch (error) {
+    console.error("There was an error getting locations", error);
+  }
+};
+
+
+export const getDepartments = async () => {
+  try {
+    let apiUrl = `${BASE_URL}/api/jobs?populate=*`;
+    const resp = await fetch(apiUrl);
+    const data = await resp.json();
+
+    const departments = data.data.map(job => job.attributes.department.data.attributes.name);
+    const uniqueDepartmentsSet = new Set(departments); 
+    const uniqueDepartmentsArray = Array.from(uniqueDepartmentsSet);
+    return uniqueDepartmentsArray;
+    
+  } catch (error) {
+    console.error("There was an error getting departments", error);
+  }
+};

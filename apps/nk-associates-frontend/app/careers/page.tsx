@@ -1,8 +1,11 @@
 import React from "react";
-import Link from "next/link";
 import Image from "next/image";
 import Job from "../../../nk-associates-frontend/app/assets/images/job-application.png";
 import LinkButton from "../../components/button/link-button";
+import JobList from "../../components/jobcard/job-list";
+import DropDown from "../../components/jobcard/dropdown";
+
+
 
 const page = () => {
 	return (
@@ -61,7 +64,7 @@ const page = () => {
 						current job openings. Prepare your application by meticulously
 						curating your updated resume/CV, a compelling cover letter, and any
 						pertinent certifications or portfolio samples. Submit your
-						application through the designated "Apply Now" button or link
+						application through the designated ``Apply`` Now button or link
 						provided, ensuring that you provide accurate and comprehensive
 						information. Our dedicated HR team will thoughtfully review your
 						application, and if your qualifications align with our requirements,
@@ -81,30 +84,24 @@ const page = () => {
 					</div>
 				</div>
 			</div>
-			<div className="rounded-md bg-white">
-				<div className="m-8 grid grid-cols-4 gap-3">
-					<div className="rounded-full border-2 border-nk-gray p-3 text-nk-gray ">
-						Temp dropdown
-					</div>
-					<div className="rounded-full border-2 border-nk-gray p-3 text-nk-gray ">
-						Temp dropdown
-					</div>
-				</div>
-				<div></div>
-			</div>
 
+			{/* Working here */}
+			
+			<DropDown />
+			<JobList />
+			
 			<div className="my-8">
 				<h1 className="my-8 text-center font-metropolis-bold text-3xl text-nk-dark-gray lg:text-4xl ">
 					Don’t see the right role for you?
 				</h1>
 				<div className="hidden text-center font-metropolis-extralight text-nk-dark-gray lg:block lg:text-2xl">
 					Unable to spot the perfect role? Feel free to send us your resume
-					regardless. We'll securely store it and alert you as soon as fitting
+					regardless. We`ll securely store it and alert you as soon as fitting
 					opportunities surface in the future.
 				</div>
 				<div className="text-center font-metropolis-extralight text-base text-nk-dark-gray lg:hidden ">
-					If you don't find the ideal role, feel free to submit your resume.
-					We'll keep it on file and reach out if suitable opportunities arise in
+					If you don`t find the ideal role, feel free to submit your resume.
+					We`ll keep it on file and reach out if suitable opportunities arise in
 					the future.
 				</div>
 				<div className="flex justify-center">

@@ -63,3 +63,26 @@ export interface Project {
     Category: string;
   };
 }
+
+
+export interface Job {
+  attributes: {
+    title: string;
+    description: string;
+    responsibilities: string;
+    qualification: string;
+    positions: number;
+    location: string;
+    start: string;
+    end: string;
+    createdAt: string;
+    updatedAt: string;
+    publishedAt: string;
+    department: {
+      id: number; 
+      attributes: {
+        name: string;
+      }
+    }
+  };
+}
