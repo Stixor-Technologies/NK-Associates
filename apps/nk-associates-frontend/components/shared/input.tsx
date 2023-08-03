@@ -15,19 +15,19 @@ const Input = ({
         className="font-metropolis-light capitalize text-nk-black md:text-base"
       >
         {label}
-        <sup className="text-nk-black">*</sup>
+        <sup className="font-metropolis-bold text-sm text-nk-black">*</sup>
       </label>
       <Field
         name={name}
-        className={`mt-1 w-full rounded-lg px-4 py-4 placeholder-nk-gray shadow-md placeholder:font-metropolis-thin placeholder:text-base text-nk-black font-metropolis-light border focus:outline-none ${
+        className={`mt-1 h-[3.625rem] w-full rounded-lg border px-4 py-4 font-metropolis-light text-nk-black placeholder-nk-gray shadow-md placeholder:font-metropolis-thin placeholder:text-base focus:outline-none ${
           isTouched && hasError
             ? "border-nk-red"
             : " focus:border-nk-gray focus:ring-nk-gray"
         }`}
         placeholder={placeholder}
       />
-      {isTouched&& hasError && (
-        <p className="text-sm text-nk-red italic mt-2">{errorMessage}</p>
+      {isTouched && hasError && (
+        <p className="mt-2 text-sm italic text-nk-red">{errorMessage}</p>
       )}
     </div>
   );

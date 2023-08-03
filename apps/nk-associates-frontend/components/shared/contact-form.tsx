@@ -32,7 +32,7 @@ const initialValues = {
   message: "",
 };
 
-const ContactForm = () => {
+const ContactForm = ({ categories }) => {
   const [loading, setLoading] = useState<boolean>(false);
   const [showToast, setShowToast] = useState<boolean>(false);
   const [toastMessage, setToastMessage] = useState<string>("");
@@ -59,7 +59,7 @@ const ContactForm = () => {
       });
 
       const data = await res.json();
-      console.log(data)
+      console.log(data);
       // setToastMessage("sent successfully");
       setToastMessage(data?.message);
       setShowToast(true);
@@ -69,7 +69,7 @@ const ContactForm = () => {
       }, 2000);
       console.log(data?.message);
     } catch (error) {
-      console.log(error)
+      console.log(error);
       setToastMessage(`Error: ${error?.message}`);
       // setToastMessage(`Error: "errror"`);
       setShowToast(true);
@@ -89,7 +89,7 @@ const ContactForm = () => {
       {({ errors, touched }) => (
         <>
           <div className="rounded-3xl bg-nk-light-gray px-6 py-9 md:px-12 md:py-14">
-          {showToast && <Toast message={toastMessage}/> }
+            {showToast && <Toast message={toastMessage} />}
             <h4 className="text-center font-metropolis-bold text-[1.75rem] text-nk-black md:text-5xl">
               Contact Us
             </h4>
@@ -108,17 +108,31 @@ const ContactForm = () => {
                           {fieldName}
                         </label>
                         <Field
+                          as="select"
                           name={fieldName}
-                          className={`mt-1 w-full rounded-lg border px-4 py-4  placeholder-nk-gray shadow-md placeholder:font-metropolis-thin placeholder:text-base text-nk-black font-metropolis-light focus:outline-none ${
-                            touched.category && errors.category
+                          className={`mt-1 h-[3.625rem] w-full rounded-lg border px-4 py-4 font-metropolis-light text-nk-black placeholder-nk-gray shadow-md placeholder:font-metropolis-thin placeholder:text-base focus:outline-none ${
+                            touched.message && errors.message
                               ? "border-nk-red"
                               : " focus:border-nk-gray focus:ring-nk-gray"
                           }`}
-                          placeholder="Select Category"
-                        />
+                        >
+                          <option value="" disabled>
+                            Select Category
+                          </option>
+                          {categories.map((category, index) => {
+                            return (
+                              <option
+                                key={index}
+                                value={`${category.attributes.value}`}
+                              >
+                                {category.attributes.category}
+                              </option>
+                            );
+                          })}
+                        </Field>
 
                         {touched.category && errors.category && (
-                          <p className="text-sm italic text-nk-red mt-2">
+                          <p className="mt-2 text-sm italic text-nk-red">
                             {errors.category as string}
                           </p>
                         )}
@@ -139,7 +153,7 @@ const ContactForm = () => {
                         <Field
                           as="textarea"
                           name={fieldName}
-                          className={`mt-1 w-full rounded-lg border px-4 py-4 placeholder-nk-gray shadow-md placeholder:font-metropolis-thin placeholder:text-base focus:outline-none text-nk-black font-metropolis-light ${
+                          className={`mt-1 w-full rounded-lg border px-4 py-4 font-metropolis-light text-nk-black placeholder-nk-gray shadow-md placeholder:font-metropolis-thin placeholder:text-base focus:outline-none ${
                             touched.message && errors.message
                               ? "border-nk-red"
                               : " focus:border-nk-gray focus:ring-nk-gray"
@@ -181,46 +195,6 @@ const ContactForm = () => {
               </button>
             </Form>
           </div>
-          {/* <div className="mt-5">
-            <div>
-              <Image
-                src={Area_Marker}
-                width={24}
-                height={35}
-                alt="address-marker"
-              />
-              <h5 className="font-metropolis-medium md:text-xl">Our Address</h5>
-              <span className="">
-                Heights 5, Square Commercial Bahria Town Phase 7 Rawalpindi
-              </span>
-              <span>
-                Plaza No 54, Street No 26-A, Sector C, Service Lane, DHA II,
-                Islamabad
-              </span>
-              <span>
-                Burj ul Sadiq Plaza, Office # 7,8,9 Hub Commercial, Opp. bahria
-                Town Head Office Phase 8 Rawalpindi
-              </span>
-            </div>
-
-            <div>
-              <Image src={Envelope} width={24} height={35} alt="email-icon" />
-              <h5>Email Us</h5>
-              <span>testemail10@gmail.com</span>
-              <span>nktestemail12@gmail.com</span>
-              <span>testemail321@gmail.com</span>
-              <span></span>
-            </div>
-
-            <div>
-              <Image src={Envelope} width={24} height={35} alt="email-icon" />
-              <h5>Email Us</h5>
-              <span> +92-51-111099111</span>
-              <span> +92-51-111099111</span>
-              <span> +92-51-111099111</span>
-              <span></span>
-            </div>
-          </div> */}
         </>
       )}
     </Formik>

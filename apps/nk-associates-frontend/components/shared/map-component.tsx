@@ -46,7 +46,7 @@ const MapComponent: FC<IProps> = ({ locations }) => {
     }
   }, [isLoaded, allLocations]);
   return (
-    <div className="relative flex items-center my-3 h-96 w-full sm:pb-1/2">
+    <div className="relative my-3 flex h-96 w-full items-center sm:pb-1/2">
       {isLoaded ? (
         <GoogleMap
           id="google-map"
@@ -63,8 +63,8 @@ const MapComponent: FC<IProps> = ({ locations }) => {
           ))}
         </GoogleMap>
       ) : (
-        <div className="absolute top-0 left-0 h-full w-full flex items-center">
-        <Spinner />
+        <div className="absolute left-0 top-0 flex h-full w-full items-center">
+          <Spinner />
         </div>
       )}
     </div>

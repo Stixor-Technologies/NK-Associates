@@ -9,6 +9,7 @@ const nextConfig = {
 module.exports = {
   ...nextConfig,
   images: {
+    domains: ["127.0.0.1", "strapi-dev.nkgroupofcompanies.com"],
     remotePatterns: [
       {
         protocol: "https",
