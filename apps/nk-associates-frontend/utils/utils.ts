@@ -1,6 +1,5 @@
 export const convertToPakistaniNumbering = (input: number | string) => {
   let num: number = typeof input === "string" ? parseInt(input) : input;
-  console.log(typeof input);
   let res: number;
   // Nine zeros (1,00,00,000) => 1 Crore
   if (num >= 10000000) {

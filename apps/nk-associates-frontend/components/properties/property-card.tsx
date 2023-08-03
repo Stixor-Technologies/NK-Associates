@@ -17,7 +17,6 @@ const PropertyCard: FC<CardProps> = ({ property }) => {
     const id  = property?.id
   const thumbnailImage =
     property?.attributes?.image_thumbnail.data.attributes.url;
-    console.log(id)
   return (
     <div>
       <Link href={`properties/${id}`}>
