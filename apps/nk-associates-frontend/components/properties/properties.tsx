@@ -15,6 +15,7 @@ import InfiniteScroll from "react-infinite-scroll-component";
 import { getGridProperties, getMapProperties } from "../../utils/api-calls";
 import { Property } from "../../utils/types/types";
 import { MAP_KEY } from "../../utils/constants";
+import { debounce } from "lodash";
 import Map_Btn from "../../public/assets/icons/map-list-icon.svg";
 import List_Icon from "../../public/assets/icons/list-icon.svg";
 
@@ -69,12 +70,12 @@ const Properties = () => {
     mapRef.current = map;
   }, []);
 
-  const onBoundsChanged = useCallback(async () => {
+  const onBoundsChanged = debounce(async () => {
     const map = mapRef.current;
     if (map) {
       const newBounds = map.getBounds();
       const bounds = newBounds.toJSON();
-      setBounds(bounds); // update mapBounds state
+      setBounds(bounds);
       const resp = await getMapProperties(
         bounds.south,
         bounds.north,
@@ -85,8 +86,8 @@ const Properties = () => {
         setMapProperties(resp?.data);
       }
     }
-  }, []);
-
+  }, 500);
+  console.log(mapProperties);
   const mapOptions = {
     disableDefaultUI: false,
     mapTypeControl: false,
@@ -124,9 +125,32 @@ const Properties = () => {
     fetchGridData();
   }, []);
 
-  console.log(mapProperties, bounds);
+  const onMarkerClick = (location) => {
+    setSelectedProperty(location);
 
-  
+    const position = {
+      lat: location.attributes.latitude,
+      lng: location.attributes.longitude,
+    };
+
+    // Get the pixel coordinates of the marker
+    const projection = mapRef.current.getProjection();
+    const point = projection.fromLatLngToPoint(position);
+
+    // Calculate the pixel coordinates of the top-left corner of the info window
+    // assuming its size is 200x100px
+    const infoWindowPoint = new window.google.maps.Point(
+      point.x - 200 / 2, // adjust for width
+      point.y - 100 // adjust for height
+    );
+
+    // Convert back to lat/lng
+    const infoWindowPosition = projection.fromPointToLatLng(infoWindowPoint);
+
+    // Adjust map's center
+    mapRef.current.setCenter(infoWindowPosition);
+  };
+
   return (
     <>
       {/* your button code here */}
@@ -177,7 +201,6 @@ const Properties = () => {
         </>
       )}
 
-      {/* keep the map component mounted, but hide or show it based on isList */}
       {(!isList || hasMapRendered) && (
         <div className={isList ? "hidden" : "block"}>
           <GoogleMap
@@ -185,30 +208,92 @@ const Properties = () => {
             center={center}
             onLoad={(map) => {
               onMapLoad(map);
-              setHasMapRendered(true); // mark the map as rendered
+              setHasMapRendered(true);
             }}
             options={mapOptions}
             mapContainerClassName="h-screen w-full mt-6"
             onBoundsChanged={onBoundsChanged}
           >
-             {mapProperties.map((location, index) => {
-            const position = {
-              lat: location.attributes.latitude,
-              lng: location.attributes.longitude,
-            };
-            return (
-              <Marker
-                key={index}
-                position={position}
-                icon={{
-                  url: "assets/icons/area-marker.svg",
-                  scaledSize: new window.google.maps.Size(30, 30),
+            {mapProperties.map((location, index) => {
+              const position = {
+                lat: location.attributes.latitude,
+                lng: location.attributes.longitude,
+              };
+              return (
+                <Marker
+                  key={index}
+                  position={position}
+                  icon={{
+                    url: "assets/icons/area-marker.svg",
+                    scaledSize: new window.google.maps.Size(30, 30),
+                  }}
+                  // onClick={() => setSelectedProperty(location)}
+                  onClick={() => onMarkerClick(location)}
+                />
+              );
+            })}
+
+            {selectedProperty && (
+              <OverlayView
+                position={{
+                  lat: selectedProperty.attributes.latitude,
+                  lng: selectedProperty.attributes.longitude,
                 }}
-                onClick={() => setSelectedProperty(location)}
-              />
-            );
-          })}
-            {/* your marker code here */}
+                mapPaneName={OverlayView.OVERLAY_MOUSE_TARGET}
+              >
+                <div className="info-window">
+                  <button onClick={() => {
+                    console.log("first")
+                  }}>X</button>
+                  <h2>Property Information</h2>
+                  <p>{selectedProperty.attributes.latitude}</p>
+                </div>
+              </OverlayView>
+
+              // <InfoWindow
+              //   position={{
+              //     lat: selectedProperty.attributes.latitude,
+              //     lng: selectedProperty.attributes.longitude,
+              //   }}
+              //   onCloseClick={() => setSelectedProperty(null)}
+              // >
+              //   <div className=" bg-slate-500">
+              //     {/* Replace this with the content you want to display. */}
+              //     <h2>{selectedProperty.attributes.latitude}</h2>
+              //     <h2>Property Information</h2>
+              //     <h2>Property Information</h2>
+              //   </div>
+              // </InfoWindow>
+
+              // <OverlayView
+              //   position={{
+              //     lat: selectedProperty.attributes.latitude,
+              //     lng: selectedProperty.attributes.longitude,
+              //   }}
+              //   mapPaneName={OverlayView.OVERLAY_MOUSE_TARGET}
+              // >
+              //   <div style={{ backgroundColor: "white", padding: "10px" }}>
+              //     <div>Cusotom Div</div>
+              //     <button onClick={() => {
+              //       console.log("close")
+              //     }}>Close</button>
+              //   </div>
+              // </OverlayView>
+
+              //   <OverlayView
+              //   position={{
+              //     lat: selectedProperty.attributes.latitude,
+              //     lng: selectedProperty.attributes.longitude,
+              //   }}
+              //   mapPaneName={OverlayView.OVERLAY_MOUSE_TARGET}
+              //   getPixelPositionOffset={getPixelPositionOffset}
+              // >
+              //   <div className=" absolute left-4 p-8 bg-slate-800">
+              //     <h2 className="text-nk-red" >Property Information</h2>
+              //     <p>{selectedProperty.name}</p>
+              //   </div>
+              // </OverlayView>
+            )}
           </GoogleMap>
         </div>
       )}
@@ -217,4 +302,3 @@ const Properties = () => {
 };
 
 export default Properties;
-
