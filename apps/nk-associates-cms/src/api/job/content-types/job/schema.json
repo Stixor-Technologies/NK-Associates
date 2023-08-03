@@ -55,6 +55,9 @@
       "type": "string",
       "required": true,
       "minLength": 6
+    },
+    "address": {
+      "type": "text"
     }
   }
 }
