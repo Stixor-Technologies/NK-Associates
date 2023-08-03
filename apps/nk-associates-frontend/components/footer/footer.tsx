@@ -8,6 +8,7 @@ import FB from "../../public/assets/icons/facebook-icon.svg";
 import Twitter from "../../public/assets/icons/twitter-icon.svg";
 import Instagram from "../../public/assets/icons/instagram-icon.svg";
 import Linkedin from "../../public/assets/icons/linkedIn-icon.svg";
+import Snap from "../../public/assets/icons/snapchat-icon.svg";
 import YT from "../../public/assets/icons/youtube-icon.svg";
 import AppGallery from "../../public/assets/icons/app-gallery.svg";
 
@@ -128,6 +129,15 @@ const footer = () => {
                           <Image src={Linkedin} alt="LinkedIn" />
                         </Link>
                       </div>
+                      <div className="my-2 mr-4 flex h-9 w-9 items-center justify-center rounded-full bg-nk-red transition-all duration-300 hover:bg-opacity-75">
+                        <Link
+                          href="https://www.snapchat.com/"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          <Image src={Snap} alt="Snapchat" />
+                        </Link>
+                      </div>
 
                       <div className="my-2 mr-4 flex h-9 w-9 items-center justify-center rounded-full bg-nk-red transition-all duration-300 hover:bg-opacity-75">
                         <Link
@@ -213,6 +223,15 @@ const footer = () => {
                   >
                     <div className="my-1 mr-3 flex h-9 w-9 items-center justify-center rounded-full bg-nk-red transition-all duration-300 hover:bg-opacity-75">
                       <Image src={Linkedin} alt="LinkedIn" />
+                    </div>
+                  </Link>
+                  <Link
+                    href="https://www.snapchat.com/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <div className="my-1 mr-3 flex h-9 w-9 items-center justify-center rounded-full bg-nk-red transition-all duration-300 hover:bg-opacity-75">
+                      <Image src={Snap} alt="Snapchat" />
                     </div>
                   </Link>
                   <Link
