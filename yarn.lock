@@ -2084,7 +2084,7 @@
   dependencies:
     deepmerge "^4.2.2"
 
-"@sendgrid/mail@^7.7.0":
+"@sendgrid/mail@7.7.0", "@sendgrid/mail@^7.7.0":
   version "7.7.0"
   resolved "https://registry.yarnpkg.com/@sendgrid/mail/-/mail-7.7.0.tgz#aba09f5ce2e9d8ceee92284c3ea8b4a90b0e38fe"
   integrity sha512-5+nApPE9wINBvHSUxwOxkkQqM/IAAaBYoP9hw7WwgDNQPxraruVqHizeTitVtKGiqWCKm2mnjh4XGN3fvFLqaw==
@@ -2536,6 +2536,14 @@
   resolved "https://registry.yarnpkg.com/@strapi/provider-audit-logs-local/-/provider-audit-logs-local-4.11.5.tgz#3d76a5bc3fd0449d18becfb7995db2739316393f"
   integrity sha512-n15TMxf3lE0BaBA45O4h1ziRuXzNYUXMCDHmT0CQXFxiuMP/PcEvFAobGqG41ex3bu4AzQLdKKzl2pMmM1fV8w==
 
+"@strapi/provider-email-sendgrid@^4.12.1":
+  version "4.12.1"
+  resolved "https://registry.yarnpkg.com/@strapi/provider-email-sendgrid/-/provider-email-sendgrid-4.12.1.tgz#db0fdf8e3c90c34e15ffabe97657e7046cf101f6"
+  integrity sha512-/RgoFKqNQ1tykFZDzHiK3ezPFykMU1Hj8uzFpmNXNjznqEOB67pecL4nqNgcMVZ5AzxBCzY7zqXeA8/rJR1dNg==
+  dependencies:
+    "@sendgrid/mail" "7.7.0"
+    "@strapi/utils" "4.12.1"
+
 "@strapi/provider-email-sendmail@4.11.5":
   version "4.11.5"
   resolved "https://registry.yarnpkg.com/@strapi/provider-email-sendmail/-/provider-email-sendmail-4.11.5.tgz#827f5c61b4a23390b955c3861d7c82ecaa3fcd8b"
@@ -2655,6 +2663,18 @@
   version "4.11.5"
   resolved "https://registry.yarnpkg.com/@strapi/utils/-/utils-4.11.5.tgz#e406192810b0b4e5bdb897161b425b020f002186"
   integrity sha512-wKwQpxHR4tO2YWaGBM+oS9mLA1rO39vRYjbmlk8jm1WP2mhRqcnzebRE/FPxpGZLwwPS4/CB3X5VxD9V/v8LCg==
+  dependencies:
+    "@sindresorhus/slugify" "1.1.0"
+    date-fns "2.30.0"
+    http-errors "1.8.1"
+    lodash "4.17.21"
+    p-map "4.0.0"
+    yup "0.32.9"
+
+"@strapi/utils@4.12.1":
+  version "4.12.1"
+  resolved "https://registry.yarnpkg.com/@strapi/utils/-/utils-4.12.1.tgz#b571e37976edc0db576f6a273d3d424962a769d6"
+  integrity sha512-y72JjH/6JgPK2k8Wq6z0jQS391YHAWa+7eDfV8cTWgjE6oxQsCPcfwO9aX7wQo8hWpIsizvBottrJQccYbJsoA==
   dependencies:
     "@sindresorhus/slugify" "1.1.0"
     date-fns "2.30.0"

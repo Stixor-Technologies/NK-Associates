@@ -9,19 +9,18 @@ export async function POST(request: NextRequest) {
   const data = await request.json();
   console.log(data);
   const msg = {
-    to: data.email,
+    to: "fawad.mehmood@stixor.com",
     // Change this to your verified sender
     from: "fawad.mehmood@stixor.com",
+    replyTo: data.email,
     subject: "This is dummy email and sent via sendgrid",
     body: data.message,
     html: `<div>${data.message}</div>`,
   };
 
-  console.log("first");
   try {
     const res = await sendgrid.send(msg);
-    if (res[0]?.statusCode !== 202) {
-      // return NextResponse.json(res);
+    if (res[0]?.statusCode === 202) {
       return NextResponse.json({message: 'Email has been sent'});
     } else {
       return NextResponse.json({ message: "Error sending email" });
