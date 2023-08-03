@@ -1,7 +1,13 @@
 "use client";
 import React, { useState, useEffect, useCallback, useRef } from "react";
 import Image from "next/image";
-import { GoogleMap, Marker, useJsApiLoader, InfoWindow, OverlayView } from "@react-google-maps/api";
+import {
+  GoogleMap,
+  Marker,
+  useJsApiLoader,
+  InfoWindow,
+  OverlayView,
+} from "@react-google-maps/api";
 import PropertyList from "./property-list";
 import PropertyMap from "./map-view-list";
 import Spinner from "../spinner";
@@ -24,14 +30,12 @@ const Properties = () => {
   const [isList, setIsList] = useState<boolean>(true);
   const [gridProperties, setGridProperties] = useState<Property[]>([]);
   const [total, setTotal] = useState<number | null>(null);
- 
+
   const [mapProperties, setMapProperties] = useState<Property[]>([]);
   const [bounds, setBounds] = useState(null);
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [selectedProperty, setSelectedProperty] = useState(null);
-  const [mapLoaded, setMapLoaded] = useState(false);
-
-
+  const [hasMapRendered, setHasMapRendered] = useState(false);
 
   const mapRef = useRef<google.maps.Map | null>(null);
 
@@ -49,18 +53,28 @@ const Properties = () => {
     setIsLoading(false);
   };
 
+  const fetchMapData = async (bounds) => {
+    const resp = await getMapProperties(
+      bounds.south,
+      bounds.north,
+      bounds.west,
+      bounds.east
+    );
+    if (resp?.data) {
+      setMapProperties(resp?.data);
+    }
+  };
+
   const onMapLoad = useCallback((map) => {
     mapRef.current = map;
-    setMapLoaded(true)
-  
   }, []);
 
   const onBoundsChanged = useCallback(async () => {
     const map = mapRef.current;
-    if (map && mapLoaded) {
+    if (map) {
       const newBounds = map.getBounds();
       const bounds = newBounds.toJSON();
-      setBounds(bounds);  // update mapBounds state
+      setBounds(bounds); // update mapBounds state
       const resp = await getMapProperties(
         bounds.south,
         bounds.north,
@@ -68,14 +82,10 @@ const Properties = () => {
         bounds.east
       );
       if (resp?.data) {
-        // console.log(resp?.data);
         setMapProperties(resp?.data);
-        // setMapProperties((prevProperties) => [...prevProperties, ...resp.data]);
       }
-
-      // console.log(newBounds.toJSON());
     }
-  }, [mapLoaded]);
+  }, []);
 
   const mapOptions = {
     disableDefaultUI: false,
@@ -104,36 +114,23 @@ const Properties = () => {
   });
 
   useEffect(() => {
-    if (isList && gridProperties.length === 0) {
-      // console.log("Fetch Grid Data");
-      fetchGridData();
-    } else if (!isList && bounds && mapProperties.length === 0) {
-      const fetchMapData = async () => {
-        const resp = await getMapProperties(
-            bounds.south,
-            bounds.north,
-            bounds.west,
-            bounds.east
-        );
-        if (resp?.data) {
-            setMapProperties(resp?.data);
-        }
-    }
-    fetchMapData();
-    }
-
-    // if (isLoaded && mapRef.current) {
-    //   const bounds = new google.maps.LatLngBounds();
-    //   mapRef.current.fitBounds(bounds);
+    //   if (isList && gridProperties.length === 0) {
+    //     fetchGridData();
+    // } else if (!isList && bounds) {
+    //   console.log("useEffect")
+    //     fetchMapData(bounds);
     // }
 
-    // fetchGridData();
-  }, [isList, bounds]);
+    fetchGridData();
+  }, []);
 
-  console.log(mapProperties);
+  console.log(mapProperties, bounds);
 
+  
   return (
     <>
+      {/* your button code here */}
+
       <button
         className={`fixed bottom-16 left-1/2 z-10 flex -translate-x-1/2 items-center gap-2 rounded-full px-4 py-2 text-center text-sm capitalize text-nk-white transition-all duration-300 ease-in-out hover:shadow-lg hover:delay-100 md:gap-4 md:px-6 md:py-3 md:text-2xl ${
           isList
@@ -141,9 +138,7 @@ const Properties = () => {
             : "bg-nk-black"
         }`}
         onClick={() => {
-          console.log("map", mapProperties)
-          console.log("bounds", bounds)
-          setIsList(!isList)
+          setIsList(!isList);
         }}
       >
         <span>{`${isList ? "Show Map" : "Show List"}`}</span>
@@ -158,7 +153,7 @@ const Properties = () => {
         />
       </button>
 
-      {isList ? (
+      {isList && (
         <>
           {isLoading && gridProperties.length === 0 ? (
             <div className="flex flex-1">
@@ -170,6 +165,7 @@ const Properties = () => {
               next={fetchGridData}
               hasMore={total !== gridProperties.length}
               loader={isLoading && <Spinner />}
+              className={isList ? "block" : "hidden"} // hide or show based on isList
             >
               <PropertyList properties={gridProperties} />
             </InfiniteScroll>
@@ -179,17 +175,23 @@ const Properties = () => {
             </div>
           )}
         </>
-      ) : (
-        // <PropertyMap />
-        <GoogleMap
-          zoom={10}
-          center={center}
-          onLoad={onMapLoad}
-          options={mapOptions}
-          mapContainerClassName="h-screen w-full mt-6"
-          onBoundsChanged={onBoundsChanged}
-        >
-          {mapProperties.map((location, index) => {
+      )}
+
+      {/* keep the map component mounted, but hide or show it based on isList */}
+      {(!isList || hasMapRendered) && (
+        <div className={isList ? "hidden" : "block"}>
+          <GoogleMap
+            zoom={10}
+            center={center}
+            onLoad={(map) => {
+              onMapLoad(map);
+              setHasMapRendered(true); // mark the map as rendered
+            }}
+            options={mapOptions}
+            mapContainerClassName="h-screen w-full mt-6"
+            onBoundsChanged={onBoundsChanged}
+          >
+             {mapProperties.map((location, index) => {
             const position = {
               lat: location.attributes.latitude,
               lng: location.attributes.longitude,
@@ -206,28 +208,9 @@ const Properties = () => {
               />
             );
           })}
-
-          {selectedProperty && (
-            <InfoWindow
-              position={{
-                lat: selectedProperty.attributes.latitude,
-                lng: selectedProperty.attributes.longitude,
-              }}
-              onCloseClick={() => setSelectedProperty(null)}
-            >
-              <div className=" bg-slate-500">
-                {/* Replace this with the content you want to display. */}
-                <h2>Property Information</h2>
-                <h2>Property Information</h2>
-                <h2>Property Information</h2>
-               
-
-                <p>{selectedProperty.name}</p>
-              </div>
-            </InfoWindow>
-            
-          )}
-        </GoogleMap>
+            {/* your marker code here */}
+          </GoogleMap>
+        </div>
       )}
     </>
   );
@@ -235,78 +218,3 @@ const Properties = () => {
 
 export default Properties;
 
-// "use client";
-// import React, { FC, useEffect, useRef, useMemo } from "react";
-// import { GoogleMap, Marker, useJsApiLoader } from "@react-google-maps/api";
-// import { MAP_KEY } from "../../utils/constants";
-// import Spinner from "../spinner";
-
-// interface Location {
-//   lat: number;
-//   lng: number;
-// }
-
-// interface IProps {
-//   locations: Location | Location[];
-// }
-
-// const MapComponent: FC<IProps> = ({ locations }) => {
-//   const mapRef = useRef<google.maps.Map | null>(null);
-//   const { isLoaded } = useJsApiLoader({
-//     id: "google-map-script",
-//     googleMapsApiKey: MAP_KEY,
-//   });
-
-//   const allLocations = useMemo(
-//     () => (Array.isArray(locations) ? locations : [locations]),
-//     [locations]
-//   );
-
-//   const mapOptions = {
-//     disableDefaultUI: false,
-//     mapTypeControl: true,
-//     zoomControl: true,
-//     streetViewControl: false,
-//     fullscreenControl: true,
-//     keyboardShortcuts: false,
-//     // scrollwheel: true,
-//   };
-
-//   useEffect(() => {
-//     if (isLoaded && mapRef.current) {
-//       const bounds = new google.maps.LatLngBounds();
-
-//       allLocations.forEach((location) => {
-//         bounds.extend(new google.maps.LatLng(location.lat, location.lng));
-//       });
-
-//       mapRef.current.fitBounds(bounds);
-//     }
-//   }, [isLoaded, allLocations]);
-//   return (
-//     <div className="relative flex items-center my-3 h-96 w-full sm:pb-1/2">
-//       {isLoaded ? (
-//         <GoogleMap
-//           id="google-map"
-//           zoom={10}
-//           center={allLocations[0]}
-//           options={mapOptions}
-//           onLoad={(map) => {
-//             mapRef.current = map;
-//           }}
-//           mapContainerClassName="absolute top-0 left-0 h-full w-full rounded-2xl"
-//         >
-//           {allLocations.map((location, index) => (
-//             <Marker key={index} position={location} />
-//           ))}
-//         </GoogleMap>
-//       ) : (
-//         <div className="absolute top-0 left-0 h-full w-full flex items-center">
-//         <Spinner />
-//         </div>
-//       )}
-//     </div>
-//   );
-// };
-
-// export default MapComponent;
