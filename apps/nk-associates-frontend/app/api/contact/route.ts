@@ -9,9 +9,10 @@ export async function POST(request: NextRequest) {
   const data = await request.json();
   console.log(data);
   const msg = {
-    to: data.email,
+    to: "fawad.mehmood@stixor.com",
     // Change this to your verified sender
     from: "fawad.mehmood@stixor.com",
+    replyTo: data.email,
     subject: "This is dummy email and sent via sendgrid",
     body: data.message,
     html: `<div>${data.message}</div>`,
