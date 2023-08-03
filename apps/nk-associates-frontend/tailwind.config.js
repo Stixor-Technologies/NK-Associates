@@ -9,10 +9,10 @@ module.exports = {
   theme: {
     extend: {
       backgroundImage: {
-          "nk-bg": "url('/assets/images/bg-property.svg')"
+        "nk-bg": "url('/assets/images/bg-property.svg')",
       },
       fontFamily: {
-        "metropolis": ["var(--font-metroplis)"],
+        metropolis: ["var(--font-metroplis)"],
         "metropolis-semibold": ["var(--font-metroplis-semiBold)"],
         "metropolis-bold": ["var(--font-metroplis-bold)"],
         "metropolis-extrabold": ["var(--font-metroplis-extraBold)"],
@@ -34,7 +34,50 @@ module.exports = {
         "nk-light-gray": "#EDEDED", //modal
         "nk-dark-gray": "#303030", //footer
         "nk-grey": "#727272",
-        "nk-background": "#f5f5f5"
+        "nk-background": "#f5f5f5",
+      },
+
+      boxShadow: {
+        'pulse-before': '9984px 0 0 -5px',
+        'pulse': "9999px 0 0 -5px",
+        'pulse-after': '10014px 0 0 -5px',
+      },
+
+      keyframes: {
+        "dot-pulse": {
+          "0%": {
+            "box-shadow": "9999px 0 0 -5px",
+          },
+          "30%": {
+            "box-shadow": "9999px 0 0 2px",
+          },
+          "60%": {
+            "box-shadow": "9999px 0 0 -5px",
+          },
+          "100%": {
+            "box-shadow": "9999px 0 0 -5px",
+          },
+        },
+
+        "dot-pulse-before": {
+          "0%": { boxShadow: "9984px 0 0 -5px" },
+          "30%": { boxShadow: "9984px 0 0 2px" },
+          "60%": { boxShadow: "9984px 0 0 -5px" },
+          "100%": { boxShadow: "9984px 0 0 -5px" },
+        },
+
+        "dot-pulse-after": {
+          "0%": { boxShadow: "10014px 0 0 -5px" },
+          "30%": { boxShadow: "10014px 0 0 2px" },
+          "60%": { boxShadow: "10014px 0 0 -5px" },
+          "100%": { boxShadow: "10014px 0 0 -5px" },
+        },
+      },
+
+      animation: {
+        "dot-pulse-before": "dot-pulse-before 1.5s 0s infinite linear",
+        "dot-pulse": "dot-pulse 1.5s 0.25s infinite linear",
+        "dot-pulse-after": "dot-pulse-after 1.5s 0.5s infinite linear",
       },
     },
   },

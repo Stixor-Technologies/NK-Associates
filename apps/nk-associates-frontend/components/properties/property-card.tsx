@@ -9,9 +9,10 @@ import { BASE_URL } from "../../utils/constants";
 
 interface CardProps {
   property: Property;
+  actMap?: boolean;
 }
 
-const PropertyCard: FC<CardProps> = ({ property }) => {
+const PropertyCard: FC<CardProps> = ({ property, actMap }) => {
   const { title, category, purpose, area, area_type, price, address } =
     property?.attributes;
   const thumbnailImage =
@@ -19,47 +20,53 @@ const PropertyCard: FC<CardProps> = ({ property }) => {
   return (
     <div>
       <Link href="#">
-        <div className="aspect-w-1 aspect-h-1 group relative h-[17.5rem] w-full max-w-[37.5rem] overflow-hidden rounded-xl">
+        <div
+          className={`aspect-w-1 aspect-h-1 group relative w-full max-w-[37.5rem] overflow-hidden bg-slate-100 ${
+            actMap ? "rounded-t-xl h-52" : "rounded-xl h-[17.5rem]"
+          }`}
+        >
           <Image
             src={`${BASE_URL}${thumbnailImage}`}
             fill
             alt=""
-            className="rounded-xl object-cover transition-all duration-700 ease-in-out hover:scale-110"
+            className={`object-cover transition-all duration-700 ease-in-out ${!actMap && "hover:scale-110"}`}
           />
         </div>
       </Link>
-      <div className="my-3 flex items-center justify-between">
-        <div className="flex items-center gap-2">
-          <span className="rounded-full bg-white px-4 py-1 text-sm font-medium text-nk-gray shadow-lg md:text-xs">
-            {category}
-          </span>
-          <span className="rounded-full bg-white px-4 py-1 text-sm font-medium text-nk-gray shadow-lg md:text-xs">
-            {purpose}
-          </span>
+
+      <div className={`${actMap && "px-3 pb-4 bg-nk-white"}`}>
+        <div className="py-3 flex items-center justify-between">
+          <div className="flex items-center gap-2">
+            <span className="rounded-full bg-white px-4 py-1 text-sm font-medium text-nk-gray shadow-lg md:text-xs">
+              {category}
+            </span>
+            <span className="rounded-full bg-white px-4 py-1 text-sm font-medium text-nk-gray shadow-lg md:text-xs">
+              {purpose}
+            </span>
+          </div>
+
+          <div className="flex items-center gap-1">
+            <Image src={Area_Icon} width={13} height={13} alt="" />
+            <span className="font-metropolis-light text-sm text-nk-grey md:text-[0.625rem]">
+              {area} {area_type}
+            </span>
+          </div>
         </div>
 
-        <div className="flex items-center gap-1">
-          <Image src={Area_Icon} width={13} height={13} alt="" />
-          <span className="font-metropolis-light text-sm text-nk-grey md:text-[0.625rem]">
-            {area} {area_type}
-          </span>
-        </div>
-      </div>
+        <h2 className="text-xl text-nk-black md:text-base">
+          {title.length > 32 ? `${title.substring(0, 32)} ...` : title}
+        </h2>
 
-      <h2 className="text-xl text-nk-black md:text-base">
-        {title.length > 32 ? `${title.substring(0, 32)} ...` : title}
-      </h2>
-
-      <p className="my-1 font-metropolis-bold text-[1.375rem] text-nk-black md:text-lg">
-        {`Rs. ${convertToPakistaniNumbering(price)}`}
-      </p>
-      <div className="mt-1 flex items-center gap-2">
-        <Image src={Area_Marker} width={12} height={18} alt="" />
-
-        {/* need to change, it will be done when I'll integrate google maps api on details page */}
-        <p className="font-metropolis-light text-sm text-nk-grey md:text-xs">
-          {address}
+        <p className="my-1 font-metropolis-bold text-[1.375rem] text-nk-black md:text-lg">
+          {`Rs. ${convertToPakistaniNumbering(price)}`}
         </p>
+        <div className="mt-1 flex items-center gap-2">
+          <Image src={Area_Marker} width={12} height={18} alt="" />
+
+          <p className="font-metropolis-light text-sm text-nk-grey md:text-xs">
+            {address}
+          </p>
+        </div>
       </div>
     </div>
   );

@@ -15,8 +15,7 @@ export const getGridProperties = async (start: number, limit = 12) => {
 export const getMapProperties = async (southLat, northLat, westLng, eastLng) => {
   try {
     const resp = await fetch(
-
-      `${BASE_URL}/api/properties?fields[0]=latitude&fields[1]=longitude&filters[latitude][$between]=${southLat}&filters[latitude][$between]=${northLat}&filters[longitude][$between]=${westLng}&filters[longitude][$between]=${eastLng}&sort[1]=id`
+      `${BASE_URL}/api/properties?populate=*&filters[latitude][$between]=${southLat}&filters[latitude][$between]=${northLat}&filters[longitude][$between]=${westLng}&filters[longitude][$between]=${eastLng}&sort[1]=id`
     );
     const data = await resp.json();
     return data;

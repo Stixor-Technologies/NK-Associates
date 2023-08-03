@@ -1,0 +1,29 @@
+.gm-style-iw-c {
+    border-radius: 12px;
+   padding: 0 !important;   
+   background-color: transparent !important;
+   width: 260px;
+}
+
+.gm-style-iw-d {
+    padding: 0;
+    border-radius: 12px;
+    background-color: transparent !important;
+    overflow: hidden !important;
+}
+
+.gm-style-iw-tc {
+    display: none;
+}
+
+.gm-ui-hover-effect {
+    border-width: 1px;
+    border-style: solid;
+    background-color: rgba(0,0,0,0.4) !important;
+    /* background-color: rgb(9, 255, 9) !important; */
+    left: 15px;
+    top: 10px !important;
+    border-radius: 50%;
+    border: none;
+    padding: 0;
+}
