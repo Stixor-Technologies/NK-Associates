@@ -11,8 +11,8 @@ const Sidebar: React.ForwardRefRenderFunction<HTMLDivElement, SidebarProps> = (
   return (
     <div
       ref={ref}
-      className={` md: fixed right-0 top-0 z-40 -mr-[100vw]
-       h-screen w-full overflow-y-auto will-change-auto  xs:-mr-[100vw] xs:h-full xs:w-full sm:-mr-[100vw] sm:h-full sm:w-full md:-mr-[100vw] md:h-full md:w-full lg:-mr-[35vw] lg:h-full lg:w-[35vw] 
+      className={` fixed right-0 top-0 z-40 -mr-[100%]
+       h-full w-full overflow-y-auto will-change-auto  xs:-mr-[100%] xs:h-full xs:w-full sm:-mr-[100%] sm:h-full sm:w-full md:-mr-[100%] md:h-full md:w-full lg:-mr-[35vw] lg:h-full lg:w-[35vw] 
       `}
     >
       <div className="absolute -z-10 h-full w-full bg-nk-red"></div>

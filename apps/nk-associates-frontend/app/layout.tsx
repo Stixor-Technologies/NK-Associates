@@ -1,9 +1,9 @@
 import "./globals.css";
 import type { Metadata } from "next";
 import localFont from "next/font/local";
-import Navbar from "../components/Navigation/navbar";
+import Navbar from "../components/navigation/navbar";
 import Footer from "../components/footer/footer";
-import Navigation from "../components/Navigation/navigation";
+import Navigation from "../components/navigation/navigation";
 
 const metropolisRegular = localFont({
   src: "./assets/fonts/Metropolis-Regular.otf",

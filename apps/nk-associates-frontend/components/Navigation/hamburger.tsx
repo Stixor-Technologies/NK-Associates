@@ -44,56 +44,6 @@ const Hamburger = forwardRef<HTMLButtonElement, HamburgerProps>(
       return window.matchMedia("(hover: none)").matches;
     };
 
-    // const handleMouseEnterBurg = () => {
-    //   if (isTouchDevice()) return;
-
-    //   setIsHover(true);
-    //   if (!isMenuOpen) {
-    //     gsap.to(menuHoverRef.current, {
-    //       scale: 1,
-    //       opacity: 0.6,
-    //       duration: 0.75,
-    //       ease: "elastic.out(1, 0.75)",
-    //     });
-    //   }
-    // };
-
-    // const handleMouseLeaveBurg = () => {
-    //   if (isTouchDevice()) return;
-
-    //   setIsHover(false);
-    //   if (!isMenuOpen) {
-    //     gsap.to(menuHoverRef.current, {
-    //       scale: 0,
-    //       opacity: 0,
-    //       duration: 0.75,
-    //       ease: "power3.out",
-    //     });
-    //   }
-
-    //   gsap.to(localButtonRef.current, {
-    //     x: 0,
-    //     y: 0,
-    //     duration: 0.3,
-    //   });
-    // };
-
-    // const handleMouseMoveBurg = (event: MouseEvent) => {
-    //   if (isTouchDevice()) return;
-
-    //   const { clientX, clientY } = event;
-    //   const scaleFactor = 0.3;
-
-    //   if (!localButtonRef?.current) return;
-
-    //   const rect = localButtonRef.current.getBoundingClientRect();
-    //   gsap.to(localButtonRef.current, {
-    //     x: (clientX - rect.x - 5) * scaleFactor,
-    //     y: (clientY - rect.y - 5) * scaleFactor,
-    //     duration: 0.3,
-    //   });
-    // };
-
     useEffect(() => {
       isMenuOpen ? tl.current?.play() : tl.current?.reverse();
     }, [isMenuOpen]);
@@ -135,8 +85,6 @@ const Hamburger = forwardRef<HTMLButtonElement, HamburgerProps>(
           { attr: { width: 54.8962 }, duration: 0.2 },
           "initial"
         )
-        // .to(menuTopRef.current, { y: 7, duration: 0.2 }, "rotate")
-        // .to(menuBottomRef.current, { y: -7, duration: 0.2 }, "rotate")
         .to(
           menuTopRef.current,
           {
@@ -168,15 +116,11 @@ const Hamburger = forwardRef<HTMLButtonElement, HamburgerProps>(
         onClick={() => {
           setIsMenuOpen(!isMenuOpen);
         }}
-        // onMouseEnter={handleMouseEnterBurg}
-        // onMouseLeave={handleMouseLeaveBurg}
-        // onMouseMove={handleMouseMoveBurg}
         ref={assignRefs(
           localButtonRef,
           menuButtonRef as Ref<HTMLButtonElement>
         )}
       >
-        {" "}
         <div />
         <svg
           width="80"

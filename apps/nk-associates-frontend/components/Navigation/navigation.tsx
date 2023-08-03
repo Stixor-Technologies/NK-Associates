@@ -5,9 +5,6 @@ import Navbar from "./navbar";
 import Hamburger from "./hamburger";
 import Sidebar from "./sidebar";
 import { gsap } from "gsap";
-import GetInTouchIcon from "../../../nk-associates-frontend/app/assets/images/get-in-touch-button.svg";
-import Image from "next/image";
-import LinkButton from "../button/link-button";
 
 const Navigation = () => {
   const menuButtonRef = useRef<HTMLButtonElement | null>(null);
@@ -40,7 +37,6 @@ const Navigation = () => {
 
   // Trigger animations for menu open state
   useEffect(() => {
-    console.log("Menu current state is " + isMenuOpen);
     if (isMenuOpen) {
       if (sideBarMenu.current) {
         gsap.to(sideBarMenu.current, {
@@ -81,11 +77,11 @@ const Navigation = () => {
 
   return (
     <div>
-      <div className="flex w-full flex-col">
-        <div className="flex flex-row justify-between">
+      <div className="w-full flex-col">
+        <div className="flex-row justify-between">
           <Navbar />
           <div className="fixed right-2 top-3 z-50 mx-2 ">
-            <div className="flex flex-row">
+            <div className="flex">
               <div className="hidden flex-row md:flex">
                 <button
                   ref={searchIcon}
@@ -103,10 +99,8 @@ const Navigation = () => {
             </div>
           </div>
         </div>
-        {/* <div className={`${isMenuOpen ? "mr-0" : "-mr-[100vw]"}`}> */}
 
         <Sidebar isOpen={isMenuOpen} ref={sideBarMenu} />
-        {/* </div> */}
       </div>
     </div>
   );
