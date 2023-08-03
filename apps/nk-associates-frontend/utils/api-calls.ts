@@ -17,7 +17,6 @@ export const getPropertyDetail = async (id: string) => {
       cache: "no-store",
     });
         const data = await resp.json();
-      console.log(data)
       return data?.data;
   } catch (error) {
     console.error("There was an error getting the Property List", error);

@@ -32,7 +32,6 @@ const MapComponent: FC<IProps> = ({ locations }) => {
     streetViewControl: false,
     fullscreenControl: true,
     keyboardShortcuts: false,
-    // scrollwheel: true,
   };
 
   useEffect(() => {

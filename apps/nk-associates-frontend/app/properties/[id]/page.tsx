@@ -1,5 +1,4 @@
-// 'use client'
-import React, { FC } from "react";
+import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { getPropertyDetail } from "../../../utils/api-calls";
@@ -9,12 +8,12 @@ import MapComponent from "../../../components/shared/map-component";
 import { convertAreaToSqFeet } from "../../../utils/utils";
 import { Property } from "../../../utils/types/types";
 import { BASE_URL } from "../../../utils/constants";
-import Bath_Icon from "../../../public/assets/icons/bath-icon.svg";
-import Bedroom_Icon from "../../../public/assets/icons/bedrooms-icon.svg";
-import Area_Icon from "../../../public/assets/icons/area-icon.svg";
-import Area_Marker from "../../../public/assets/icons/area-marker.svg";
-import PDF_Icon from "../../../public/assets/icons/pdf-file-icon.svg";
-import Tour_Icon from "../../../public/assets/icons/360-icon.svg"
+import BathIcon from "../../../public/assets/icons/bath-icon.svg";
+import BedroomIcon from "../../../public/assets/icons/bedrooms-icon.svg";
+import AreaIcon from "../../../public/assets/icons/area-icon.svg";
+import AreaMarker from "../../../public/assets/icons/area-marker.svg";
+import PDFIcon from "../../../public/assets/icons/pdf-file-icon.svg";
+import TourIcon from "../../../public/assets/icons/360-icon.svg"
 import LinkButton from "../../../components/button/link-button";
 
 interface PropertyDetailProps {
@@ -23,12 +22,7 @@ interface PropertyDetailProps {
   };
 }
 
-function delay(time) {
-  return new Promise((resolve) => setTimeout(resolve, time));
-}
-
 async function PropertyDetail({ params: { id } }: PropertyDetailProps) {
-  // await delay(2000);
 
   const data: Property = await getPropertyDetail(id);
   const {
@@ -64,7 +58,7 @@ async function PropertyDetail({ params: { id } }: PropertyDetailProps) {
           {/* 360 Tour Button */}
           <button className="group ml-auto hidden w-48 items-center gap-3 overflow-hidden rounded-l-lg bg-nk-white px-4 py-3.5 shadow-3xl transition-all md:flex">
            
-          <Image src={Tour_Icon} width={56} height={35} alt="tour-button" className="w-14 transition-all duration-500 delay-200 group-hover:scale-110"/>
+          <Image src={TourIcon} width={56} height={35} alt="tour-button" className="w-14 transition-all duration-500 delay-200 group-hover:scale-110"/>
 
           <span className="text-[1.375rem] text-nk-black transition-all delay-200 duration-500 ease-in-out group-hover:text-nk-red">
               View
@@ -93,7 +87,7 @@ async function PropertyDetail({ params: { id } }: PropertyDetailProps) {
                   {baths && (
                     <div className="flex items-center gap-1">
                       <Image
-                        src={Bath_Icon}
+                        src={BathIcon}
                         width={27}
                         height={27}
                         alt="bath-icon"
@@ -107,7 +101,7 @@ async function PropertyDetail({ params: { id } }: PropertyDetailProps) {
                   {bedrooms && (
                     <div className="flex items-center gap-1">
                       <Image
-                        src={Bedroom_Icon}
+                        src={BedroomIcon}
                         width={27}
                         height={27}
                         alt="bed-icon"
@@ -119,7 +113,7 @@ async function PropertyDetail({ params: { id } }: PropertyDetailProps) {
                   )}
 
                   <div className="flex items-center gap-1">
-                    <Image src={Area_Icon} width={27} height={27} alt="" />
+                    <Image src={AreaIcon} width={27} height={27} alt="" />
                     <span className="font-metropolis-semibold text-lg text-nk-black">
                       {`${convertAreaToSqFeet(area, area_type)} Sq.Ft`}
                     </span>
@@ -186,7 +180,7 @@ async function PropertyDetail({ params: { id } }: PropertyDetailProps) {
               <MapComponent locations={center} />
               <div className="flex items-center gap-3 py-1 md:gap-3.5 md:py-4">
                 <Image
-                  src={Area_Marker}
+                  src={AreaMarker}
                   width={16}
                   height={16}
                   alt="address-marker"
@@ -206,7 +200,7 @@ async function PropertyDetail({ params: { id } }: PropertyDetailProps) {
                 >
                   Download Broucher
                   <Image
-                    src={PDF_Icon}
+                    src={PDFIcon}
                     alt="property-info-download"
                     width={17}
                     height={17}

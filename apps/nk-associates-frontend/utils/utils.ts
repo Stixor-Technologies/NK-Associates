@@ -40,9 +40,7 @@ export const convertAreaToSqFeet = (area: number, areaType: string) => {
       break;
     case "Sq.Yd":
       areaSqFeet *= SQ_YARD_TO_SQ_FEET;
-    // Add more cases for other area types if needed
     default:
-      // If the area type is not recognized, assume it's already in square feet
       break;
   }
 
