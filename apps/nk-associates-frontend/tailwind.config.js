@@ -79,6 +79,14 @@ module.exports = {
         "dot-pulse": "dot-pulse 1.5s 0.25s infinite linear",
         "dot-pulse-after": "dot-pulse-after 1.5s 0.5s infinite linear",
       },
+
+       boxShadow: {
+        "3xl": "0.25rem 0.188rem 1.375rem 0rem rgba(0, 0, 0, 0.092)",
+      },
+      spacing: {
+        '1/2': '50%',
+        '3/4': '75%'
+      }
     },
   },
   plugins: [],

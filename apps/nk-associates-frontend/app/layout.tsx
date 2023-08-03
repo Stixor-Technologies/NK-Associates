@@ -61,7 +61,9 @@ export default function RootLayout({
         className={`${metropolisRegular.variable} ${metropolisMedium.variable} ${metropolisSemiBold.variable} ${metropolisBold.variable} ${metropolisExtraBold.variable} ${metropolisLight.variable} ${metropolisExtraLight.variable} ${metropolisThin.variable} bg-nk-background font-metropolis`}
       >
         <Navbar />
-        <main className="mt-24">{children}</main>
+        <main className="mt-24">
+          {children}
+          </main>
         <Footer />
       </body>
     </html>

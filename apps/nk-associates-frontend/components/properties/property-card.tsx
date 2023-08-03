@@ -15,6 +15,7 @@ interface CardProps {
 const PropertyCard: FC<CardProps> = ({ property, actMap }) => {
   const { title, category, purpose, area, area_type, price, address } =
     property?.attributes;
+    const id  = property?.id
   const thumbnailImage =
     property?.attributes?.image_thumbnail.data.attributes.url;
   return (
