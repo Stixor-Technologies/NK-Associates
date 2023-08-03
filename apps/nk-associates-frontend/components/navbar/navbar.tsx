@@ -1,8 +1,8 @@
 import React from "react";
-import Logo from "../../../nk-associates-frontend/app/assets/images/nk-logo.svg";
-import SearchIcon from "../../../nk-associates-frontend/app/assets/images/search-icon.svg";
-import GetInTouchIcon from "../../../nk-associates-frontend/app/assets/images/get-in-touch-button.svg";
-import SidebarIcon from "../../../nk-associates-frontend/app/assets/images/sidebar-icon.svg";
+import Logo from "../../public/assets/icons/nk-logo.svg";
+import SearchIcon from "../../public/assets/icons/search-icon.svg";
+import GetInTouchIcon from "../../public/assets/icons/get-in-touch-button.svg";
+import SidebarIcon from "../../public/assets/icons/sidebar-icon.svg";
 import Link from "next/link";
 import Image from "next/image";
 

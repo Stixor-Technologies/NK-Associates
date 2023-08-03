@@ -20,13 +20,11 @@ export const convertToPakistaniNumbering = (input: number | string) => {
   return num.toString();
 };
 
-// utils/areaConverter.js
 
-// Conversion factors
 const SQ_METER_TO_SQ_FEET = 10.7639;
 const MARLA_TO_SQ_FEET = 272.25;
 const KANAL_TO_SQ_FEET = 5445;
-const SQ_YARD_TO_SQ_FEET = 9; // 1 square yard = 9 square feet
+const SQ_YARD_TO_SQ_FEET = 9;
 
 export const convertAreaToSqFeet = (area: number, areaType: string) => {
   let areaSqFeet = area;

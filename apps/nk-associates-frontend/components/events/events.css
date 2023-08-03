@@ -1,7 +1,12 @@
 /* Carousel Styling by overriding SwiperJS at breakpoints */
 
 .swiper-pagination-bullet-active {
-  background-color: #666464 !important;
+  background-color: #ffffff !important;
+}
+
+.gradient-overlay {
+  background: linear-gradient(transparent, rgba(245, 245, 245, 1));
+  transform: translateY(100%);
 }
 
 @media (max-width: 370px) {
@@ -23,31 +28,19 @@
   }
 }
 
-/* Scrollbar Styling */
-
-.custom-scrollbar::-webkit-scrollbar {
-  width: 0.5rem;
-  height: 0.3rem;
+.mySwiper3 .swiper-slide {
+  width: 25%;
+  height: 100%;
+  opacity: 0.4;
+  border-radius: 0.5rem;
+  overflow: hidden;
 }
 
-/* Styling for the scrollbar track */
-.custom-scrollbar::-webkit-scrollbar-track {
-  background-color: transparent;
+.mySwiper3 .swiper-slide-thumb-active {
+  opacity: 1;
 }
 
-/* Styling for the scrollbar thumb */
-.custom-scrollbar::-webkit-scrollbar-thumb {
-  background-color: #d9d9d9;
-  border-radius: 4px;
-}
-
-.custom-scrollbar::-webkit-scrollbar-track-x {
-  background-color: transparent;
-  width: 2px;
-}
-
-/* Styling for the scrollbar thumb on the x-axis */
-.custom-scrollbar::-webkit-scrollbar-thumb {
-  background-color: #d9d9d9;
-  border-radius: 4px;
+.mySwiper3 {
+  margin-left: 10px !important;
+  margin-right: 10px !important;
 }
