@@ -1,8 +1,8 @@
 "use client";
 
 import React from "react";
-import Logo from "../../../nk-associates-frontend/app/assets/images/nk-logo.svg";
-import SearchIcon from "../../../nk-associates-frontend/app/assets/images/search-icon.svg";
+import Logo from "../../public/assets/icons/nk-logo.svg";
+import SearchIcon from "../../public/assets/icons/search-icon.svg";
 import Link from "next/link";
 import Image from "next/image";
 

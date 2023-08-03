@@ -10,22 +10,38 @@ export const getProperties = async (start: number, limit = 12) => {
     console.error("There was an error getting the Property List", error);
   }
 };
+
+export const getPropertyDetail = async (id: string) => {
+  try {
+    const resp = await fetch(`${BASE_URL}/api/properties/${id}?populate=*`, {
+      cache: "no-store",
+    });
+        const data = await resp.json();
+      return data?.data;
+  } catch (error) {
+    console.error("There was an error getting the Property List", error);
+  }
+};
 interface GetProjectsParams {
   category?: "Residential" | "Commercial" | "Hotel";
   cachePolicy?: { [key: string]: any };
+  start?: Number;
+  limit?: Number;
 }
 
-export async function getProjects({
+export const getProjects = async ({
   category = undefined,
   cachePolicy = undefined,
-}: GetProjectsParams = {}): Promise<Response> {
+  start = 0,
+  limit = 5,
+}: GetProjectsParams = {}): Promise<Response> => {
   try {
     const fetchOptions: { [key: string]: any } = cachePolicy ? cachePolicy : {};
-
     const res = await fetch(
       //using concatenation because autosave causes linebreak in ` ` in the api call
-      `${BASE_URL}/api/projects?populate=*` +
-        (category ? `&filters[Category]=${category}` : ""),
+      `${BASE_URL}/api/projects?populate=*${
+        category ? `&filters[Category]=${category}` : ""
+      }${`&pagination[start]=${start}&pagination[limit]=${limit}&sort[1]=id`}`,
       fetchOptions
     );
 
@@ -37,4 +53,4 @@ export async function getProjects({
   } catch (error) {
     throw error;
   }
-}
+};

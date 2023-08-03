@@ -15,14 +15,57 @@
     "title": {
       "type": "string",
       "required": true,
-      "maxLength": 40
+      "maxLength": 40,
+      "minLength": 6
     },
-    "purpose": {
+    "address": {
+      "type": "string",
+      "required": true,
+      "maxLength": 40,
+      "minLength": 6
+    },
+    "city": {
       "type": "string",
       "required": true
     },
     "description": {
       "type": "text",
+      "required": true
+    },
+    "type": {
+      "type": "enumeration",
+      "enum": [
+        "Plot",
+        "Flat",
+        "House"
+      ],
+      "required": true
+    },
+    "category": {
+      "type": "enumeration",
+      "enum": [
+        "Residential",
+        "Commercial"
+      ],
+      "default": "Residential",
+      "required": true
+    },
+    "bedrooms": {
+      "type": "integer"
+    },
+    "baths": {
+      "type": "integer"
+    },
+    "purpose": {
+      "type": "enumeration",
+      "enum": [
+        "Sale",
+        "Rent"
+      ],
+      "required": true
+    },
+    "price": {
+      "type": "biginteger",
       "required": true
     },
     "area": {
@@ -32,14 +75,13 @@
     "area_type": {
       "type": "enumeration",
       "enum": [
-        "Sq.Yds",
+        "Sq.Yd",
         "Sq.Ft",
         "Sq.M",
         "Marla",
         "Kanal"
       ],
-      "required": true,
-      "default": "Sq.Yds"
+      "required": true
     },
     "latitude": {
       "type": "float",
@@ -64,33 +106,6 @@
       "allowedTypes": [
         "images"
       ]
-    },
-    "price": {
-      "type": "biginteger",
-      "required": true
-    },
-    "bedrooms": {
-      "type": "integer"
-    },
-    "baths": {
-      "type": "integer"
-    },
-    "category": {
-      "type": "enumeration",
-      "enum": [
-        "Residential",
-        "Commercial"
-      ],
-      "default": "Residential"
-    },
-    "type": {
-      "type": "enumeration",
-      "enum": [
-        "Plot",
-        "Flat",
-        "House"
-      ],
-      "default": "Plot"
     },
     "property_pdf": {
       "type": "media",
