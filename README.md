@@ -1,3 +1,4 @@
+# NK Associates
 <details>
   <summary>Table of Contents</summary>
   <ol>
@@ -77,11 +78,21 @@ Typescript is a superset of JavaScript that adds static type checking and other 
 
 You will need the following packages to be installed beforehand in order to clone and run the project.
 
-- [Node JS](https://nodejs.org/en)  
-  To check whether node and npm is installed, run the following commands
+- [Node JS](https://nodejs.org/en) follow the installation guide provided by Nodejs.
+
+  > Note: Required to install Node version in-between ">=14.19.1 <=18.x.x"
+
+  To check whether node and npm is installed, run the following commands:
 
   ```sh
   npm -v
+  ```
+
+  If using nvm, run following commands:
+
+  ```sh
+  nvm install 18 # choose node version in-between 14.19.1 and 18.x.x
+  nvm use 18
   ```
 
 - Yarn Package Manager
@@ -121,6 +132,28 @@ You will need the following packages to be installed beforehand in order to clon
    ```sh
    yarn build
    ```
+
+## Strapi local setup
+
+1. Install PostgresSQL
+  
+    Follow the guide provided by [PostgresSQL](https://www.postgresql.org/download/), keep all default settings.
+
+    > TroubleShooting on MacOS with M1 chip: 
+        If you are facing the following error: 
+        ```The application cannot be opened for an unexpected reason, error=Error Domain=NSOSStatusErrorDomain Code=-10669 "(null)" UserInfo={_LSLine=3863, _LSFunction=_LSOpenStuffCallLocal} (1)```,
+        confirm that you have rosetta installed, find more details [here](https://support.apple.com/en-us/HT211861).
+
+2. Change Database env variable's values
+
+    - Assign variable NEXT_PUBLIC_BACKEND_URL="http://127.0.0.1:1337", in env file at */apps/nk-associates-frontend*
+
+    - Assign your appropriate db username and db password to env variables, in env file at */apps/nk-associates-cms*
+      ```
+      DATABASE_NAME=postgres
+      DATABASE_USERNAME=postgres
+      DATABASE_PASSWORD = post321
+      ```
 
 <!-- USAGE EXAMPLES -->
 
@@ -167,7 +200,7 @@ We're following a folder structure that nicely separates the individual apps. Ea
     └── ui
 ```
 
-## Git Flow
+## [Git Flow](https://www.atlassian.com/git/tutorials/comparing-workflows/gitflow-workflow)
 
 ![Git Flow](<./gitflow%20(1).png>)
 
