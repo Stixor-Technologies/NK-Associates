@@ -18,6 +18,7 @@ import { MAP_KEY } from "../../utils/constants";
 import { debounce } from "lodash";
 import Map_Btn from "../../public/assets/icons/map-list-icon.svg";
 import List_Icon from "../../public/assets/icons/list-icon.svg";
+import CustomOverlay from "./custom-overlay";
 
 const libraries = ["places"];
 
@@ -37,6 +38,9 @@ const Properties = () => {
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [selectedProperty, setSelectedProperty] = useState(null);
   const [hasMapRendered, setHasMapRendered] = useState(false);
+
+  const [mapInstance, setMapInstance] = useState(null);
+
 
   const mapRef = useRef<google.maps.Map | null>(null);
 
@@ -68,6 +72,7 @@ const Properties = () => {
 
   const onMapLoad = useCallback((map) => {
     mapRef.current = map;
+    setMapInstance(map);
   }, []);
 
   const onBoundsChanged = debounce(async () => {
@@ -148,7 +153,7 @@ const Properties = () => {
     const infoWindowPosition = projection.fromPointToLatLng(infoWindowPoint);
 
     // Adjust map's center
-    mapRef.current.setCenter(infoWindowPosition);
+    // mapRef.current.setCenter(infoWindowPosition);
   };
 
   return (
@@ -234,21 +239,12 @@ const Properties = () => {
             })}
 
             {selectedProperty && (
-              <OverlayView
-                position={{
-                  lat: selectedProperty.attributes.latitude,
-                  lng: selectedProperty.attributes.longitude,
-                }}
-                mapPaneName={OverlayView.OVERLAY_MOUSE_TARGET}
-              >
-                <div className="info-window">
-                  <button onClick={() => {
-                    console.log("first")
-                  }}>X</button>
-                  <h2>Property Information</h2>
-                  <p>{selectedProperty.attributes.latitude}</p>
-                </div>
-              </OverlayView>
+            <CustomOverlay
+            selectedProperty={selectedProperty}
+            onCloseClick={() => setSelectedProperty(null)}
+            map={mapInstance}
+
+        />
 
               // <InfoWindow
               //   position={{
