@@ -1,9 +1,8 @@
 "use client";
 
-import React, { useState, useEffect, useRef, useCallback } from "react";
+import React from "react";
 import Logo from "../../../nk-associates-frontend/app/assets/images/nk-logo.svg";
 import SearchIcon from "../../../nk-associates-frontend/app/assets/images/search-icon.svg";
-import GetInTouchIcon from "../../../nk-associates-frontend/app/assets/images/get-in-touch-button.svg";
 import Link from "next/link";
 import Image from "next/image";
 
@@ -15,12 +14,9 @@ const Navbar = () => {
           <Image width={50} height={50} src={Logo} alt="NK logo" className="" />
         </Link>
         <div className="flex flex-row">
-          <div className="hidden flex-row md:flex">
-            <button className="pr-4">
-              <Image src={SearchIcon} alt="Search" />{" "}
-            </button>
+          <div className="hidden flex-row md:mr-44 md:flex">
             <button className="mr-10 pr-8">
-              <Image src={GetInTouchIcon} alt="Get in touch" />
+              <Image src={SearchIcon} alt="Search" />{" "}
             </button>
           </div>
         </div>

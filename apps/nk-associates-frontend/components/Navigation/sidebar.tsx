@@ -11,15 +11,16 @@ const Sidebar: React.ForwardRefRenderFunction<HTMLDivElement, SidebarProps> = (
   return (
     <div
       ref={ref}
-      className={`fixed right-0 top-0 z-40 -mr-[30vw] h-screen w-[300px] min-w-[30vw]
-      overflow-y-auto will-change-auto `}
+      className={` md: fixed right-0 top-0 z-40 -mr-[100vw]
+       h-screen w-full overflow-y-auto will-change-auto  xs:-mr-[100vw] xs:h-full xs:w-full sm:-mr-[100vw] sm:h-full sm:w-full md:-mr-[100vw] md:h-full md:w-full lg:-mr-[35vw] lg:h-full lg:w-[35vw] 
+      `}
     >
       <div className="absolute -z-10 h-full w-full bg-nk-red"></div>
       <div
-        className="min-aspect-9/16:w-3/4 min-aspect:h-3/5 min-aspect:w-full min-aspect:justify-end mx-auto flex h-full w-full flex-col items-center justify-center 
-		overflow-y-auto  px-2 py-4"
+        className=" mx-auto flex h-full w-full flex-col items-center justify-center overflow-y-auto px-2 pt-20  
+		min-aspect:h-full  min-aspect:w-full "
       >
-        <ul className="space-y-8 text-right font-metropolis-bold text-5xl">
+        <ul className="my-8 space-y-8 text-right font-metropolis-bold text-5xl">
           <li className="text-nk-white transition-colors duration-500 ease-in-out hover:text-nk-dark-gray">
             <Link href="#">Home</Link>
           </li>
@@ -27,10 +28,10 @@ const Sidebar: React.ForwardRefRenderFunction<HTMLDivElement, SidebarProps> = (
             <Link href="#">About Us</Link>
           </li>
           <li className="text-nk-white transition-colors duration-500 ease-in-out hover:text-nk-dark-gray">
-            <Link href="#">Property</Link>
+            <Link href="/properties">Property</Link>
           </li>
           <li className="text-nk-white transition-colors duration-500 ease-in-out hover:text-nk-dark-gray">
-            <Link href="#">Projects</Link>
+            <Link href="/projects">Projects</Link>
           </li>
           <li className="text-nk-white transition-colors duration-500 ease-in-out hover:text-nk-dark-gray">
             <Link href="#">Services</Link>
@@ -39,7 +40,7 @@ const Sidebar: React.ForwardRefRenderFunction<HTMLDivElement, SidebarProps> = (
             <Link href="#">Career</Link>
           </li>
           <li className="text-nk-white transition-colors duration-500 ease-in-out hover:text-nk-dark-gray">
-            <Link href="#">Event</Link>
+            <Link href="/events">Event</Link>
           </li>
         </ul>
       </div>
