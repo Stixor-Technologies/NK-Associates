@@ -1,10 +1,13 @@
 "use client";
 
 import React, { useCallback, useEffect, useRef, useState } from "react";
-import Navbar from "./navbar";
 import Hamburger from "./hamburger";
 import Sidebar from "./sidebar";
 import { gsap } from "gsap";
+import Link from "next/link";
+import Image from "next/image";
+import Logo from "../../public/assets/icons/nk-logo.svg";
+import SearchIcon from "../../public/assets/icons/search-icon.svg";
 
 const Navigation = () => {
   const menuButtonRef = useRef<HTMLButtonElement | null>(null);
@@ -77,20 +80,28 @@ const Navigation = () => {
 
   return (
     <div>
-      <div className="w-full flex-col">
-        <div className="flex-row justify-between">
-          <Navbar />
-          <div className="fixed right-2 top-3 z-50 mx-2 ">
-            <div className="flex">
-              <div className="hidden flex-row md:flex">
-                <button
-                  ref={searchIcon}
-                  className=" mr-2 mt-2 block h-12 rounded-full border border-nk-red bg-transparent px-8 text-center font-metropolis capitalize  text-nk-red"
-                >
-                  Get in touch
-                </button>
-              </div>
-
+      <div className="fixed top-0 w-full flex-col bg-nk-white-dark">
+        <div className="mx-auto flex w-[90%] items-center justify-between pb-6 pt-6">
+          <div>
+            <Link href="#">
+              <Image width={50} height={50} src={Logo} alt="NK logo" />
+            </Link>
+          </div>
+          <div className="flex justify-between">
+            <div className="hidden md:flex">
+              <button className="pr-8">
+                <Image src={SearchIcon} alt="Search" />
+              </button>
+            </div>
+            <div className="hidden flex-row md:flex">
+              <button
+                ref={searchIcon}
+                className=" mr-2 mt-2 block h-12 rounded-full border border-nk-red bg-transparent px-8 text-center font-metropolis capitalize  text-nk-red"
+              >
+                Get in touch
+              </button>
+            </div>
+            <div>
               <Hamburger
                 ref={menuButtonRef}
                 isMenuOpen={isMenuOpen}
