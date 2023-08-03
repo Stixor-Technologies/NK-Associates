@@ -10,6 +10,18 @@ export const getProperties = async (start: number, limit = 12) => {
     console.error("There was an error getting the Property List", error);
   }
 };
+
+export const getPropertyDetail = async (id: string) => {
+  try {
+    const resp = await fetch(`${BASE_URL}/api/properties/${id}?populate=*`, {
+      cache: "no-store",
+    });
+        const data = await resp.json();
+      return data?.data;
+  } catch (error) {
+    console.error("There was an error getting the Property List", error);
+  }
+};
 interface GetProjectsParams {
   category?: "Residential" | "Commercial" | "Hotel";
   cachePolicy?: { [key: string]: any };
