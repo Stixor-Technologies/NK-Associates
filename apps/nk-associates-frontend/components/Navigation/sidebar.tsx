@@ -1,13 +1,18 @@
-import React from "react";
+import React, { Dispatch, SetStateAction } from "react";
 import Link from "next/link";
 interface SidebarProps {
   isOpen: boolean;
+  setIsOpen: Dispatch<SetStateAction<boolean>>;
 }
 
 const Sidebar: React.ForwardRefRenderFunction<HTMLDivElement, SidebarProps> = (
-  { isOpen },
+  { isOpen, setIsOpen },
   ref
 ) => {
+  const handleLinkClick = () => {
+    setIsOpen(!isOpen); // Toggle isOpen state to its opposite value
+  };
+
   return (
     <div
       ref={ref}
@@ -21,25 +26,46 @@ const Sidebar: React.ForwardRefRenderFunction<HTMLDivElement, SidebarProps> = (
 		min-aspect:h-full  min-aspect:w-full "
       >
         <ul className="my-8 space-y-8 text-right font-metropolis-bold text-5xl">
-          <li className="text-nk-white transition-colors duration-500 ease-in-out hover:text-nk-dark-gray">
+          <li
+            onClick={handleLinkClick}
+            className="text-nk-white transition-colors duration-500 ease-in-out hover:text-nk-dark-gray"
+          >
             <Link href="#">Home</Link>
           </li>
-          <li className="text-nk-white transition-colors duration-500 ease-in-out hover:text-nk-dark-gray">
+          <li
+            onClick={handleLinkClick}
+            className="text-nk-white transition-colors duration-500 ease-in-out hover:text-nk-dark-gray"
+          >
             <Link href="#">About Us</Link>
           </li>
-          <li className="text-nk-white transition-colors duration-500 ease-in-out hover:text-nk-dark-gray">
+          <li
+            onClick={handleLinkClick}
+            className="text-nk-white transition-colors duration-500 ease-in-out hover:text-nk-dark-gray"
+          >
             <Link href="/properties">Property</Link>
           </li>
-          <li className="text-nk-white transition-colors duration-500 ease-in-out hover:text-nk-dark-gray">
+          <li
+            onClick={handleLinkClick}
+            className="text-nk-white transition-colors duration-500 ease-in-out hover:text-nk-dark-gray"
+          >
             <Link href="/projects">Projects</Link>
           </li>
-          <li className="text-nk-white transition-colors duration-500 ease-in-out hover:text-nk-dark-gray">
+          <li
+            onClick={handleLinkClick}
+            className="text-nk-white transition-colors duration-500 ease-in-out hover:text-nk-dark-gray"
+          >
             <Link href="#">Services</Link>
           </li>
-          <li className="text-nk-white transition-colors duration-500 ease-in-out hover:text-nk-dark-gray">
+          <li
+            onClick={handleLinkClick}
+            className="text-nk-white transition-colors duration-500 ease-in-out hover:text-nk-dark-gray"
+          >
             <Link href="#">Career</Link>
           </li>
-          <li className="text-nk-white transition-colors duration-500 ease-in-out hover:text-nk-dark-gray">
+          <li
+            onClick={handleLinkClick}
+            className="text-nk-white transition-colors duration-500 ease-in-out hover:text-nk-dark-gray"
+          >
             <Link href="/events">Event</Link>
           </li>
         </ul>

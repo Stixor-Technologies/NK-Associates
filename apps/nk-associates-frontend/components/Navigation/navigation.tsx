@@ -100,7 +100,11 @@ const Navigation = () => {
           </div>
         </div>
 
-        <Sidebar isOpen={isMenuOpen} ref={sideBarMenu} />
+        <Sidebar
+          isOpen={isMenuOpen}
+          setIsOpen={setIsMenuOpen}
+          ref={sideBarMenu}
+        />
       </div>
     </div>
   );
