@@ -22,12 +22,12 @@ const LinkButton: FC<Props> = (props) => {
    const {text, type, buttonType, className} = props
   const typeStyles = {
     transparent: "bg-transparent text-nk-gray border border-nk-red",
-    inverted: "bg-white text-nk-red",
-    solid: "bg-nk-red text-white",
-    gradient: "bg-gradient-to-b bg-nk-gradient-red-one to-nk-gradient-red-two text-white",
+    inverted: "bg-nk-white text-nk-red",
+    solid: "bg-nk-red text-nk-white",
+    gradient: "bg-gradient-to-b from-nk-gradient-red-one to-nk-gradient-red-two text-nk-white",
   };
 
-  const classes = `rounded-full text-center capitalize font-metropolis transition-all ease-in-out duration-300 hover:shadow-lg hover:delay-100 
+  const classes = `rounded-full text-center capitalize font-metropolis transition-all ease-in-out duration-500 hover:shadow-lg hover:delay-200 
   ${typeStyles[type || "gradient"]} 
   py-2 block ${className || ""}`;
 

@@ -14,11 +14,12 @@ interface CardProps {
 const PropertyCard: FC<CardProps> = ({ property }) => {
   const { title, category, purpose, area, area_type, price, address } =
     property?.attributes;
+    const id  = property?.id
   const thumbnailImage =
     property?.attributes?.image_thumbnail.data.attributes.url;
   return (
     <div>
-      <Link href="#">
+      <Link href={`properties/${id}`}>
         <div className="aspect-w-1 aspect-h-1 group relative h-[17.5rem] w-full max-w-[37.5rem] overflow-hidden rounded-xl">
           <Image
             src={`${BASE_URL}${thumbnailImage}`}
