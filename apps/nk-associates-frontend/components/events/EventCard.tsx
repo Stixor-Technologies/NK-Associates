@@ -26,19 +26,13 @@ const EventCard: React.FC<EventProps> = ({ data }) => {
     setIsOpen(true);
   };
 
-  // const sortedData = data?.sort((a, b) => {
-  //   const dateA = new Date(a?.attributes?.event_date);
-  //   const dateB = new Date(b?.attributes?.event_date);
-  //   return dateA - dateB; // Ascending order, for descending order use: dateB - dateA
-  // });
-
   return (
     <>
       {data
         ?.sort((a, b) => {
           const dateA: any = new Date(a?.attributes?.event_date);
           const dateB: any = new Date(b?.attributes?.event_date);
-          return dateB - dateA; // Ascending order, for descending order use: dateB - dateA
+          return dateB - dateA;
         })
         .map((dataItem, index) => (
           <div
