@@ -31,14 +31,14 @@ const Properties = () => {
   const [isLoading, setIsLoading] = useState<boolean>(true);
 
   const [mapProperties, setMapProperties] = useState<Property[]>([]);
-  const [selectedProperty, setSelectedProperty] = useState<Property | null>(null);
+  const [selectedProperty, setSelectedProperty] = useState<Property | null>(
+    null
+  );
   const [hasMapRendered, setHasMapRendered] = useState<boolean>(false);
   // const [center, setCenter] = useState(null);
 
-
   const mapRef = useRef<google.maps.Map | null>(null);
   const { isLoaded } = useMapApi();
-
 
   const fetchGridData = async () => {
     setIsLoading(true);
@@ -59,6 +59,18 @@ const Properties = () => {
     if (map) {
       const newBounds = map.getBounds();
       const bounds = newBounds.toJSON();
+
+      if (selectedProperty) {
+        const selectedLatLng = {
+          lat: selectedProperty?.attributes?.latitude,
+          lng: selectedProperty?.attributes?.longitude,
+        };
+
+        if (selectedLatLng && !newBounds.contains(selectedLatLng)) {
+          setSelectedProperty(null);
+        }
+      }
+
       try {
         const resp = await getMapProperties(
           bounds.south,
@@ -127,7 +139,7 @@ const Properties = () => {
               next={fetchGridData}
               hasMore={total !== gridProperties.length}
               loader={isLoading && <Spinner />}
-              className={isList ? "block" : "hidden"} 
+              className={isList ? "block" : "hidden"}
             >
               <PropertyList properties={gridProperties} />
             </InfiniteScroll>
@@ -173,8 +185,8 @@ const Properties = () => {
                       : new window.google.maps.Size(30, 30),
                   }}
                   onClick={() => {
-                    setSelectedProperty(location)
-                  }  }
+                    setSelectedProperty(location);
+                  }}
                 />
               );
             })}
