@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useMemo } from "react";
 import ProjectCard from "../../components/projectcard/project-card";
 import { getProjects } from "../../utils/api-calls";
 import LinkButton from "../../components/button/link-button";
@@ -7,6 +7,35 @@ import { Project } from "../../utils/types/types";
 import { BASE_URL } from "../../utils/constants";
 import Spinner from "../../components/spinner";
 import InfiniteScroll from "react-infinite-scroll-component";
+
+const ProjectCardItem = ({
+  project,
+  index,
+}: {
+  project: Project;
+  index: number;
+}) => {
+  const thumbnailImgUrl = useMemo(() => {
+    if (project.attributes.Pictures.data.length > -1) {
+      return `${BASE_URL}${project.attributes.Pictures.data[0].attributes.url}`;
+    }
+    return undefined;
+  }, [project.attributes.Pictures]);
+
+  return (
+    <ProjectCard
+      image={thumbnailImgUrl}
+      propertyName={project.attributes.Title}
+      plotSize={`${project.attributes.PlotSize} ${project.attributes.PlotSizeUnits}`}
+      plotNo={project.attributes.PlotNumber}
+      coveredArea={`${project.attributes.CoveredArea} ${project.attributes.CoveredAreaUnits}`}
+      location={`${project.attributes.Address}, ${project.attributes.City}`}
+      propertyDescription={project.attributes.Description}
+      propertyType={project.attributes.Category}
+      primaryColor={index % 2 == 0 ? true : false}
+    />
+  );
+};
 
 export default function Projects() {
   const [selectedButton, setSelectedButton] = useState<
@@ -122,17 +151,7 @@ export default function Projects() {
             >
               {projectsData.map((value, index) => (
                 <div key={index} className="flex justify-center">
-                  <ProjectCard
-                    image={`${BASE_URL}${value.attributes.Pictures.data[0].attributes.url}`}
-                    propertyName={value.attributes.Title}
-                    plotSize={`${value.attributes.PlotSize} ${value.attributes.PlotSizeUnits}`}
-                    plotNo={value.attributes.PlotNumber}
-                    coveredArea={`${value.attributes.CoveredArea} ${value.attributes.CoveredAreaUnits}`}
-                    location={`${value.attributes.Address}, ${value.attributes.City}`}
-                    propertyDescription={value.attributes.Description}
-                    propertyType={value.attributes.Category}
-                    primaryColor={index % 2 == 0 ? true : false}
-                  />
+                  <ProjectCardItem project={value} index={index} />
                 </div>
               ))}
             </InfiniteScroll>

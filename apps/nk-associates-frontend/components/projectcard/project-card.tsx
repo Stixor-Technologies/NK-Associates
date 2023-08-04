@@ -44,20 +44,39 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
 
   return (
     <div
-      className={`mb-[2.3rem] flex h-[32.875rem] w-96 flex-col rounded-2xl shadow-md md:mb-[4.5rem] md:h-[31.25rem] md:w-[76.25rem] ${flexDirection} md:rounded-3xl ${backgroundColor} ${textColor}`}
+      className={`mb-[2.3rem] flex h-[32.875rem] w-96 flex-col overflow-hidden rounded-2xl shadow-md md:mb-[4.5rem] md:h-[31.25rem] md:w-[76.25rem] ${flexDirection} md:rounded-3xl ${backgroundColor} ${textColor}`}
     >
       <div className="relative h-80 w-full  md:flex md:h-auto md:w-[65%] ">
-        <Image
-          src={image}
-          alt="Card Image"
-          layout="fill"
-          objectFit="cover"
-          className={`rounded-xl ${
-            primaryColor
-              ? "md:rounded-bl-none md:rounded-br-3xl md:rounded-tl-none md:rounded-tr-3xl"
-              : "md:rounded-bl-3xl md:rounded-br-none md:rounded-tl-3xl md:rounded-tr-none"
-          }`}
-        />
+        {image ? (
+          <Image
+            src={image}
+            alt="Card Image"
+            layout="fill"
+            objectFit="cover"
+            className={`rounded-xl ${
+              primaryColor
+                ? "md:rounded-bl-none md:rounded-br-3xl md:rounded-tl-none md:rounded-tr-3xl"
+                : "md:rounded-bl-3xl md:rounded-br-none md:rounded-tl-3xl md:rounded-tr-none"
+            }`}
+          />
+        ) : (
+          <div className="flex h-full w-full items-center justify-center bg-white text-black">
+            <Image
+              src={"./assets/icons/no-image-svgrepo-com.svg"}
+              width={50}
+              height={50}
+              alt="No Image Available"
+              layout="contain"
+              objectFit="contain"
+              className={`mr-2 rounded-xl ${
+                primaryColor
+                  ? "md:rounded-bl-none md:rounded-br-3xl md:rounded-tl-none md:rounded-tr-3xl"
+                  : "md:rounded-bl-3xl md:rounded-br-none md:rounded-tl-3xl md:rounded-tr-none"
+              }`}
+            />
+            No Image Available
+          </div>
+        )}
       </div>
       <div className="m-6 my-[0.94rem] ml-[1.42rem] flex-1 md:my-12 md:ml-[1.875rem] md:flex md:w-[35%] md:flex-col">
         <div className="md:flex md:flex-grow md:flex-col">
