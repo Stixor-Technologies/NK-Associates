@@ -14,6 +14,7 @@ import "swiper/css/thumbs";
 import "swiper/css/pagination";
 import "./events.css";
 import { BASE_URL } from "../../utils/constants";
+import { format } from "date-fns";
 
 interface ModalProps {
   open: boolean;
@@ -182,10 +183,11 @@ const EventModal: React.FC<ModalProps> = ({ open, onClose, eventData }) => {
           <div className="mt-4 text-sm text-nk-black underline md:text-lg">
             Date:
             <span className="text-nk-grey">
-              {` ${eventData?.attributes?.event_date
-                .split("-")
-                .reverse()
-                .join("-")}`}
+              {eventData &&
+                ` ${format(
+                  new Date(eventData.attributes.event_date),
+                  "dd-MM-yyyy"
+                )}`}
             </span>
           </div>
         </div>

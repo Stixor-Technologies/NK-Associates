@@ -12,6 +12,7 @@ import "swiper/css";
 import "swiper/css/effect-coverflow";
 import "swiper/css/pagination";
 import EventModal from "./event-modal";
+import { format } from "date-fns";
 
 interface EventProps {
   data: Events[];
@@ -30,11 +31,11 @@ const EventCard: React.FC<EventProps> = ({ data }) => {
     <>
       {data
         ?.sort((a, b) => {
-          const dateA: any = new Date(a?.attributes?.event_date);
-          const dateB: any = new Date(b?.attributes?.event_date);
-          return dateB - dateA;
+          const dateA = new Date(a?.attributes?.event_date);
+          const dateB = new Date(b?.attributes?.event_date);
+          return dateB.getTime() - dateA.getTime();
         })
-        .map((dataItem, index) => (
+        .map((dataItem: Events, index: number) => (
           <div
             key={index}
             className="flex flex-1 flex-col overflow-hidden rounded-lg"
@@ -120,10 +121,10 @@ const EventCard: React.FC<EventProps> = ({ data }) => {
                 <div className="mb-3 font-metropolis-bold text-nk-black underline">
                   Date:
                   <span className="font-metropolis-semibold text-nk-gray">
-                    {` ${dataItem?.attributes?.event_date
-                      .split("-")
-                      .reverse()
-                      .join("-")}`}
+                    {` ${format(
+                      new Date(dataItem.attributes.event_date),
+                      "dd-MM-yyyy"
+                    )}`}
                   </span>
                 </div>
 
