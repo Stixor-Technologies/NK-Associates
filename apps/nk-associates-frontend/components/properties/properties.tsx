@@ -33,7 +33,6 @@ const Properties = () => {
     null
   );
   const [hasMapRendered, setHasMapRendered] = useState<boolean>(false);
-  // const [center, setCenter] = useState(null);
 
   const mapRef = useRef<google.maps.Map | null>(null);
   const { isLoaded } = useMapApi();
