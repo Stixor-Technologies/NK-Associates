@@ -4,7 +4,6 @@ import Image from "next/image";
 import {
   GoogleMap,
   Marker,
-  useJsApiLoader,
   InfoWindow,
 } from "@react-google-maps/api";
 import PropertyList from "./property-list";
@@ -12,7 +11,6 @@ import Spinner from "../spinner";
 import InfiniteScroll from "react-infinite-scroll-component";
 import { getGridProperties, getMapProperties } from "../../utils/api-calls";
 import { Property } from "../../utils/types/types";
-import { MAP_KEY } from "../../utils/constants";
 import { debounce } from "lodash";
 import Map_Btn from "../../public/assets/icons/map-list-icon.svg";
 import List_Icon from "../../public/assets/icons/list-icon.svg";
