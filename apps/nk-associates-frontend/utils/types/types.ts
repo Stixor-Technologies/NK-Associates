@@ -57,19 +57,19 @@ export interface Property {
 
 export interface Project {
   attributes: {
-    Pictures: {
+    pictures: {
       data: Array<{ attributes: { url: string } }>;
     };
-    Title: string;
-    PlotSize: string;
-    PlotSizeUnits: string;
-    PlotNumber: string;
-    CoveredArea: string;
-    CoveredAreaUnits: string;
-    Address: string;
-    City: string;
-    Description: string;
-    Category: string;
+    title: string;
+    plotSize: string;
+    plotSizeUnits: string;
+    plotNumber: string;
+    coveredArea: string;
+    coveredAreaUnits: string;
+    address: string;
+    city: string;
+    description: string;
+    category: string;
   };
 }
 

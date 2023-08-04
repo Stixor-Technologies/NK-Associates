@@ -2,14 +2,14 @@
     border-radius: 12px;
    padding: 0;   
    background-color: transparent;
-   width: 260px;
-   max-width: 300px !important;
-   top: -32px;
+   width: 16.25rem;
+   max-width: 18.75rem !important;
+   top: -2rem;
 }
 
 .gm-style .gm-style-iw-d {
     padding: 0;
-    border-radius: 12px;
+    border-radius: 0.75rem;
     background-color: transparent;
     overflow: hidden !important;
 }
@@ -23,8 +23,8 @@
     border-style: solid;
     background-color: rgba(0,0,0,0.15) !important;
     opacity: 1;
-    left: 10px;
-    top: 10px !important;
+    left: 0.625rem;
+    top: 0.625rem !important;
     border-radius: 50%;
     border: none;
     padding: 0;
