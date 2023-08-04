@@ -182,7 +182,10 @@ const EventModal: React.FC<ModalProps> = ({ open, onClose, eventData }) => {
           <div className="mt-4 text-sm text-nk-black underline md:text-lg">
             Date:
             <span className="text-nk-grey">
-              {` ${eventData?.attributes?.event_date}`}
+              {` ${eventData?.attributes?.event_date
+                .split("-")
+                .reverse()
+                .join("-")}`}
             </span>
           </div>
         </div>

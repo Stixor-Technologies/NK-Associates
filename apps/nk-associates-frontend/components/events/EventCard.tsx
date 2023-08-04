@@ -114,7 +114,10 @@ const EventCard: React.FC<EventProps> = ({ data }) => {
               <div className="mb-3 font-metropolis-bold text-nk-black underline">
                 Date:
                 <span className="font-metropolis-semibold text-nk-gray">
-                  {` ${dataItem?.attributes?.event_date}`}
+                  {` ${dataItem?.attributes?.event_date
+                    .split("-")
+                    .reverse()
+                    .join("-")}`}
                 </span>
               </div>
 
