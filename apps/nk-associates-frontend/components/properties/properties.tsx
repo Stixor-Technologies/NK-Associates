@@ -12,8 +12,8 @@ import InfiniteScroll from "react-infinite-scroll-component";
 import { getGridProperties, getMapProperties } from "../../utils/api-calls";
 import { Property } from "../../utils/types/types";
 import { debounce } from "lodash";
-import Map_Btn from "../../public/assets/icons/map-list-icon.svg";
-import List_Icon from "../../public/assets/icons/list-icon.svg";
+import MapBtn from "../../public/assets/icons/map-list-icon.svg";
+import ListIcon from "../../public/assets/icons/list-icon.svg";
 import PropertyCard from "./property-card";
 import { useMapApi } from "../../app/context/map-context";
 import "./map-info-window.css";
@@ -115,7 +115,7 @@ const Properties = () => {
       >
         <span>{`${isList ? "Show Map" : "Show List"}`}</span>
         <Image
-          src={isList ? Map_Btn : List_Icon}
+          src={isList ? MapBtn : ListIcon}
           width={35}
           height={35}
           alt="properties-view"
