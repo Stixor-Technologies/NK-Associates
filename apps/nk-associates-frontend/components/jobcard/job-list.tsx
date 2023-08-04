@@ -65,13 +65,13 @@ const JobList = () => {
 	};
 
 	return (
-		<div className="rounded-xl bg-white pb-4 shadow-xl ">
+		<div className="rounded-xl bg-nk-white pb-4 shadow-xl ">
 			<div className="hidden md:block">
 				<div className="m-4 mt-8 flex w-3/5">
 					{/* Department filter */}
 					<div className="relative m-2 w-1/2">
 						<select
-							className="w-full appearance-none rounded-full border-2 border-nk-gray px-4 py-3.5 pr-8 text-nk-gray focus:border-nk-red focus:outline-none"
+							className="w-full appearance-none rounded-full border border-nk-gray px-4 py-3.5 pr-8 text-nk-gray focus:border-nk-red focus:outline-none"
 							value={filteredDepartment || ""}
 							onChange={e => handleFilterByDepartment(e.target.value || null)}>
 							<option value="">All Departments</option>
@@ -99,7 +99,7 @@ const JobList = () => {
 					{/* Location filter */}
 					<div className="relative m-2 w-1/2">
 						<select
-							className="w-full appearance-none rounded-full border-2 border-nk-gray px-4 py-3.5 pr-8 text-nk-gray focus:border-nk-red focus:outline-none"
+							className="w-full appearance-none rounded-full border border-nk-gray px-4 py-3.5 pr-8 text-nk-gray focus:border-nk-red focus:outline-none"
 							value={filteredLocation || ""}
 							onChange={handleLocationChange}>
 							<option value="">All Locations</option>
