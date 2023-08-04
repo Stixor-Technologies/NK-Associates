@@ -16,35 +16,29 @@
       "type": "string",
       "required": true
     },
-    "email": {
-      "type": "email",
-      "required": true
-    },
-    "contactNumber": {
-      "type": "string",
-      "required": true
-    },
     "address": {
       "type": "text",
       "required": true
     },
     "latitude": {
-      "type": "float"
+      "type": "float",
+      "required": true
     },
     "longitude": {
-      "type": "float"
-    },
-    "altContactNumber": {
-      "type": "string"
-    },
-    "altEmail": {
-      "type": "email"
+      "type": "float",
+      "required": true
     },
     "emails": {
       "displayName": "email",
       "type": "component",
       "repeatable": true,
-      "component": "email.email"
+      "component": "email.email",
+      "required": false
+    },
+    "numbers": {
+      "type": "component",
+      "repeatable": true,
+      "component": "contact-number.numbers"
     }
   }
 }

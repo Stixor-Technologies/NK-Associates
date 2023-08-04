@@ -11,7 +11,7 @@ interface Location {
 
 async function FetchData() {
   try {
-    const response = await fetch(`${BASE_URL}/api/contacts`, {
+    const response = await fetch(`${BASE_URL}/api/contacts?populate=*`, {
       cache: "no-store",
     });
     if (!response.ok) {

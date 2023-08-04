@@ -19,7 +19,7 @@ const ContactDetails: React.FC<ContactDetailProps> = ({ data }) => {
           >
             <div className="flex w-full flex-col gap-4">
               <div className="font-metropolis-bold text-3xl text-nk-black">
-                {`${contactItem.attributes.location} Office`}
+                {`${contactItem?.attributes?.location} Office`}
               </div>
               <div className="flex items-start gap-4">
                 <Image
@@ -30,44 +30,49 @@ const ContactDetails: React.FC<ContactDetailProps> = ({ data }) => {
                   className="flex-shrink-0"
                 />
                 <p className="font-metropolis-light text-lg">
-                  {contactItem.attributes.address}
+                  {contactItem?.attributes?.address}
                 </p>
               </div>
 
-              <div className="flex items-start gap-4">
-                <Image
-                  src={Envelope}
-                  alt="Envelope Icon"
-                  width={24}
-                  height={35}
-                  className="flex-shrink-0"
-                />
-                <div className="flex flex-col font-metropolis-light text-lg">
-                  <p>{contactItem.attributes.email}</p>
-                  {contactItem.attributes.altEmail && (
-                    <p>{contactItem.attributes.altEmail}</p>
-                  )}
-                  {/* Additional emails can be added here if needed */}
+              {contactItem?.attributes?.emails.length > 0 && (
+                <div className="flex items-start gap-4">
+                  <Image
+                    src={Envelope}
+                    alt="Envelope Icon"
+                    width={24}
+                    height={35}
+                    className="flex-shrink-0"
+                  />
+                  <div className="flex flex-col font-metropolis-light text-lg">
+                    {contactItem?.attributes?.emails?.map(
+                      (emailItem, index) => {
+                        return (
+                          <p key={index} className="break-all">
+                            {emailItem?.email}
+                          </p>
+                        );
+                      }
+                    )}
+                  </div>
                 </div>
-              </div>
+              )}
 
-              <div className="flex items-start gap-4">
-                <Image
-                  src={ContactIcon}
-                  alt="Contact Icon"
-                  width={24}
-                  height={35}
-                  className="flex-shrink-0"
-                />
-                <div className="flex flex-col font-metropolis-light text-lg">
-                  <p>{contactItem.attributes.contactNumber}</p>
-                  {contactItem.attributes.altContactNumber && (
-                    <>
-                      <p>{contactItem.attributes.altContactNumber}</p>
-                    </>
-                  )}
+              {contactItem?.attributes?.numbers.length > 0 && (
+                <div className="flex items-start gap-4">
+                  <Image
+                    src={ContactIcon}
+                    alt="Contact Icon"
+                    width={24}
+                    height={35}
+                    className="flex-shrink-0"
+                  />
+                  <div className="flex flex-col font-metropolis-light text-lg">
+                    {contactItem?.attributes?.numbers?.map((number, index) => {
+                      return <p key={index}>{number?.contactNumber}</p>;
+                    })}
+                  </div>
                 </div>
-              </div>
+              )}
             </div>
           </div>
         );

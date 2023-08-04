@@ -119,7 +119,7 @@ const ContactForm = ({ categories }) => {
                           <option value="" disabled>
                             Select Category
                           </option>
-                          {categories.map((category, index) => {
+                          {categories?.map((category, index) => {
                             return (
                               <option
                                 key={index}
