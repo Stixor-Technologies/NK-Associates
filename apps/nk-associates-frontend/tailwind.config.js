@@ -15,7 +15,7 @@ module.exports = {
     },
     extend: {
       backgroundImage: {
-        "nk-bg": "url('/assets/images/bg-property.svg')",
+        "nk-bg": "url('/assets/images/bg-property.svg')"
       },
       fontFamily: {
         metropolis: ["var(--font-metroplis)"],
@@ -42,18 +42,13 @@ module.exports = {
         "nk-grey": "#727272",
         "nk-background": "#f5f5f5",
       },
-      screens: {
-        "min-aspect-9/16": { raw: "(min-aspect-ratio: 9/16)" },
-        "min-aspect": { raw: "(min-aspect-ratio: 1/1)" },
-      },
-
-       boxShadow: {
+      boxShadow: {
         "3xl": "0.25rem 0.188rem 1.375rem 0rem rgba(0, 0, 0, 0.092)",
       },
       spacing: {
         '1/2': '50%',
-        '3/4': '75%'
-      }
+        '3/4': '75%',
+      },
     },
   },
   plugins: [],
