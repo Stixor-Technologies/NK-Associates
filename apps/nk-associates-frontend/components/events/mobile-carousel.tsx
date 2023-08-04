@@ -15,11 +15,12 @@ interface CarouselProps {
 }
 
 const MobileCarousel: React.FC<CarouselProps> = ({ images }) => {
+  const shuffledImages = images?.slice().sort(() => Math.random() - 0.5);
   const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
     // Wait for images to load before setting the isLoaded state to true
-    const imagePromises = images.slice(0, 10).map((image) => {
+    const imagePromises = shuffledImages.slice(0, 10).map((image) => {
       return new Promise<void>((resolve, reject) => {
         const img = new window.Image();
         img.src = `${BASE_URL}${image}`;
@@ -56,7 +57,7 @@ const MobileCarousel: React.FC<CarouselProps> = ({ images }) => {
           modules={[Pagination, Autoplay]}
           className="mySwiper4 mx-auto mb-3 h-full w-full"
         >
-          {images?.slice(0, 10).map((image, index) => {
+          {shuffledImages?.slice(0, 10).map((image, index) => {
             return (
               <SwiperSlide
                 key={index}
