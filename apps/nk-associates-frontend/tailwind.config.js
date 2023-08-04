@@ -43,9 +43,6 @@ module.exports = {
         '1/2': '50%',
         '3/4': '75%',
       },
-      maxWidth: {
-        container: "1228px",
-      }
     },
   },
   plugins: [],

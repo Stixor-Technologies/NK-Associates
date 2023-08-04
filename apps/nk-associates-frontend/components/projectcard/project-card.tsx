@@ -62,7 +62,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
         ) : (
           <div className="flex h-full w-full items-center justify-center bg-white text-black">
             <Image
-              src={"./assets/icons/no-image-svgrepo-com.svg"}
+              src={"./assets/icons/no-image-svg.svg"}
               width={50}
               height={50}
               alt="No Image Available"
