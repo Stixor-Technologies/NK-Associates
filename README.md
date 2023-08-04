@@ -150,9 +150,9 @@ You will need the following packages to be installed beforehand in order to clon
 
     - Assign your appropriate db username and db password to env variables, in env file at */apps/nk-associates-cms*
       ```
-      DATABASE_NAME=postgres
-      DATABASE_USERNAME=postgres
-      DATABASE_PASSWORD = post321
+      DATABASE_NAME=<your_database_name>
+      DATABASE_USERNAME=<your_database_name>
+      DATABASE_PASSWORD=<your_database_password>
       ```
 
 <!-- USAGE EXAMPLES -->
