@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import LocationIcon from "../../public/assets/icons/area-marker.svg";
 import LocationIconSecondary from "../../public/assets/images/LocationIconSecondary.svg";
+import NoImageIcon from "../../public/assets/icons/no-image-svg.svg";
 
 interface ProjectCardProps {
   image: string;
@@ -62,7 +63,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
         ) : (
           <div className="flex h-full w-full items-center justify-center bg-white text-black">
             <Image
-              src={"./assets/icons/no-image-svg.svg"}
+              src={NoImageIcon}
               width={50}
               height={50}
               alt="No Image Available"
