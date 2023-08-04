@@ -3,6 +3,7 @@ import ContactForm from "../../components/shared/contact-form";
 import ContactDetails from "../../components/contact/contact-details";
 import { BASE_URL } from "../../utils/constants";
 import MapComponent from "../../components/shared/map-component";
+import { Contacts } from "../../utils/types/types";
 
 interface Location {
   lat: number;
@@ -24,9 +25,9 @@ async function FetchData() {
   }
 }
 
-async function FetchCategories(data: any) {
+async function FetchCategories() {
   try {
-    const response = await fetch(`${BASE_URL}/api/category2s`, {
+    const response = await fetch(`${BASE_URL}/api/categories`, {
       cache: "no-store",
     });
     if (!response.ok) {
@@ -39,7 +40,7 @@ async function FetchCategories(data: any) {
   }
 }
 
-function collectCoordinates(data: any) {
+function collectCoordinates(data: Contacts[]) {
   let locations: Location[] = [];
   data?.map((dataItem, index) => {
     const latlng: Location = {
@@ -53,9 +54,9 @@ function collectCoordinates(data: any) {
 }
 
 const ContactUs = async () => {
-  const data = await FetchData();
+  const data: Contacts[] = await FetchData();
   const locations = collectCoordinates(data);
-  const categories = await FetchCategories(data);
+  const categories = await FetchCategories();
 
   return (
     <section className="">

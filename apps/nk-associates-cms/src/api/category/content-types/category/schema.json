@@ -1,22 +1,21 @@
 {
   "kind": "collectionType",
-  "collectionName": "category2s",
+  "collectionName": "categories",
   "info": {
-    "singularName": "category2",
-    "pluralName": "category2s",
-    "displayName": "Category",
-    "description": ""
+    "singularName": "category",
+    "pluralName": "categories",
+    "displayName": "Category"
   },
   "options": {
     "draftAndPublish": true
   },
   "pluginOptions": {},
   "attributes": {
-    "category": {
+    "value": {
       "type": "string",
       "required": true
     },
-    "value": {
+    "category": {
       "type": "string",
       "required": true
     }

@@ -6,6 +6,23 @@ export interface EventsImage {
   }[];
 }
 
+export interface Contacts {
+  attributes: {
+    location: string;
+    address: string;
+    latitude: number;
+    longitude: number;
+    emails: {
+      id: number;
+      email: string;
+    }[];
+    numbers: {
+      id: number;
+      contactNumber: string;
+    }[];
+  };
+}
+
 export interface Events {
   attributes: {
     event_title: string;
@@ -19,11 +36,10 @@ export interface Events {
 }
 
 export interface MediaAttributes {
-    attributes: {
-      url: string;
-      name: string;
-    };
-
+  attributes: {
+    url: string;
+    name: string;
+  };
 }
 
 export interface Property {
@@ -40,7 +56,7 @@ export interface Property {
     longitude: number;
     price: string;
     property_images: {
-      data: MediaAttributes[]
+      data: MediaAttributes[];
     };
     purpose: string;
     title: string;

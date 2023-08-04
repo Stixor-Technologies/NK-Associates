@@ -1,6 +1,16 @@
 import React from "react";
-import { Field } from "formik";
-const Input = ({
+import { Field, FormikErrors, FormikTouched } from "formik";
+
+interface InputProps {
+  hasError: string | string[] | FormikErrors<any> | FormikErrors<any>[];
+  isTouched: boolean | FormikTouched<any> | FormikTouched<any>[];
+  label: string;
+  name: string;
+  placeholder: string;
+  errorMessage: string | string[] | FormikErrors<any> | FormikErrors<any>[];
+}
+
+const Input: React.FC<InputProps> = ({
   hasError,
   isTouched,
   label,
@@ -27,7 +37,9 @@ const Input = ({
         placeholder={placeholder}
       />
       {isTouched && hasError && (
-        <p className="mt-2 text-sm italic text-nk-red">{errorMessage}</p>
+        <p className="mt-2 text-sm italic text-nk-red">
+          {errorMessage as string}
+        </p>
       )}
     </div>
   );

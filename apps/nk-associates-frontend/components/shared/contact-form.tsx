@@ -7,7 +7,6 @@ import { BASE_URL } from "../../utils/constants";
 import Spinner from "../spinner";
 import Toast from "./toast";
 import Image from "next/image";
-import Area_Marker from "../../public/assets/icons/area-marker.svg";
 import Envelope from "../../public/assets/icons/envelope-icon.svg";
 
 const fieldTypes = {
@@ -32,7 +31,16 @@ const initialValues = {
   message: "",
 };
 
-const ContactForm = ({ categories }) => {
+interface ContactFormProps {
+  categories: {
+    attributes: {
+      value: string;
+      category: string;
+    };
+  }[];
+}
+
+const ContactForm: React.FC<ContactFormProps> = ({ categories }) => {
   const [loading, setLoading] = useState<boolean>(false);
   const [showToast, setShowToast] = useState<boolean>(false);
   const [toastMessage, setToastMessage] = useState<string>("");
@@ -43,8 +51,6 @@ const ContactForm = ({ categories }) => {
     setLoading(true);
     try {
       const res = await fetch("api/contact", {
-        // const res = await fetch(`${BASE_URL}/api/send-email`, {
-
         headers: {
           "Content-Type": "application/json",
         },
@@ -60,7 +66,6 @@ const ContactForm = ({ categories }) => {
 
       const data = await res.json();
       console.log(data);
-      // setToastMessage("sent successfully");
       setToastMessage(data?.message);
       setShowToast(true);
 
@@ -71,10 +76,8 @@ const ContactForm = ({ categories }) => {
     } catch (error) {
       console.log(error);
       setToastMessage(`Error: ${error?.message}`);
-      // setToastMessage(`Error: "errror"`);
       setShowToast(true);
-      setTimeout(() => setShowToast(false), 22000);
-      console.log("Error sending message");
+      setTimeout(() => setShowToast(false), 2000);
     } finally {
       setLoading(false);
     }
@@ -100,7 +103,7 @@ const ContactForm = ({ categories }) => {
 
                   if (fieldType === "dropdown") {
                     return (
-                      <div key={fieldName} className="">
+                      <div key={fieldName}>
                         <label
                           htmlFor={fieldName}
                           className="font-metropolis-light capitalize text-nk-black md:text-base"

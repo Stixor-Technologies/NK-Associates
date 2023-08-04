@@ -1,14 +1,14 @@
 import Image from "next/image";
 import AreaMarker from "../../public/assets/icons/area-marker.svg";
 import Envelope from "../../public/assets/icons/envelope-icon.svg";
-import ContactIcon from "../../public/assets/icons/telephoneIcon.svg";
+import ContactIcon from "../../public/assets/icons/telephone-icon.svg";
+import { Contacts } from "../../utils/types/types";
 
 interface ContactDetailProps {
-  data: any;
+  data: Contacts[];
 }
 
 const ContactDetails: React.FC<ContactDetailProps> = ({ data }) => {
-  console.log(data);
   return (
     <>
       {data?.map((contactItem, index) => {
