@@ -1,6 +1,6 @@
 import { useMemo } from "react";
 import { useRouter } from "next/navigation";
-import LinkButton from "../../components/button/link-button";
+import LinkButton from "../button/link-button";
 
 const ErrorBoundry = ({ error }: { error: Error }) => {
   const router = useRouter();
@@ -28,10 +28,7 @@ const ErrorBoundry = ({ error }: { error: Error }) => {
       <LinkButton
         text="Go Back"
         className="px-6"
-        clickEvent={
-          // Attempt to recover by trying to re-render the segment
-          () => router.back()
-        }
+        clickEvent={() => router.back()}
       />
     </section>
   );

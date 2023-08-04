@@ -2,7 +2,7 @@
 
 import { useEffect } from "react";
 
-import { ErrorBoundry } from "../../components/ErrorBoundry";
+import { ErrorBoundry } from "../../components/error-boundry";
 
 export default function Error({
   error,
