@@ -16,22 +16,22 @@ const ProjectCardItem = ({
   index: number;
 }) => {
   const thumbnailImgUrl = useMemo(() => {
-    if (project.attributes.Pictures.data.length > -1) {
-      return `${BASE_URL}${project.attributes.Pictures.data[0].attributes.url}`;
+    if (project.attributes.pictures.data.length > -1) {
+      return `${BASE_URL}${project.attributes.pictures.data[0].attributes.url}`;
     }
     return undefined;
-  }, [project.attributes.Pictures]);
+  }, [project.attributes.pictures]);
 
   return (
     <ProjectCard
       image={thumbnailImgUrl}
-      propertyName={project.attributes.Title}
-      plotSize={`${project.attributes.PlotSize} ${project.attributes.PlotSizeUnits}`}
-      plotNo={project.attributes.PlotNumber}
-      coveredArea={`${project.attributes.CoveredArea} ${project.attributes.CoveredAreaUnits}`}
-      location={`${project.attributes.Address}, ${project.attributes.City}`}
-      propertyDescription={project.attributes.Description}
-      propertyType={project.attributes.Category}
+      propertyName={project.attributes.title}
+      plotSize={`${project.attributes.plotSize} ${project.attributes.plotSizeUnits}`}
+      plotNo={project.attributes.plotNumber}
+      coveredArea={`${project.attributes.coveredArea} ${project.attributes.coveredAreaUnits}`}
+      location={`${project.attributes.address}, ${project.attributes.city}`}
+      propertyDescription={project.attributes.description}
+      propertyType={project.attributes.category}
       primaryColor={index % 2 == 0 ? true : false}
     />
   );

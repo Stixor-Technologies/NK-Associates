@@ -12,47 +12,47 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "Title": {
+    "title": {
       "type": "string",
       "maxLength": 40,
       "minLength": 6,
       "required": true
     },
-    "Address": {
+    "address": {
       "type": "string",
       "maxLength": 40,
       "minLength": 6,
       "required": true
     },
-    "Latitude": {
+    "latitude": {
       "type": "float",
       "required": true
     },
-    "Longitude": {
+    "longitude": {
       "type": "float",
       "required": true
     },
-    "Description": {
+    "description": {
       "type": "text",
       "required": true
     },
-    "CoveredArea": {
+    "coveredArea": {
       "type": "float",
       "required": true
     },
-    "UnitsAvailable": {
+    "unitsAvailable": {
       "type": "integer",
       "required": true
     },
-    "Price": {
+    "price": {
       "type": "float",
       "required": true
     },
-    "City": {
+    "city": {
       "type": "string",
       "required": true
     },
-    "PDF": {
+    "pdf": {
       "type": "media",
       "multiple": false,
       "required": false,
@@ -60,7 +60,7 @@
         "files"
       ]
     },
-    "Pictures": {
+    "pictures": {
       "type": "media",
       "multiple": true,
       "required": true,
@@ -68,7 +68,7 @@
         "images"
       ]
     },
-    "CoveredAreaUnits": {
+    "coveredAreaUnits": {
       "type": "enumeration",
       "enum": [
         "Sq. Feet",
@@ -79,10 +79,10 @@
       ],
       "required": true
     },
-    "PlotSize": {
+    "plotSize": {
       "type": "float"
     },
-    "PlotSizeUnits": {
+    "plotSizeUnits": {
       "type": "enumeration",
       "enum": [
         "Sq. Feet",
@@ -92,7 +92,7 @@
         "Kanal(s)"
       ]
     },
-    "Category": {
+    "category": {
       "type": "enumeration",
       "enum": [
         "Residential",
@@ -100,7 +100,7 @@
         "Hotel"
       ]
     },
-    "PlotNumber": {
+    "plotNumber": {
       "type": "string"
     }
   }
