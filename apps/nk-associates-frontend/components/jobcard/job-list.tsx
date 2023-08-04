@@ -13,9 +13,7 @@ const JobList = () => {
 	const [total, setTotal] = useState<number | null>(null);
 	const [isLoading, setIsLoading] = useState<boolean>(true);
 	const [searchQuery, setSearchQuery] = useState<string>("");
-	const [filteredDepartment, setFilteredDepartments] = useState<string | null>(
-		null
-	);
+	const [filteredDepartment, setFilteredDepartments] = useState<string | null>(null);
 	const [filteredLocation, setFilteredLocation] = useState<string | null>(null);
 	const [departments, setDepartments] = useState<string[]>([]);
 	const [locations, setLocations] = useState<string[]>([]);
@@ -215,10 +213,8 @@ const JobList = () => {
 							setIsClicked(!isClicked);
 						}}>
 						<p>Filters</p>
-						
 						{!isClicked && <Image src={FilterIcon} alt="Filter Icon" />}
 						{isClicked && <Image src={FilterAlt} alt="Filter Alt" />}
-						
 					</div>
 				</div>
 				{isLoading && jobs.length === 0 ? (
