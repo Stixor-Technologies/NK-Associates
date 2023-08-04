@@ -39,6 +39,12 @@
     },
     "altEmail": {
       "type": "email"
+    },
+    "emails": {
+      "displayName": "email",
+      "type": "component",
+      "repeatable": true,
+      "component": "email.email"
     }
   }
 }
