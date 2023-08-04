@@ -20,7 +20,7 @@ const JobCard: React.FC<JobProp> = ({ job }) => {
 						{departmentName}
 					</h3>
 					<h3 className="block:inline text-nk-dark-gray lg:text-xl">
-						( {title} )
+						{title} 
 					</h3>
 				</div>
 				<p className="my-3 pr-2 font-metropolis-extralight text-xs">

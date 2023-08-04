@@ -4,7 +4,7 @@ import Job from "../../../nk-associates-frontend/app/assets/images/job-applicati
 import LinkButton from "../../components/button/link-button";
 import JobList from "../../components/jobcard/job-list";
 
-const page = () => {
+const Careers = () => {
 	return (
 		<div className=" lg:p-0.50 grid grid-cols-1 p-3 sm:p-6 xl:p-20 2xl:p-32">
 			<div className="my-8">
@@ -28,7 +28,7 @@ const page = () => {
 				<div className="flex justify-center">
 					<LinkButton
 						text="Be a part of our amazing team "
-						navigateTo="/"
+						navigateTo="#"
 						type="solid"
 						className="mt-8 w-80 md:w-96 "
 					/>
@@ -72,7 +72,7 @@ const page = () => {
 					<div className="flex justify-center">
 						<LinkButton
 							text="contact us"
-							navigateTo="/"
+							navigateTo="#"
 							type="solid"
 							className="mt-8 w-56 lg:w-96"
 						/>
@@ -97,7 +97,7 @@ const page = () => {
 				<div className="sm: flex justify-center pb-8">
 					<LinkButton
 						text="Submit Your Resume"
-						navigateTo="/"
+						navigateTo="#"
 						type="solid"
 						className="mt-8 w-96 "
 					/>
@@ -107,4 +107,4 @@ const page = () => {
 	);
 };
 
-export default page;
+export default Careers;

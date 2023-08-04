@@ -19,7 +19,6 @@ const JobList = () => {
 	const [filteredLocation, setFilteredLocation] = useState<string | null>(null);
 	const [departments, setDepartments] = useState<string[]>([]);
 	const [locations, setLocations] = useState<string[]>([]);
-
 	const fetchData = async () => {
 		setIsLoading(true);
 		const resp = await getJobs(filteredDepartment, filteredLocation);
@@ -72,9 +71,9 @@ const JobList = () => {
 			<div className="hidden md:block">
 				<div className="m-4 mt-8 flex w-3/5">
 					{/* Department filter */}
-					<div className="m-2 w-1/2">
+					<div className="relative m-2 w-1/2">
 						<select
-							className="w-full rounded-full border-2 border-nk-gray px-2 py-3.5 text-nk-gray"
+							className="w-full appearance-none rounded-full border-2 border-nk-gray px-4 py-3.5 pr-8 text-nk-gray focus:border-nk-red focus:outline-none"
 							value={filteredDepartment || ""}
 							onChange={e => handleFilterByDepartment(e.target.value || null)}>
 							<option value="">All Departments</option>
@@ -84,11 +83,25 @@ const JobList = () => {
 								</option>
 							))}
 						</select>
+						<div className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3">
+							<svg
+								className="h-6 w-6 text-nk-gray"
+								xmlns="http://www.w3.org/2000/svg"
+								fill="none"
+								viewBox="0 0 24 24"
+								stroke="currentColor">
+								<path
+									strokeLinecap="round"
+									strokeLinejoin="round"
+									strokeWidth="2"
+									d="M19 9l-7 7-7-7"></path>
+							</svg>
+						</div>
 					</div>
 					{/* Location filter */}
-					<div className="m-2 w-1/2">
+					<div className="relative m-2 w-1/2">
 						<select
-							className="w-full rounded-full border-2 border-nk-gray px-2 py-3.5 text-nk-gray"
+							className="w-full appearance-none rounded-full border-2 border-nk-gray px-4 py-3.5 pr-8 text-nk-gray focus:border-nk-red focus:outline-none"
 							value={filteredLocation || ""}
 							onChange={handleLocationChange}>
 							<option value="">All Locations</option>
@@ -98,6 +111,20 @@ const JobList = () => {
 								</option>
 							))}
 						</select>
+						<div className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3">
+							<svg
+								className="h-6 w-6 text-nk-gray"
+								xmlns="http://www.w3.org/2000/svg"
+								fill="none"
+								viewBox="0 0 24 24"
+								stroke="currentColor">
+								<path
+									strokeLinecap="round"
+									strokeLinejoin="round"
+									strokeWidth="2"
+									d="M19 9l-7 7-7-7"></path>
+							</svg>
+						</div>
 					</div>
 				</div>
 			</div>
@@ -110,9 +137,9 @@ const JobList = () => {
 						<div
 							className={` m-2 flex w-full flex-col rounded-lg bg-nk-light-gray p-2 shadow-2xl `}>
 							{/* Department filter */}
-							<div className="m-2">
+							<div className="relative m-2">
 								<select
-									className="w-full rounded-full border border-nk-gray px-2 py-3 text-nk-gray"
+									className="w-full appearance-none rounded-full border border-nk-gray px-4 py-3 pr-8 text-nk-gray focus:border-nk-red focus:outline-none"
 									value={filteredDepartment || ""}
 									onChange={e =>
 										handleFilterByDepartment(e.target.value || null)
@@ -124,11 +151,25 @@ const JobList = () => {
 										</option>
 									))}
 								</select>
+								<div className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3">
+									<svg
+										className="h-4 w-4 text-nk-gray"
+										xmlns="http://www.w3.org/2000/svg"
+										fill="none"
+										viewBox="0 0 24 24"
+										stroke="currentColor">
+										<path
+											strokeLinecap="round"
+											strokeLinejoin="round"
+											strokeWidth="2"
+											d="M19 9l-7 7-7-7"></path>
+									</svg>
+								</div>
 							</div>
 							{/* Location filter */}
-							<div className="m-2">
+							<div className="relative m-2">
 								<select
-									className="w-full rounded-full border border-nk-gray px-2 py-3 text-nk-gray"
+									className="w-full appearance-none rounded-full border border-nk-gray px-4 py-3 pr-8 text-nk-gray focus:border-nk-red focus:outline-none"
 									value={filteredLocation || ""}
 									onChange={handleLocationChange}>
 									<option value="">All Locations</option>
@@ -138,6 +179,20 @@ const JobList = () => {
 										</option>
 									))}
 								</select>
+								<div className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3">
+									<svg
+										className="h-4 w-4 text-nk-gray"
+										xmlns="http://www.w3.org/2000/svg"
+										fill="none"
+										viewBox="0 0 24 24"
+										stroke="currentColor">
+										<path
+											strokeLinecap="round"
+											strokeLinejoin="round"
+											strokeWidth="2"
+											d="M19 9l-7 7-7-7"></path>
+									</svg>
+								</div>
 							</div>
 						</div>
 					)}
@@ -152,7 +207,7 @@ const JobList = () => {
 						/>
 					</div>
 					<div
-						className={`z=0 m-2 flex w-1/3 gap-2 rounded-full px-2 py-1 text-nk-gray shadow md:hidden ${
+						className={`z-0 m-2 flex justify-center w-1/3 gap-2 rounded-full px-2 py-1 text-nk-gray shadow md:hidden ${
 							isClicked ? "bg-nk-red text-nk-white" : " border-nk-gray "
 						}`}
 						onClick={() => {
@@ -160,15 +215,17 @@ const JobList = () => {
 							setIsClicked(!isClicked);
 						}}>
 						<p>Filters</p>
+						
 						{!isClicked && <Image src={FilterIcon} alt="Filter Icon" />}
 						{isClicked && <Image src={FilterAlt} alt="Filter Alt" />}
+						
 					</div>
 				</div>
 				{isLoading && jobs.length === 0 ? (
 					<div className="my-4 flex flex-1">
 						<Spinner />
 					</div>
-				) : filteredJobs && filteredJobs.length > 0 ? (
+				) : filteredJobs?.length > 0 ? (
 					<div>
 						{filteredJobs.map((job, index) => (
 							<JobCard key={index} job={job} />
@@ -178,7 +235,7 @@ const JobList = () => {
 					<div className="flex flex-1 items-center justify-center text-nk-black">
 						<p className="text-center">No Jobs Available</p>
 					</div>
-				)}{" "}
+				)}
 			</div>
 		</div>
 	);
