@@ -63,21 +63,22 @@ const EventCard: React.FC<EventProps> = ({ data }) => {
               <div className="mb-3 line-clamp-1 max-w-full font-metropolis-bold text-2xl tracking-tight text-gray-900 md:max-w-[70%] md:text-3xl">
                 {dataItem?.attributes?.event_title}
               </div>
-
-              <div className="mb-3 mr-1 hidden max-w-[30%] gap-2 md:flex md:items-center ">
-                <>
-                  <Image
-                    src={LocationMarker}
-                    alt="Location Bar"
-                    width={20}
-                    height={20}
-                    className="flex-shrink-0"
-                  />
-                </>
-                <div className="font-metropolis-light text-lg text-red-500">
-                  {dataItem?.attributes?.event_location}
+              {dataItem?.attributes?.event_location && (
+                <div className="mb-3 mr-1 hidden max-w-[30%] gap-2 md:flex md:items-center ">
+                  <>
+                    <Image
+                      src={LocationMarker}
+                      alt="Location Bar"
+                      width={20}
+                      height={20}
+                      className="flex-shrink-0"
+                    />
+                  </>
+                  <div className="font-metropolis-light text-lg text-red-500">
+                    {dataItem?.attributes?.event_location}
+                  </div>
                 </div>
-              </div>
+              )}
             </div>
 
             <div className="mb-3 text-nk-gray underline">
@@ -117,20 +118,22 @@ const EventCard: React.FC<EventProps> = ({ data }) => {
                 </span>
               </div>
 
-              <div className="mb-3 mr-1 flex items-center gap-2 md:hidden">
-                <>
-                  <Image
-                    src={LocationMarker}
-                    alt="Location Bar"
-                    width={20}
-                    height={20}
-                    className="flex-shrink-0"
-                  />
-                </>
-                <div className="text-lg text-red-500">
-                  {dataItem?.attributes?.event_location}
+              {dataItem?.attributes.event_location && (
+                <div className="mb-3 mr-1 flex items-center gap-2 md:hidden">
+                  <>
+                    <Image
+                      src={LocationMarker}
+                      alt="Location Bar"
+                      width={20}
+                      height={20}
+                      className="flex-shrink-0"
+                    />
+                  </>
+                  <div className="text-lg text-red-500">
+                    {dataItem?.attributes?.event_location}
+                  </div>
                 </div>
-              </div>
+              )}
             </div>
           </div>
         </div>

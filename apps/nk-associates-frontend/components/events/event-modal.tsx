@@ -162,21 +162,22 @@ const EventModal: React.FC<ModalProps> = ({ open, onClose, eventData }) => {
           <div className="mt-1 p-4 text-center font-metropolis-extralight text-sm md:text-2xl">
             {eventData?.attributes?.event_description}
           </div>
-
-          <div className="mt-5 flex items-center gap-2 ">
-            <>
-              <Image
-                src={LocationMarker}
-                alt="Location Bar"
-                width={30}
-                height={30}
-                className="flex-shrink-0"
-              />
-            </>
-            <div className="font-metropolis-light text-lg text-red-500 md:text-3xl">
-              {eventData?.attributes?.event_location}
+          {eventData?.attributes?.event_location && (
+            <div className="mt-5 flex items-center gap-2 ">
+              <>
+                <Image
+                  src={LocationMarker}
+                  alt="Location Bar"
+                  width={30}
+                  height={30}
+                  className="flex-shrink-0"
+                />
+              </>
+              <div className="font-metropolis-light text-lg text-red-500 md:text-3xl">
+                {eventData?.attributes?.event_location}
+              </div>
             </div>
-          </div>
+          )}
 
           <div className="mt-4 text-sm text-nk-black underline md:text-lg">
             Date:
