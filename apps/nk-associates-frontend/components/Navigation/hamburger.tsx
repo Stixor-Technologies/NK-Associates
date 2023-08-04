@@ -40,10 +40,6 @@ const Hamburger = forwardRef<HTMLButtonElement, HamburgerProps>(
 
     const [isHover, setIsHover] = useState<boolean>(false);
 
-    const isTouchDevice = () => {
-      return window.matchMedia("(hover: none)").matches;
-    };
-
     useEffect(() => {
       isMenuOpen ? tl.current?.play() : tl.current?.reverse();
     }, [isMenuOpen]);

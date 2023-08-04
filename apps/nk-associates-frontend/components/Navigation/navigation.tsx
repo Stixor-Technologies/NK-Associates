@@ -12,7 +12,7 @@ import SearchIcon from "../../public/assets/icons/search-icon.svg";
 const Navigation = () => {
   const menuButtonRef = useRef<HTMLButtonElement | null>(null);
   const sideBarMenu = useRef<HTMLDivElement | null>(null);
-  const searchIcon = useRef<HTMLButtonElement | null>(null);
+  const getInTouch = useRef<HTMLButtonElement | null>(null);
 
   const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
 
@@ -47,7 +47,7 @@ const Navigation = () => {
           duration: 1,
           ease: "power2.out",
         });
-        gsap.to(searchIcon.current, {
+        gsap.to(getInTouch.current, {
           color: "#FFFFFF",
           borderColor: "#FFFFFF",
           duration: 0.5,
@@ -61,7 +61,7 @@ const Navigation = () => {
           duration: 1.2,
           ease: "power2.out",
         });
-        gsap.to(searchIcon.current, {
+        gsap.to(getInTouch.current, {
           color: "#E4404A",
           borderColor: "#E4404A",
           duration: 0.5,
@@ -80,10 +80,11 @@ const Navigation = () => {
 
   return (
     <div>
-      <div className="fixed top-0 w-full flex-col bg-nk-white-dark">
-        <div className="mx-auto flex w-[90%] items-center justify-between pb-6 pt-6">
+      <div className="fixed top-0 z-50 w-full flex-col bg-nk-white-dark">
+        <div className=" container mx-auto my-auto flex w-[90%] items-center justify-between pb-6 pt-6">
           <div>
             <Link href="#">
+              {/* to be changed and point to home page once developed */}
               <Image width={50} height={50} src={Logo} alt="NK logo" />
             </Link>
           </div>
@@ -93,9 +94,9 @@ const Navigation = () => {
                 <Image src={SearchIcon} alt="Search" />
               </button>
             </div>
-            <div className="hidden flex-row md:flex">
+            <div className="hidden flex-row md:z-50 md:flex">
               <button
-                ref={searchIcon}
+                ref={getInTouch}
                 className=" mr-2 mt-2 block h-12 rounded-full border border-nk-red bg-transparent px-8 text-center font-metropolis capitalize  text-nk-red"
               >
                 Get in touch
@@ -110,12 +111,13 @@ const Navigation = () => {
             </div>
           </div>
         </div>
-
-        <Sidebar
-          isOpen={isMenuOpen}
-          setIsOpen={setIsMenuOpen}
-          ref={sideBarMenu}
-        />
+        <div>
+          <Sidebar
+            isOpen={isMenuOpen}
+            setIsOpen={setIsMenuOpen}
+            ref={sideBarMenu}
+          />
+        </div>
       </div>
     </div>
   );

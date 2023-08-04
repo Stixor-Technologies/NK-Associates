@@ -1,5 +1,6 @@
 import React, { Dispatch, SetStateAction } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 interface SidebarProps {
   isOpen: boolean;
   setIsOpen: Dispatch<SetStateAction<boolean>>;
@@ -13,10 +14,13 @@ const Sidebar: React.ForwardRefRenderFunction<HTMLDivElement, SidebarProps> = (
     setIsOpen(!isOpen); // Toggle isOpen state to its opposite value
   };
 
+  const pathName: string = usePathname().slice(1);
+  console.log(pathName);
+
   return (
     <div
       ref={ref}
-      className={` fixed right-0 top-0 z-40 -mr-[100%]
+      className={`fixed right-0 top-0  -mr-[100%]
        h-full w-full overflow-y-auto will-change-auto  xs:-mr-[100%] xs:h-full xs:w-full sm:-mr-[100%] sm:h-full sm:w-full md:-mr-[100%] md:h-full md:w-full lg:-mr-[35vw] lg:h-full lg:w-[35vw] 
       `}
     >
@@ -28,43 +32,57 @@ const Sidebar: React.ForwardRefRenderFunction<HTMLDivElement, SidebarProps> = (
         <ul className="my-8 space-y-8 text-right font-metropolis-bold text-5xl">
           <li
             onClick={handleLinkClick}
-            className="text-nk-white transition-colors duration-500 ease-in-out hover:text-nk-dark-gray"
+            className={`text-nk-white transition-colors duration-500 ease-in-out hover:text-nk-dark-gray ${
+              pathName === "home" ? "text-nk-dark-gray" : ""
+            }`}
           >
             <Link href="#">Home</Link>
           </li>
           <li
             onClick={handleLinkClick}
-            className="text-nk-white transition-colors duration-500 ease-in-out hover:text-nk-dark-gray"
+            className={`text-nk-white transition-colors duration-500 ease-in-out hover:text-nk-dark-gray ${
+              pathName === "aboutus" ? "text-nk-dark-gray" : ""
+            }`}
           >
             <Link href="#">About Us</Link>
           </li>
           <li
             onClick={handleLinkClick}
-            className="text-nk-white transition-colors duration-500 ease-in-out hover:text-nk-dark-gray"
+            className={`text-nk-white transition-colors duration-500 ease-in-out hover:text-nk-dark-gray ${
+              pathName === "properties" ? "text-nk-dark-gray" : ""
+            }`}
           >
             <Link href="/properties">Property</Link>
           </li>
           <li
             onClick={handleLinkClick}
-            className="text-nk-white transition-colors duration-500 ease-in-out hover:text-nk-dark-gray"
+            className={`text-nk-white transition-colors duration-500 ease-in-out hover:text-nk-dark-gray ${
+              pathName === "projects" ? "text-nk-dark-gray" : ""
+            }`}
           >
             <Link href="/projects">Projects</Link>
           </li>
           <li
             onClick={handleLinkClick}
-            className="text-nk-white transition-colors duration-500 ease-in-out hover:text-nk-dark-gray"
+            className={`text-nk-white transition-colors duration-500 ease-in-out hover:text-nk-dark-gray ${
+              pathName === "services" ? "text-nk-dark-gray" : ""
+            }`}
           >
             <Link href="#">Services</Link>
           </li>
           <li
             onClick={handleLinkClick}
-            className="text-nk-white transition-colors duration-500 ease-in-out hover:text-nk-dark-gray"
+            className={`text-nk-white transition-colors duration-500 ease-in-out hover:text-nk-dark-gray ${
+              pathName === "career" ? "text-nk-dark-gray" : ""
+            }`}
           >
             <Link href="#">Career</Link>
           </li>
           <li
             onClick={handleLinkClick}
-            className="text-nk-white transition-colors duration-500 ease-in-out hover:text-nk-dark-gray"
+            className={`text-nk-white transition-colors duration-500 ease-in-out hover:text-nk-dark-gray ${
+              pathName === "events" ? "text-nk-dark-gray" : ""
+            }`}
           >
             <Link href="/events">Event</Link>
           </li>
