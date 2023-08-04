@@ -15,7 +15,28 @@ const Sidebar: React.ForwardRefRenderFunction<HTMLDivElement, SidebarProps> = (
   };
 
   const pathName: string = usePathname().slice(1);
-  console.log(pathName);
+
+  const menuItems = [
+    { pathName: "", label: "Home" },
+    { pathName: "aboutus", label: "About Us" },
+    { pathName: "properties", label: "Property" },
+    { pathName: "projects", label: "Projects" },
+    { pathName: "services", label: "Services" },
+    { pathName: "career", label: "Career" },
+    { pathName: "events", label: "Event" },
+  ];
+
+  const menuList = menuItems.map((menuItem) => (
+    <li
+      key={menuItem.pathName}
+      onClick={handleLinkClick}
+      className={`text-nk-white transition-colors duration-500 ease-in-out hover:text-nk-dark-gray ${
+        pathName === menuItem.pathName ? "text-nk-dark-gray" : ""
+      }`}
+    >
+      <Link href={`/${menuItem.pathName}`}>{menuItem.label}</Link>
+    </li>
+  ));
 
   return (
     <div
@@ -30,62 +51,7 @@ const Sidebar: React.ForwardRefRenderFunction<HTMLDivElement, SidebarProps> = (
 		min-aspect:h-full  min-aspect:w-full "
       >
         <ul className="my-8 space-y-8 text-right font-metropolis-bold text-5xl">
-          <li
-            onClick={handleLinkClick}
-            className={`text-nk-white transition-colors duration-500 ease-in-out hover:text-nk-dark-gray ${
-              pathName === "home" ? "text-nk-dark-gray" : ""
-            }`}
-          >
-            <Link href="#">Home</Link>
-          </li>
-          <li
-            onClick={handleLinkClick}
-            className={`text-nk-white transition-colors duration-500 ease-in-out hover:text-nk-dark-gray ${
-              pathName === "aboutus" ? "text-nk-dark-gray" : ""
-            }`}
-          >
-            <Link href="#">About Us</Link>
-          </li>
-          <li
-            onClick={handleLinkClick}
-            className={`text-nk-white transition-colors duration-500 ease-in-out hover:text-nk-dark-gray ${
-              pathName === "properties" ? "text-nk-dark-gray" : ""
-            }`}
-          >
-            <Link href="/properties">Property</Link>
-          </li>
-          <li
-            onClick={handleLinkClick}
-            className={`text-nk-white transition-colors duration-500 ease-in-out hover:text-nk-dark-gray ${
-              pathName === "projects" ? "text-nk-dark-gray" : ""
-            }`}
-          >
-            <Link href="/projects">Projects</Link>
-          </li>
-          <li
-            onClick={handleLinkClick}
-            className={`text-nk-white transition-colors duration-500 ease-in-out hover:text-nk-dark-gray ${
-              pathName === "services" ? "text-nk-dark-gray" : ""
-            }`}
-          >
-            <Link href="#">Services</Link>
-          </li>
-          <li
-            onClick={handleLinkClick}
-            className={`text-nk-white transition-colors duration-500 ease-in-out hover:text-nk-dark-gray ${
-              pathName === "career" ? "text-nk-dark-gray" : ""
-            }`}
-          >
-            <Link href="#">Career</Link>
-          </li>
-          <li
-            onClick={handleLinkClick}
-            className={`text-nk-white transition-colors duration-500 ease-in-out hover:text-nk-dark-gray ${
-              pathName === "events" ? "text-nk-dark-gray" : ""
-            }`}
-          >
-            <Link href="/events">Event</Link>
-          </li>
+          {menuList}
         </ul>
       </div>
     </div>

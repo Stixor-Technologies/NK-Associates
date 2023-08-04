@@ -81,34 +81,27 @@ const Navigation = () => {
   return (
     <div>
       <div className="fixed top-0 z-50 w-full flex-col bg-nk-white-dark">
-        <div className=" container mx-auto my-auto flex w-[90%] items-center justify-between pb-6 pt-6">
+        <div className=" container mx-auto my-auto flex w-full items-center justify-between px-6 py-6">
           <div>
-            <Link href="#">
-              {/* to be changed and point to home page once developed */}
+            <Link href="/home">
               <Image width={50} height={50} src={Logo} alt="NK logo" />
             </Link>
           </div>
           <div className="flex justify-between">
-            <div className="hidden md:flex">
-              <button className="pr-8">
-                <Image src={SearchIcon} alt="Search" />
-              </button>
-            </div>
-            <div className="hidden flex-row md:z-50 md:flex">
-              <button
-                ref={getInTouch}
-                className=" mr-2 mt-2 block h-12 rounded-full border border-nk-red bg-transparent px-8 text-center font-metropolis capitalize  text-nk-red"
-              >
-                Get in touch
-              </button>
-            </div>
-            <div>
-              <Hamburger
-                ref={menuButtonRef}
-                isMenuOpen={isMenuOpen}
-                setIsMenuOpen={setIsMenuOpen}
-              />
-            </div>
+            <button className="hidden pr-8 md:flex md:items-center">
+              <Image src={SearchIcon} alt="Search" />
+            </button>
+            <button
+              ref={getInTouch}
+              className=" mr-2 mt-2 hidden h-12 flex-row items-center rounded-full  border border-nk-red bg-transparent px-8 text-center font-metropolis capitalize text-nk-red md:z-50  md:flex"
+            >
+              Get in touch
+            </button>
+            <Hamburger
+              ref={menuButtonRef}
+              isMenuOpen={isMenuOpen}
+              setIsMenuOpen={setIsMenuOpen}
+            />
           </div>
         </div>
         <div>
