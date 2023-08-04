@@ -1,5 +1,5 @@
 .gm-style .gm-style-iw-c {
-    border-radius: 12px;
+    border-radius: 0.75rem;
    padding: 0;   
    background-color: transparent;
    width: 16.25rem;
@@ -19,7 +19,7 @@
 }
 
 .gm-ui-hover-effect {
-    border-width: 1px;
+    border-width: 0.063rem;
     border-style: solid;
     background-color: rgba(0,0,0,0.15) !important;
     opacity: 1;
