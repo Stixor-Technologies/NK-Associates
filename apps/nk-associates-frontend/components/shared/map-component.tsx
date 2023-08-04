@@ -3,6 +3,7 @@ import React, { FC, useEffect, useRef, useMemo } from "react";
 import { GoogleMap, Marker, useJsApiLoader } from "@react-google-maps/api";
 import { MAP_KEY } from "../../utils/constants";
 import Spinner from "../spinner";
+import { useMapApi } from "../../app/context/map-context";
 
 interface Location {
   lat: number;
@@ -15,10 +16,8 @@ interface IProps {
 
 const MapComponent: FC<IProps> = ({ locations }) => {
   const mapRef = useRef<google.maps.Map | null>(null);
-  const { isLoaded } = useJsApiLoader({
-    id: "google-map-script",
-    googleMapsApiKey: MAP_KEY,
-  });
+  const { isLoaded } = useMapApi();
+
 
   const allLocations = useMemo(
     () => (Array.isArray(locations) ? locations : [locations]),

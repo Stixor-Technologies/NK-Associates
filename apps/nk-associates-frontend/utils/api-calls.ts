@@ -12,10 +12,10 @@ export const getGridProperties = async (start: number, limit = 12) => {
 };
 
 export const getMapProperties = async (
-  southLat,
-  northLat,
-  westLng,
-  eastLng
+  southLat: number,
+  northLat: number,
+  westLng: number,
+  eastLng: number
 ) => {
   try {
     const resp = await fetch(

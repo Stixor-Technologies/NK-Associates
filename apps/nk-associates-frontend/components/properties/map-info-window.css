@@ -1,14 +1,16 @@
-.gm-style-iw-c {
+.gm-style .gm-style-iw-c {
     border-radius: 12px;
-   padding: 0 !important;   
-   background-color: transparent !important;
+   padding: 0;   
+   background-color: transparent;
    width: 260px;
+   max-width: 300px !important;
+   top: -32px;
 }
 
-.gm-style-iw-d {
+.gm-style .gm-style-iw-d {
     padding: 0;
     border-radius: 12px;
-    background-color: transparent !important;
+    background-color: transparent;
     overflow: hidden !important;
 }
 
@@ -19,11 +21,20 @@
 .gm-ui-hover-effect {
     border-width: 1px;
     border-style: solid;
-    background-color: rgba(0,0,0,0.4) !important;
-    /* background-color: rgb(9, 255, 9) !important; */
-    left: 15px;
+    background-color: rgba(0,0,0,0.15) !important;
+    opacity: 1;
+    left: 10px;
     top: 10px !important;
     border-radius: 50%;
     border: none;
     padding: 0;
+}
+
+.gm-ui-hover-effect>span {
+    background-color: white;
+    transition: transform 0.3s ease-in-out;
+}
+
+.gm-ui-hover-effect:hover span  {
+    transform: scale(1.2);
 }

@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import Navbar from "../components/navbar/navbar";
 import Footer from "../components/footer/footer";
+import { MapApiProvider } from "./context/map-context";
 
 const metropolisRegular = localFont({
   src: "./assets/fonts/Metropolis-Regular.otf",
@@ -34,7 +35,6 @@ const metropolisMedium = localFont({
   variable: "--font-metroplis-medium",
 });
 
-
 const metropolisExtraLight = localFont({
   src: "./assets/fonts/Metropolis-ExtraLight.otf",
   variable: "--font-metroplis-extraLight",
@@ -61,9 +61,9 @@ export default function RootLayout({
         className={`${metropolisRegular.variable} ${metropolisMedium.variable} ${metropolisSemiBold.variable} ${metropolisBold.variable} ${metropolisExtraBold.variable} ${metropolisLight.variable} ${metropolisExtraLight.variable} ${metropolisThin.variable} bg-nk-background font-metropolis`}
       >
         <Navbar />
-        <main className="mt-24">
-          {children}
-          </main>
+        <MapApiProvider>
+          <main className="mt-24">{children}</main>
+        </MapApiProvider>
         <Footer />
       </body>
     </html>

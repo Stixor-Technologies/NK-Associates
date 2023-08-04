@@ -72,3 +72,7 @@ export interface Project {
     Category: string;
   };
 }
+
+export interface MapBounds {
+  
+}

@@ -44,6 +44,7 @@ async function PropertyDetail({ params: { id } }: PropertyDetailProps) {
   const paragraphs: string[] | string = description.split("\n\n");
 
   const center = { lat: latitude, lng: longitude };
+  console.log("center", center)
   const locations = [
     { lat: 33.55427247854852, lng: 73.09534453163067 },
     { lat: 33.54949268301728, lng: 73.12385803665302 },
