@@ -73,6 +73,33 @@ export interface Project {
   };
 }
 
-export interface MapBounds {
-  
+
+export interface Department {
+    id: number;
+    attributes: {
+        name: string;
+        createdAt: string;
+        updatedAt: string;
+        publishedAt: string;
+    };
+}
+
+export interface Job {
+    id: number;
+    attributes: {
+        title: string;
+        description: string;
+        responsibilities: string;
+        qualification: string;
+        positions: number;
+        start: string;
+        end: string;
+        createdAt: string;
+        updatedAt: string;
+        publishedAt: string;
+        location: string;
+        department: {
+            data: Department;
+        };
+    };
 }
