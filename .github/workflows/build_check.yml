@@ -1,0 +1,26 @@
+name: Yarn Build Check
+
+on:
+  pull_request:
+    branches: [master, develop]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Use Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: "16"
+
+      - name: Install dependencies
+        run: yarn install
+        working-directory: apps/nk-associates-frontend/
+
+      - name: Run build
+        run: yarn build
+        working-directory: apps/nk-associates-frontend/
