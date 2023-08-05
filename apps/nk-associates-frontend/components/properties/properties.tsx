@@ -1,11 +1,7 @@
 "use client";
 import React, { useState, useEffect, useCallback, useRef } from "react";
 import Image from "next/image";
-import {
-  GoogleMap,
-  Marker,
-  InfoWindow,
-} from "@react-google-maps/api";
+import { GoogleMap, Marker, InfoWindow } from "@react-google-maps/api";
 import PropertyList from "./property-list";
 import Spinner from "../spinner";
 import InfiniteScroll from "react-infinite-scroll-component";
@@ -16,6 +12,7 @@ import MapBtn from "../../public/assets/icons/map-list-icon.svg";
 import ListIcon from "../../public/assets/icons/list-icon.svg";
 import PropertyCard from "./property-card";
 import { useMapApi } from "../../app/context/map-context";
+import MapStyles from "../../utils/map-styles.json"
 import "./map-info-window.css";
 
 const center = {
@@ -94,6 +91,8 @@ const Properties = () => {
     scrollwheel: true,
     minZoom: 5,
     maxZoom: 40,
+
+    styles: MapStyles,
   };
 
   useEffect(() => {
