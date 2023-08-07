@@ -68,7 +68,7 @@ const JobList = () => {
 		setIsClicked(!isClicked);
 	};
 
-	if (departments && (departments.length > 0 && cities.length > 0)) {
+	if (departments && departments.length > 0 && cities.length > 0) {
 		return (
 			<div className="overflow-scroll rounded-xl bg-nk-white p-2 pb-4 shadow-xl">
 				<div className="flex flex-row justify-between">
@@ -103,7 +103,6 @@ const JobList = () => {
 							/>
 						</div>
 					</div>
-
 					<div className="relative flex w-2/6 px-2 pt-4 md:hidden">
 						<div
 							className={`z-0 flex h-10 w-full items-center justify-center gap-2 rounded-full px-2 text-nk-gray shadow  ${
@@ -140,7 +139,6 @@ const JobList = () => {
 						</div>
 					</div>
 				</div>
-
 				{isLoading && jobs.length === 0 ? (
 					<div className="my-4 flex flex-1">
 						<Spinner />
@@ -160,8 +158,10 @@ const JobList = () => {
 		);
 	} else {
 		return (
-			<div className="flex justify-center item-center rounded-xl bg-nk-white p-2 pb-4 shadow-xl">
-				<p className="font-metropolis text-base text-nk-dark-gray text-center">No Jobs Available</p>
+			<div className="item-center flex justify-center rounded-xl bg-nk-white p-2 pb-4 shadow-xl">
+				<p className="text-center font-metropolis text-base text-nk-dark-gray">
+					No Jobs Available
+				</p>
 			</div>
 		);
 	}

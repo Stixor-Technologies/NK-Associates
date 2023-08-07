@@ -15,7 +15,7 @@ import AppGallery from "../../public/assets/icons/app-gallery.svg";
 // social media links have temp links that go to their respective homepage.
 // I have written "dummy links here" in case you need to find them.
 const footer = () => {
-  return (
+	return (
 		<footer className="min-h-fit bg-nk-dark-gray font-metropolis text-nk-white">
 			<div className="container mx-auto py-6 pb-2 lg:py-8">
 				<div className="mx-5 sm:mx-2 md:mx-auto">
@@ -243,22 +243,19 @@ const footer = () => {
 										download
 									</h2>
 									<div className="flex justify-center">
-										<div className="mx-2 flex h-12 w-40 p-2 lg:w-44 items-center justify-center rounded-md bg-nk-red object-cover transition-all duration-500 hover:opacity-80">
+										<div className="mx-2 flex h-12 w-40 items-center justify-center rounded-md bg-nk-red object-cover p-2 transition-all duration-500 hover:opacity-80 lg:w-44">
 											<Link href="#">
 												<Image src={GooglePlay} alt="Google Play" />
 											</Link>
 										</div>
-										<div className="mx-2 flex h-12 w-40 p-2 lg:w-44 items-center justify-center rounded-md bg-nk-red object-cover transition-all duration-300 hover:bg-opacity-75">
+										<div className="mx-2 flex h-12 w-40 items-center justify-center rounded-md bg-nk-red object-cover p-2 transition-all duration-300 hover:bg-opacity-75 lg:w-44">
 											<Link href="#" className="mx-2">
-												<Image
-													src={AppStore}
-													alt="App Store"
-												/>
+												<Image src={AppStore} alt="App Store" />
 											</Link>
 										</div>
 									</div>
 									<div className="flex justify-center">
-										<div className="m-4 flex h-12 w-40 p-2 lg:w-44 items-center justify-center rounded-md bg-nk-red object-cover transition-all duration-300 hover:bg-opacity-75">
+										<div className="m-4 flex h-12 w-40 items-center justify-center rounded-md bg-nk-red object-cover p-2 transition-all duration-300 hover:bg-opacity-75 lg:w-44">
 											<Link href="#">
 												<Image src={AppGallery} alt="App Gallery" />
 											</Link>

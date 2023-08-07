@@ -23,10 +23,12 @@ const JobCard: React.FC<JobProp> = ({ job }) => {
 						({title})
 					</h3>
 				</div>
-				<p className="my-3 font-metropolis-extralight text-xs lg:font-metropolis lg:text-base">{description}</p>
+				<p className="my-3 font-metropolis-extralight text-xs lg:font-metropolis lg:text-base">
+					{description}
+				</p>
 			</div>
 			<div className="flex shrink-0 flex-row gap-2 lg:flex-col lg:justify-between">
-				<div className="flex flex-row hidden lg:block lg:order-2 lg:justify-end lg:ml-auto">
+				<div className="flex hidden flex-row lg:order-2 lg:ml-auto lg:block lg:justify-end">
 					<LinkButton
 						text="view more"
 						navigateTo="#"
@@ -42,9 +44,9 @@ const JobCard: React.FC<JobProp> = ({ job }) => {
 						className="h-10 w-32 border-2 border-nk-red text-nk-red"
 					/>
 				</div>
-				<div className="flex flex-row justify-center items-center gap-0.5 lg:order-1 lg:justify-end">
+				<div className="flex flex-row items-center justify-center gap-0.5 lg:order-1 lg:justify-end">
 					<Image src={LocationIcon} alt="location icon" />
-					<p className="lg:text-right lg:text-xl text-clip text-base">{city}</p>
+					<p className="text-clip text-base lg:text-right lg:text-xl">{city}</p>
 				</div>
 			</div>
 		</div>
