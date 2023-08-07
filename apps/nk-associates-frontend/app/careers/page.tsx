@@ -71,7 +71,7 @@ const Careers = () => {
 					</p>
 					<div
 						id="Listing"
-						className="flex items-center justify-center md:justify-start ">
+						className="flex items-center justify-center lg:justify-start ">
 						<LinkButton
 							text="contact us"
 							navigateTo="#"

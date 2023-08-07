@@ -8,6 +8,7 @@ import FilterIcon from "../../public/assets/images/filter.svg";
 import FilterAlt from "../../public/assets/images/filter-alt.svg";
 import Image from "next/image";
 import JobFilter from "./job-filter";
+import SearchIcon from "../../public/assets/icons/search.svg";
 
 const JobList = () => {
 	const [jobs, setJobs] = useState<Job[]>([]);
@@ -70,67 +71,76 @@ const JobList = () => {
 	if (departments && (departments.length > 0 && cities.length > 0)) {
 		return (
 			<div className="overflow-scroll rounded-xl bg-nk-white p-2 pb-4 shadow-xl">
-				<div className="m-4 hidden w-3/5 md:block md:flex ">
-					<div className="mt-8 w-1/2">
-						<JobFilter
-							selectedValue={filteredDepartment}
-							options={departments}
-							handleSelect={handleFilterByDepartment}
-							placeholder="All  Departments"
-						/>
+				<div className="flex flex-row justify-between">
+					<div className="relative w-3/6 h-1 pt-4 px-2">
+						<div className="relative  rounded-full border border-nk-gray px-4 py-2 pr-8 md:py-3.5 md:mt-6 text-nk-gray focus:border-nk-red focus:outline-none">
+							<input
+								placeholder="Search here"
+								className="z-0 text-nk-dark-gray"
+								value={searchQuery}
+								onChange={e => setSearchQuery(e.target.value)}
+							/>
+							<div className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3">
+								<Image src={SearchIcon} alt="search icon" className="w-8" />
+							</div>
+						</div>
 					</div>
-					<div className="mt-8 w-1/2">
-						<JobFilter
-							selectedValue={filteredCity}
-							options={cities}
-							handleSelect={handleFilterByCity}
-							placeholder="All Cities"
-						/>
-					</div>
-				</div>
-				<div className="relative flex px-2 pt-4">
-					<div className="m-2 w-2/3 rounded-full md:hidden">
-						<input
-							placeholder="Search here"
-							className="z-0 text-nk-dark-gray"
-							value={searchQuery}
-							onChange={e => setSearchQuery(e.target.value)}
-						/>
-					</div>
-					<div
-						className={`z-0 m-2 flex w-1/3 justify-center gap-2 rounded-full px-2 py-1 text-nk-gray shadow md:hidden ${
-							isClicked ? "bg-nk-red text-nk-white" : " border-nk-gray "
-						}`}
-						onClick={() => {
-							handleClick;
-							setIsClicked(!isClicked);
-						}}>
-						<p>Filters</p>
-						{!isClicked && <Image src={FilterIcon} alt="Filter Icon" />}
-						{isClicked && <Image src={FilterAlt} alt="Filter Alt" />}
-					</div>
-					<div
-						className={`absolute right-0 z-10 mt-10 flex w-3/4  flex-col rounded-lg bg-nk-light-gray shadow-xl  transition-opacity duration-500 ease-in-out ${
-							isClicked ? "opacity-100" : "opacity-0"
-						}`}>
-						{isClicked && (
+					<div className="hidden  w-1/2 md:block md:flex">
+						<div className="mt-8 w-1/2">
 							<JobFilter
 								selectedValue={filteredDepartment}
 								options={departments}
 								handleSelect={handleFilterByDepartment}
-								placeholder="All Departments"
+								placeholder="All  Departments"
 							/>
-						)}
-						{isClicked && (
+						</div>
+						<div className="mt-8 w-1/2">
 							<JobFilter
 								selectedValue={filteredCity}
 								options={cities}
 								handleSelect={handleFilterByCity}
 								placeholder="All Cities"
 							/>
-						)}
+						</div>
+					</div>
+
+					<div className="relative flex px-2 pt-4 w-2/6">
+						<div
+							className={`z-0 flex w-full justify-center items-center gap-2 rounded-full px-2 h-10 text-nk-gray shadow md:hidden ${
+								isClicked ? "bg-nk-red text-nk-white" : " border-nk-gray "
+							}`}
+							onClick={() => {
+								handleClick;
+								setIsClicked(!isClicked);
+							}}>
+							<p>Filters</p>
+							{!isClicked && <Image src={FilterIcon} alt="Filter Icon" />}
+							{isClicked && <Image src={FilterAlt} alt="Filter Alt" />}
+						</div>
+						<div
+							className={`absolute right-0 z-10 mt-10 flex w-64  flex-col rounded-lg bg-nk-light-gray shadow-xl  transition-opacity duration-500 ease-in-out ${
+								isClicked ? "opacity-100" : "opacity-0"
+							}`}>
+							{isClicked && (
+								<JobFilter
+									selectedValue={filteredDepartment}
+									options={departments}
+									handleSelect={handleFilterByDepartment}
+									placeholder="All Departments"
+								/>
+							)}
+							{isClicked && (
+								<JobFilter
+									selectedValue={filteredCity}
+									options={cities}
+									handleSelect={handleFilterByCity}
+									placeholder="All Cities"
+								/>
+							)}
+						</div>
 					</div>
 				</div>
+
 				{isLoading && jobs.length === 0 ? (
 					<div className="my-4 flex flex-1">
 						<Spinner />
