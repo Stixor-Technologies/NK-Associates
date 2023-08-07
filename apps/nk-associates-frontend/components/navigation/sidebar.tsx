@@ -32,7 +32,7 @@ const Sidebar: React.ForwardRefRenderFunction<HTMLDivElement, SidebarProps> = (
       key={menuItem.pathName}
       onClick={handleLinkClick}
       className={`text-nk-white transition-colors duration-500 ease-in-out hover:text-nk-dark-gray ${
-        pathName === menuItem.pathName ? "text-nk-dark-gray" : ""
+        pathName === menuItem.pathName ? "text-nk-dark-gray" : "text-nk-white"
       }`}
     >
       <Link href={`/${menuItem.pathName}`}>{menuItem.label}</Link>
