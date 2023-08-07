@@ -1,9 +1,15 @@
-import React, { Dispatch, SetStateAction } from "react";
+import React, { Dispatch, SetStateAction, useEffect, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useRouter } from "next/router";
 interface SidebarProps {
   isOpen: boolean;
   setIsOpen: Dispatch<SetStateAction<boolean>>;
+}
+
+interface MenuItem {
+  pathName: string;
+  label: string;
 }
 
 const Sidebar: React.ForwardRefRenderFunction<HTMLDivElement, SidebarProps> = (
@@ -16,7 +22,7 @@ const Sidebar: React.ForwardRefRenderFunction<HTMLDivElement, SidebarProps> = (
 
   const pathName: string = usePathname().slice(1);
 
-  const menuItems = [
+  const menuItems: MenuItem[] = [
     { pathName: "", label: "Home" },
     { pathName: "#", label: "About Us" },
     { pathName: "properties", label: "Property" },
@@ -27,6 +33,7 @@ const Sidebar: React.ForwardRefRenderFunction<HTMLDivElement, SidebarProps> = (
     { pathName: "#", label: "Contact Us" },
   ];
 
+  console.log(menuItems);
   const menuList = menuItems.map((menuItem) => (
     <li
       key={menuItem.pathName}
