@@ -3,11 +3,8 @@ import React, { useState } from "react";
 import { Formik, Field, Form } from "formik";
 import Input from "./input";
 import { ContactFormSchema } from "../../utils/formik-schema";
-import { BASE_URL } from "../../utils/constants";
 import Spinner from "../spinner";
 import Toast from "./toast";
-import Image from "next/image";
-import Envelope from "../../public/assets/icons/envelope-icon.svg";
 
 const fieldTypes = {
   name: "text",
@@ -47,7 +44,7 @@ const ContactForm: React.FC<ContactFormProps> = ({ categories }) => {
 
   const formFields = ["name", "email", "phone", "category", "message"];
 
-  const onSubmit = async (values) => {
+  const onSubmit = async (values,{resetForm}) => {
     setLoading(true);
     try {
       const res = await fetch("api/contact", {
@@ -65,16 +62,14 @@ const ContactForm: React.FC<ContactFormProps> = ({ categories }) => {
       });
 
       const data = await res.json();
-      console.log(data);
       setToastMessage(data?.message);
       setShowToast(true);
 
       setTimeout(() => {
         setShowToast(false);
+        resetForm();
       }, 2000);
-      console.log(data?.message);
     } catch (error) {
-      console.log(error);
       setToastMessage(`Error: ${error?.message}`);
       setShowToast(true);
       setTimeout(() => setShowToast(false), 2000);
@@ -126,9 +121,9 @@ const ContactForm: React.FC<ContactFormProps> = ({ categories }) => {
                             return (
                               <option
                                 key={index}
-                                value={`${category.attributes.value}`}
+                                value={`${category?.attributes?.category?.toLowerCase()}`}
                               >
-                                {category.attributes.category}
+                                {category?.attributes?.category}
                               </option>
                             );
                           })}

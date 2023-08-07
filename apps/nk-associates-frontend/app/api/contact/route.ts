@@ -1,27 +1,27 @@
 import { NextResponse } from "next/server";
 import { NextRequest } from "next/server";
 import sendgrid from "@sendgrid/mail";
-import { EMAIL_API } from "../../../utils/constants";
+import { EMAIL_API, EMAIL_TO, EMAIL_FROM } from "../../../utils/constants";
 
 sendgrid.setApiKey(EMAIL_API);
 
 export async function POST(request: NextRequest) {
   const data = await request.json();
-  console.log(data);
   const msg = {
-    to: "fawad.mehmood@stixor.com",
-    // Change this to your verified sender
-    from: "fawad.mehmood@stixor.com",
-    replyTo: data.email,
+    to: EMAIL_TO,
+    from: EMAIL_FROM,
+    replyTo: data?.email,
     subject: "This is dummy email and sent via sendgrid",
     body: data.message,
-    html: `<div>${data.message}</div>`,
+    html: `<div>
+    <h3>You've got a new mail from ${data.name}, their email is: ${data.email}, their number is ${data?.phone}, category: ${data.category} </h3>
+    ${data.message}</div>`,
   };
 
   try {
     const res = await sendgrid.send(msg);
     if (res[0]?.statusCode === 202) {
-      return NextResponse.json({message: 'Email has been sent'});
+      return NextResponse.json({ message: "Email has been sent" });
     } else {
       return NextResponse.json({ message: "Error sending email" });
     }
