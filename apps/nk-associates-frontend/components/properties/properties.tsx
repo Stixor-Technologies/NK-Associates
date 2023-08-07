@@ -12,7 +12,7 @@ import MapBtn from "../../public/assets/icons/map-list-icon.svg";
 import ListIcon from "../../public/assets/icons/list-icon.svg";
 import PropertyCard from "./property-card";
 import { useMapApi } from "../../app/context/map-context";
-import MapStyles from "../../utils/map-styles.json"
+import MapStyles from "../../utils/map-styles.json";
 import "./map-info-window.css";
 
 const center = {
@@ -101,27 +101,29 @@ const Properties = () => {
 
   return (
     <>
-      <button
-        className={`fixed bottom-16 left-1/2 z-10 flex -translate-x-1/2 items-center gap-2 rounded-full px-4 py-2 text-center text-sm capitalize text-nk-white transition-all duration-300 ease-in-out hover:shadow-lg hover:delay-100 md:gap-4 md:px-6 md:py-3 md:text-2xl ${
-          isList
-            ? "bg-nk-gradient-red-one bg-gradient-to-b to-nk-gradient-red-two"
-            : "bg-nk-black"
-        }`}
-        onClick={() => {
-          setIsList(!isList);
-        }}
-      >
-        <span>{`${isList ? "Show Map" : "Show List"}`}</span>
-        <Image
-          src={isList ? MapBtn : ListIcon}
-          width={35}
-          height={35}
-          alt="properties-view"
-          className={`mx-auto ${
-            isList ? "w-[1.375rem] md:w-[2.188rem]" : " w-4 md:w-[1.7rem]"
-          } `}
-        />
-      </button>
+      {gridProperties.length > 0 && (
+        <button
+          className={`fixed bottom-16 left-1/2 z-10 flex -translate-x-1/2 items-center gap-2 rounded-full px-4 py-2 text-center text-sm capitalize text-nk-white transition-all duration-300 ease-in-out hover:shadow-lg hover:delay-100 md:gap-4 md:px-6 md:py-3 md:text-2xl ${
+            isList
+              ? "bg-nk-gradient-red-one bg-gradient-to-b to-nk-gradient-red-two"
+              : "bg-nk-black"
+          }`}
+          onClick={() => {
+            setIsList(!isList);
+          }}
+        >
+          <span>{`${isList ? "Show Map" : "Show List"}`}</span>
+          <Image
+            src={isList ? MapBtn : ListIcon}
+            width={35}
+            height={35}
+            alt="properties-view"
+            className={`mx-auto ${
+              isList ? "w-[1.375rem] md:w-[2.188rem]" : " w-4 md:w-[1.7rem]"
+            } `}
+          />
+        </button>
+      )}
 
       {isList && (
         <>
