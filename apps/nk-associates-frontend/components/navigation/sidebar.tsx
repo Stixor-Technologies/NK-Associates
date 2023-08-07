@@ -18,12 +18,13 @@ const Sidebar: React.ForwardRefRenderFunction<HTMLDivElement, SidebarProps> = (
 
   const menuItems = [
     { pathName: "", label: "Home" },
-    { pathName: "aboutus", label: "About Us" },
+    { pathName: "#", label: "About Us" },
     { pathName: "properties", label: "Property" },
     { pathName: "projects", label: "Projects" },
-    { pathName: "services", label: "Services" },
-    { pathName: "career", label: "Career" },
+    { pathName: "#", label: "Services" },
+    { pathName: "careers", label: "Career" },
     { pathName: "events", label: "Event" },
+    { pathName: "#", label: "Contact Us" },
   ];
 
   const menuList = menuItems.map((menuItem) => (
@@ -47,8 +48,8 @@ const Sidebar: React.ForwardRefRenderFunction<HTMLDivElement, SidebarProps> = (
     >
       <div className="absolute -z-10 h-full w-full bg-nk-red"></div>
       <div
-        className=" mx-auto flex h-full w-full flex-col items-center justify-center overflow-y-auto px-2 pt-20  
-		min-aspect:h-full  min-aspect:w-full "
+        className=" min-aspect:h-full min-aspect:w-full mx-auto flex h-full w-full flex-col items-center justify-center overflow-y-auto  
+		px-2  pt-20 "
       >
         <ul className="my-8 space-y-8 text-right font-metropolis-bold text-5xl">
           {menuList}
