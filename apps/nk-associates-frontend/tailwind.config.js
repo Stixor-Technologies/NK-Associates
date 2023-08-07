@@ -1,5 +1,7 @@
 /** @type {import('tailwindcss').Config} */
 
+const defaultTheme = require("tailwindcss/defaultTheme");
+
 module.exports = {
   content: [
     "./pages/**/*.{js,ts,jsx,tsx,mdx}",
@@ -7,12 +9,16 @@ module.exports = {
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
+    screens: {
+      xs: "350px",
+      ...defaultTheme.screens,
+    },
     extend: {
       backgroundImage: {
-          "nk-bg": "url('/assets/images/bg-property.svg')"
+        "nk-bg": "url('/assets/images/bg-property.svg')"
       },
       fontFamily: {
-        "metropolis": ["var(--font-metroplis)"],
+        metropolis: ["var(--font-metroplis)"],
         "metropolis-semibold": ["var(--font-metroplis-semiBold)"],
         "metropolis-bold": ["var(--font-metroplis-bold)"],
         "metropolis-extrabold": ["var(--font-metroplis-extraBold)"],
@@ -34,16 +40,15 @@ module.exports = {
         "nk-light-gray": "#EDEDED", //modal
         "nk-dark-gray": "#303030", //footer
         "nk-grey": "#727272",
-        "nk-background": "#f5f5f5"
+        "nk-background": "#f5f5f5",
       },
-
-       boxShadow: {
+      boxShadow: {
         "3xl": "0.25rem 0.188rem 1.375rem 0rem rgba(0, 0, 0, 0.092)",
       },
       spacing: {
         '1/2': '50%',
-        '3/4': '75%'
-      }
+        '3/4': '75%',
+      },
     },
   },
   plugins: [],

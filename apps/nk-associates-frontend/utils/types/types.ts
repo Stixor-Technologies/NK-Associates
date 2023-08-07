@@ -73,18 +73,47 @@ export interface Property {
 
 export interface Project {
   attributes: {
-    Pictures: {
+    pictures: {
       data: Array<{ attributes: { url: string } }>;
     };
-    Title: string;
-    PlotSize: string;
-    PlotSizeUnits: string;
-    PlotNumber: string;
-    CoveredArea: string;
-    CoveredAreaUnits: string;
-    Address: string;
-    City: string;
-    Description: string;
-    Category: string;
+    title: string;
+    plotSize: string;
+    plotSizeUnits: string;
+    plotNumber: string;
+    coveredArea: string;
+    coveredAreaUnits: string;
+    address: string;
+    city: string;
+    description: string;
+    category: string;
   };
+}
+export interface Department {
+    id: number;
+    attributes: {
+        name: string;
+        createdAt: string;
+        updatedAt: string;
+        publishedAt: string;
+    };
+}
+
+export interface Job {
+    id: number;
+    attributes: {
+        title: string;
+        description: string;
+        responsibilities: string;
+        qualification: string;
+        positions: number;
+        start: string;
+        end: string;
+        createdAt: string;
+        updatedAt: string;
+        publishedAt: string;
+        location: string;
+        department: {
+            data: Department;
+        };
+    };
 }
