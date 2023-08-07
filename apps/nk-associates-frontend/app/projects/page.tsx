@@ -16,7 +16,10 @@ const ProjectCardItem = ({
   index: number;
 }) => {
   const thumbnailImgUrl = useMemo(() => {
-    if (project.attributes.pictures.data.length > -1) {
+    if (
+      project.attributes.pictures.data &&
+      project.attributes.pictures.data.length > -1
+    ) {
       return `${BASE_URL}${project.attributes.pictures.data[0].attributes.url}`;
     }
     return undefined;
@@ -36,6 +39,8 @@ const ProjectCardItem = ({
     />
   );
 };
+
+const optionsList = ["Residential", "Commercial", "Hotel", "All"];
 
 export default function Projects() {
   const [selectedButton, setSelectedButton] = useState<
@@ -86,77 +91,59 @@ export default function Projects() {
   }, [buttonSwitched, projectsData]);
 
   return (
-    <div className="relative min-h-screen bg-nk-white-dark pt-6 md:bg-nk-bg md:bg-auto md:bg-right-top md:bg-no-repeat md:pt-24">
-      <div className="mb-5 pt-6 text-center font-metropolis-bold text-3xl text-nk-black md:mb-10 md:pt-24 md:text-5xl">
-        NK Projects
-      </div>
-
-      <div className="flex justify-center overflow-hidden">
-        <div className="scrollbar-hide flex flex-nowrap gap-x-2 overflow-x-auto sm:gap-x-3.5">
-          <LinkButton
-            text="Residential"
-            type={selectedButton == "Residential" ? "gradient" : "transparent"}
-            navigateTo="/projects"
-            clickEvent={() => {
-              setSelectedButton("Residential");
-              setButtonSwitched(true);
-            }}
-            className="mx-2 h-8 w-[9.549rem] flex-none text-xs sm:mx-3.5 md:h-[3.5rem] md:w-[16.688rem] md:text-xl"
-          />
-          <LinkButton
-            text="Commercial"
-            type={selectedButton == "Commercial" ? "gradient" : "transparent"}
-            clickEvent={() => {
-              setSelectedButton("Commercial");
-              setButtonSwitched(true);
-            }}
-            className="mx-2 h-8 w-[9.549rem] flex-none text-xs sm:mx-3.5 md:h-[3.5rem] md:w-[16.688rem] md:text-xl"
-          />
-          <LinkButton
-            text="Hotel"
-            type={selectedButton == "Hotel" ? "gradient" : "transparent"}
-            clickEvent={() => {
-              setSelectedButton("Hotel");
-              setButtonSwitched(true);
-            }}
-            className="mx-2 h-8 w-[9.549rem] flex-none text-xs sm:mx-3.5 md:h-[3.5rem] md:w-[16.688rem] md:text-xl"
-          />
-          <LinkButton
-            text="All"
-            type={selectedButton == "All" ? "gradient" : "transparent"}
-            clickEvent={() => {
-              setSelectedButton("All");
-              setButtonSwitched(true);
-            }}
-            className="mx-2 h-8 w-[9.549rem] flex-none text-xs sm:mx-3.5 md:h-[3.5rem] md:w-[16.688rem] md:text-xl"
-          />
+    <div className="bg-nk-white-dark md:bg-nk-bg md:bg-auto md:bg-right-top md:bg-no-repeat">
+      <div className="md:py-18 relative py-10">
+        <div className="container mb-7 text-center font-metropolis-bold text-3xl text-nk-black md:mb-10 md:text-5xl">
+          NK Projects
         </div>
-      </div>
-      <div className="mt-24 flex flex-col items-center md:mt-16">
-        {error && !loading ? (
-          <div className="text-md font-metropolis-bold text-nk-black">
-            Error loading projects.
+
+        <div className="container flex justify-center overflow-hidden p-0">
+          <div className="scrollbar-hide flex flex-nowrap gap-x-2 overflow-x-auto px-4 sm:gap-x-2.5">
+            {optionsList.map((label, index) => (
+              <LinkButton
+                key={index}
+                text={label}
+                type={selectedButton == label ? "gradient" : "transparent"}
+                clickEvent={() => {
+                  setSelectedButton(label);
+                  setButtonSwitched(true);
+                }}
+                className=" h-8 w-[9.549rem] flex-none text-xs md:h-[3rem] md:w-[10.688rem] md:text-base lg:h-[3.2rem] lg:w-[13.688rem] lg:text-lg xl:h-[3.5rem] xl:w-[16.688rem] xl:text-xl"
+              />
+            ))}
           </div>
-        ) : projectsData.length == 0 && !loading ? (
-          <div className="text-md font-metropolis-bold text-nk-black">
-            No projects found.
-          </div>
-        ) : (
-          <div className="mx-auto mb-11 w-full overflow-hidden md:mb-8">
-            <InfiniteScroll
-              dataLength={projectsData.length}
-              next={getProjectsData}
-              hasMore={total !== projectsData.length}
-              loader={loading && <Spinner />}
-            >
-              {projectsData.map((value, index) => (
-                <div key={index} className="flex justify-center">
-                  <ProjectCardItem project={value} index={index} />
+        </div>
+
+        <div className="container my-24 flex flex-col items-center md:mt-16">
+          {error && !loading ? (
+            <div className="text-md mb-20 font-metropolis-bold text-nk-black">
+              Error loading projects.
+            </div>
+          ) : projectsData.length == 0 && !loading ? (
+            <div className="text-md mb-20 font-metropolis-bold text-nk-black">
+              No projects found.
+            </div>
+          ) : (
+            <div className="w-full overflow-hidden">
+              <InfiniteScroll
+                dataLength={projectsData.length}
+                next={getProjectsData}
+                hasMore={total !== projectsData.length}
+                loader={loading && <Spinner />}
+              >
+                <div className="flex flex-col justify-center">
+                  {projectsData.map((value, index) => (
+                    <ProjectCardItem
+                      key={index}
+                      project={value}
+                      index={index}
+                    />
+                  ))}
                 </div>
-              ))}
-            </InfiniteScroll>
-          </div>
-        )}
+              </InfiniteScroll>
+            </div>
+          )}
+        </div>
       </div>
     </div>
   );
