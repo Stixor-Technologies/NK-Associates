@@ -4,21 +4,23 @@ interface FilterProps {
 	selectedValue: string;
 	options: string[];
 	handleSelect: (value: string) => void;
+	placeholder: string
 }
 
 const JobFilter: FC<FilterProps> = ({
 	selectedValue,
 	options,
 	handleSelect,
+	placeholder,
 }) => {
 	return (
-		<div className=" relative m-2">
+		<div className="relative m-2">
 			<select
 				className="w-full appearance-none rounded-full border border-nk-gray px-4 py-3.5 pr-8 text-nk-gray focus:border-nk-red focus:outline-none"
 				value={selectedValue || ""}
 				onChange={e => handleSelect(e.target.value || null)}>
-				<option value="">All</option>
-				{options.map(opt => (
+				<option value="">{placeholder}</option>
+				{options?.map(opt => (
 					<option key={opt} value={opt}>
 						{opt}
 					</option>

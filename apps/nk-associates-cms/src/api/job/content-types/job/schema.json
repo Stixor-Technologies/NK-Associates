@@ -51,13 +51,15 @@
       "target": "api::department.department",
       "inversedBy": "job"
     },
-    "location": {
+    "city": {
       "type": "string",
       "required": true,
-      "minLength": 6
+      "minLength": 2
     },
-    "address": {
-      "type": "text"
+    "location": {
+      "type": "text",
+      "required": true,
+      "minLength": 1
     }
   }
 }
