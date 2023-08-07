@@ -64,14 +64,11 @@ const JobList = () => {
 	);
 
 	const [isClicked, setIsClicked] = useState(false);
-	const handleClick = () => {
-		setIsClicked(!isClicked);
-	};
 
 	if (departments && departments.length > 0 && cities.length > 0) {
 		return (
 			<div className="overflow-scroll rounded-xl bg-nk-white p-2 pb-4 shadow-xl">
-				<div className="flex flex-row justify-between">
+				<div className="flex flex-row justify-between p-2">
 					<div className="relative h-1 w-4/6 px-2 pt-4">
 						<div className="relative  rounded-full border border-nk-gray px-4 py-2 pr-8 text-nk-gray focus:border-nk-red focus:outline-none md:mt-6 md:py-3.5">
 							<input
@@ -109,7 +106,6 @@ const JobList = () => {
 								isClicked ? "bg-nk-red text-nk-white" : " border-nk-gray "
 							}`}
 							onClick={() => {
-								handleClick;
 								setIsClicked(!isClicked);
 							}}>
 							<p>Filters</p>

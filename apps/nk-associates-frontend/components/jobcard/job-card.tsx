@@ -19,9 +19,7 @@ const JobCard: React.FC<JobProp> = ({ job }) => {
 					<h3 className="block:inline text-nk-red lg:text-xl">
 						{departmentName}
 					</h3>
-					<h3 className="block:inline text-nk-dark-gray lg:text-xl">
-						({title})
-					</h3>
+					<h3 className="block:inline text-nk-dark-gray lg:text-xl">{title}</h3>
 				</div>
 				<p className="my-3 font-metropolis-extralight text-xs lg:font-metropolis lg:text-base">
 					{description}
