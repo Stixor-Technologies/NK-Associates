@@ -22,11 +22,11 @@ const LinkButton: FC<Props> = (props) => {
   const typeStyles = {
     transparent: "bg-transparent text-nk-gray border border-nk-red",
     inverted: "bg-nk-white text-nk-red",
-    solid: "bg-nk-red text-nk-white hover:opacity-90",
+    solid: "bg-nk-red text-nk-white hover:bg-nk-gradient-red-sharp-one",
     gradient: "bg-gradient-to-b from-nk-gradient-red-one to-nk-gradient-red-two text-nk-white",
   };
 
-  const classes = `rounded-full text-center capitalize font-metropolis transition-all ease-in-out duration-500 shadow-lg hover:delay-200 
+  const classes = `rounded-full text-center capitalize font-metropolis transition-all ease-in-out duration-200 shadow-3xl hover:delay-200 
   ${typeStyles[type || "gradient"]} 
   py-2 block ${className || ""}`;
 

@@ -61,7 +61,7 @@ const ServicesOverview = () => {
               text="Explore all"
               type="inverted"
               navigateTo="#"
-              className="mx-auto mt-3 w-64 border py-2.5 text-lg hover:border-nk-red md:mx-0 md:w-[25rem]"
+              className="mx-auto mt-3 w-64 border py-2.5 text-lg hover:border-nk-red hover:shadow-md md:mx-0 md:w-[25rem]"
             />
           </div>
         </div>

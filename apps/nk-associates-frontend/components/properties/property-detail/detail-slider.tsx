@@ -35,14 +35,17 @@ const DetailSlider: FC<SliderProps> = ({ property_images }) => {
           ({ attributes: { name, url } }: MediaAttributes, index: number) => {
             return (
               <SwiperSlide key={index}>
-                <div className="relative flex w-full items-center pb-3/4 md:pb-1/2">
-                  <Image
-                    className="absolute left-0 top-0 h-full w-full"
+                <div className="relative mx-auto bg-slate-200 w-full h-[40vh] overflow-hidden sm:h-[60vh] md:h-[80vh] flex items-center">
+                <div className="relative h-4/5 m-auto">
+                <Image
+                    className="m-auto h-full w-full object-contain"
                     src={`${BASE_URL}${url}`}
                     width={1536}
                     height={900}
                     alt={name}
                   />
+                </div>
+                 
                 </div>
               </SwiperSlide>
             );
