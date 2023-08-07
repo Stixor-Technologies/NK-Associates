@@ -8,7 +8,7 @@ import InfiniteScroll from "react-infinite-scroll-component";
 import { getProperties } from "../../utils/api-calls";
 import { Property } from "../../utils/types/types";
 import Map_Btn from "../../public/assets/icons/map-list-icon.svg";
-import List_Icon from "../../public/assets/icons/list-icon.svg"
+import List_Icon from "../../public/assets/icons/list-icon.svg";
 
 const Properties = () => {
   const [isList, setIsList] = useState<boolean>(true);
@@ -33,17 +33,23 @@ const Properties = () => {
   return (
     <>
       <button
-        className={`fixed bottom-16 left-1/2 z-10 flex items-center -translate-x-1/2 gap-2 rounded-full px-4 py-2 text-center text-sm capitalize text-nk-white transition-all duration-200 ease-in-out delay-200 md:gap-4 md:px-6 md:py-3 md:text-2xl ${isList ? "bg-gradient-to-b bg-nk-gradient-red-one to-nk-gradient-red-two hover:bg-nk-black" : "bg-nk-black hover:bg-nk-red"}`}
+        className={`fixed bottom-16 left-1/2 z-10 flex -translate-x-1/2 items-center gap-2 rounded-full px-4 py-2 text-center text-sm capitalize text-nk-white transition-all duration-300 ease-in-out md:gap-4 md:px-6 md:py-3 md:text-2xl ${
+          isList
+            ? "bg-nk-gradient-red-one bg-gradient-to-b to-nk-gradient-red-two hover:scale-[1.1] hover:bg-nk-black"
+            : "bg-nk-black hover:scale-[1.1] hover:bg-nk-red"
+        }`}
         onClick={() => setIsList(!isList)}
       >
         <span>{`${isList ? "Show Map" : "Show List"}`}</span>
-          <Image
-            src={isList ? Map_Btn : List_Icon}
-            width={35}
-            height={35}
-            alt="properties-view"
-            className={`mx-auto ${isList ? "w-[1.375rem] md:w-[2.188rem]" : " w-4 md:w-[1.7rem]"} `}
-          />
+        <Image
+          src={isList ? Map_Btn : List_Icon}
+          width={35}
+          height={35}
+          alt="properties-view"
+          className={`mx-auto ${
+            isList ? "w-[1.375rem] md:w-[2.188rem]" : " w-4 md:w-[1.7rem]"
+          } `}
+        />
       </button>
 
       {isList ? (
