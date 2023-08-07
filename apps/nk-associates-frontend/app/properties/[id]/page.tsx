@@ -125,7 +125,7 @@ async function PropertyDetail({ params: { id } }: PropertyDetailProps) {
               text="Inquires"
               type="solid"
               navigateTo="#"
-              className="mb-2 w-[11.75rem] border text-lg hover:border-nk-red sm:mb-0 md:w-[11.75rem]"
+              className="mb-2 w-[11.75rem] border text-lg sm:mb-0 md:w-[11.75rem]"
             />
           </div>
 
@@ -174,7 +174,7 @@ async function PropertyDetail({ params: { id } }: PropertyDetailProps) {
                 href={`${BASE_URL}${pdfUrl}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group relative z-10 mx-auto my-12 hidden items-center gap-4 rounded-full border bg-gradient-to-b from-nk-gradient-red-one to-nk-gradient-red-two px-20 py-2.5 text-lg text-nk-white transition-all delay-200 duration-500 hover:border-nk-red hover:shadow-lg md:flex md:w-[25rem] md:justify-center"
+                className="group relative z-10 mx-auto my-12 hidden items-center gap-4 rounded-full border bg-gradient-to-b from-nk-gradient-red-one to-nk-gradient-red-two px-20 py-2.5 text-lg text-nk-white transition-all delay-200 duration-500 hover:opacity-80 md:flex md:w-[25rem] md:justify-center"
               >
                 Download Broucher
                 <Image
