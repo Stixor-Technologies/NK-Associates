@@ -77,17 +77,17 @@ export const getJobs = async (departmentName, location, ) => {
   }
 };
 
-export const getLocations = async () => {
+export const getCities = async () => {
   try {
     let apiUrl = `${BASE_URL}/api/jobs?populate=*`;
     const resp = await fetch(apiUrl);
     const data = await resp.json();
 
     const locations = data.data.map(job => job.attributes.location);
-    const uniqueLocationsSet = new Set(locations);
-    const uniqueLocationsArray = Array.from(uniqueLocationsSet);
+    const uniqueCitiesSet = new Set(locations);
+    const uniqueCitiesArray = Array.from(uniqueCitiesSet);
 
-    return uniqueLocationsArray;
+    return uniqueCitiesArray;
   } catch (error) {
     console.error("There was an error getting locations", error);
   }
