@@ -14,6 +14,7 @@ import "swiper/css/thumbs";
 import "swiper/css/pagination";
 import "./events.css";
 import { BASE_URL } from "../../utils/constants";
+import { format } from "date-fns";
 
 interface ModalProps {
   open: boolean;
@@ -162,26 +163,31 @@ const EventModal: React.FC<ModalProps> = ({ open, onClose, eventData }) => {
           <div className="mt-1 p-4 text-center font-metropolis-extralight text-sm md:text-2xl">
             {eventData?.attributes?.event_description}
           </div>
-
-          <div className="mt-5 flex items-center gap-2 ">
-            <>
-              <Image
-                src={LocationMarker}
-                alt="Location Bar"
-                width={30}
-                height={30}
-                className="flex-shrink-0"
-              />
-            </>
-            <div className="font-metropolis-light text-lg text-red-500 md:text-3xl">
-              {eventData?.attributes?.event_location}
+          {eventData?.attributes?.event_location && (
+            <div className="mt-5 flex items-center gap-2 ">
+              <>
+                <Image
+                  src={LocationMarker}
+                  alt="Location Bar"
+                  width={30}
+                  height={30}
+                  className="flex-shrink-0"
+                />
+              </>
+              <div className="font-metropolis-light text-lg text-red-500 md:text-3xl">
+                {eventData?.attributes?.event_location}
+              </div>
             </div>
-          </div>
+          )}
 
           <div className="mt-4 text-sm text-nk-black underline md:text-lg">
             Date:
             <span className="text-nk-grey">
-              {` ${eventData?.attributes?.event_date}`}
+              {eventData &&
+                ` ${format(
+                  new Date(eventData.attributes.event_date),
+                  "dd-MM-yyyy"
+                )}`}
             </span>
           </div>
         </div>

@@ -15,11 +15,12 @@ interface CarouselProps {
 }
 
 const Carousel: React.FC<CarouselProps> = ({ images }) => {
+  const shuffledImages = images?.slice().sort(() => Math.random() - 0.5);
   const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
     // Wait for images to load before setting the isLoaded state to true
-    const imagePromises = images.slice(0, 10).map((image) => {
+    const imagePromises = shuffledImages.slice(0, 10).map((image) => {
       return new Promise<void>((resolve, reject) => {
         const img = new window.Image();
         img.src = `${BASE_URL}${image}`;
@@ -70,7 +71,7 @@ const Carousel: React.FC<CarouselProps> = ({ images }) => {
         modules={[EffectCoverflow, Pagination, Autoplay]}
         className="mySwiper carousel-slider mx-auto mt-7 h-full w-full"
       >
-        {images?.slice(0, 10).map((image, index) => {
+        {shuffledImages?.map((image, index) => {
           return (
             <SwiperSlide key={index} className="aspect-square drop-shadow-lg">
               <Image

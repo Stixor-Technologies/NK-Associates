@@ -18,10 +18,12 @@
       "unique": false
     },
     "event_description": {
-      "type": "text"
+      "type": "text",
+      "required": true
     },
     "event_host": {
-      "type": "string"
+      "type": "string",
+      "required": true
     },
     "event_location": {
       "type": "string"
