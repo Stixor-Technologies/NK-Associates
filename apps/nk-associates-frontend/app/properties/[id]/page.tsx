@@ -48,22 +48,22 @@ async function PropertyDetail({ params: { id } }: PropertyDetailProps) {
   const center = { lat: latitude, lng: longitude };
 
   return (
-    <section className="overflow-hidden">
+    <section className="">
       <DetailSlider property_images={property_images.data} />
-      <div className="relative mt-14 bg-right-top bg-no-repeat md:mt-3 md:bg-nk-bg">  
-          {/* 360 Tour Button */}
-          <button className="group hidden overflow-hidden sticky top-[31.25rem] ml-auto z-10 w-44 items-center gap-3 rounded-l-xl bg-nk-white px-4 py-3.5 shadow-3xl translate-x-24 duration-500 transition-all ease-in-out md:flex hover:translate-x-0">
-            <Image
-              src={TourIcon}
-              width={56}
-              height={35}
-              alt="tour-button"
-              className="w-14 transition-all delay-200 duration-500 group-hover:scale-110"
-            />
-            <span className="text-[1.375rem] text-nk-black transition-all delay-200 duration-500 ease-in-out group-hover:text-nk-red">
-              View
-            </span>
-          </button>
+      <div className="relative mt-14 bg-right-top bg-no-repeat md:mt-3 md:bg-nk-bg">
+        {/* 360 Tour Button */}
+        <button className="group sticky top-[31.25rem] z-10 ml-auto hidden w-[6rem] items-center gap-3 rounded-l-xl bg-nk-white px-4 py-3.5 shadow-3xl transition-all duration-500 ease-in-out hover:w-44 md:flex">
+          <Image
+            src={TourIcon}
+            width={56}
+            height={35}
+            alt="tour-button"
+            className="transition-all delay-200 duration-500 group-hover:scale-110"
+          />
+          <span className="overflow-hidden whitespace-nowrap text-[1.375rem] text-nk-black transition-all duration-200 ease-in-out group-hover:w-auto group-hover:text-nk-red">
+            View
+          </span>
+        </button>
 
         <div className="container mx-auto py-6">
           {/* Property Info section */}
@@ -174,7 +174,7 @@ async function PropertyDetail({ params: { id } }: PropertyDetailProps) {
                 href={`${BASE_URL}${pdfUrl}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group relative z-10 mx-auto my-12 hidden items-center gap-4 rounded-full border bg-nk-red px-20 py-2.5 text-lg text-nk-white ease-in-out transition-all delay-200 duration-500 hover:bg-nk-gradient-red-sharp-one md:flex md:w-[25rem] md:justify-center"
+                className="group relative z-10 mx-auto my-12 hidden items-center gap-4 rounded-full border bg-nk-red px-20 py-2.5 text-lg text-nk-white transition-all delay-200 duration-500 ease-in-out hover:bg-nk-gradient-red-sharp-one md:flex md:w-[25rem] md:justify-center"
               >
                 Download brochure
                 <Image
