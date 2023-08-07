@@ -2,10 +2,6 @@
   overflow-y: unset;
 }
 
-.swiper-button-lock {
-  display: flex;
-}
-
 .swiper-button-next,
 .swiper-button-prev {
   background-color: #33333380;
