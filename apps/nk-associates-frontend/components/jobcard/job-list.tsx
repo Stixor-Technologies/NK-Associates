@@ -72,8 +72,8 @@ const JobList = () => {
 		return (
 			<div className="overflow-scroll rounded-xl bg-nk-white p-2 pb-4 shadow-xl">
 				<div className="flex flex-row justify-between">
-					<div className="relative w-3/6 h-1 pt-4 px-2">
-						<div className="relative  rounded-full border border-nk-gray px-4 py-2 pr-8 md:py-3.5 md:mt-6 text-nk-gray focus:border-nk-red focus:outline-none">
+					<div className="relative h-1 w-4/6 px-2 pt-4">
+						<div className="relative  rounded-full border border-nk-gray px-4 py-2 pr-8 text-nk-gray focus:border-nk-red focus:outline-none md:mt-6 md:py-3.5">
 							<input
 								placeholder="Search here"
 								className="z-0 text-nk-dark-gray"
@@ -104,9 +104,9 @@ const JobList = () => {
 						</div>
 					</div>
 
-					<div className="relative flex px-2 pt-4 w-2/6">
+					<div className="relative flex w-2/6 px-2 pt-4 md:hidden">
 						<div
-							className={`z-0 flex w-full justify-center items-center gap-2 rounded-full px-2 h-10 text-nk-gray shadow md:hidden ${
+							className={`z-0 flex h-10 w-full items-center justify-center gap-2 rounded-full px-2 text-nk-gray shadow  ${
 								isClicked ? "bg-nk-red text-nk-white" : " border-nk-gray "
 							}`}
 							onClick={() => {
