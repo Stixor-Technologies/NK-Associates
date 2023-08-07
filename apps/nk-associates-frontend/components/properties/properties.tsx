@@ -33,7 +33,7 @@ const Properties = () => {
   return (
     <>
       <button
-        className={`fixed bottom-16 left-1/2 z-10 flex items-center -translate-x-1/2 gap-2 rounded-full px-4 py-2 text-center text-sm capitalize text-nk-white transition-all duration-300 ease-in-out hover:shadow-lg hover:delay-100 md:gap-4 md:px-6 md:py-3 md:text-2xl ${isList ? "bg-gradient-to-b bg-nk-gradient-red-one to-nk-gradient-red-two" : "bg-nk-black"}`}
+        className={`fixed bottom-16 left-1/2 z-10 flex items-center -translate-x-1/2 gap-2 rounded-full px-4 py-2 text-center text-sm capitalize text-nk-white transition-all duration-200 ease-in-out delay-200 md:gap-4 md:px-6 md:py-3 md:text-2xl ${isList ? "bg-gradient-to-b bg-nk-gradient-red-one to-nk-gradient-red-two hover:bg-nk-black" : "bg-nk-black hover:bg-nk-red"}`}
         onClick={() => setIsList(!isList)}
       >
         <span>{`${isList ? "Show Map" : "Show List"}`}</span>
