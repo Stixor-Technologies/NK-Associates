@@ -28,21 +28,6 @@ const TileSection: FC<TileSectionProps> = ({
   useEffect(() => {
     const divElement = ref.current;
     if (divElement) {
-      // gsap.set(divElement, {opacity: 0,  y: 50 });
-      // gsap.to(
-      //     divElement,
-
-      //     {
-      //       scrollTrigger: {
-      //         trigger: divElement,
-      //         start: 'top 80%',
-      //       },
-      //       y: 0,
-      //       opacity: 1,
-      //       duration: 1,
-      //       ease: 'power2.out',
-      //     }
-      //   );
       gsap.from(divElement, {
         y: 50,
         opacity: 0,
