@@ -96,7 +96,7 @@ const Navigation = () => {
             <Link
               ref={getInTouch}
               href="#"
-              className=" mr-2 mt-2 hidden h-12 cursor-pointer flex-row items-center  rounded-full border border-nk-red bg-transparent px-8 text-center font-metropolis capitalize text-nk-red md:z-50 md:flex"
+              className=" mr-2 mt-2 hidden h-12 cursor-pointer flex-row items-center rounded-full border border-nk-red bg-transparent px-8 text-center font-metropolis capitalize text-nk-red md:z-50 md:flex"
             >
               Get in touch
             </Link>
