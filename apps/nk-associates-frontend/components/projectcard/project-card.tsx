@@ -62,7 +62,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
       <div className="relative h-full min-h-[21rem] w-full sm:h-auto sm:w-[65%]">
         {imagesList.length > 0 ? (
           <Swiper
-            grabCursor={false}
+            grabCursor={true}
             centeredSlides={true}
             initialSlide={0}
             pagination={true}
