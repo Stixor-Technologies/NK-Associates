@@ -40,7 +40,7 @@ export const getProjects = async ({
     const res = await fetch(
       //using concatenation because autosave causes linebreak in ` ` in the api call
       `${BASE_URL}/api/projects?populate=*${
-        category ? `&filters[Category]=${category}` : ""
+        category ? `&filters[category]=${category}` : ""
       }${`&pagination[start]=${start}&pagination[limit]=${limit}&sort[1]=id`}`,
       fetchOptions
     );
