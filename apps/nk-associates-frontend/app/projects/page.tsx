@@ -1,12 +1,21 @@
 "use client";
-import { useEffect, useState, useMemo } from "react";
+import { useEffect, useState, useMemo, useLayoutEffect, useRef } from "react";
 import ProjectCard from "../../components/projectcard/project-card";
 import { getProjects } from "../../utils/api-calls";
 import LinkButton from "../../components/button/link-button";
 import { Project } from "../../utils/types/types";
 import { BASE_URL } from "../../utils/constants";
 import Spinner from "../../components/spinner";
+import { gsap } from "gsap";
 import InfiniteScroll from "react-infinite-scroll-component";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+type OptionsType = "All" | "Residential" | "Commercial" | "Hotel";
+
+gsap.registerPlugin(ScrollTrigger);
+
+const optionsList = ["Residential", "Commercial", "Hotel", "All"];
+
 
 const ProjectCardItem = ({
   project,
@@ -15,16 +24,22 @@ const ProjectCardItem = ({
   project: Project;
   index: number;
 }) => {
-  const thumbnailImgUrl = useMemo(() => {
-    if (project.attributes.pictures.data.length > -1) {
-      return `${BASE_URL}${project.attributes.pictures.data[0].attributes.url}`;
+  const imagesList = useMemo(() => {
+    if (
+      project.attributes.pictures.data &&
+      project.attributes.pictures.data.length > -1
+    ) {
+      const list: string[] = project.attributes.pictures.data.map((picture) => {
+        return `${BASE_URL}${picture.attributes.url}`;
+      });
+      return list;
     }
     return undefined;
   }, [project.attributes.pictures]);
 
   return (
     <ProjectCard
-      image={thumbnailImgUrl}
+      imagesList={imagesList}
       propertyName={project.attributes.title}
       plotSize={`${project.attributes.plotSize} ${project.attributes.plotSizeUnits}`}
       plotNo={project.attributes.plotNumber}
@@ -39,7 +54,7 @@ const ProjectCardItem = ({
 
 export default function Projects() {
   const [selectedButton, setSelectedButton] = useState<
-    "All" | "Residential" | "Commercial" | "Hotel"
+    OptionsType
   >("All");
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<boolean>(false);
@@ -85,78 +100,89 @@ export default function Projects() {
     }
   }, [buttonSwitched, projectsData]);
 
-  return (
-    <div className="relative min-h-screen bg-nk-white-dark pt-6 md:bg-nk-bg md:bg-auto md:bg-right-top md:bg-no-repeat md:pt-24">
-      <div className="mb-5 pt-6 text-center font-metropolis-bold text-3xl text-nk-black md:mb-10 md:pt-24 md:text-5xl">
-        NK Projects
-      </div>
+  const main = useRef();
 
-      <div className="flex justify-center overflow-hidden">
-        <div className="scrollbar-hide flex flex-nowrap gap-x-2 overflow-x-auto sm:gap-x-3.5">
-          <LinkButton
-            text="Residential"
-            type={selectedButton == "Residential" ? "gradient" : "transparent"}
-            navigateTo="/projects"
-            clickEvent={() => {
-              setSelectedButton("Residential");
-              setButtonSwitched(true);
-            }}
-            className="mx-2 h-8 w-[9.549rem] flex-none text-xs sm:mx-3.5 md:h-[3.5rem] md:w-[16.688rem] md:text-xl"
-          />
-          <LinkButton
-            text="Commercial"
-            type={selectedButton == "Commercial" ? "gradient" : "transparent"}
-            clickEvent={() => {
-              setSelectedButton("Commercial");
-              setButtonSwitched(true);
-            }}
-            className="mx-2 h-8 w-[9.549rem] flex-none text-xs sm:mx-3.5 md:h-[3.5rem] md:w-[16.688rem] md:text-xl"
-          />
-          <LinkButton
-            text="Hotel"
-            type={selectedButton == "Hotel" ? "gradient" : "transparent"}
-            clickEvent={() => {
-              setSelectedButton("Hotel");
-              setButtonSwitched(true);
-            }}
-            className="mx-2 h-8 w-[9.549rem] flex-none text-xs sm:mx-3.5 md:h-[3.5rem] md:w-[16.688rem] md:text-xl"
-          />
-          <LinkButton
-            text="All"
-            type={selectedButton == "All" ? "gradient" : "transparent"}
-            clickEvent={() => {
-              setSelectedButton("All");
-              setButtonSwitched(true);
-            }}
-            className="mx-2 h-8 w-[9.549rem] flex-none text-xs sm:mx-3.5 md:h-[3.5rem] md:w-[16.688rem] md:text-xl"
-          />
+  useLayoutEffect(() => {
+    if (projectsData.length > -1) {
+      const ctx = gsap.context((self) => {
+        if (self && self.selector) {
+          const boxes = self.selector(".project-card");
+          boxes.forEach((box, index) => {
+            if (index >= 1) {
+              gsap.from(box, {
+                y: 85,
+                scrollTrigger: {
+                  trigger: box,
+                  start: "top bottom",
+                  end: "+=350",
+                  scrub: true,
+                },
+              });
+            }
+          });
+        }
+      }, main.current); // <- Scope!
+      return () => ctx.revert(); // <- Cleanup!
+    }
+  }, [projectsData]);
+
+  return (
+    <div className="bg-nk-white-dark md:bg-nk-bg md:bg-auto md:bg-right-top md:bg-no-repeat">
+      <div className="md:py-18 relative py-10">
+        <div className="container mb-7 text-center font-metropolis-bold text-3xl text-nk-black md:mb-10 md:text-5xl">
+          NK Projects
         </div>
-      </div>
-      <div className="mt-24 flex flex-col items-center md:mt-16">
-        {error && !loading ? (
-          <div className="text-md font-metropolis-bold text-nk-black">
-            Error loading projects.
+
+        <div className="container flex justify-center overflow-hidden p-0">
+          <div className="scrollbar-hide flex flex-nowrap gap-x-2 overflow-x-auto px-4 py-6 sm:gap-x-2.5">
+            {optionsList.map((label, index) => (
+              <LinkButton
+                key={index}
+                text={label}
+                type={selectedButton == label ? "gradient" : "transparent"}
+                clickEvent={() => {
+                  setSelectedButton(label as OptionsType);
+                  setButtonSwitched(true);
+                }}
+                className=" h-8 w-[9.549rem] flex-none text-xs md:h-[3rem] md:w-[10.688rem] md:text-base lg:h-[3.2rem] lg:w-[13.688rem] lg:text-lg xl:h-[3.5rem] xl:w-[16.688rem] xl:text-xl"
+              />
+            ))}
           </div>
-        ) : projectsData.length == 0 && !loading ? (
-          <div className="text-md font-metropolis-bold text-nk-black">
-            No projects found.
-          </div>
-        ) : (
-          <div className="mx-auto mb-11 w-full overflow-hidden md:mb-8">
-            <InfiniteScroll
-              dataLength={projectsData.length}
-              next={getProjectsData}
-              hasMore={total !== projectsData.length}
-              loader={loading && <Spinner />}
-            >
-              {projectsData.map((value, index) => (
-                <div key={index} className="flex justify-center">
-                  <ProjectCardItem project={value} index={index} />
+        </div>
+
+        <div className="container my-20 flex flex-col items-center md:mt-16">
+          {error && !loading ? (
+            <div className="text-md mb-18 font-metropolis-bold text-nk-black">
+              Error loading projects.
+            </div>
+          ) : projectsData.length == 0 && !loading ? (
+            <div className="text-md mb-18 font-metropolis-bold text-nk-black">
+              No projects found.
+            </div>
+          ) : (
+            <div className="w-full overflow-hidden py-4">
+              <InfiniteScroll
+                dataLength={projectsData.length}
+                next={getProjectsData}
+                hasMore={total !== projectsData.length}
+                loader={loading && <Spinner />}
+              >
+                <div
+                  ref={main}
+                  className="flex flex-col justify-center overflow-hidden"
+                >
+                  {projectsData.map((project, index) => (
+                    <ProjectCardItem 
+                      key={index}
+                      project={project}
+                      index={index}
+                    />
+                  ))}
                 </div>
-              ))}
-            </InfiniteScroll>
-          </div>
-        )}
+              </InfiniteScroll>
+            </div>
+          )}
+        </div>
       </div>
     </div>
   );
