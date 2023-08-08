@@ -15,7 +15,7 @@ import LocationIconSecondary from "../../public/assets/images/LocationIconSecond
 import NoImageIcon from "../../public/assets/icons/no-image-svg.svg";
 
 interface ProjectCardProps {
-  image: string;
+  // image: string;
   imagesList: unknown[];
   propertyName: string;
   plotSize: string;
@@ -28,7 +28,7 @@ interface ProjectCardProps {
 }
 
 const ProjectCard: React.FC<ProjectCardProps> = ({
-  image,
+  // image,
   imagesList,
   propertyName,
   plotSize,
@@ -60,7 +60,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
       className={`project-card mb-[2.3rem] flex h-[32.875rem] w-full flex-col overflow-hidden rounded-2xl shadow-md last-of-type:mb-4 sm:h-[21rem] md:mb-[4.5rem] md:h-[26rem] lg:h-[31.25rem] ${flexDirection} md:rounded-3xl ${backgroundColor} ${textColor}`}
     >
       <div className="relative h-full min-h-[21rem] w-full sm:h-auto sm:w-[65%]">
-        {image ? (
+        {imagesList.length > 0 ? (
           <Swiper
             grabCursor={false}
             centeredSlides={true}

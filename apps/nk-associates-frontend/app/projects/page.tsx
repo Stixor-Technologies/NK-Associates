@@ -12,38 +12,37 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const ProjectCardItem = ({
-  project,
-  index,
-}: {
-  project: Project;
-  index: number;
-}) => {
-  const thumbnailImgUrl = useMemo(() => {
-    if (
-      project.attributes.pictures.data &&
-      project.attributes.pictures.data.length > -1
-    ) {
-      return `${BASE_URL}${project.attributes.pictures.data[0].attributes.url}`;
-    }
-    return undefined;
-  }, [project.attributes.pictures]);
+// const ProjectCardItem = ({
+//   project,
+//   index,
+// }: {
+//   project: Project;
+//   index: number;
+// }) => {
+//   const thumbnailImgUrl = useMemo(() => {
+//     if (
+//       project.attributes.pictures.data &&
+//       project.attributes.pictures.data.length > -1
+//     ) {
+//       return `${BASE_URL}${project.attributes.pictures.data[0].attributes.url}`;
+//     }
+//     return undefined;
+//   }, [project.attributes.pictures]);
 
-  return (
-    <ProjectCard
-      image={thumbnailImgUrl}
-      imagesList={project.attributes.pictures.data}
-      propertyName={project.attributes.title}
-      plotSize={`${project.attributes.plotSize} ${project.attributes.plotSizeUnits}`}
-      plotNo={project.attributes.plotNumber}
-      coveredArea={`${project.attributes.coveredArea} ${project.attributes.coveredAreaUnits}`}
-      location={`${project.attributes.address}, ${project.attributes.city}`}
-      propertyDescription={project.attributes.description}
-      propertyType={project.attributes.category}
-      primaryColor={index % 2 == 0 ? true : false}
-    />
-  );
-};
+//   return (
+//     <ProjectCard
+//       imagesList={project.attributes.pictures.data}
+//       propertyName={project.attributes.title}
+//       plotSize={`${project.attributes.plotSize} ${project.attributes.plotSizeUnits}`}
+//       plotNo={project.attributes.plotNumber}
+//       coveredArea={`${project.attributes.coveredArea} ${project.attributes.coveredAreaUnits}`}
+//       location={`${project.attributes.address}, ${project.attributes.city}`}
+//       propertyDescription={project.attributes.description}
+//       propertyType={project.attributes.category}
+//       primaryColor={index % 2 == 0 ? true : false}
+//     />
+//   );
+// };
 
 const optionsList = ["Residential", "Commercial", "Hotel", "All"];
 
@@ -100,20 +99,22 @@ export default function Projects() {
   useLayoutEffect(() => {
     if (projectsData.length > -1) {
       const ctx = gsap.context((self) => {
-        const boxes = self.selector(".project-card");
-        boxes.forEach((box, index) => {
-          if (index >= 1) {
-            gsap.from(box, {
-              y: 85,
-              scrollTrigger: {
-                trigger: box,
-                start: "top bottom",
-                end: "+=350",
-                scrub: true,
-              },
-            });
-          }
-        });
+        if (self && self.selector) {
+          const boxes = self.selector(".project-card");
+          boxes.forEach((box, index) => {
+            if (index >= 1) {
+              gsap.from(box, {
+                y: 85,
+                scrollTrigger: {
+                  trigger: box,
+                  start: "top bottom",
+                  end: "+=350",
+                  scrub: true,
+                },
+              });
+            }
+          });
+        }
       }, main.current); // <- Scope!
       return () => ctx.revert(); // <- Cleanup!
     }
@@ -127,7 +128,7 @@ export default function Projects() {
         </div>
 
         <div className="container flex justify-center overflow-hidden p-0">
-          <div className="scrollbar-hide flex flex-nowrap gap-x-2 overflow-x-auto px-4 py-4 sm:gap-x-2.5">
+          <div className="scrollbar-hide flex flex-nowrap gap-x-2 overflow-x-auto px-4 py-6 sm:gap-x-2.5">
             {optionsList.map((label, index) => (
               <LinkButton
                 key={index}
@@ -143,13 +144,13 @@ export default function Projects() {
           </div>
         </div>
 
-        <div className="container my-24 flex flex-col items-center md:mt-16">
+        <div className="container my-20 flex flex-col items-center md:mt-16">
           {error && !loading ? (
-            <div className="text-md mb-20 font-metropolis-bold text-nk-black">
+            <div className="text-md mb-18 font-metropolis-bold text-nk-black">
               Error loading projects.
             </div>
           ) : projectsData.length == 0 && !loading ? (
-            <div className="text-md mb-20 font-metropolis-bold text-nk-black">
+            <div className="text-md mb-18 font-metropolis-bold text-nk-black">
               No projects found.
             </div>
           ) : (
@@ -164,11 +165,18 @@ export default function Projects() {
                   ref={main}
                   className="flex flex-col justify-center overflow-hidden"
                 >
-                  {projectsData.map((value, index) => (
-                    <ProjectCardItem
+                  {projectsData.map((project, index) => (
+                    <ProjectCard
                       key={index}
-                      project={value}
-                      index={index}
+                      imagesList={project.attributes.pictures.data}
+                      propertyName={project.attributes.title}
+                      plotSize={`${project.attributes.plotSize} ${project.attributes.plotSizeUnits}`}
+                      plotNo={project.attributes.plotNumber}
+                      coveredArea={`${project.attributes.coveredArea} ${project.attributes.coveredAreaUnits}`}
+                      location={`${project.attributes.address}, ${project.attributes.city}`}
+                      propertyDescription={project.attributes.description}
+                      propertyType={project.attributes.category}
+                      primaryColor={index % 2 == 0 ? true : false}
                     />
                   ))}
                 </div>
