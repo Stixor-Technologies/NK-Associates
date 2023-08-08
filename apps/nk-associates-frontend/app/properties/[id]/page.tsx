@@ -17,6 +17,7 @@ import TourIcon from "../../../public/assets/icons/360-icon.svg";
 import LinkButton from "../../../components/button/link-button";
 import TileSection from "../../../components/properties/property-detail/tile-section";
 import ServicesOverview from "../../../components/shared/service-overview";
+import Butto from "../../../components/button/butto";
 
 interface PropertyDetailProps {
   params: {
@@ -50,9 +51,10 @@ async function PropertyDetail({ params: { id } }: PropertyDetailProps) {
   return (
     <section className="">
       <DetailSlider property_images={property_images.data} />
-      <div className="relative mt-14 bg-right-top bg-no-repeat md:mt-3 md:bg-nk-bg">
+    
+      <div className="relative mt-14 md:mt-3">
         {/* 360 Tour Button */}
-        <button className="group sticky top-[31.25rem] z-10 ml-auto hidden w-[6rem] items-center gap-3 rounded-l-xl bg-nk-white px-4 py-3.5 shadow-3xl transition-all duration-500 ease-in-out hover:w-44 md:flex">
+        <button className="group sticky top-[31.25rem] z-30 ml-auto hidden w-[6rem] items-center gap-3 rounded-l-xl bg-nk-white px-4 py-3.5 shadow-3xl transition-all duration-500 ease-in-out hover:w-44 md:flex">
           <Image
             src={TourIcon}
             width={56}
@@ -121,11 +123,18 @@ async function PropertyDetail({ params: { id } }: PropertyDetailProps) {
               </div>
             </div>
 
-            <LinkButton
+            {/* <LinkButton
               text="Inquires"
               type="solid"
               navigateTo="#"
               className="mb-2 w-[11.75rem] border text-lg sm:mb-0 md:w-[11.75rem]"
+            /> */}
+
+             <LinkButton
+              text="Inquires"
+              type="solid"
+              navigateTo="#"
+              className="mb-2 w-[11.75rem] text-lg sm:mb-0 md:w-[11.75rem]"
             />
           </div>
 
