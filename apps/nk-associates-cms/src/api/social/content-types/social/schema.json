@@ -1,0 +1,53 @@
+{
+  "kind": "collectionType",
+  "collectionName": "socials",
+  "info": {
+    "singularName": "social",
+    "pluralName": "socials",
+    "displayName": "Socials",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "twitter": {
+      "type": "string",
+      "required": true,
+      "default": "twitter.com"
+    },
+    "facebook": {
+      "type": "string",
+      "default": "facebook.com"
+    },
+    "youtube": {
+      "type": "string",
+      "default": "youtube.com"
+    },
+    "linkedin": {
+      "type": "string",
+      "default": "linkedin.com"
+    },
+    "snapchat": {
+      "type": "string",
+      "default": "snapchat.com"
+    },
+    "instagram": {
+      "type": "string",
+      "default": "instagram.com"
+    },
+    "playstore": {
+      "type": "string",
+      "default": "https://play.google.com/"
+    },
+    "appstore": {
+      "type": "string",
+      "default": "https://www.apple.com/app-store/"
+    },
+    "appgallery": {
+      "type": "string",
+      "default": "https://appgallery.huawei.com/"
+    }
+  }
+}
