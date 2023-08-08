@@ -113,7 +113,7 @@ const LinkButton: FC<Props> = (props) => {
 
   const typeOverlayStyles = {
     transparent: "bg-nk-red",
-    inverted: "bg-nk-red",
+    inverted: "bg-nk-background",
     solid: "bg-nk-white",
     gradient:
       "bg-nk-white",
@@ -129,7 +129,7 @@ const LinkButton: FC<Props> = (props) => {
 
   const typeCopyStyles = {
     transparent: "text-nk-white",
-    inverted: "text-nk-white",
+    inverted: "text-nk-red",
     solid: "text-nk-red",
     gradient:
       "text-nk-red",
