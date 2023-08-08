@@ -17,7 +17,6 @@ import TourIcon from "../../../public/assets/icons/360-icon.svg";
 import LinkButton from "../../../components/button/link-button";
 import TileSection from "../../../components/properties/property-detail/tile-section";
 import ServicesOverview from "../../../components/shared/service-overview";
-import Butto from "../../../components/button/butto";
 
 interface PropertyDetailProps {
   params: {

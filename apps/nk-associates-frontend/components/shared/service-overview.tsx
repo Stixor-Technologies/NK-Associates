@@ -41,7 +41,7 @@ const ServicesOverview = () => {
       ref={ref}
       className="relative mt-4 bg-[url('/assets/images/detail-service-bg.svg')] bg-cover bg-right-top bg-no-repeat py-9 text-center text-nk-white md:mt-0 md:py-20 md:text-left"
     >
-      <div className="container relative z-20 mx-auto px-4">
+      <div className="container relative z-20 mx-auto">
         <div className="max-w-4xl">
           <h3 className="text font-metropolis-semibold text-[1.625rem] md:text-4xl">
             NK Associates Services
@@ -61,7 +61,7 @@ const ServicesOverview = () => {
               text="Explore all"
               type="inverted"
               navigateTo="#"
-              className="mx-auto mt-3 w-64 border py-2.5 text-lg hover:border-nk-red hover:shadow-md md:mx-0 md:w-[25rem]"
+              className="mx-auto mt-3 w-64 h-11 border py-2.5 text-lg hover:border-nk-red hover:shadow-md md:mx-0 md:w-[25rem] md:h-[3.125rem]"
             />
           </div>
         </div>
