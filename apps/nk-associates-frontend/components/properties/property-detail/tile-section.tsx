@@ -35,7 +35,7 @@ const TileSection: FC<TileSectionProps> = ({
         ease: "powe2.out",
         scrollTrigger: {
           trigger: divElement,
-          start: "top 90%",
+          start: "top 70%",
         },
       });
     }
