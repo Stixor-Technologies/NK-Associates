@@ -109,3 +109,14 @@ export const getDepartments = async () => {
     console.error("There was an error getting departments", error);
   }
 };
+
+export const getSocials = async () => {
+  try {
+    let apiUrl = `${BASE_URL}/api/socials`;
+    const resp = await fetch(apiUrl);
+    const links = await resp.json();
+    return links;
+  } catch (error) {
+    console.error("There was an error getting social media links", error);
+  }
+};
