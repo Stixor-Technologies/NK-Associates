@@ -30,7 +30,6 @@ const assignRefs = <T extends unknown>(...refs: Ref<T | null>[]) => {
 
 const Hamburger = forwardRef<HTMLButtonElement, HamburgerProps>(
   function Hamburger({ isMenuOpen, setIsMenuOpen }, menuButtonRef) {
-    const menuHoverRef = useRef<HTMLDivElement | null>(null);
     const menuTopRef = useRef<SVGRectElement | null>(null);
     const menuMidRef = useRef<SVGRectElement | null>(null);
     const menuBottomRef = useRef<SVGRectElement | null>(null);
@@ -44,27 +43,6 @@ const Hamburger = forwardRef<HTMLButtonElement, HamburgerProps>(
       isMenuOpen ? tl.current?.play() : tl.current?.reverse();
     }, [isMenuOpen]);
 
-    // Handle hover animation when menu toggles
-    useEffect(() => {
-      if (!isMenuOpen && !isHover && menuHoverRef.current) {
-        gsap.to(menuHoverRef.current, {
-          scale: 0,
-          opacity: 0,
-          duration: 0.75,
-          ease: "power3.out",
-        });
-      }
-
-      if (isMenuOpen && !isHover && menuHoverRef.current) {
-        gsap.to(menuHoverRef.current, {
-          scale: 1,
-          opacity: 0.6,
-          duration: 0.75,
-          ease: "elastic.out(1, 0.75)",
-        });
-      }
-    }, [isMenuOpen, isHover]);
-
     useEffect(() => {
       // timeline for menu button animation
       tl.current = gsap.timeline({ paused: true });
@@ -74,7 +52,7 @@ const Hamburger = forwardRef<HTMLButtonElement, HamburgerProps>(
         .to(
           menuMidRef.current,
           { scale: 0.01, transformOrigin: "50% 50%", duration: 0.3 },
-          0
+          "initial"
         )
         .to(
           menuBottomRef.current,
@@ -87,7 +65,7 @@ const Hamburger = forwardRef<HTMLButtonElement, HamburgerProps>(
             rotationZ: 45,
             transformOrigin: "50% 50%",
             scale: 1,
-            duration: 0.5,
+            duration: 0.4,
           },
           "rotate"
         )
@@ -97,12 +75,12 @@ const Hamburger = forwardRef<HTMLButtonElement, HamburgerProps>(
             rotationZ: -45,
             transformOrigin: "50% 50%",
             scale: 1,
-            duration: 0.5,
+            duration: 0.4,
           },
           "rotate"
         )
-        .to(menuTopRef.current, { fill: "white", duration: 1 }, 0)
-        .to(menuBottomRef.current, { fill: "white", duration: 1 }, 0);
+        .to(menuTopRef.current, { fill: "white", duration: 0.8 }, "initial")
+        .to(menuBottomRef.current, { fill: "white", duration: 0.8 }, "initial");
     }, []);
 
     return (
