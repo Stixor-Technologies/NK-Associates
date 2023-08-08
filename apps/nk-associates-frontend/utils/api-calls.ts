@@ -118,5 +118,23 @@ export const getSocials = async () => {
     return links;
   } catch (error) {
     console.error("There was an error getting social media links", error);
-  }
+    return {
+      data: [
+        {
+          id: 1,
+          attributes: {
+            twitter: "https://www.twitter.comhttps://twitter.com/NKAssociates6",
+            facebook: "https://www.facebook.com/NKAssociatesOfficial/",
+            youtube: "https://www.youtube.com/channel/UCUdSaD4ZjxDYxXiQXZIM7tw",
+            linkedin: "https://www.linkedin.com/uas/login?session_redirect=%2Fcompany%2F47665410",
+            snapchat: "https://www.snapchat.com",
+            instagram: "https://www.instagram.com/nkassociatespvtltd",
+            playstore: "https://www.play.google.com",
+            appstore: "https://www.apple.com/app-store/",
+            appgallery: "https://appgallery.huawei.com/",
+          }
+        }
+      ]
+    }
+  };
 };
