@@ -1,7 +1,6 @@
-import React, { Dispatch, SetStateAction, useEffect, useState } from "react";
+import React, { Dispatch, SetStateAction } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useRouter } from "next/router";
 interface SidebarProps {
   isOpen: boolean;
   setIsOpen: Dispatch<SetStateAction<boolean>>;
@@ -33,14 +32,13 @@ const Sidebar: React.ForwardRefRenderFunction<HTMLDivElement, SidebarProps> = (
     { pathName: "#", label: "Contact Us" },
   ];
 
-  console.log(menuItems);
   const menuList = menuItems.map((menuItem) => (
     <li
       key={menuItem.pathName}
       onClick={handleLinkClick}
-      className={`text-nk-white transition-colors duration-500 ease-in-out hover:text-nk-dark-gray ${
-        pathName === menuItem.pathName ? "text-nk-dark-gray" : "text-nk-white"
-      }`}
+      className={`transition-colors duration-500 ease-in-out ${
+        pathName == menuItem.pathName ? "text-nk-dark-gray" : "text-nk-white "
+      } hover:text-nk-dark-gray `}
     >
       <Link href={`/${menuItem.pathName}`}>{menuItem.label}</Link>
     </li>
@@ -50,7 +48,7 @@ const Sidebar: React.ForwardRefRenderFunction<HTMLDivElement, SidebarProps> = (
     <div
       ref={ref}
       className={`fixed right-0 top-0  -mr-[100%]
-       h-full w-full overflow-y-auto will-change-auto  xs:-mr-[100%] xs:h-full xs:w-full sm:-mr-[100%] sm:h-full sm:w-full md:-mr-[100%] md:h-full md:w-full lg:-mr-[35vw] lg:h-full lg:w-[35vw] 
+       h-full w-full overflow-y-auto will-change-auto lg:-mr-[35vw] lg:w-[35vw] 
       `}
     >
       <div className="absolute -z-10 h-full w-full bg-nk-red"></div>
