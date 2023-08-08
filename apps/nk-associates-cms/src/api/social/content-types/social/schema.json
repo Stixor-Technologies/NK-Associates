@@ -14,7 +14,7 @@
   "attributes": {
     "twitter": {
       "type": "string",
-      "required": true,
+      "required": false,
       "default": "twitter.com"
     },
     "facebook": {

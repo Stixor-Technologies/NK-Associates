@@ -27,10 +27,8 @@ const Careers = () => {
 					career by submitting your details today.
 				</div>
 				<div className="flex justify-center">
-					<button className="my-8 w-80 rounded-full bg-nk-red p-2 font-metropolis text-base  text-nk-white duration-300 hover:bg-opacity-90 md:w-96 lg:w-96">
-						<Link href="#Listing">
-							Be a part of our amazing team
-						</Link>
+					<button className="my-8 w-80 rounded-full bg-nk-red p-2 font-metropolis text-base  text-nk-white duration-500 ease-in-out hover:bg-opacity-90 hover:shadow-lg hover:delay-200 md:w-96 lg:w-96">
+						<Link href="#Listing">Be a part of our amazing team</Link>
 					</button>
 				</div>
 			</div>
