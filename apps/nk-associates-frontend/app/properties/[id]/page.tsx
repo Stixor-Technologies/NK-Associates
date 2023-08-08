@@ -66,7 +66,7 @@ async function PropertyDetail({ params: { id } }: PropertyDetailProps) {
           </span>
         </button>
 
-        <div className="container mx-auto py-6">
+        <div className="container mx-auto py-4">
           {/* Property Info section */}
           <div className="flex flex-col items-center gap-5 sm:flex-row sm:items-start sm:justify-between lg:items-center">
             <div
