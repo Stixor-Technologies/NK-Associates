@@ -9,7 +9,7 @@ import {
   SetStateAction,
   MouseEvent,
 } from "react";
-import { gsap, GSAPTimeline } from "gsap";
+import { gsap } from "gsap";
 
 interface HamburgerProps {
   isMenuOpen: boolean;
