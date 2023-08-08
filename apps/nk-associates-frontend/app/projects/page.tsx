@@ -173,6 +173,7 @@ export default function Projects() {
                 >
                   {projectsData.map((project, index) => (
                     <ProjectCardItem 
+                      key={index}
                       project={project}
                       index={index}
                     />
