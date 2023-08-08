@@ -1,12 +1,16 @@
 "use client";
-import { useEffect, useState, useMemo } from "react";
+import { useEffect, useState, useMemo, useLayoutEffect, useRef } from "react";
 import ProjectCard from "../../components/projectcard/project-card";
 import { getProjects } from "../../utils/api-calls";
 import LinkButton from "../../components/button/link-button";
 import { Project } from "../../utils/types/types";
 import { BASE_URL } from "../../utils/constants";
 import Spinner from "../../components/spinner";
+import { gsap } from "gsap";
 import InfiniteScroll from "react-infinite-scroll-component";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
 
 const ProjectCardItem = ({
   project,
@@ -28,6 +32,7 @@ const ProjectCardItem = ({
   return (
     <ProjectCard
       image={thumbnailImgUrl}
+      imagesList={project.attributes.pictures.data}
       propertyName={project.attributes.title}
       plotSize={`${project.attributes.plotSize} ${project.attributes.plotSizeUnits}`}
       plotNo={project.attributes.plotNumber}
@@ -90,6 +95,30 @@ export default function Projects() {
     }
   }, [buttonSwitched, projectsData]);
 
+  const main = useRef();
+
+  useLayoutEffect(() => {
+    if (projectsData.length > -1) {
+      const ctx = gsap.context((self) => {
+        const boxes = self.selector(".project-card");
+        boxes.forEach((box, index) => {
+          if (index >= 1) {
+            gsap.from(box, {
+              y: 85,
+              scrollTrigger: {
+                trigger: box,
+                start: "top bottom",
+                end: "+=350",
+                scrub: true,
+              },
+            });
+          }
+        });
+      }, main.current); // <- Scope!
+      return () => ctx.revert(); // <- Cleanup!
+    }
+  }, [projectsData]);
+
   return (
     <div className="bg-nk-white-dark md:bg-nk-bg md:bg-auto md:bg-right-top md:bg-no-repeat">
       <div className="md:py-18 relative py-10">
@@ -98,7 +127,7 @@ export default function Projects() {
         </div>
 
         <div className="container flex justify-center overflow-hidden p-0">
-          <div className="scrollbar-hide flex flex-nowrap gap-x-2 overflow-x-auto px-4 sm:gap-x-2.5">
+          <div className="scrollbar-hide flex flex-nowrap gap-x-2 overflow-x-auto px-4 py-4 sm:gap-x-2.5">
             {optionsList.map((label, index) => (
               <LinkButton
                 key={index}
@@ -124,14 +153,17 @@ export default function Projects() {
               No projects found.
             </div>
           ) : (
-            <div className="w-full overflow-hidden">
+            <div className="w-full overflow-hidden py-4">
               <InfiniteScroll
                 dataLength={projectsData.length}
                 next={getProjectsData}
                 hasMore={total !== projectsData.length}
                 loader={loading && <Spinner />}
               >
-                <div className="flex flex-col justify-center">
+                <div
+                  ref={main}
+                  className="flex flex-col justify-center overflow-hidden"
+                >
                   {projectsData.map((value, index) => (
                     <ProjectCardItem
                       key={index}

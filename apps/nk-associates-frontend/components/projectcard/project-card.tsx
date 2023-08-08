@@ -1,11 +1,22 @@
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
+import "swiper/css/effect-coverflow";
+import "swiper/css/pagination";
+import { Pagination } from "swiper/modules";
+
+import "./project-card.css";
+
+import { BASE_URL } from "../../utils/constants";
+
 import LocationIcon from "../../public/assets/icons/area-marker.svg";
 import LocationIconSecondary from "../../public/assets/images/LocationIconSecondary.svg";
 import NoImageIcon from "../../public/assets/icons/no-image-svg.svg";
 
 interface ProjectCardProps {
   image: string;
+  imagesList: unknown[];
   propertyName: string;
   plotSize: string;
   plotNo: string;
@@ -18,6 +29,7 @@ interface ProjectCardProps {
 
 const ProjectCard: React.FC<ProjectCardProps> = ({
   image,
+  imagesList,
   propertyName,
   plotSize,
   plotNo,
@@ -45,21 +57,32 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
 
   return (
     <div
-      className={`mb-[2.3rem] flex h-[32.875rem] w-full flex-col overflow-hidden rounded-2xl shadow-md last-of-type:mb-0 sm:h-[21rem] md:mb-[4.5rem] md:h-[26rem] lg:h-[31.25rem] ${flexDirection} md:rounded-3xl ${backgroundColor} ${textColor}`}
+      className={`project-card mb-[2.3rem] flex h-[32.875rem] w-full flex-col overflow-hidden rounded-2xl shadow-md last-of-type:mb-4 sm:h-[21rem] md:mb-[4.5rem] md:h-[26rem] lg:h-[31.25rem] ${flexDirection} md:rounded-3xl ${backgroundColor} ${textColor}`}
     >
-      <div className="relative h-full min-h-[21rem] w-full sm:h-auto sm:w-[65%] ">
+      <div className="relative h-full min-h-[21rem] w-full sm:h-auto sm:w-[65%]">
         {image ? (
-          <Image
-            src={image}
-            alt="Card Image"
-            layout="fill"
-            objectFit="cover"
-            className={`rounded-xl rounded-bl-none rounded-br-none sm:rounded-tr-none ${
-              primaryColor
-                ? "md:rounded-bl-none md:rounded-br-3xl md:rounded-tl-none md:rounded-tr-3xl"
-                : "md:rounded-bl-3xl md:rounded-br-none md:rounded-tl-3xl md:rounded-tr-none"
-            }`}
-          />
+          <Swiper
+            grabCursor={false}
+            centeredSlides={true}
+            initialSlide={0}
+            pagination={true}
+            modules={[Pagination]}
+            className="mySwiper carousel-slider h-full w-full"
+          >
+            {imagesList?.map((image, index) => {
+              return (
+                <SwiperSlide key={index}>
+                  <Image
+                    src={`${BASE_URL}${image.attributes.url}`}
+                    alt="Carousel Image"
+                    layout="fill"
+                    objectFit="cover"
+                    className="h-full w-full object-cover"
+                  />
+                </SwiperSlide>
+              );
+            })}
+          </Swiper>
         ) : (
           <div className="flex h-full w-full items-center justify-center bg-white text-black">
             <Image
@@ -69,11 +92,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
               alt="No Image Available"
               layout="contain"
               objectFit="contain"
-              className={`mr-2 rounded-xl ${
-                primaryColor
-                  ? "md:rounded-bl-none md:rounded-br-3xl md:rounded-tl-none md:rounded-tr-3xl"
-                  : "md:rounded-bl-3xl md:rounded-br-none md:rounded-tl-3xl md:rounded-tr-none"
-              }`}
+              className={`mr-2 rounded-xl`}
             />
             No Image Available
           </div>
@@ -134,13 +153,13 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
         <div className="mt-auto pt-4">
           {propertyType && (
             <div
-              className={`mb-5 hidden px-3.5 py-1 md:inline-block md:rounded-full ${
+              className={`mb-5 hidden rounded-full px-3.5 py-1 sm:inline-block ${
                 primaryColor
-                  ? "text-nk-gray md:bg-nk-white-dark"
-                  : "text-nk-white md:bg-nk-red"
+                  ? "bg-nk-white-dark text-nk-gray"
+                  : "bg-nk-red text-nk-white"
               }`}
             >
-              <h3 className="flex items-center font-metropolis text-xl">
+              <h3 className="flex items-center font-metropolis text-base lg:text-lg">
                 {propertyType}
               </h3>
             </div>
@@ -157,7 +176,10 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
                 alt=""
               />
             </div>
-            <div className="line-clamp-2 font-metropolis-extralight text-[0.813rem] sm:text-base sm:leading-5 lg:text-lg lg:leading-6">
+            <div
+              className="line-clamp-2 font-metropolis-extralight text-[0.813rem] sm:text-base sm:leading-5 lg:text-lg lg:leading-6"
+              title={location}
+            >
               {location}
             </div>
           </div>
