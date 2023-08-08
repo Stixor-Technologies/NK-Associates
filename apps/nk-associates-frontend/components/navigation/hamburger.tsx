@@ -37,8 +37,6 @@ const Hamburger = forwardRef<HTMLButtonElement, HamburgerProps>(
 
     const tl = useRef<GSAPTimeline>();
 
-    const [isHover, setIsHover] = useState<boolean>(false);
-
     useEffect(() => {
       isMenuOpen ? tl.current?.play() : tl.current?.reverse();
     }, [isMenuOpen]);

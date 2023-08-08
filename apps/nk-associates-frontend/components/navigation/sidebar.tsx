@@ -53,7 +53,7 @@ const Sidebar: React.ForwardRefRenderFunction<HTMLDivElement, SidebarProps> = (
     >
       <div className="absolute -z-10 h-full w-full bg-nk-red"></div>
       <div
-        className=" min-aspect:h-full min-aspect:w-full mx-auto flex h-full w-full flex-col items-center justify-center overflow-y-auto  
+        className="  mx-auto flex h-full w-full flex-col items-center justify-center overflow-y-auto  
 		px-2  pt-20 "
       >
         <ul className="my-8 space-y-8 text-right font-metropolis-bold text-5xl">
