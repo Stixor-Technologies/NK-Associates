@@ -65,7 +65,7 @@ const JobList = () => {
 		return (
 			<div className="overflow-scroll rounded-xl bg-nk-white p-2 pb-4 shadow-xl">
 				<div className="flex flex-row justify-between p-2">
-					<div className="relative h-1 w-4/6 px-2 pt-4 md:w-3/6">
+					<div className="relative h-1 w-4/6 px-2 pt-4 md:w-1/2">
 						<div className="relative">
 							<input
 								placeholder="Search here"
@@ -78,7 +78,7 @@ const JobList = () => {
 							</div>
 						</div>
 					</div>
-					<div className="hidden  w-1/2 md:block md:flex">
+					<div className="hidden  w-4/6 md:block md:flex">
 						<div className="mt-8 w-1/2">
 							<JobFilter
 								selectedValue={filteredDepartment}
@@ -109,7 +109,7 @@ const JobList = () => {
 							{isClicked && <Image src={FilterAlt} alt="Filter Alt" />}
 						</div>
 						<div
-							className={`absolute right-0 z-10 mt-10 flex w-64  flex-col rounded-lg bg-nk-light-gray shadow-xl  transition-opacity duration-500 ease-in-out ${
+							className={`absolute right-0 z-10 mt-11 flex w-80 flex-col p-2 rounded-lg bg-nk-light-gray shadow-xl  transition-opacity duration-500 ease-in-out ${
 								isClicked ? "opacity-100" : "opacity-0"
 							}`}>
 							{isClicked && (
