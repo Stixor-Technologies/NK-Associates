@@ -10,45 +10,51 @@ import { gsap } from "gsap";
 import InfiniteScroll from "react-infinite-scroll-component";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
+type OptionsType = "All" | "Residential" | "Commercial" | "Hotel";
+
 gsap.registerPlugin(ScrollTrigger);
-
-// const ProjectCardItem = ({
-//   project,
-//   index,
-// }: {
-//   project: Project;
-//   index: number;
-// }) => {
-//   const thumbnailImgUrl = useMemo(() => {
-//     if (
-//       project.attributes.pictures.data &&
-//       project.attributes.pictures.data.length > -1
-//     ) {
-//       return `${BASE_URL}${project.attributes.pictures.data[0].attributes.url}`;
-//     }
-//     return undefined;
-//   }, [project.attributes.pictures]);
-
-//   return (
-//     <ProjectCard
-//       imagesList={project.attributes.pictures.data}
-//       propertyName={project.attributes.title}
-//       plotSize={`${project.attributes.plotSize} ${project.attributes.plotSizeUnits}`}
-//       plotNo={project.attributes.plotNumber}
-//       coveredArea={`${project.attributes.coveredArea} ${project.attributes.coveredAreaUnits}`}
-//       location={`${project.attributes.address}, ${project.attributes.city}`}
-//       propertyDescription={project.attributes.description}
-//       propertyType={project.attributes.category}
-//       primaryColor={index % 2 == 0 ? true : false}
-//     />
-//   );
-// };
 
 const optionsList = ["Residential", "Commercial", "Hotel", "All"];
 
+
+const ProjectCardItem = ({
+  project,
+  index,
+}: {
+  project: Project;
+  index: number;
+}) => {
+  const imagesList = useMemo(() => {
+    if (
+      project.attributes.pictures.data &&
+      project.attributes.pictures.data.length > -1
+    ) {
+      const list: string[] = project.attributes.pictures.data.map((picture) => {
+        return `${BASE_URL}${picture.attributes.url}`;
+      });
+      return list;
+    }
+    return undefined;
+  }, [project.attributes.pictures]);
+
+  return (
+    <ProjectCard
+      imagesList={imagesList}
+      propertyName={project.attributes.title}
+      plotSize={`${project.attributes.plotSize} ${project.attributes.plotSizeUnits}`}
+      plotNo={project.attributes.plotNumber}
+      coveredArea={`${project.attributes.coveredArea} ${project.attributes.coveredAreaUnits}`}
+      location={`${project.attributes.address}, ${project.attributes.city}`}
+      propertyDescription={project.attributes.description}
+      propertyType={project.attributes.category}
+      primaryColor={index % 2 == 0 ? true : false}
+    />
+  );
+};
+
 export default function Projects() {
   const [selectedButton, setSelectedButton] = useState<
-    "All" | "Residential" | "Commercial" | "Hotel"
+    OptionsType
   >("All");
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<boolean>(false);
@@ -135,7 +141,7 @@ export default function Projects() {
                 text={label}
                 type={selectedButton == label ? "gradient" : "transparent"}
                 clickEvent={() => {
-                  setSelectedButton(label);
+                  setSelectedButton(label as OptionsType);
                   setButtonSwitched(true);
                 }}
                 className=" h-8 w-[9.549rem] flex-none text-xs md:h-[3rem] md:w-[10.688rem] md:text-base lg:h-[3.2rem] lg:w-[13.688rem] lg:text-lg xl:h-[3.5rem] xl:w-[16.688rem] xl:text-xl"
@@ -166,17 +172,9 @@ export default function Projects() {
                   className="flex flex-col justify-center overflow-hidden"
                 >
                   {projectsData.map((project, index) => (
-                    <ProjectCard
-                      key={index}
-                      imagesList={project.attributes.pictures.data}
-                      propertyName={project.attributes.title}
-                      plotSize={`${project.attributes.plotSize} ${project.attributes.plotSizeUnits}`}
-                      plotNo={project.attributes.plotNumber}
-                      coveredArea={`${project.attributes.coveredArea} ${project.attributes.coveredAreaUnits}`}
-                      location={`${project.attributes.address}, ${project.attributes.city}`}
-                      propertyDescription={project.attributes.description}
-                      propertyType={project.attributes.category}
-                      primaryColor={index % 2 == 0 ? true : false}
+                    <ProjectCardItem 
+                      project={project}
+                      index={index}
                     />
                   ))}
                 </div>

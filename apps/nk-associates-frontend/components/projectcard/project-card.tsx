@@ -8,15 +8,12 @@ import { Pagination } from "swiper/modules";
 
 import "./project-card.css";
 
-import { BASE_URL } from "../../utils/constants";
-
 import LocationIcon from "../../public/assets/icons/area-marker.svg";
 import LocationIconSecondary from "../../public/assets/images/LocationIconSecondary.svg";
 import NoImageIcon from "../../public/assets/icons/no-image-svg.svg";
 
 interface ProjectCardProps {
-  // image: string;
-  imagesList: unknown[];
+  imagesList: string[];
   propertyName: string;
   plotSize: string;
   plotNo: string;
@@ -28,7 +25,6 @@ interface ProjectCardProps {
 }
 
 const ProjectCard: React.FC<ProjectCardProps> = ({
-  // image,
   imagesList,
   propertyName,
   plotSize,
@@ -69,11 +65,11 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
             modules={[Pagination]}
             className="mySwiper carousel-slider h-full w-full"
           >
-            {imagesList?.map((image, index) => {
+            {imagesList?.map((url, index) => {
               return (
                 <SwiperSlide key={index}>
                   <Image
-                    src={`${BASE_URL}${image.attributes.url}`}
+                    src={url}
                     alt="Carousel Image"
                     layout="fill"
                     objectFit="cover"
