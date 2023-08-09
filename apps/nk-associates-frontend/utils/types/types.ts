@@ -98,6 +98,7 @@ export interface Job {
         updatedAt: string;
         publishedAt: string;
         location: string;
+        city: string;
         department: {
             data: Department;
         };

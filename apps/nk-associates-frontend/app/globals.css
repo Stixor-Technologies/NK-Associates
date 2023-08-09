@@ -2,6 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer components {
+  .container {
+    @apply w-full max-w-container px-4 md:px-8 mx-auto;
+  }
+}
+
 .scrollbar-hide::-webkit-scrollbar {
   display: none;
 }

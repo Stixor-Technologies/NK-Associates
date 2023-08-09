@@ -61,9 +61,7 @@ export default function RootLayout({
         className={`${metropolisRegular.variable} ${metropolisMedium.variable} ${metropolisSemiBold.variable} ${metropolisBold.variable} ${metropolisExtraBold.variable} ${metropolisLight.variable} ${metropolisExtraLight.variable} ${metropolisThin.variable} bg-nk-background font-metropolis`}
       >
         <Navigation />
-        <MapApiProvider>
-          <main className="mt-24">{children}</main>
-        </MapApiProvider>
+        <main className="mt-28">{children}</main>
         <Footer />
       </body>
     </html>

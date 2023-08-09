@@ -1,11 +1,19 @@
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
+import "swiper/css/effect-coverflow";
+import "swiper/css/pagination";
+import { Pagination } from "swiper/modules";
+
+import "./project-card.css";
+
 import LocationIcon from "../../public/assets/icons/area-marker.svg";
 import LocationIconSecondary from "../../public/assets/images/LocationIconSecondary.svg";
 import NoImageIcon from "../../public/assets/icons/no-image-svg.svg";
 
 interface ProjectCardProps {
-  image: string;
+  imagesList: string[];
   propertyName: string;
   plotSize: string;
   plotNo: string;
@@ -17,7 +25,7 @@ interface ProjectCardProps {
 }
 
 const ProjectCard: React.FC<ProjectCardProps> = ({
-  image,
+  imagesList,
   propertyName,
   plotSize,
   plotNo,
@@ -41,25 +49,36 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
     ? "bg-gradient-to-b bg-nk-gradient-red-one to-nk-gradient-red-two"
     : "bg-white";
   const textColor = primaryColor ? "text-white" : "text-black";
-  const flexDirection = primaryColor ? "md:flex-row-reverse" : "md:flex-row";
+  const flexDirection = primaryColor ? "sm:flex-row-reverse" : "sm:flex-row";
 
   return (
     <div
-      className={`mb-[2.3rem] flex h-[32.875rem] w-96 flex-col overflow-hidden rounded-2xl shadow-md md:mb-[4.5rem] md:h-[31.25rem] md:w-[76.25rem] ${flexDirection} md:rounded-3xl ${backgroundColor} ${textColor}`}
+      className={`project-card mb-[2.3rem] flex h-[32.875rem] w-full flex-col overflow-hidden rounded-2xl shadow-md last-of-type:mb-4 sm:h-[21rem] md:mb-[4.5rem] md:h-[26rem] lg:h-[31.25rem] ${flexDirection} md:rounded-3xl ${backgroundColor} ${textColor}`}
     >
-      <div className="relative h-80 w-full  md:flex md:h-auto md:w-[65%] ">
-        {image ? (
-          <Image
-            src={image}
-            alt="Card Image"
-            layout="fill"
-            objectFit="cover"
-            className={`rounded-xl ${
-              primaryColor
-                ? "md:rounded-bl-none md:rounded-br-3xl md:rounded-tl-none md:rounded-tr-3xl"
-                : "md:rounded-bl-3xl md:rounded-br-none md:rounded-tl-3xl md:rounded-tr-none"
-            }`}
-          />
+      <div className="relative h-full min-h-[21rem] w-full sm:h-auto sm:w-[65%]">
+        {imagesList.length > 0 ? (
+          <Swiper
+            grabCursor={true}
+            centeredSlides={true}
+            initialSlide={0}
+            pagination={true}
+            modules={[Pagination]}
+            className="mySwiper carousel-slider h-full w-full"
+          >
+            {imagesList?.map((url, index) => {
+              return (
+                <SwiperSlide key={index}>
+                  <Image
+                    src={url}
+                    alt="Carousel Image"
+                    layout="fill"
+                    objectFit="cover"
+                    className="h-full w-full object-cover"
+                  />
+                </SwiperSlide>
+              );
+            })}
+          </Swiper>
         ) : (
           <div className="flex h-full w-full items-center justify-center bg-white text-black">
             <Image
@@ -69,94 +88,95 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
               alt="No Image Available"
               layout="contain"
               objectFit="contain"
-              className={`mr-2 rounded-xl ${
-                primaryColor
-                  ? "md:rounded-bl-none md:rounded-br-3xl md:rounded-tl-none md:rounded-tr-3xl"
-                  : "md:rounded-bl-3xl md:rounded-br-none md:rounded-tl-3xl md:rounded-tr-none"
-              }`}
+              className={`mr-2 rounded-xl`}
             />
             No Image Available
           </div>
         )}
       </div>
-      <div className="m-6 my-[0.94rem] ml-[1.42rem] flex-1 md:my-12 md:ml-[1.875rem] md:flex md:w-[35%] md:flex-col">
-        <div className="md:flex md:flex-grow md:flex-col">
-          <div className=" flex flex-col">
-            <div className="flex w-full flex-row">
-              <h1 className="mb-2 font-metropolis-extrabold text-[1.375rem] md:text-[2rem]">
-                {propertyName}
-              </h1>
+
+      <div className="flex flex-col px-4 py-3.5 sm:w-[35%] md:p-6">
+        <div className=" flex flex-col">
+          <h1
+            className="mb-1.5 truncate font-metropolis-extrabold text-[1.375rem] leading-7 md:mb-3 md:text-2xl lg:text-3xl"
+            title={propertyName}
+          >
+            {propertyName}
+          </h1>
+
+          {propertyDescription && (
+            <div className="mb-3 line-clamp-4 lg:line-clamp-6">
+              <p
+                className="hidden break-words font-metropolis-extralight text-sm sm:block sm:text-base md:text-xl"
+                title={propertyDescription}
+              >
+                {propertyDescription}
+              </p>
             </div>
-            <div className="flex w-full flex-row">
-              {propertyDescription && (
-                <div className="hidden w-full flex-row  md:flex">
-                  <h3 className="mb-2 font-metropolis-extralight text-[1.375rem]">
-                    <span className=" font-metropolis-extralight">
-                      {propertyDescription}
-                    </span>
-                  </h3>
-                </div>
-              )}
-            </div>
-            <div className="flex w-full flex-row">
-              <h3 className="mb-2 font-metropolis-extralight text-sm md:text-[1.375rem]">
-                Plot Size:
-                <span className="mx-1 font-metropolis-semibold md:mx-3 md:text-[1.375rem]">
-                  {plotSize}
-                </span>
+          )}
+
+          <p className="truncate font-metropolis-extralight text-sm sm:text-base md:mb-0 lg:text-xl">
+            Plot Size:
+            <strong
+              className="mx-1 font-metropolis-semibold md:mx-3"
+              title={plotSize}
+            >
+              {plotSize}
+            </strong>
+          </p>
+
+          <p className="truncate font-metropolis-extralight text-sm sm:text-base md:mb-0 lg:text-xl">
+            Plot No:
+            <strong
+              className="mx-1 font-metropolis-semibold md:mx-3"
+              title={plotNo}
+            >
+              {plotNo}
+            </strong>
+          </p>
+
+          <p className="truncate font-metropolis-extralight text-sm sm:text-base md:mb-0 lg:text-xl">
+            Covered Area:
+            <strong
+              className=" mx-1 font-metropolis-semibold md:mx-3"
+              title={coveredArea}
+            >
+              {coveredArea}
+            </strong>
+          </p>
+        </div>
+
+        <div className="mt-auto pt-4">
+          {propertyType && (
+            <div
+              className={`mb-5 hidden rounded-full px-3.5 py-1 sm:inline-block ${
+                primaryColor
+                  ? "bg-nk-white-dark text-nk-gray"
+                  : "bg-nk-red text-nk-white"
+              }`}
+            >
+              <h3 className="flex items-center font-metropolis text-base lg:text-lg">
+                {propertyType}
               </h3>
             </div>
-            <div className="flex w-full flex-row">
-              <h3 className="mb-2 font-metropolis-extralight text-sm md:text-[1.375rem]">
-                Plot No:
-                <span className="mx-1 font-metropolis-semibold md:mx-3">
-                  {plotNo}
-                </span>
-              </h3>
+          )}
+
+          <div className="flex items-start">
+            <div className="mr-3 flex w-[12.25px] min-w-[1rem] justify-center md:w-[20px]">
+              <Image
+                src={
+                  primaryColor ? LocationIconSecondary.src : LocationIcon.src
+                }
+                width={windowWidth < 768 ? 12.25 : 20}
+                height={windowWidth < 768 ? 17.5 : 28}
+                alt=""
+              />
             </div>
-            <div className="flex w-full flex-row">
-              <h3 className="mb-2 font-metropolis-extralight text-sm md:text-[1.375rem]">
-                Covered Area:
-                <span className=" mx-1 font-metropolis-semibold md:mx-3">
-                  {coveredArea}
-                </span>
-              </h3>
-            </div>
-          </div>
-          <div className="mt-auto">
-            <div className="flex w-full flex-row">
-              {propertyType && (
-                <div
-                  className={`hidden md:my-6 md:flex md:flex-row md:justify-center md:rounded-full ${
-                    primaryColor ? "md:bg-nk-white-dark" : "md:bg-nk-red"
-                  }`}
-                >
-                  <h3 className="mb-2 flex items-center font-metropolis text-xl">
-                    <span
-                      className={`inline-block max-w-max px-4 pt-2 font-metropolis ${
-                        primaryColor ? "text-nk-gray" : "text-nk-white"
-                      }`}
-                    >
-                      {propertyType}
-                    </span>
-                  </h3>
-                </div>
-              )}
-            </div>
-            <div className="flex w-full flex-row">
-              <div className="flex w-1/12 flex-col justify-center md:mr-3">
-                <Image
-                  src={
-                    primaryColor ? LocationIconSecondary.src : LocationIcon.src
-                  }
-                  width={windowWidth < 640 ? 12.25 : 20}
-                  height={windowWidth < 640 ? 17.5 : 28}
-                  alt=""
-                />
-              </div>
-              <div className="mx-0 flex w-11/12 flex-col justify-center font-metropolis-extralight text-[0.813rem] md:text-lg">
-                {location}
-              </div>
+            <div
+              className="line-clamp-2 font-metropolis-extralight text-[0.813rem] sm:text-base sm:leading-5 lg:text-lg lg:leading-6"
+              title={location}
+            >
+              {location}
             </div>
           </div>
         </div>
