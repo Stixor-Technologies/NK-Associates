@@ -40,7 +40,7 @@ export const getProjects = async ({
     const res = await fetch(
       //using concatenation because autosave causes linebreak in ` ` in the api call
       `${BASE_URL}/api/projects?populate=*${
-        category ? `&filters[Category]=${category}` : ""
+        category ? `&filters[category]=${category}` : ""
       }${`&pagination[start]=${start}&pagination[limit]=${limit}&sort[1]=id`}`,
       fetchOptions
     );
@@ -77,17 +77,17 @@ export const getJobs = async (departmentName, location, ) => {
   }
 };
 
-export const getLocations = async () => {
+export const getCities = async () => {
   try {
     let apiUrl = `${BASE_URL}/api/jobs?populate=*`;
     const resp = await fetch(apiUrl);
     const data = await resp.json();
 
     const locations = data.data.map(job => job.attributes.location);
-    const uniqueLocationsSet = new Set(locations);
-    const uniqueLocationsArray = Array.from(uniqueLocationsSet);
+    const uniqueCitiesSet = new Set(locations);
+    const uniqueCitiesArray = Array.from(uniqueCitiesSet);
 
-    return uniqueLocationsArray;
+    return uniqueCitiesArray;
   } catch (error) {
     console.error("There was an error getting locations", error);
   }

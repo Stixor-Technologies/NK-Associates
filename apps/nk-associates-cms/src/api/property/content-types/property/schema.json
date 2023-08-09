@@ -66,11 +66,13 @@
     },
     "price": {
       "type": "biginteger",
-      "required": true
+      "required": true,
+      "min": "1"
     },
     "area": {
       "type": "decimal",
-      "required": true
+      "required": true,
+      "min": 1
     },
     "area_type": {
       "type": "enumeration",
@@ -85,11 +87,13 @@
     },
     "latitude": {
       "type": "float",
-      "required": true
+      "required": true,
+      "min": 1
     },
     "longitude": {
       "type": "float",
-      "required": true
+      "required": true,
+      "min": 1
     },
     "image_thumbnail": {
       "type": "media",

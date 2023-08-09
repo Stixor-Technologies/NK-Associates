@@ -40,7 +40,7 @@
       "type": "float",
       "required": true
     },
-    "unitsAvailable": {
+    "totalUnits": {
       "type": "integer",
       "required": true
     },
@@ -80,7 +80,8 @@
       "required": true
     },
     "plotSize": {
-      "type": "float"
+      "type": "float",
+      "required": true
     },
     "plotSizeUnits": {
       "type": "enumeration",
@@ -90,7 +91,8 @@
         "Sq. Meter(s)",
         "Marla(s)",
         "Kanal(s)"
-      ]
+      ],
+      "required": true
     },
     "category": {
       "type": "enumeration",
@@ -98,10 +100,16 @@
         "Residential",
         "Commercial",
         "Hotel"
-      ]
+      ],
+      "required": true
     },
     "plotNumber": {
-      "type": "string"
+      "type": "string",
+      "required": true
+    },
+    "unitsSold": {
+      "type": "integer",
+      "required": true
     }
   }
 }
