@@ -2106,6 +2106,29 @@
     colors "~1.2.1"
     string-argv "~0.3.1"
 
+"@sendgrid/client@^7.7.0":
+  version "7.7.0"
+  resolved "https://registry.yarnpkg.com/@sendgrid/client/-/client-7.7.0.tgz#f8f67abd604205a0d0b1af091b61517ef465fdbf"
+  integrity sha512-SxH+y8jeAQSnDavrTD0uGDXYIIkFylCo+eDofVmZLQ0f862nnqbC3Vd1ej6b7Le7lboyzQF6F7Fodv02rYspuA==
+  dependencies:
+    "@sendgrid/helpers" "^7.7.0"
+    axios "^0.26.0"
+
+"@sendgrid/helpers@^7.7.0":
+  version "7.7.0"
+  resolved "https://registry.yarnpkg.com/@sendgrid/helpers/-/helpers-7.7.0.tgz#93fb4b6e2f0dc65080440d6a784cc93e8e148757"
+  integrity sha512-3AsAxfN3GDBcXoZ/y1mzAAbKzTtUZ5+ZrHOmWQ279AuaFXUNCh9bPnRpN504bgveTqoW+11IzPg3I0WVgDINpw==
+  dependencies:
+    deepmerge "^4.2.2"
+
+"@sendgrid/mail@7.7.0", "@sendgrid/mail@^7.7.0":
+  version "7.7.0"
+  resolved "https://registry.yarnpkg.com/@sendgrid/mail/-/mail-7.7.0.tgz#aba09f5ce2e9d8ceee92284c3ea8b4a90b0e38fe"
+  integrity sha512-5+nApPE9wINBvHSUxwOxkkQqM/IAAaBYoP9hw7WwgDNQPxraruVqHizeTitVtKGiqWCKm2mnjh4XGN3fvFLqaw==
+  dependencies:
+    "@sendgrid/client" "^7.7.0"
+    "@sendgrid/helpers" "^7.7.0"
+
 "@sentry/core@6.19.7":
   version "6.19.7"
   resolved "https://registry.npmjs.org/@sentry/core/-/core-6.19.7.tgz"
@@ -2550,6 +2573,14 @@
   resolved "https://registry.npmjs.org/@strapi/provider-audit-logs-local/-/provider-audit-logs-local-4.11.5.tgz"
   integrity sha512-n15TMxf3lE0BaBA45O4h1ziRuXzNYUXMCDHmT0CQXFxiuMP/PcEvFAobGqG41ex3bu4AzQLdKKzl2pMmM1fV8w==
 
+"@strapi/provider-email-sendgrid@^4.12.1":
+  version "4.12.1"
+  resolved "https://registry.yarnpkg.com/@strapi/provider-email-sendgrid/-/provider-email-sendgrid-4.12.1.tgz#db0fdf8e3c90c34e15ffabe97657e7046cf101f6"
+  integrity sha512-/RgoFKqNQ1tykFZDzHiK3ezPFykMU1Hj8uzFpmNXNjznqEOB67pecL4nqNgcMVZ5AzxBCzY7zqXeA8/rJR1dNg==
+  dependencies:
+    "@sendgrid/mail" "7.7.0"
+    "@strapi/utils" "4.12.1"
+
 "@strapi/provider-email-sendmail@4.11.5":
   version "4.11.5"
   resolved "https://registry.npmjs.org/@strapi/provider-email-sendmail/-/provider-email-sendmail-4.11.5.tgz"
@@ -2669,6 +2700,18 @@
   version "4.11.5"
   resolved "https://registry.npmjs.org/@strapi/utils/-/utils-4.11.5.tgz"
   integrity sha512-wKwQpxHR4tO2YWaGBM+oS9mLA1rO39vRYjbmlk8jm1WP2mhRqcnzebRE/FPxpGZLwwPS4/CB3X5VxD9V/v8LCg==
+  dependencies:
+    "@sindresorhus/slugify" "1.1.0"
+    date-fns "2.30.0"
+    http-errors "1.8.1"
+    lodash "4.17.21"
+    p-map "4.0.0"
+    yup "0.32.9"
+
+"@strapi/utils@4.12.1":
+  version "4.12.1"
+  resolved "https://registry.yarnpkg.com/@strapi/utils/-/utils-4.12.1.tgz#b571e37976edc0db576f6a273d3d424962a769d6"
+  integrity sha512-y72JjH/6JgPK2k8Wq6z0jQS391YHAWa+7eDfV8cTWgjE6oxQsCPcfwO9aX7wQo8hWpIsizvBottrJQccYbJsoA==
   dependencies:
     "@sindresorhus/slugify" "1.1.0"
     date-fns "2.30.0"
@@ -3675,6 +3718,13 @@ axios@1.4.0:
     follow-redirects "^1.15.0"
     form-data "^4.0.0"
     proxy-from-env "^1.1.0"
+
+axios@^0.26.0:
+  version "0.26.1"
+  resolved "https://registry.yarnpkg.com/axios/-/axios-0.26.1.tgz#1ede41c51fcf51bbbd6fd43669caaa4f0495aaa9"
+  integrity sha512-fPwcX4EvnSHuInCMItEhAGnaSEXRBjtzh9fOtsE6E1G6p7vl7edEeZe11QHf18+6+9gR5PbKV/sGKNaD8YaMeA==
+  dependencies:
+    follow-redirects "^1.14.8"
 
 axobject-query@^3.1.1:
   version "3.2.1"
@@ -6046,7 +6096,7 @@ fn.name@1.x.x:
   resolved "https://registry.npmjs.org/fn.name/-/fn.name-1.1.0.tgz"
   integrity sha512-GRnmB5gPyJpAhTQdSZTSp9uaPSvl09KoYcMQtsB9rQoOmzs9dH6ffeccH+Z+cv6P68Hu5bC6JjRh4Ah/mHSNRw==
 
-follow-redirects@^1.0.0, follow-redirects@^1.15.0:
+follow-redirects@^1.0.0, follow-redirects@^1.14.8, follow-redirects@^1.15.0:
   version "1.15.2"
   resolved "https://registry.npmjs.org/follow-redirects/-/follow-redirects-1.15.2.tgz"
   integrity sha512-VQLG33o04KaQ8uYi2tVNbdrWp1QWxNNea+nmIB4EVM28v0hmP17z7aG1+wAkNzVq4KeXTq3221ye5qTJP91JwA==
@@ -6115,7 +6165,7 @@ formik@2.4.0:
     tiny-warning "^1.0.2"
     tslib "^1.10.0"
 
-formik@^2.4.0:
+formik@^2.4.0, formik@^2.4.2:
   version "2.4.2"
   resolved "https://registry.npmjs.org/formik/-/formik-2.4.2.tgz"
   integrity sha512-C6nx0hifW2uENP3M6HpPmnAE6HFWCcd8/sqBZEOHZY6lpHJ5qehsfAy43ktpFLEmkBmhiZDei726utcUB9leqg==
@@ -9557,7 +9607,7 @@ prop-types@^15.6.0, prop-types@^15.6.2, prop-types@^15.7.2, prop-types@^15.8.1:
     object-assign "^4.1.1"
     react-is "^16.13.1"
 
-property-expr@^2.0.4:
+property-expr@^2.0.4, property-expr@^2.0.5:
   version "2.0.5"
   resolved "https://registry.npmjs.org/property-expr/-/property-expr-2.0.5.tgz"
   integrity sha512-IJUkICM5dP5znhCckHSv30Q4b5/JA5enCtkRHYaOVOAocnH/1BQEYTC5NMfT3AVl/iXKdr3aqQbQn9DxyWknwA==
@@ -11211,6 +11261,11 @@ tildify@2.0.0:
   resolved "https://registry.npmjs.org/tildify/-/tildify-2.0.0.tgz"
   integrity sha512-Cc+OraorugtXNfs50hU9KS369rFXCfgGLpfCfvlc+Ud5u6VWmUQsOAa9HbTvheQdYnrdJqqv1e5oIqXppMYnSw==
 
+tiny-case@^1.0.3:
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/tiny-case/-/tiny-case-1.0.3.tgz#d980d66bc72b5d5a9ca86fb7c9ffdb9c898ddd03"
+  integrity sha512-Eet/eeMhkO6TX8mnUteS9zgPbUMQa4I6Kkp5ORiBD5476/m+PIRiumP5tmh5ioJpH7k51Kehawy2UDfsnxxY8Q==
+
 tiny-invariant@^1.0.2:
   version "1.3.1"
   resolved "https://registry.npmjs.org/tiny-invariant/-/tiny-invariant-1.3.1.tgz"
@@ -11420,7 +11475,7 @@ type-fest@^0.21.3:
   resolved "https://registry.npmjs.org/type-fest/-/type-fest-0.21.3.tgz"
   integrity sha512-t0rzBq87m3fVcduHDUFhKmyyX+9eo6WQjZvf51Ea/M0Q7+T374Jp1aUiyUl0GKxp8M/OETVHSDvmkyPgvX+X2w==
 
-type-fest@^2.18.0:
+type-fest@^2.18.0, type-fest@^2.19.0:
   version "2.19.0"
   resolved "https://registry.npmjs.org/type-fest/-/type-fest-2.19.0.tgz"
   integrity sha512-RAH822pAdBgcNMAfWnCBU3CFZcfZ/i1eZjwFU/dsLKumyuuP3niueg2UAukXYF0E2AAoc82ZSSf9J0WQBinzHA==
@@ -12124,6 +12179,16 @@ yup@^0.32.9:
     nanoclone "^0.2.1"
     property-expr "^2.0.4"
     toposort "^2.0.2"
+
+yup@^1.2.0:
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/yup/-/yup-1.2.0.tgz#9e51af0c63bdfc9be0fdc6c10aa0710899d8aff6"
+  integrity sha512-PPqYKSAXjpRCgLgLKVGPA33v5c/WgEx3wi6NFjIiegz90zSwyMpvTFp/uGcVnnbx6to28pgnzp/q8ih3QRjLMQ==
+  dependencies:
+    property-expr "^2.0.5"
+    tiny-case "^1.0.3"
+    toposort "^2.0.2"
+    type-fest "^2.19.0"
 
 zod@3.21.4:
   version "3.21.4"

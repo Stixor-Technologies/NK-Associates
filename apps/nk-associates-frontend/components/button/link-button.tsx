@@ -8,6 +8,7 @@ interface BaseProps {
   text: string;
   type?: "transparent" | "inverted" | "solid" | "gradient";
   className?: string;
+  buttonType?: "submit" | "button";
 }
 
 interface LinkProps extends BaseProps {
@@ -21,7 +22,7 @@ interface ButtonProps extends BaseProps {
 type Props = LinkProps | ButtonProps;
 
 const LinkButton: FC<Props> = (props) => {
-  const { text, type, className } = props;
+  const { text, type, buttonType, className } = props;
 
   const buttonRef = useRef<HTMLButtonElement>(null);
   const anchorRef = useRef<HTMLAnchorElement>(null);
@@ -145,6 +146,7 @@ const LinkButton: FC<Props> = (props) => {
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
         className={classes} onClick={props.clickEvent}
+        type={buttonType || "button"}
       >
         <span className="absolute -left-[1px] bottom-0 right-0 top-0 h-full w-[calc(100%+2px)] overflow-hidden rounded-full">
         <span className={`bg-overlay absolute bottom-0 left-0 z-10 h-full w-full scale-y-0 ${typeOverlayStyles[type || "gradient"]}`}></span>

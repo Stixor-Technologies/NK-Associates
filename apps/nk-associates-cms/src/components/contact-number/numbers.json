@@ -1,0 +1,12 @@
+{
+  "collectionName": "components_contact_number_numbers",
+  "info": {
+    "displayName": "Numbers"
+  },
+  "options": {},
+  "attributes": {
+    "contactNumber": {
+      "type": "string"
+    }
+  }
+}

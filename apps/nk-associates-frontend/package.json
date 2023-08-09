@@ -9,6 +9,8 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@sendgrid/mail": "^7.7.0",
+    "@strapi/provider-email-sendgrid": "^4.12.1",
     "@react-google-maps/api": "^2.19.2",
     "@types/node": "20.4.2",
     "@types/react": "18.2.15",
@@ -17,6 +19,7 @@
     "date-fns": "^2.30.0",
     "eslint": "8.45.0",
     "eslint-config-custom": "*",
+    "formik": "^2.4.2",
     "lodash": "^4.17.21",
     "flowbite": "^1.8.0",
     "gsap": "^3.12.2",
@@ -28,7 +31,8 @@
     "swiper": "^10.0.4",
     "tailwindcss": "3.3.3",
     "tsconfig": "*",
-    "typescript": "5.1.6"
+    "typescript": "5.1.6",
+    "yup": "^1.2.0"
   },
   "devDependencies": {
     "@types/react-infinite-scroll-component": "^5.0.0"
