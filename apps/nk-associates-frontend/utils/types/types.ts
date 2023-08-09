@@ -129,3 +129,18 @@ export interface Job {
     };
   };
 }
+
+export interface socials {
+    id: number;
+    attributes: {
+      twitter: string;
+      facebook: string;
+      youtube: string;
+      linkedin: string;
+      snapchat: string;
+      instagram: string;
+      playstore: string;
+      appstore: string;
+      appgallery: string;
+    };
+}

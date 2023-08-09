@@ -85,7 +85,7 @@ export const getProjects = async ({
   }
 };
 
-export const getJobs = async (departmentName, location) => {
+export const getJobs = async (departmentName, city) => {
   try {
     let apiUrl = `${BASE_URL}/api/jobs?populate=*`;
 
@@ -95,8 +95,8 @@ export const getJobs = async (departmentName, location) => {
       )}`;
     }
 
-    if (location) {
-      apiUrl += `&filters[location]=${encodeURIComponent(location)}`;
+    if (city) {
+      apiUrl += `&filters[city]=${encodeURIComponent(city)}`;
     }
 
     const resp = await fetch(apiUrl);
@@ -137,5 +137,18 @@ export const getDepartments = async () => {
     return uniqueDepartmentsArray;
   } catch (error) {
     console.error("There was an error getting departments", error);
+  }
+};
+
+export const getSocials = async () => {
+  try {
+    let apiUrl = `${BASE_URL}/api/socials`;
+    const resp = await fetch(apiUrl, {
+      cache: "no-store",
+    });
+    const links = await resp.json();
+    return links;
+  } catch (error) {
+    console.error("There was an error getting social media links", error);
   }
 };

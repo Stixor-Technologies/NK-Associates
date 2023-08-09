@@ -2,6 +2,7 @@ import React from "react";
 import Image from "next/image";
 import Job from "../../../nk-associates-frontend/app/assets/images/job-application.png";
 import LinkButton from "../../components/button/link-button";
+import Link from "next/link";
 import JobList from "../../components/jobcard/job-list";
 
 const Careers = () => {
@@ -26,20 +27,17 @@ const Careers = () => {
 					career by submitting your details today.
 				</div>
 				<div className="flex justify-center">
-					<LinkButton
-						text="Be a part of our amazing team "
-						navigateTo="#Listing"
-						type="solid"
-						className="my-8 w-80 duration-300 hover:bg-opacity-90 md:w-96 lg:w-96"
-					/>
+					<button className="my-8 w-80 rounded-full bg-nk-red p-2 font-metropolis text-base  text-nk-white duration-500 ease-in-out hover:bg-opacity-90 hover:shadow-lg hover:delay-200 md:w-96 lg:w-96">
+						<Link href="#Listing">Be a part of our amazing team</Link>
+					</button>
 				</div>
 			</div>
 			<div className="mb-28 mt-8 gap-8 lg:grid lg:grid-cols-2">
 				<div className="my-auto flex justify-center sm:mx-auto">
-					<Image src={Job} alt="Job Application"/>
+					<Image src={Job} alt="Job Application" />
 				</div>
 				<div>
-					<h1 className="my-8 mt-16 text-center font-metropolis-bold text-2xl text-nk-dark-gray md:text-left lg:text-4xl ">
+					<h1 className="my-8 mt-16 text-center font-metropolis-bold text-2xl text-nk-dark-gray lg:text-left lg:text-4xl ">
 						How Can I Apply?
 					</h1>
 					<p className="hidden p-0.5 text-center font-metropolis-extralight text-nk-dark-gray lg:block lg:text-justify lg:text-xl">
