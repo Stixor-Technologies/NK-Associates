@@ -32,7 +32,6 @@ const Properties = () => {
   const [hasMapRendered, setHasMapRendered] = useState<boolean>(false);
 
   const mapRef = useRef<google.maps.Map | null>(null);
-  const { isLoaded } = useMapApi();
 
   const fetchGridData = async () => {
     setIsLoading(true);
