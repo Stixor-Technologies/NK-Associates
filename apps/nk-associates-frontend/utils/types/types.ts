@@ -72,6 +72,7 @@ export interface Property {
 }
 
 export interface Project {
+  id: number;
   attributes: {
     pictures: {
       data: Array<{ attributes: { url: string } }>;
