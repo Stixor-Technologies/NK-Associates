@@ -20,6 +20,7 @@
     "eslint": "8.45.0",
     "eslint-config-custom": "*",
     "formik": "^2.4.2",
+    "lodash": "^4.17.21",
     "flowbite": "^1.8.0",
     "gsap": "^3.12.2",
     "next": "13.4.10",

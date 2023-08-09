@@ -88,6 +88,8 @@ export interface Project {
     category: string;
   };
 }
+
+
 export interface Department {
     id: number;
     attributes: {

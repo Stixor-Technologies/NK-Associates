@@ -1,8 +1,25 @@
 import { BASE_URL } from "./constants";
-export const getProperties = async (start: number, limit = 12) => {
+export const getGridProperties = async (start: number, limit = 12) => {
   try {
     const resp = await fetch(
       `${BASE_URL}/api/properties?populate=*&pagination[start]=${start}&pagination[limit]=${limit}&sort[1]=id`
+    );
+    const data = await resp.json();
+    return data;
+  } catch (error) {
+    console.error("There was an error getting the Property List", error);
+  }
+};
+
+export const getMapProperties = async (
+  southLat: number,
+  northLat: number,
+  westLng: number,
+  eastLng: number
+) => {
+  try {
+    const resp = await fetch(
+      `${BASE_URL}/api/properties?populate=*&filters[latitude][$between]=${southLat}&filters[latitude][$between]=${northLat}&filters[longitude][$between]=${westLng}&filters[longitude][$between]=${eastLng}&sort[1]=id`
     );
     const data = await resp.json();
     return data;
@@ -16,12 +33,13 @@ export const getPropertyDetail = async (id: string) => {
     const resp = await fetch(`${BASE_URL}/api/properties/${id}?populate=*`, {
       cache: "no-store",
     });
-        const data = await resp.json();
-      return data?.data;
+    const data = await resp.json();
+    return data?.data;
   } catch (error) {
     console.error("There was an error getting the Property List", error);
   }
 };
+
 interface GetProjectsParams {
   category?: "Residential" | "Commercial" | "Hotel";
   cachePolicy?: { [key: string]: any };

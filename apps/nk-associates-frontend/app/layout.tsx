@@ -2,6 +2,7 @@ import "./globals.css";
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import Footer from "../components/footer/footer";
+import { MapApiProvider } from "./context/map-context";
 import Navigation from "../components/navigation/navigation";
 
 const metropolisRegular = localFont({
@@ -60,7 +61,7 @@ export default function RootLayout({
         className={`${metropolisRegular.variable} ${metropolisMedium.variable} ${metropolisSemiBold.variable} ${metropolisBold.variable} ${metropolisExtraBold.variable} ${metropolisLight.variable} ${metropolisExtraLight.variable} ${metropolisThin.variable} bg-nk-background font-metropolis`}
       >
         <Navigation />
-        <main className="mt-[7rem]">{children}</main>
+        <main className="mt-28">{children}</main>
         <Footer />
       </body>
     </html>
