@@ -1,23 +1,73 @@
-import React from 'react'
-import Image from 'next/image'
-import ArrowDown from "../../public/assets/icons/arrow-down.svg"
+import React, { useState, useEffect, useRef } from "react";
+import Image from "next/image";
+import FilterDropDown from "./filter-dropdown";
+import { fetchPropertyTypesEnum } from "../../utils/api-calls";
+import ArrowDown from "../../public/assets/icons/arrow-down.svg";
+import SearchIcon from "../../public/assets/icons/search-icon-white.svg";
 
 const SearchBar = () => {
-  return (
-    <div>
-        <button className="bg-nk-white rounded-l-xl   py-4 px-6">
-            <span className=" text-nk-gray md:text-lg">
-                Property Type
-            </span>
-            <div className='flex'>
-                <span>
-                    Any
-                </span>
-                <Image src={ArrowDown} width={18} height={9} alt='arrow-down' />
-            </div>
-        </button>
-    </div>
-  )
-}
+  const [filtersData, setFiltersData] = useState(null);  
+  const [activeFilter, setActiveFilter] = useState<string>(null);
+  const searchFilterRef = useRef<HTMLDivElement>(null);
 
-export default SearchBar
+  const searchTiles = [
+    { name: "Property Type", value: "Any" },
+    { name: "Price Range", value: "Any" },
+    { name: "Project", value: "Any" },
+    { name: "Location", value: "Any" },
+    { name: "Purpose", value: "Any" },
+  ];
+
+  const handleOutsideClick = (event: MouseEvent) => {
+    if (
+      searchFilterRef.current &&
+      !searchFilterRef.current.contains(event.target as Node)
+    ) {
+      setActiveFilter(null);
+    }
+  };
+
+  useEffect(() => {
+    document.addEventListener("mousedown", handleOutsideClick);
+
+    return () => {
+      document.removeEventListener("mousedown", handleOutsideClick);
+    };
+  }, []);
+
+  return (
+    <div className="relative my-8 flex">
+      <div className="flex flex-1 gap-1 shadow-3xl" ref={searchFilterRef}>
+        {searchTiles.map((tile, index) => {
+          return (
+            <button
+              
+              key={index}
+              className={`relative flex-1 bg-nk-white px-6 py-4 text-left ${
+                index === 0 && "rounded-l-xl"
+              }`}
+              onClick={() => setActiveFilter(tile.name)}
+            >
+              <span className=" text-lg text-nk-gray">{tile.name}</span>
+              <div className="flex justify-between">
+                <span className="text-[1.375rem] text-nk-black">
+                  {tile.value}
+                </span>
+                <Image src={ArrowDown} width={18} height={9} alt="arrow-down" />
+              </div>
+              {activeFilter === tile.name && (
+                <FilterDropDown filterName={activeFilter} />
+              )}
+            </button>
+          );
+        })}
+      </div>
+
+      <button className="flex items-center justify-end rounded-r-xl bg-nk-red px-6">
+        <Image src={SearchIcon} width={45} height={46} alt="search-icon" />
+      </button>
+    </div>
+  );
+};
+
+export default SearchBar;

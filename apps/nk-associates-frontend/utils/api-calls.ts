@@ -22,6 +22,16 @@ export const getPropertyDetail = async (id: string) => {
     console.error("There was an error getting the Property List", error);
   }
 };
+
+export const fetchPropertyTypesEnum = async () => {
+  const data = await fetch(
+    BASE_URL + "/api/content-type-builder/content-types/api::property.property"
+  );
+  const res = await data.json()
+  return res?.data?.schema?.attributes?.type.enum;
+};
+
+
 interface GetProjectsParams {
   category?: "Residential" | "Commercial" | "Hotel";
   cachePolicy?: { [key: string]: any };
