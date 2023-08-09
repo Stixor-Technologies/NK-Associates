@@ -51,10 +51,12 @@
       "required": true
     },
     "bedrooms": {
-      "type": "integer"
+      "type": "integer",
+      "min": 1
     },
     "baths": {
-      "type": "integer"
+      "type": "integer",
+      "min": 1
     },
     "purpose": {
       "type": "enumeration",
@@ -87,13 +89,11 @@
     },
     "latitude": {
       "type": "float",
-      "required": true,
-      "min": 1
+      "required": true
     },
     "longitude": {
       "type": "float",
-      "required": true,
-      "min": 1
+      "required": true
     },
     "image_thumbnail": {
       "type": "media",
