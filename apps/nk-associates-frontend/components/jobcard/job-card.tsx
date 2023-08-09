@@ -16,10 +16,10 @@ const JobCard: React.FC<JobProp> = ({ job }) => {
 		<div className="mx-4 my-3 rounded-2xl bg-nk-light-gray p-3 lg:m-4 lg:flex lg:flex-row lg:gap-8 lg:p-7">
 			<div className="lg:w-11/12">
 				<div className="flex flex-row gap-2 font-metropolis text-base">
-					<h3 className="block:inline text-nk-red lg:text-xl">
+					<h3 className="block:inline text-nk-red lg:text-2xl">
 						{departmentName}
 					</h3>
-					<h3 className="block:inline text-nk-dark-gray lg:text-xl">{title}</h3>
+					<h3 className="block:inline text-nk-dark-gray text-base lg:text-2xl">{title}</h3>
 				</div>
 				<p className="my-3 font-metropolis-extralight text-xs lg:font-metropolis lg:text-base">
 					{description}
