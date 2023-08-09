@@ -81,12 +81,15 @@ export interface Project {
     plotSize: string;
     plotSizeUnits: string;
     plotNumber: string;
-    coveredArea: string;
+    coveredArea: number;
     coveredAreaUnits: string;
     address: string;
     city: string;
     description: string;
     category: string;
+    totalUnits: number;
+    unitsSold: number;
+    price: number;
   };
 }
 

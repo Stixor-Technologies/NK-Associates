@@ -84,7 +84,20 @@ export const getProjects = async ({
   } catch (error) {
     throw error;
   }
+}
+
+export const getProjectDetail = async (id: string) => {
+  try {
+    const resp = await fetch(`${BASE_URL}/api/projects/${id}?populate=*`, {
+      cache: "no-store",
+    });
+    const data = await resp.json();
+    return data?.data;
+  } catch (error) {
+    console.error("There was an error getting the Property List", error);
+  }
 };
+
 
 export const getJobs = async (departmentName, city) => {
   try {
