@@ -57,7 +57,7 @@ export const getProjects = async ({
 
 
 
-export const getJobs = async (departmentName, city,  ) => {
+export const getJobs = async (departmentName, city) => {
   try {
     let apiUrl = `${BASE_URL}/api/jobs?populate=*`;
 
