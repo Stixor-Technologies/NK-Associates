@@ -1,7 +1,8 @@
 {
   "collectionName": "components_days_working_days",
   "info": {
-    "displayName": "Working Days"
+    "displayName": "Working Days",
+    "description": ""
   },
   "options": {},
   "attributes": {
@@ -21,9 +22,6 @@
       "type": "boolean"
     },
     "Saturday": {
-      "type": "boolean"
-    },
-    "Sunday": {
       "type": "boolean"
     }
   }

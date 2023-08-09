@@ -31,16 +31,32 @@ async function JobDetail({ params: { id } }: JobDetailProps) {
     .replace("Qualification: ", "")
     .trim();
   const skillArray = skills.split("\n");
-  console.log(days[0]?.Monday);
-  const displayDays = () => {
-    if (days.every((day) => day)) {
-      return "Monday to Saturday";
-    } else if (days[6] && days.slice(0, 6).every((day) => day)) {
-      return "Monday to Sunday";
-    } else {
-      return "Monday to Friday";
-    }
+
+  const formatTime = (time) => {
+    const date = new Date();
+    const [hours, minutes] = time.split(":");
+    date.setHours(hours);
+    date.setMinutes(minutes);
+    return date.toLocaleString("en-US", {
+      hour: "numeric",
+      minute: "numeric",
+      hour12: true,
+    });
   };
+
+  function displayDays(daysArray) {
+    const daysArrayWithoutId = days.map(({ id, ...rest }) => rest);
+    const daysObject = daysArrayWithoutId[0]; // Assuming there's only one object in the array
+    const selectedDays = Object.keys(daysObject).filter(
+      (day) => daysObject[day]
+    );
+
+    if (selectedDays.length === 6) {
+      return "Monday to Saturday";
+    } else {
+      return selectedDays.join(", ");
+    }
+  }
 
   console.log(data);
   return (
@@ -97,7 +113,7 @@ async function JobDetail({ params: { id } }: JobDetailProps) {
         Office Timings
       </div>
       <div className="text-left font-metropolis-medium">
-        {start} to {end} ({displayDays()})
+        {formatTime(start)} to {formatTime(end)} ({displayDays(days)})
       </div>
       <div className="py-2  text-left font-metropolis-bold text-[1.75rem] leading-[2.1rem]">
         Location
@@ -105,6 +121,14 @@ async function JobDetail({ params: { id } }: JobDetailProps) {
       <div className="text-left  font-metropolis-medium">{location}</div>
       <div className="py-3 font-metropolis-semibold text-base">
         No. of Positions: {positions}
+      </div>
+      <div className="pb-20">
+        <LinkButton
+          text="Apply Now"
+          navigateTo=""
+          type="solid"
+          className="h-10 w-80 border-2 "
+        />
       </div>
     </div>
   );
