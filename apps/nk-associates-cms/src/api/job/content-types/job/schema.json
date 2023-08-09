@@ -61,6 +61,17 @@
       "type": "text",
       "required": true,
       "minLength": 1
+    },
+    "skills": {
+      "type": "text",
+      "required": true
+    },
+    "days": {
+      "displayName": "Working Days",
+      "type": "component",
+      "repeatable": true,
+      "component": "days.working-days",
+      "required": true
     }
   }
 }

@@ -1,0 +1,30 @@
+{
+  "collectionName": "components_days_working_days",
+  "info": {
+    "displayName": "Working Days"
+  },
+  "options": {},
+  "attributes": {
+    "Monday": {
+      "type": "boolean"
+    },
+    "Tuesday": {
+      "type": "boolean"
+    },
+    "Wednesday": {
+      "type": "boolean"
+    },
+    "Thursday": {
+      "type": "boolean"
+    },
+    "Friday": {
+      "type": "boolean"
+    },
+    "Saturday": {
+      "type": "boolean"
+    },
+    "Sunday": {
+      "type": "boolean"
+    }
+  }
+}
