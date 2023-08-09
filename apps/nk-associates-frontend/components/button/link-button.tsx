@@ -104,7 +104,7 @@ const LinkButton: FC<Props> = (props) => {
   };
 
   const typeStyles = {
-    transparent: "bg-transparent text-nk-gray border-[1px] border-nk-red",
+    transparent: "bg-transparent text-nk-gray border border-nk-red",
     inverted: "bg-nk-white text-nk-red",
     solid: "bg-nk-red text-nk-white",
     gradient:
@@ -135,7 +135,7 @@ const LinkButton: FC<Props> = (props) => {
       "text-nk-red",
   };
 
-  const classes = `rounded-full relative text-center relative inline-flex h-12 w-48 items-center justify-center capitalize font-metropolis border-0 shadow-3xl
+  const classes = `rounded-full relative text-center relative inline-flex h-12 w-48 items-center justify-center capitalize font-metropolis shadow-3xl
   ${typeStyles[type || "gradient"]}  block ${className || ""}`;
 
   if ("clickEvent" in props) {

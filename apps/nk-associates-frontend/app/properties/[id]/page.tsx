@@ -122,13 +122,6 @@ async function PropertyDetail({ params: { id } }: PropertyDetailProps) {
               </div>
             </div>
 
-            {/* <LinkButton
-              text="Inquires"
-              type="solid"
-              navigateTo="#"
-              className="mb-2 w-[11.75rem] border text-lg sm:mb-0 md:w-[11.75rem]"
-            /> */}
-
              <LinkButton
               text="Inquires"
               type="solid"
