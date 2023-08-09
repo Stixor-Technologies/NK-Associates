@@ -11,7 +11,7 @@ interface TileSectionProps {
   area: number;
   area_type: string;
   type: string;
-  price: string;
+  price: number;
   city: string;
 }
 
@@ -66,7 +66,7 @@ const TileSection: FC<TileSectionProps> = ({
       <div className="mx-auto flex rounded-r-xl w-full max-w-[300px] justify-center gap-1 shadow-3xl sm:max-w-sm md:max-w-md lg:flex-grow">
         <Tile
           label="Price"
-          value={`PKR: ${price}`}
+          value={`PKR: ${price.toString()}`}
           className="flex-grow rounded-l-xl lg:rounded-l-none"
         />
         <Tile label="City" value={city} className="flex-grow rounded-r-xl" />
