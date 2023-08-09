@@ -50,7 +50,7 @@ module.exports = {
         '3/4': '75%',
       },
       maxWidth: {
-        container: "1252px"
+        container: "78.25rem"
       }
     },
   },
