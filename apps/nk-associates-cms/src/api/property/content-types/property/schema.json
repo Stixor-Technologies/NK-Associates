@@ -67,9 +67,9 @@
       "required": true
     },
     "price": {
-      "type": "biginteger",
+      "type": "integer",
       "required": true,
-      "min": "1"
+      "min": 1
     },
     "area": {
       "type": "decimal",
