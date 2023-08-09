@@ -1,8 +1,8 @@
 "use client";
 import React, { FC, useEffect, useRef, useMemo } from "react";
 import { GoogleMap, Marker, useJsApiLoader } from "@react-google-maps/api";
-import { MAP_KEY } from "../../utils/constants";
 import Spinner from "../spinner";
+import { useMapApi } from "../../app/context/map-context";
 
 interface Location {
   lat: number;
@@ -15,10 +15,8 @@ interface IProps {
 
 const MapComponent: FC<IProps> = ({ locations }) => {
   const mapRef = useRef<google.maps.Map | null>(null);
-  const { isLoaded } = useJsApiLoader({
-    id: "google-map-script",
-    googleMapsApiKey: MAP_KEY,
-  });
+  const { isLoaded } = useMapApi();
+
 
   const allLocations = useMemo(
     () => (Array.isArray(locations) ? locations : [locations]),
@@ -46,7 +44,7 @@ const MapComponent: FC<IProps> = ({ locations }) => {
     }
   }, [isLoaded, allLocations]);
   return (
-    <div className="relative flex items-center my-3 h-96 w-full sm:pb-1/2">
+    <div className="relative my-3 flex h-96 w-full items-center sm:pb-1/2">
       {isLoaded ? (
         <GoogleMap
           id="google-map"
@@ -63,8 +61,8 @@ const MapComponent: FC<IProps> = ({ locations }) => {
           ))}
         </GoogleMap>
       ) : (
-        <div className="absolute top-0 left-0 h-full w-full flex items-center">
-        <Spinner />
+        <div className="absolute left-0 top-0 flex h-full w-full items-center">
+          <Spinner />
         </div>
       )}
     </div>

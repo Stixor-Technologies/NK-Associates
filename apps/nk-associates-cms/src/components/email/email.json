@@ -1,0 +1,13 @@
+{
+  "collectionName": "components_email_emails",
+  "info": {
+    "displayName": "email",
+    "icon": "envelop"
+  },
+  "options": {},
+  "attributes": {
+    "email": {
+      "type": "email"
+    }
+  }
+}

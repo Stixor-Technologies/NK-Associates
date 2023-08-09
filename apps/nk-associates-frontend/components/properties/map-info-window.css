@@ -1,0 +1,40 @@
+.gm-style .gm-style-iw-c {
+    border-radius: 0.75rem;
+   padding: 0;   
+   background-color: transparent;
+   width: 16.25rem;
+   max-width: 18.75rem !important;
+   top: -2rem;
+}
+
+.gm-style .gm-style-iw-d {
+    padding: 0;
+    border-radius: 0.75rem;
+    background-color: transparent;
+    overflow: hidden !important;
+}
+
+.gm-style-iw-tc {
+    display: none;
+}
+
+.gm-ui-hover-effect {
+    border-width: 0.063rem;
+    border-style: solid;
+    background-color: rgba(0,0,0,0.15) !important;
+    opacity: 1;
+    left: 0.625rem;
+    top: 0.625rem !important;
+    border-radius: 50%;
+    border: none;
+    padding: 0;
+}
+
+.gm-ui-hover-effect>span {
+    background-color: white;
+    transition: transform 0.3s ease-in-out;
+}
+
+.gm-ui-hover-effect:hover span  {
+    transform: scale(1.2);
+}
