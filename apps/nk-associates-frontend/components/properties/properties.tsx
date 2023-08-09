@@ -9,6 +9,7 @@ import { getProperties } from "../../utils/api-calls";
 import { Property } from "../../utils/types/types";
 import Map_Btn from "../../public/assets/icons/map-list-icon.svg";
 import List_Icon from "../../public/assets/icons/list-icon.svg";
+import SearchBar from "./search-bar";
 
 const Properties = () => {
   const [isList, setIsList] = useState<boolean>(true);
@@ -52,6 +53,7 @@ const Properties = () => {
         />
       </button>
 
+     <SearchBar />
       {isList ? (
         <>
           {isLoading && properties.length === 0 ? (
