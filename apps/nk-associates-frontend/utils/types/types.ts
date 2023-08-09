@@ -54,7 +54,7 @@ export interface Property {
     category: string;
     latitude: number;
     longitude: number;
-    price: string;
+    price: number;
     property_images: {
       data: MediaAttributes[];
     };
@@ -112,6 +112,7 @@ export interface Job {
         updatedAt: string;
         publishedAt: string;
         location: string;
+        city: string;
         department: {
             data: Department;
         };

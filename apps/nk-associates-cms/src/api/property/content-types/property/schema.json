@@ -51,10 +51,12 @@
       "required": true
     },
     "bedrooms": {
-      "type": "integer"
+      "type": "integer",
+      "min": 1
     },
     "baths": {
-      "type": "integer"
+      "type": "integer",
+      "min": 1
     },
     "purpose": {
       "type": "enumeration",
@@ -65,12 +67,14 @@
       "required": true
     },
     "price": {
-      "type": "biginteger",
-      "required": true
+      "type": "integer",
+      "required": true,
+      "min": 1
     },
     "area": {
       "type": "decimal",
-      "required": true
+      "required": true,
+      "min": 1
     },
     "area_type": {
       "type": "enumeration",

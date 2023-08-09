@@ -9,9 +9,8 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 import { Navigation, Pagination, Keyboard } from "swiper/modules";
 import "./slider-styles.css";
-import WhatsAppIcon from "../../../public/assets/icons/whatsapp-icon.svg"
-import PhoneIcon from "../../../public/assets/icons/phone-icon.svg"
-
+import WhatsAppIcon from "../../../public/assets/icons/whatsapp-icon.svg";
+import PhoneIcon from "../../../public/assets/icons/phone-icon.svg";
 
 interface SliderProps {
   property_images: MediaAttributes[];
@@ -19,7 +18,7 @@ interface SliderProps {
 
 const DetailSlider: FC<SliderProps> = ({ property_images }) => {
   return (
-    <div className="relative">
+    <div className="relative bg-right-top bg-no-repeat md:bg-nk-bg">
       <Swiper
         cssMode={true}
         navigation={true}
@@ -35,32 +34,42 @@ const DetailSlider: FC<SliderProps> = ({ property_images }) => {
           ({ attributes: { name, url } }: MediaAttributes, index: number) => {
             return (
               <SwiperSlide key={index}>
-                <div className="relative flex w-full items-center pb-3/4 md:pb-1/2">
-                  <Image
-                    className="absolute left-0 top-0 h-full w-full"
-                    src={`${BASE_URL}${url}`}
-                    width={1536}
-                    height={900}
-                    alt={name}
-                  />
-                </div>
+                  <div className="relative mx-auto aspect-video overflow-hidden max-h-[80vh]">
+                    <Image
+                      className="absolute top-0 left-0 h-full w-full rounded-none lg:rounded-3xl object-cover"
+                      src={`${BASE_URL}${url}`}
+                      width={1536}
+                      height={900}
+                      alt={name}
+                    />
+
+                    <div className="absolute bottom-2 right-4  z-10 flex items-center justify-center gap-2 md:gap-2 md:bottom-3 md:right-3 lg:bottom-6 lg:right-6">
+                      <button className="group flex h-8 w-10 items-center justify-center overflow-hidden rounded-md border bg-nk-white transition-all delay-200 duration-500 hover:shadow-lg sm:h-10 sm:w-12 md:h-12 md:w-14">
+                        <Image
+                          src={WhatsAppIcon}
+                          width={40}
+                          height={40}
+                          alt="contact-whatsapp"
+                          className="w-5 transition-all delay-200 duration-500 group-hover:scale-110 sm:w-6 md:w-8"
+                        />
+                      </button>
+
+                      <button className="group flex h-8 w-10 items-center justify-center overflow-hidden rounded-md border bg-nk-white transition-all delay-200 duration-500 hover:shadow-lg sm:h-10 sm:w-12 md:h-12 md:w-14">
+                        <Image
+                          src={PhoneIcon}
+                          width={40}
+                          height={40}
+                          alt="contact-phone"
+                          className="w-5 transition-all delay-200 duration-500 group-hover:scale-110 sm:w-6 md:w-8"
+                        />
+                      </button>
+                    </div>
+                  </div>
               </SwiperSlide>
             );
           }
         )}
       </Swiper>
-
-      <div className="absolute bottom-6 right-3 z-10 flex items-center justify-center gap-2 md:gap-2 lg:bottom-12 lg:right-8">
-      
-        <button className="group flex h-10 w-12 items-center justify-center rounded-md bg-nk-white overflow-hidden transition-all sm:h-12 sm:w-14 md:h-14 md:w-16 duration-500 delay-200 border hover:shadow-lg">
-          
-          <Image src={WhatsAppIcon} width={40} height={40} alt="contact-whatspp" className="w-6 transition-all duration-500 delay-200 sm:w-8 md:w-10 group-hover:scale-110"/>  
-        </button>
-
-        <button className="group flex h-10 w-12 items-center justify-center rounded-md bg-nk-white overflow-hidden transition-all duration-500 delay-200 sm:h-12 sm:w-14 md:h-14 md:w-16">
-        <Image src={PhoneIcon} width={40} height={40} alt="contact-phone" className="w-6 transition-all duration-500 delay-200 sm:w-8 md:w-10 group-hover:scale-110"/>
-        </button>
-      </div>
     </div>
   );
 };

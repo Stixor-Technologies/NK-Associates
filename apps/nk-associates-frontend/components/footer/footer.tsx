@@ -12,12 +12,10 @@ import Snap from "../../public/assets/icons/snapchat-icon.svg";
 import YT from "../../public/assets/icons/youtube-icon.svg";
 import AppGallery from "../../public/assets/icons/app-gallery.svg";
 
-// social media links have temp links that go to their respective homepage.
-// I have written "dummy links here" in case you need to find them.
 const footer = () => {
   return (
     <footer className="min-h-fit bg-nk-dark-gray font-metropolis text-nk-white">
-      <div className="container mx-auto py-6 pb-2 lg:py-8">
+      <div className="mx-auto w-[90%] py-6 pb-2 lg:py-8">
         <div className="mx-5 sm:mx-2 md:mx-auto">
           <div className="md:flex md:justify-between">
             <div className="mb-2 md:mb-0 md:px-8 lg:px-16">
@@ -71,7 +69,7 @@ const footer = () => {
                       href="#"
                       className="inline-block bg-gradient-to-r from-nk-white to-nk-white bg-[length:0%_8%] bg-left-bottom bg-no-repeat font-metropolis-thin transition-all duration-500 ease-out hover:bg-[length:100%_8%]"
                     >
-                      Maps
+                      Contact Us
                     </Link>
                   </li>
                 </ul>
@@ -79,21 +77,38 @@ const footer = () => {
               <div>
                 <div className=" sm:pt-0">
                   <h2 className="mb-2 font-metropolis-bold text-base uppercase tracking-[0.2rem] text-nk-white md:font-metropolis-medium">
-                    sell
+                    ‎
                   </h2>
                   <ul className="text-lg">
+                    <li className="mb-3">
+                      <Link
+                        href="/careers"
+                        className="inline-block bg-gradient-to-r from-nk-white to-nk-white bg-[length:0%_8%] bg-left-bottom bg-no-repeat font-metropolis-thin transition-all duration-500 ease-out hover:bg-[length:100%_8%]"
+                      >
+                        Career
+                      </Link>
+                    </li>
+                    <li className="mb-3">
+                      <Link
+                        href="/events"
+                        className="inline-block bg-gradient-to-r from-nk-white to-nk-white bg-[length:0%_8%] bg-left-bottom bg-no-repeat font-metropolis-thin transition-all duration-500 ease-out hover:bg-[length:100%_8%]"
+                      >
+                        Events
+                      </Link>
+                    </li>
                     <li>
-                      <Link href="/">
-                        <div className="inline-block bg-gradient-to-r from-nk-white to-nk-white bg-[length:0%_8%] bg-left-bottom bg-no-repeat font-metropolis-thin transition-all duration-500 ease-out hover:bg-[length:100%_8%]">
-                          Sell on NK
-                        </div>
+                      <Link
+                        href="#"
+                        className="inline-block bg-gradient-to-r from-nk-white to-nk-white bg-[length:0%_8%] bg-left-bottom bg-no-repeat font-metropolis-thin transition-all duration-500 ease-out hover:bg-[length:100%_8%]"
+                      >
+                        Services
                       </Link>
                     </li>
                   </ul>
                   <div className="pt-4 md:hidden">
                     {/* dummy links here*/}
                     <div className="flex flex-wrap">
-                      <div className="my-2 mr-4 flex h-9 w-9 items-center justify-center rounded-full bg-nk-red transition-all duration-300 hover:bg-opacity-75">
+                      <div className="my-2 mr-3 flex h-9 w-9 items-center justify-center rounded-full bg-nk-red transition-all duration-300 hover:bg-opacity-75">
                         <Link
                           href="https://www.facebook.com/NKAssociatesOfficial/"
                           target="_blank"
@@ -102,7 +117,7 @@ const footer = () => {
                           <Image src={FB} alt="Facebook" />
                         </Link>
                       </div>
-                      <div className="my-2 mr-4 flex h-9 w-9 items-center justify-center rounded-full bg-nk-red transition-all duration-300 hover:bg-opacity-75">
+                      <div className="my-2 mr-3 flex h-9 w-9 items-center justify-center rounded-full bg-nk-red transition-all duration-300 hover:bg-opacity-75">
                         <Link
                           href="https://twitter.com/NKAssociates6"
                           target="_blank"
@@ -111,7 +126,7 @@ const footer = () => {
                           <Image src={Twitter} alt="Twitter" />
                         </Link>
                       </div>
-                      <div className="my-2 mr-4 flex h-9 w-9 items-center justify-center rounded-full bg-nk-red transition-all duration-300 hover:bg-opacity-75">
+                      <div className="my-2 mr-3 flex h-9 w-9 items-center justify-center rounded-full bg-nk-red transition-all duration-300 hover:bg-opacity-75">
                         <Link
                           href="https://www.instagram.com/nkassociatespvtltd/"
                           target="_blank"
@@ -120,7 +135,7 @@ const footer = () => {
                           <Image src={Instagram} alt="Instagram" />
                         </Link>
                       </div>
-                      <div className="my-2 mr-4 flex h-9 w-9 items-center justify-center rounded-full bg-nk-red transition-all duration-300 hover:bg-opacity-75">
+                      <div className="my-2 mr-3 flex h-9 w-9 items-center justify-center rounded-full bg-nk-red transition-all duration-300 hover:bg-opacity-75">
                         <Link
                           href="https://www.linkedin.com/uas/login?session_redirect=%2Fcompany%2F47665410"
                           target="_blank"
@@ -129,7 +144,7 @@ const footer = () => {
                           <Image src={Linkedin} alt="LinkedIn" />
                         </Link>
                       </div>
-                      <div className="my-2 mr-4 flex h-9 w-9 items-center justify-center rounded-full bg-nk-red transition-all duration-300 hover:bg-opacity-75">
+                      <div className="my-2 mr-3 flex h-9 w-9 items-center justify-center rounded-full bg-nk-red transition-all duration-300 hover:bg-opacity-75">
                         <Link
                           href="https://www.snapchat.com/"
                           target="_blank"
@@ -139,7 +154,7 @@ const footer = () => {
                         </Link>
                       </div>
 
-                      <div className="my-2 mr-4 flex h-9 w-9 items-center justify-center rounded-full bg-nk-red transition-all duration-300 hover:bg-opacity-75">
+                      <div className="my-2 mr-3 flex h-9 w-9 items-center justify-center rounded-full bg-nk-red transition-all duration-300 hover:bg-opacity-75">
                         <Link
                           href="https://www.youtube.com/channel/UCUdSaD4ZjxDYxXiQXZIM7tw"
                           target="_blank"
@@ -254,23 +269,19 @@ const footer = () => {
                     download
                   </h2>
                   <div className="flex justify-center">
-                    <div className="mx-2 flex h-12 w-44 items-center justify-center rounded-md bg-nk-red object-cover transition-all duration-500 hover:opacity-80">
+                    <div className="mx-2 flex h-12 w-40 items-center justify-center rounded-md bg-nk-red object-cover p-2 transition-all duration-500 hover:opacity-80 lg:w-44">
                       <Link href="#">
                         <Image src={GooglePlay} alt="Google Play" />
                       </Link>
                     </div>
-                    <div className="mx-2 flex h-12 w-44 items-center justify-center rounded-md bg-nk-red object-cover transition-all duration-300 hover:bg-opacity-75">
+                    <div className="mx-2 flex h-12 w-40 items-center justify-center rounded-md bg-nk-red object-cover p-2 transition-all duration-300 hover:bg-opacity-75 lg:w-44">
                       <Link href="#" className="mx-2">
-                        <Image
-                          src={AppStore}
-                          alt="App Store"
-                          className="xl:-44 w-32"
-                        />
+                        <Image src={AppStore} alt="App Store" />
                       </Link>
                     </div>
                   </div>
                   <div className="flex justify-center">
-                    <div className="m-4 flex h-12 w-44 items-center justify-center rounded-md bg-nk-red object-cover transition-all duration-300 hover:bg-opacity-75">
+                    <div className="m-4 flex h-12 w-40 items-center justify-center rounded-md bg-nk-red object-cover p-2 transition-all duration-300 hover:bg-opacity-75 lg:w-44">
                       <Link href="#">
                         <Image src={AppGallery} alt="App Gallery" />
                       </Link>
