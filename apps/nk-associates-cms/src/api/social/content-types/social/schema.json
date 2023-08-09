@@ -15,27 +15,27 @@
     "twitter": {
       "type": "string",
       "required": false,
-      "default": "twitter.com"
+      "default": "https://www.twitter.com"
     },
     "facebook": {
       "type": "string",
-      "default": "facebook.com"
+      "default": "https://www.facebook.com"
     },
     "youtube": {
       "type": "string",
-      "default": "youtube.com"
+      "default": "https://www.youtube.com"
     },
     "linkedin": {
       "type": "string",
-      "default": "linkedin.com"
+      "default": "https://www.linkedin.com"
     },
     "snapchat": {
       "type": "string",
-      "default": "snapchat.com"
+      "default": "https://www.snapchat.com"
     },
     "instagram": {
       "type": "string",
-      "default": "instagram.com"
+      "default": "https://www.instagram.com"
     },
     "playstore": {
       "type": "string",
