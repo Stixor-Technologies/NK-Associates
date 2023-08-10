@@ -1,12 +1,14 @@
 {
   "collectionName": "components_contact_number_numbers",
   "info": {
-    "displayName": "Numbers"
+    "displayName": "Numbers",
+    "description": ""
   },
   "options": {},
   "attributes": {
-    "contactNumber": {
-      "type": "string"
+    "contact_number": {
+      "type": "string",
+      "regex": "^((\\+92|0|92)[0-9]{10}|051[0-9]{7})$"
     }
   }
 }

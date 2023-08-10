@@ -15,39 +15,39 @@ const ContactDetails: React.FC<ContactDetailProps> = ({ data }) => {
         return (
           <div
             key={index}
-            className="h-full w-full rounded-xl bg-nk-light-gray p-5"
+            className="h-full w-full bg-nk-light-gray py-4 px-3 rounded-lg md:rounded-3xl md:py-8 md:px-5"
           >
             <div className="flex w-full flex-col gap-4">
-              <div className="font-metropolis-bold text-3xl text-nk-black">
+              <div className="font-metropolis-bold text-nk-black text-xl md:text-[1.75rem]">
                 {`${contactItem?.attributes?.location} Office`}
               </div>
-              <div className="flex items-start gap-4">
+              <div className="flex items-center gap-4">
                 <Image
                   src={AreaMarker}
                   alt="Location Bar"
-                  width={24}
-                  height={35}
-                  className="flex-shrink-0"
+                  width={19}
+                  height={27}
+                  className="flex-shrink-0 w-4 md:w-5"
                 />
-                <p className="font-metropolis-light text-lg">
+                <p className="font-metropolis-extralight text-sm md:text-base">
                   {contactItem?.attributes?.address}
                 </p>
               </div>
 
               {contactItem?.attributes?.emails.length > 0 && (
-                <div className="flex items-start gap-4">
+                <div className="flex items-center gap-4">
                   <Image
                     src={Envelope}
                     alt="Envelope Icon"
-                    width={24}
-                    height={35}
-                    className="flex-shrink-0"
+                    width={19}
+                    height={27}
+                    className="flex-shrink-0 w-4 md:w-5"
                   />
-                  <div className="flex flex-col font-metropolis-light text-lg">
+                  <div className="flex flex-col">
                     {contactItem?.attributes?.emails?.map(
                       (emailItem, index) => {
                         return (
-                          <p key={index} className="break-all">
+                          <p key={index} className="break-all my-[0.063rem] font-metropolis-extralight text-sm md:text-base">
                             {emailItem?.email}
                           </p>
                         );
@@ -58,17 +58,17 @@ const ContactDetails: React.FC<ContactDetailProps> = ({ data }) => {
               )}
 
               {contactItem?.attributes?.numbers.length > 0 && (
-                <div className="flex items-start gap-4">
+                <div className="flex items-center gap-4">
                   <Image
                     src={ContactIcon}
                     alt="Contact Icon"
-                    width={24}
-                    height={35}
-                    className="flex-shrink-0"
+                    width={19}
+                    height={27}
+                    className="flex-shrink-0 w-4 md:w-5"
                   />
-                  <div className="flex flex-col font-metropolis-light text-lg">
+                  <div className="break-all my-[0.063rem] font-metropolis-extralight text-sm md:text-base">
                     {contactItem?.attributes?.numbers?.map((number, index) => {
-                      return <p key={index}>{number?.contactNumber}</p>;
+                      return <p key={index}>{number?.contact_number}</p>;
                     })}
                   </div>
                 </div>
