@@ -66,7 +66,7 @@ async function Footer() {
 				: links.slice(startIndex);
 
 		const footerPageList = slicedLinks.map(pageLink => (
-			<li key={pageLink.pathName} className="mb-3">
+			<li key={pageLink.pathName} className="md:mb-2 md:mt-0 mt-6 mb-1">
 				<Link
 					href={`${pageLink.pathName}`}
 					className="inline-block bg-gradient-to-r from-nk-white to-nk-white bg-[length:0%_8%] bg-left-bottom bg-no-repeat font-metropolis-thin transition-all duration-500 ease-out hover:bg-[length:100%_8%]">
@@ -123,7 +123,7 @@ async function Footer() {
 									‎
 								</h2>
 								<ul className="text-lg">{PageColumnB}</ul>
-								<div className="pt-4 md:hidden">
+								<div className="md:hidden">
 									<div className="flex flex-wrap">{footerSocialList}</div>
 								</div>
 							</div>
@@ -199,13 +199,13 @@ async function Footer() {
 					</div>
 				</div>
 			</div>
-			<hr className="border-nk-white sm:mx-auto lg:my-2" />
-			<div className="container mx-auto font-metropolis-thin">
-				<div className="mx-auto flex flex-col justify-center gap-2 p-4 text-xs md:flex-row md:items-center md:justify-between lg:mx-14 lg:text-lg xl:mx-24">
+			<hr className="border-nk-white sm:mx-auto " />
+			<div className="container font-metropolis-thin">
+				<div className="flex flex-col justify-center gap-2 md:gap-10 p-2 text-xs md:flex-row md:items-center md:justify-between lg:mx-14 lg:text-lg xl:mx-24">
 					<span className="text-center text-xs md:text-base lg:text-lg">
 						Copyright © 2023. All Rights Reserved on nkaccosiate.
 					</span>
-					<div className="itemx-auto lg:py-8ms-center mt-3 flex justify-center gap-6 py-6 pb-2 text-xs sm:mt-0 md:text-base lg:text-lg">
+					<div className="mx-auto items-center flex justify-center gap-6 py-2 pb-2 text-xs sm:mt-0 md:text-base lg:text-lg">
 						<Link
 							href="#"
 							className="bg-gradient-to-r from-nk-white to-nk-white bg-[length:0%_8%] bg-left-bottom bg-no-repeat font-metropolis-thin transition-all duration-500 ease-out hover:bg-[length:100%_8%]">
