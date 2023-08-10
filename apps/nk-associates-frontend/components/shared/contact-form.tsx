@@ -5,6 +5,8 @@ import Input from "./input";
 import { ContactFormSchema } from "../../utils/formik-schema";
 import Spinner from "../spinner";
 import Toast from "./toast";
+import ArrowDown from "../../public/assets/icons/arrow-down.svg"
+import Image from "next/image";
 
 const fieldTypes = {
   name: "text",
@@ -101,36 +103,42 @@ const ContactForm: React.FC<ContactFormProps> = ({ categories }) => {
                       <div key={fieldName}>
                         <label
                           htmlFor={fieldName}
-                          className="font-metropolis-thin capitalize text-nk-black md:text-base relative"
+                          className="relative font-metropolis-thin capitalize text-nk-black md:text-base"
                         >
                           {fieldName}
-                          <sup className="font-metropolis-thin text-lg text-nk-black top-[0.031rem] ml-[0.063rem]">
+                          <sup className="top-[0.031rem] ml-[0.063rem] font-metropolis-thin text-lg text-nk-black">
                             *
                           </sup>
                         </label>
-                        <Field
-                          as="select"
-                          name={fieldName}
-                          className={`mt-1 h-[3.625rem] w-full rounded-lg border px-4 py-4 font-metropolis-light text-nk-black placeholder-nk-gray shadow-md placeholder:font-metropolis-thin placeholder:text-base focus:outline-none ${
-                            touched.message && errors.message
-                              ? "border-nk-red"
-                              : " focus:border-nk-gray focus:ring-nk-gray"
-                          }`}
-                        >
-                          <option value="" disabled>
-                            Select Category
-                          </option>
-                          {categories?.map((category, index) => {
-                            return (
-                              <option
-                                key={index}
-                                value={`${category?.attributes?.category?.toLowerCase()}`}
-                              >
-                                {category?.attributes?.category}
-                              </option>
-                            );
-                          })}
-                        </Field>
+                        <div className="relative">
+                          <Field
+                            as="select"
+                            name={fieldName}
+                            className={`mt-1 flex items-center h-[3.625rem] w-full appearance-none rounded-lg border px-4 py-4 font-metropolis-light text-nk-black placeholder-nk-gray shadow-md placeholder:font-metropolis-thin placeholder:text-base focus:outline-none ${
+                              touched.message && errors.message
+                                ? "border-nk-red"
+                                : " focus:border-nk-gray focus:ring-nk-gray"
+                            }`}
+                          >
+                            <option value="" disabled>
+                              Select Category
+                            </option>
+                            {categories?.map((category, index) => {
+                              return (
+                                <option
+                                  key={index}
+                                  value={`${category?.attributes?.category?.toLowerCase()}`}
+                                >
+                                  {category?.attributes?.category}
+                                </option>
+                              );
+                            })}
+                          </Field>
+
+                          <div className="pointer-events-none absolute top-1/2 -translate-y-1/2 right-3 flex items-center">
+                             <Image src= {ArrowDown} width = {20} height = {20} alt = "dropdown" />
+                          </div>
+                        </div>
 
                         {touched.category && errors.category && (
                           <p className="mt-2 text-sm italic text-nk-red">
@@ -146,10 +154,10 @@ const ContactForm: React.FC<ContactFormProps> = ({ categories }) => {
                       <div key={fieldName} className="md:col-span-2">
                         <label
                           htmlFor={fieldName}
-                          className="font-metropolis-thin capitalize text-nk-black md:text-base relative"
+                          className="relative font-metropolis-thin capitalize text-nk-black md:text-base"
                         >
                           {fieldName}
-                          <sup className="font-metropolis-thin text-lg text-nk-black top-[0.031rem] ml-[0.063rem]">
+                          <sup className="top-[0.031rem] ml-[0.063rem] font-metropolis-thin text-lg text-nk-black">
                             *
                           </sup>
                         </label>
