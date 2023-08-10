@@ -26,27 +26,15 @@ async function fetchSocialLinks() {
 
 async function Footer() {
 	const data: socials = await fetchSocialLinks();
-	let twitter,
-		facebook,
-		youtube,
-		linkedin,
-		snapchat,
-		instagram,
-		playstore,
-		appstore,
-		appgallery;
+	let twitter, facebook, youtube,
+		linkedin, snapchat, instagram,
+		playstore, appstore, appgallery;
 
 	if (data && data[0].attributes) {
 		({
-			twitter,
-			facebook,
-			youtube,
-			linkedin,
-			snapchat,
-			instagram,
-			playstore,
-			appstore,
-			appgallery,
+			twitter, facebook, youtube,
+			linkedin, snapchat, instagram,
+			playstore, appstore, appgallery,
 		} = data[0].attributes);
 	}
 	interface footerSocialLink {
@@ -59,23 +47,16 @@ async function Footer() {
 	}
 
 	const footerPageLinks: footerPageLink[] = [
-		{ pathName: "#", label: "Home" },
-		{ pathName: "#", label: "About" },
-		{ pathName: "/properties", label: "Property" },
-		{ pathName: "/projects", label: "Projects" },
-		{ pathName: "/contact", label: "Contact Us" },
-		{ pathName: "/careers", label: "Career" },
-		{ pathName: "/events", label: "Events" },
-		{ pathName: "#", label: "Services" },
+		{ pathName: "#", label: "Home" }, { pathName: "#", label: "About" },
+		{ pathName: "/properties", label: "Property" }, { pathName: "/projects", label: "Projects" },
+		{ pathName: "/contact", label: "Contact Us" }, { pathName: "/careers", label: "Career" },
+		{ pathName: "/events", label: "Events" },{ pathName: "#", label: "Services" },
 	];
 
 	const footerSocialLinks: footerSocialLink[] = [
-		{ pathName: facebook, image: FbIcon },
-		{ pathName: twitter, image: TwitterIcon },
-		{ pathName: instagram, image: InstagramIcon },
-		{ pathName: linkedin, image: LinkedinIcon },
-		{ pathName: snapchat, image: SnapIcon },
-		{ pathName: youtube, image: YtIcon },
+		{ pathName: facebook, image: FbIcon }, { pathName: twitter, image: TwitterIcon },
+		{ pathName: instagram, image: InstagramIcon }, { pathName: linkedin, image: LinkedinIcon },
+		{ pathName: snapchat, image: SnapIcon }, { pathName: youtube, image: YtIcon },
 	];
 
 	const generateFooterPageList = (links, startIndex = 0, endIndex =8) => {
