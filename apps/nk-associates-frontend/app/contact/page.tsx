@@ -63,7 +63,7 @@ const ContactUs = async () => {
       <div className="container mx-auto flex flex-1 flex-col px-4 py-12 md:py-24">
         <ContactForm categories={categories} />
 
-        <div className="card-component mt-8 grid w-full grid-flow-row gap-3 lg:grid-cols-3 lg:gap-8">
+        <div className="card-component mt-8 grid w-full gap-3 sm:grid-cols-2 lg:grid-cols-3 lg:gap-8">
           <ContactDetails data={data} />
         </div>
 
