@@ -14,21 +14,25 @@ type PropTypes = {
   pictures: string[][];
 };
 
+type DirectionType = "vertical" | "horizontal";
+
 const CompareComponent = ({url}) => {
-  const compareImgContainer = useRef();
+  const compareImgContainer = useRef<HTMLDivElement>();
   const [imgRevealFraction, setImgRevealFraction] = useState(0.5);
 
   const handleSlide = (xPosition: number) => {
-    const container = compareImgContainer?.current?.getBoundingClientRect();
-    let fraction = 0;
-    if (xPosition < container.left) {
-      fraction = 0;
-    } else if (xPosition > container.right) {
-      fraction = 1;
-    } else {
-      fraction = (xPosition - container.left) / container.width;
+    if (compareImgContainer && compareImgContainer.current) {
+      const container = compareImgContainer?.current?.getBoundingClientRect();
+      let fraction = 0;
+      if (xPosition < container.left) {
+        fraction = 0;
+      } else if (xPosition > container.right) {
+        fraction = 1;
+      } else {
+        fraction = (xPosition - container.left) / container.width;
+      }
+      setImgRevealFraction(fraction);
     }
-    setImgRevealFraction(fraction);
   };
   
   const handleMouseDown = () => {
@@ -127,13 +131,13 @@ const CompareComponent = ({url}) => {
 
 const ProjectComparison = ({ pictures }: PropTypes) => {
   const [thumbsSwiper, setThumbsSwiper] = useState(null);
-  const [direction, setDirection] = useState<"vertical" | "horizontal">(
+  const [direction, setDirection] = useState<DirectionType>(
     "vertical"
   );
 
   const handleResize = (e) => {
     let direction = window.innerWidth <= 768 ? "horizontal" : "vertical";
-    setDirection(direction);
+    setDirection(direction as DirectionType);
   };
 
   return (
