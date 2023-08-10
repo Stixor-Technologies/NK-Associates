@@ -103,7 +103,7 @@ async function Footer() {
 
 	return (
 		<footer className="min-h-fit bg-nk-dark-gray font-metropolis text-nk-white">
-			<div className="mx-auto py-6 pb-2 lg:py-8">
+			<div className="mx-auto py-6 pb-2 md:py-4 md:pt-12">
 				<div className="mx-5 sm:mx-10 md:mx-auto">
 					<div className="md:flex md:justify-between">
 						<div className="mb-2 md:mb-0 md:flex md:items-start md:justify-center md:px-12 lg:px-20 xl:px-24">
@@ -127,30 +127,30 @@ async function Footer() {
 									<div className="flex flex-wrap">{footerSocialList}</div>
 								</div>
 							</div>
-							<div className="hidden font-metropolis-medium text-base md:block ">
-								<h2 className="mb-3 text-base uppercase tracking-[0.2rem] text-nk-white ">
+							<div className="hidden font-metropolis-medium text-base md:block md:w-1/5">
+								<h2 className="mb-3 text-base uppercase tracking-[0.2rem] text-nk-white">
 									download
 								</h2>
 								<div>
 									<ul>
 										<li className="mb-5">
-											<div className="xl:max-w-44 flex h-10 items-center justify-center rounded-md bg-nk-red transition-all duration-300 hover:bg-opacity-75 lg:h-12 lg:w-[90] xl:max-h-12">
+											<div className="flex  h-10 items-center justify-center rounded-md bg-nk-red transition-all duration-300 hover:bg-opacity-75 lg:w-[90] lg:max-h-12 max-w-[11rem]">
 												<Link href={playstore || "#"}>
 													<Image
 														src={GooglePlayIcon}
 														alt="Google Play"
-														className="p-4"
+														className="p-3"
 													/>
 												</Link>
 											</div>
 										</li>
 										<li className="mb-3">
-											<div className="xl:max-w-44 flex h-10 items-center justify-center rounded-md bg-nk-red transition-all duration-300 hover:bg-opacity-75 lg:h-12 lg:w-[90] xl:max-h-12">
+											<div className="flex h-10 items-center justify-center rounded-md bg-nk-red transition-all duration-300 hover:bg-opacity-75 lg:w-[90] lg:max-h-12 max-w-[11rem]">
 												<Link href={appstore || "#"}>
 													<Image
 														src={AppStoreIcon}
 														alt="App Store"
-														className="p-4"
+														className="p-3"
 													/>
 												</Link>
 											</div>
@@ -201,11 +201,11 @@ async function Footer() {
 			</div>
 			<hr className="border-nk-white sm:mx-auto lg:my-2" />
 			<div className="container mx-auto font-metropolis-thin">
-				<div className="mx-auto flex flex-col justify-center gap-2 p-4 text-xs md:flex-row md:items-center md:justify-between lg:mx-14 xl:mx-24 lg:text-lg">
+				<div className="mx-auto flex flex-col justify-center gap-2 p-4 text-xs md:flex-row md:items-center md:justify-between lg:mx-14 lg:text-lg xl:mx-24">
 					<span className="text-center text-xs md:text-base lg:text-lg">
 						Copyright © 2023. All Rights Reserved on nkaccosiate.
 					</span>
-					<div className="mt-3 flex items-center justify-center gap-6 text-xs sm:mt-0 md:text-base lg:text-lg">
+					<div className="itemx-auto lg:py-8ms-center mt-3 flex justify-center gap-6 py-6 pb-2 text-xs sm:mt-0 md:text-base lg:text-lg">
 						<Link
 							href="#"
 							className="bg-gradient-to-r from-nk-white to-nk-white bg-[length:0%_8%] bg-left-bottom bg-no-repeat font-metropolis-thin transition-all duration-500 ease-out hover:bg-[length:100%_8%]">
