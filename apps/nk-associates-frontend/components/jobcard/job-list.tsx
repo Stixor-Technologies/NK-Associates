@@ -64,8 +64,8 @@ const JobList = () => {
 	if (departments && departments.length > 0 && cities.length > 0) {
 		return (
 			<div className="overflow-scroll rounded-xl bg-nk-white p-2 pb-4 shadow-xl">
-				<div className="flex flex-row justify-between p-2">
-					<div className="relative h-1 w-4/6 px-2 pt-4 md:w-1/2">
+				<div className="flex flex-row justify-between gap-3 p-2">
+					<div className="relative h-1 w-4/6  pt-4 md:w-1/2">
 						<div className="relative">
 							<input
 								placeholder="Search here"
@@ -74,7 +74,7 @@ const JobList = () => {
 								onChange={e => setSearchQuery(e.target.value)}
 							/>
 							<div className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3 md:mt-6 md:py-3.5">
-								<Image src={SearchIcon} alt="search icon" className="w-8" />
+								<Image src={SearchIcon} alt="search icon" className="w-7 md:w-8" />
 							</div>
 						</div>
 					</div>
@@ -96,7 +96,7 @@ const JobList = () => {
 							/>
 						</div>
 					</div>
-					<div className="relative flex w-2/6 px-2 pt-4 md:hidden">
+					<div className="relative flex w-2/6 pt-4 md:hidden">
 						<div
 							className={`z-0 flex h-10 w-full items-center justify-center gap-2 rounded-full px-2 text-nk-gray shadow  ${
 								isClicked ? "bg-nk-red text-nk-white" : " border-nk-gray "
