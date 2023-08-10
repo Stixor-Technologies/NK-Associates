@@ -17,7 +17,7 @@ const PropertyCard: FC<CardProps> = ({ property, actMap }) => {
     property?.attributes;
   const id = property?.id;
   const thumbnailImage =
-    property?.attributes?.image_thumbnail.data.attributes.url;
+    property?.attributes?.image_thumbnail?.data?.attributes?.url;
   return (
     <div>
       <Link href={`properties/${id}`}  target={actMap ? "_blank" : "_self"} 
@@ -28,7 +28,7 @@ const PropertyCard: FC<CardProps> = ({ property, actMap }) => {
           }`}
         >
           <Image
-            src={`${BASE_URL}${thumbnailImage}`}
+            src={`${BASE_URL}${thumbnailImage || "/"}`}
             fill
             alt=""
             className={`object-cover transition-all duration-700 ease-in-out ${

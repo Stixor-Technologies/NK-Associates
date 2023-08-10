@@ -49,8 +49,8 @@ async function PropertyDetail({ params: { id } }: PropertyDetailProps) {
   const center = { lat: latitude, lng: longitude };
 
   return (
-    <section className="">
-      <DetailSlider property_images={property_images.data} />
+    <section>
+      <DetailSlider property_images={property_images?.data} />
     
       <div className="relative mt-14 md:mt-3">
         {/* 360 Tour Button */}

@@ -30,7 +30,7 @@ const DetailSlider: FC<SliderProps> = ({ property_images }) => {
         modules={[Navigation, Pagination, Keyboard]}
         className="mySwiper"
       >
-        {property_images.map(
+        {property_images?.map(
           ({ attributes: { name, url } }: MediaAttributes, index: number) => {
             return (
               <SwiperSlide key={index}>
