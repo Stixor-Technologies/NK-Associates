@@ -52,8 +52,8 @@ const Sidebar: React.ForwardRefRenderFunction<HTMLDivElement, SidebarProps> = (
       `}
     >
       <div className="absolute -z-10 h-full w-full bg-nk-red"></div>
-      <div className="mx-auto flex h-full w-full flex-col items-center justify-center overflow-y-auto px-2 pt-20 ">
-        <ul className="my-8 space-y-8 text-right font-metropolis-bold text-5xl">
+      <div className="mx-auto flex h-full w-full flex-col items-center justify-center overflow-y-auto px-2 md:pt-20 ">
+        <ul className=" space-y-8 text-right font-metropolis-bold text-4xl lg:text-4xl">
           {menuList}
         </ul>
       </div>
