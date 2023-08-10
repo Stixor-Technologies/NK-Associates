@@ -100,6 +100,8 @@ export interface Project {
     pdf: {
       data: { attributes: {url: string} };
     };
+    numberOfRooms?: number;
+    numberOfBathRooms?: number;
   };
 }
 

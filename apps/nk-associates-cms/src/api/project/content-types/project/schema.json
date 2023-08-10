@@ -140,6 +140,14 @@
       "allowedTypes": [
         "images"
       ]
+    },
+    "numberOfBathRooms": {
+      "type": "integer",
+      "min": 0
+    },
+    "numberOfRooms": {
+      "type": "integer",
+      "min": 0
     }
   }
 }

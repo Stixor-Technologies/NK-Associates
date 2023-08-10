@@ -51,6 +51,8 @@ async function ProjectDetails({ params: { id } }: ProjectDetailProps) {
         category={project.category}
         city={project.city}
         types={project.types}
+        numberOfBathRooms={project.numberOfBathRooms}
+        numberOfRooms={project.numberOfRooms}
       />
       <ProjectGallery pictures={picturesArr} />
       <ProjectTimeline />
@@ -87,7 +89,7 @@ async function ProjectDetails({ params: { id } }: ProjectDetailProps) {
         />
 
         <div className="mt-6 flex">
-          <div className="mr-3 h-6 w-6 text-nk-red">
+          <div className="mr-3 w-4 h-4 md:h-6 md:w-6 text-nk-red">
             <svg
               viewBox="0 0 21 30"
               fill="currentColor"
@@ -109,9 +111,9 @@ async function ProjectDetails({ params: { id } }: ProjectDetailProps) {
           href={`${BASE_URL}${pdfUrl}`}
           target="_blank"
           rel="noopener noreferrer"
-          className="group relative z-10 mx-auto my-12 hidden items-center gap-4 rounded-full border bg-gradient-to-b from-nk-gradient-red-one to-nk-gradient-red-two px-20 py-2.5 text-lg text-nk-white transition-all delay-200 duration-500 hover:border-nk-red hover:shadow-lg md:flex md:w-[25rem] md:justify-center"
+          className="group flex justify-center max-w-[220px] md:max-w-[320px] relative z-10 mx-auto my-12 items-center gap-4 rounded-full border bg-gradient-to-b from-nk-gradient-red-one to-nk-gradient-red-two px-4 py-2.5 text-sm lg:text-lg text-nk-white transition-all duration-100 hover:border-nk-red hover:shadow-lg md:w-[25rem] md:justify-center"
         >
-          Download Broucher
+          Download Brochure
 
           <span className="block">
             <svg
