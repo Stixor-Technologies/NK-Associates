@@ -72,9 +72,9 @@ const Careers = () => {
 						className="flex items-center justify-center lg:justify-start ">
 						<LinkButton
 							text="contact us"
-							navigateTo="#"
+							navigateTo="contact"
 							type="solid"
-							className="mt-8 w-56 transition-all duration-300 hover:bg-opacity-90 lg:w-96"
+							className="mt-8 w-56  p-2  transition-all duration-300 hover:bg-opacity-90 lg:w-96"
 						/>
 					</div>
 				</div>
@@ -99,7 +99,7 @@ const Careers = () => {
 						text="Submit Your Resume"
 						navigateTo="#"
 						type="solid"
-						className="mt-8 w-96 transition-all duration-300 hover:bg-opacity-90"
+						className="mt-8 w-96  p-2  transition-all duration-300 hover:bg-opacity-90"
 					/>
 				</div>
 			</div>
