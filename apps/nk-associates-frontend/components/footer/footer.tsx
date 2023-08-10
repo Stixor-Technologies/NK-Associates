@@ -59,15 +59,14 @@ async function Footer() {
 	}
 
 	const footerPageLinks: footerPageLink[] = [
-		{ pathName: "/home", label: "Home" },
-		{ pathName: "/about", label: "About" },
+		{ pathName: "#", label: "Home" },
+		{ pathName: "#", label: "About" },
 		{ pathName: "/properties", label: "Property" },
-		{ pathName: "/Job", label: "Jobs" },
 		{ pathName: "/projects", label: "Projects" },
-		{ pathName: "/Contact", label: "Contact Us" },
+		{ pathName: "/contact", label: "Contact Us" },
 		{ pathName: "/careers", label: "Career" },
 		{ pathName: "/events", label: "Events" },
-		{ pathName: "/services", label: "Services" },
+		{ pathName: "#", label: "Services" },
 	];
 
 	const footerSocialLinks: footerSocialLink[] = [
@@ -79,7 +78,7 @@ async function Footer() {
 		{ pathName: youtube, image: YtIcon },
 	];
 
-	const generateFooterPageList = (links, startIndex = 0, endIndex = 9) => {
+	const generateFooterPageList = (links, startIndex = 0, endIndex =8) => {
 		const slicedLinks =
 			endIndex !== undefined
 				? links.slice(startIndex, endIndex)
@@ -97,8 +96,8 @@ async function Footer() {
 		return footerPageList;
 	};
 
-	const PageColumnA = generateFooterPageList(footerPageLinks, 0, 6);
-	const PageColumnB = generateFooterPageList(footerPageLinks, 6);
+	const PageColumnA = generateFooterPageList(footerPageLinks, 0, 5);
+	const PageColumnB = generateFooterPageList(footerPageLinks, 5);
 	const footerSocialList = footerSocialLinks.map((socialLink, index) => {
 		return (
 			socialLink?.pathName && (
