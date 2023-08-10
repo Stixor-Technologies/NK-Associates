@@ -90,6 +90,16 @@ export interface Project {
     totalUnits: number;
     unitsSold: number;
     price: number;
+    types: string[];
+    latitude: number;
+    longitude: number;
+    projectOutcomeDescription: string;
+    projectOutcomeImage: {
+      data: { attributes: { url: string } };
+    };
+    pdf: {
+      data: { attributes: {url: string} };
+    };
   };
 }
 

@@ -1,12 +1,11 @@
 import Image from "next/image";
-import PlayIcon from "../../../public/assets/icons/play-icon.svg";
 import NKTitleLogo from "../../../public/assets/icons/nk-title-logo.svg";
 import WhatsappLogo from "../../../public/assets/icons/whatsapp-logo.svg";
 import PhoneIcon from "../../../public/assets/icons/phone-icon.svg";
 
 const ProjectDetailsVR = () => {
   return (
-    <section className="relative h-[16.625rem] min-h-[16.625rem] md:h-[22.625rem] bg-red-300 bg-cover [background-image:url('/assets/images/bg-project.jpeg')] lg:h-[39.375rem] lg:min-h-[39.375rem]">
+    <section className="relative h-[16.625rem] min-h-[16.625rem] sm:h-[25.625rem] md:h-[32.625rem] bg-red-300 bg-cover [background-image:url('/assets/images/bg-project.jpeg')] xl:h-[39.375rem] lg:min-h-[35.375rem]">
       <div className="absolute left-0 top-0 h-full w-full bg-black/50" />
       <section className="container relative mx-auto flex h-full flex-1 flex-col items-center justify-center p-4 text-white lg:p-10">
         <div className="flex flex-col items-center justify-center">

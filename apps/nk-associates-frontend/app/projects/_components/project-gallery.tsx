@@ -1,5 +1,5 @@
-'use client';
-import { useState } from 'react';
+"use client";
+import { useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/free-mode";
@@ -13,12 +13,11 @@ type PropTypes = {
 };
 
 const ProjectGallery = ({ pictures }: PropTypes) => {
-
-    const [thumbsSwiper, setThumbsSwiper] = useState(null);
+  const [thumbsSwiper, setThumbsSwiper] = useState(null);
 
   return (
-    <section className="container py-4 lg:py-8">
-      <h2 className="mb-4 md:mb-8 text-center font-metropolis-bold text-2xl">
+    <section className="container py-8 md:py-14">
+      <h2 className="mb-4 text-center font-metropolis-bold text-2xl md:mb-8">
         Gallery
       </h2>
 
@@ -31,7 +30,7 @@ const ProjectGallery = ({ pictures }: PropTypes) => {
             thumbs={{
               swiper: thumbsSwiper,
             }}
-            className="mySwiper carousel-slider  h-[400px] sm:h-auto sm:aspect-video w-full rounded-xl"
+            className="mySwiper carousel-slider  h-[400px] w-full rounded-xl sm:aspect-video sm:h-auto"
             modules={[Thumbs, FreeMode]}
           >
             {pictures?.map((url, index) => (
@@ -58,7 +57,7 @@ const ProjectGallery = ({ pictures }: PropTypes) => {
             {pictures?.map((url, index) => (
               <SwiperSlide
                 key={index}
-                className="!w-[130px] md:!w-[160px] lg:!w-[200px] aspect-video cursor-pointer"
+                className="aspect-video !w-[130px] cursor-pointer md:!w-[160px] lg:!w-[200px]"
               >
                 <Image
                   src={url}
@@ -93,7 +92,7 @@ const ProjectGallery = ({ pictures }: PropTypes) => {
               />
             </svg>
           </div>
-          No Image Available
+          No Images Available
         </div>
       )}
     </section>

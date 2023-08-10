@@ -55,7 +55,7 @@ const ProjectIntroduction = ({
   ];
 
   return (
-    <section className="container flex flex-col py-10 md:py-14">
+    <section className="container flex flex-col py-8 md:py-14">
       <section className="mb-6 flex flex-col font-metropolis-bold md:flex-row md:justify-between">
         <h1
           className="mb-5 cursor-default md:truncate text-center text-4xl md:mb-0 md:pr-6 md:text-left"

@@ -20,17 +20,19 @@
     },
     "address": {
       "type": "string",
-      "maxLength": 40,
+      "maxLength": 240,
       "minLength": 6,
       "required": true
     },
     "latitude": {
       "type": "float",
-      "required": true
+      "required": true,
+      "min": 0
     },
     "longitude": {
       "type": "float",
-      "required": true
+      "required": true,
+      "min": 0
     },
     "description": {
       "type": "text",
@@ -38,15 +40,18 @@
     },
     "coveredArea": {
       "type": "float",
-      "required": true
+      "required": true,
+      "min": 0
     },
     "totalUnits": {
       "type": "integer",
-      "required": true
+      "required": true,
+      "min": 0
     },
     "price": {
       "type": "float",
-      "required": true
+      "required": true,
+      "min": 0
     },
     "city": {
       "type": "string",
@@ -81,7 +86,8 @@
     },
     "plotSize": {
       "type": "float",
-      "required": true
+      "required": true,
+      "min": 0
     },
     "plotSizeUnits": {
       "type": "enumeration",
@@ -109,7 +115,31 @@
     },
     "unitsSold": {
       "type": "integer",
+      "required": true,
+      "min": 0
+    },
+    "types": {
+      "type": "customField",
+      "options": [
+        "Residential",
+        "Commercial",
+        "Shops",
+        "Hotel",
+        "Apartments"
+      ],
+      "customField": "plugin::multi-select.multi-select"
+    },
+    "projectOutcomeDescription": {
+      "type": "text",
       "required": true
+    },
+    "projectOutcomeImage": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images"
+      ]
     }
   }
 }
