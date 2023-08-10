@@ -6,14 +6,11 @@ import ProjectIntroduction from "../_components/project-introduction";
 import ProjectGallery from "../_components/project-gallery";
 import ProjectTimeline from "../_components/project-timeline";
 import ProjectComparison from "../_components/project-comparison";
-import DownloadBrochure from "../_components/download-brochure";
 import MapComponent from "../../../components/shared/map-component";
 
 import { Project } from "../../../utils/types/types";
 import { getProjectDetail } from "../../../utils/api-calls";
 import { BASE_URL } from "../../../utils/constants";
-
-import ProjectBG from "../../../public/assets/images/bg-project.jpeg";
 
 type ProjectDetailProps = {
   params: {
