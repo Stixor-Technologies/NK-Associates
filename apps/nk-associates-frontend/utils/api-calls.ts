@@ -94,7 +94,7 @@ export const getProjectDetail = async (id: string) => {
     const data = await resp.json();
     return data?.data;
   } catch (error) {
-    console.error("There was an error getting the Property List", error);
+    console.error("There was an error getting the Property Details", error);
   }
 };
 
