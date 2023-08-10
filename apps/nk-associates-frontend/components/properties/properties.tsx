@@ -99,36 +99,6 @@ const Properties = () => {
 
   return (
     <>
-      {/* <button
-        className={`left-0 sticky top-[400px] bottom-16 z-10 flex w-56 items-center gap-2 rounded-full bg-nk-gradient-red-one bg-gradient-to-b to-nk-gradient-red-two px-4 py-2 text-center text-sm capitalize text-nk-white transition-all duration-300 ease-in-out hover:shadow-lg hover:delay-100 md:gap-4 md:px-6 md:py-3 md:text-2xl`}
-      >
-        <span>Show List</span>
-      </button> */}
-
-      {/* {gridProperties.length > 0 && (
-        <button
-          className={`fixed bottom-16 left-1/2 z-10 flex -translate-x-1/2 items-center gap-2 rounded-full px-4 py-2 text-center text-sm capitalize text-nk-white transition-all duration-300 ease-in-out hover:shadow-lg hover:delay-100 md:gap-4 md:px-6 md:py-3 md:text-2xl ${
-            isList
-              ? "bg-nk-gradient-red-one bg-gradient-to-b to-nk-gradient-red-two"
-              : "bg-nk-black"
-          }`}
-          onClick={() => {
-            setIsList(!isList);
-          }}
-        >
-          <span>{`${isList ? "Show Map" : "Show List"}`}</span>
-          <Image
-            src={isList ? MapBtn : ListIcon}
-            width={35}
-            height={35}
-            alt="properties-view"
-            className={`mx-auto ${
-              isList ? "w-[1.375rem] md:w-[2.188rem]" : " w-4 md:w-[1.7rem]"
-            } `}
-          />
-        </button>
-      )} */}
-
       {isList && (
         <>
           {isLoading && gridProperties.length === 0 ? (
@@ -210,10 +180,10 @@ const Properties = () => {
 
 {gridProperties.length > 0 && (
         <button
-          className={` self-center sticky top-0 mb-4 bottom-4 left-1/2 z-10 flex -translate-x-1/2 items-center gap-2 rounded-full px-4 py-2 text-center text-sm capitalize text-nk-white transition-all duration-300 ease-in-out hover:shadow-lg hover:delay-100 md:gap-4 md:px-6 md:py-3 md:text-2xl ${
+          className={` self-center sticky top-0 mb-4 bottom-16 left-1/2 z-10 flex -translate-x-1/2 items-center gap-2 rounded-full px-4 py-2 text-center text-sm capitalize text-nk-white transition-all duration-300 ease-in-out md:gap-4 md:px-6 md:py-3 md:text-2xl ${
             isList
-              ? "bg-nk-gradient-red-one bg-gradient-to-b to-nk-gradient-red-two"
-              : "bg-nk-black"
+            ? "bg-nk-gradient-red-one bg-gradient-to-b to-nk-gradient-red-two hover:scale-[1.1] hover:bg-nk-black"
+            : "bg-nk-black hover:scale-[1.1] hover:bg-nk-red"
           }`}
           onClick={() => {
             setIsList(!isList);
