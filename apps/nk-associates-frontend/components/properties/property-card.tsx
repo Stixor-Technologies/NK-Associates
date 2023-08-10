@@ -20,7 +20,8 @@ const PropertyCard: FC<CardProps> = ({ property, actMap }) => {
     property?.attributes?.image_thumbnail.data.attributes.url;
   return (
     <div>
-      <Link href={`properties/${id}`} target="_blank" rel="noopener noreferrer">
+      <Link href={`properties/${id}`}  target={actMap ? "_blank" : "_self"} 
+        rel={actMap ? "noopener noreferrer" : undefined}>
         <div
           className={`aspect-w-1 aspect-h-1 group relative w-full max-w-[37.5rem] overflow-hidden ${
             actMap ? "h-52 rounded-t-xl" : "h-[17.5rem] rounded-xl"
