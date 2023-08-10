@@ -28,7 +28,8 @@ export const fetchPropertyTypesEnum = async () => {
     BASE_URL + "/api/content-type-builder/content-types/api::property.property"
   );
   const res = await data.json()
-  return res?.data?.schema?.attributes?.type.enum;
+  console.log(res)
+  return res?.data?.schema.attributes;
 };
 
 

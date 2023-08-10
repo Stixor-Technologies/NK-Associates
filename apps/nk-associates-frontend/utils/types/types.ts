@@ -102,3 +102,13 @@ export interface Job {
         };
     };
 }
+
+export interface SearchFilter {
+    type: {
+      enum: string[];
+    };
+    purpose: {
+      enum: string[];
+    }
+
+}
