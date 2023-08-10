@@ -80,11 +80,11 @@ const Navigation = () => {
   return (
     <div>
       <div className="fixed top-0 z-50 w-full flex-col bg-nk-white-dark">
-        <div className="mx-auto my-auto flex w-[90%] items-center justify-between px-6 py-6">
+        <div className="mx-auto my-auto flex w-[95%] items-center justify-between px-3 py-3">
           <div>
             {/* Will be changed to point to home page once it is developed */}
             <Link href="#">
-              <Image width={50} height={50} src={Logo} alt="NK logo" />
+              <Image width={40} height={40} src={Logo} alt="NK logo" />
             </Link>
           </div>
           <div className="flex justify-between">
@@ -96,7 +96,7 @@ const Navigation = () => {
             <Link
               ref={getInTouch}
               href="#"
-              className=" mr-2 mt-2 hidden h-12 cursor-pointer flex-row items-center rounded-full border border-nk-red bg-transparent px-8 text-center font-metropolis capitalize text-nk-red md:z-50 md:flex"
+              className=" mr-2 mt-4 hidden h-10 cursor-pointer flex-row items-center rounded-full border border-nk-red bg-transparent px-6 text-center font-metropolis capitalize text-nk-red md:z-50 md:flex"
             >
               Get in touch
             </Link>
