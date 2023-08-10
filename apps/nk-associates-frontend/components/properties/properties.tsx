@@ -11,7 +11,6 @@ import { debounce } from "lodash";
 import MapBtn from "../../public/assets/icons/map-list-icon.svg";
 import ListIcon from "../../public/assets/icons/list-icon.svg";
 import PropertyCard from "./property-card";
-import { useMapApi } from "../../app/context/map-context";
 import MapStyles from "../../utils/map-styles.json";
 import "./map-info-window.css";
 
