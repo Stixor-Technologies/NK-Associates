@@ -22,10 +22,10 @@ const Input: React.FC<InputProps> = ({
     <div className="">
       <label
         htmlFor={name}
-        className="font-metropolis-light capitalize text-nk-black md:text-base"
+        className="font-metropolis-thin capitalize text-nk-black md:text-base relative"
       >
         {label}
-        <sup className="font-metropolis-bold text-sm text-nk-black">*</sup>
+        <sup className="font-metropolis-thin text-lg text-nk-black top-[0.031rem] ml-[0.063rem]">*</sup>
       </label>
       <Field
         name={name}

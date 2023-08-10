@@ -69,7 +69,7 @@ const ContactUs = async () => {
 
         <div className="mt-14 w-full md:mt-24">
           <div className="flex w-full flex-col items-center justify-center">
-            <div className="mb-5 text-center font-metropolis-bold text-3xl text-nk-black md:mb-14 md:text-4xl">
+            <div className="mb-5 text-center font-metropolis-bold text-[2rem] text-nk-black md:mb-8 md:text-4xl">
               Head Office Locations
             </div>
 

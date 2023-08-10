@@ -44,7 +44,7 @@ const ContactForm: React.FC<ContactFormProps> = ({ categories }) => {
 
   const formFields = ["name", "email", "phone", "category", "message"];
 
-  const onSubmit = async (values,{resetForm}) => {
+  const onSubmit = async (values, { resetForm }) => {
     setLoading(true);
     try {
       const res = await fetch("api/contact", {
@@ -86,7 +86,7 @@ const ContactForm: React.FC<ContactFormProps> = ({ categories }) => {
     >
       {({ errors, touched }) => (
         <>
-          <div className="rounded-3xl bg-nk-light-gray px-6 py-9 md:px-12 md:py-14">
+          <div className="rounded-3xl bg-nk-light-gray px-4 py-7 md:px-12 md:py-14">
             {showToast && <Toast message={toastMessage} />}
             <h4 className="text-center font-metropolis-bold text-[1.75rem] text-nk-black md:text-5xl">
               Contact Us
@@ -101,9 +101,12 @@ const ContactForm: React.FC<ContactFormProps> = ({ categories }) => {
                       <div key={fieldName}>
                         <label
                           htmlFor={fieldName}
-                          className="font-metropolis-light capitalize text-nk-black md:text-base"
+                          className="font-metropolis-thin capitalize text-nk-black md:text-base relative"
                         >
                           {fieldName}
+                          <sup className="font-metropolis-thin text-lg text-nk-black top-[0.031rem] ml-[0.063rem]">
+                            *
+                          </sup>
                         </label>
                         <Field
                           as="select"
@@ -143,10 +146,12 @@ const ContactForm: React.FC<ContactFormProps> = ({ categories }) => {
                       <div key={fieldName} className="md:col-span-2">
                         <label
                           htmlFor={fieldName}
-                          className="font-metropolis-light capitalize text-nk-black md:text-base"
+                          className="font-metropolis-thin capitalize text-nk-black md:text-base relative"
                         >
                           {fieldName}
-                          <sup className="text-nk-black">*</sup>
+                          <sup className="font-metropolis-thin text-lg text-nk-black top-[0.031rem] ml-[0.063rem]">
+                            *
+                          </sup>
                         </label>
                         <Field
                           as="textarea"
