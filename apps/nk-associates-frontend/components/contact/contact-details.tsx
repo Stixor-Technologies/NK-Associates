@@ -68,7 +68,7 @@ const ContactDetails: React.FC<ContactDetailProps> = ({ data }) => {
                   />
                   <div className="break-all my-[0.063rem] font-metropolis-extralight text-sm md:text-base">
                     {contactItem?.attributes?.numbers?.map((number, index) => {
-                      return <p key={index}>{number?.contactNumber}</p>;
+                      return <p key={index}>{number?.contact_number}</p>;
                     })}
                   </div>
                 </div>
