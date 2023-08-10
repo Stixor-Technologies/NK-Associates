@@ -90,9 +90,7 @@ const EventCard: React.FC<EventProps> = ({ data }) => {
 
               <div className="mb-3 text-nk-gray underline">
                 Hosted by
-                <span className="text-nk-black">
-                  {` ${dataItem?.attributes?.event_host}`}
-                </span>
+                <span>{` ${dataItem?.attributes?.event_host}`}</span>
               </div>
 
               <div className="mb-3 flex flex-col gap-2">
