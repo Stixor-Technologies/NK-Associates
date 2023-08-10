@@ -163,7 +163,7 @@ const Properties = () => {
               setHasMapRendered(true);
             }}
             options={mapOptions}
-            mapContainerClassName="h-screen w-full mt-6"
+            mapContainerClassName="h-screen w-full my-6"
             onBoundsChanged={onBoundsChanged}
           >
             {mapProperties.map((location, index) => {
