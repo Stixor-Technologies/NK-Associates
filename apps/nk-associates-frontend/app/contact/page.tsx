@@ -16,8 +16,8 @@ const ContactUs = async () => {
   const categories = await getCategories();
 
   const combinedAddresses: Contacts[] = [
-    ...data,  (headOfficeAddress ? headOfficeAddress : []),
-  ];
+    ...(data || []),
+    ...(headOfficeAddress ? [headOfficeAddress] : []),  ];
 
   const headOfficeLocation: Location = {
     lat: headOfficeAddress?.attributes?.latitude,
