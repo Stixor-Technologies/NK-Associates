@@ -10,6 +10,7 @@ interface JobProp {
 }
 
 const JobCard: React.FC<JobProp> = ({ job }) => {
+	const { id } = job;
 	const { title, description, city, department } = job?.attributes;
 	const departmentName = department?.data?.attributes?.name;
 	return (
@@ -31,7 +32,7 @@ const JobCard: React.FC<JobProp> = ({ job }) => {
 				<div className="flex flex-row lg:order-2 lg:ml-auto lg:justify-end">
 					<LinkButton
 						text="view more"
-						navigateTo="#"
+						navigateTo={`careers/${id}`}
 						type="inverted"
 						className="h-10 w-32 border border-nk-red bg-transparent text-nk-red lg:w-40"
 					/>
