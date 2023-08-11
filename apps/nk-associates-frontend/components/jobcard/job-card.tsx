@@ -11,7 +11,7 @@ interface JobProp {
 
 const JobCard: React.FC<JobProp> = ({ job }) => {
 	const { title, description, city, department } = job?.attributes;
-	const departmentName = department?.data.attributes.name;
+	const departmentName = department?.data?.attributes?.name;
 	return (
 		<div className="mx-1 my-3 rounded-2xl bg-nk-light-gray p-3 lg:mx-3 lg:my-4 lg:flex lg:flex-row lg:gap-4 lg:p-7 xl:gap-8">
 			<div className="lg:w-11/12">

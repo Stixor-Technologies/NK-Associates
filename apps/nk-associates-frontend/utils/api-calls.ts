@@ -1,4 +1,5 @@
 import { BASE_URL } from "./constants";
+import { Department } from "./types/types";
 export const getGridProperties = async (start: number, limit = 12) => {
   try {
     const resp = await fetch(
@@ -140,16 +141,13 @@ export const getCities = async () => {
 
 export const getDepartments = async () => {
   try {
-    let apiUrl = `${BASE_URL}/api/jobs?populate=*`;
+    let apiUrl = `${BASE_URL}/api/departments?populate=*`;
     const resp = await fetch(apiUrl);
     const data = await resp.json();
-
-    const departments = data.data.map(
-      (job) => job.attributes.department.data.attributes.name
-    );
-    const uniqueDepartmentsSet = new Set(departments);
-    const uniqueDepartmentsArray = Array.from(uniqueDepartmentsSet);
-    return uniqueDepartmentsArray;
+    const departments = data?.data?.map((data: Department) => (
+         data?.attributes?.name
+    ))
+    return departments;
   } catch (error) {
     console.error("There was an error getting departments", error);
   }
