@@ -12,7 +12,6 @@ import "./project-comparison.css";
 
 import { getComparisonImages } from "../../../utils/api-calls";
 import { BASE_URL } from "../../../utils/constants";
-import { attribute } from "../../../../../node_modules/@types/three/examples/jsm/nodes/shadernode/ShaderNodeBaseElements.d";
 
 type PropTypes = {
   projectId: number;
