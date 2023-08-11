@@ -55,50 +55,50 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
   const flexDirection = primaryColor ? "sm:flex-row-reverse" : "sm:flex-row";
 
   return (
-    <div
-      className={`project-card mb-[2.3rem] flex h-[35rem] w-full flex-col overflow-hidden rounded-2xl shadow-md last-of-type:mb-4 sm:h-[21rem] md:mb-[4.5rem] md:h-[26rem] lg:h-[31.25rem] ${flexDirection} md:rounded-3xl ${backgroundColor} ${textColor}`}
-    >
-      <div className="relative h-full min-h-[21rem] w-full sm:h-auto sm:w-[65%]">
-        {imagesList.length > 0 ? (
-          <Swiper
-            grabCursor={true}
-            centeredSlides={true}
-            initialSlide={0}
-            pagination={true}
-            modules={[Pagination]}
-            className="mySwiper carousel-slider h-full w-full"
-          >
-            {imagesList?.map((url, index) => {
-              return (
-                <SwiperSlide key={index}>
-                  <Image
-                    src={url}
-                    alt="Carousel Image"
-                    layout="fill"
-                    objectFit="cover"
-                    className="h-full w-full object-cover"
-                  />
-                </SwiperSlide>
-              );
-            })}
-          </Swiper>
-        ) : (
-          <div className="flex h-full w-full items-center justify-center bg-white text-black">
-            <Image
-              src={NoImageIcon}
-              width={50}
-              height={50}
-              alt="No Image Available"
-              layout="contain"
-              objectFit="contain"
-              className={`mr-2 rounded-xl`}
-            />
-            No Image Available
-          </div>
-        )}
-      </div>
+    <Link href={`projects/${id}`}>
+      <div
+        className={`project-card mb-[2.3rem] flex h-[35rem] w-full flex-col overflow-hidden rounded-2xl shadow-md last-of-type:mb-4 sm:h-[21rem] md:mb-[4.5rem] md:h-[26rem] lg:h-[31.25rem] ${flexDirection} md:rounded-3xl ${backgroundColor} ${textColor}`}
+      >
+        <div className="relative h-full min-h-[21rem] w-full sm:h-auto sm:w-[65%]">
+          {imagesList.length > 0 ? (
+            <Swiper
+              grabCursor={true}
+              centeredSlides={true}
+              initialSlide={0}
+              pagination={true}
+              modules={[Pagination]}
+              className="mySwiper carousel-slider h-full w-full"
+            >
+              {imagesList?.map((url, index) => {
+                return (
+                  <SwiperSlide key={index}>
+                    <Image
+                      src={url}
+                      alt="Carousel Image"
+                      layout="fill"
+                      objectFit="cover"
+                      className="h-full w-full object-cover"
+                    />
+                  </SwiperSlide>
+                );
+              })}
+            </Swiper>
+          ) : (
+            <div className="flex h-full w-full items-center justify-center bg-white text-black">
+              <Image
+                src={NoImageIcon}
+                width={50}
+                height={50}
+                alt="No Image Available"
+                layout="contain"
+                objectFit="contain"
+                className={`mr-2 rounded-xl`}
+              />
+              No Image Available
+            </div>
+          )}
+        </div>
 
-      <Link href={`projects/${id}`}>
         <div className="flex flex-col px-4 py-3.5 sm:w-[35%] md:p-6">
           <div className=" flex flex-col">
             <h1
@@ -185,8 +185,8 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
             </div>
           </div>
         </div>
-      </Link>
-    </div>
+      </div>
+    </Link>
   );
 };
 
