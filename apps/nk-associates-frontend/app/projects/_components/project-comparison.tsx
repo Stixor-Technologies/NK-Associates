@@ -16,7 +16,7 @@ type PropTypes = {
 
 type DirectionType = "vertical" | "horizontal";
 
-const CompareComponent = ({url}) => {
+const CompareComponent = ({ url }) => {
   const compareImgContainer = useRef<HTMLDivElement>();
   const [imgRevealFraction, setImgRevealFraction] = useState(0.5);
 
@@ -34,7 +34,7 @@ const CompareComponent = ({url}) => {
       setImgRevealFraction(fraction);
     }
   };
-  
+
   const handleMouseDown = () => {
     window.onmousemove = (e: MouseEvent) => {
       handleSlide(e.clientX);
@@ -50,20 +50,23 @@ const CompareComponent = ({url}) => {
   };
 
   return (
-    <div ref={compareImgContainer} className="relative h-full w-full select-none">
+    <div
+      ref={compareImgContainer}
+      className="relative h-full w-full select-none"
+    >
       <Image
         src={url[0]}
         alt="Carousel Image"
         layout="fill"
         objectFit="cover"
-        className="h-full w-full object-cover pointer-events-none"
+        className="pointer-events-none h-full w-full object-cover"
       />
       <Image
         src={url[1]}
         alt="Carousel Image"
         layout="fill"
         objectFit="cover"
-        className="absolute inset-0 h-full w-full object-cover grayscale pointer-events-none"
+        className="pointer-events-none absolute inset-0 h-full w-full object-cover grayscale"
         style={{
           clipPath: `polygon(0 0, ${imgRevealFraction * 100}% 0, ${
             imgRevealFraction * 100
@@ -77,7 +80,7 @@ const CompareComponent = ({url}) => {
         <div className="relative h-full">
           <div className="absolute inset-y-0 -ml-px w-0.5 bg-white opacity-50"></div>
           <div
-            style={{touchAction: "none"}}
+            style={{ touchAction: "none" }}
             onMouseDown={handleMouseDown}
             onTouchMove={handleTouchMove}
             className="absolute top-1/2 -ml-5 -mt-5 flex h-10 w-10 items-center justify-center rounded-full bg-white"
@@ -131,9 +134,7 @@ const CompareComponent = ({url}) => {
 
 const ProjectComparison = ({ pictures }: PropTypes) => {
   const [thumbsSwiper, setThumbsSwiper] = useState(null);
-  const [direction, setDirection] = useState<DirectionType>(
-    "vertical"
-  );
+  const [direction, setDirection] = useState<DirectionType>("vertical");
 
   const handleResize = (e) => {
     let direction = window.innerWidth <= 768 ? "horizontal" : "vertical";
@@ -156,7 +157,7 @@ const ProjectComparison = ({ pictures }: PropTypes) => {
             thumbs={{
               swiper: thumbsSwiper,
             }}
-            className="mySwiper carousel-slider  h-[400px] w-full sm:aspect-video sm:h-auto md:w-10/12 md:rounded-xl"
+            className="mySwiper carousel-slider h-[25rem] w-full sm:aspect-video sm:h-auto md:w-10/12 md:rounded-xl"
             modules={[Thumbs, FreeMode]}
           >
             {pictures?.map((url, index) => (
@@ -174,13 +175,12 @@ const ProjectComparison = ({ pictures }: PropTypes) => {
             onSwiper={setThumbsSwiper}
             className="mySwiper2 mt-4 !px-4 md:mt-0 md:w-2/12 md:!px-0"
             direction={direction}
-            onChangeDirection={(e) => console.warn("direction changed", e)}
             onResize={handleResize}
           >
             {pictures?.map((url, index) => (
               <SwiperSlide
                 key={index}
-                className="aspect-video !w-[130px] cursor-pointer md:max-h-[100px] md:!w-auto lg:max-h-[120px]"
+                className="aspect-video !w-[8.125rem] cursor-pointer md:max-h-[6.25rem] md:!w-auto lg:max-h-[7.5rem]"
               >
                 <Image
                   src={url[0]}
@@ -194,7 +194,7 @@ const ProjectComparison = ({ pictures }: PropTypes) => {
           </Swiper>
         </div>
       ) : (
-        <div className="flex h-[400px] w-full items-center justify-center rounded-xl bg-white text-black">
+        <div className="flex h-[25rem] w-full items-center justify-center rounded-xl bg-white text-black">
           <div className="h-10 w-10">
             <svg
               fill="#000000"

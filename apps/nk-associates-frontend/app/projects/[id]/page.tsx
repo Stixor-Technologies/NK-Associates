@@ -54,8 +54,8 @@ async function ProjectDetails({ params: { id } }: ProjectDetailProps) {
       <ProjectGallery pictures={picturesArr} />
       <ProjectTimeline />
       <ProjectComparison pictures={picturesAndRendersArr} />
-      <section className="container py-6 flex flex-col lg:flex-row items-center lg:items-start">
-        <div className="w-full max-w-[480px] lg:w-5/12 md:px-4">
+      <section className="container flex flex-col items-center py-6 lg:flex-row lg:items-start">
+        <div className="w-full max-w-[30rem] md:px-4 lg:w-5/12">
           <div className="relative mx-auto mb-10 aspect-square h-[90%] w-[90%] -rotate-[4deg]">
             <Image
               src={`${BASE_URL}${project.projectOutcomeImage.data.attributes.url}`}
@@ -66,7 +66,7 @@ async function ProjectDetails({ params: { id } }: ProjectDetailProps) {
           </div>
         </div>
 
-        <div className="w-full lg:w-7/12 md:px-8">
+        <div className="w-full md:px-8 lg:w-7/12">
           <h2 className="mb-4 text-center font-metropolis-bold text-2xl md:mb-8">
             Project Outcomes
           </h2>
@@ -86,7 +86,7 @@ async function ProjectDetails({ params: { id } }: ProjectDetailProps) {
         />
 
         <div className="mt-6 flex">
-          <div className="mr-3 w-4 h-4 md:h-6 md:w-6 text-nk-red">
+          <div className="mr-3 h-4 w-4 text-nk-red md:h-6 md:w-6">
             <svg
               viewBox="0 0 21 30"
               fill="currentColor"
@@ -108,10 +108,9 @@ async function ProjectDetails({ params: { id } }: ProjectDetailProps) {
           href={`${BASE_URL}${pdfUrl}`}
           target="_blank"
           rel="noopener noreferrer"
-          className="group flex justify-center max-w-[220px] md:max-w-[320px] relative z-10 mx-auto my-12 items-center gap-4 rounded-full border bg-gradient-to-b from-nk-gradient-red-one to-nk-gradient-red-two px-4 py-2.5 text-sm lg:text-lg text-nk-white transition-all duration-100 hover:border-nk-red hover:shadow-lg md:w-[25rem] md:justify-center"
+          className="group relative z-10 mx-auto my-12 flex max-w-[13.75rem] items-center justify-center gap-4 rounded-full border bg-gradient-to-b from-nk-gradient-red-one to-nk-gradient-red-two px-4 py-2.5 text-sm text-nk-white transition-all duration-100 hover:border-nk-red hover:shadow-lg md:w-[25rem] md:max-w-[1.25rem] md:justify-center lg:text-lg"
         >
           Download Brochure
-
           <span className="block">
             <svg
               width="21"

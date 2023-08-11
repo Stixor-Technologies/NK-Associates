@@ -30,7 +30,7 @@ const ProjectGallery = ({ pictures }: PropTypes) => {
             thumbs={{
               swiper: thumbsSwiper,
             }}
-            className="mySwiper carousel-slider  h-[400px] w-full rounded-xl sm:aspect-video sm:h-auto"
+            className="mySwiper carousel-slider h-[25rem] w-full rounded-xl sm:aspect-video sm:h-auto"
             modules={[Thumbs, FreeMode]}
           >
             {pictures?.map((url, index) => (
@@ -57,7 +57,7 @@ const ProjectGallery = ({ pictures }: PropTypes) => {
             {pictures?.map((url, index) => (
               <SwiperSlide
                 key={index}
-                className="aspect-video !w-[130px] cursor-pointer md:!w-[160px] lg:!w-[200px]"
+                className="aspect-video !w-[8.125rem] cursor-pointer md:!w-[10rem] lg:!w-[12.5rem]"
               >
                 <Image
                   src={url}
@@ -71,7 +71,7 @@ const ProjectGallery = ({ pictures }: PropTypes) => {
           </Swiper>
         </>
       ) : (
-        <div className="flex h-[400px] w-full items-center justify-center rounded-xl bg-white text-black">
+        <div className="flex h-[25rem] w-full items-center justify-center rounded-xl bg-white text-black">
           <div className="h-10 w-10">
             <svg
               fill="#000000"

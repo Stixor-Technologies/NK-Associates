@@ -6,7 +6,7 @@ const InquiresCompnent = () => {
     alert("Inquires clicked");
   };
 
-  return <LinkButton text="Inquires" clickEvent={handleInquiresClick} className="px-6 min-w-[130px] lg:min-w-[188px]" />;
+  return <LinkButton text="Inquires" clickEvent={handleInquiresClick} className="px-6 min-w-[8.125rem] lg:min-w-[11.75rem]" />;
 };
 
 export default InquiresCompnent;

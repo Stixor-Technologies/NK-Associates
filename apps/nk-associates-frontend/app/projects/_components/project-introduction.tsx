@@ -30,7 +30,6 @@ const ProjectIntroduction = ({
   numberOfBathRooms = undefined,
   numberOfRooms = undefined,
 }: PropTypes) => {
-
   const details = [
     {
       title: "Category",
@@ -58,7 +57,7 @@ const ProjectIntroduction = ({
     <section className="container flex flex-col py-8 md:py-14">
       <section className="mb-6 flex flex-col font-metropolis-bold md:flex-row md:justify-between">
         <h1
-          className="mb-5 cursor-default md:truncate text-center text-4xl md:mb-0 md:pr-6 md:text-left"
+          className="mb-5 cursor-default text-center text-4xl md:mb-0 md:truncate md:pr-6 md:text-left"
           title={projectName}
         >
           {projectName}
@@ -167,7 +166,7 @@ const ProjectIntroduction = ({
           <div className="mr-7 hidden flex-col items-center font-metropolis-semibold text-nk-red md:flex">
             <p>{unitsSold} Units Sold</p>
 
-            <div className="mt-2 h-2.5 w-full min-w-[190px] rounded-full bg-nk-gray lg:min-w-[220px]">
+            <div className="mt-2 h-2.5 w-full min-w-[11.875rem] rounded-full bg-nk-gray lg:min-w-[13.75rem]">
               <div
                 className="h-2.5 rounded-full bg-nk-red"
                 style={{ width: `${(unitsSold / totalUnits) * 100}%` }}
@@ -179,21 +178,21 @@ const ProjectIntroduction = ({
         </div>
       </section>
 
-      <section className="lg:w-full flex flex-wrap justify-center gap-0.5 my-6 overflow-hidden rounded-xl">
+      <section className="my-6 flex flex-wrap justify-center gap-0.5 overflow-hidden rounded-xl lg:w-full">
         {details.map((detail, index) => (
           <div
             key={index}
-            className="bg-white flex-1 min-w-fit px-4 py-2 lg:px-5 lg:py-3"
+            className="min-w-fit flex-1 bg-white px-4 py-2 lg:px-5 lg:py-3"
           >
-            <h3 className="font-metropolis-semibold text-xs md:text-base text-nk-red">
+            <h3 className="font-metropolis-semibold text-xs text-nk-red md:text-base">
               {detail.title}
             </h3>
-            <p className="text-sm md:text-lg text-black">{detail.value}</p>
+            <p className="text-sm text-black md:text-lg">{detail.value}</p>
           </div>
         ))}
       </section>
 
-      <p className="text-center text-sm md:text-base lg:text-justify lg:text-lg whitespace-pre-line mt-2">
+      <p className="mt-2 whitespace-pre-line text-center text-sm md:text-base lg:text-justify lg:text-lg">
         {description}
       </p>
     </section>
