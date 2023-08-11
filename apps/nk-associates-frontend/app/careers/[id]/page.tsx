@@ -15,21 +15,17 @@ async function JobDetail({ params: { id } }: JobDetailProps) {
     description,
     responsibilities,
     qualification,
+    experience,
     positions,
     start,
     end,
+    department,
     city,
     location,
-    department,
     skills,
     days,
   } = data?.attributes;
   const responsibilityArray = responsibilities.split("\n");
-  const [qualificationPart, experiencePart] =
-    qualification.split("Experience:");
-  const cleanedQualificationPart = qualificationPart
-    .replace("Qualification: ", "")
-    .trim();
   const skillArray = skills.split("\n");
 
   const formatTime = (time) => {
@@ -58,7 +54,6 @@ async function JobDetail({ params: { id } }: JobDetailProps) {
     }
   }
 
-  console.log(data);
   return (
     <div className="px-6 text-center">
       <div className="pb-5 font-metropolis-bold text-3xl">{title}</div>
@@ -91,13 +86,13 @@ async function JobDetail({ params: { id } }: JobDetailProps) {
         <span className="font-metropolis-bold text-base text-nk-red">
           Qualification:{" "}
         </span>
-        {cleanedQualificationPart}
+        {qualification}
       </div>
       <div className="text-left font-metropolis">
         <span className="font-metropolis-bold text-base text-nk-red">
           Experience:{" "}
         </span>
-        {experiencePart}
+        {experience}
       </div>
       <div className="py-4 text-left font-metropolis-bold text-[1.75rem] leading-[2.1rem]">
         Skills Required

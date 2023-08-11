@@ -72,6 +72,10 @@
       "repeatable": true,
       "component": "days.working-days",
       "required": true
+    },
+    "experience": {
+      "type": "string",
+      "required": true
     }
   }
 }

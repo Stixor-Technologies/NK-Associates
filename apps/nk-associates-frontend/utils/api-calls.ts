@@ -49,7 +49,7 @@ export const getJobDetail = async (id: string) => {
     const data = await resp.json();
     return data?.data;
   } catch (error) {
-    console.error("There was an error getting the Jobs List", error);
+    console.error("There was an error getting the Jobs Details", error);
   }
 };
 
