@@ -12,12 +12,27 @@ import "./project-comparison.css";
 
 import { getComparisonImages } from "../../../utils/api-calls";
 import { BASE_URL } from "../../../utils/constants";
+import { attribute } from "../../../../../node_modules/@types/three/examples/jsm/nodes/shadernode/ShaderNodeBaseElements.d";
 
 type PropTypes = {
   projectId: number;
 };
 
 type DirectionType = "vertical" | "horizontal";
+
+type ComparisonResponseType = {
+  attributes: {
+    comparisonImages: {
+      comparison_images: {
+        data: {
+          attributes: {
+            url: string;
+          };
+        }[];
+      };
+    }[];
+  };
+};
 
 const CompareComponent = ({ url }) => {
   const compareImgContainer = useRef<HTMLDivElement>();
@@ -146,13 +161,18 @@ const ProjectComparison = ({ projectId }: PropTypes) => {
   };
 
   const handleGetComparisonImages = async () => {
-    const response = await getComparisonImages(projectId);
-    const comparisonImages = response.attributes.comparisonImages.map((set) => {
+    const response: ComparisonResponseType = await getComparisonImages(
+      projectId
+    );
+    const comparisonImages = [];
+    response.attributes.comparisonImages.forEach((set) => {
       const urlSets = [];
-      set['comparison_images'].data.map((image) => urlSets.push(image.attributes.url));
-      return urlSets;
+      set["comparison_images"].data.map((image) =>
+        urlSets.push(image.attributes.url)
+      );
+      comparisonImages.push(urlSets);
     });
-    setPictures(comparisonImages)
+    setPictures(comparisonImages);
   };
 
   useEffect(() => {
@@ -165,7 +185,7 @@ const ProjectComparison = ({ projectId }: PropTypes) => {
         Render Vs Actual Image
       </h2>
 
-      {pictures.length > 0 ? (
+      {pictures.length > 0 && pictures[0].length > 0 ? (
         <div className="gap-3 md:flex">
           <Swiper
             centeredSlides={true}

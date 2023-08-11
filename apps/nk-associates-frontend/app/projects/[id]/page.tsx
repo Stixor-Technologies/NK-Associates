@@ -23,8 +23,8 @@ async function ProjectDetails({ params: { id } }: ProjectDetailProps) {
 
   const pdfUrl: string = project?.pdf?.data?.attributes?.url;
 
-  const picturesArr = project.pictures.data.map((picture) => {
-    return `${BASE_URL}${picture.attributes.url}`;
+  const picturesArr = project?.pictures?.data?.map((picture) => {
+    return `${BASE_URL}${picture?.attributes?.url}`;
   });
 
   return (
@@ -46,8 +46,8 @@ async function ProjectDetails({ params: { id } }: ProjectDetailProps) {
       />
       <ProjectGallery pictures={picturesArr} />
       <ProjectTimeline />
-      <ProjectComparison projectId={+id}  />
-      <section className="container flex flex-col items-center pb-6 pt-10 lg:flex-row lg:items-start">
+      <ProjectComparison projectId={+id} />
+      <section className="container flex flex-col items-center pb-6 pt-10 md:pt-14 lg:flex-row lg:items-start">
         <div className="w-full max-w-[30rem] md:px-4 lg:w-5/12">
           <div className="relative mx-auto mb-10 aspect-square h-[90%] w-[90%] -rotate-[4deg]">
             <Image
@@ -69,6 +69,7 @@ async function ProjectDetails({ params: { id } }: ProjectDetailProps) {
           </p>
         </div>
       </section>
+
       <section className="container rounded-xl py-8">
         <h2 className="mb-4 text-center font-metropolis-bold text-2xl md:mb-8">
           Location
