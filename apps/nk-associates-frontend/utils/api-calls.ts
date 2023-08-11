@@ -41,6 +41,18 @@ export const getPropertyDetail = async (id: string) => {
   }
 };
 
+export const getJobDetail = async (id: string) => {
+  try {
+    const resp = await fetch(`${BASE_URL}/api/jobs/${id}?populate=*`, {
+      cache: "no-store",
+    });
+    const data = await resp.json();
+    return data?.data;
+  } catch (error) {
+    console.error("There was an error getting the Jobs Details", error);
+  }
+};
+
 interface GetProjectsParams {
   category?: "Residential" | "Commercial" | "Hotel";
   cachePolicy?: { [key: string]: any };
@@ -72,15 +84,16 @@ export const getProjects = async ({
   } catch (error) {
     throw error;
   }
-}
-
+};
 
 export const getJobs = async (departmentName, city) => {
   try {
     let apiUrl = `${BASE_URL}/api/jobs?populate=*`;
 
     if (departmentName) {
-      apiUrl += `&filters[department][name]=${encodeURIComponent(departmentName)}`;
+      apiUrl += `&filters[department][name]=${encodeURIComponent(
+        departmentName
+      )}`;
     }
 
     if (city) {
@@ -101,8 +114,8 @@ export const getCities = async () => {
     const resp = await fetch(apiUrl);
     const data = await resp.json();
 
-    const cities = data.data.map(job => job.attributes.city);
-    const uniqueCitiesSet = new Set(cities);
+    const locations = data.data.map((job) => job.attributes.location);
+    const uniqueCitiesSet = new Set(locations);
     const uniqueCitiesArray = Array.from(uniqueCitiesSet);
 
     return uniqueCitiesArray;
@@ -111,15 +124,14 @@ export const getCities = async () => {
   }
 };
 
-
 export const getDepartments = async () => {
   try {
     let apiUrl = `${BASE_URL}/api/departments?populate=*`;
     const resp = await fetch(apiUrl);
     const data = await resp.json();
-    const departments = data?.data?.map((data: Department) => (
-         data?.attributes?.name
-    ))
+    const departments = data?.data?.map(
+      (data: Department) => data?.attributes?.name
+    );
     return departments;
   } catch (error) {
     console.error("There was an error getting departments", error);
@@ -128,14 +140,13 @@ export const getDepartments = async () => {
 
 export const getSocials = async () => {
   try {
-    let apiUrl = `${BASE_URL}/api/socials` ;
-    const resp = await fetch(apiUrl , {
+    let apiUrl = `${BASE_URL}/api/socials`;
+    const resp = await fetch(apiUrl, {
       cache: "no-store",
     });
     const links = await resp.json();
     return links;
   } catch (error) {
     console.error("There was an error getting social media links", error);
-    
-  };
+  }
 };
