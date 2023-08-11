@@ -89,49 +89,59 @@ export interface Project {
   };
 }
 
-
 export interface Department {
-    id: number;
-    attributes: {
-        name: string;
-        createdAt: string;
-        updatedAt: string;
-        publishedAt: string;
-    };
+  id: number;
+  attributes: {
+    name: string;
+    createdAt: string;
+    updatedAt: string;
+    publishedAt: string;
+  };
 }
 
 export interface Job {
-    id: number;
-    attributes: {
-        title: string;
-        description: string;
-        responsibilities: string;
-        qualification: string;
-        positions: number;
-        start: string;
-        end: string;
-        createdAt: string;
-        updatedAt: string;
-        publishedAt: string;
-        location: string;
-        city: string;
-        department: {
-            data: Department;
-        };
+  id: number;
+  attributes: {
+    title: string;
+    description: string;
+    responsibilities: string;
+    qualification: string;
+    experience: string;
+    positions: number;
+    start: string;
+    end: string;
+    createdAt: string;
+    updatedAt: string;
+    publishedAt: string;
+    location: string;
+    city: string;
+    skills: string;
+    days: {
+      id: number;
+      Monday: boolean;
+      Tuesday: boolean;
+      Wednesday: boolean;
+      Thursday: boolean;
+      Friday: boolean;
+      Saturday: boolean;
+    }[];
+    department: {
+      data: Department;
     };
+  };
 }
 
 export interface socials {
-    id: number;
-    attributes: {
-      twitter: string;
-      facebook: string;
-      youtube: string;
-      linkedin: string;
-      snapchat: string;
-      instagram: string;
-      playstore: string;
-      appstore: string;
-      appgallery: string;
-    };
+  id: number;
+  attributes: {
+    twitter: string;
+    facebook: string;
+    youtube: string;
+    linkedin: string;
+    snapchat: string;
+    instagram: string;
+    playstore: string;
+    appstore: string;
+    appgallery: string;
+  };
 }

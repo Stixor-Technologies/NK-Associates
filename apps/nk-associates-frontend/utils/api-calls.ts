@@ -41,6 +41,18 @@ export const getPropertyDetail = async (id: string) => {
   }
 };
 
+export const getJobDetail = async (id: string) => {
+  try {
+    const resp = await fetch(`${BASE_URL}/api/jobs/${id}?populate=*`, {
+      cache: "no-store",
+    });
+    const data = await resp.json();
+    return data?.data;
+  } catch (error) {
+    console.error("There was an error getting the Jobs Details", error);
+  }
+};
+
 interface GetProjectsParams {
   category?: "Residential" | "Commercial" | "Hotel";
   cachePolicy?: { [key: string]: any };
@@ -144,9 +156,9 @@ export const getDepartments = async () => {
     let apiUrl = `${BASE_URL}/api/departments?populate=*`;
     const resp = await fetch(apiUrl);
     const data = await resp.json();
-    const departments = data?.data?.map((data: Department) => (
-         data?.attributes?.name
-    ))
+    const departments = data?.data?.map(
+      (data: Department) => data?.attributes?.name
+    );
     return departments;
   } catch (error) {
     console.error("There was an error getting departments", error);
