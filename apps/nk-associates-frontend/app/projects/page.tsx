@@ -1,6 +1,6 @@
 "use client";
 import { useEffect, useState, useMemo, useLayoutEffect, useRef } from "react";
-import ProjectCard from "../../components/projectcard/project-card";
+import ProjectCard from "../../components/projects/projectcard/project-card";
 import { getProjects } from "../../utils/api-calls";
 import LinkButton from "../../components/button/link-button";
 import { Project } from "../../utils/types/types";
@@ -39,6 +39,7 @@ const ProjectCardItem = ({
 
   return (
     <ProjectCard
+      id={project.id}
       imagesList={imagesList}
       propertyName={project.attributes.title}
       plotSize={`${project.attributes.plotSize} ${project.attributes.plotSizeUnits}`}
