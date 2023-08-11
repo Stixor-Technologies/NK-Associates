@@ -132,7 +132,7 @@ const LinkButton: FC<Props> = (props) => {
     gradient: "text-nk-red",
   };
 
-  const classes = `rounded-full relative text-center relative inline-flex h-12 w-48 items-center justify-center capitalize font-metropolis shadow-3xl
+  const classes = `rounded-full relative text-center relative inline-flex py-2 px-4 items-center justify-center capitalize font-metropolis shadow-3xl
   ${typeStyles[type || "gradient"]}  block ${className || ""}`;
 
   if ("clickEvent" in props) {

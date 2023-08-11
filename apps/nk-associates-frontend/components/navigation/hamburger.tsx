@@ -83,7 +83,7 @@ const Hamburger = forwardRef<HTMLButtonElement, HamburgerProps>(
 
     return (
       <button
-        className="relative z-50 flex h-16 w-16 items-center justify-center rounded-md bg-transparent p-2 focus:outline-none"
+        className="relative z-50 mt-2 flex h-14 w-14 items-center justify-center rounded-md bg-transparent p-2 focus:outline-none"
         type="button"
         onClick={() => {
           setIsMenuOpen(!isMenuOpen);

@@ -60,16 +60,16 @@ const ContactUs = async () => {
 
   return (
     <section className="">
-      <div className="container mx-auto flex flex-1 flex-col px-4 py-12 md:py-24">
+      <div className="container mx-auto flex flex-1 flex-col px-4 pt-4 pb-12 md:pb-24 md:pt-8">
         <ContactForm categories={categories} />
 
-        <div className="card-component mt-8 grid w-full grid-flow-row gap-3 lg:grid-cols-3 lg:gap-8">
+        <div className="card-component mt-8 grid w-full gap-3 sm:grid-cols-2 lg:grid-cols-3 lg:gap-8">
           <ContactDetails data={data} />
         </div>
 
         <div className="mt-14 w-full md:mt-24">
           <div className="flex w-full flex-col items-center justify-center">
-            <div className="mb-5 text-center font-metropolis-bold text-3xl text-nk-black md:mb-14 md:text-4xl">
+            <div className="mb-5 text-center font-metropolis-bold text-[2rem] text-nk-black md:mb-8 md:text-4xl">
               Head Office Locations
             </div>
 

@@ -18,7 +18,7 @@ export interface Contacts {
     }[];
     numbers: {
       id: number;
-      contactNumber: string;
+      contact_number: string;
     }[];
   };
 }
