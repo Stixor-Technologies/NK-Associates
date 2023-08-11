@@ -55,7 +55,7 @@ async function JobDetail({ params: { id } }: JobDetailProps) {
   }
 
   return (
-    <div className="px-6 text-center">
+    <div className="px-6 text-center md:px-14">
       <div className="pb-5 font-metropolis-bold text-3xl">{title}</div>
       <div className="font-metropolis text-sm">{description}</div>
       <div className="py-3 font-metropolis-semibold text-base">
