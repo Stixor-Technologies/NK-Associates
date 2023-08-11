@@ -39,6 +39,7 @@ async function PropertyDetail({ params: { id } }: PropertyDetailProps) {
     latitude,
     longitude,
     property_images,
+    address,
     city,
   } = data?.attributes;
 
@@ -48,8 +49,8 @@ async function PropertyDetail({ params: { id } }: PropertyDetailProps) {
   const center = { lat: latitude, lng: longitude };
 
   return (
-    <section className="">
-      <DetailSlider property_images={property_images.data} />
+    <section>
+      <DetailSlider property_images={property_images?.data} />
     
       <div className="relative mt-14 md:mt-3">
         {/* 360 Tour Button */}
@@ -166,7 +167,7 @@ async function PropertyDetail({ params: { id } }: PropertyDetailProps) {
                 className="w-3.5 md:w-5"
               />
               <h2 className="self-end text-sm text-nk-black md:font-metropolis-extralight md:text-[1.75rem]">
-                Street: 12, Secor- B, Plot #: 24-C, DHA-III, Islamabad
+                {address}, {city}
               </h2>
             </div>
 
