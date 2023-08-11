@@ -167,7 +167,7 @@ async function PropertyDetail({ params: { id } }: PropertyDetailProps) {
                 className="w-3.5 md:w-5"
               />
               <h2 className="self-end text-sm text-nk-black md:font-metropolis-extralight md:text-[1.75rem]">
-                {address}
+                {address}, {city}
               </h2>
             </div>
 
