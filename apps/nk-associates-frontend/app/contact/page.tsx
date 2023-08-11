@@ -1,34 +1,19 @@
 import React from "react";
 import ContactForm from "../../components/shared/contact-form";
 import ContactDetails from "../../components/contact/contact-details";
-import { BASE_URL } from "../../utils/constants";
 import MapComponent from "../../components/shared/map-component";
 import { Contacts } from "../../utils/types/types";
-import { getOfficeAddress, getHeadOffice } from "../../utils/api-calls";
+import { getOfficeAddress, getHeadOffice, getCategories } from "../../utils/api-calls";
 
 interface Location {
   lat: number;
   lng: number;
 }
-async function FetchCategories() {
-  try {
-    const response = await fetch(`${BASE_URL}/api/categories`, {
-      cache: "no-store",
-    });
-    if (!response.ok) {
-      throw new Error("Network response was not OK");
-    }
-    const data = await response.json();
-    return data?.data;
-  } catch (error) {
-    console.error(error);
-  }
-}
 
 const ContactUs = async () => {
   const data: Contacts[] = await getOfficeAddress();
   const headOfficeAddress = await getHeadOffice();
-  const categories = await FetchCategories();
+  const categories = await getCategories();
   const combinedAddresses: Contacts[] = [
     ...data,
     ...(headOfficeAddress ? [headOfficeAddress] : []),
@@ -37,9 +22,6 @@ const ContactUs = async () => {
     lat: headOfficeAddress?.attributes?.latitude,
     lng: headOfficeAddress?.attributes?.longitude,
   };
-
-  console.log(headOfficeLocation);
-  console.log(combinedAddresses);
 
   return (
     <section className="">

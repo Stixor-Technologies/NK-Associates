@@ -113,6 +113,21 @@ export const getHeadOffice = async () => {
   }
 };
 
+export const getCategories = async () => {
+  try {
+    const response = await fetch(`${BASE_URL}/api/categories`, {
+      cache: "no-store",
+    });
+    if (!response.ok) {
+      throw new Error("Network response was not OK");
+    }
+    const data = await response.json();
+    return data?.data;
+  } catch (error) {
+    console.error(error);
+  }
+};
+
 export const getJobs = async (departmentName, city) => {
   try {
     let apiUrl = `${BASE_URL}/api/jobs?populate=*`;
