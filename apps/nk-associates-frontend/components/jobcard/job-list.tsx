@@ -23,9 +23,14 @@ const JobList = () => {
 	const [cities, setCities] = useState<string[]>([]);
 	const fetchData = async () => {
 		const resp = await getJobs(filteredDepartment, filteredCity);
+		const departmentList = await getDepartments();
+
 		if (resp?.data) {
 			setJobs(resp.data);
 			setTotal(resp.meta.pagination.total);
+		}
+		if (departmentList) {
+			setDepartments(departmentList as string[]);
 		}
 		setIsLoading(false);
 	};
@@ -33,17 +38,11 @@ const JobList = () => {
 	useEffect(() => {
 		fetchData();
 		fetchCities();
-		fetchDepartments();
 	}, [filteredDepartment, filteredCity]);
 
 	const fetchCities = async () => {
 		const cityList = (await getCities()) as string[];
 		setCities(cityList);
-	};
-
-	const fetchDepartments = async () => {
-		const departmentList = await getDepartments();
-		setDepartments(departmentList as string[]);
 	};
 
 	const handleFilterByDepartment = (department: string | null) => {
