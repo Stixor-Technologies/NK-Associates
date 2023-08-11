@@ -2,7 +2,7 @@ import { useMemo } from "react";
 import { useRouter } from "next/navigation";
 import LinkButton from "../button/link-button";
 
-const ErrorBoundry = ({ error }: { error: Error }) => {
+const ErrorBoundary = ({ error }: { error: Error }) => {
   const router = useRouter();
 
   const isDevEnv = useMemo(() => {
@@ -34,4 +34,4 @@ const ErrorBoundry = ({ error }: { error: Error }) => {
   );
 };
 
-export default ErrorBoundry;
+export default ErrorBoundary;

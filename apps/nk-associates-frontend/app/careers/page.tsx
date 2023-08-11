@@ -1,9 +1,9 @@
 import React from "react";
 import Image from "next/image";
-import Job from "../../../nk-associates-frontend/app/assets/images/job-application.png";
+import Job from "../../public/assets/images/job-application.png";
 import LinkButton from "../../components/button/link-button";
 import Link from "next/link";
-import JobList from "../../components/jobcard/job-list";
+import JobList from "../../components/job-card/job-list";
 
 const Careers = () => {
   return (
