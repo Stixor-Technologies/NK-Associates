@@ -10,8 +10,11 @@ import "swiper/css/thumbs";
 import "swiper/css/pagination";
 import "./project-comparison.css";
 
+import { getComparisonImages } from "../../../utils/api-calls";
+import { BASE_URL } from "../../../utils/constants";
+
 type PropTypes = {
-  pictures: string[][];
+  projectId: number;
 };
 
 type DirectionType = "vertical" | "horizontal";
@@ -55,18 +58,18 @@ const CompareComponent = ({ url }) => {
       className="relative h-full w-full select-none"
     >
       <Image
-        src={url[0]}
+        src={`${BASE_URL}${url[0]}`}
         alt="Carousel Image"
         layout="fill"
         objectFit="cover"
         className="pointer-events-none h-full w-full object-cover"
       />
       <Image
-        src={url[1]}
+        src={`${BASE_URL}${url[1]}`}
         alt="Carousel Image"
         layout="fill"
         objectFit="cover"
-        className="pointer-events-none absolute inset-0 h-full w-full object-cover grayscale"
+        className="pointer-events-none absolute inset-0 h-full w-full object-cover"
         style={{
           clipPath: `polygon(0 0, ${imgRevealFraction * 100}% 0, ${
             imgRevealFraction * 100
@@ -132,14 +135,29 @@ const CompareComponent = ({ url }) => {
   );
 };
 
-const ProjectComparison = ({ pictures }: PropTypes) => {
+const ProjectComparison = ({ projectId }: PropTypes) => {
   const [thumbsSwiper, setThumbsSwiper] = useState(null);
   const [direction, setDirection] = useState<DirectionType>("vertical");
+  const [pictures, setPictures] = useState<string[][]>([[]]);
 
   const handleResize = (e) => {
     let direction = window.innerWidth <= 768 ? "horizontal" : "vertical";
     setDirection(direction as DirectionType);
   };
+
+  const handleGetComparisonImages = async () => {
+    const response = await getComparisonImages(projectId);
+    const comparisonImages = response.attributes.comparisonImages.map((set) => {
+      const urlSets = [];
+      set['comparison_images'].data.map((image) => urlSets.push(image.attributes.url));
+      return urlSets;
+    });
+    setPictures(comparisonImages)
+  };
+
+  useEffect(() => {
+    handleGetComparisonImages();
+  }, []);
 
   return (
     <section className="py-8 md:container md:py-14">
@@ -183,7 +201,7 @@ const ProjectComparison = ({ pictures }: PropTypes) => {
                 className="aspect-video !w-[8.125rem] cursor-pointer md:max-h-[6.25rem] md:!w-auto lg:max-h-[7.5rem]"
               >
                 <Image
-                  src={url[0]}
+                  src={`${BASE_URL}${url[0]}`}
                   alt="Thumb Item"
                   layout="fill"
                   objectFit="cover"

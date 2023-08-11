@@ -27,13 +27,6 @@ async function ProjectDetails({ params: { id } }: ProjectDetailProps) {
     return `${BASE_URL}${picture.attributes.url}`;
   });
 
-  const picturesAndRendersArr = project.pictures.data.map((picture) => {
-    return [
-      `${BASE_URL}${picture.attributes.url}`,
-      `${BASE_URL}${picture.attributes.url}`,
-    ];
-  });
-
   return (
     <>
       <ProjectDetailsVR />
@@ -53,8 +46,8 @@ async function ProjectDetails({ params: { id } }: ProjectDetailProps) {
       />
       <ProjectGallery pictures={picturesArr} />
       <ProjectTimeline />
-      <ProjectComparison pictures={picturesAndRendersArr} />
-      <section className="container flex flex-col items-center py-6 lg:flex-row lg:items-start">
+      <ProjectComparison projectId={+id}  />
+      <section className="container flex flex-col items-center pb-6 pt-10 lg:flex-row lg:items-start">
         <div className="w-full max-w-[30rem] md:px-4 lg:w-5/12">
           <div className="relative mx-auto mb-10 aspect-square h-[90%] w-[90%] -rotate-[4deg]">
             <Image

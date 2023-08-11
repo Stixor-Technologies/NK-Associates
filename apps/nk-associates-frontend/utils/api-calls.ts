@@ -88,16 +88,33 @@ export const getProjects = async ({
 
 export const getProjectDetail = async (id: string) => {
   try {
-    const resp = await fetch(`${BASE_URL}/api/projects/${id}?populate=*`, {
-      cache: "no-store",
-    });
+    const resp = await fetch(
+      `${BASE_URL}/api/projects/${id}?populate=*&`,
+      {
+        cache: "no-store",
+      }
+    );
     const data = await resp.json();
     return data?.data;
   } catch (error) {
-    console.error("There was an error getting the Property Details", error);
+    console.error("There was an error getting the Project Details", error);
   }
 };
 
+export const getComparisonImages = async (id: number) => {
+  try {
+    const resp = await fetch(
+      `${BASE_URL}/api/projects/${id}?populate[comparisonImages][populate]=*`,
+      {
+        cache: "no-store",
+      }
+    );
+    const data = await resp.json();
+    return data?.data;
+  } catch (error) {
+    console.error("There was an error getting the ComparisonImages", error);
+  }
+};
 
 export const getJobs = async (departmentName, city) => {
   try {

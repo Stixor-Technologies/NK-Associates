@@ -102,6 +102,9 @@ export interface Project {
     };
     numberOfRooms?: number;
     numberOfBathRooms?: number;
+    comparisonImages: {
+      id: number;
+    }[];
   };
 }
 

@@ -146,6 +146,12 @@
     "longitude": {
       "type": "float",
       "required": true
+    },
+    "comparisonImages": {
+      "displayName": "comparison-images",
+      "type": "component",
+      "repeatable": true,
+      "component": "comparison-images.comparison-images"
     }
   }
 }
