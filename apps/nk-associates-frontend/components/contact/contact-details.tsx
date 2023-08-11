@@ -1,3 +1,4 @@
+'use client'
 import Image from "next/image";
 import AreaMarker from "../../public/assets/icons/area-marker.svg";
 import Envelope from "../../public/assets/icons/envelope-icon.svg";
@@ -11,7 +12,7 @@ interface ContactDetailProps {
 const ContactDetails: React.FC<ContactDetailProps> = ({ data }) => {
   return (
     <>
-      {data?.map((contactItem, index) => {
+      {data?.map((contactItem: Contacts, index: number) => {
         return (
           <div
             key={index}
