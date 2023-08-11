@@ -1,4 +1,5 @@
 # NK Associates
+
 <details>
   <summary>Table of Contents</summary>
   <ol>
@@ -135,20 +136,21 @@ You will need the following packages to be installed beforehand in order to clon
 
 ## Strapi local setup
 
-1. Install PostgresSQL
-  
+1.  Install PostgresSQL
+
     Follow the guide provided by [PostgresSQL](https://www.postgresql.org/download/), keep all default settings.
 
-    > TroubleShooting on MacOS with M1 chip: 
-        If you are facing the following error: 
+    > TroubleShooting on MacOS with M1 chip:
+
+        If you are facing the following error:
         ```The application cannot be opened for an unexpected reason, error=Error Domain=NSOSStatusErrorDomain Code=-10669 "(null)" UserInfo={_LSLine=3863, _LSFunction=_LSOpenStuffCallLocal} (1)```,
         confirm that you have rosetta installed, find more details [here](https://support.apple.com/en-us/HT211861).
 
-2. Change Database env variable's values
+2.  Change Database env variable's values
 
-    - Assign variable NEXT_PUBLIC_BACKEND_URL="http://127.0.0.1:1337", in env file at */apps/nk-associates-frontend*
+    - Assign variable NEXT*PUBLIC_BACKEND_URL="http://127.0.0.1:1337", in env file at */apps/nk-associates-frontend\_
 
-    - Assign your appropriate db username and db password to env variables, in env file at */apps/nk-associates-cms*
+    - Assign your appropriate db username and db password to env variables, in env file at _/apps/nk-associates-cms_
       ```
       DATABASE_NAME=<your_database_name>
       DATABASE_USERNAME=<your_database_name>

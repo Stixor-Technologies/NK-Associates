@@ -17,7 +17,7 @@ const MapComponent: FC<IProps> = ({ locations }) => {
   const mapRef = useRef<google.maps.Map | null>(null);
   const { isLoaded } = useJsApiLoader({
     id: "google-map-script",
-    googleMapsApiKey: MAP_KEY,
+    googleMapsApiKey: MAP_KEY
   });
 
   const allLocations = useMemo(
@@ -31,7 +31,7 @@ const MapComponent: FC<IProps> = ({ locations }) => {
     zoomControl: true,
     streetViewControl: false,
     fullscreenControl: true,
-    keyboardShortcuts: false,
+    keyboardShortcuts: false
   };
 
   useEffect(() => {
@@ -64,7 +64,7 @@ const MapComponent: FC<IProps> = ({ locations }) => {
         </GoogleMap>
       ) : (
         <div className="absolute top-0 left-0 h-full w-full flex items-center">
-        <Spinner />
+          <Spinner />
         </div>
       )}
     </div>

@@ -19,11 +19,10 @@ export interface Events {
 }
 
 export interface MediaAttributes {
-    attributes: {
-      url: string;
-      name: string;
-    };
-
+  attributes: {
+    url: string;
+    name: string;
+  };
 }
 
 export interface Property {
@@ -40,7 +39,7 @@ export interface Property {
     longitude: number;
     price: string;
     property_images: {
-      data: MediaAttributes[]
+      data: MediaAttributes[];
     };
     purpose: string;
     title: string;
@@ -73,31 +72,31 @@ export interface Project {
   };
 }
 export interface Department {
-    id: number;
-    attributes: {
-        name: string;
-        createdAt: string;
-        updatedAt: string;
-        publishedAt: string;
-    };
+  id: number;
+  attributes: {
+    name: string;
+    createdAt: string;
+    updatedAt: string;
+    publishedAt: string;
+  };
 }
 
 export interface Job {
-    id: number;
-    attributes: {
-        title: string;
-        description: string;
-        responsibilities: string;
-        qualification: string;
-        positions: number;
-        start: string;
-        end: string;
-        createdAt: string;
-        updatedAt: string;
-        publishedAt: string;
-        location: string;
-        department: {
-            data: Department;
-        };
+  id: number;
+  attributes: {
+    title: string;
+    description: string;
+    responsibilities: string;
+    qualification: string;
+    positions: number;
+    start: string;
+    end: string;
+    createdAt: string;
+    updatedAt: string;
+    publishedAt: string;
+    location: string;
+    department: {
+      data: Department;
     };
+  };
 }

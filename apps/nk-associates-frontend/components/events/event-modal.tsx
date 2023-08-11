@@ -32,7 +32,7 @@ const EventModal: React.FC<ModalProps> = ({ open, onClose, eventData }) => {
     closable: true,
     onHide: () => {
       onClose();
-    },
+    }
   };
 
   const [thumbsSwiper, setThumbsSwiper] = useState(null);
@@ -49,7 +49,7 @@ const EventModal: React.FC<ModalProps> = ({ open, onClose, eventData }) => {
       closable: true,
       onHide: () => {
         onClose();
-      },
+      }
     };
 
     return new Modal(modalElement.current, modalOptions);

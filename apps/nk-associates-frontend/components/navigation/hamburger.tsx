@@ -7,7 +7,7 @@ import {
   MutableRefObject,
   Dispatch,
   SetStateAction,
-  MouseEvent,
+  MouseEvent
 } from "react";
 import { gsap } from "gsap";
 
@@ -51,7 +51,7 @@ const Hamburger = forwardRef<HTMLButtonElement, HamburgerProps>(
           scale: 0,
           opacity: 0,
           duration: 0.75,
-          ease: "power3.out",
+          ease: "power3.out"
         });
       }
 
@@ -60,7 +60,7 @@ const Hamburger = forwardRef<HTMLButtonElement, HamburgerProps>(
           scale: 1,
           opacity: 0.6,
           duration: 0.75,
-          ease: "elastic.out(1, 0.75)",
+          ease: "elastic.out(1, 0.75)"
         });
       }
     }, [isMenuOpen, isHover]);
@@ -87,7 +87,7 @@ const Hamburger = forwardRef<HTMLButtonElement, HamburgerProps>(
             rotationZ: 45,
             transformOrigin: "50% 50%",
             scale: 1,
-            duration: 0.5,
+            duration: 0.5
           },
           "rotate"
         )
@@ -97,7 +97,7 @@ const Hamburger = forwardRef<HTMLButtonElement, HamburgerProps>(
             rotationZ: -45,
             transformOrigin: "50% 50%",
             scale: 1,
-            duration: 0.5,
+            duration: 0.5
           },
           "rotate"
         )

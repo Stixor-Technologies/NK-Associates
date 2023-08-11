@@ -14,10 +14,10 @@ export const getProperties = async (start: number, limit = 12) => {
 export const getPropertyDetail = async (id: string) => {
   try {
     const resp = await fetch(`${BASE_URL}/api/properties/${id}?populate=*`, {
-      cache: "no-store",
+      cache: "no-store"
     });
-        const data = await resp.json();
-      return data?.data;
+    const data = await resp.json();
+    return data?.data;
   } catch (error) {
     console.error("There was an error getting the Property List", error);
   }
@@ -33,7 +33,7 @@ export const getProjects = async ({
   category = undefined,
   cachePolicy = undefined,
   start = 0,
-  limit = 5,
+  limit = 5
 }: GetProjectsParams = {}): Promise<Response> => {
   try {
     const fetchOptions: { [key: string]: any } = cachePolicy ? cachePolicy : {};
@@ -53,16 +53,16 @@ export const getProjects = async ({
   } catch (error) {
     throw error;
   }
-}
+};
 
-
-
-export const getJobs = async (departmentName, location, ) => {
+export const getJobs = async (departmentName, location) => {
   try {
     let apiUrl = `${BASE_URL}/api/jobs?populate=*`;
 
     if (departmentName) {
-      apiUrl += `&filters[department][name]=${encodeURIComponent(departmentName)}`;
+      apiUrl += `&filters[department][name]=${encodeURIComponent(
+        departmentName
+      )}`;
     }
 
     if (location) {
@@ -83,7 +83,7 @@ export const getLocations = async () => {
     const resp = await fetch(apiUrl);
     const data = await resp.json();
 
-    const locations = data.data.map(job => job.attributes.location);
+    const locations = data.data.map((job) => job.attributes.location);
     const uniqueLocationsSet = new Set(locations);
     const uniqueLocationsArray = Array.from(uniqueLocationsSet);
 
@@ -93,18 +93,18 @@ export const getLocations = async () => {
   }
 };
 
-
 export const getDepartments = async () => {
   try {
     let apiUrl = `${BASE_URL}/api/jobs?populate=*`;
     const resp = await fetch(apiUrl);
     const data = await resp.json();
 
-    const departments = data.data.map(job => job.attributes.department.data.attributes.name);
-    const uniqueDepartmentsSet = new Set(departments); 
+    const departments = data.data.map(
+      (job) => job.attributes.department.data.attributes.name
+    );
+    const uniqueDepartmentsSet = new Set(departments);
     const uniqueDepartmentsArray = Array.from(uniqueDepartmentsSet);
     return uniqueDepartmentsArray;
-    
   } catch (error) {
     console.error("There was an error getting departments", error);
   }

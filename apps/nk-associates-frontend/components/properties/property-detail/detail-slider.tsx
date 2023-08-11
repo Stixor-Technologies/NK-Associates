@@ -9,9 +9,8 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 import { Navigation, Pagination, Keyboard } from "swiper/modules";
 import "./slider-styles.css";
-import WhatsAppIcon from "../../../public/assets/icons/whatsapp-icon.svg"
-import PhoneIcon from "../../../public/assets/icons/phone-icon.svg"
-
+import WhatsAppIcon from "../../../public/assets/icons/whatsapp-icon.svg";
+import PhoneIcon from "../../../public/assets/icons/phone-icon.svg";
 
 interface SliderProps {
   property_images: MediaAttributes[];
@@ -26,7 +25,7 @@ const DetailSlider: FC<SliderProps> = ({ property_images }) => {
         keyboard={true}
         loop={true}
         pagination={{
-          clickable: true,
+          clickable: true
         }}
         modules={[Navigation, Pagination, Keyboard]}
         className="mySwiper"
@@ -51,14 +50,24 @@ const DetailSlider: FC<SliderProps> = ({ property_images }) => {
       </Swiper>
 
       <div className="absolute bottom-6 right-3 z-10 flex items-center justify-center gap-2 md:gap-2 lg:bottom-12 lg:right-8">
-      
         <button className="group flex h-10 w-12 items-center justify-center rounded-md bg-nk-white overflow-hidden transition-all sm:h-12 sm:w-14 md:h-14 md:w-16 duration-500 delay-200 border hover:shadow-lg">
-          
-          <Image src={WhatsAppIcon} width={40} height={40} alt="contact-whatspp" className="w-6 transition-all duration-500 delay-200 sm:w-8 md:w-10 group-hover:scale-110"/>  
+          <Image
+            src={WhatsAppIcon}
+            width={40}
+            height={40}
+            alt="contact-whatspp"
+            className="w-6 transition-all duration-500 delay-200 sm:w-8 md:w-10 group-hover:scale-110"
+          />
         </button>
 
         <button className="group flex h-10 w-12 items-center justify-center rounded-md bg-nk-white overflow-hidden transition-all duration-500 delay-200 sm:h-12 sm:w-14 md:h-14 md:w-16">
-        <Image src={PhoneIcon} width={40} height={40} alt="contact-phone" className="w-6 transition-all duration-500 delay-200 sm:w-8 md:w-10 group-hover:scale-110"/>
+          <Image
+            src={PhoneIcon}
+            width={40}
+            height={40}
+            alt="contact-phone"
+            className="w-6 transition-all duration-500 delay-200 sm:w-8 md:w-10 group-hover:scale-110"
+          />
         </button>
       </div>
     </div>

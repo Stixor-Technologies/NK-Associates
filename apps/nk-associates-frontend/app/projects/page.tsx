@@ -1,6 +1,6 @@
 "use client";
 import { useEffect, useState, useMemo } from "react";
-import ProjectCard from "../../components/projectcard/project-card";
+import ProjectCard from "../../components/project-card/project-card";
 import { getProjects } from "../../utils/api-calls";
 import LinkButton from "../../components/button/link-button";
 import { Project } from "../../utils/types/types";
@@ -10,7 +10,7 @@ import InfiniteScroll from "react-infinite-scroll-component";
 
 const ProjectCardItem = ({
   project,
-  index,
+  index
 }: {
   project: Project;
   index: number;
@@ -55,7 +55,7 @@ export default function Projects() {
       if (selectedButton != "All") {
         res = await getProjects({
           category: selectedButton,
-          start: projectsData.length,
+          start: projectsData.length
         });
       } else {
         res = await getProjects({ start: projectsData.length });

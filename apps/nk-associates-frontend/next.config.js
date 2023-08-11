@@ -3,7 +3,7 @@
 const nextConfig = {
   reactStrictMode: false,
   swcMinify: true,
-  output: "standalone",
+  output: "standalone"
 };
 
 module.exports = {
@@ -13,8 +13,8 @@ module.exports = {
       {
         protocol: "https",
         hostname: "strapi-dev.nkgroupofcompanies.com",
-        pathname: "/uploads/**",
-      },
-    ],
-  },
+        pathname: "/uploads/**"
+      }
+    ]
+  }
 };

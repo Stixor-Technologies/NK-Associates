@@ -18,12 +18,13 @@ interface ButtonProps extends BaseProps {
 type Props = LinkProps | ButtonProps;
 
 const LinkButton: FC<Props> = (props) => {
-   const {text, type, className} = props
+  const { text, type, className } = props;
   const typeStyles = {
     transparent: "bg-transparent text-nk-gray border border-nk-red",
     inverted: "bg-nk-white text-nk-red",
     solid: "bg-nk-red text-nk-white",
-    gradient: "bg-gradient-to-b from-nk-gradient-red-one to-nk-gradient-red-two text-nk-white",
+    gradient:
+      "bg-gradient-to-b from-nk-gradient-red-one to-nk-gradient-red-two text-nk-white"
   };
 
   const classes = `rounded-full text-center capitalize font-metropolis transition-all ease-in-out duration-500 hover:shadow-lg hover:delay-200 

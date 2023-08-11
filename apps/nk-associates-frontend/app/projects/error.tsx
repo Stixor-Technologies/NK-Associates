@@ -2,11 +2,11 @@
 
 import { useEffect } from "react";
 
-import { ErrorBoundry } from "../../components/errorboundry";
+import { ErrorBoundary } from "../../components/error-boundary";
 
 export default function Error({
   error,
-  reset,
+  reset
 }: {
   error: Error;
   reset: () => void;
@@ -16,5 +16,5 @@ export default function Error({
     console.error(error);
   }, [error]);
 
-  return <ErrorBoundry error={error} />;
+  return <ErrorBoundary error={error} />;
 }
