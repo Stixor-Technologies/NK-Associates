@@ -34,7 +34,7 @@ const ContactDetails: React.FC<ContactDetailProps> = ({ data }) => {
                 </p>
               </div>
 
-              {contactItem?.attributes?.emails.length > 0 && (
+              {contactItem?.attributes?.emails?.length > 0 && (
                 <div className="flex items-center gap-4">
                   <Image
                     src={Envelope}
@@ -57,7 +57,7 @@ const ContactDetails: React.FC<ContactDetailProps> = ({ data }) => {
                 </div>
               )}
 
-              {contactItem?.attributes?.numbers.length > 0 && (
+              {contactItem?.attributes?.numbers?.length > 0 && (
                 <div className="flex items-center gap-4">
                   <Image
                     src={ContactIcon}

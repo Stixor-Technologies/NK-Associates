@@ -71,16 +71,43 @@ export const getProjects = async ({
   } catch (error) {
     throw error;
   }
-}
+};
 
+export const getOfficeAddress = async () => {
+  try {
+    const response = await fetch(`${BASE_URL}/api/contacts?populate=*`, {
+      cache: "no-store",
+    });
+    if (!response.ok) {
+      throw new Error("Network response was not OK");
+    }
+    const data = await response.json();
+    return data?.data;
+  } catch (error) {
+    console.error(error);
+  }
+};
 
+export const getHeadOffice = async () => {
+  try {
+    const resp = await fetch(`${BASE_URL}/api/head-office?populate=*`, {
+      cache: "no-store",
+    });
+    const data = await resp.json();
+    return data?.data;
+  } catch (error) {
+    console.error("There was an error getting the Property List", error);
+  }
+};
 
 export const getJobs = async (departmentName, city) => {
   try {
     let apiUrl = `${BASE_URL}/api/jobs?populate=*`;
 
     if (departmentName) {
-      apiUrl += `&filters[department][name]=${encodeURIComponent(departmentName)}`;
+      apiUrl += `&filters[department][name]=${encodeURIComponent(
+        departmentName
+      )}`;
     }
 
     if (city) {
@@ -101,7 +128,7 @@ export const getCities = async () => {
     const resp = await fetch(apiUrl);
     const data = await resp.json();
 
-    const cities = data.data.map(job => job.attributes.city);
+    const cities = data.data.map((job) => job.attributes.city);
     const uniqueCitiesSet = new Set(cities);
     const uniqueCitiesArray = Array.from(uniqueCitiesSet);
 
@@ -111,15 +138,16 @@ export const getCities = async () => {
   }
 };
 
-
 export const getDepartments = async () => {
   try {
     let apiUrl = `${BASE_URL}/api/jobs?populate=*`;
     const resp = await fetch(apiUrl);
     const data = await resp.json();
 
-    const departments = data.data.map(job => job.attributes.department.data.attributes.name);
-    const uniqueDepartmentsSet = new Set(departments); 
+    const departments = data.data.map(
+      (job) => job.attributes.department.data.attributes.name
+    );
+    const uniqueDepartmentsSet = new Set(departments);
     const uniqueDepartmentsArray = Array.from(uniqueDepartmentsSet);
     return uniqueDepartmentsArray;
   } catch (error) {
@@ -129,14 +157,13 @@ export const getDepartments = async () => {
 
 export const getSocials = async () => {
   try {
-    let apiUrl = `${BASE_URL}/api/socials` ;
-    const resp = await fetch(apiUrl , {
+    let apiUrl = `${BASE_URL}/api/socials`;
+    const resp = await fetch(apiUrl, {
       cache: "no-store",
     });
     const links = await resp.json();
     return links;
   } catch (error) {
     console.error("There was an error getting social media links", error);
-    
-  };
+  }
 };
