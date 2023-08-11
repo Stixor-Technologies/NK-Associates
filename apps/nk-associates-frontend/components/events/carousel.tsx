@@ -71,7 +71,7 @@ const Carousel: React.FC<CarouselProps> = ({ images }) => {
         modules={[EffectCoverflow, Pagination, Autoplay]}
         className="mySwiper carousel-slider mx-auto mt-7 h-full w-full"
       >
-        {shuffledImages?.map((image, index) => {
+        {shuffledImages.slice(0, 10)?.map((image, index) => {
           return (
             <SwiperSlide key={index} className="aspect-square drop-shadow-lg">
               <Image
