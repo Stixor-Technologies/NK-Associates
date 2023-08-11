@@ -13,7 +13,7 @@ interface Location {
 async function FetchData() {
   try {
     const response = await fetch(`${BASE_URL}/api/contacts?populate=*`, {
-      cache: "no-store",
+      cache: "no-store"
     });
     if (!response.ok) {
       throw new Error("Network response was not OK");
@@ -28,7 +28,7 @@ async function FetchData() {
 async function FetchCategories() {
   try {
     const response = await fetch(`${BASE_URL}/api/categories`, {
-      cache: "no-store",
+      cache: "no-store"
     });
     if (!response.ok) {
       throw new Error("Network response was not OK");
@@ -45,7 +45,7 @@ function collectCoordinates(data: Contacts[]) {
   data?.map((dataItem, index) => {
     const latlng: Location = {
       lat: dataItem.attributes.latitude,
-      lng: dataItem.attributes.longitude,
+      lng: dataItem.attributes.longitude
     };
     locations.push(latlng);
   });

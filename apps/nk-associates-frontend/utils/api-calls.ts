@@ -32,7 +32,7 @@ export const getMapProperties = async (
 export const getPropertyDetail = async (id: string) => {
   try {
     const resp = await fetch(`${BASE_URL}/api/properties/${id}?populate=*`, {
-      cache: "no-store",
+      cache: "no-store"
     });
     const data = await resp.json();
     return data?.data;
@@ -44,7 +44,7 @@ export const getPropertyDetail = async (id: string) => {
 export const getJobDetail = async (id: string) => {
   try {
     const resp = await fetch(`${BASE_URL}/api/jobs/${id}?populate=*`, {
-      cache: "no-store",
+      cache: "no-store"
     });
     const data = await resp.json();
     return data?.data;
@@ -64,7 +64,7 @@ export const getProjects = async ({
   category = undefined,
   cachePolicy = undefined,
   start = 0,
-  limit = 5,
+  limit = 5
 }: GetProjectsParams = {}): Promise<Response> => {
   try {
     const fetchOptions: { [key: string]: any } = cachePolicy ? cachePolicy : {};
@@ -84,16 +84,13 @@ export const getProjects = async ({
   } catch (error) {
     throw error;
   }
-}
+};
 
 export const getProjectDetail = async (id: string) => {
   try {
-    const resp = await fetch(
-      `${BASE_URL}/api/projects/${id}?populate=*&`,
-      {
-        cache: "no-store",
-      }
-    );
+    const resp = await fetch(`${BASE_URL}/api/projects/${id}?populate=*&`, {
+      cache: "no-store"
+    });
     const data = await resp.json();
     return data?.data;
   } catch (error) {
@@ -106,7 +103,7 @@ export const getComparisonImages = async (id: number) => {
     const resp = await fetch(
       `${BASE_URL}/api/projects/${id}?populate[comparisonImages][populate]=*`,
       {
-        cache: "no-store",
+        cache: "no-store"
       }
     );
     const data = await resp.json();
@@ -172,7 +169,7 @@ export const getSocials = async () => {
   try {
     let apiUrl = `${BASE_URL}/api/socials`;
     const resp = await fetch(apiUrl, {
-      cache: "no-store",
+      cache: "no-store"
     });
     const links = await resp.json();
     return links;

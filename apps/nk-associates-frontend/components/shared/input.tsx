@@ -16,7 +16,7 @@ const Input: React.FC<InputProps> = ({
   label,
   name,
   placeholder,
-  errorMessage,
+  errorMessage
 }) => {
   return (
     <div className="">
@@ -25,7 +25,9 @@ const Input: React.FC<InputProps> = ({
         className="font-metropolis-thin capitalize text-nk-black md:text-base relative"
       >
         {label}
-        <sup className="font-metropolis-thin text-lg text-nk-black top-[0.031rem] ml-[0.063rem]">*</sup>
+        <sup className="font-metropolis-thin text-lg text-nk-black top-[0.031rem] ml-[0.063rem]">
+          *
+        </sup>
       </label>
       <Field
         name={name}

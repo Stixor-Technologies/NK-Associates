@@ -42,7 +42,7 @@ const LinkButton: FC<Props> = (props) => {
       y: "200%",
       rotateX: 180,
       duration: 0.3,
-      ease: "hop",
+      ease: "hop"
     });
 
     tl.to(
@@ -51,7 +51,7 @@ const LinkButton: FC<Props> = (props) => {
         scaleY: 1,
         transformOrigin: "50% 100%",
         duration: 0.5,
-        ease: "hop",
+        ease: "hop"
       },
       0
     );
@@ -59,13 +59,13 @@ const LinkButton: FC<Props> = (props) => {
     tl.fromTo(
       activeRef.current.querySelector(".text-copy"),
       {
-        rotateX: 180,
+        rotateX: 180
       },
       {
         y: 0,
         rotateX: 0,
         duration: 0.5,
-        ease: "hop",
+        ease: "hop"
       },
       0
     );
@@ -78,7 +78,7 @@ const LinkButton: FC<Props> = (props) => {
       y: 0,
       duration: 0.5,
       rotateX: 0,
-      ease: "hop",
+      ease: "hop"
     });
 
     tl.to(
@@ -87,7 +87,7 @@ const LinkButton: FC<Props> = (props) => {
         y: "-200%",
         rotateX: 180,
         duration: 0.5,
-        ease: "hop",
+        ease: "hop"
       },
       0
     );
@@ -97,7 +97,7 @@ const LinkButton: FC<Props> = (props) => {
       {
         scaleY: 0,
         duration: 0.5,
-        ease: "hop",
+        ease: "hop"
       },
       0
     );
@@ -108,28 +108,28 @@ const LinkButton: FC<Props> = (props) => {
     inverted: "bg-nk-white text-nk-red",
     solid: "bg-nk-red text-nk-white",
     gradient:
-      "bg-gradient-to-b from-nk-gradient-red-one to-nk-gradient-red-two text-nk-white",
+      "bg-gradient-to-b from-nk-gradient-red-one to-nk-gradient-red-two text-nk-white"
   };
 
   const typeOverlayStyles = {
     transparent: "bg-nk-red",
     inverted: "bg-nk-background",
     solid: "bg-nk-white",
-    gradient: "bg-nk-white",
+    gradient: "bg-nk-white"
   };
 
   const typeOriginalStyles = {
     transparent: "text-nk-gray",
     inverted: "text-nk-red",
     solid: "text-nk-white",
-    gradient: "text-nk-white",
+    gradient: "text-nk-white"
   };
 
   const typeCopyStyles = {
     transparent: "text-nk-white",
     inverted: "text-nk-red",
     solid: "text-nk-red",
-    gradient: "text-nk-red",
+    gradient: "text-nk-red"
   };
 
   const classes = `rounded-full relative text-center relative inline-flex py-2 px-4 items-center justify-center capitalize font-metropolis shadow-3xl

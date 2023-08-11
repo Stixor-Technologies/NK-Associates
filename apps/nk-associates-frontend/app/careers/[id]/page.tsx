@@ -23,7 +23,7 @@ async function JobDetail({ params: { id } }: JobDetailProps) {
     city,
     location,
     skills,
-    days,
+    days
   } = data?.attributes;
   const responsibilityArray = responsibilities.split("\n");
   const skillArray = skills.split("\n");
@@ -36,7 +36,7 @@ async function JobDetail({ params: { id } }: JobDetailProps) {
     return date.toLocaleString("en-US", {
       hour: "numeric",
       minute: "numeric",
-      hour12: true,
+      hour12: true
     });
   };
 

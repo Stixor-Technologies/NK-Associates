@@ -87,7 +87,7 @@ const CompareComponent = ({ url }) => {
         style={{
           clipPath: `polygon(0 0, ${imgRevealFraction * 100}% 0, ${
             imgRevealFraction * 100
-          }% 100%, 0 100%)`,
+          }% 100%, 0 100%)`
         }}
       />
       <div
@@ -192,7 +192,7 @@ const ProjectComparison = ({ projectId }: PropTypes) => {
             pagination={false}
             allowTouchMove={false}
             thumbs={{
-              swiper: thumbsSwiper,
+              swiper: thumbsSwiper
             }}
             className="mySwiper carousel-slider h-[25rem] w-full sm:aspect-video sm:h-auto md:w-10/12 md:rounded-xl"
             modules={[Thumbs, FreeMode]}

@@ -44,13 +44,13 @@ const Navigation = () => {
         gsap.to(sideBarMenu.current, {
           x: -sideBarMenu?.current?.clientWidth,
           duration: 1,
-          ease: "power2.out",
+          ease: "power2.out"
         });
         gsap.to(getInTouch.current, {
           color: "#FFFFFF",
           borderColor: "#FFFFFF",
           duration: 0.5,
-          ease: "power2.out",
+          ease: "power2.out"
         });
       }
     } else {
@@ -58,13 +58,13 @@ const Navigation = () => {
         gsap.to(sideBarMenu.current, {
           x: 0,
           duration: 1.2,
-          ease: "power2.out",
+          ease: "power2.out"
         });
         gsap.to(getInTouch.current, {
           color: "#E4404A",
           borderColor: "#E4404A",
           duration: 0.5,
-          ease: "power2.out",
+          ease: "power2.out"
         });
       }
     }

@@ -1,12 +1,11 @@
-import React, {FC} from "react";
+import React, { FC } from "react";
 import Image from "next/image";
-import Error_Icon from "../../public/assets/icons/error.svg"
-import Success_Icon from "../../public/assets/icons/success.svg"
-
+import Error_Icon from "../../public/assets/icons/error.svg";
+import Success_Icon from "../../public/assets/icons/success.svg";
 
 interface ToastProps {
   message: string;
-};
+}
 
 const Toast: FC<ToastProps> = ({ message }) => {
   return (
@@ -22,11 +21,7 @@ const Toast: FC<ToastProps> = ({ message }) => {
           alt=""
           width={35}
           height={35}
-          src={
-            message.includes("Error")
-              ? Error_Icon
-              : Success_Icon
-          }
+          src={message.includes("Error") ? Error_Icon : Success_Icon}
         />
       </div>
       <div className="text-sm font-normal text-white">{message}</div>

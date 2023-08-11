@@ -16,10 +16,9 @@ gsap.registerPlugin(ScrollTrigger);
 
 const optionsList = ["Residential", "Commercial", "Hotel", "All"];
 
-
 const ProjectCardItem = ({
   project,
-  index,
+  index
 }: {
   project: Project;
   index: number;
@@ -54,9 +53,7 @@ const ProjectCardItem = ({
 };
 
 export default function Projects() {
-  const [selectedButton, setSelectedButton] = useState<
-    OptionsType
-  >("All");
+  const [selectedButton, setSelectedButton] = useState<OptionsType>("All");
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<boolean>(false);
   const [buttonSwitched, setButtonSwitched] = useState<boolean>(false);
@@ -71,7 +68,7 @@ export default function Projects() {
       if (selectedButton != "All") {
         res = await getProjects({
           category: selectedButton,
-          start: projectsData.length,
+          start: projectsData.length
         });
       } else {
         res = await getProjects({ start: projectsData.length });
@@ -116,8 +113,8 @@ export default function Projects() {
                   trigger: box,
                   start: "top bottom",
                   end: "+=350",
-                  scrub: true,
-                },
+                  scrub: true
+                }
               });
             }
           });
@@ -173,7 +170,7 @@ export default function Projects() {
                   className="flex flex-col justify-center overflow-hidden"
                 >
                   {projectsData.map((project, index) => (
-                    <ProjectCardItem 
+                    <ProjectCardItem
                       key={index}
                       project={project}
                       index={index}

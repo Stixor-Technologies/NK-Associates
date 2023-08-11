@@ -1,4 +1,4 @@
-'use client'
+"use client";
 import { createContext, useContext } from "react";
 import { useJsApiLoader } from "@react-google-maps/api";
 import { MAP_KEY } from "../../utils/constants";
@@ -12,7 +12,7 @@ export function useMapApi() {
 export function MapApiProvider({ children }) {
   const { isLoaded } = useJsApiLoader({
     id: "google-map-script",
-    googleMapsApiKey: MAP_KEY,
+    googleMapsApiKey: MAP_KEY
   });
 
   return (

@@ -5,7 +5,7 @@ import Input from "./input";
 import { ContactFormSchema } from "../../utils/formik-schema";
 import Spinner from "../spinner";
 import Toast from "./toast";
-import ArrowDown from "../../public/assets/icons/arrow-down.svg"
+import ArrowDown from "../../public/assets/icons/arrow-down.svg";
 import Image from "next/image";
 
 const fieldTypes = {
@@ -13,13 +13,13 @@ const fieldTypes = {
   email: "text",
   phone: "text",
   category: "dropdown",
-  message: "textarea",
+  message: "textarea"
 };
 
 const placeholders = {
   name: "Write your name here",
   email: "Write your email address",
-  phone: "Write your phone number here",
+  phone: "Write your phone number here"
 };
 
 const initialValues = {
@@ -27,7 +27,7 @@ const initialValues = {
   email: "",
   phone: "",
   category: "",
-  message: "",
+  message: ""
 };
 
 interface ContactFormProps {
@@ -51,7 +51,7 @@ const ContactForm: React.FC<ContactFormProps> = ({ categories }) => {
     try {
       const res = await fetch("api/contact", {
         headers: {
-          "Content-Type": "application/json",
+          "Content-Type": "application/json"
         },
         method: "POST",
         body: JSON.stringify({
@@ -59,8 +59,8 @@ const ContactForm: React.FC<ContactFormProps> = ({ categories }) => {
           email: values.email,
           phone: values.phone,
           category: values.category,
-          message: values.message,
-        }),
+          message: values.message
+        })
       });
 
       const data = await res.json();
@@ -136,7 +136,12 @@ const ContactForm: React.FC<ContactFormProps> = ({ categories }) => {
                           </Field>
 
                           <div className="pointer-events-none absolute top-1/2 -translate-y-1/2 right-3 flex items-center">
-                             <Image src= {ArrowDown} width = {20} height = {20} alt = "dropdown" />
+                            <Image
+                              src={ArrowDown}
+                              width={20}
+                              height={20}
+                              alt="dropdown"
+                            />
                           </div>
                         </div>
 

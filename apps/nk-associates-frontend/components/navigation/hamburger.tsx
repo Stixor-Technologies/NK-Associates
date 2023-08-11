@@ -7,7 +7,7 @@ import {
   MutableRefObject,
   Dispatch,
   SetStateAction,
-  MouseEvent,
+  MouseEvent
 } from "react";
 import { gsap } from "gsap";
 
@@ -63,7 +63,7 @@ const Hamburger = forwardRef<HTMLButtonElement, HamburgerProps>(
             rotationZ: 45,
             transformOrigin: "50% 50%",
             scale: 1,
-            duration: 0.4,
+            duration: 0.4
           },
           "rotate"
         )
@@ -73,7 +73,7 @@ const Hamburger = forwardRef<HTMLButtonElement, HamburgerProps>(
             rotationZ: -45,
             transformOrigin: "50% 50%",
             scale: 1,
-            duration: 0.4,
+            duration: 0.4
           },
           "rotate"
         )

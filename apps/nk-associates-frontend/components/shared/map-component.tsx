@@ -17,7 +17,6 @@ const MapComponent: FC<IProps> = ({ locations }) => {
   const mapRef = useRef<google.maps.Map | null>(null);
   const { isLoaded } = useMapApi();
 
-
   const allLocations = useMemo(
     () => (Array.isArray(locations) ? locations : [locations]),
     [locations]
@@ -29,7 +28,7 @@ const MapComponent: FC<IProps> = ({ locations }) => {
     zoomControl: true,
     streetViewControl: false,
     fullscreenControl: true,
-    keyboardShortcuts: false,
+    keyboardShortcuts: false
   };
 
   useEffect(() => {

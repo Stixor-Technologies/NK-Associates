@@ -16,7 +16,7 @@ import "./map-info-window.css";
 
 const center = {
   lat: 33.58468464794478,
-  lng: 73.04698696017488,
+  lng: 73.04698696017488
 };
 const Properties = () => {
   const [isList, setIsList] = useState<boolean>(true);
@@ -55,7 +55,7 @@ const Properties = () => {
       if (selectedProperty) {
         const selectedLatLng = {
           lat: selectedProperty?.attributes?.latitude,
-          lng: selectedProperty?.attributes?.longitude,
+          lng: selectedProperty?.attributes?.longitude
         };
 
         if (selectedLatLng && !newBounds.contains(selectedLatLng)) {
@@ -90,7 +90,7 @@ const Properties = () => {
     minZoom: 5,
     maxZoom: 40,
 
-    styles: MapStyles,
+    styles: MapStyles
   };
 
   useEffect(() => {
@@ -139,7 +139,7 @@ const Properties = () => {
             {mapProperties.map((location, index) => {
               const position = {
                 lat: location.attributes.latitude,
-                lng: location.attributes.longitude,
+                lng: location.attributes.longitude
               };
 
               const isSelected =
@@ -154,7 +154,7 @@ const Properties = () => {
                       : "assets/icons/area-marker.svg",
                     scaledSize: isSelected
                       ? new window.google.maps.Size(40, 40)
-                      : new window.google.maps.Size(30, 30),
+                      : new window.google.maps.Size(30, 30)
                   }}
                   onClick={() => {
                     setSelectedProperty(location);
@@ -167,7 +167,7 @@ const Properties = () => {
               <InfoWindow
                 position={{
                   lat: selectedProperty.attributes.latitude,
-                  lng: selectedProperty.attributes.longitude,
+                  lng: selectedProperty.attributes.longitude
                 }}
                 onCloseClick={() => setSelectedProperty(null)}
               >
@@ -178,12 +178,12 @@ const Properties = () => {
         </div>
       )}
 
-{gridProperties.length > 0 && (
+      {gridProperties.length > 0 && (
         <button
           className={` self-center sticky top-0 mb-4 bottom-16 left-1/2 z-10 flex -translate-x-1/2 items-center gap-2 rounded-full px-4 py-2 text-center text-sm capitalize text-nk-white transition-all duration-300 ease-in-out md:gap-4 md:px-6 md:py-3 md:text-2xl ${
             isList
-            ? "bg-nk-gradient-red-one bg-gradient-to-b to-nk-gradient-red-two hover:scale-[1.1] hover:bg-nk-black"
-            : "bg-nk-black hover:scale-[1.1] hover:bg-nk-red"
+              ? "bg-nk-gradient-red-one bg-gradient-to-b to-nk-gradient-red-two hover:scale-[1.1] hover:bg-nk-black"
+              : "bg-nk-black hover:scale-[1.1] hover:bg-nk-red"
           }`}
           onClick={() => {
             setIsList(!isList);
@@ -201,7 +201,6 @@ const Properties = () => {
           />
         </button>
       )}
-
     </>
   );
 };

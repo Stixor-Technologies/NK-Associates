@@ -28,29 +28,29 @@ const ProjectIntroduction = ({
   types,
   city,
   numberOfBathRooms = undefined,
-  numberOfRooms = undefined,
+  numberOfRooms = undefined
 }: PropTypes) => {
   const details = [
     {
       title: "Category",
-      value: category,
+      value: category
     },
     {
       title: "Covered Area / Area",
-      value: coveredArea + " " + coveredAreaUnits,
+      value: coveredArea + " " + coveredAreaUnits
     },
     {
       title: "Types",
-      value: types.join(", "),
+      value: types.join(", ")
     },
     {
       title: "Price",
-      value: `PKR ${convertToPakistaniNumbering(price)}`,
+      value: `PKR ${convertToPakistaniNumbering(price)}`
     },
     {
       title: "City",
-      value: city,
-    },
+      value: city
+    }
   ];
 
   return (
