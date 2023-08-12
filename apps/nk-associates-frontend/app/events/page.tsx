@@ -7,7 +7,7 @@ import { Events } from "../../utils/types/types";
 async function FetchData() {
   try {
     const response = await fetch(`${BASE_URL}/api/events?populate=*`, {
-      cache: "no-store"
+      cache: "no-store",
     });
     if (!response.ok) {
       throw new Error("Network response was not OK");

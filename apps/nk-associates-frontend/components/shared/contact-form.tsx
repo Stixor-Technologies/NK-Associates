@@ -13,13 +13,13 @@ const fieldTypes = {
   email: "text",
   phone: "text",
   category: "dropdown",
-  message: "textarea"
+  message: "textarea",
 };
 
 const placeholders = {
   name: "Write your name here",
   email: "Write your email address",
-  phone: "Write your phone number here"
+  phone: "Write your phone number here",
 };
 
 const initialValues = {
@@ -27,7 +27,7 @@ const initialValues = {
   email: "",
   phone: "",
   category: "",
-  message: ""
+  message: "",
 };
 
 interface ContactFormProps {
@@ -51,7 +51,7 @@ const ContactForm: React.FC<ContactFormProps> = ({ categories }) => {
     try {
       const res = await fetch("api/contact", {
         headers: {
-          "Content-Type": "application/json"
+          "Content-Type": "application/json",
         },
         method: "POST",
         body: JSON.stringify({
@@ -59,8 +59,8 @@ const ContactForm: React.FC<ContactFormProps> = ({ categories }) => {
           email: values.email,
           phone: values.phone,
           category: values.category,
-          message: values.message
-        })
+          message: values.message,
+        }),
       });
 
       const data = await res.json();

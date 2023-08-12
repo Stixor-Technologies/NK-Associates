@@ -46,7 +46,7 @@ async function Footer() {
       instagram,
       playstore,
       appstore,
-      appgallery
+      appgallery,
     } = data[0].attributes);
   }
   interface footerSocialLink {
@@ -66,7 +66,7 @@ async function Footer() {
     { pathName: "/contact", label: "Contact Us" },
     { pathName: "/careers", label: "Career" },
     { pathName: "/events", label: "Events" },
-    { pathName: "#", label: "Services" }
+    { pathName: "#", label: "Services" },
   ];
 
   const footerSocialLinks: footerSocialLink[] = [
@@ -75,7 +75,7 @@ async function Footer() {
     { pathName: instagram, image: InstagramIcon },
     { pathName: linkedin, image: LinkedinIcon },
     { pathName: snapchat, image: SnapIcon },
-    { pathName: youtube, image: YtIcon }
+    { pathName: youtube, image: YtIcon },
   ];
 
   const generateFooterPageList = (links, startIndex = 0, endIndex = 8) => {

@@ -16,7 +16,7 @@ import "./map-info-window.css";
 
 const center = {
   lat: 33.58468464794478,
-  lng: 73.04698696017488
+  lng: 73.04698696017488,
 };
 const Properties = () => {
   const [isList, setIsList] = useState<boolean>(true);
@@ -26,7 +26,7 @@ const Properties = () => {
 
   const [mapProperties, setMapProperties] = useState<Property[]>([]);
   const [selectedProperty, setSelectedProperty] = useState<Property | null>(
-    null
+    null,
   );
   const [hasMapRendered, setHasMapRendered] = useState<boolean>(false);
 
@@ -55,7 +55,7 @@ const Properties = () => {
       if (selectedProperty) {
         const selectedLatLng = {
           lat: selectedProperty?.attributes?.latitude,
-          lng: selectedProperty?.attributes?.longitude
+          lng: selectedProperty?.attributes?.longitude,
         };
 
         if (selectedLatLng && !newBounds.contains(selectedLatLng)) {
@@ -68,7 +68,7 @@ const Properties = () => {
           bounds.south,
           bounds.north,
           bounds.west,
-          bounds.east
+          bounds.east,
         );
         if (resp?.data) {
           setMapProperties(resp?.data);
@@ -90,7 +90,7 @@ const Properties = () => {
     minZoom: 5,
     maxZoom: 40,
 
-    styles: MapStyles
+    styles: MapStyles,
   };
 
   useEffect(() => {
@@ -139,7 +139,7 @@ const Properties = () => {
             {mapProperties.map((location, index) => {
               const position = {
                 lat: location.attributes.latitude,
-                lng: location.attributes.longitude
+                lng: location.attributes.longitude,
               };
 
               const isSelected =
@@ -154,7 +154,7 @@ const Properties = () => {
                       : "assets/icons/area-marker.svg",
                     scaledSize: isSelected
                       ? new window.google.maps.Size(40, 40)
-                      : new window.google.maps.Size(30, 30)
+                      : new window.google.maps.Size(30, 30),
                   }}
                   onClick={() => {
                     setSelectedProperty(location);
@@ -167,7 +167,7 @@ const Properties = () => {
               <InfoWindow
                 position={{
                   lat: selectedProperty.attributes.latitude,
-                  lng: selectedProperty.attributes.longitude
+                  lng: selectedProperty.attributes.longitude,
                 }}
                 onCloseClick={() => setSelectedProperty(null)}
               >

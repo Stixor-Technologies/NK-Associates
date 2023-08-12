@@ -16,7 +16,7 @@ const JobList = () => {
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [searchQuery, setSearchQuery] = useState<string>("");
   const [filteredDepartment, setFilteredDepartments] = useState<string | null>(
-    null
+    null,
   );
   const [filteredCity, setFilteredCity] = useState<string | null>(null);
   const [departments, setDepartments] = useState<string[]>([]);
@@ -54,7 +54,7 @@ const JobList = () => {
   };
 
   const filteredJobs = jobs.filter((job) =>
-    job.attributes.title.toLowerCase().includes(searchQuery.toLowerCase())
+    job.attributes.title.toLowerCase().includes(searchQuery.toLowerCase()),
   );
 
   const [isClicked, setIsClicked] = useState(false);

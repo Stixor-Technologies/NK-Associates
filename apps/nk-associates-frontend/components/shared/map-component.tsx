@@ -19,7 +19,7 @@ const MapComponent: FC<IProps> = ({ locations }) => {
 
   const allLocations = useMemo(
     () => (Array.isArray(locations) ? locations : [locations]),
-    [locations]
+    [locations],
   );
 
   const mapOptions = {
@@ -28,7 +28,7 @@ const MapComponent: FC<IProps> = ({ locations }) => {
     zoomControl: true,
     streetViewControl: false,
     fullscreenControl: true,
-    keyboardShortcuts: false
+    keyboardShortcuts: false,
   };
 
   useEffect(() => {

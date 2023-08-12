@@ -12,22 +12,22 @@ const ServicesOverview = () => {
         scrollTrigger: {
           trigger: ref.current,
           start: "top 80%",
-          toggleActions: "play none none none"
-        }
+          toggleActions: "play none none none",
+        },
       });
       tl.from(".text", {
         opacity: 0,
         x: -200,
         y: 200,
         scale: 0,
-        duration: 0.5
+        duration: 0.5,
       }),
         tl.from(".btn", {
           opacity: 0,
           xPercent: -60,
           scale: 0,
           stagger: 0.2,
-          ease: "circ.out"
+          ease: "circ.out",
         });
     }, ref);
 

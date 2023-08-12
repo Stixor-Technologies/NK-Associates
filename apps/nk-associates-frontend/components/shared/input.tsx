@@ -16,7 +16,7 @@ const Input: React.FC<InputProps> = ({
   label,
   name,
   placeholder,
-  errorMessage
+  errorMessage,
 }) => {
   return (
     <div className="">

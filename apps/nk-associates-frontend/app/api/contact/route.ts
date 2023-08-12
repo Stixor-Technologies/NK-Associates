@@ -15,7 +15,7 @@ export async function POST(request: NextRequest) {
     body: data.message,
     html: `<div>
     <h3>You've got a new mail from ${data.name}, their email is: ${data.email}, their number is ${data?.phone}, category: ${data.category} </h3>
-    ${data.message}</div>`
+    ${data.message}</div>`,
   };
 
   try {

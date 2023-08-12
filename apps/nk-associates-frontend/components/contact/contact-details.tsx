@@ -54,7 +54,7 @@ const ContactDetails: React.FC<ContactDetailProps> = ({ data }) => {
                             {emailItem?.email}
                           </p>
                         );
-                      }
+                      },
                     )}
                   </div>
                 </div>

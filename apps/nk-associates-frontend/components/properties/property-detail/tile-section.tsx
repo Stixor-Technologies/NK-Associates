@@ -21,7 +21,7 @@ const TileSection: FC<TileSectionProps> = ({
   area_type,
   type,
   price,
-  city
+  city,
 }) => {
   const ref = useRef<HTMLDivElement | null>(null);
 
@@ -35,8 +35,8 @@ const TileSection: FC<TileSectionProps> = ({
         ease: "powe2.out",
         scrollTrigger: {
           trigger: divElement,
-          start: "top 70%"
-        }
+          start: "top 70%",
+        },
       });
     }
   }, []);

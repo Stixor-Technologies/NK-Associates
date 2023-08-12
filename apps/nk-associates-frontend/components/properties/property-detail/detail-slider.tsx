@@ -25,7 +25,7 @@ const DetailSlider: FC<SliderProps> = ({ property_images }) => {
         keyboard={true}
         loop={true}
         pagination={{
-          clickable: true
+          clickable: true,
         }}
         modules={[Navigation, Pagination, Keyboard]}
         className="mySwiper"
@@ -67,7 +67,7 @@ const DetailSlider: FC<SliderProps> = ({ property_images }) => {
                 </div>
               </SwiperSlide>
             );
-          }
+          },
         )}
       </Swiper>
     </div>

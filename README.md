@@ -148,7 +148,7 @@ You will need the following packages to be installed beforehand in order to clon
 
 2.  Change Database env variable's values
 
-    - Assign variable NEXT_PUBLIC_BACKEND_URL="http://127.0.0.1:1337", in env file at _/apps/nk-associates-frontend_
+    - Assign variable NEXT*PUBLIC_BACKEND_URL="http://127.0.0.1:1337", in env file at */apps/nk-associates-frontend\_
 
     - Assign your appropriate db username and db password to env variables, in env file at _/apps/nk-associates-cms_
       ```

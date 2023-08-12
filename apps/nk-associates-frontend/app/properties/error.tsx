@@ -5,7 +5,7 @@ import LinkButton from "../../components/button/link-button";
 
 export default function Error({
   error,
-  reset
+  reset,
 }: {
   error: Error;
   reset: () => void;

@@ -55,18 +55,18 @@ const Carousel: React.FC<CarouselProps> = ({ images }) => {
           rotate: -10,
           stretch: 0,
           depth: 300,
-          slideShadows: false
+          slideShadows: false,
         }}
         pagination={false}
         breakpoints={{
           // When screen size is less than 640px, show only 1 slide
           0: {
             slidesPerView: "auto",
-            spaceBetween: 0
+            spaceBetween: 0,
           },
           1024: {
-            slidesPerView: 3
-          }
+            slidesPerView: 3,
+          },
         }}
         modules={[EffectCoverflow, Pagination, Autoplay]}
         className="mySwiper carousel-slider mx-auto mt-7 h-full w-full"

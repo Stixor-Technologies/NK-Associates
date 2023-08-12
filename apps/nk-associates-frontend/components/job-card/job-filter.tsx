@@ -11,7 +11,7 @@ const JobFilter: FC<FilterProps> = ({
   selectedValue,
   options,
   handleSelect,
-  placeholder
+  placeholder,
 }) => {
   return (
     <div className="relative m-2">

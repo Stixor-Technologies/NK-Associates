@@ -40,7 +40,7 @@ async function PropertyDetail({ params: { id } }: PropertyDetailProps) {
     longitude,
     property_images,
     address,
-    city
+    city,
   } = data?.attributes;
 
   const pdfUrl: string = data?.attributes?.property_pdf?.data?.attributes?.url;

@@ -12,7 +12,7 @@ export function useMapApi() {
 export function MapApiProvider({ children }) {
   const { isLoaded } = useJsApiLoader({
     id: "google-map-script",
-    googleMapsApiKey: MAP_KEY
+    googleMapsApiKey: MAP_KEY,
   });
 
   return (

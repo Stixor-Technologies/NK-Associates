@@ -9,7 +9,7 @@ interface SpinnerProps {
 const Spinner: FC<SpinnerProps> = ({
   color = "fill-nk-red",
   width = "w-14",
-  height = "h-14"
+  height = "h-14",
 }) => {
   return (
     <div className="m-auto text-center h-full" role="status">

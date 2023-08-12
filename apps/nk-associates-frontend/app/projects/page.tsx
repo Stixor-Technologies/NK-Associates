@@ -18,7 +18,7 @@ const optionsList = ["Residential", "Commercial", "Hotel", "All"];
 
 const ProjectCardItem = ({
   project,
-  index
+  index,
 }: {
   project: Project;
   index: number;
@@ -68,7 +68,7 @@ export default function Projects() {
       if (selectedButton != "All") {
         res = await getProjects({
           category: selectedButton,
-          start: projectsData.length
+          start: projectsData.length,
         });
       } else {
         res = await getProjects({ start: projectsData.length });
@@ -113,8 +113,8 @@ export default function Projects() {
                   trigger: box,
                   start: "top bottom",
                   end: "+=350",
-                  scrub: true
-                }
+                  scrub: true,
+                },
               });
             }
           });

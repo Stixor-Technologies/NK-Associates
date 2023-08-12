@@ -36,7 +36,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
   location,
   propertyDescription,
   propertyType,
-  primaryColor = true
+  primaryColor = true,
 }) => {
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 

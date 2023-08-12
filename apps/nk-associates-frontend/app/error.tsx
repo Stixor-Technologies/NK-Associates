@@ -6,7 +6,7 @@ import { ErrorBoundary } from "../components/error-boundary";
 
 export default function Error({
   error,
-  reset
+  reset,
 }: {
   error: Error;
   reset: () => void;
