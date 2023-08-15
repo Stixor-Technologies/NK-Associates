@@ -12,7 +12,10 @@ const Spinner: FC<SpinnerProps> = ({
   height = "h-14",
 }) => {
   return (
-    <div className="m-auto text-center h-full" role="status">
+    <div
+      className="m-auto flex items-center justify-center text-center h-full"
+      role="status"
+    >
       <svg
         xmlns="http://www.w3.org/2000/svg"
         xmlnsXlink="http://www.w3.org/1999/xlink"

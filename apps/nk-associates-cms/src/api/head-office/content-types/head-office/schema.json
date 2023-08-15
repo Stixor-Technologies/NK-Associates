@@ -1,0 +1,44 @@
+{
+  "kind": "singleType",
+  "collectionName": "head_offices",
+  "info": {
+    "singularName": "head-office",
+    "pluralName": "head-offices",
+    "displayName": "Head Office Location",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "latitude": {
+      "type": "float",
+      "required": true
+    },
+    "longitude": {
+      "type": "float",
+      "required": true
+    },
+    "address": {
+      "type": "string",
+      "required": true
+    },
+    "location": {
+      "type": "string",
+      "required": true
+    },
+    "emails": {
+      "type": "component",
+      "repeatable": true,
+      "component": "email.email",
+      "required": true
+    },
+    "numbers": {
+      "type": "component",
+      "repeatable": true,
+      "component": "contact-number.numbers",
+      "required": true
+    }
+  }
+}

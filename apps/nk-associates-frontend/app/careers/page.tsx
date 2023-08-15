@@ -31,7 +31,7 @@ const Careers = () => {
             type="solid"
             navigateTo="#Listing"
             text="Be a part of our amazing team"
-            className="h-10 my-8 w-80 lg:w-96 p-2 lowercase duration-500 ease-in-out hover:bg-opacity-90 hover:shadow-lg hover:delay-200"
+            className="h-10 my-8 w-80 lg:w-96 p-2"
           />
         </div>
       </div>
@@ -78,7 +78,7 @@ const Careers = () => {
               text="contact us"
               navigateTo="contact"
               type="solid"
-              className="mt-8 w-56 p-2 transition-all duration-300 hover:bg-opacity-90 lg:w-96"
+              className="mt-8 w-56 p-2 lg:w-96"
             />
           </div>
         </div>
@@ -103,7 +103,7 @@ const Careers = () => {
             text="Submit Your Resume"
             navigateTo="#"
             type="solid"
-            className="mt-8 w-96  p-2  transition-all duration-300 hover:bg-opacity-90"
+            className="mt-8 w-96 p-2"
           />
         </div>
       </div>
