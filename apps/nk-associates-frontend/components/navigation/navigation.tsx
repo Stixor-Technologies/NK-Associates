@@ -40,7 +40,6 @@ const Navigation = () => {
   // Trigger animations for menu open state
   useEffect(() => {
     let body = document.body;
-
     if (isMenuOpen) {
       body.style.overflow = "hidden";
       if (sideBarMenu.current) {
