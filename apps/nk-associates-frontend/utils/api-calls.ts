@@ -144,7 +144,7 @@ export const getCities = async () => {
     const resp = await fetch(apiUrl);
     const data = await resp.json();
 
-    const city = data.data.map((job) => job.attributes.city);
+    const city = data?.data?.map((job) => job?.attributes?.city);
     const uniqueCitiesSet = new Set(city);
     const uniqueCitiesArray = Array.from(uniqueCitiesSet);
 
