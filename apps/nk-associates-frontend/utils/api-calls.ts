@@ -86,30 +86,45 @@ export const getProjects = async ({
   }
 };
 
-export const getProjectDetail = async (id: string) => {
+export const getOfficeAddress = async () => {
   try {
-    const resp = await fetch(`${BASE_URL}/api/projects/${id}?populate=*&`, {
+    const response = await fetch(`${BASE_URL}/api/contacts?populate=*`, {
+      cache: "no-store",
+    });
+    if (!response.ok) {
+      throw new Error("Network response was not OK");
+    }
+    const data = await response.json();
+    return data?.data;
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+export const getHeadOffice = async () => {
+  try {
+    const resp = await fetch(`${BASE_URL}/api/head-office?populate=*`, {
       cache: "no-store",
     });
     const data = await resp.json();
     return data?.data;
   } catch (error) {
-    console.error("There was an error getting the Project Details", error);
+    console.error("There was an error getting the Property List", error);
   }
 };
 
-export const getComparisonImages = async (id: number) => {
+export const getCategories = async () => {
   try {
-    const resp = await fetch(
-      `${BASE_URL}/api/projects/${id}?populate[comparisonImages][populate]=*`,
-      {
-        cache: "no-store",
-      },
-    );
-    const data = await resp.json();
+    const response = await fetch(`${BASE_URL}/api/categories`, {
+      cache: "no-store",
+    });
+    if (!response.ok) {
+      throw new Error("Network response was not OK");
+    }
+    const data = await response.json();
     return data?.data;
   } catch (error) {
-    console.error("There was an error getting the ComparisonImages", error);
+    console.error(error);
   }
 };
 
@@ -141,8 +156,8 @@ export const getCities = async () => {
     const resp = await fetch(apiUrl);
     const data = await resp.json();
 
-    const locations = data.data.map((job) => job.attributes.location);
-    const uniqueCitiesSet = new Set(locations);
+    const cities = data.data.map((job) => job.attributes.city);
+    const uniqueCitiesSet = new Set(cities);
     const uniqueCitiesArray = Array.from(uniqueCitiesSet);
 
     return uniqueCitiesArray;
