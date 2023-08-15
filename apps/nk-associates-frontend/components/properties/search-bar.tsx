@@ -47,18 +47,20 @@ const SearchBar = () => {
   }, []);
 
   return (
-    <div className="relative my-8 flex">
+    <div className="container relative my-8 flex px-4">
       <div className="flex flex-1 gap-1 shadow-3xl" ref={searchFilterRef}>
         {searchTiles.map((tile, index) => {
           return (
             <div key={index} className="relative flex-1">
               <button
-                className={`w-full h-full bg-nk-white px-6 py-4 text-left ${
+                className={`h-full w-full bg-nk-white px-6 py-4 text-left ${
                   index === 0 && "rounded-l-xl"
                 }`}
                 onClick={() => {
-                  console.log("first");
-                  setActiveFilter(tile.name);
+                  if (activeFilter === tile?.name) {
+                    return setActiveFilter(null);
+                  }
+                  setActiveFilter(tile?.name);
                 }}
               >
                 <span className=" text-lg text-nk-gray">{tile.name}</span>

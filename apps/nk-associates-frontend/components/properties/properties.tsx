@@ -14,6 +14,7 @@ import SearchBar from "./search-bar";
 import PropertyCard from "./property-card";
 import MapStyles from "../../utils/map-styles.json";
 import "./map-info-window.css";
+import SearchBar from "./search-bar";
 
 const center = {
   lat: 33.58468464794478,
@@ -100,8 +101,12 @@ const Properties = () => {
 
   return (
     <>
+<<<<<<< HEAD
       <SearchBar />
 
+=======
+    <SearchBar />
+>>>>>>> d01b099 (hide filter on when click on same button)
       {isList && (
         <>
           {isLoading && gridProperties.length === 0 ? (
