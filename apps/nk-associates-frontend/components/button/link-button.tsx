@@ -34,7 +34,7 @@ const LinkButton: FC<Props> = (props) => {
 
   CustomEase.create(
     "hop",
-    `M0,0 C0.17,0 0.286,0.085 0.32,0.115 0.394,0.18 0.498,0.3 0.5,0.5 0.502,0.706 0.58,0.872 0.618,0.908 0.652,0.94 0.794,1 1,1`
+    `M0,0 C0.17,0 0.286,0.085 0.32,0.115 0.394,0.18 0.498,0.3 0.5,0.5 0.502,0.706 0.58,0.872 0.618,0.908 0.652,0.94 0.794,1 1,1`,
   );
   const handleMouseEnter = () => {
     tl.clear();
@@ -53,7 +53,7 @@ const LinkButton: FC<Props> = (props) => {
         duration: 0.5,
         ease: "hop",
       },
-      0
+      0,
     );
 
     tl.fromTo(
@@ -67,7 +67,7 @@ const LinkButton: FC<Props> = (props) => {
         duration: 0.5,
         ease: "hop",
       },
-      0
+      0,
     );
   };
 
@@ -89,7 +89,7 @@ const LinkButton: FC<Props> = (props) => {
         duration: 0.5,
         ease: "hop",
       },
-      0
+      0,
     );
 
     tl.to(
@@ -99,7 +99,7 @@ const LinkButton: FC<Props> = (props) => {
         duration: 0.5,
         ease: "hop",
       },
-      0
+      0,
     );
   };
 

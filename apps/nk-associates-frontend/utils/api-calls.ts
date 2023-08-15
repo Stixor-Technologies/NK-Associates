@@ -4,7 +4,7 @@ import { SIMILAR_PROPERTIES_LIMIT } from "./constants";
 export const getGridProperties = async (start: number, limit = 12) => {
   try {
     const resp = await fetch(
-      `${BASE_URL}/api/properties?populate=*&pagination[start]=${start}&pagination[limit]=${limit}&sort[1]=id`
+      `${BASE_URL}/api/properties?populate=*&pagination[start]=${start}&pagination[limit]=${limit}&sort[1]=id`,
     );
     const data = await resp.json();
     return data;
@@ -17,11 +17,11 @@ export const getMapProperties = async (
   southLat: number,
   northLat: number,
   westLng: number,
-  eastLng: number
+  eastLng: number,
 ) => {
   try {
     const resp = await fetch(
-      `${BASE_URL}/api/properties?populate=*&filters[latitude][$between]=${southLat}&filters[latitude][$between]=${northLat}&filters[longitude][$between]=${westLng}&filters[longitude][$between]=${eastLng}&sort[1]=id`
+      `${BASE_URL}/api/properties?populate=*&filters[latitude][$between]=${southLat}&filters[latitude][$between]=${northLat}&filters[longitude][$between]=${westLng}&filters[longitude][$between]=${eastLng}&sort[1]=id`,
     );
     const data = await resp.json();
     return data;
@@ -87,7 +87,7 @@ export const getProjects = async ({
       `${BASE_URL}/api/projects?populate=*${
         category ? `&filters[category]=${category}` : ""
       }${`&pagination[start]=${start}&pagination[limit]=${limit}&sort[1]=id`}`,
-      fetchOptions
+      fetchOptions,
     );
 
     if (!res.ok) {
@@ -98,16 +98,13 @@ export const getProjects = async ({
   } catch (error) {
     throw error;
   }
-}
+};
 
 export const getProjectDetail = async (id: string) => {
   try {
-    const resp = await fetch(
-      `${BASE_URL}/api/projects/${id}?populate=*&`,
-      {
-        cache: "no-store",
-      }
-    );
+    const resp = await fetch(`${BASE_URL}/api/projects/${id}?populate=*&`, {
+      cache: "no-store",
+    });
     const data = await resp.json();
     return data?.data;
   } catch (error) {
@@ -121,7 +118,7 @@ export const getComparisonImages = async (id: number) => {
       `${BASE_URL}/api/projects/${id}?populate[comparisonImages][populate]=*`,
       {
         cache: "no-store",
-      }
+      },
     );
     const data = await resp.json();
     return data?.data;
@@ -136,7 +133,7 @@ export const getJobs = async (departmentName, city) => {
 
     if (departmentName) {
       apiUrl += `&filters[department][name]=${encodeURIComponent(
-        departmentName
+        departmentName,
       )}`;
     }
 
@@ -174,7 +171,7 @@ export const getDepartments = async () => {
     const resp = await fetch(apiUrl);
     const data = await resp.json();
     const departments = data?.data?.map(
-      (data: Department) => data?.attributes?.name
+      (data: Department) => data?.attributes?.name,
     );
     return departments;
   } catch (error) {

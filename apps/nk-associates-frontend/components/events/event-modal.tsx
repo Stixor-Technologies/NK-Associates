@@ -106,7 +106,7 @@ const EventModal: React.FC<ModalProps> = ({ open, onClose, eventData }) => {
                     />
                   </SwiperSlide>
                 );
-              }
+              },
             )}
           </Swiper>
           <div className="mt-4 hidden md:block">
@@ -133,7 +133,7 @@ const EventModal: React.FC<ModalProps> = ({ open, onClose, eventData }) => {
                       />
                     </SwiperSlide>
                   );
-                }
+                },
               )}
             </Swiper>
           </div>
@@ -186,7 +186,7 @@ const EventModal: React.FC<ModalProps> = ({ open, onClose, eventData }) => {
               {eventData &&
                 ` ${format(
                   new Date(eventData.attributes.event_date),
-                  "dd-MM-yyyy"
+                  "dd-MM-yyyy",
                 )}`}
             </span>
           </div>

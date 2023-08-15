@@ -53,7 +53,7 @@ async function PropertyDetail({ params: { id } }: PropertyDetailProps) {
   return (
     <section>
       <DetailSlider property_images={property_images?.data} />
-    
+
       <div className="relative mt-14 md:mt-3">
         {/* 360 Tour Button */}
         <button className="group sticky top-[31.25rem] z-30 ml-auto hidden w-[6rem] items-center gap-3 rounded-l-xl bg-nk-white px-4 py-3.5 shadow-3xl transition-all duration-500 ease-in-out hover:w-44 md:flex">
@@ -125,7 +125,7 @@ async function PropertyDetail({ params: { id } }: PropertyDetailProps) {
               </div>
             </div>
 
-             <LinkButton
+            <LinkButton
               text="Inquires"
               type="solid"
               navigateTo="#"

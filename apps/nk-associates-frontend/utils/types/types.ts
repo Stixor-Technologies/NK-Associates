@@ -98,7 +98,7 @@ export interface Project {
       data: { attributes: { url: string } };
     };
     pdf: {
-      data: { attributes: {url: string} };
+      data: { attributes: { url: string } };
     };
     numberOfRooms?: number;
     numberOfBathRooms?: number;

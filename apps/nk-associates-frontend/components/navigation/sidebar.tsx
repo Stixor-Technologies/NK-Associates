@@ -13,7 +13,7 @@ interface MenuItem {
 
 const Sidebar: React.ForwardRefRenderFunction<HTMLDivElement, SidebarProps> = (
   { isOpen, setIsOpen },
-  ref
+  ref,
 ) => {
   const handleLinkClick = () => {
     setIsOpen(!isOpen); // Toggle isOpen state to its opposite value

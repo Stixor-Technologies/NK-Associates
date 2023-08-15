@@ -61,7 +61,7 @@ const EventCard: React.FC<EventProps> = ({ data }) => {
                           />
                         </SwiperSlide>
                       );
-                    }
+                    },
                   )}
                 </Swiper>
               </div>
@@ -121,7 +121,7 @@ const EventCard: React.FC<EventProps> = ({ data }) => {
                   <span className="font-metropolis-semibold text-nk-gray">
                     {` ${format(
                       new Date(dataItem.attributes.event_date),
-                      "dd-MM-yyyy"
+                      "dd-MM-yyyy",
                     )}`}
                   </span>
                 </div>

@@ -27,7 +27,7 @@ const Navigation = () => {
         setIsMenuOpen(false);
       }
     },
-    [isMenuOpen]
+    [isMenuOpen],
   );
 
   useEffect(() => {
@@ -39,7 +39,9 @@ const Navigation = () => {
 
   // Trigger animations for menu open state
   useEffect(() => {
+    let body = document.body;
     if (isMenuOpen) {
+      body.style.overflow = "hidden";
       if (sideBarMenu.current) {
         gsap.to(sideBarMenu.current, {
           x: -sideBarMenu?.current?.clientWidth,
@@ -54,6 +56,7 @@ const Navigation = () => {
         });
       }
     } else {
+      body.style.overflow = "auto";
       if (sideBarMenu.current) {
         gsap.to(sideBarMenu.current, {
           x: 0,
