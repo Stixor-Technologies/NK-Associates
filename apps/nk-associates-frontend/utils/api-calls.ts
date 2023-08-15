@@ -86,6 +86,18 @@ export const getProjects = async ({
   }
 };
 
+export const getProjectDetail = async (id: string) => {
+  try {
+    const resp = await fetch(`${BASE_URL}/api/projects/${id}?populate=*&`, {
+      cache: "no-store",
+    });
+    const data = await resp.json();
+    return data?.data;
+  } catch (error) {
+    console.error("There was an error getting the Project Details", error);
+  }
+};
+
 export const getOfficeAddress = async () => {
   try {
     const response = await fetch(`${BASE_URL}/api/contacts?populate=*`, {
