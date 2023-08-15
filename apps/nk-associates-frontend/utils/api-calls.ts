@@ -86,18 +86,6 @@ export const getProjects = async ({
   }
 };
 
-export const getProjectDetail = async (id: string) => {
-  try {
-    const resp = await fetch(`${BASE_URL}/api/projects/${id}?populate=*&`, {
-      cache: "no-store",
-    });
-    const data = await resp.json();
-    return data?.data;
-  } catch (error) {
-    console.error("There was an error getting the Project Details", error);
-  }
-};
-
 export const getOfficeAddress = async () => {
   try {
     const response = await fetch(`${BASE_URL}/api/contacts?populate=*`, {
@@ -140,6 +128,33 @@ export const getCategories = async () => {
   }
 };
 
+export const getProjectDetail = async (id: string) => {
+  try {
+    const resp = await fetch(`${BASE_URL}/api/projects/${id}?populate=*&`, {
+      cache: "no-store",
+    });
+    const data = await resp.json();
+    return data?.data;
+  } catch (error) {
+    console.error("There was an error getting the Project Details", error);
+  }
+};
+
+export const getComparisonImages = async (id: number) => {
+  try {
+    const resp = await fetch(
+      `${BASE_URL}/api/projects/${id}?populate[comparisonImages][populate]=*`,
+      {
+        cache: "no-store",
+      },
+    );
+    const data = await resp.json();
+    return data?.data;
+  } catch (error) {
+    console.error("There was an error getting the ComparisonImages", error);
+  }
+};
+
 export const getJobs = async (departmentName, city) => {
   try {
     let apiUrl = `${BASE_URL}/api/jobs?populate=*`;
@@ -168,8 +183,8 @@ export const getCities = async () => {
     const resp = await fetch(apiUrl);
     const data = await resp.json();
 
-    const cities = data.data.map((job) => job.attributes.city);
-    const uniqueCitiesSet = new Set(cities);
+    const locations = data.data.map((job) => job.attributes.location);
+    const uniqueCitiesSet = new Set(locations);
     const uniqueCitiesArray = Array.from(uniqueCitiesSet);
 
     return uniqueCitiesArray;
