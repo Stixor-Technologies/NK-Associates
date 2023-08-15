@@ -8,6 +8,7 @@ interface BaseProps {
   text: string;
   type?: "transparent" | "inverted" | "solid" | "gradient";
   className?: string;
+  buttonType?: "submit" | "button";
 }
 
 interface LinkProps extends BaseProps {
@@ -21,14 +22,13 @@ interface ButtonProps extends BaseProps {
 type Props = LinkProps | ButtonProps;
 
 const LinkButton: FC<Props> = (props) => {
-  const { text, type, className } = props;
+  const { text, type, buttonType, className } = props;
 
   const buttonRef = useRef<HTMLButtonElement>(null);
   const anchorRef = useRef<HTMLAnchorElement>(null);
 
   const tl = gsap.timeline();
-  const activeRef = 'clickEvent' in props ? buttonRef : anchorRef;
-
+  const activeRef = "clickEvent" in props ? buttonRef : anchorRef;
 
   gsap.registerPlugin(CustomEase);
 
@@ -115,27 +115,24 @@ const LinkButton: FC<Props> = (props) => {
     transparent: "bg-nk-red",
     inverted: "bg-nk-background",
     solid: "bg-nk-white",
-    gradient:
-      "bg-nk-white",
+    gradient: "bg-nk-white",
   };
 
   const typeOriginalStyles = {
     transparent: "text-nk-gray",
     inverted: "text-nk-red",
     solid: "text-nk-white",
-    gradient:
-      "text-nk-white",
+    gradient: "text-nk-white",
   };
 
   const typeCopyStyles = {
     transparent: "text-nk-white",
     inverted: "text-nk-red",
     solid: "text-nk-red",
-    gradient:
-      "text-nk-red",
+    gradient: "text-nk-red",
   };
 
-  const classes = `rounded-full relative text-center relative inline-flex h-12 w-48 items-center justify-center capitalize font-metropolis shadow-3xl
+  const classes = `rounded-full relative text-center relative inline-flex py-2 px-4 items-center justify-center capitalize font-metropolis shadow-3xl
   ${typeStyles[type || "gradient"]}  block ${className || ""}`;
 
   if ("clickEvent" in props) {
@@ -144,21 +141,35 @@ const LinkButton: FC<Props> = (props) => {
         ref={buttonRef}
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
-        className={classes} onClick={props.clickEvent}
+        className={classes}
+        onClick={props.clickEvent}
+        type={buttonType || "button"}
       >
         <span className="absolute -left-[1px] bottom-0 right-0 top-0 h-full w-[calc(100%+2px)] overflow-hidden rounded-full">
-        <span className={`bg-overlay absolute bottom-0 left-0 z-10 h-full w-full scale-y-0 ${typeOverlayStyles[type || "gradient"]}`}></span>
-      </span>
-
-      <span className="relative inline-flex h-full w-full items-center overflow-hidden">
-        <span className={`text-original relative w-full text-center ${typeOriginalStyles[type || "gradient"]}`}>
-          {text}
+          <span
+            className={`bg-overlay absolute bottom-0 left-0 z-10 h-full w-full scale-y-0 ${
+              typeOverlayStyles[type || "gradient"]
+            }`}
+          ></span>
         </span>
 
-        <span className={`text-copy rotate-x-180 absolute z-20 w-full -translate-y-[200%] text-center ${typeCopyStyles[type || "gradient"]}`}>
-          {text}
+        <span className="relative inline-flex h-full w-full items-center overflow-hidden">
+          <span
+            className={`text-original relative w-full text-center ${
+              typeOriginalStyles[type || "gradient"]
+            }`}
+          >
+            {text}
+          </span>
+
+          <span
+            className={`text-copy rotate-x-180 absolute z-20 w-full -translate-y-[200%] text-center ${
+              typeCopyStyles[type || "gradient"]
+            }`}
+          >
+            {text}
+          </span>
         </span>
-      </span>
       </button>
     );
   }
@@ -166,25 +177,38 @@ const LinkButton: FC<Props> = (props) => {
   if ("navigateTo" in props) {
     return (
       <Link
-      ref={anchorRef}
-      onMouseEnter={handleMouseEnter}
-      onMouseLeave={handleMouseLeave}
-      className={classes} href={props.navigateTo} 
-    >
-      <span className="absolute -left-[1px] bottom-0 right-0 top-0 h-full w-[calc(100%+2px)] overflow-hidden rounded-full">
-        <span className={`bg-overlay absolute bottom-0 left-0 z-10 h-full w-full scale-y-0 ${typeOverlayStyles[type || "gradient"]}`}></span>
-      </span>
-
-      <span className="relative inline-flex h-full w-full items-center overflow-hidden">
-        <span className={`text-original relative w-full text-center ${typeOriginalStyles[type || "gradient"]}`}>
-          {text}
+        ref={anchorRef}
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseLeave}
+        className={classes}
+        href={props.navigateTo}
+      >
+        <span className="absolute -left-[1px] bottom-0 right-0 top-0 h-full w-[calc(100%+2px)] overflow-hidden rounded-full">
+          <span
+            className={`bg-overlay absolute bottom-0 left-0 z-10 h-full w-full scale-y-0 ${
+              typeOverlayStyles[type || "gradient"]
+            }`}
+          ></span>
         </span>
 
-        <span className={`text-copy rotate-x-180 absolute z-20 w-full -translate-y-[200%] text-center ${typeCopyStyles[type || "gradient"]}`}>
-          {text}
+        <span className="relative inline-flex h-full w-full items-center overflow-hidden">
+          <span
+            className={`text-original relative w-full text-center ${
+              typeOriginalStyles[type || "gradient"]
+            }`}
+          >
+            {text}
+          </span>
+
+          <span
+            className={`text-copy rotate-x-180 absolute z-20 w-full -translate-y-[200%] text-center ${
+              typeCopyStyles[type || "gradient"]
+            }`}
+          >
+            {text}
+          </span>
         </span>
-      </span>
-    </Link>
+      </Link>
     );
   }
 };

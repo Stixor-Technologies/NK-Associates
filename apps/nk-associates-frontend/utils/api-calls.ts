@@ -1,8 +1,26 @@
 import { BASE_URL } from "./constants";
-export const getProperties = async (start: number, limit = 12) => {
+import { Department } from "./types/types";
+export const getGridProperties = async (start: number, limit = 12) => {
   try {
     const resp = await fetch(
       `${BASE_URL}/api/properties?populate=*&pagination[start]=${start}&pagination[limit]=${limit}&sort[1]=id`
+    );
+    const data = await resp.json();
+    return data;
+  } catch (error) {
+    console.error("There was an error getting the Property List", error);
+  }
+};
+
+export const getMapProperties = async (
+  southLat: number,
+  northLat: number,
+  westLng: number,
+  eastLng: number
+) => {
+  try {
+    const resp = await fetch(
+      `${BASE_URL}/api/properties?populate=*&filters[latitude][$between]=${southLat}&filters[latitude][$between]=${northLat}&filters[longitude][$between]=${westLng}&filters[longitude][$between]=${eastLng}&sort[1]=id`
     );
     const data = await resp.json();
     return data;
@@ -16,8 +34,8 @@ export const getPropertyDetail = async (id: string) => {
     const resp = await fetch(`${BASE_URL}/api/properties/${id}?populate=*`, {
       cache: "no-store",
     });
-        const data = await resp.json();
-      return data?.data;
+    const data = await resp.json();
+    return data?.data;
   } catch (error) {
     console.error("There was an error getting the Property List", error);
   }
@@ -32,6 +50,18 @@ export const fetchPropertyTypesEnum = async () => {
   return res?.data?.schema.attributes;
 };
 
+
+export const getJobDetail = async (id: string) => {
+  try {
+    const resp = await fetch(`${BASE_URL}/api/jobs/${id}?populate=*`, {
+      cache: "no-store",
+    });
+    const data = await resp.json();
+    return data?.data;
+  } catch (error) {
+    console.error("There was an error getting the Jobs Details", error);
+  }
+};
 
 interface GetProjectsParams {
   category?: "Residential" | "Commercial" | "Hotel";
@@ -64,20 +94,20 @@ export const getProjects = async ({
   } catch (error) {
     throw error;
   }
-}
+};
 
-
-
-export const getJobs = async (departmentName, location, ) => {
+export const getJobs = async (departmentName, city) => {
   try {
     let apiUrl = `${BASE_URL}/api/jobs?populate=*`;
 
     if (departmentName) {
-      apiUrl += `&filters[department][name]=${encodeURIComponent(departmentName)}`;
+      apiUrl += `&filters[department][name]=${encodeURIComponent(
+        departmentName
+      )}`;
     }
 
-    if (location) {
-      apiUrl += `&filters[location]=${encodeURIComponent(location)}`;
+    if (city) {
+      apiUrl += `&filters[city]=${encodeURIComponent(city)}`;
     }
 
     const resp = await fetch(apiUrl);
@@ -94,7 +124,7 @@ export const getCities = async () => {
     const resp = await fetch(apiUrl);
     const data = await resp.json();
 
-    const locations = data.data.map(job => job.attributes.location);
+    const locations = data.data.map((job) => job.attributes.location);
     const uniqueCitiesSet = new Set(locations);
     const uniqueCitiesArray = Array.from(uniqueCitiesSet);
 
@@ -104,19 +134,29 @@ export const getCities = async () => {
   }
 };
 
-
 export const getDepartments = async () => {
   try {
-    let apiUrl = `${BASE_URL}/api/jobs?populate=*`;
+    let apiUrl = `${BASE_URL}/api/departments?populate=*`;
     const resp = await fetch(apiUrl);
     const data = await resp.json();
-
-    const departments = data.data.map(job => job.attributes.department.data.attributes.name);
-    const uniqueDepartmentsSet = new Set(departments); 
-    const uniqueDepartmentsArray = Array.from(uniqueDepartmentsSet);
-    return uniqueDepartmentsArray;
-    
+    const departments = data?.data?.map(
+      (data: Department) => data?.attributes?.name
+    );
+    return departments;
   } catch (error) {
     console.error("There was an error getting departments", error);
+  }
+};
+
+export const getSocials = async () => {
+  try {
+    let apiUrl = `${BASE_URL}/api/socials`;
+    const resp = await fetch(apiUrl, {
+      cache: "no-store",
+    });
+    const links = await resp.json();
+    return links;
+  } catch (error) {
+    console.error("There was an error getting social media links", error);
   }
 };

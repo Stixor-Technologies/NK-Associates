@@ -155,7 +155,7 @@ const EventModal: React.FC<ModalProps> = ({ open, onClose, eventData }) => {
           </div>
           <div className="font-metropolis-semibold text-sm text-nk-gray underline md:text-lg">
             Hosted by
-            <span className="mt-5 font-metropolis text-nk-black underline">
+            <span className="mt-5 font-metropolis-semibold">
               {` ${eventData?.attributes?.event_host}`}
             </span>
           </div>

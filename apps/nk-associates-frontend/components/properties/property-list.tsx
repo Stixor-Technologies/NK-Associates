@@ -8,7 +8,7 @@ interface PropertyListProps {
 
 const PropertyList: FC<PropertyListProps> = ({properties}) => {
   return (    
-      <div className="grid gap-x-7 gap-y-12 overflow-hidden py-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+      <div className="container mx-auto px-4 grid gap-x-7 gap-y-12 overflow-hidden py-6 pb-12 sm:grid-cols-2 md:pb-16 lg:grid-cols-3 xl:grid-cols-4">
           {properties.map((property, index) => (
             <PropertyCard key={index} property={property} />
           ))}
