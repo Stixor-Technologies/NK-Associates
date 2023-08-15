@@ -1,6 +1,8 @@
 import { useMemo } from "react";
 import { useRouter } from "next/navigation";
 import LinkButton from "../button/link-button";
+import Image from "next/image";
+import Error from "../../public/assets/images/Error.svg"
 
 const ErrorBoundary = ({ error }: { error: Error }) => {
   const router = useRouter();
@@ -11,7 +13,10 @@ const ErrorBoundary = ({ error }: { error: Error }) => {
 
   return (
     <section className="container mx-auto my-10 flex w-full flex-col items-center">
-      <h2 className="mb-10 text-2xl">Something went wrong!</h2>
+      <div className="justify-center items-center mx-auto">
+        <Image src={Error} alt="Something has gone wrong"/>
+      </div>
+      <h2 className="my-10 font-metropolis-bold text-base md:text-3xl">Something Went Wrong!</h2>
       {isDevEnv && (
         <>
           <h3 className="mb-6 rounded-md bg-red-600 p-4 text-xl text-white">
