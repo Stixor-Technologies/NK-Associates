@@ -47,11 +47,14 @@ const ContactDetails: React.FC<ContactDetailProps> = ({ data }) => {
                     {contactItem?.attributes?.emails?.map(
                       (emailItem, index) => {
                         return (
-                          <p key={index} className="break-all my-[0.063rem] font-metropolis-extralight text-sm md:text-base">
+                          <p
+                            key={index}
+                            className="break-all my-[0.063rem] font-metropolis-extralight text-sm md:text-base"
+                          >
                             {emailItem?.email}
                           </p>
                         );
-                      }
+                      },
                     )}
                   </div>
                 </div>

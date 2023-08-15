@@ -19,7 +19,6 @@ export const convertToPakistaniNumbering = (input: number | string) => {
   return num.toString();
 };
 
-
 const SQ_METER_TO_SQ_FEET = 10.7639;
 const MARLA_TO_SQ_FEET = 272.25;
 const KANAL_TO_SQ_FEET = 5445;

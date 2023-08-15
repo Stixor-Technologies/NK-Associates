@@ -161,13 +161,13 @@ const ProjectComparison = ({ projectId }: PropTypes) => {
 
   const handleGetComparisonImages = async () => {
     const response: ComparisonResponseType = await getComparisonImages(
-      projectId
+      projectId,
     );
     const comparisonImages = [];
     response.attributes.comparisonImages.forEach((set) => {
       const urlSets = [];
       set["comparison_images"].data.map((image) =>
-        urlSets.push(image.attributes.url)
+        urlSets.push(image.attributes.url),
       );
       comparisonImages.push(urlSets);
     });

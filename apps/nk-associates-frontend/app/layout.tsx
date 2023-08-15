@@ -6,42 +6,42 @@ import { MapApiProvider } from "./context/map-context";
 import Navigation from "../components/navigation/navigation";
 
 const metropolisRegular = localFont({
-  src: "./assets/fonts/Metropolis-Regular.otf",
+  src: "./fonts/Metropolis-Regular.otf",
   variable: "--font-metroplis",
 });
 
 const metropolisSemiBold = localFont({
-  src: "./assets/fonts/Metropolis-SemiBold.otf",
+  src: "./fonts/Metropolis-SemiBold.otf",
   variable: "--font-metroplis-semiBold",
 });
 
 const metropolisBold = localFont({
-  src: "./assets/fonts/Metropolis-Bold.otf",
+  src: "./fonts/Metropolis-Bold.otf",
   variable: "--font-metroplis-bold",
 });
 
 const metropolisExtraBold = localFont({
-  src: "./assets/fonts/Metropolis-ExtraBold.otf",
+  src: "./fonts/Metropolis-ExtraBold.otf",
   variable: "--font-metroplis-extraBold",
 });
 
 const metropolisLight = localFont({
-  src: "./assets/fonts/Metropolis-Light.otf",
+  src: "./fonts/Metropolis-Light.otf",
   variable: "--font-metroplis-light",
 });
 
 const metropolisMedium = localFont({
-  src: "./assets/fonts/Metropolis-Medium.otf",
+  src: "./fonts/Metropolis-Medium.otf",
   variable: "--font-metroplis-medium",
 });
 
 const metropolisExtraLight = localFont({
-  src: "./assets/fonts/Metropolis-ExtraLight.otf",
+  src: "./fonts/Metropolis-ExtraLight.otf",
   variable: "--font-metroplis-extraLight",
 });
 
 const metropolisThin = localFont({
-  src: "./assets/fonts/Metropolis-Thin.otf",
+  src: "./fonts/Metropolis-Thin.otf",
   variable: "--font-metroplis-Thin",
 });
 

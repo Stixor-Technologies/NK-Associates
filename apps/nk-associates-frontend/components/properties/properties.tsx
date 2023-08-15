@@ -26,7 +26,7 @@ const Properties = () => {
 
   const [mapProperties, setMapProperties] = useState<Property[]>([]);
   const [selectedProperty, setSelectedProperty] = useState<Property | null>(
-    null
+    null,
   );
   const [hasMapRendered, setHasMapRendered] = useState<boolean>(false);
 
@@ -68,7 +68,7 @@ const Properties = () => {
           bounds.south,
           bounds.north,
           bounds.west,
-          bounds.east
+          bounds.east,
         );
         if (resp?.data) {
           setMapProperties(resp?.data);
@@ -178,12 +178,12 @@ const Properties = () => {
         </div>
       )}
 
-{gridProperties.length > 0 && (
+      {gridProperties.length > 0 && (
         <button
           className={` self-center sticky top-0 mb-4 bottom-16 left-1/2 z-10 flex -translate-x-1/2 items-center gap-2 rounded-full px-4 py-2 text-center text-sm capitalize text-nk-white transition-all duration-300 ease-in-out md:gap-4 md:px-6 md:py-3 md:text-2xl ${
             isList
-            ? "bg-nk-gradient-red-one bg-gradient-to-b to-nk-gradient-red-two hover:scale-[1.1] hover:bg-nk-black"
-            : "bg-nk-black hover:scale-[1.1] hover:bg-nk-red"
+              ? "bg-nk-gradient-red-one bg-gradient-to-b to-nk-gradient-red-two hover:scale-[1.1] hover:bg-nk-black"
+              : "bg-nk-black hover:scale-[1.1] hover:bg-nk-red"
           }`}
           onClick={() => {
             setIsList(!isList);
@@ -201,7 +201,6 @@ const Properties = () => {
           />
         </button>
       )}
-
     </>
   );
 };

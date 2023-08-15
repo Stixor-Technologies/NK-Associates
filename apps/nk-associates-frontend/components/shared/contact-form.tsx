@@ -5,7 +5,7 @@ import Input from "./input";
 import { ContactFormSchema } from "../../utils/formik-schema";
 import Spinner from "../spinner";
 import Toast from "./toast";
-import ArrowDown from "../../public/assets/icons/arrow-down.svg"
+import ArrowDown from "../../public/assets/icons/arrow-down.svg";
 import Image from "next/image";
 
 const fieldTypes = {
@@ -136,7 +136,12 @@ const ContactForm: React.FC<ContactFormProps> = ({ categories }) => {
                           </Field>
 
                           <div className="pointer-events-none absolute top-1/2 -translate-y-1/2 right-3 flex items-center">
-                             <Image src= {ArrowDown} width = {20} height = {20} alt = "dropdown" />
+                            <Image
+                              src={ArrowDown}
+                              width={20}
+                              height={20}
+                              alt="dropdown"
+                            />
                           </div>
                         </div>
 

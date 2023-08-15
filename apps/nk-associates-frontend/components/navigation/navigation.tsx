@@ -27,7 +27,7 @@ const Navigation = () => {
         setIsMenuOpen(false);
       }
     },
-    [isMenuOpen]
+    [isMenuOpen],
   );
 
   useEffect(() => {
