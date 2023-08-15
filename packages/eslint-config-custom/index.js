@@ -3,11 +3,11 @@ module.exports = {
   plugins: ["prettier"],
   rules: {
     "@next/next/no-html-link-for-pages": "off",
-    "prettier/prettier": "error"
+    "prettier/prettier": "error",
   },
   parserOptions: {
     babelOptions: {
-      presets: [require.resolve("next/babel")]
-    }
-  }
+      presets: [require.resolve("next/babel")],
+    },
+  },
 };
