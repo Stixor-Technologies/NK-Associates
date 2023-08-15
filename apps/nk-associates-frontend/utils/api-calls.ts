@@ -1,5 +1,6 @@
 import { BASE_URL } from "./constants";
 import { Department } from "./types/types";
+import { SIMILAR_PROPERTIES_LIMIT } from "./constants";
 export const getGridProperties = async (start: number, limit = 12) => {
   try {
     const resp = await fetch(
@@ -36,6 +37,19 @@ export const getPropertyDetail = async (id: string) => {
     });
     const data = await resp.json();
     return data?.data;
+  } catch (error) {
+    console.error("There was an error getting the Property List", error);
+  }
+};
+
+export const getSimilarProperties = async () => {
+  try {
+    const resp = await fetch(
+      `${BASE_URL}/api/properties?populate=*&pagination[limit]=${SIMILAR_PROPERTIES_LIMIT}&sort[1]=id`, {
+        cache: "no-store",
+      });
+    const data = await resp.json();
+    return data.data;
   } catch (error) {
     console.error("There was an error getting the Property List", error);
   }

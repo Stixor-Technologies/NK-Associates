@@ -18,8 +18,10 @@ const PropertyCard: FC<CardProps> = ({ property, actMap }) => {
   const id = property?.id;
   const thumbnailImage =
     property?.attributes?.image_thumbnail?.data?.attributes?.url;
+    console.log(property)
+
   return (
-    <div>
+    <div className="flex-1">
       <Link href={`properties/${id}`}  target={actMap ? "_blank" : "_self"} 
         rel={actMap ? "noopener noreferrer" : undefined}>
         <div

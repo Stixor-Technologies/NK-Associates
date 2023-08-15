@@ -1,10 +1,11 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { getPropertyDetail } from "../../../utils/api-calls";
+import { getPropertyDetail, getSimilarProperties } from "../../../utils/api-calls";
 import DetailSlider from "../../../components/properties/property-detail/detail-slider";
-import Tile from "../../../components/shared/tile";
 import MapComponent from "../../../components/shared/map-component";
+import SimilarProperites from "../../../components/properties/property-detail/similar-properites";
+import PropertyCard from "../../../components/properties/property-card";
 import { convertAreaToSqFeet } from "../../../utils/utils";
 import { Property } from "../../../utils/types/types";
 import { BASE_URL } from "../../../utils/constants";
@@ -26,6 +27,7 @@ interface PropertyDetailProps {
 
 async function PropertyDetail({ params: { id } }: PropertyDetailProps) {
   const data: Property = await getPropertyDetail(id);
+  // const properties = await getSimilarProperties();
   const {
     title,
     bedrooms,
@@ -191,6 +193,15 @@ async function PropertyDetail({ params: { id } }: PropertyDetailProps) {
         </div>
         <ServicesOverview />
       </div>
+
+      {/* <SimilarProperites /> */}
+
+
+      {/* <div className="container mx-auto px-4 flex flex-nowrap overflow-x-scroll  gap-x-7 gap-y-12 py-6 pb-12 md:pb-16">
+    {properties.map((property: Property, index: number) => (
+      <PropertyCard key={index} property={property} />
+    ))}
+  </div> */}
     </section>
   );
 }
