@@ -13,6 +13,7 @@ import ListIcon from "../../public/assets/icons/list-icon.svg";
 import PropertyCard from "./property-card";
 import MapStyles from "../../utils/map-styles.json";
 import "./map-info-window.css";
+import SearchBar from "./search-bar";
 
 const center = {
   lat: 33.58468464794478,
@@ -99,6 +100,7 @@ const Properties = () => {
 
   return (
     <>
+    <SearchBar />
       {isList && (
         <>
           {isLoading && gridProperties.length === 0 ? (
