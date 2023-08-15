@@ -27,9 +27,12 @@ const Careers = () => {
           career by submitting your details today.
         </div>
         <div className="flex justify-center">
-          <button className="my-8 w-80 rounded-full bg-nk-red p-2 font-metropolis text-base  text-nk-white duration-500 ease-in-out hover:bg-opacity-90 hover:shadow-lg hover:delay-200 md:w-96 lg:w-96">
-            <Link href="#Listing">Be a part of our amazing team</Link>
-          </button>
+          <LinkButton
+            type="solid"
+            navigateTo="#Listing"
+            text="Be a part of our amazing team"
+            className="h-10 my-8 w-80 lg:w-96 p-2 lowercase duration-500 ease-in-out hover:bg-opacity-90 hover:shadow-lg hover:delay-200"
+          />
         </div>
       </div>
       <div className="mb-28 mt-8 gap-8 lg:grid lg:grid-cols-2">
@@ -75,7 +78,7 @@ const Careers = () => {
               text="contact us"
               navigateTo="contact"
               type="solid"
-              className="mt-8 w-56  p-2  transition-all duration-300 hover:bg-opacity-90 lg:w-96"
+              className="mt-8 w-56 p-2 transition-all duration-300 hover:bg-opacity-90 lg:w-96"
             />
           </div>
         </div>

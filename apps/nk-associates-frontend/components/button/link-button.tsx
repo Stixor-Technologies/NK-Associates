@@ -6,7 +6,7 @@ import { CustomEase } from "gsap/CustomEase";
 
 interface BaseProps {
   text: string;
-  type?: "transparent" | "inverted" | "solid" | "gradient";
+  type?: "transparent" | "inverted" | "solid" | "gradient" | "transparentRed";
   className?: string;
   buttonType?: "submit" | "button";
 }
@@ -104,6 +104,7 @@ const LinkButton: FC<Props> = (props) => {
   };
 
   const typeStyles = {
+    transparentRed: "bg-transparent text-nk-red border border-nk-red",
     transparent: "bg-transparent text-nk-gray border border-nk-red",
     inverted: "bg-nk-white text-nk-red",
     solid: "bg-nk-red text-nk-white",
@@ -112,6 +113,7 @@ const LinkButton: FC<Props> = (props) => {
   };
 
   const typeOverlayStyles = {
+    transparentRed: "bg-nk-red",
     transparent: "bg-nk-red",
     inverted: "bg-nk-background",
     solid: "bg-nk-white",
@@ -119,6 +121,7 @@ const LinkButton: FC<Props> = (props) => {
   };
 
   const typeOriginalStyles = {
+    transparentRed: "text-nk-red",
     transparent: "text-nk-gray",
     inverted: "text-nk-red",
     solid: "text-nk-white",
@@ -126,6 +129,7 @@ const LinkButton: FC<Props> = (props) => {
   };
 
   const typeCopyStyles = {
+    transparentRed: "text-nk-white",
     transparent: "text-nk-white",
     inverted: "text-nk-red",
     solid: "text-nk-red",
