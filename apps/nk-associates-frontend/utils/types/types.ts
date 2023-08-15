@@ -10,8 +10,8 @@ export interface Contacts {
   attributes: {
     location: string;
     address: string;
-    latitude?: number;
-    longitude?: number;
+    latitude: number;
+    longitude: number;
     emails: {
       id: number;
       email: string;
@@ -98,7 +98,7 @@ export interface Project {
       data: { attributes: { url: string } };
     };
     pdf: {
-      data: { attributes: {url: string} };
+      data: { attributes: { url: string } };
     };
     numberOfRooms?: number;
     numberOfBathRooms?: number;

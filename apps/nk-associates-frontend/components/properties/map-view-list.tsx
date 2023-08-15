@@ -1,9 +1,7 @@
-import React from 'react'
+import React from "react";
 
 const PropertyMap = () => {
-  return (
-    <div>This will display the properties on map in future</div>
-  )
-}
+  return <div>This will display the properties on map in future</div>;
+};
 
-export default PropertyMap
+export default PropertyMap;

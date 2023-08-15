@@ -50,12 +50,12 @@ const Hamburger = forwardRef<HTMLButtonElement, HamburgerProps>(
         .to(
           menuMidRef.current,
           { scale: 0.01, transformOrigin: "50% 50%", duration: 0.3 },
-          "initial"
+          "initial",
         )
         .to(
           menuBottomRef.current,
           { attr: { width: 54.8962 }, duration: 0.2 },
-          "initial"
+          "initial",
         )
         .to(
           menuTopRef.current,
@@ -65,7 +65,7 @@ const Hamburger = forwardRef<HTMLButtonElement, HamburgerProps>(
             scale: 1,
             duration: 0.4,
           },
-          "rotate"
+          "rotate",
         )
         .to(
           menuBottomRef.current,
@@ -75,7 +75,7 @@ const Hamburger = forwardRef<HTMLButtonElement, HamburgerProps>(
             scale: 1,
             duration: 0.4,
           },
-          "rotate"
+          "rotate",
         )
         .to(menuTopRef.current, { fill: "white", duration: 0.8 }, "initial")
         .to(menuBottomRef.current, { fill: "white", duration: 0.8 }, "initial");
@@ -90,7 +90,7 @@ const Hamburger = forwardRef<HTMLButtonElement, HamburgerProps>(
         }}
         ref={assignRefs(
           localButtonRef,
-          menuButtonRef as Ref<HTMLButtonElement>
+          menuButtonRef as Ref<HTMLButtonElement>,
         )}
       >
         <div />
@@ -128,7 +128,7 @@ const Hamburger = forwardRef<HTMLButtonElement, HamburgerProps>(
         </svg>
       </button>
     );
-  }
+  },
 );
 
 export default Hamburger;

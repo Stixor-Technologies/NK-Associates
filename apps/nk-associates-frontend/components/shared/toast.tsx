@@ -11,7 +11,7 @@ const Toast: FC<ToastProps> = ({ message }) => {
   return (
     <div
       id="toast-top-right"
-      className={`space-x text-medium-gray fixed right-5 top-2 z-[100] mt-10 flex w-full max-w-xs items-center space-x-4 rounded-lg p-4 shadow ${
+      className={`space-x absolute top-2 right-5 z-[100] mt-10 flex w-full max-w-xs items-center space-x-4 rounded-lg p-4 text-medium-gray shadow ${
         message.includes("Error") ? "bg-red-500" : "bg-green-500"
       }`}
       role="alert"

@@ -13,7 +13,7 @@ const PropertyPage = () => {
             Unlock Your Perfect Property, Find, Buy, Rent with Ease
           </p>
         </div>
-        <Properties/>
+        <Properties />
       </div>
     </section>
   );

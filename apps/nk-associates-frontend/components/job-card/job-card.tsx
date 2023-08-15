@@ -1,8 +1,8 @@
 "use client";
 import React from "react";
 import Image from "next/image";
-import LinkButton from "../../components/button/link-button";
-import LocationIcon from "../../../nk-associates-frontend/app/assets/images/location.svg";
+import LinkButton from "../button/link-button";
+import LocationIcon from "../../public/assets/images/location.svg";
 import { Job } from "../../utils/types/types";
 
 interface JobProp {

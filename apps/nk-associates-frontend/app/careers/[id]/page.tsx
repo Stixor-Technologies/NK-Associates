@@ -25,12 +25,12 @@ async function JobDetail({ params: { id } }: JobDetailProps) {
     skills,
     days,
   } = data?.attributes;
-  const responsibilityArray = responsibilities?.split("\n");
-  const skillArray = skills?.split("\n");
+  const responsibilityArray = responsibilities.split("\n");
+  const skillArray = skills.split("\n");
 
   const formatTime = (time) => {
     const date = new Date();
-    const [hours, minutes] = time?.split(":");
+    const [hours, minutes] = time.split(":");
     date.setHours(hours);
     date.setMinutes(minutes);
     return date.toLocaleString("en-US", {
@@ -41,13 +41,13 @@ async function JobDetail({ params: { id } }: JobDetailProps) {
   };
 
   function displayDays(daysArray) {
-    const daysArrayWithoutId = days?.map(({ id, ...rest }) => rest);
+    const daysArrayWithoutId = days.map(({ id, ...rest }) => rest);
     const daysObject = daysArrayWithoutId[0]; // Assuming there's only one object in the array
     const selectedDays = Object.keys(daysObject).filter(
-      (day) => daysObject[day]
+      (day) => daysObject[day],
     );
 
-    if (selectedDays?.length === 6) {
+    if (selectedDays.length === 6) {
       return "Monday to Saturday";
     } else {
       return selectedDays.join(", ");
