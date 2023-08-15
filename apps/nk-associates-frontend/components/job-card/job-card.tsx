@@ -14,7 +14,7 @@ const JobCard: React.FC<JobProp> = ({ job }) => {
   const { title, description, city, department } = job?.attributes;
   const departmentName = department?.data?.attributes?.name;
   return (
-    <div className="lg: bg-nk-light-gray mx-1 my-3 rounded-2xl p-3 lg:mx-3 lg:my-4 lg:flex lg:gap-4 lg:p-7 xl:gap-8">
+    <div className="lg:bg-nk-light-gray mx-1 my-3 rounded-2xl p-3 lg:mx-3 lg:my-4 lg:flex lg:gap-4 lg:p-7 xl:gap-8">
       <div className="lg:w-11/12">
         <div className="font-metropolis flex gap-2 text-base">
           <h3 className="text-nk-red inline-block lg:text-2xl">
