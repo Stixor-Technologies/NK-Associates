@@ -34,8 +34,8 @@ const JobCard: React.FC<JobProp> = ({ job }) => {
           <LinkButton
             text="view more"
             navigateTo={`careers/${id}`}
-            type="inverted"
-            className="border-nk-red text-nk-red h-10 w-32 border bg-transparent lg:w-40"
+            type="transparentRed"
+            className="h-10 w-32 lg:w-40"
           />
         </div>
         <div className="flex items-center justify-center gap-0.5 lg:order-1 lg:justify-end">
