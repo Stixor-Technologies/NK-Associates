@@ -25,12 +25,12 @@ async function JobDetail({ params: { id } }: JobDetailProps) {
     skills,
     days,
   } = data?.attributes;
-  const responsibilityArray = responsibilities.split("\n");
-  const skillArray = skills.split("\n");
+  const responsibilityArray = responsibilities?.split("\n");
+  const skillArray = skills?.split("\n");
 
   const formatTime = (time) => {
     const date = new Date();
-    const [hours, minutes] = time.split(":");
+    const [hours, minutes] = time?.split(":");
     date.setHours(hours);
     date.setMinutes(minutes);
     return date.toLocaleString("en-US", {
@@ -41,13 +41,13 @@ async function JobDetail({ params: { id } }: JobDetailProps) {
   };
 
   function displayDays(daysArray) {
-    const daysArrayWithoutId = days.map(({ id, ...rest }) => rest);
+    const daysArrayWithoutId = days?.map(({ id, ...rest }) => rest);
     const daysObject = daysArrayWithoutId[0]; // Assuming there's only one object in the array
-    const selectedDays = Object.keys(daysObject).filter(
+    const selectedDays = Object.keys(daysObject)?.filter(
       (day) => daysObject[day],
     );
 
-    if (selectedDays.length === 6) {
+    if (selectedDays?.length === 6) {
       return "Monday to Saturday";
     } else {
       return selectedDays.join(", ");
@@ -56,9 +56,9 @@ async function JobDetail({ params: { id } }: JobDetailProps) {
 
   return (
     <div className="px-6 text-center md:px-14">
-      <div className="pb-5 font-metropolis-bold text-3xl">{title}</div>
+      <div className="font-metropolis-bold pb-5 text-3xl">{title}</div>
       <div className="font-metropolis text-sm">{description}</div>
-      <div className="py-3 font-metropolis-semibold text-base">
+      <div className="font-metropolis-semibold py-3 text-base">
         No. of Positions: {positions}
       </div>
       <LinkButton
@@ -67,54 +67,54 @@ async function JobDetail({ params: { id } }: JobDetailProps) {
         type="solid"
         className="h-10 w-80 border-2 "
       />
-      <div className="py-4 pt-10 text-left font-metropolis-bold text-[1.75rem] leading-[2.1rem]">
+      <div className="font-metropolis-bold py-4 pt-10 text-left text-[1.75rem] leading-[2.1rem]">
         KEY RESPONSIBILITIES:
       </div>
       <div className="pb-4 text-left">
-        <ul className="list-disc pl-5 font-metropolis-thin">
-          {responsibilityArray.map((responsibility, index) => (
+        <ul className="font-metropolis-thin list-disc pl-5">
+          {responsibilityArray?.map((responsibility, index) => (
             <li key={index} className="py-1 text-sm">
-              {responsibility.trim()}
+              {responsibility?.trim()}
             </li>
           ))}
         </ul>
       </div>
-      <div className="py-4 text-left font-metropolis-bold text-[1.75rem] leading-[2.1rem]">
+      <div className="font-metropolis-bold py-4 text-left text-[1.75rem] leading-[2.1rem]">
         JOB SPECIFICATIONS
       </div>
-      <div className="pb-2 text-left font-metropolis">
-        <span className="font-metropolis-bold text-base text-nk-red">
+      <div className="font-metropolis pb-2 text-left">
+        <span className="font-metropolis-bold text-nk-red text-base">
           Qualification:{" "}
         </span>
-        {qualification}
+        {qualification?.trim()}
       </div>
-      <div className="text-left font-metropolis">
-        <span className="font-metropolis-bold text-base text-nk-red">
+      <div className="font-metropolis text-left">
+        <span className="font-metropolis-bold text-nk-red text-base">
           Experience:{" "}
         </span>
-        {experience}
+        {experience?.trim()}
       </div>
-      <div className="py-4 text-left font-metropolis-bold text-[1.75rem] leading-[2.1rem]">
+      <div className="font-metropolis-bold py-4 text-left text-[1.75rem] leading-[2.1rem]">
         Skills Required
       </div>
-      <ul className="list-disc pl-5 text-left font-metropolis-thin text-nk-black">
-        {skillArray.map((skill, index) => (
+      <ul className="font-metropolis-thin text-nk-black list-disc pl-5 text-left">
+        {skillArray?.map((skill, index) => (
           <li key={index} className="py-1 text-sm">
-            {skill.trim()}
+            {skill?.trim()}
           </li>
         ))}
       </ul>
-      <div className="py-4 pt-10 text-left font-metropolis-bold text-[1.75rem] leading-[2.1rem]">
+      <div className="font-metropolis-bold py-4 pt-10 text-left text-[1.75rem] leading-[2.1rem]">
         Office Timings
       </div>
-      <div className="text-left font-metropolis-medium">
+      <div className="font-metropolis-medium text-left">
         {formatTime(start)} to {formatTime(end)} ({displayDays(days)})
       </div>
-      <div className="py-2  text-left font-metropolis-bold text-[1.75rem] leading-[2.1rem]">
+      <div className="font-metropolis-bold  py-2 text-left text-[1.75rem] leading-[2.1rem]">
         Location
       </div>
-      <div className="text-left  font-metropolis-medium">{location}</div>
-      <div className="py-3 font-metropolis-semibold text-base">
+      <div className="font-metropolis-medium  text-left">{location}</div>
+      <div className="font-metropolis-semibold py-3 text-base">
         No. of Positions: {positions}
       </div>
       <div className="pb-20">
