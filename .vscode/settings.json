@@ -1,3 +1,6 @@
 {
-  "cSpell.words": ["metroplis", "Parens"]
+  "cSpell.words": ["metroplis", "Parens", "gsap"],
+  "editor.formatOnSave": true,
+  "editor.tabSize": 2,
+  "prettier.tabWidth": 2,
 }

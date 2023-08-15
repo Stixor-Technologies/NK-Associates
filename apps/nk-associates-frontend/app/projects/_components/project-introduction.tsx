@@ -1,5 +1,9 @@
+'use client';
+import { useLayoutEffect } from "react";
+import { gsap } from "gsap";
+
 import { convertToPakistaniNumbering } from "../../../utils/utils";
-import InquiresCompnent from "./inquires-component";
+import InquiresComponent from "./inquires-component";
 
 type PropTypes = {
   projectName: string;
@@ -30,6 +34,7 @@ const ProjectIntroduction = ({
   numberOfBathRooms = undefined,
   numberOfRooms = undefined,
 }: PropTypes) => {
+
   const details = [
     {
       title: "Category",
@@ -53,11 +58,31 @@ const ProjectIntroduction = ({
     },
   ];
 
+  useLayoutEffect(() => {
+    gsap.to("[data-project-title]", {
+      opacity: 1,
+      transform: 'translateY(0%)',
+    });
+
+    gsap.to("[data-project-unitsSold] p span", {
+      visibility: 'visible',
+    });
+
+    gsap.from("[data-project-unitsSold] p span", {
+      textContent: 0,
+      duration: 4,
+      ease: "circ.inOut",
+      snap: { textContent: 1 },
+      stagger: 1,
+    });
+  }, []);
+
   return (
-    <section className="container flex flex-col py-8 md:py-14">
+    <section data-project-intro className="container flex flex-col py-8 md:py-14">
       <section className="mb-6 flex flex-col font-metropolis-bold md:flex-row md:justify-between">
         <h1
-          className="mb-5 cursor-default text-center text-4xl md:mb-0 md:truncate md:pr-6 md:text-left"
+          data-project-title
+          className="mb-5 cursor-default text-center text-4xl md:mb-0 md:truncate md:pr-6 md:text-left opacity-0 translate-y-full"
           title={projectName}
         >
           {projectName}
@@ -162,9 +187,9 @@ const ProjectIntroduction = ({
           </div>
         </div>
 
-        <div className="flex justify-center">
+        <div data-project-unitsSold className="flex justify-center">
           <div className="mr-7 hidden flex-col items-center font-metropolis-semibold text-nk-red md:flex">
-            <p>{unitsSold} Units Sold</p>
+            <p><span className="invisible">{unitsSold}</span> Units Sold</p>
 
             <div className="mt-2 h-2.5 w-full min-w-[11.875rem] rounded-full bg-nk-gray lg:min-w-[13.75rem]">
               <div
@@ -174,7 +199,7 @@ const ProjectIntroduction = ({
             </div>
           </div>
 
-          <InquiresCompnent />
+          <InquiresComponent />
         </div>
       </section>
 

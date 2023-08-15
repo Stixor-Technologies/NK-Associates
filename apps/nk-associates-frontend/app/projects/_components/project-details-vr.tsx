@@ -5,7 +5,7 @@ import PhoneIcon from "../../../public/assets/icons/phone-icon.svg";
 
 const ProjectDetailsVR = () => {
   return (
-    <section className="relative h-[16.625rem] bg-red-300 bg-cover [background-image:url('/assets/images/bg-project.jpeg')] sm:h-[25.625rem] md:h-[32.625rem] lg:min-h-[35.375rem] xl:h-[39.375rem]">
+    <section data-project-3d className="relative h-[16.625rem] bg-red-300 bg-cover [background-image:url('/assets/images/bg-project.jpeg')] sm:h-[25.625rem] md:h-[32.625rem] lg:min-h-[35.375rem] xl:h-[39.375rem]">
       <div className="absolute left-0 top-0 h-full w-full bg-black/50" />
       <section className="container relative mx-auto flex h-full flex-1 flex-col items-center justify-center p-4 text-white lg:p-10">
         <div className="flex flex-col items-center justify-center">
