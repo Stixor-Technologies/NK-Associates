@@ -1,7 +1,10 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { getPropertyDetail, getSimilarProperties } from "../../../utils/api-calls";
+import {
+  getPropertyDetail,
+  getSimilarProperties,
+} from "../../../utils/api-calls";
 import DetailSlider from "../../../components/properties/property-detail/detail-slider";
 import MapComponent from "../../../components/shared/map-component";
 import SimilarProperites from "../../../components/properties/property-detail/similar-properites";
@@ -27,7 +30,7 @@ interface PropertyDetailProps {
 
 async function PropertyDetail({ params: { id } }: PropertyDetailProps) {
   const data: Property = await getPropertyDetail(id);
-  // const properties = await getSimilarProperties();
+  const properties = await getSimilarProperties();
   const {
     title,
     bedrooms,
@@ -196,12 +199,16 @@ async function PropertyDetail({ params: { id } }: PropertyDetailProps) {
 
       {/* <SimilarProperites /> */}
 
-
-      {/* <div className="container mx-auto px-4 flex flex-nowrap overflow-x-scroll  gap-x-7 gap-y-12 py-6 pb-12 md:pb-16">
-    {properties.map((property: Property, index: number) => (
-      <PropertyCard key={index} property={property} />
-    ))}
-  </div> */}
+      <div className="container px-4 mt-16">
+        <h6 className=" text-[2rem] text-center font-metropolis-semibold sm:text-left md:text-4xl">
+          Similar Properties
+        </h6>
+        <div className="flex flex-nowrap overflow-x-scroll gap-7 py-8 pb-12 md:pb-16">
+          {properties.map((property: Property, index: number) => (
+            <PropertyCard key={index} property={property} />
+          ))}
+        </div>
+      </div>
     </section>
   );
 }
