@@ -14,7 +14,8 @@ export async function POST(request: NextRequest) {
     subject: "This is dummy email and sent via sendgrid",
     body: data.message,
     html: `<div>
-    <h3>You've got a new mail from ${data.name}, their email is: ${data.email}, their number is ${data?.phone}, category: ${data.category} </h3>
+    <p>You've got a new mail from ${data.name}, their email is: ${data.email}, their number is ${data?.phone} </p>
+    <p><span>Selected Category:</span> ${data.category} </p>
     ${data.message}</div>`,
   };
 

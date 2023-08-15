@@ -116,6 +116,48 @@ export const getComparisonImages = async (id: number) => {
   }
 };
 
+export const getOfficeAddress = async () => {
+  try {
+    const response = await fetch(`${BASE_URL}/api/contacts?populate=*`, {
+      cache: "no-store",
+    });
+    if (!response.ok) {
+      throw new Error("Network response was not OK");
+    }
+    const data = await response.json();
+    return data?.data;
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+export const getHeadOffice = async () => {
+  try {
+    const resp = await fetch(`${BASE_URL}/api/head-office?populate=*`, {
+      cache: "no-store",
+    });
+    const data = await resp.json();
+    return data?.data;
+  } catch (error) {
+    console.error("There was an error getting the Property List", error);
+  }
+};
+
+export const getCategories = async () => {
+  try {
+    const response = await fetch(`${BASE_URL}/api/categories`, {
+      cache: "no-store",
+    });
+    if (!response.ok) {
+      throw new Error("Network response was not OK");
+    }
+    const data = await response.json();
+    return data?.data;
+  } catch (error) {
+    console.error(error);
+  }
+};
+
 export const getJobs = async (departmentName, city) => {
   try {
     let apiUrl = `${BASE_URL}/api/jobs?populate=*`;
