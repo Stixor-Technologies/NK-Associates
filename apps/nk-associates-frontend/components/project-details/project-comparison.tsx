@@ -81,15 +81,13 @@ const CompareComponent = ({ url }) => {
       <Image
         src={`${BASE_URL}${url[0]}`}
         alt="Carousel Image"
-        layout="fill"
-        objectFit="cover"
+        fill
         className="pointer-events-none h-full w-full object-cover"
       />
       <Image
         src={`${BASE_URL}${url[1]}`}
         alt="Carousel Image"
-        layout="fill"
-        objectFit="cover"
+        fill
         className="pointer-events-none absolute inset-0 h-full w-full object-cover"
         style={{
           clipPath: `polygon(0 0, ${imgRevealFraction * 100}% 0, ${
@@ -250,8 +248,7 @@ const ProjectComparison = ({ projectId }: PropTypes) => {
                   <Image
                     src={`${BASE_URL}${url[0]}`}
                     alt="Thumb Item"
-                    layout="fill"
-                    objectFit="cover"
+                    fill
                     className="w-full rounded-lg"
                   />
                 </SwiperSlide>

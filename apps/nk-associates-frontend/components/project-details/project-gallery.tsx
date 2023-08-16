@@ -64,8 +64,7 @@ const ProjectGallery = ({ pictures }: PropTypes) => {
                   <Image
                     src={url}
                     alt="Carousel Image"
-                    layout="fill"
-                    objectFit="cover"
+                    fill
                     className="h-full w-full object-cover"
                   />
                 </SwiperSlide>
@@ -88,8 +87,7 @@ const ProjectGallery = ({ pictures }: PropTypes) => {
                   <Image
                     src={url}
                     alt="Thumb Item"
-                    layout="fill"
-                    objectFit="cover"
+                    fill
                     className="h-full w-full rounded-lg"
                   />
                 </SwiperSlide>
