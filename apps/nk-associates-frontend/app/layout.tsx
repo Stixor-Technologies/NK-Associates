@@ -64,6 +64,7 @@ export default function RootLayout({
         <MapApiProvider>
           <main className="mt-[7rem]">{children}</main>
         </MapApiProvider>
+        {/* @ts-expect-error Async Server Component */}
         <Footer />
       </body>
     </html>
