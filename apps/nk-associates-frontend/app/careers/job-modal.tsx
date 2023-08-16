@@ -120,7 +120,6 @@ const EventModal: React.FC<ModalProps> = ({ open, onClose }) => {
     }
   };
 
-  //change to makw it fetch departmentssss
   async function FetchDepartments() {
     try {
       const response = await fetch(`${BASE_URL}/api/departments`, {
@@ -299,7 +298,13 @@ const EventModal: React.FC<ModalProps> = ({ open, onClose }) => {
                                   )}
                                 </label>
 
-                                <div className=" bg-nk-white font-metropolis-light text-nk-black placeholder-nk-gray placeholder:font-metropolis-thin focus:border-nk-gray focus:ring-nk-gray mt-1  w-full rounded-lg border px-4 py-4 shadow-md  placeholder:text-base focus:outline-none">
+                                <div
+                                  className={`${
+                                    fieldName === "cover_letter"
+                                      ? "mt-2"
+                                      : "mt-1"
+                                  } bg-nk-white font-metropolis-light text-nk-black placeholder-nk-gray placeholder:font-metropolis-thin focus:border-nk-gray focus:ring-nk-gray  w-full rounded-lg border px-4 py-4 shadow-md  placeholder:text-base focus:outline-none`}
+                                >
                                   <div className=" h-[4rem]">
                                     <label className="w-full cursor-pointer text-center">
                                       <input
@@ -340,18 +345,24 @@ const EventModal: React.FC<ModalProps> = ({ open, onClose }) => {
                           }
 
                           return (
-                            <Input
-                              key={fieldName}
-                              hasError={errors[fieldName]}
-                              isTouched={touched[fieldName]}
-                              label={getFieldLabel(fieldName)}
-                              name={getFieldLabel(fieldName)}
-                              placeholder={placeholders[fieldName]}
-                              errorMessage={errors[fieldName]}
-                              isRequired={
-                                fieldName === "father_name" ? false : true
-                              }
-                            />
+                            <div
+                              className={`${
+                                fieldName === "father_name" && "mt-1"
+                              }`}
+                            >
+                              <Input
+                                key={fieldName}
+                                hasError={errors[fieldName]}
+                                isTouched={touched[fieldName]}
+                                label={getFieldLabel(fieldName)}
+                                name={getFieldLabel(fieldName)}
+                                placeholder={placeholders[fieldName]}
+                                errorMessage={errors[fieldName]}
+                                isRequired={
+                                  fieldName === "father_name" ? false : true
+                                }
+                              />
+                            </div>
                           );
                         })}
                       </div>
