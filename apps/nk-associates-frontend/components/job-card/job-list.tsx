@@ -61,13 +61,13 @@ const JobList = () => {
 
   return (
     <>
-      <div className="rounded-xl bg-nk-white p-2 pb-4 shadow-xl">
+      <div className="bg-nk-white rounded-xl p-2 pb-4 shadow-xl">
         <div className="flex justify-between gap-3 p-2">
           <div className="relative h-1 w-4/6 pt-4 md:w-1/2">
             <div className="relative">
               <input
                 placeholder="Search here"
-                className="z-0 w-full rounded-full border border-nk-gray px-4 py-2 text-nk-dark-gray focus:border-nk-red focus:outline-none md:mt-6 md:py-3.5"
+                className="border-nk-gray text-nk-dark-gray focus:border-nk-red z-0 w-full rounded-full border px-4 py-2 focus:outline-none md:mt-6 md:py-3.5"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
               />
@@ -100,7 +100,7 @@ const JobList = () => {
           </div>
           <div className="relative flex w-2/6 pt-4 md:hidden">
             <div
-              className={`z-0 flex h-10 w-full items-center justify-center gap-2 rounded-full text-nk-gray shadow ${
+              className={`text-nk-gray z-0 flex h-10 w-full items-center justify-center gap-2 rounded-full shadow ${
                 isClicked ? "bg-nk-red text-nk-white" : " border-nk-gray "
               }`}
               onClick={() => {
@@ -112,7 +112,7 @@ const JobList = () => {
               {isClicked && <Image src={FilterAlt} alt="Filter Alt" />}
             </div>
             <div
-              className={`absolute right-0 z-10 mt-11 flex w-80 flex-col rounded-lg bg-nk-light-gray p-2 shadow-xl transition-opacity duration-500 ease-in-out ${
+              className={`bg-nk-light-gray absolute right-0 z-10 mt-11 flex w-80 flex-col rounded-lg p-2 shadow-xl transition-opacity duration-500 ease-in-out ${
                 isClicked ? "opacity-100" : "opacity-0"
               }`}
             >
@@ -147,7 +147,7 @@ const JobList = () => {
           </div>
         ) : (
           <div>
-            <p className="py-10 text-center font-metropolis text-base text-nk-dark-gray">
+            <p className="font-metropolis text-nk-dark-gray py-10 text-center text-base">
               No Jobs Available
             </p>
           </div>

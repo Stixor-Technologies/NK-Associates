@@ -1,3 +1,5 @@
+"use client";
+import { useEffect, useState } from "react";
 import LinkButton from "../../../components/button/link-button";
 import { getJobDetail } from "../../../utils/api-calls";
 import { Job } from "../../../utils/types/types";
@@ -8,8 +10,22 @@ interface JobDetailProps {
   };
 }
 
-async function JobDetail({ params: { id } }: JobDetailProps) {
-  const data: Job = await getJobDetail(id);
+function JobDetail({ params: { id } }: JobDetailProps) {
+  const [isOpen, setIsOpen] = useState<boolean>(false);
+
+  const closeModal = () => {
+    setIsOpen(false);
+  };
+
+  const [data, setData] = useState<Job>();
+  useEffect(() => {
+    getData();
+  }, []);
+
+  const getData = async () => {
+    const result = await getJobDetail(id);
+    setData(result);
+  };
   const {
     title,
     description,
@@ -24,13 +40,14 @@ async function JobDetail({ params: { id } }: JobDetailProps) {
     location,
     skills,
     days,
-  } = data?.attributes;
-  const responsibilityArray = responsibilities.split("\n");
-  const skillArray = skills.split("\n");
+  } = data?.attributes || {};
+  const responsibilityArray = responsibilities?.split("\n");
+  const skillArray = skills?.split("\n");
 
   const formatTime = (time) => {
     const date = new Date();
-    const [hours, minutes] = time.split(":");
+    const [hours, minutes] = time?.split(":");
+
     date.setHours(hours);
     date.setMinutes(minutes);
     return date.toLocaleString("en-US", {
@@ -41,88 +58,107 @@ async function JobDetail({ params: { id } }: JobDetailProps) {
   };
 
   function displayDays(daysArray) {
-    const daysArrayWithoutId = days.map(({ id, ...rest }) => rest);
+    const daysArrayWithoutId = days?.map(({ id, ...rest }) => rest);
     const daysObject = daysArrayWithoutId[0]; // Assuming there's only one object in the array
-    const selectedDays = Object.keys(daysObject).filter(
+    const selectedDays = Object.keys(daysObject)?.filter(
       (day) => daysObject[day],
     );
 
-    if (selectedDays.length === 6) {
+    if (selectedDays?.length === 6) {
       return "Monday to Saturday";
     } else {
       return selectedDays.join(", ");
     }
   }
 
+  function openModal(): void {
+    setIsOpen(true);
+  }
+
   return (
-    <div className="px-6 text-center md:px-14">
-      <div className="pb-5 font-metropolis-bold text-3xl">{title}</div>
-      <div className="font-metropolis text-sm">{description}</div>
-      <div className="py-3 font-metropolis-semibold text-base">
+    <div className=" block px-6 text-center md:px-14">
+      <div className="font-metropolis-bold pb-[2.058rem] pt-[2.912rem] text-[3rem]">
+        {title}
+      </div>
+      <div className="font-metropolis-thin text-nk-black text-[1.25rem]">
+        {description}
+      </div>
+      <div className="font-metropolis-semibold pb-[0.789rem] pt-[1.999rem] text-[1.5rem]">
         No. of Positions: {positions}
       </div>
       <LinkButton
         text="Apply Now"
-        navigateTo=""
         type="solid"
-        className="h-10 w-80 border-2 "
+        className="h-[3.063rem] w-[22.125rem] border-2 "
+        clickEvent={openModal}
       />
-      <div className="py-4 pt-10 text-left font-metropolis-bold text-[1.75rem] leading-[2.1rem]">
+
+      <div className="font-metropolis-bold pb-[1.595rem] pt-[4.813rem] text-left text-[2rem] leading-[2.1rem]">
         KEY RESPONSIBILITIES:
       </div>
-      <div className="pb-4 text-left">
-        <ul className="list-disc pl-5 font-metropolis-thin">
-          {responsibilityArray.map((responsibility, index) => (
-            <li key={index} className="py-1 text-sm">
-              {responsibility.trim()}
+      <div className="pb-4 pt-2 text-left text-[1.5rem]">
+        <ul className="font-metropolis-thin list-disc pl-5">
+          {responsibilityArray?.map((responsibility, index) => (
+            <li key={index} className="py-1">
+              {responsibility?.trim()}
+              {responsibility?.trim()}
             </li>
           ))}
         </ul>
       </div>
-      <div className="py-4 text-left font-metropolis-bold text-[1.75rem] leading-[2.1rem]">
+
+      <div className="font-metropolis-bold pb-[2.524rem] pt-[4.241rem] text-left text-[2rem] leading-[2.1rem]">
         JOB SPECIFICATIONS
       </div>
-      <div className="pb-2 text-left font-metropolis">
-        <span className="font-metropolis-bold text-base text-nk-red">
+
+      <div className="font-metropolis text-left text-[1.5rem]">
+        <span className="font-metropolis-bold text-nk-red">
           Qualification:{" "}
         </span>
-        {qualification}
+        {qualification?.trim()}
       </div>
-      <div className="text-left font-metropolis">
-        <span className="font-metropolis-bold text-base text-nk-red">
-          Experience:{" "}
-        </span>
-        {experience}
+
+      <div className="font-metropolis text-left text-[1.5rem]">
+        <span className="font-metropolis-bold text-nk-red ">Experience: </span>
+        {experience?.trim()}
       </div>
-      <div className="py-4 text-left font-metropolis-bold text-[1.75rem] leading-[2.1rem]">
+
+      <div className="font-metropolis-bold pb-[2.524rem] pt-[4.241rem] text-left text-[1.75rem] leading-[2.1rem]">
         Skills Required
       </div>
-      <ul className="list-disc pl-5 text-left font-metropolis-thin text-nk-black">
-        {skillArray.map((skill, index) => (
-          <li key={index} className="py-1 text-sm">
-            {skill.trim()}
+
+      <ul className="font-metropolis-thin text-nk-black list-disc pl-5 text-left text-[1.5rem]">
+        {skillArray?.map((skill, index) => (
+          <li key={index} className="py-1 text-[1.5rem]">
+            {skill?.trim()}
+            {skill?.trim()}
           </li>
         ))}
       </ul>
-      <div className="py-4 pt-10 text-left font-metropolis-bold text-[1.75rem] leading-[2.1rem]">
+
+      <div className="font-metropolis-bold pb-[1.555rem] pt-[4.241rem] text-left text-[2rem] leading-[2.1rem]">
         Office Timings
       </div>
-      <div className="text-left font-metropolis-medium">
-        {formatTime(start)} to {formatTime(end)} ({displayDays(days)})
-      </div>
-      <div className="py-2  text-left font-metropolis-bold text-[1.75rem] leading-[2.1rem]">
+      {start && end && (
+        <div className="font-metropolis-medium text-left text-[1.5rem]">
+          {formatTime(start)} to {formatTime(end)} ({displayDays(days)})
+        </div>
+      )}
+      <div className="font-metropolis-bold pb-[1.555rem] pt-[4.254rem] text-left text-[2rem] leading-[2.1rem]">
         Location
       </div>
-      <div className="text-left  font-metropolis-medium">{location}</div>
-      <div className="py-3 font-metropolis-semibold text-base">
+      <div className="font-metropolis-medium text-left text-[1.5rem]">
+        {location}
+      </div>
+      <div className="font-metropolis-semibold pb-[1.063rem] pt-[5.218rem] text-[1.5rem]">
         No. of Positions: {positions}
       </div>
-      <div className="pb-20">
+      <div className="pb-[5.25rem]">
         <LinkButton
           text="Apply Now"
-          navigateTo=""
           type="solid"
-          className="h-10 w-80 border-2 "
+          className="h-[3.063rem] w-[22.125rem] border-2"
+          clickEvent={openModal}
         />
       </div>
     </div>
