@@ -3,7 +3,7 @@ import LinkButton from "../../components/button/link-button";
 import ServiceCard from "../../components/services/service-card";
 const page = () => {
   return (
-    <div className="flex">
+    <div className="flex flex-col container">
       <div className="flex flex-col justify-center items-center px-4">
         <h1 className="text-nk-dark-gray text-3xl md:text-5xl font-metropolis-bold my-10 text-center">
           Services
@@ -23,7 +23,7 @@ const page = () => {
 
       {/* cards go here */}
 
-      <div className="bg-nk-background p4">
+      <div className="p4">
         <ServiceCard />
       </div>
     </div>
