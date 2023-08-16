@@ -69,6 +69,7 @@ const ContactForm: React.FC<ContactFormProps> = ({ categories }) => {
           name: values.name,
           email: values.email,
           phone: values.phone,
+          subject: values.subject,
           category: values.category,
           message: values.message,
         }),
