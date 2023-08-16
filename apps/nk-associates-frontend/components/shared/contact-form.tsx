@@ -75,17 +75,21 @@ const ContactForm: React.FC<ContactFormProps> = ({ categories }) => {
       });
 
       const data = await res.json();
-      setToastMessage(data?.message);
-      setShowToast(true);
-
-      setTimeout(() => {
-        setShowToast(false);
-        resetForm();
-      }, 1000);
+      if (data === 202) {
+        setToastMessage("Email has been sent");
+        setShowToast(true);
+        setTimeout(() => {
+          setShowToast(false);
+          resetForm();
+        }, 1000);
+      } else {
+        console.log(data);
+        setToastMessage(`Error: Error sending email`);
+        setShowToast(true);
+        setTimeout(() => setShowToast(false), 1000);
+      }
     } catch (error) {
-      setToastMessage(`Error: ${error?.message}`);
-      setShowToast(true);
-      setTimeout(() => setShowToast(false), 1000);
+      console.error(error);
     } finally {
       setLoading(false);
     }

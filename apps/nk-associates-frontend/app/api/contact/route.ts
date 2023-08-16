@@ -21,13 +21,9 @@ export async function POST(request: NextRequest) {
 
   try {
     const res = await sendgrid.send(msg);
-    if (res[0]?.statusCode === 202) {
-      return NextResponse.json({ message: "Email has been sent" });
-    } else {
-      return NextResponse.json({ message: "Error sending email" });
-    }
+    return NextResponse.json(res[0].statusCode);
   } catch (error) {
-    console.log(error);
-    return NextResponse.json({ message: "Error sending email" });
+    console.error("error", error);
+    return NextResponse.json({ message: error });
   }
 }
