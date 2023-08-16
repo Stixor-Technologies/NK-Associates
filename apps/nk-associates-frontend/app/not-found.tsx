@@ -16,7 +16,6 @@ export default function NotFound() {
           className="bg-nk-red metro w-44 h-10 my-10"
         />
       </div>
-      {/* @ts-expect-error Async Server Component */}
       <Footer />
     </div>
   );
