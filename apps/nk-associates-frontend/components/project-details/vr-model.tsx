@@ -1,24 +1,31 @@
 "use client";
 
-import { useLayoutEffect } from "react";
+import { Suspense } from "react";
 import { Canvas, useLoader } from "@react-three/fiber";
 import { Environment, OrbitControls } from "@react-three/drei";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
 
-import SampleGLB from "../../../public/assets/sample.glb";
+type PropTypes = {
+  modelURL: string;
+};
 
-const VRModel = () => {
-  const gltf = useLoader(GLTFLoader, SampleGLB.src);
+const VRModel = ({ modelURL }: PropTypes) => {
+  const gltf = useLoader(GLTFLoader, modelURL);
+  console.log({ gltf });
+
   return (
-    <section>
-      <Canvas style={{ background: "#171717" }}>
-        <primitive
-          object={gltf.scene}
-          position={[0, 1, 0]}
-          children-0-castShadow
-        />
-      </Canvas>
-    </section>
+    <Canvas
+      shadows
+      dpr={[1, 2]}
+      camera={{ position: [0, 0, 4], fov: 50 }}
+      className="bg-black"
+    >
+      <Suspense fallback={null}>
+        <primitive object={gltf.scene} scale={0.05} />
+        <Environment preset="city" />
+        <OrbitControls />
+      </Suspense>
+    </Canvas>
   );
 };
 

@@ -152,6 +152,14 @@
       "type": "component",
       "repeatable": true,
       "component": "comparison-images.comparison-images"
+    },
+    "threeDModel": {
+      "allowedTypes": [
+        "files"
+      ],
+      "type": "media",
+      "multiple": false,
+      "required": false
     }
   }
 }
