@@ -13,6 +13,7 @@ const fieldTypes = {
   name: "text",
   email: "text",
   phone: "text",
+  subject: "text",
   category: "dropdown",
   message: "textarea",
 };
@@ -21,12 +22,14 @@ const placeholders = {
   name: "Write your name here",
   email: "Write your email address",
   phone: "Write your phone number here",
+  subject: "Write subject here",
 };
 
 const initialValues = {
   name: "",
   email: "",
   phone: "",
+  subject: "",
   category: "",
   message: "",
 };
@@ -45,7 +48,14 @@ const ContactForm: React.FC<ContactFormProps> = ({ categories }) => {
   const [showToast, setShowToast] = useState<boolean>(false);
   const [toastMessage, setToastMessage] = useState<string>("");
 
-  const formFields = ["name", "email", "phone", "category", "message"];
+  const formFields = [
+    "name",
+    "email",
+    "phone",
+    "subject",
+    "category",
+    "message",
+  ];
 
   const onSubmit = async (values, { resetForm }) => {
     setLoading(true);
@@ -175,7 +185,7 @@ const ContactForm: React.FC<ContactFormProps> = ({ categories }) => {
                               ? "border-nk-red"
                               : " focus:border-nk-gray focus:ring-nk-gray"
                           }`}
-                          placeholder="Enter your message"
+                          placeholder="Write your message here"
                           rows={6}
                         />
                         {touched.message && errors.message && (
