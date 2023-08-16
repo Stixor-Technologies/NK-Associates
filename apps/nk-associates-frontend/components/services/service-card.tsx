@@ -41,6 +41,8 @@ const serviceCard: FC<CardProps> = ({ service, actMap }) => {
                 src={`${BASE_URL}${logo || "/"}`}
                 alt="service Logo"
                 className="mt-5 mb-2"
+                width={190}
+                height={47}
               />
               <button className="mt-20 md:block hidden">
                 <Link

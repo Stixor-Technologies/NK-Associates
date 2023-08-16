@@ -35,7 +35,7 @@
       "required": true
     },
     "process": {
-      "type": "string",
+      "type": "text",
       "required": true,
       "minLength": 6
     },
