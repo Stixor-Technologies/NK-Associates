@@ -89,7 +89,6 @@ function JobDetail({ params: { id } }: JobDetailProps) {
       </div>
       <LinkButton
         text="Apply Now"
-        navigateTo=""
         type="solid"
         className="h-10 w-80 border-2 "
         clickEvent={openModal}
@@ -160,7 +159,6 @@ function JobDetail({ params: { id } }: JobDetailProps) {
         <div className="pb-20">
           <LinkButton
             text="Apply Now"
-            navigateTo=""
             type="solid"
             className="h-10 w-80 border-2"
             clickEvent={openModal}
