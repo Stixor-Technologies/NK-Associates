@@ -41,6 +41,7 @@ module.exports = {
         "nk-dark-gray": "#303030", //footer
         "nk-grey": "#727272",
         "nk-background": "#f5f5f5",
+        "nk-off-white": "#E3E3E3", // used in service cards
       },
       boxShadow: {
         "3xl": "0.25rem 0.188rem 1.375rem 0rem rgba(0, 0, 0, 0.092)",

@@ -1,0 +1,59 @@
+{
+  "kind": "collectionType",
+  "collectionName": "services",
+  "info": {
+    "singularName": "service",
+    "pluralName": "services",
+    "displayName": "Service",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true,
+      "minLength": 2,
+      "maxLength": 32
+    },
+    "company": {
+      "type": "string",
+      "required": true,
+      "minLength": 2,
+      "maxLength": 32
+    },
+    "description": {
+      "type": "text",
+      "required": true,
+      "minLength": 6
+    },
+    "expertise": {
+      "type": "text",
+      "minLength": 6,
+      "required": true
+    },
+    "process": {
+      "type": "string",
+      "required": true,
+      "minLength": 6
+    },
+    "image": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "logo": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images"
+      ]
+    }
+  }
+}

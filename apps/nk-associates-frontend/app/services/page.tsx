@@ -22,10 +22,7 @@ const page = () => {
       </div>
 
       {/* cards go here */}
-
-      <div className="p4">
-        <ServiceCard />
-      </div>
+      <div className="p4"></div>
     </div>
   );
 };

@@ -163,3 +163,19 @@ export interface socials {
     appgallery: string;
   };
 }
+export interface Service {
+  attributes: {
+    title: string;
+    company: string;
+    image: {
+      data: MediaAttributes;
+    };
+    logo: {
+      data: MediaAttributes;
+    };
+    process: string;
+    expertise: string;
+    description: string;
+  };
+  id: number;
+}
