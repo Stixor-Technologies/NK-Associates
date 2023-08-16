@@ -17,8 +17,8 @@ import "swiper/css/thumbs";
 import "swiper/css/pagination";
 import "./project-comparison.css";
 
-import { getComparisonImages } from "../../../utils/api-calls";
-import { BASE_URL } from "../../../utils/constants";
+import { getComparisonImages } from "../../utils/api-calls";
+import { BASE_URL } from "../../utils/constants";
 
 type PropTypes = {
   projectId: number;

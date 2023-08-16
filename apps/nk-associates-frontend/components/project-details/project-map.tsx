@@ -3,7 +3,7 @@
 import { useLayoutEffect } from "react";
 import { gsap } from "gsap";
 
-import MapComponent from "../../../components/shared/map-component";
+import MapComponent from "../shared/map-component";
 
 type PropTypes = {
   address: string;

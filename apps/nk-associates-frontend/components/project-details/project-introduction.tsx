@@ -2,7 +2,7 @@
 import { useLayoutEffect } from "react";
 import { gsap } from "gsap";
 
-import { convertToPakistaniNumbering } from "../../../utils/utils";
+import { convertToPakistaniNumbering } from "../../utils/utils";
 import InquiresComponent from "./inquires-component";
 
 type PropTypes = {

@@ -1,7 +1,5 @@
 import Image from "next/image";
-import NKTitleLogo from "../../../public/assets/icons/nk-title-logo.svg";
-import WhatsappLogo from "../../../public/assets/icons/whatsapp-logo.svg";
-import PhoneIcon from "../../../public/assets/icons/phone-icon.svg";
+import NKTitleLogo from "../../public/assets/icons/nk-title-logo.svg";
 
 const ProjectDetailsVR = () => {
   return (

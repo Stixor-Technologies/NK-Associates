@@ -2,13 +2,13 @@ import Link from "next/link";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-import ProjectDetailsVR from "../_components/project-details-vr";
-import ProjectIntroduction from "../_components/project-introduction";
-import ProjectGallery from "../_components/project-gallery";
-import ProjectTimeline from "../_components/project-timeline";
-import ProjectComparison from "../_components/project-comparison";
-import ProjectOutcome from "../_components/project-outcome";
-import ProjectMap from "../_components/project-map";
+import ProjectDetailsVR from "../../../components/project-details/project-details-vr";
+import ProjectIntroduction from "../../../components/project-details/project-introduction";
+import ProjectGallery from "../../../components/project-details/project-gallery";
+import ProjectTimeline from "../../../components/project-details/project-timeline";
+import ProjectComparison from "../../../components/project-details/project-comparison";
+import ProjectOutcome from "../../../components/project-details/project-outcome";
+import ProjectMap from "../../../components/project-details/project-map";
 
 import { Project } from "../../../utils/types/types";
 import { getProjectDetail } from "../../../utils/api-calls";
