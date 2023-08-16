@@ -5,7 +5,7 @@ import Navigation from "../components/navigation/navigation";
 import ErrorImage from "../public/assets/images/404.svg";
 export default function NotFound() {
   return (
-    <div>
+    <div className="container">
       <Navigation />
       <div className="flex flex-col justify-center items-center bg-nk-background">
         <Image src={ErrorImage} alt="Error Image" className="mt-24" />
