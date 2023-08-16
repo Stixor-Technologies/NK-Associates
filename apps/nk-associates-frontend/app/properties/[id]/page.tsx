@@ -7,8 +7,7 @@ import {
 } from "../../../utils/api-calls";
 import DetailSlider from "../../../components/properties/property-detail/detail-slider";
 import MapComponent from "../../../components/shared/map-component";
-import SimilarProperites from "../../../components/properties/property-detail/similar-properites";
-import PropertyCard from "../../../components/properties/property-card";
+import PropertyCarousel from "../../../components/shared/properites-carousel";
 import { convertAreaToSqFeet } from "../../../utils/utils";
 import { Property } from "../../../utils/types/types";
 import { BASE_URL } from "../../../utils/constants";
@@ -197,18 +196,12 @@ async function PropertyDetail({ params: { id } }: PropertyDetailProps) {
         <ServicesOverview />
       </div>
 
-      {/* <SimilarProperites /> */}
-
       {similarProperties?.length > 0 && (
         <div className="xl:container mt-16">
-          <h6 className="text-[2rem] text-center font-metropolis-semibold sm:text-left md:text-4xl">
+          <h6 className="text-[2rem] text-center font-metropolis-semibold px-4 sm:text-left md:px-8 md:text-4xl xl:px-0">
             Similar Properties
           </h6>
-          <div className="flex flex-nowrap overflow-x-scroll xl:gap-4 py-8 pb-12 md:pb-16">
-            {similarProperties?.map((property: Property, index: number) => (
-              <PropertyCard key={index} property={property} actSim={true} />
-            ))}
-          </div>
+          <PropertyCarousel properties={similarProperties} />
         </div>
       )}
     </section>
