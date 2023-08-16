@@ -57,15 +57,15 @@ const ProjectDetailsVR = ({ modelURL = undefined }: PropTypes) => {
                     d="M37.9992 71.0636C55.4887 71.0636 69.6659 56.6999 69.6659 38.9803C69.6659 21.2607 55.4887 6.89697 37.9992 6.89697C20.5097 6.89697 6.33252 21.2607 6.33252 38.9803C6.33252 56.6999 20.5097 71.0636 37.9992 71.0636Z"
                     fill="currentColor"
                     stroke="currentStroke"
-                    stroke-width="2.97033"
-                    stroke-linejoin="round"
+                    strokeWidth="2.97033"
+                    strokeLinejoin="round"
                   />
                   <path
                     d="M31.6658 38.9804V27.8667L41.1658 33.4235L50.6658 38.9804L41.1658 44.5372L31.6658 50.094V38.9804Z"
                     fill="black"
                     stroke="black"
-                    stroke-width="2.97033"
-                    stroke-linejoin="round"
+                    strokeWidth="2.97033"
+                    strokeLinejoin="round"
                   />
                 </mask>
                 <g mask="url(#mask0_451_3122)">
@@ -112,8 +112,8 @@ const ProjectDetailsVR = ({ modelURL = undefined }: PropTypes) => {
                     y2="24.8172"
                     gradientUnits="userSpaceOnUse"
                   >
-                    <stop stop-color="#E4404A" />
-                    <stop offset="1" stop-color="#EB4B5E" />
+                    <stop stopColor="#E4404A" />
+                    <stop offset="1" stopColor="#EB4B5E" />
                   </linearGradient>
                 </defs>
               </svg>
@@ -139,8 +139,8 @@ const ProjectDetailsVR = ({ modelURL = undefined }: PropTypes) => {
                     y2="56"
                     gradientUnits="userSpaceOnUse"
                   >
-                    <stop stop-color="#E4404A" />
-                    <stop offset="1" stop-color="#EB4B5E" />
+                    <stop stopColor="#E4404A" />
+                    <stop offset="1" stopColor="#EB4B5E" />
                   </linearGradient>
                 </defs>
               </svg>

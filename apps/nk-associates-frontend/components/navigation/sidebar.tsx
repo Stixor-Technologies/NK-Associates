@@ -32,9 +32,9 @@ const Sidebar: React.ForwardRefRenderFunction<HTMLDivElement, SidebarProps> = (
     { pathName: "contact", label: "Contact Us" },
   ];
 
-  const menuList = menuItems.map((menuItem) => (
+  const menuList = menuItems.map((menuItem, index) => (
     <li
-      key={menuItem.pathName}
+      key={`${index}-${menuItem.pathName}`}
       onClick={handleLinkClick}
       className={`transition-colors duration-500 ease-in-out ${
         pathName == menuItem.pathName ? "text-nk-dark-gray" : "text-nk-white "

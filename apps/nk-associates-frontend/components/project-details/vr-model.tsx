@@ -11,7 +11,6 @@ type PropTypes = {
 
 const VRModel = ({ modelURL }: PropTypes) => {
   const gltf = useLoader(GLTFLoader, modelURL);
-  console.log({ gltf });
 
   return (
     <Canvas

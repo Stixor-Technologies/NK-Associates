@@ -35,7 +35,7 @@ const ProjectTimeline = () => {
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
       >
-        <g clip-path="url(#clip0_451_3256)">
+        <g clipPath="url(#clip0_451_3256)">
           <rect
             width="430"
             height="1121"
@@ -45,31 +45,31 @@ const ProjectTimeline = () => {
           <path
             d="M169.965 172.867C169.965 273.896 260.238 258.963 260.238 361.252C260.238 457.798 169.762 455.037 169.762 552.083C169.762 650.592 260.238 645.312 260.238 742.913C260.238 842.052 169.762 836.216 169.762 933.744"
             stroke="#333333"
-            stroke-width="2.8"
-            stroke-miterlimit="10"
-            stroke-linecap="round"
+            strokeWidth="2.8"
+            strokeMiterlimit="10"
+            strokeLinecap="round"
           />
           <path
             d="M169.601 146.755L169.601 93.1279"
             stroke="#333333"
-            stroke-width="2.8"
-            stroke-miterlimit="10"
-            stroke-linecap="round"
+            strokeWidth="2.8"
+            strokeMiterlimit="10"
+            strokeLinecap="round"
           />
           <path
             d="M169.601 1010.7L169.601 945.229"
             stroke="#333333"
-            stroke-width="2.8"
-            stroke-miterlimit="10"
-            stroke-linecap="round"
+            strokeWidth="2.8"
+            strokeMiterlimit="10"
+            strokeLinecap="round"
           />
           <path
             d="M166.577 171.813C174.029 173.578 181.496 168.947 183.255 161.469C185.014 153.992 180.398 146.499 172.946 144.735C165.494 142.97 158.027 147.601 156.268 155.078C154.509 162.556 159.124 170.048 166.577 171.813Z"
             fill="url(#paint0_linear_451_3256)"
             stroke="#333333"
-            stroke-width="2.94"
-            stroke-miterlimit="10"
-            stroke-linecap="round"
+            strokeWidth="2.94"
+            strokeMiterlimit="10"
+            strokeLinecap="round"
           />
           <g filter="url(#filter0_d_451_3256)">
             <path
@@ -107,9 +107,9 @@ const ProjectTimeline = () => {
             d="M166.577 574.256C174.029 576.021 181.496 571.39 183.255 563.913C185.014 556.435 180.398 548.943 172.946 547.178C165.494 545.413 158.027 550.044 156.268 557.522C154.509 564.999 159.124 572.492 166.577 574.256Z"
             fill="url(#paint1_linear_451_3256)"
             stroke="#333333"
-            stroke-width="2.94"
-            stroke-miterlimit="10"
-            stroke-linecap="round"
+            strokeWidth="2.94"
+            strokeMiterlimit="10"
+            strokeLinecap="round"
           />
           <g filter="url(#filter2_d_451_3256)">
             <path
@@ -147,9 +147,9 @@ const ProjectTimeline = () => {
             d="M166.577 945.222C174.029 946.987 181.496 942.356 183.255 934.879C185.014 927.401 180.398 919.909 172.946 918.144C165.494 916.379 158.027 921.01 156.268 928.487C154.509 935.965 159.124 943.457 166.577 945.222Z"
             fill="url(#paint2_linear_451_3256)"
             stroke="#333333"
-            stroke-width="2.94"
-            stroke-miterlimit="10"
-            stroke-linecap="round"
+            strokeWidth="2.94"
+            strokeMiterlimit="10"
+            strokeLinecap="round"
           />
           <g filter="url(#filter4_d_451_3256)">
             <path
@@ -187,9 +187,9 @@ const ProjectTimeline = () => {
             d="M259.187 373.035C266.639 374.8 274.106 370.169 275.865 362.691C277.624 355.214 273.008 347.721 265.556 345.956C258.104 344.191 250.637 348.822 248.878 356.3C247.119 363.777 251.734 371.27 259.187 373.035Z"
             fill="url(#paint3_linear_451_3256)"
             stroke="#333333"
-            stroke-width="2.94"
-            stroke-miterlimit="10"
-            stroke-linecap="round"
+            strokeWidth="2.94"
+            strokeMiterlimit="10"
+            strokeLinecap="round"
           />
           <g filter="url(#filter6_d_451_3256)">
             <path
@@ -227,9 +227,9 @@ const ProjectTimeline = () => {
             d="M259.187 775.478C266.639 777.243 274.106 772.612 275.865 765.134C277.624 757.657 273.008 750.165 265.556 748.4C258.104 746.635 250.637 751.266 248.878 758.743C247.119 766.221 251.734 773.713 259.187 775.478Z"
             fill="url(#paint4_linear_451_3256)"
             stroke="#333333"
-            stroke-width="2.94"
-            stroke-miterlimit="10"
-            stroke-linecap="round"
+            strokeWidth="2.94"
+            strokeMiterlimit="10"
+            strokeLinecap="round"
           />
           <g filter="url(#filter8_d_451_3256)">
             <path
@@ -340,9 +340,9 @@ const ProjectTimeline = () => {
             width="21"
             height="22"
             filterUnits="userSpaceOnUse"
-            color-interpolation-filters="sRGB"
+            colorInterpolationFilters="sRGB"
           >
-            <feFlood flood-opacity="0" result="BackgroundImageFix" />
+            <feFlood floodOpacity="0" result="BackgroundImageFix" />
             <feColorMatrix
               in="SourceAlpha"
               type="matrix"
@@ -375,9 +375,9 @@ const ProjectTimeline = () => {
             width="129.056"
             height="112.004"
             filterUnits="userSpaceOnUse"
-            color-interpolation-filters="sRGB"
+            colorInterpolationFilters="sRGB"
           >
-            <feFlood flood-opacity="0" result="BackgroundImageFix" />
+            <feFlood floodOpacity="0" result="BackgroundImageFix" />
             <feColorMatrix
               in="SourceAlpha"
               type="matrix"
@@ -410,9 +410,9 @@ const ProjectTimeline = () => {
             width="21"
             height="22"
             filterUnits="userSpaceOnUse"
-            color-interpolation-filters="sRGB"
+            colorInterpolationFilters="sRGB"
           >
-            <feFlood flood-opacity="0" result="BackgroundImageFix" />
+            <feFlood floodOpacity="0" result="BackgroundImageFix" />
             <feColorMatrix
               in="SourceAlpha"
               type="matrix"
@@ -445,9 +445,9 @@ const ProjectTimeline = () => {
             width="129.056"
             height="112.004"
             filterUnits="userSpaceOnUse"
-            color-interpolation-filters="sRGB"
+            colorInterpolationFilters="sRGB"
           >
-            <feFlood flood-opacity="0" result="BackgroundImageFix" />
+            <feFlood floodOpacity="0" result="BackgroundImageFix" />
             <feColorMatrix
               in="SourceAlpha"
               type="matrix"
@@ -480,9 +480,9 @@ const ProjectTimeline = () => {
             width="21"
             height="22"
             filterUnits="userSpaceOnUse"
-            color-interpolation-filters="sRGB"
+            colorInterpolationFilters="sRGB"
           >
-            <feFlood flood-opacity="0" result="BackgroundImageFix" />
+            <feFlood floodOpacity="0" result="BackgroundImageFix" />
             <feColorMatrix
               in="SourceAlpha"
               type="matrix"
@@ -515,9 +515,9 @@ const ProjectTimeline = () => {
             width="129.056"
             height="112.004"
             filterUnits="userSpaceOnUse"
-            color-interpolation-filters="sRGB"
+            colorInterpolationFilters="sRGB"
           >
-            <feFlood flood-opacity="0" result="BackgroundImageFix" />
+            <feFlood floodOpacity="0" result="BackgroundImageFix" />
             <feColorMatrix
               in="SourceAlpha"
               type="matrix"
@@ -550,9 +550,9 @@ const ProjectTimeline = () => {
             width="21"
             height="22"
             filterUnits="userSpaceOnUse"
-            color-interpolation-filters="sRGB"
+            colorInterpolationFilters="sRGB"
           >
-            <feFlood flood-opacity="0" result="BackgroundImageFix" />
+            <feFlood floodOpacity="0" result="BackgroundImageFix" />
             <feColorMatrix
               in="SourceAlpha"
               type="matrix"
@@ -585,9 +585,9 @@ const ProjectTimeline = () => {
             width="129.056"
             height="112.004"
             filterUnits="userSpaceOnUse"
-            color-interpolation-filters="sRGB"
+            colorInterpolationFilters="sRGB"
           >
-            <feFlood flood-opacity="0" result="BackgroundImageFix" />
+            <feFlood floodOpacity="0" result="BackgroundImageFix" />
             <feColorMatrix
               in="SourceAlpha"
               type="matrix"
@@ -620,9 +620,9 @@ const ProjectTimeline = () => {
             width="21"
             height="22"
             filterUnits="userSpaceOnUse"
-            color-interpolation-filters="sRGB"
+            colorInterpolationFilters="sRGB"
           >
-            <feFlood flood-opacity="0" result="BackgroundImageFix" />
+            <feFlood floodOpacity="0" result="BackgroundImageFix" />
             <feColorMatrix
               in="SourceAlpha"
               type="matrix"
@@ -655,9 +655,9 @@ const ProjectTimeline = () => {
             width="129.056"
             height="112.004"
             filterUnits="userSpaceOnUse"
-            color-interpolation-filters="sRGB"
+            colorInterpolationFilters="sRGB"
           >
-            <feFlood flood-opacity="0" result="BackgroundImageFix" />
+            <feFlood floodOpacity="0" result="BackgroundImageFix" />
             <feColorMatrix
               in="SourceAlpha"
               type="matrix"
@@ -690,9 +690,9 @@ const ProjectTimeline = () => {
             width="132"
             height="69"
             filterUnits="userSpaceOnUse"
-            color-interpolation-filters="sRGB"
+            colorInterpolationFilters="sRGB"
           >
-            <feFlood flood-opacity="0" result="BackgroundImageFix" />
+            <feFlood floodOpacity="0" result="BackgroundImageFix" />
             <feColorMatrix
               in="SourceAlpha"
               type="matrix"
@@ -725,9 +725,9 @@ const ProjectTimeline = () => {
             width="251"
             height="69"
             filterUnits="userSpaceOnUse"
-            color-interpolation-filters="sRGB"
+            colorInterpolationFilters="sRGB"
           >
-            <feFlood flood-opacity="0" result="BackgroundImageFix" />
+            <feFlood floodOpacity="0" result="BackgroundImageFix" />
             <feColorMatrix
               in="SourceAlpha"
               type="matrix"
@@ -761,8 +761,8 @@ const ProjectTimeline = () => {
             y2="171.803"
             gradientUnits="userSpaceOnUse"
           >
-            <stop stop-color="#E4404A" />
-            <stop offset="1" stop-color="#EB4B5E" />
+            <stop stopColor="#E4404A" />
+            <stop offset="1" stopColor="#EB4B5E" />
           </linearGradient>
           <linearGradient
             id="paint1_linear_451_3256"
@@ -772,8 +772,8 @@ const ProjectTimeline = () => {
             y2="574.247"
             gradientUnits="userSpaceOnUse"
           >
-            <stop stop-color="#E4404A" />
-            <stop offset="1" stop-color="#EB4B5E" />
+            <stop stopColor="#E4404A" />
+            <stop offset="1" stopColor="#EB4B5E" />
           </linearGradient>
           <linearGradient
             id="paint2_linear_451_3256"
@@ -783,8 +783,8 @@ const ProjectTimeline = () => {
             y2="945.213"
             gradientUnits="userSpaceOnUse"
           >
-            <stop stop-color="#E4404A" />
-            <stop offset="1" stop-color="#EB4B5E" />
+            <stop stopColor="#E4404A" />
+            <stop offset="1" stopColor="#EB4B5E" />
           </linearGradient>
           <linearGradient
             id="paint3_linear_451_3256"
@@ -794,8 +794,8 @@ const ProjectTimeline = () => {
             y2="373.025"
             gradientUnits="userSpaceOnUse"
           >
-            <stop stop-color="#E4404A" />
-            <stop offset="1" stop-color="#EB4B5E" />
+            <stop stopColor="#E4404A" />
+            <stop offset="1" stopColor="#EB4B5E" />
           </linearGradient>
           <linearGradient
             id="paint4_linear_451_3256"
@@ -805,8 +805,8 @@ const ProjectTimeline = () => {
             y2="775.468"
             gradientUnits="userSpaceOnUse"
           >
-            <stop stop-color="#E4404A" />
-            <stop offset="1" stop-color="#EB4B5E" />
+            <stop stopColor="#E4404A" />
+            <stop offset="1" stopColor="#EB4B5E" />
           </linearGradient>
           <linearGradient
             id="paint5_linear_451_3256"
@@ -816,8 +816,8 @@ const ProjectTimeline = () => {
             y2="73.0527"
             gradientUnits="userSpaceOnUse"
           >
-            <stop stop-color="#E4404A" />
-            <stop offset="1" stop-color="#EB4B5E" />
+            <stop stopColor="#E4404A" />
+            <stop offset="1" stopColor="#EB4B5E" />
           </linearGradient>
           <clipPath id="clip0_451_3256">
             <rect
@@ -839,47 +839,47 @@ const ProjectTimeline = () => {
         <path
           d="M243.889 317.566C344.918 317.566 329.985 227.293 432.274 227.293C528.819 227.293 526.058 317.77 623.104 317.77C721.613 317.77 716.333 227.293 813.935 227.293C913.074 227.293 907.238 317.77 1004.77 317.77"
           stroke="#333333"
-          stroke-width="2.8"
-          stroke-miterlimit="10"
-          stroke-linecap="round"
+          strokeWidth="2.8"
+          strokeMiterlimit="10"
+          strokeLinecap="round"
         />
         <path
           d="M809.414 247.744C820.747 247.744 829.934 238.588 829.934 227.293C829.934 215.999 820.747 206.842 809.414 206.842C798.081 206.842 788.894 215.999 788.894 227.293C788.894 238.588 798.081 247.744 809.414 247.744Z"
           fill="url(#paint0_linear_1958_4652)"
           stroke="#333333"
-          stroke-width="3.94"
-          stroke-miterlimit="10"
-          stroke-linecap="round"
+          strokeWidth="3.94"
+          strokeMiterlimit="10"
+          strokeLinecap="round"
         />
         <path
           d="M621.158 338.266C632.629 338.266 641.928 328.999 641.928 317.567C641.928 306.135 632.629 296.867 621.158 296.867C609.688 296.867 600.389 306.135 600.389 317.567C600.389 328.999 609.688 338.266 621.158 338.266Z"
           fill="url(#paint1_linear_1958_4652)"
           stroke="#333333"
-          stroke-width="3.94"
-          stroke-miterlimit="10"
-          stroke-linecap="round"
+          strokeWidth="3.94"
+          strokeMiterlimit="10"
+          strokeLinecap="round"
         />
         <path
           d="M426.419 247.806C437.786 247.806 447.001 238.622 447.001 227.293C447.001 215.964 437.786 206.78 426.419 206.78C415.051 206.78 405.836 215.964 405.836 227.293C405.836 238.622 415.051 247.806 426.419 247.806Z"
           fill="url(#paint2_linear_1958_4652)"
           stroke="#333333"
-          stroke-width="3.94"
-          stroke-miterlimit="10"
-          stroke-linecap="round"
+          strokeWidth="3.94"
+          strokeMiterlimit="10"
+          strokeLinecap="round"
         />
         <path
           d="M220.618 317.733H183.935"
           stroke="#333333"
-          stroke-width="2.8"
-          stroke-miterlimit="10"
-          stroke-linecap="round"
+          strokeWidth="2.8"
+          strokeMiterlimit="10"
+          strokeLinecap="round"
         />
         <path
           d="M1021.66 317.733H1054.86"
           stroke="#333333"
-          stroke-width="2.8"
-          stroke-miterlimit="10"
-          stroke-linecap="round"
+          strokeWidth="2.8"
+          strokeMiterlimit="10"
+          strokeLinecap="round"
         />
         <g filter="url(#filter0_d_1958_4652)">
           <path
@@ -1027,17 +1027,17 @@ const ProjectTimeline = () => {
           d="M257.622 322.354C260.272 311.165 253.318 299.952 242.09 297.311C230.862 294.67 219.612 301.601 216.962 312.79C214.312 323.98 221.266 335.192 232.494 337.833C243.722 340.474 254.972 333.544 257.622 322.354Z"
           fill="url(#paint3_linear_1958_4652)"
           stroke="#333333"
-          stroke-width="3.94"
-          stroke-miterlimit="10"
-          stroke-linecap="round"
+          strokeWidth="3.94"
+          strokeMiterlimit="10"
+          strokeLinecap="round"
         />
         <path
           d="M1025.39 314.787C1024.76 310.366 1022.71 306.267 1019.54 303.111C1016.37 299.956 1012.26 297.915 1007.82 297.299C1006.84 297.134 1005.85 297.05 1004.86 297.048C999.382 297.084 994.138 299.279 990.275 303.154C986.413 307.03 984.245 312.27 984.245 317.733C984.245 323.195 986.413 328.436 990.275 332.311C994.138 336.186 999.382 338.381 1004.86 338.418C1010.37 338.418 1015.65 336.238 1019.54 332.359C1023.43 328.48 1025.62 323.219 1025.62 317.733C1025.61 316.747 1025.54 315.763 1025.39 314.787Z"
           fill="url(#paint4_linear_1958_4652)"
           stroke="#333333"
-          stroke-width="3.81"
-          stroke-miterlimit="10"
-          stroke-linecap="round"
+          strokeWidth="3.81"
+          strokeMiterlimit="10"
+          strokeLinecap="round"
         />
         <path
           d="M194.774 9.0605H185.366V13.2365H193.886V15.9725H185.366V22.8125H182.366V6.3245H194.774V9.0605ZM198.782 8.5325C197.846 8.5325 197.102 7.7405 197.102 6.8525C197.102 5.9645 197.846 5.1965 198.782 5.1965C199.694 5.1965 200.438 5.9645 200.438 6.8525C200.438 7.7405 199.694 8.5325 198.782 8.5325ZM197.294 22.8125V10.4045H200.222V22.8125H197.294ZM206.458 12.8045C207.25 11.1485 208.858 10.1165 210.898 10.1165V12.6125C208.234 12.6125 206.458 14.1965 206.458 16.5485V22.8125H203.53V10.4045H206.458V12.8045ZM217.651 23.1005C215.755 23.1005 213.715 22.4285 212.227 21.2285L213.547 19.1885C214.747 20.0525 216.139 20.6285 217.699 20.6285C218.875 20.6285 219.691 20.1245 219.691 19.3565C219.691 18.3965 218.611 18.0845 217.195 17.7005C214.507 17.0045 212.803 16.2365 212.779 14.0285C212.779 11.7005 214.699 10.1165 217.459 10.1165C219.163 10.1165 220.867 10.7165 222.211 11.6045L220.987 13.7405C219.811 12.9965 218.539 12.6125 217.459 12.6125C216.427 12.6125 215.635 13.0205 215.635 13.7165C215.635 14.5085 216.283 14.7485 218.179 15.3005C220.267 15.8765 222.523 16.5965 222.523 19.1885C222.523 21.5645 220.555 23.1005 217.651 23.1005ZM231.259 20.1485L232.099 22.1165C231.403 22.7165 230.395 23.1005 229.459 23.1005C227.395 23.1005 225.955 21.6125 225.955 19.5245V12.8285H224.155V10.4045H225.955V6.9965H228.811V10.4045H231.619V12.8285H228.811V19.1645C228.811 20.0045 229.339 20.6045 230.035 20.6045C230.539 20.6045 230.995 20.4125 231.259 20.1485ZM247.361 23.0765C244.529 23.0765 242.129 22.1165 240.305 20.4125L242.033 18.2765C243.545 19.6445 245.297 20.5085 247.457 20.5085C249.497 20.5085 250.553 19.5005 250.553 18.3245C250.553 16.9565 249.377 16.5005 246.737 15.8765C243.329 15.0845 240.953 14.1005 240.953 11.0045C240.953 8.1245 243.401 6.0125 246.881 6.0125C249.497 6.0125 251.465 6.9005 253.121 8.3165L251.489 10.5245C250.049 9.2765 248.393 8.5805 246.761 8.5805C245.105 8.5805 243.977 9.5885 243.977 10.7405C243.977 12.0845 245.201 12.5645 247.817 13.1645C251.249 13.9325 253.553 15.0365 253.553 18.0365C253.553 20.9885 251.297 23.0765 247.361 23.0765ZM262.384 20.1485L263.224 22.1165C262.528 22.7165 261.52 23.1005 260.584 23.1005C258.52 23.1005 257.08 21.6125 257.08 19.5245V12.8285H255.28V10.4045H257.08V6.9965H259.936V10.4045H262.744V12.8285H259.936V19.1645C259.936 20.0045 260.464 20.6045 261.16 20.6045C261.664 20.6045 262.12 20.4125 262.384 20.1485ZM271.281 20.5085C272.433 20.5085 273.801 19.9805 274.497 19.2605L276.345 21.1805C275.265 22.3325 273.105 23.1005 271.305 23.1005C267.753 23.1005 264.825 20.3885 264.825 16.5725C264.825 12.8525 267.609 10.1165 271.137 10.1165C274.977 10.1165 277.209 13.0205 277.209 17.6045H267.849C268.209 19.3085 269.505 20.5085 271.281 20.5085ZM271.257 12.7085C269.625 12.7085 268.305 13.7405 267.873 15.3725H274.401C274.065 13.8125 273.009 12.7085 271.257 12.7085ZM287.067 10.1165C290.355 10.1165 292.755 12.8045 292.755 16.5965C292.755 20.4125 290.355 23.1005 287.067 23.1005C285.219 23.1005 283.731 22.2605 282.747 20.8445V26.9405H279.819V10.4045H282.747V12.3725C283.731 10.9565 285.219 10.1165 287.067 10.1165ZM286.275 20.6045C288.363 20.6045 289.851 18.9245 289.851 16.5965C289.851 14.2685 288.363 12.6125 286.275 12.6125C284.211 12.6125 282.771 14.2685 282.771 16.5965C282.771 18.9245 284.211 20.6045 286.275 20.6045Z"
@@ -1113,9 +1113,9 @@ const ProjectTimeline = () => {
             width="208.009"
             height="122.126"
             filterUnits="userSpaceOnUse"
-            color-interpolation-filters="sRGB"
+            colorInterpolationFilters="sRGB"
           >
-            <feFlood flood-opacity="0" result="BackgroundImageFix" />
+            <feFlood floodOpacity="0" result="BackgroundImageFix" />
             <feColorMatrix
               in="SourceAlpha"
               type="matrix"
@@ -1148,9 +1148,9 @@ const ProjectTimeline = () => {
             width="194.873"
             height="235.238"
             filterUnits="userSpaceOnUse"
-            color-interpolation-filters="sRGB"
+            colorInterpolationFilters="sRGB"
           >
-            <feFlood flood-opacity="0" result="BackgroundImageFix" />
+            <feFlood floodOpacity="0" result="BackgroundImageFix" />
             <feColorMatrix
               in="SourceAlpha"
               type="matrix"
@@ -1183,9 +1183,9 @@ const ProjectTimeline = () => {
             width="194.873"
             height="235.238"
             filterUnits="userSpaceOnUse"
-            color-interpolation-filters="sRGB"
+            colorInterpolationFilters="sRGB"
           >
-            <feFlood flood-opacity="0" result="BackgroundImageFix" />
+            <feFlood floodOpacity="0" result="BackgroundImageFix" />
             <feColorMatrix
               in="SourceAlpha"
               type="matrix"
@@ -1218,9 +1218,9 @@ const ProjectTimeline = () => {
             width="194.873"
             height="235.238"
             filterUnits="userSpaceOnUse"
-            color-interpolation-filters="sRGB"
+            colorInterpolationFilters="sRGB"
           >
-            <feFlood flood-opacity="0" result="BackgroundImageFix" />
+            <feFlood floodOpacity="0" result="BackgroundImageFix" />
             <feColorMatrix
               in="SourceAlpha"
               type="matrix"
@@ -1253,9 +1253,9 @@ const ProjectTimeline = () => {
             width="194.892"
             height="235.238"
             filterUnits="userSpaceOnUse"
-            color-interpolation-filters="sRGB"
+            colorInterpolationFilters="sRGB"
           >
-            <feFlood flood-opacity="0" result="BackgroundImageFix" />
+            <feFlood floodOpacity="0" result="BackgroundImageFix" />
             <feColorMatrix
               in="SourceAlpha"
               type="matrix"
@@ -1288,9 +1288,9 @@ const ProjectTimeline = () => {
             width="194.873"
             height="235.247"
             filterUnits="userSpaceOnUse"
-            color-interpolation-filters="sRGB"
+            colorInterpolationFilters="sRGB"
           >
-            <feFlood flood-opacity="0" result="BackgroundImageFix" />
+            <feFlood floodOpacity="0" result="BackgroundImageFix" />
             <feColorMatrix
               in="SourceAlpha"
               type="matrix"
@@ -1323,9 +1323,9 @@ const ProjectTimeline = () => {
             width="207.953"
             height="122.107"
             filterUnits="userSpaceOnUse"
-            color-interpolation-filters="sRGB"
+            colorInterpolationFilters="sRGB"
           >
-            <feFlood flood-opacity="0" result="BackgroundImageFix" />
+            <feFlood floodOpacity="0" result="BackgroundImageFix" />
             <feColorMatrix
               in="SourceAlpha"
               type="matrix"
@@ -1358,9 +1358,9 @@ const ProjectTimeline = () => {
             width="34"
             height="35"
             filterUnits="userSpaceOnUse"
-            color-interpolation-filters="sRGB"
+            colorInterpolationFilters="sRGB"
           >
-            <feFlood flood-opacity="0" result="BackgroundImageFix" />
+            <feFlood floodOpacity="0" result="BackgroundImageFix" />
             <feColorMatrix
               in="SourceAlpha"
               type="matrix"
@@ -1393,9 +1393,9 @@ const ProjectTimeline = () => {
             width="34"
             height="35"
             filterUnits="userSpaceOnUse"
-            color-interpolation-filters="sRGB"
+            colorInterpolationFilters="sRGB"
           >
-            <feFlood flood-opacity="0" result="BackgroundImageFix" />
+            <feFlood floodOpacity="0" result="BackgroundImageFix" />
             <feColorMatrix
               in="SourceAlpha"
               type="matrix"
@@ -1428,9 +1428,9 @@ const ProjectTimeline = () => {
             width="34"
             height="35"
             filterUnits="userSpaceOnUse"
-            color-interpolation-filters="sRGB"
+            colorInterpolationFilters="sRGB"
           >
-            <feFlood flood-opacity="0" result="BackgroundImageFix" />
+            <feFlood floodOpacity="0" result="BackgroundImageFix" />
             <feColorMatrix
               in="SourceAlpha"
               type="matrix"
@@ -1464,8 +1464,8 @@ const ProjectTimeline = () => {
             y2="247.744"
             gradientUnits="userSpaceOnUse"
           >
-            <stop stop-color="#E4404A" />
-            <stop offset="1" stop-color="#EB4B5E" />
+            <stop stopColor="#E4404A" />
+            <stop offset="1" stopColor="#EB4B5E" />
           </linearGradient>
           <linearGradient
             id="paint1_linear_1958_4652"
@@ -1475,8 +1475,8 @@ const ProjectTimeline = () => {
             y2="338.266"
             gradientUnits="userSpaceOnUse"
           >
-            <stop stop-color="#E4404A" />
-            <stop offset="1" stop-color="#EB4B5E" />
+            <stop stopColor="#E4404A" />
+            <stop offset="1" stopColor="#EB4B5E" />
           </linearGradient>
           <linearGradient
             id="paint2_linear_1958_4652"
@@ -1486,8 +1486,8 @@ const ProjectTimeline = () => {
             y2="247.806"
             gradientUnits="userSpaceOnUse"
           >
-            <stop stop-color="#E4404A" />
-            <stop offset="1" stop-color="#EB4B5E" />
+            <stop stopColor="#E4404A" />
+            <stop offset="1" stopColor="#EB4B5E" />
           </linearGradient>
           <linearGradient
             id="paint3_linear_1958_4652"
@@ -1497,8 +1497,8 @@ const ProjectTimeline = () => {
             y2="322.416"
             gradientUnits="userSpaceOnUse"
           >
-            <stop stop-color="#E4404A" />
-            <stop offset="1" stop-color="#EB4B5E" />
+            <stop stopColor="#E4404A" />
+            <stop offset="1" stopColor="#EB4B5E" />
           </linearGradient>
           <linearGradient
             id="paint4_linear_1958_4652"
@@ -1508,8 +1508,8 @@ const ProjectTimeline = () => {
             y2="338.418"
             gradientUnits="userSpaceOnUse"
           >
-            <stop stop-color="#E4404A" />
-            <stop offset="1" stop-color="#EB4B5E" />
+            <stop stopColor="#E4404A" />
+            <stop offset="1" stopColor="#EB4B5E" />
           </linearGradient>
           <linearGradient
             id="paint5_linear_1958_4652"
@@ -1519,8 +1519,8 @@ const ProjectTimeline = () => {
             y2="330.628"
             gradientUnits="userSpaceOnUse"
           >
-            <stop stop-color="#E4404A" />
-            <stop offset="1" stop-color="#EB4B5E" />
+            <stop stopColor="#E4404A" />
+            <stop offset="1" stopColor="#EB4B5E" />
           </linearGradient>
         </defs>
       </svg>
