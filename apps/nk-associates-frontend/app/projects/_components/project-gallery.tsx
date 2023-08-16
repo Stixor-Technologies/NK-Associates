@@ -1,5 +1,5 @@
 "use client";
-import { useLayoutEffect, useState , useRef} from "react";
+import { useLayoutEffect, useState, useRef } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { gsap } from "gsap";
 import "swiper/css";
@@ -23,11 +23,11 @@ const ProjectGallery = ({ pictures }: PropTypes) => {
   useLayoutEffect(() => {
     gsap.to("[data-project-gallery] h2", {
       opacity: 1,
-      transform: 'translateY(0%)',
+      transform: "translateY(0%)",
       scrollTrigger: {
         trigger: "[data-project-gallery]",
         start: "top 80%",
-      }
+      },
     });
 
     gsap.to("[data-project-gallery-content]", {
@@ -36,7 +36,7 @@ const ProjectGallery = ({ pictures }: PropTypes) => {
       scrollTrigger: {
         trigger: "[data-project-gallery]",
         start: "top 70%",
-      }
+      },
     });
   }, []);
 

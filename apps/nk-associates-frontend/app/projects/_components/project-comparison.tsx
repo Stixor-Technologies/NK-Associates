@@ -1,5 +1,11 @@
 "use client";
-import { useState, useRef, useEffect, TouchEvent, useLayoutEffect } from "react";
+import {
+  useState,
+  useRef,
+  useEffect,
+  TouchEvent,
+  useLayoutEffect,
+} from "react";
 import Image from "next/image";
 import { gsap } from "gsap";
 import { Thumbs, FreeMode } from "swiper/modules";
@@ -182,11 +188,11 @@ const ProjectComparison = ({ projectId }: PropTypes) => {
   useLayoutEffect(() => {
     gsap.to("[data-project-comparison] h2", {
       opacity: 1,
-      transform: 'translateY(0%)',
+      transform: "translateY(0%)",
       scrollTrigger: {
         trigger: "[data-project-comparison]",
         start: "top 80%",
-      }
+      },
     });
 
     gsap.to("[data-project-comparison-content]", {
@@ -195,7 +201,7 @@ const ProjectComparison = ({ projectId }: PropTypes) => {
       scrollTrigger: {
         trigger: "[data-project-comparison]",
         start: "top 70%",
-      }
+      },
     });
   }, []);
 

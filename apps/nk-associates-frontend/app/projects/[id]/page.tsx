@@ -51,8 +51,14 @@ async function ProjectDetails({ params: { id } }: ProjectDetailProps) {
       <ProjectGallery pictures={picturesArr} />
       <ProjectTimeline />
       <ProjectComparison projectId={+id} />
-      <ProjectOutcome outcomeDescription={project.projectOutcomeDescription} outcomeImage={`${BASE_URL}${project.projectOutcomeImage.data.attributes.url}`} />
-      <ProjectMap address={`${project.address}, ${project.city}`} coordinates={{ lat: project.latitude, lng: project.longitude }} />
+      <ProjectOutcome
+        outcomeDescription={project.projectOutcomeDescription}
+        outcomeImage={`${BASE_URL}${project.projectOutcomeImage.data.attributes.url}`}
+      />
+      <ProjectMap
+        address={`${project.address}, ${project.city}`}
+        coordinates={{ lat: project.latitude, lng: project.longitude }}
+      />
 
       {pdfUrl && (
         <Link

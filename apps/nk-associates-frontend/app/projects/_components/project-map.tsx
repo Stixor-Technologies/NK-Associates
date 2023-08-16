@@ -1,4 +1,4 @@
-'use client';
+"use client";
 
 import { useLayoutEffect } from "react";
 import { gsap } from "gsap";
@@ -10,19 +10,18 @@ type PropTypes = {
   coordinates: {
     lng: number;
     lat: number;
-  }
-}
+  };
+};
 
-const ProjectMap = ({address, coordinates}: PropTypes) => {
-
+const ProjectMap = ({ address, coordinates }: PropTypes) => {
   useLayoutEffect(() => {
     gsap.to("[data-project-map] h2", {
       opacity: 1,
-      transform: 'translateY(0%)',
+      transform: "translateY(0%)",
       scrollTrigger: {
         trigger: "[data-project-map]",
         start: "top 80%",
-      }
+      },
     });
 
     gsap.to("[data-project-map-content]", {
@@ -31,7 +30,7 @@ const ProjectMap = ({address, coordinates}: PropTypes) => {
       scrollTrigger: {
         trigger: "[data-project-map]",
         start: "top 70%",
-      }
+      },
     });
   }, []);
 
@@ -42,9 +41,7 @@ const ProjectMap = ({address, coordinates}: PropTypes) => {
       </h2>
 
       <div data-project-map-content className="opacity-0">
-        <MapComponent
-          locations={coordinates}
-        />
+        <MapComponent locations={coordinates} />
 
         <div className="mt-6 flex">
           <div className="mr-3 h-4 w-4 text-nk-red md:h-6 md:w-6">
@@ -58,13 +55,11 @@ const ProjectMap = ({address, coordinates}: PropTypes) => {
             </svg>
           </div>
 
-          <p>
-            {address}
-          </p>
+          <p>{address}</p>
         </div>
       </div>
     </section>
-  )
-}
+  );
+};
 
 export default ProjectMap;

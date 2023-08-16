@@ -1,4 +1,4 @@
-'use client';
+"use client";
 import { useLayoutEffect } from "react";
 import { gsap } from "gsap";
 
@@ -34,7 +34,6 @@ const ProjectIntroduction = ({
   numberOfBathRooms = undefined,
   numberOfRooms = undefined,
 }: PropTypes) => {
-
   const details = [
     {
       title: "Category",
@@ -61,11 +60,11 @@ const ProjectIntroduction = ({
   useLayoutEffect(() => {
     gsap.to("[data-project-title]", {
       opacity: 1,
-      transform: 'translateY(0%)',
+      transform: "translateY(0%)",
     });
 
     gsap.to("[data-project-unitsSold] p span", {
-      visibility: 'visible',
+      visibility: "visible",
     });
 
     gsap.from("[data-project-unitsSold] p span", {
@@ -78,7 +77,10 @@ const ProjectIntroduction = ({
   }, []);
 
   return (
-    <section data-project-intro className="container flex flex-col py-8 md:py-14">
+    <section
+      data-project-intro
+      className="container flex flex-col py-8 md:py-14"
+    >
       <section className="mb-6 flex flex-col font-metropolis-bold md:flex-row md:justify-between">
         <h1
           data-project-title
@@ -189,7 +191,9 @@ const ProjectIntroduction = ({
 
         <div data-project-unitsSold className="flex justify-center">
           <div className="mr-7 hidden flex-col items-center font-metropolis-semibold text-nk-red md:flex">
-            <p><span className="invisible">{unitsSold}</span> Units Sold</p>
+            <p>
+              <span className="invisible">{unitsSold}</span> Units Sold
+            </p>
 
             <div className="mt-2 h-2.5 w-full min-w-[11.875rem] rounded-full bg-nk-gray lg:min-w-[13.75rem]">
               <div
