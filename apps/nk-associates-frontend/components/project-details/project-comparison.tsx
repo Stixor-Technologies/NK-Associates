@@ -1,7 +1,14 @@
 "use client";
-import { useMemo, useState, useRef, useEffect, TouchEvent } from "react";
+import {
+  useState,
+  useRef,
+  useEffect,
+  TouchEvent,
+  useLayoutEffect,
+} from "react";
 import Image from "next/image";
-import { Thumbs, FreeMode, Navigation } from "swiper/modules";
+import { gsap } from "gsap";
+import { Thumbs, FreeMode } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/navigation";
@@ -10,8 +17,8 @@ import "swiper/css/thumbs";
 import "swiper/css/pagination";
 import "./project-comparison.css";
 
-import { getComparisonImages } from "../../../utils/api-calls";
-import { BASE_URL } from "../../../utils/constants";
+import { getComparisonImages } from "../../utils/api-calls";
+import { BASE_URL } from "../../utils/constants";
 
 type PropTypes = {
   projectId: number;
@@ -74,15 +81,13 @@ const CompareComponent = ({ url }) => {
       <Image
         src={`${BASE_URL}${url[0]}`}
         alt="Carousel Image"
-        layout="fill"
-        objectFit="cover"
+        fill
         className="pointer-events-none h-full w-full object-cover"
       />
       <Image
         src={`${BASE_URL}${url[1]}`}
         alt="Carousel Image"
-        layout="fill"
-        objectFit="cover"
+        fill
         className="pointer-events-none absolute inset-0 h-full w-full object-cover"
         style={{
           clipPath: `polygon(0 0, ${imgRevealFraction * 100}% 0, ${
@@ -178,83 +183,104 @@ const ProjectComparison = ({ projectId }: PropTypes) => {
     handleGetComparisonImages();
   }, []);
 
+  useLayoutEffect(() => {
+    gsap.to("[data-project-comparison] h2", {
+      opacity: 1,
+      transform: "translateY(0%)",
+      scrollTrigger: {
+        trigger: "[data-project-comparison]",
+        start: "top 80%",
+      },
+    });
+
+    gsap.to("[data-project-comparison-content]", {
+      opacity: 1,
+      duration: 0.8,
+      scrollTrigger: {
+        trigger: "[data-project-comparison]",
+        start: "top 70%",
+      },
+    });
+  }, []);
+
   return (
-    <section className="py-8 md:container md:py-14">
-      <h2 className="mb-4 text-center font-metropolis-bold text-2xl md:mb-8">
+    <section data-project-comparison className="py-8 md:container md:py-14">
+      <h2 className="mb-4 text-center font-metropolis-bold text-2xl md:mb-8 opacity-0 translate-y-full">
         Render Vs Actual Image
       </h2>
 
-      {pictures.length > 0 && pictures[0].length > 0 ? (
-        <div className="gap-3 md:flex">
-          <Swiper
-            centeredSlides={true}
-            initialSlide={0}
-            pagination={false}
-            allowTouchMove={false}
-            thumbs={{
-              swiper: thumbsSwiper,
-            }}
-            className="mySwiper carousel-slider h-[25rem] w-full sm:aspect-video sm:h-auto md:w-10/12 md:rounded-xl"
-            modules={[Thumbs, FreeMode]}
-          >
-            {pictures?.map((url, index) => (
-              <SwiperSlide key={index} className="relative">
-                <CompareComponent url={[url[0], url[1]]} />
-              </SwiperSlide>
-            ))}
-          </Swiper>
-
-          <Swiper
-            modules={[Thumbs, FreeMode]}
-            watchSlidesProgress
-            spaceBetween={10}
-            slidesPerView="auto"
-            onSwiper={setThumbsSwiper}
-            className="mySwiper2 mt-4 !px-4 md:mt-0 md:w-2/12 md:!px-0"
-            direction={direction}
-            onResize={handleResize}
-          >
-            {pictures?.map((url, index) => (
-              <SwiperSlide
-                key={index}
-                className="aspect-video !w-[8.125rem] cursor-pointer md:max-h-[6.25rem] md:!w-auto lg:max-h-[7.5rem]"
-              >
-                <Image
-                  src={`${BASE_URL}${url[0]}`}
-                  alt="Thumb Item"
-                  layout="fill"
-                  objectFit="cover"
-                  className="w-full rounded-lg"
-                />
-              </SwiperSlide>
-            ))}
-          </Swiper>
-        </div>
-      ) : (
-        <div className="flex h-[25rem] w-full items-center justify-center rounded-xl bg-white text-black">
-          <div className="h-10 w-10">
-            <svg
-              fill="#000000"
-              viewBox="0 0 32 32"
-              id="icon"
-              xmlns="http://www.w3.org/2000/svg"
+      <div data-project-comparison-content className="opacity-0">
+        {pictures.length > 0 && pictures[0].length > 0 ? (
+          <div className="gap-3 md:flex">
+            <Swiper
+              centeredSlides={true}
+              initialSlide={0}
+              pagination={false}
+              allowTouchMove={false}
+              thumbs={{
+                swiper: thumbsSwiper,
+              }}
+              className="mySwiper carousel-slider h-[25rem] w-full sm:aspect-video sm:h-auto md:w-10/12 md:rounded-xl"
+              modules={[Thumbs, FreeMode]}
             >
-              <defs></defs>
-              <title>no-image</title>
-              <path d="M30,3.4141,28.5859,2,2,28.5859,3.4141,30l2-2H26a2.0027,2.0027,0,0,0,2-2V5.4141ZM26,26H7.4141l7.7929-7.793,2.3788,2.3787a2,2,0,0,0,2.8284,0L22,19l4,3.9973Zm0-5.8318-2.5858-2.5859a2,2,0,0,0-2.8284,0L19,19.1682l-2.377-2.3771L26,7.4141Z" />
-              <path d="M6,22V19l5-4.9966,1.3733,1.3733,1.4159-1.416-1.375-1.375a2,2,0,0,0-2.8284,0L6,16.1716V6H22V4H6A2.002,2.002,0,0,0,4,6V22Z" />
-              <rect
-                id="_Transparent_Rectangle_"
-                data-name="&lt;Transparent Rectangle&gt;"
-                className="fill-none"
-                width="32"
-                height="32"
-              />
-            </svg>
+              {pictures?.map((url, index) => (
+                <SwiperSlide key={index} className="relative">
+                  <CompareComponent url={[url[0], url[1]]} />
+                </SwiperSlide>
+              ))}
+            </Swiper>
+
+            <Swiper
+              modules={[Thumbs, FreeMode]}
+              watchSlidesProgress
+              spaceBetween={10}
+              slidesPerView="auto"
+              onSwiper={setThumbsSwiper}
+              className="mySwiper2 mt-4 !px-4 md:mt-0 md:w-2/12 md:!px-0"
+              direction={direction}
+              onResize={handleResize}
+            >
+              {pictures?.map((url, index) => (
+                <SwiperSlide
+                  key={index}
+                  className="aspect-video !w-[8.125rem] cursor-pointer md:max-h-[6.25rem] md:!w-auto lg:max-h-[7.5rem]"
+                >
+                  <Image
+                    src={`${BASE_URL}${url[0]}`}
+                    alt="Thumb Item"
+                    fill
+                    className="w-full rounded-lg"
+                  />
+                </SwiperSlide>
+              ))}
+            </Swiper>
           </div>
-          No Images Available
-        </div>
-      )}
+        ) : (
+          <div className="flex h-[25rem] w-full items-center justify-center rounded-xl bg-white text-black">
+            <div className="h-10 w-10">
+              <svg
+                fill="#000000"
+                viewBox="0 0 32 32"
+                id="icon"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <defs></defs>
+                <title>no-image</title>
+                <path d="M30,3.4141,28.5859,2,2,28.5859,3.4141,30l2-2H26a2.0027,2.0027,0,0,0,2-2V5.4141ZM26,26H7.4141l7.7929-7.793,2.3788,2.3787a2,2,0,0,0,2.8284,0L22,19l4,3.9973Zm0-5.8318-2.5858-2.5859a2,2,0,0,0-2.8284,0L19,19.1682l-2.377-2.3771L26,7.4141Z" />
+                <path d="M6,22V19l5-4.9966,1.3733,1.3733,1.4159-1.416-1.375-1.375a2,2,0,0,0-2.8284,0L6,16.1716V6H22V4H6A2.002,2.002,0,0,0,4,6V22Z" />
+                <rect
+                  id="_Transparent_Rectangle_"
+                  data-name="&lt;Transparent Rectangle&gt;"
+                  className="fill-none"
+                  width="32"
+                  height="32"
+                />
+              </svg>
+            </div>
+            No Images Available
+          </div>
+        )}
+      </div>
     </section>
   );
 };
