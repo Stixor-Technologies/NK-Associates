@@ -22,7 +22,7 @@ const placeholders = {
   name: "Write your name here",
   email: "Write your email address",
   phone: "Write your phone number here",
-  subject: "Write subject here",
+  subject: "Write your subject here",
 };
 
 const initialValues = {
@@ -207,7 +207,11 @@ const ContactForm: React.FC<ContactFormProps> = ({ categories }) => {
                       key={fieldName}
                       hasError={errors[fieldName]}
                       isTouched={touched[fieldName]}
-                      label={`Your ${fieldName}`}
+                      label={
+                        fieldName === "subject"
+                          ? fieldName
+                          : `Your ${fieldName}`
+                      }
                       name={fieldName}
                       placeholder={placeholders[fieldName]}
                       errorMessage={errors[fieldName]}

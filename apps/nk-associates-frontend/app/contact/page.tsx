@@ -20,10 +20,11 @@ const ContactUs = async () => {
   const categories = await getCategories();
 
   const combinedAddresses: Contacts[] = [
+    ...(headOfficeAddress
+      ? [{ ...headOfficeAddress, isHeadOffice: true }]
+      : []),
     ...(data || []),
-    ...(headOfficeAddress ? [headOfficeAddress] : []),
   ];
-
   const headOfficeLocation: Location = {
     lat: headOfficeAddress?.attributes?.latitude,
     lng: headOfficeAddress?.attributes?.longitude,
