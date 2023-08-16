@@ -76,7 +76,7 @@ function JobDetail({ params: { id } }: JobDetailProps) {
   }
 
   return (
-    <div className=" block px-6 text-center md:px-14  ">
+    <div className=" block px-6 text-center md:px-14">
       <div className="font-metropolis-bold pb-[2.058rem] pt-[2.912rem] text-[3rem]">
         {title}
       </div>
@@ -111,7 +111,7 @@ function JobDetail({ params: { id } }: JobDetailProps) {
         JOB SPECIFICATIONS
       </div>
 
-      <div className="font-metropolis  text-left text-[1.5rem]">
+      <div className="font-metropolis text-left text-[1.5rem]">
         <span className="font-metropolis-bold text-nk-red">
           Qualification:{" "}
         </span>
