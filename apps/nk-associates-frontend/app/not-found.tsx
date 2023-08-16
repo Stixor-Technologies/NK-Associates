@@ -14,7 +14,7 @@ export default function NotFound() {
             navigateTo="/"
             type="solid"
             text="Return Home"
-            className="bg-nk-red metro w-44 h-10 my-10"
+            className="bg-nk-red w-44 h-10 my-10"
           />
         </div>
       </div>
