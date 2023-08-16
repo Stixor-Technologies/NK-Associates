@@ -1,3 +1,4 @@
+"use client";
 import React, { FC } from "react";
 import Image from "next/image";
 import Link from "next/link";
@@ -10,18 +11,17 @@ import { BASE_URL } from "../../utils/constants";
 interface CardProps {
   property: Property;
   actMap?: boolean;
+  actSim?: boolean;
 }
 
-const PropertyCard: FC<CardProps> = ({ property, actMap }) => {
-  const { title, category, purpose, area, area_type, price, address } =
+const PropertyCard: FC<CardProps> = ({ property, actMap, actSim }) => {
+  const { title, category, purpose, area, area_type, type, price, address } =
     property?.attributes;
   const id = property?.id;
   const thumbnailImage =
     property?.attributes?.image_thumbnail?.data?.attributes?.url;
-  console.log(property);
-
   return (
-    <div className="flex-grow min-w-[283px]">
+    <div className={`${actSim && "flex-grow max-w-[290px] min-w-[283px]"}`}>
       <Link
         href={`/properties/${id}`}
         target={actMap ? "_blank" : "_self"}
@@ -73,7 +73,7 @@ const PropertyCard: FC<CardProps> = ({ property, actMap }) => {
             </span>
           </div>
         </div>
-
+        <p>{type}</p>
         <h2
           className={`font-metropolis text-nk-black md:text-base ${
             actMap ? "text-[0.911rem]" : "text-xl"
