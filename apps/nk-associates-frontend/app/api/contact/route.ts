@@ -6,7 +6,12 @@ sendgrid.setApiKey(process.env.EMAIL_API_KEY);
 
 export async function POST(request: NextRequest) {
   const data = await request.json();
-  console.log("ENV: ", process.env.SENDGRID_EMAIL_TO, process.env.SENDGRID_EMAIL_TO, process.env.SENDGRID_EMAIL_FROM);
+  console.log(
+    "ENV: ",
+    process.env.SENDGRID_EMAIL_TO,
+    process.env.SENDGRID_EMAIL_TO,
+    process.env.SENDGRID_EMAIL_FROM,
+  );
   try {
     const msg = {
       to: process.env.SENDGRID_EMAIL_TO,

@@ -5,11 +5,7 @@
     "build": {
       "dependsOn": ["^build"],
       "outputs": [".next/**", "!.next/cache/**"],
-      "env": [
-        "EMAIL_API_KEY",
-        "NEXT_SENDGRID_EMAIL_TO",
-        "NEXT_SENDGRID_EMAIL_FROM"
-      ]
+      "env": ["EMAIL_API_KEY", "SENDGRID_EMAIL_TO", "SENDGRID_EMAIL_FROM"]
     },
     "lint": {},
     "dev": {
