@@ -28,22 +28,6 @@ function JobDetail({ params: { id } }: JobDetailProps) {
     const result = await getJobDetail(id);
     setData(result);
   };
-function JobDetail({ params: { id } }: JobDetailProps) {
-  const [isOpen, setIsOpen] = useState<boolean>(false);
-
-  const closeModal = () => {
-    setIsOpen(false);
-  };
-
-  const [data, setData] = useState<Job>();
-  useEffect(() => {
-    getData();
-  }, []);
-
-  const getData = async () => {
-    const result = await getJobDetail(id);
-    setData(result);
-  };
   const {
     title,
     description,
@@ -93,13 +77,9 @@ function JobDetail({ params: { id } }: JobDetailProps) {
     setIsOpen(true);
   }
 
-
-
   return (
     <div className=" block px-6 text-center md:px-14  ">
-      {/* <div className="absolute left-0 top-0 z-50 flex h-screen w-screen items-center justify-center overflow-hidden bg-[#00000046]"> */}
       <JobModal onClose={closeModal} open={isOpen} />
-      {/* </div> */}
 
       <div className="font-metropolis-bold pb-5 text-3xl">{title}</div>
       <div className="font-metropolis text-sm">{description}</div>
@@ -121,7 +101,6 @@ function JobDetail({ params: { id } }: JobDetailProps) {
           {responsibilityArray?.map((responsibility, index) => (
             <li key={index} className="py-1">
               {responsibility?.trim()}
-              
             </li>
           ))}
         </ul>
