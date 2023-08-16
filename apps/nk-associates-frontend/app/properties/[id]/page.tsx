@@ -200,11 +200,11 @@ async function PropertyDetail({ params: { id } }: PropertyDetailProps) {
       {/* <SimilarProperites /> */}
 
       {similarProperties?.length > 0 && (
-        <div className="md:container md:px-0 md:pl-8 mt-16">
-          <h6 className="text-[2rem] text-center font-metropolis-semibold px-4 sm:text-left md:text-4xl">
+        <div className="xl:container mt-16">
+          <h6 className="text-[2rem] text-center font-metropolis-semibold sm:text-left md:text-4xl">
             Similar Properties
           </h6>
-          <div className="flex flex-nowrap overflow-x-scroll py-8 pb-12 md:pb-16">
+          <div className="flex flex-nowrap overflow-x-scroll xl:gap-4 py-8 pb-12 md:pb-16">
             {similarProperties?.map((property: Property, index: number) => (
               <PropertyCard key={index} property={property} actSim={true} />
             ))}

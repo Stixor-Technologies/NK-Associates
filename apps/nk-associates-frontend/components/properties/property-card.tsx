@@ -22,9 +22,7 @@ const PropertyCard: FC<CardProps> = ({ property, actMap, actSim }) => {
     property?.attributes?.image_thumbnail?.data?.attributes?.url;
   return (
     <div
-      className={`${
-        actSim && "flex-grow max-w-[18.125rem] min-w-[17.688rem] mr-6"
-      }`}
+      className={`${actSim && "flex-grow max-w-[18.125rem] min-w-[17.288rem]"}`}
     >
       <Link
         href={`/properties/${id}`}
