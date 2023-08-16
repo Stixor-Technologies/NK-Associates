@@ -122,35 +122,24 @@ export const getPropertyDetail = async (id: string) => {
 // };
 
 // Define the filter criteria and priority
-const FILTER_PRIORITY = [
-  // { key: "type", value: "" },
-  // { key: "category", value: "" },
-  { key: "type", value: "", operation: "=" },
-  { key: "category", value: "", operation: "=" },
-  { key: "price", value: "", operation: "$gte" },
-  // ... add more filters as required
-];
-
-// const BASE_QUERY = `${BASE_URL}/api/properties?populate=*&pagination[limit]=${SIMILAR_PROPERTIES_LIMIT}&sort[1]=id&filters[id_ne]=`;
-const BASE_QUERY = `${BASE_URL}/api/properties?populate=*`;
 
 export const getSimilarProperties = async (
   type: string,
   category: string,
-  price: string,
   currentPropertyId: string,
 ) => {
+  const FILTER_PRIORITY = [
+    { key: "type", value: "" },
+    { key: "category", value: "" },
+  ];
   try {
     let properties: any[] = [];
     const uniquePropertyIds = new Set();
 
-    // Set the filter values
-    FILTER_PRIORITY[0].value = price;
-    FILTER_PRIORITY[1].value = type;
-    FILTER_PRIORITY[2].value = category;
+    FILTER_PRIORITY[0].value = type;
+    FILTER_PRIORITY[1].value = category;
 
     for (let filter of FILTER_PRIORITY) {
-      // If we already have enough properties, break the loop
       if (properties.length >= 4) break;
 
       const resp = await getPropertiesByFilter(filter, currentPropertyId);
@@ -172,20 +161,11 @@ export const getSimilarProperties = async (
 
 // Fetch data based on filter criteria
 const getPropertiesByFilter = async (
-  filter: { key: string; value: string; operation: string },
+  filter: { key: string; value: string },
   excludeId: string,
 ) => {
-  let filterQuery = "";
-
-  // Construct the filter query part based on operation
-  if (filter.operation === "=") {
-    filterQuery = `&filters[${filter.key}]=${filter.value}`;
-  } else {
-    filterQuery = `&filters[${filter.key}][${filter.operation}]=${filter.value}`;
-  }
   return fetch(
-    // `${BASE_QUERY}&filters[id][$ne]=${excludeId}&filters[${filter.key}]=${filter.value}&pagination[limit]=${SIMILAR_PROPERTIES_LIMIT}&sort[1]=id`,
-    `${BASE_QUERY}&filters[id][$ne]=${excludeId}${filterQuery}&pagination[limit]=${SIMILAR_PROPERTIES_LIMIT}&sort[1]=id`,
+    `${BASE_URL}/api/properties?populate=*&filters[id][$ne]=${excludeId}&filters[${filter.key}]=${filter.value}&pagination[limit]=${SIMILAR_PROPERTIES_LIMIT}&sort[1]=id`,
 
     { cache: "no-store" },
   );

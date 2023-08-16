@@ -46,12 +46,7 @@ async function PropertyDetail({ params: { id } }: PropertyDetailProps) {
     address,
     city,
   } = data?.attributes;
-  const similarProperties = await getSimilarProperties(
-    type,
-    category,
-    price,
-    id,
-  );
+  const similarProperties = await getSimilarProperties(type, category, id);
 
   const pdfUrl: string = data?.attributes?.property_pdf?.data?.attributes?.url;
   const paragraphs: string[] | string = description.split("\n\n");
@@ -205,11 +200,11 @@ async function PropertyDetail({ params: { id } }: PropertyDetailProps) {
       {/* <SimilarProperites /> */}
 
       {similarProperties?.length > 0 && (
-        <div className="container px-4 mt-16">
-          <h6 className=" text-[2rem] text-center font-metropolis-semibold sm:text-left md:text-4xl">
+        <div className="md:container md:px-0 md:pl-8 mt-16">
+          <h6 className="text-[2rem] text-center font-metropolis-semibold px-4 sm:text-left md:text-4xl">
             Similar Properties
           </h6>
-          <div className="flex flex-nowrap overflow-x-scroll gap-7 py-8 pb-12 md:pb-16">
+          <div className="flex flex-nowrap overflow-x-scroll py-8 pb-12 md:pb-16">
             {similarProperties?.map((property: Property, index: number) => (
               <PropertyCard key={index} property={property} actSim={true} />
             ))}

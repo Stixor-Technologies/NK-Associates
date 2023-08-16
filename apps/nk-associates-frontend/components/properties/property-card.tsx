@@ -21,7 +21,11 @@ const PropertyCard: FC<CardProps> = ({ property, actMap, actSim }) => {
   const thumbnailImage =
     property?.attributes?.image_thumbnail?.data?.attributes?.url;
   return (
-    <div className={`${actSim && "flex-grow max-w-[290px] min-w-[283px]"}`}>
+    <div
+      className={`${
+        actSim && "flex-grow max-w-[18.125rem] min-w-[17.688rem] mr-6"
+      }`}
+    >
       <Link
         href={`/properties/${id}`}
         target={actMap ? "_blank" : "_self"}
