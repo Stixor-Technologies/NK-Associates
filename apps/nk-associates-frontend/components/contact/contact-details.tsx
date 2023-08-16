@@ -19,8 +19,13 @@ const ContactDetails: React.FC<ContactDetailProps> = ({ data }) => {
             className="h-full w-full bg-nk-light-gray py-4 px-3 rounded-lg md:rounded-3xl md:py-8 md:px-5"
           >
             <div className="flex w-full flex-col gap-4">
-              <div className="font-metropolis-bold text-nk-black text-xl md:text-[1.75rem]">
-                {`${contactItem?.attributes?.location} Office`}
+              <div className="font-metropolis-bold text-nk-black text-xl md:text-[1.75rem] flex items-center gap-2">
+                {`${contactItem?.attributes?.location} Office `}
+                {contactItem?.isHeadOffice && (
+                  <span className=" text-base font-metropolis text-nk-gray">
+                    (Head Office)
+                  </span>
+                )}
               </div>
               <div className="flex items-center gap-4">
                 <Image
