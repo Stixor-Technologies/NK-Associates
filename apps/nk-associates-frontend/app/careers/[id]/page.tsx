@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import LinkButton from "../../../components/button/link-button";
 import { getJobDetail } from "../../../utils/api-calls";
 import { Job } from "../../../utils/types/types";
+import JobModal from "../job-modal";
 
 interface JobDetailProps {
   params: {
@@ -76,7 +77,11 @@ function JobDetail({ params: { id } }: JobDetailProps) {
   }
 
   return (
-    <div className="block text-center container">
+    <div className=" block px-6 text-center md:px-14 container  ">
+      {/* <div className="absolute left-0 top-0 z-50 flex h-screen w-screen items-center justify-center overflow-hidden bg-[#00000046]"> */}
+      <JobModal onClose={closeModal} open={isOpen} />
+      {/* </div> */}
+
       <div className="font-metropolis-bold pb-[2.058rem] pt-[2.912rem] text-[1.875rem] md:text-[3rem]">
         {title}
       </div>
@@ -100,7 +105,6 @@ function JobDetail({ params: { id } }: JobDetailProps) {
         <ul className="font-metropolis-thin list-disc pl-5">
           {responsibilityArray?.map((responsibility, index) => (
             <li key={index} className="py-1">
-              {responsibility?.trim()}
               {responsibility?.trim()}
             </li>
           ))}
@@ -130,7 +134,6 @@ function JobDetail({ params: { id } }: JobDetailProps) {
       <ul className="font-metropolis-thin text-nk-black list-disc pl-5 text-left text-[0.875rem] md:text-[1.5rem]">
         {skillArray?.map((skill, index) => (
           <li key={index} className="py-1 text-[0.875rem] md:text-[1.5rem]">
-            {skill?.trim()}
             {skill?.trim()}
           </li>
         ))}
