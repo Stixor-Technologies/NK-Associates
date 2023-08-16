@@ -78,27 +78,26 @@ function JobDetail({ params: { id } }: JobDetailProps) {
 
   return (
     <div className=" block px-6 text-center md:px-14  ">
-      {/* <div className="absolute left-0 top-0 z-50 flex h-screen w-screen items-center justify-center overflow-hidden bg-[#00000046]"> */}
       <JobModal onClose={closeModal} open={isOpen} />
-      {/* </div> */}
 
-      <div className="font-metropolis-bold pb-5 text-3xl">{title}</div>
+      <div className="font-metropolis-bold pb-[2.058rem] pt-[2.912rem] text-3xl">
+        {title}
+      </div>
       <div className="font-metropolis text-sm">{description}</div>
       <div className="font-metropolis-semibold py-3 text-base">
         No. of Positions: {positions}
       </div>
       <LinkButton
         text="Apply Now"
-        navigateTo=""
         type="solid"
         className="h-10 w-80 border-2 "
         clickEvent={openModal}
       />
 
-      <div className="font-metropolis-bold py-4 pt-10 text-left text-[1.75rem] leading-[2.1rem]">
+      <div className="font-metropolis-bold py-4 pt-[4.813rem] text-left text-[1.75rem] leading-[2.1rem]">
         KEY RESPONSIBILITIES:
       </div>
-      <div className="pb-4 text-left">
+      <div className="pb-4 pt-2 text-left">
         <ul className="font-metropolis-thin list-disc pl-5">
           {responsibilityArray?.map((responsibility, index) => (
             <li key={index} className="py-1 text-sm">
@@ -109,11 +108,11 @@ function JobDetail({ params: { id } }: JobDetailProps) {
         </ul>
       </div>
 
-      <div className="font-metropolis-bold py-4 text-left text-[1.75rem] leading-[2.1rem]">
+      <div className="font-metropolis-bold pb-[2.524rem] pt-[4.241rem] text-left text-[1.75rem] leading-[2.1rem]">
         JOB SPECIFICATIONS
       </div>
 
-      <div className="font-metropolis pb-2 text-left">
+      <div className="font-metropolis  text-left">
         <span className="font-metropolis-bold text-nk-red text-base">
           Qualification:{" "}
         </span>
@@ -127,7 +126,7 @@ function JobDetail({ params: { id } }: JobDetailProps) {
         {experience?.trim()}
       </div>
 
-      <div className="font-metropolis-bold py-4 text-left text-[1.75rem] leading-[2.1rem]">
+      <div className="font-metropolis-bold pb-[2.524rem] pt-[4.241rem] text-left text-[1.75rem] leading-[2.1rem]">
         Skills Required
       </div>
 
@@ -140,7 +139,7 @@ function JobDetail({ params: { id } }: JobDetailProps) {
         ))}
       </ul>
 
-      <div className="font-metropolis-bold py-4 pt-10 text-left text-[1.75rem] leading-[2.1rem]">
+      <div className="font-metropolis-bold pb-[1.555rem] pt-[4.241rem] text-left text-[1.75rem] leading-[2.1rem]">
         Office Timings
       </div>
       {start && end && (
@@ -148,24 +147,20 @@ function JobDetail({ params: { id } }: JobDetailProps) {
           {formatTime(start)} to {formatTime(end)} ({displayDays(days)})
         </div>
       )}
-      <div className="font-metropolis-bold  py-2 text-left text-[1.75rem] leading-[2.1rem]">
+      <div className="font-metropolis-bold pb-[1.555rem] pt-[4.254rem] text-left text-[1.75rem] leading-[2.1rem]">
         Location
       </div>
       <div className="font-metropolis-medium  text-left">{location}</div>
       <div className="font-metropolis-semibold py-3 text-base">
-        <div className="font-metropolis-medium  text-left">{location}</div>
-        <div className="font-metropolis-semibold py-3 text-base">
-          No. of Positions: {positions}
-        </div>
-        <div className="pb-20">
-          <LinkButton
-            text="Apply Now"
-            navigateTo=""
-            type="solid"
-            className="h-10 w-80 border-2"
-            clickEvent={openModal}
-          />
-        </div>
+        No. of Positions: {positions}
+      </div>
+      <div className="pb-20">
+        <LinkButton
+          text="Apply Now"
+          type="solid"
+          className="h-10 w-80 border-2"
+          clickEvent={openModal}
+        />
       </div>
     </div>
   );
