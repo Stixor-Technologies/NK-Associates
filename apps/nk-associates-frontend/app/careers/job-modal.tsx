@@ -10,6 +10,7 @@ import Image from "next/image";
 import Toast from "../../components/shared/toast";
 import { BASE_URL } from "../../utils/constants";
 import { JobFormSchema } from "../../utils/formik-schema";
+import uploadIcon from "../../public/assets/icons/upload-icon.svg";
 
 interface ModalProps {
   open: boolean;
@@ -41,6 +42,8 @@ const EventModal: React.FC<ModalProps> = ({ open, onClose }) => {
     current_address: "text",
     permanent_address: "text",
     department: "dropdown",
+    resume: "file",
+    cover_letter: "file",
   };
 
   const placeholders = {
@@ -51,6 +54,8 @@ const EventModal: React.FC<ModalProps> = ({ open, onClose }) => {
     current_address: "Write current address here",
     permanent_address: "Write permanent address here",
     department: "Select Department",
+    resume: "Drag & drop here or enter to upload manually ",
+    cover_letter: "Drag & drop here or enter to upload manually",
   };
 
   const initialValues = {
@@ -61,6 +66,8 @@ const EventModal: React.FC<ModalProps> = ({ open, onClose }) => {
     current_address: "",
     permanent_address: "",
     department: "",
+    resume: "",
+    cover_letter: "",
   };
 
   const formFields = [
@@ -71,6 +78,8 @@ const EventModal: React.FC<ModalProps> = ({ open, onClose }) => {
     "current_address",
     "permanent_address",
     "department",
+    "resume",
+    "cover_letter",
   ];
 
   const [loading, setLoading] = useState<boolean>(false);
@@ -219,7 +228,7 @@ const EventModal: React.FC<ModalProps> = ({ open, onClose }) => {
                               <div key={fieldName}>
                                 <label
                                   htmlFor={fieldName}
-                                  className="font-metropolis-thin text-nk-black relative capitalize md:text-base"
+                                  className="font-metropolis-thin  text-nk-black relative capitalize md:text-base"
                                 >
                                   {getFieldLabel(fieldName)}
                                   <sup className="font-metropolis-thin text-nk-black top-[0.031rem] ml-[0.063rem] text-lg">
@@ -260,6 +269,65 @@ const EventModal: React.FC<ModalProps> = ({ open, onClose }) => {
                                       alt="dropdown"
                                     />
                                   </div>
+                                </div>
+
+                                {touched.Departments && errors.Departments && (
+                                  <p className="text-nk-red mt-2 text-sm italic">
+                                    {errors.Departments as string}
+                                  </p>
+                                )}
+                              </div>
+                            );
+                          }
+                          if (fieldType === "file") {
+                            return (
+                              <div
+                                key={fieldName}
+                                className={`${
+                                  fieldName === "resume" && "col-start-1 "
+                                } `}
+                              >
+                                <label
+                                  htmlFor={fieldName}
+                                  className="font-metropolis-thin text-nk-black relative capitalize md:text-base"
+                                >
+                                  {getFieldLabel(fieldName)}
+                                  {fieldName !== "cover_letter" && (
+                                    <sup className="font-metropolis-thin text-nk-black top-[0.031rem] ml-[0.063rem] text-lg">
+                                      *
+                                    </sup>
+                                  )}
+                                </label>
+
+                                <div className=" bg-nk-white font-metropolis-light text-nk-black placeholder-nk-gray placeholder:font-metropolis-thin focus:border-nk-gray focus:ring-nk-gray mt-1  w-full rounded-lg border px-4 py-4 shadow-md  placeholder:text-base focus:outline-none">
+                                  <div className=" h-[4rem]">
+                                    <label className="w-full cursor-pointer text-center">
+                                      <input
+                                        name={fieldName}
+                                        accept=".pdf, .doc, .docx, .txt, .rtf"
+                                        multiple={false}
+                                        className="hidden"
+                                        type="file"
+                                      />
+
+                                      <div className="aspect-w-1 aspect-h-1 relative  flex h-full w-full items-center justify-center">
+                                        <div className="h-[3.5rem] w-[3.5rem]">
+                                          <Image
+                                            src={uploadIcon}
+                                            alt="Preview"
+                                            className="object-contain"
+                                            style={{ objectFit: "contain" }}
+                                          />
+                                        </div>
+                                      </div>
+                                    </label>
+                                  </div>
+                                  <p className="text-light-gray font-metropolis-thin text-center text-[0.875rem] text-[#969696]">
+                                    Drag & Drop here or enter to upload manually
+                                  </p>
+                                  <p className="text-light-gray font-metropolis-thin text-center text-[0.625rem] text-[#969696]">
+                                    (File types: pdf, doc, docx, txt, rtf)
+                                  </p>
                                 </div>
 
                                 {touched.Departments && errors.Departments && (
