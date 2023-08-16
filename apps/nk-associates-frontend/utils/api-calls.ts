@@ -1,5 +1,5 @@
 import { BASE_URL } from "./constants";
-import { Department } from "./types/types";
+import { Department, Service } from "./types/types";
 export const getGridProperties = async (start: number, limit = 12) => {
   try {
     const resp = await fetch(
@@ -217,5 +217,16 @@ export const getSocials = async () => {
     return links;
   } catch (error) {
     console.error("There was an error getting social media links", error);
+  }
+};
+
+export const getServices = async () => {
+  try {
+    let apiUrl = `${BASE_URL}/api/services?populate=*`;
+    const resp = await fetch(apiUrl);
+    const data = await resp.json();
+    return data;
+  } catch (error) {
+    console.error("There was an error getting services", error);
   }
 };

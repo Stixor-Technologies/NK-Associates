@@ -38,7 +38,7 @@ const serviceCard: FC<CardProps> = ({ service, actMap }) => {
             </p>
             <div className="flex justify-center md:justify-between ">
               <Image
-                src={ServiceLogo}
+                src={`${BASE_URL}${logo || "/"}`}
                 alt="service Logo"
                 className="mt-5 mb-2"
               />
