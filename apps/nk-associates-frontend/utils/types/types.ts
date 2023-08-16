@@ -5,13 +5,12 @@ export interface EventsImage {
     };
   }[];
 }
-
 export interface Contacts {
   attributes: {
     location: string;
     address: string;
-    latitude: number;
-    longitude: number;
+    latitude?: number;
+    longitude?: number;
     emails: {
       id: number;
       email: string;

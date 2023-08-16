@@ -1,3 +1,4 @@
+"use client";
 import Image from "next/image";
 import AreaMarker from "../../public/assets/icons/area-marker.svg";
 import Envelope from "../../public/assets/icons/envelope-icon.svg";
@@ -11,7 +12,7 @@ interface ContactDetailProps {
 const ContactDetails: React.FC<ContactDetailProps> = ({ data }) => {
   return (
     <>
-      {data?.map((contactItem, index) => {
+      {data?.map((contactItem: Contacts, index: number) => {
         return (
           <div
             key={index}
@@ -34,7 +35,7 @@ const ContactDetails: React.FC<ContactDetailProps> = ({ data }) => {
                 </p>
               </div>
 
-              {contactItem?.attributes?.emails.length > 0 && (
+              {contactItem?.attributes?.emails?.length > 0 && (
                 <div className="flex items-center gap-4">
                   <Image
                     src={Envelope}
@@ -60,7 +61,7 @@ const ContactDetails: React.FC<ContactDetailProps> = ({ data }) => {
                 </div>
               )}
 
-              {contactItem?.attributes?.numbers.length > 0 && (
+              {contactItem?.attributes?.numbers?.length > 0 && (
                 <div className="flex items-center gap-4">
                   <Image
                     src={ContactIcon}

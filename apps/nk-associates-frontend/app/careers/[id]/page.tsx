@@ -48,6 +48,7 @@ function JobDetail({ params: { id } }: JobDetailProps) {
   const formatTime = (time) => {
     const date = new Date();
     const [hours, minutes] = time?.split(":");
+
     date.setHours(hours);
     date.setMinutes(minutes);
     return date.toLocaleString("en-US", {
@@ -58,13 +59,13 @@ function JobDetail({ params: { id } }: JobDetailProps) {
   };
 
   function displayDays(daysArray) {
-    const daysArrayWithoutId = days.map(({ id, ...rest }) => rest);
+    const daysArrayWithoutId = days?.map(({ id, ...rest }) => rest);
     const daysObject = daysArrayWithoutId[0]; // Assuming there's only one object in the array
-    const selectedDays = Object.keys(daysObject).filter(
+    const selectedDays = Object.keys(daysObject)?.filter(
       (day) => daysObject[day],
     );
 
-    if (selectedDays.length === 6) {
+    if (selectedDays?.length === 6) {
       return "Monday to Saturday";
     } else {
       return selectedDays.join(", ");
@@ -93,6 +94,7 @@ function JobDetail({ params: { id } }: JobDetailProps) {
         className="h-10 w-80 border-2 "
         clickEvent={openModal}
       />
+
       <div className="font-metropolis-bold py-4 pt-10 text-left text-[1.75rem] leading-[2.1rem]">
         KEY RESPONSIBILITIES:
       </div>
@@ -101,35 +103,43 @@ function JobDetail({ params: { id } }: JobDetailProps) {
           {responsibilityArray?.map((responsibility, index) => (
             <li key={index} className="py-1 text-sm">
               {responsibility?.trim()}
+              {responsibility?.trim()}
             </li>
           ))}
         </ul>
       </div>
+
       <div className="font-metropolis-bold py-4 text-left text-[1.75rem] leading-[2.1rem]">
         JOB SPECIFICATIONS
       </div>
+
       <div className="font-metropolis pb-2 text-left">
         <span className="font-metropolis-bold text-nk-red text-base">
           Qualification:{" "}
         </span>
-        {qualification}
+        {qualification?.trim()}
       </div>
+
       <div className="font-metropolis text-left">
         <span className="font-metropolis-bold text-nk-red text-base">
           Experience:{" "}
         </span>
-        {experience}
+        {experience?.trim()}
       </div>
+
       <div className="font-metropolis-bold py-4 text-left text-[1.75rem] leading-[2.1rem]">
         Skills Required
       </div>
+
       <ul className="font-metropolis-thin text-nk-black list-disc pl-5 text-left">
         {skillArray?.map((skill, index) => (
           <li key={index} className="py-1 text-sm">
             {skill?.trim()}
+            {skill?.trim()}
           </li>
         ))}
       </ul>
+
       <div className="font-metropolis-bold py-4 pt-10 text-left text-[1.75rem] leading-[2.1rem]">
         Office Timings
       </div>
@@ -143,16 +153,19 @@ function JobDetail({ params: { id } }: JobDetailProps) {
       </div>
       <div className="font-metropolis-medium  text-left">{location}</div>
       <div className="font-metropolis-semibold py-3 text-base">
-        No. of Positions: {positions}
-      </div>
-      <div className="pb-20">
-        <LinkButton
-          text="Apply Now"
-          navigateTo=""
-          type="solid"
-          className="h-10 w-80 border-2"
-          clickEvent={openModal}
-        />
+        <div className="font-metropolis-medium  text-left">{location}</div>
+        <div className="font-metropolis-semibold py-3 text-base">
+          No. of Positions: {positions}
+        </div>
+        <div className="pb-20">
+          <LinkButton
+            text="Apply Now"
+            navigateTo=""
+            type="solid"
+            className="h-10 w-80 border-2"
+            clickEvent={openModal}
+          />
+        </div>
       </div>
     </div>
   );

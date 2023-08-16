@@ -86,6 +86,48 @@ export const getProjects = async ({
   }
 };
 
+export const getOfficeAddress = async () => {
+  try {
+    const response = await fetch(`${BASE_URL}/api/contacts?populate=*`, {
+      cache: "no-store",
+    });
+    if (!response.ok) {
+      throw new Error("Network response was not OK");
+    }
+    const data = await response.json();
+    return data?.data;
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+export const getHeadOffice = async () => {
+  try {
+    const resp = await fetch(`${BASE_URL}/api/head-office?populate=*`, {
+      cache: "no-store",
+    });
+    const data = await resp.json();
+    return data?.data;
+  } catch (error) {
+    console.error("There was an error getting the Property List", error);
+  }
+};
+
+export const getCategories = async () => {
+  try {
+    const response = await fetch(`${BASE_URL}/api/categories`, {
+      cache: "no-store",
+    });
+    if (!response.ok) {
+      throw new Error("Network response was not OK");
+    }
+    const data = await response.json();
+    return data?.data;
+  } catch (error) {
+    console.error(error);
+  }
+};
+
 export const getProjectDetail = async (id: string) => {
   try {
     const resp = await fetch(`${BASE_URL}/api/projects/${id}?populate=*&`, {
@@ -141,13 +183,13 @@ export const getCities = async () => {
     const resp = await fetch(apiUrl);
     const data = await resp.json();
 
-    const locations = data.data.map((job) => job.attributes.location);
-    const uniqueCitiesSet = new Set(locations);
+    const city = data?.data?.map((job) => job?.attributes?.city);
+    const uniqueCitiesSet = new Set(city);
     const uniqueCitiesArray = Array.from(uniqueCitiesSet);
 
     return uniqueCitiesArray;
   } catch (error) {
-    console.error("There was an error getting locations", error);
+    console.error("There was an error getting cities", error);
   }
 };
 

@@ -10,40 +10,35 @@ interface JobProp {
 }
 
 const JobCard: React.FC<JobProp> = ({ job }) => {
-  const { title, description, city, department } = job?.attributes;
   const { id } = job;
-  const departmentName = department?.data.attributes.name;
+  const { title, description, city, department } = job?.attributes;
+  const departmentName = department?.data?.attributes?.name;
   return (
-    <div className="mx-4 my-3 rounded-2xl bg-nk-light-gray p-3 lg:m-4 lg:flex lg:flex-row lg:gap-8 lg:p-7">
+    <div className="bg-nk-light-gray mx-1 my-3 rounded-2xl p-3 lg:mx-3 lg:my-4 lg:flex lg:gap-4 lg:p-7 xl:gap-8">
       <div className="lg:w-11/12">
-        <div className="flex flex-row gap-2 font-metropolis text-base">
-          <h3 className="block:inline text-nk-red lg:text-xl">
+        <div className="font-metropolis flex gap-2 text-base">
+          <h3 className="text-nk-red inline-block lg:text-2xl">
             {departmentName}
           </h3>
-          <h3 className="block:inline text-nk-dark-gray lg:text-xl">{title}</h3>
+          <h3 className="text-nk-dark-gray inline-block text-base lg:text-2xl">
+            ( {title} )
+          </h3>
         </div>
-        <p className="my-3 font-metropolis-extralight text-xs lg:font-metropolis lg:text-base">
+        <p className="font-metropolis-extralight lg:font-metropolis my-2 text-xs lg:text-base">
           {description}
+          {/* Testing to see changes here */}
         </p>
       </div>
-      <div className="flex shrink-0 flex-row gap-2 lg:flex-col lg:justify-between">
-        <div className="flex hidden flex-row lg:order-2 lg:ml-auto lg:block lg:justify-end">
+      <div className="flex shrink-0 gap-2 lg:flex-col lg:justify-between">
+        <div className="flex lg:order-2 lg:ml-auto lg:justify-end">
           <LinkButton
             text="view more"
             navigateTo={`careers/${id}`}
-            type="transparent"
-            className="h-10 w-40 border-2 border-nk-red text-nk-red"
+            type="transparentRed"
+            className="h-10 w-32 lg:w-40"
           />
         </div>
-        <div className="lg:hidden">
-          <LinkButton
-            text="apply now"
-            navigateTo={`careers/${id}`}
-            type="transparent"
-            className="h-10 w-32 border-2 border-nk-red text-nk-red"
-          />
-        </div>
-        <div className="flex flex-row items-center justify-center gap-0.5 lg:order-1 lg:justify-end">
+        <div className="flex items-center justify-center gap-0.5 lg:order-1 lg:justify-end">
           <Image src={LocationIcon} alt="location icon" />
           <p className="text-clip text-base lg:text-right lg:text-xl">{city}</p>
         </div>
