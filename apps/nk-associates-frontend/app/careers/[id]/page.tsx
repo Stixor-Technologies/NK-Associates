@@ -77,10 +77,9 @@ function JobDetail({ params: { id } }: JobDetailProps) {
   }
 
   return (
-    <div className=" block px-6 text-center md:px-14 container  ">
+    <div className=" block text-center container  ">
       {/* <div className="absolute left-0 top-0 z-50 flex h-screen w-screen items-center justify-center overflow-hidden bg-[#00000046]"> */}
       <JobModal onClose={closeModal} open={isOpen} />
-      {/* </div> */}
 
       <div className="font-metropolis-bold pb-[2.058rem] pt-[2.912rem] text-[1.875rem] md:text-[3rem]">
         {title}
