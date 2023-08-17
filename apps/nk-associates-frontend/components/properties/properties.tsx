@@ -100,7 +100,7 @@ const Properties = () => {
 
   return (
     <>
-    <SearchBar />
+      <SearchBar />
       {isList && (
         <>
           {isLoading && gridProperties.length === 0 ? (
