@@ -22,4 +22,12 @@ module.exports = {
       },
     ],
   },
+  webpack: (config, options) => {
+    config.module.rules.push({
+      test: /\.(glb|gltf)$/,
+      type: "asset/resource",
+    });
+
+    return config;
+  },
 };

@@ -131,8 +131,8 @@ const CompareComponent = ({ url }) => {
                   y2="7.09496"
                   gradientUnits="userSpaceOnUse"
                 >
-                  <stop stop-color="#E4404A" />
-                  <stop offset="1" stop-color="#EB4B5E" />
+                  <stop stopColor="#E4404A" />
+                  <stop offset="1" stopColor="#EB4B5E" />
                 </linearGradient>
                 <linearGradient
                   id="paint1_linear_451_3546"
@@ -142,8 +142,8 @@ const CompareComponent = ({ url }) => {
                   y2="7.09498"
                   gradientUnits="userSpaceOnUse"
                 >
-                  <stop stop-color="#E4404A" />
-                  <stop offset="1" stop-color="#EB4B5E" />
+                  <stop stopColor="#E4404A" />
+                  <stop offset="1" stopColor="#EB4B5E" />
                 </linearGradient>
               </defs>
             </svg>
