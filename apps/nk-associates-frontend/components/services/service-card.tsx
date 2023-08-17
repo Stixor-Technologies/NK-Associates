@@ -9,16 +9,17 @@ import { Service } from "../../utils/types/types";
 interface CardProps {
   service: Service;
   actMap?: boolean;
+  className: string;
 }
 
-const serviceCard: FC<CardProps> = ({ service, actMap }) => {
-  const { title, description } = service?.attributes;
+const serviceCard: FC<CardProps> = ({ service, actMap, className }) => {
+  const { title, description, company } = service?.attributes;
   const id = service?.id;
   const thumbnailImage = service?.attributes?.image?.data?.attributes?.url;
   const logo = service?.attributes?.logo?.data?.attributes?.url;
 
   return (
-    <div>
+    <div className={className}>
       <div className="mx-1 my-4 p-1 lg:px-3 border bg-gradient-to-b from-nk-off-white to-nk-background rounded-xl flex-col md:flex-row justify-center md:mx-auto md:w-5/6 ">
         <div className="justify-center text-center text-nk-dark-gray py-2 md:flex md:gap-4 lg:gap-8">
           <div className="relative md:w-1/2 lg:w-2/5 min-h-[400px] mx-2 rounded-xl overflow-hidden items-center justify-center my-auto">
@@ -36,7 +37,13 @@ const serviceCard: FC<CardProps> = ({ service, actMap }) => {
             <p className="text-sm lg:text-xl font-metropolis-light">
               {description}
             </p>
-            <div className="flex justify-center md:justify-between ">
+            <div className="text-nk-red font-metropolis-bold lg:text-xl flex gap-1 mt-3 justify-center md:justify-start">
+              <div className="font-metropolis-thin text-nk-gray">
+                Powered By:
+              </div>
+              <div>{company}</div>
+            </div>
+            <div className="flex justify-center md:justify-between">
               <Image
                 src={`${BASE_URL}${logo || "/"}`}
                 alt="service Logo"
@@ -44,7 +51,7 @@ const serviceCard: FC<CardProps> = ({ service, actMap }) => {
                 width={190}
                 height={47}
               />
-              <button className="mt-20 md:block hidden">
+              <button className="mt-16 md:block hidden">
                 <Link
                   href={`service/${id}`}
                   target={actMap ? "_blank" : "_self"}

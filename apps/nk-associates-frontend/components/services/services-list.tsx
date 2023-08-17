@@ -1,9 +1,11 @@
 "use client";
-import React, { FC, useState, useEffect } from "react";
+import React, { FC, useState, useEffect, useRef } from "react";
 import ServiceCard from "./service-card";
 import { Service } from "../../utils/types/types";
 import { getServices } from "../../utils/api-calls";
 import Spinner from "../spinner";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 const ServicesList: FC = () => {
   const [services, setServices] = useState<Service[]>([]);
@@ -26,6 +28,29 @@ const ServicesList: FC = () => {
     fetchData();
   }, []);
 
+  const containerRef = useRef<HTMLDivElement | null>(null);
+  const cardsRef = useRef<HTMLDivElement[]>([]);
+  // animations not functional here
+  useEffect(() => {
+    gsap.registerPlugin(ScrollTrigger);
+    const timeline = gsap.timeline({
+      scrollTrigger: {
+        trigger: containerRef.current,
+        start: "top center",
+        scrub: true,
+      },
+    });
+
+    cardsRef.current.forEach((card, index) => {
+      timeline.fromTo(
+        card,
+        { y: "100%" },
+        { y: `-${index * 100}%`, ease: "power1.out" },
+        0,
+      );
+    });
+  }, []);
+
   return (
     <div className="p-4">
       {isLoading && services.length === 0 ? (
@@ -34,7 +59,7 @@ const ServicesList: FC = () => {
         </div>
       ) : services.length > 0 ? (
         services.map((service, index) => (
-          <ServiceCard key={index} service={service} />
+          <ServiceCard key={index} service={service} className="card" />
         ))
       ) : (
         <div>
