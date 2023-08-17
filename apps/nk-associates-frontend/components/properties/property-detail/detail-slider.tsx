@@ -49,7 +49,7 @@ const DetailSlider: FC<SliderProps> = ({ property_images, phone }) => {
 
                   <div className="absolute bottom-2 right-4  z-10 flex items-center justify-center gap-2 md:gap-2 md:bottom-3 md:right-3 lg:bottom-6 lg:right-6">
                     <Link
-                      href="https://wa.me/03245724522"
+                      href="https://wa.me/923245724522"
                       rel="noopener norefferrer"
                       target="_blank"
                       className="group flex h-8 w-10 items-center justify-center overflow-hidden rounded-md border bg-nk-white transition-all delay-200 duration-500 hover:shadow-lg sm:h-10 sm:w-12 md:h-12 md:w-14"
