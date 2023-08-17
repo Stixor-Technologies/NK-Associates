@@ -31,11 +31,14 @@ async function ProjectDetails({ params: { id } }: ProjectDetailProps) {
     return `${BASE_URL}${picture?.attributes?.url}`;
   });
 
+  const modelURL =
+    project.threeDModel && project.threeDModel.data
+      ? `${BASE_URL}${project?.threeDModel?.data?.attributes?.url}`
+      : undefined;
+
   return (
     <>
-      <ProjectDetailsVR
-        modelURL={`${BASE_URL}${project.threeDModel.data.attributes.url}`}
-      />
+      <ProjectDetailsVR modelURL={modelURL} />
       <ProjectIntroduction
         projectName={project.title}
         description={project.description}
