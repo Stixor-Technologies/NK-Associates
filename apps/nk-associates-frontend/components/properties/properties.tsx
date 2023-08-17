@@ -10,7 +10,6 @@ import { Property } from "../../utils/types/types";
 import { debounce } from "lodash";
 import MapBtn from "../../public/assets/icons/map-list-icon.svg";
 import ListIcon from "../../public/assets/icons/list-icon.svg";
-import SearchBar from "./search-bar";
 import PropertyCard from "./property-card";
 import MapStyles from "../../utils/map-styles.json";
 import "./map-info-window.css";
@@ -101,12 +100,7 @@ const Properties = () => {
 
   return (
     <>
-<<<<<<< HEAD
       <SearchBar />
-
-=======
-    <SearchBar />
->>>>>>> d01b099 (hide filter on when click on same button)
       {isList && (
         <>
           {isLoading && gridProperties.length === 0 ? (
