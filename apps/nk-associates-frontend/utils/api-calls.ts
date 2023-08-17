@@ -1,5 +1,5 @@
 import { BASE_URL } from "./constants";
-import { Department } from "./types/types";
+import { Department, Property } from "./types/types";
 import { SIMILAR_PROPERTIES_LIMIT } from "./constants";
 export const getGridProperties = async (start: number, limit = 12) => {
   try {
@@ -52,7 +52,7 @@ export const getSimilarProperties = async (
     { key: "category", value: "" },
   ];
   try {
-    let properties: any[] = [];
+    let properties: Property[] = [];
     const uniquePropertyIds = new Set();
 
     FILTER_PRIORITY[0].value = type;
@@ -63,7 +63,6 @@ export const getSimilarProperties = async (
 
       const resp = await getPropertiesByFilter(filter, currentPropertyId);
       const data = await resp.json();
-      console.log(data);
       for (let prop of data.data) {
         if (!uniquePropertyIds.has(prop.id) && properties.length < 4) {
           properties.push(prop);

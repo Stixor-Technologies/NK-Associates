@@ -20,6 +20,8 @@ const PropertyCard: FC<CardProps> = ({ property, actMap, actSim }) => {
   const id = property?.id;
   const thumbnailImage =
     property?.attributes?.image_thumbnail?.data?.attributes?.url;
+
+  const categoryTextSize = actMap || actSim ? "text-[0.688rem]" : "text-sm";
   return (
     <div
       className={`${actSim && "flex-grow max-w-[18.125rem] min-w-[17.288rem]"}`}
@@ -49,24 +51,12 @@ const PropertyCard: FC<CardProps> = ({ property, actMap, actSim }) => {
         <div className="flex items-center justify-between py-3">
           <div className="flex items-center gap-2">
             <span
-              className={`rounded-full bg-white px-4 py-1 text-nk-gray shadow-lg md:text-xs ${
-                actMap
-                  ? "text-[0.688rem]"
-                  : actSim
-                  ? "text-[0.688rem]"
-                  : "text-sm"
-              }`}
+              className={`rounded-full bg-white px-4 py-1 text-nk-gray shadow-lg md:text-xs ${categoryTextSize}`}
             >
               {category}
             </span>
             <span
-              className={`rounded-full bg-white px-4 py-1 text-nk-gray shadow-lg md:text-xs ${
-                actMap
-                  ? "text-[0.688rem]"
-                  : actSim
-                  ? "text-[0.688rem]"
-                  : "text-sm"
-              }`}
+              className={`rounded-full bg-white px-4 py-1 text-nk-gray shadow-lg md:text-xs ${categoryTextSize}`}
             >
               {purpose}
             </span>
@@ -76,11 +66,7 @@ const PropertyCard: FC<CardProps> = ({ property, actMap, actSim }) => {
             <Image src={Area_Icon} width={13} height={13} alt="" />
             <span
               className={`font-metropolis-light text-nk-grey md:text-[0.625rem] ${
-                actMap
-                  ? "text-[0.563rem]"
-                  : actSim
-                  ? "text-[0.563rem]"
-                  : "text-xs"
+                actMap || actSim ? "text-[0.563rem]" : "text-xs"
               }`}
             >
               {area} {area_type}
@@ -93,7 +79,6 @@ const PropertyCard: FC<CardProps> = ({ property, actMap, actSim }) => {
           }`}
         >
           {title.length > 32 ? `${title.substring(0, 32)} ...` : title}
-          {/* {title} */}
         </h2>
 
         <p
