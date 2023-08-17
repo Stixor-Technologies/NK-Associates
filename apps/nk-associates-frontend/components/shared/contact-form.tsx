@@ -5,13 +5,15 @@ import Input from "./input";
 import { ContactFormSchema } from "../../utils/formik-schema";
 import Spinner from "../spinner";
 import Toast from "./toast";
-import ArrowDown from "../../public/assets/icons/arrow-down.svg"
+import ArrowDown from "../../public/assets/icons/arrow-down.svg";
 import Image from "next/image";
+import LinkButton from "../button/link-button";
 
 const fieldTypes = {
   name: "text",
   email: "text",
   phone: "text",
+  subject: "text",
   category: "dropdown",
   message: "textarea",
 };
@@ -20,12 +22,14 @@ const placeholders = {
   name: "Write your name here",
   email: "Write your email address",
   phone: "Write your phone number here",
+  subject: "Write your subject here",
 };
 
 const initialValues = {
   name: "",
   email: "",
   phone: "",
+  subject: "",
   category: "",
   message: "",
 };
@@ -44,7 +48,14 @@ const ContactForm: React.FC<ContactFormProps> = ({ categories }) => {
   const [showToast, setShowToast] = useState<boolean>(false);
   const [toastMessage, setToastMessage] = useState<string>("");
 
-  const formFields = ["name", "email", "phone", "category", "message"];
+  const formFields = [
+    "name",
+    "email",
+    "phone",
+    "subject",
+    "category",
+    "message",
+  ];
 
   const onSubmit = async (values, { resetForm }) => {
     setLoading(true);
@@ -58,23 +69,28 @@ const ContactForm: React.FC<ContactFormProps> = ({ categories }) => {
           name: values.name,
           email: values.email,
           phone: values.phone,
+          subject: values.subject,
           category: values.category,
           message: values.message,
         }),
       });
 
       const data = await res.json();
-      setToastMessage(data?.message);
-      setShowToast(true);
-
-      setTimeout(() => {
-        setShowToast(false);
-        resetForm();
-      }, 2000);
+      if (data === 202) {
+        setToastMessage("Email has been sent");
+        setShowToast(true);
+        setTimeout(() => {
+          setShowToast(false);
+          resetForm();
+        }, 1000);
+      } else {
+        console.log(data);
+        setToastMessage(`Error: Error sending email`);
+        setShowToast(true);
+        setTimeout(() => setShowToast(false), 1000);
+      }
     } catch (error) {
-      setToastMessage(`Error: ${error?.message}`);
-      setShowToast(true);
-      setTimeout(() => setShowToast(false), 2000);
+      console.error(error);
     } finally {
       setLoading(false);
     }
@@ -114,7 +130,7 @@ const ContactForm: React.FC<ContactFormProps> = ({ categories }) => {
                           <Field
                             as="select"
                             name={fieldName}
-                            className={`mt-1 flex items-center h-[3.625rem] w-full appearance-none rounded-lg border px-4 py-4 font-metropolis-light text-nk-black placeholder-nk-gray shadow-md placeholder:font-metropolis-thin placeholder:text-base focus:outline-none ${
+                            className={`mt-1 flex h-[3.625rem] w-full appearance-none items-center rounded-lg border px-4 py-4 font-metropolis-light text-nk-black placeholder-nk-gray shadow-md placeholder:font-metropolis-thin placeholder:text-base focus:outline-none ${
                               touched.message && errors.message
                                 ? "border-nk-red"
                                 : " focus:border-nk-gray focus:ring-nk-gray"
@@ -135,8 +151,13 @@ const ContactForm: React.FC<ContactFormProps> = ({ categories }) => {
                             })}
                           </Field>
 
-                          <div className="pointer-events-none absolute top-1/2 -translate-y-1/2 right-3 flex items-center">
-                             <Image src= {ArrowDown} width = {20} height = {20} alt = "dropdown" />
+                          <div className="pointer-events-none absolute right-3 top-1/2 flex -translate-y-1/2 items-center">
+                            <Image
+                              src={ArrowDown}
+                              width={20}
+                              height={20}
+                              alt="dropdown"
+                            />
                           </div>
                         </div>
 
@@ -169,7 +190,7 @@ const ContactForm: React.FC<ContactFormProps> = ({ categories }) => {
                               ? "border-nk-red"
                               : " focus:border-nk-gray focus:ring-nk-gray"
                           }`}
-                          placeholder="Enter your message"
+                          placeholder="Write your message here"
                           rows={6}
                         />
                         {touched.message && errors.message && (
@@ -186,7 +207,11 @@ const ContactForm: React.FC<ContactFormProps> = ({ categories }) => {
                       key={fieldName}
                       hasError={errors[fieldName]}
                       isTouched={touched[fieldName]}
-                      label={`Your ${fieldName}`}
+                      label={
+                        fieldName === "subject"
+                          ? fieldName
+                          : `Your ${fieldName}`
+                      }
                       name={fieldName}
                       placeholder={placeholders[fieldName]}
                       errorMessage={errors[fieldName]}
@@ -194,16 +219,18 @@ const ContactForm: React.FC<ContactFormProps> = ({ categories }) => {
                   );
                 })}
               </div>
-              <button
-                type="submit"
-                className="mx-auto mt-4 block h-12 w-full rounded-full bg-nk-red py-3 text-center font-metropolis capitalize text-white transition-all duration-300 ease-in-out hover:shadow-lg hover:delay-100 sm:w-[22.5rem] md:w-[25rem] md:text-lg"
-              >
+              <div className="mx-auto mt-4 flex h-12 cursor-pointer items-center justify-center rounded-full bg-nk-red sm:w-[22.5rem] md:w-[25rem]">
                 {loading ? (
                   <Spinner color="fill-white" height="h-7" width="w-10" />
                 ) : (
-                  <span>Submit</span>
+                  <LinkButton
+                    text="Submit"
+                    type="solid"
+                    buttonType="submit"
+                    className="h-full w-full md:text-lg"
+                  />
                 )}
-              </button>
+              </div>
             </Form>
           </div>
         </>

@@ -20,14 +20,6 @@
       "type": "text",
       "required": true
     },
-    "latitude": {
-      "type": "float",
-      "required": true
-    },
-    "longitude": {
-      "type": "float",
-      "required": true
-    },
     "emails": {
       "displayName": "email",
       "type": "component",

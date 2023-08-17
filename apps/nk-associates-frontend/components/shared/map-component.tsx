@@ -17,10 +17,9 @@ const MapComponent: FC<IProps> = ({ locations }) => {
   const mapRef = useRef<google.maps.Map | null>(null);
   const { isLoaded } = useMapApi();
 
-
   const allLocations = useMemo(
     () => (Array.isArray(locations) ? locations : [locations]),
-    [locations]
+    [locations],
   );
 
   const mapOptions = {

@@ -1,14 +1,21 @@
-import React, {FC} from "react";
+import React, { FC } from "react";
 
 interface SpinnerProps {
-  color?: string,
-  width?: string,
-  height?: string,
+  color?: string;
+  width?: string;
+  height?: string;
 }
 
-const Spinner: FC<SpinnerProps> = ({color = "fill-nk-red", width = "w-14", height = "h-14" }) => {
+const Spinner: FC<SpinnerProps> = ({
+  color = "fill-nk-red",
+  width = "w-14",
+  height = "h-14",
+}) => {
   return (
-    <div className="m-auto text-center h-full" role="status">
+    <div
+      className="m-auto flex items-center justify-center text-center h-full"
+      role="status"
+    >
       <svg
         xmlns="http://www.w3.org/2000/svg"
         xmlnsXlink="http://www.w3.org/1999/xlink"

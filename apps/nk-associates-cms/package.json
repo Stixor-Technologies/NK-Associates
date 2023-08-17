@@ -7,16 +7,18 @@
     "dev": "strapi develop",
     "start": "strapi start",
     "build": "strapi build",
-    "strapi": "strapi"
+    "strapi": "strapi",
+    "lint": "eslint . --ext .ts,.tsx"
   },
   "devDependencies": {
     "eslint-config-custom": "*"
   },
   "dependencies": {
-    "@strapi/strapi": "4.11.5",
-    "@strapi/plugin-users-permissions": "4.11.5",
     "@strapi/plugin-i18n": "4.11.5",
-    "pg": "8.8.0"
+    "@strapi/plugin-users-permissions": "4.11.5",
+    "@strapi/strapi": "4.11.5",
+    "pg": "8.8.0",
+    "strapi-plugin-multi-select": "^1.2.2"
   },
   "author": {
     "name": "A Strapi developer"

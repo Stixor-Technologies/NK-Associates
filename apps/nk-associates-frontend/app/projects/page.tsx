@@ -1,6 +1,6 @@
 "use client";
 import { useEffect, useState, useMemo, useLayoutEffect, useRef } from "react";
-import ProjectCard from "../../components/projectcard/project-card";
+import ProjectCard from "../../components/projects/project-card/project-card";
 import { getProjects } from "../../utils/api-calls";
 import LinkButton from "../../components/button/link-button";
 import { Project } from "../../utils/types/types";
@@ -15,7 +15,6 @@ type OptionsType = "All" | "Residential" | "Commercial" | "Hotel";
 gsap.registerPlugin(ScrollTrigger);
 
 const optionsList = ["Residential", "Commercial", "Hotel", "All"];
-
 
 const ProjectCardItem = ({
   project,
@@ -39,6 +38,7 @@ const ProjectCardItem = ({
 
   return (
     <ProjectCard
+      id={project.id}
       imagesList={imagesList}
       propertyName={project.attributes.title}
       plotSize={`${project.attributes.plotSize} ${project.attributes.plotSizeUnits}`}
@@ -53,9 +53,7 @@ const ProjectCardItem = ({
 };
 
 export default function Projects() {
-  const [selectedButton, setSelectedButton] = useState<
-    OptionsType
-  >("All");
+  const [selectedButton, setSelectedButton] = useState<OptionsType>("All");
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<boolean>(false);
   const [buttonSwitched, setButtonSwitched] = useState<boolean>(false);
@@ -172,7 +170,7 @@ export default function Projects() {
                   className="flex flex-col justify-center overflow-hidden"
                 >
                   {projectsData.map((project, index) => (
-                    <ProjectCardItem 
+                    <ProjectCardItem
                       key={index}
                       project={project}
                       index={index}

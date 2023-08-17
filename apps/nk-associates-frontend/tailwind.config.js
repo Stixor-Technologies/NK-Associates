@@ -15,7 +15,7 @@ module.exports = {
     },
     extend: {
       backgroundImage: {
-        "nk-bg": "url('/assets/images/bg-property.svg')"
+        "nk-bg": "url('/assets/images/bg-property.svg')",
       },
       fontFamily: {
         metropolis: ["var(--font-metroplis)"],
@@ -46,12 +46,12 @@ module.exports = {
         "3xl": "0.25rem 0.188rem 1.375rem 0rem rgba(0, 0, 0, 0.092)",
       },
       spacing: {
-        '1/2': '50%',
-        '3/4': '75%',
+        "1/2": "50%",
+        "3/4": "75%",
       },
       maxWidth: {
-        container: "78.25rem"
-      }
+        container: "78.25rem",
+      },
     },
   },
   plugins: [],

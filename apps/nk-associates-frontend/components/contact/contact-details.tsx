@@ -1,3 +1,4 @@
+"use client";
 import Image from "next/image";
 import AreaMarker from "../../public/assets/icons/area-marker.svg";
 import Envelope from "../../public/assets/icons/envelope-icon.svg";
@@ -11,15 +12,20 @@ interface ContactDetailProps {
 const ContactDetails: React.FC<ContactDetailProps> = ({ data }) => {
   return (
     <>
-      {data?.map((contactItem, index) => {
+      {data?.map((contactItem: Contacts, index: number) => {
         return (
           <div
             key={index}
             className="h-full w-full bg-nk-light-gray py-4 px-3 rounded-lg md:rounded-3xl md:py-8 md:px-5"
           >
             <div className="flex w-full flex-col gap-4">
-              <div className="font-metropolis-bold text-nk-black text-xl md:text-[1.75rem]">
-                {`${contactItem?.attributes?.location} Office`}
+              <div className="font-metropolis-bold text-nk-black text-xl md:text-[1.75rem] flex items-center gap-2">
+                {`${contactItem?.attributes?.location} Office `}
+                {contactItem?.isHeadOffice && (
+                  <span className=" text-base font-metropolis text-nk-gray">
+                    (Head Office)
+                  </span>
+                )}
               </div>
               <div className="flex items-center gap-4">
                 <Image
@@ -34,7 +40,7 @@ const ContactDetails: React.FC<ContactDetailProps> = ({ data }) => {
                 </p>
               </div>
 
-              {contactItem?.attributes?.emails.length > 0 && (
+              {contactItem?.attributes?.emails?.length > 0 && (
                 <div className="flex items-center gap-4">
                   <Image
                     src={Envelope}
@@ -47,17 +53,20 @@ const ContactDetails: React.FC<ContactDetailProps> = ({ data }) => {
                     {contactItem?.attributes?.emails?.map(
                       (emailItem, index) => {
                         return (
-                          <p key={index} className="break-all my-[0.063rem] font-metropolis-extralight text-sm md:text-base">
+                          <p
+                            key={index}
+                            className="break-all my-[0.063rem] font-metropolis-extralight text-sm md:text-base"
+                          >
                             {emailItem?.email}
                           </p>
                         );
-                      }
+                      },
                     )}
                   </div>
                 </div>
               )}
 
-              {contactItem?.attributes?.numbers.length > 0 && (
+              {contactItem?.attributes?.numbers?.length > 0 && (
                 <div className="flex items-center gap-4">
                   <Image
                     src={ContactIcon}

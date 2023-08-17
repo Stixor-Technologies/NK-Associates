@@ -5,13 +5,13 @@ export interface EventsImage {
     };
   }[];
 }
-
 export interface Contacts {
+  isHeadOffice?: boolean;
   attributes: {
     location: string;
     address: string;
-    latitude: number;
-    longitude: number;
+    latitude?: number;
+    longitude?: number;
     emails: {
       id: number;
       email: string;
@@ -72,6 +72,7 @@ export interface Property {
 }
 
 export interface Project {
+  id: number;
   attributes: {
     pictures: {
       data: Array<{ attributes: { url: string } }>;
@@ -80,12 +81,30 @@ export interface Project {
     plotSize: string;
     plotSizeUnits: string;
     plotNumber: string;
-    coveredArea: string;
+    coveredArea: number;
     coveredAreaUnits: string;
     address: string;
     city: string;
     description: string;
     category: string;
+    totalUnits: number;
+    unitsSold: number;
+    price: number;
+    types: string[];
+    latitude: number;
+    longitude: number;
+    projectOutcomeDescription: string;
+    projectOutcomeImage: {
+      data: { attributes: { url: string } };
+    };
+    pdf: {
+      data: { attributes: { url: string } };
+    };
+    numberOfRooms?: number;
+    numberOfBathRooms?: number;
+    comparisonImages: {
+      id: number;
+    }[];
   };
 }
 
