@@ -8,59 +8,61 @@ import { Service } from "../../utils/types/types";
 
 interface CardProps {
   service: Service;
-  actMap?: boolean;
-  className: string;
 }
 
-const serviceCard: FC<CardProps> = ({ service, actMap, className }) => {
+const serviceCard: FC<CardProps> = ({ service }) => {
   const { title, description, company } = service?.attributes;
   const id = service?.id;
   const thumbnailImage = service?.attributes?.image?.data?.attributes?.url;
   const logo = service?.attributes?.logo?.data?.attributes?.url;
 
   return (
-    <div className={className}>
-      <div className="mx-1 my-4 p-1 lg:px-3 border bg-gradient-to-b from-nk-off-white to-nk-background rounded-xl flex-col md:flex-row justify-center md:mx-auto md:w-5/6 ">
-        <div className="justify-center text-center text-nk-dark-gray py-2 md:flex md:gap-4 lg:gap-8">
-          <div className="relative md:w-1/2 lg:w-2/5 min-h-[400px] mx-2 rounded-xl overflow-hidden items-center justify-center my-auto">
+    <div className={""}>
+      <div className="my-12 border bg-custom-gradient rounded-xl flex-col md:flex-row justify-center md:mx-auto ">
+        <div className="justify-center text-center text-nk-black p-4 md:flex md:gap-4 lg:gap-8">
+          <Link
+            href={`service/${id}`}
+            rel="noopener noreferrer"
+            className="block relative md:w-1/2 lg:w-2/5 min-h-[400px] rounded-xl overflow-hidden items-center justify-center my-auto"
+          >
             <Image
               src={`${BASE_URL}${thumbnailImage || "/"}`}
               alt="service-card"
               fill
               className="w-full h-full mx-auto object-cover"
             />
-          </div>
-          <div className="md:flex-col md:text-left md:w-1/2 lg:w-3/5 md:my-auto">
-            <h1 className="font-metropolis-bold text-2xl lg:text-3xl my-4">
+          </Link>
+
+          {/* Text section */}
+          <div className="relative py-4 md:py-8 md:pr-3 md:w-1/2 md:flex-col md:text-left lg:w-3/5">
+            <h1 className="font-metropolis-bold text-2xl pb-2 md:pt-6 lg:text-3xl">
               {title}
             </h1>
-            <p className="text-sm lg:text-xl font-metropolis-light">
+            <p className="text-sm font-metropolis-thin my-2 md:my-4 md:text-xl">
               {description}
             </p>
-            <div className="text-nk-red font-metropolis-bold lg:text-xl flex gap-1 mt-3 justify-center md:justify-start">
-              <div className="font-metropolis-thin text-nk-gray">
-                Powered By:
-              </div>
-              <div>{company}</div>
-            </div>
-            <div className="flex justify-center md:justify-between">
+
+            {/* <div className="flex justify-center md:justify-between"> */}
+            <Image
+              src={`${BASE_URL}${logo || "/"}`}
+              alt="service Logo"
+              className="mx-auto pt-2 md:mx-0 md:pt-0"
+              width={190}
+              height={47}
+            />
+            <Link
+              href={`service/${id}`}
+              rel="noopener noreferrer"
+              className="group absolute bottom-0 right-0"
+            >
               <Image
-                src={`${BASE_URL}${logo || "/"}`}
-                alt="service Logo"
-                className="mt-5 mb-2"
-                width={190}
-                height={47}
+                src={Arrow}
+                width={30}
+                height={20}
+                alt="move-arrow"
+                className="transition-all duration-300 ease-in-out group-hover:scale-110"
               />
-              <button className="mt-16 md:block hidden">
-                <Link
-                  href={`service/${id}`}
-                  target={actMap ? "_blank" : "_self"}
-                  rel={actMap ? "noopener noreferrer" : undefined}
-                >
-                  <Image src={Arrow} alt="arrow" />
-                </Link>
-              </button>
-            </div>
+            </Link>
           </div>
         </div>
       </div>

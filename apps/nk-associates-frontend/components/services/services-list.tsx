@@ -52,14 +52,14 @@ const ServicesList: FC = () => {
   }, []);
 
   return (
-    <div className="p-4">
+    <div className="py-1-">
       {isLoading && services.length === 0 ? (
         <div className="my-4 flex justify-center">
           <Spinner />
         </div>
       ) : services.length > 0 ? (
         services.map((service, index) => (
-          <ServiceCard key={index} service={service} className="card" />
+          <ServiceCard key={index} service={service} />
         ))
       ) : (
         <div>

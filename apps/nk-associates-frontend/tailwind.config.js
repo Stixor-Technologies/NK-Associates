@@ -53,6 +53,10 @@ module.exports = {
       maxWidth: {
         container: "78.25rem",
       },
+      backgroundImage: (theme) => ({
+        "custom-gradient":
+          "linear-gradient(180deg, #EFEFEF 0%, rgba(255, 255, 255, 0.00) 100%)",
+      }),
     },
   },
   plugins: [],
