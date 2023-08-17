@@ -20,7 +20,7 @@ interface SliderProps {
 }
 
 const DetailSlider: FC<SliderProps> = ({ property_images, phone }) => {
-  const whatsapp = "https:wa.me/" + phone;
+  const whatsapp = "https://wa.me/" + phone;
   return (
     <div className="relative bg-right-top bg-no-repeat md:bg-nk-bg">
       <Swiper
@@ -49,7 +49,9 @@ const DetailSlider: FC<SliderProps> = ({ property_images, phone }) => {
 
                   <div className="absolute bottom-2 right-4  z-10 flex items-center justify-center gap-2 md:gap-2 md:bottom-3 md:right-3 lg:bottom-6 lg:right-6">
                     <Link
-                      href={whatsapp}
+                      href="https://wa.me/03245724522"
+                      rel="noopener norefferrer"
+                      target="_blank"
                       className="group flex h-8 w-10 items-center justify-center overflow-hidden rounded-md border bg-nk-white transition-all delay-200 duration-500 hover:shadow-lg sm:h-10 sm:w-12 md:h-12 md:w-14"
                     >
                       <Image
@@ -60,10 +62,11 @@ const DetailSlider: FC<SliderProps> = ({ property_images, phone }) => {
                         className="w-5 transition-all delay-200 duration-500 group-hover:scale-110 sm:w-6 md:w-8"
                       />
                     </Link>
-
                     <Link
                       className="group flex h-8 w-10 items-center justify-center overflow-hidden rounded-md border bg-nk-white transition-all delay-200 duration-500 hover:shadow-lg sm:h-10 sm:w-12 md:h-12 md:w-14"
-                      href={`tel:${phone}`}
+                      href={`tel:03245724522`}
+                      rel="noopener norefferrer"
+                      target="_blank"
                     >
                       <Image
                         src={PhoneIcon}
