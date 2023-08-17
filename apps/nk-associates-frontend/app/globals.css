@@ -16,3 +16,12 @@
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
+
+.property-carousel::-webkit-scrollbar {
+  display: none;
+}
+
+.property-carousel {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}

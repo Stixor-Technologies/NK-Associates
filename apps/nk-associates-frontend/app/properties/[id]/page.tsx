@@ -1,10 +1,13 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { getPropertyDetail } from "../../../utils/api-calls";
+import {
+  getPropertyDetail,
+  getSimilarProperties,
+} from "../../../utils/api-calls";
 import DetailSlider from "../../../components/properties/property-detail/detail-slider";
-import Tile from "../../../components/shared/tile";
 import MapComponent from "../../../components/shared/map-component";
+import PropertyCarousel from "../../../components/shared/properites-carousel";
 import { convertAreaToSqFeet } from "../../../utils/utils";
 import { Property } from "../../../utils/types/types";
 import { BASE_URL } from "../../../utils/constants";
@@ -42,6 +45,7 @@ async function PropertyDetail({ params: { id } }: PropertyDetailProps) {
     address,
     city,
   } = data?.attributes;
+  const similarProperties = await getSimilarProperties(type, category, id);
 
   const pdfUrl: string = data?.attributes?.property_pdf?.data?.attributes?.url;
   const paragraphs: string[] | string = description.split("\n\n");
@@ -191,6 +195,15 @@ async function PropertyDetail({ params: { id } }: PropertyDetailProps) {
         </div>
         <ServicesOverview />
       </div>
+
+      {similarProperties?.length > 0 && (
+        <div className="xl:container mt-16">
+          <h6 className="text-[2rem] text-center font-metropolis-semibold px-4 sm:text-left md:px-8 md:text-4xl xl:px-0">
+            Similar Properties
+          </h6>
+          <PropertyCarousel properties={similarProperties} />
+        </div>
+      )}
     </section>
   );
 }
