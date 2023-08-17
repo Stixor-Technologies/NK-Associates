@@ -1,6 +1,7 @@
 "use client";
 import React, { FC } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { BASE_URL } from "../../../utils/constants";
 import { MediaAttributes } from "../../../utils/types/types";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -12,7 +13,6 @@ import "./slider-styles.css";
 import WhatsAppIcon from "../../../public/assets/icons/whatsapp-icon.svg";
 import PhoneIcon from "../../../public/assets/icons/phone-icon.svg";
 import { string } from "yup";
-import Link from "next/link";
 
 interface SliderProps {
   property_images: MediaAttributes[];
@@ -20,7 +20,7 @@ interface SliderProps {
 }
 
 const DetailSlider: FC<SliderProps> = ({ property_images, phone }) => {
-  const whatsapp = "https://wa.me/" + phone;
+  const whatsapp = `https://wa.me/${phone}?text=I'm%20interested%20in%20your%20property`;
   return (
     <div className="relative bg-right-top bg-no-repeat md:bg-nk-bg">
       <Swiper
@@ -38,45 +38,46 @@ const DetailSlider: FC<SliderProps> = ({ property_images, phone }) => {
           ({ attributes: { name, url } }: MediaAttributes, index: number) => {
             return (
               <SwiperSlide key={index}>
-                <div className="relative mx-auto aspect-video overflow-hidden max-h-[80vh]">
+                <div className="relative mx-auto aspect-video overflow-hidden max-h-[80vh] z-0">
                   <Image
-                    className="absolute top-0 left-0 h-full w-full rounded-none lg:rounded-3xl object-cover"
+                    className="absolute top-0 left-0 h-full w-full rounded-none lg:rounded-3xl object-cover z-10"
                     src={`${BASE_URL}${url}`}
                     width={1536}
                     height={900}
                     alt={name}
                   />
-
-                  <div className="absolute bottom-2 right-4  z-10 flex items-center justify-center gap-2 md:gap-2 md:bottom-3 md:right-3 lg:bottom-6 lg:right-6">
-                    <Link
-                      href="https://wa.me/923245724522?text=I'm%20interested%20in%20your%20car%20for%20sale"
-                      rel="noopener norefferrer"
-                      target="_blank"
-                      className="group flex h-8 w-10 items-center justify-center overflow-hidden rounded-md border bg-nk-white transition-all delay-200 duration-500 hover:shadow-lg sm:h-10 sm:w-12 md:h-12 md:w-14"
-                    >
-                      <Image
-                        src={WhatsAppIcon}
-                        width={40}
-                        height={40}
-                        alt="contact-whatsapp"
-                        className="w-5 transition-all delay-200 duration-500 group-hover:scale-110 sm:w-6 md:w-8"
-                      />
-                    </Link>
-                    <Link
-                      className="group flex h-8 w-10 items-center justify-center overflow-hidden rounded-md border bg-nk-white transition-all delay-200 duration-500 hover:shadow-lg sm:h-10 sm:w-12 md:h-12 md:w-14"
-                      href={`tel:03245724522`}
-                      rel="noopener norefferrer"
-                      target="_blank"
-                    >
-                      <Image
-                        src={PhoneIcon}
-                        width={40}
-                        height={40}
-                        alt="contact-phone"
-                        className="w-5 transition-all delay-200 duration-500 group-hover:scale-110 sm:w-6 md:w-8"
-                      />
-                    </Link>
-                  </div>
+                  {phone && phone.length === 12 && (
+                    <div className="absolute bottom-2 right-4 z-20 flex items-center justify-center gap-2 md:gap-2 md:bottom-3 md:right-3 lg:bottom-6 lg:right-6">
+                      <Link
+                        className="group flex h-8 w-10 z-50 items-center justify-center overflow-hidden rounded-md border bg-nk-white transition-all delay-200 duration-500 hover:shadow-lg sm:h-10 sm:w-12 md:h-12 md:w-14"
+                        href={whatsapp}
+                        rel="noopener norefferrer"
+                        target="_blank"
+                      >
+                        <Image
+                          src={WhatsAppIcon}
+                          width={40}
+                          height={40}
+                          alt="contact-whatsapp"
+                          className="w-5 transition-all z-10 delay-200 duration-500 group-hover:scale-110 sm:w-6 md:w-8"
+                        />
+                      </Link>
+                      <Link
+                        href={`tel:${phone}`}
+                        rel="noopener norefferrer"
+                        target="_blank"
+                        className="group flex h-8 w-10 items-center justify-center overflow-hidden rounded-md border bg-nk-white transition-all delay-200 duration-500 hover:shadow-lg sm:h-10 sm:w-12 md:h-12 md:w-14"
+                      >
+                        <Image
+                          src={PhoneIcon}
+                          width={40}
+                          height={40}
+                          alt="contact-phone"
+                          className="w-5 transition-all delay-200 duration-500 group-hover:scale-110 sm:w-6 md:w-8"
+                        />
+                      </Link>
+                    </div>
+                  )}
                 </div>
               </SwiperSlide>
             );

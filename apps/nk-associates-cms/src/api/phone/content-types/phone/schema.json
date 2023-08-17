@@ -15,7 +15,7 @@
     "number": {
       "type": "string",
       "required": true,
-      "regex": "^((\\+92|0|92)[0-9]{10})$"
+      "regex": "^((\\92)[0-9]{10})$"
     }
   }
 }
