@@ -11,12 +11,16 @@ import { Navigation, Pagination, Keyboard } from "swiper/modules";
 import "./slider-styles.css";
 import WhatsAppIcon from "../../../public/assets/icons/whatsapp-icon.svg";
 import PhoneIcon from "../../../public/assets/icons/phone-icon.svg";
+import { string } from "yup";
+import Link from "next/link";
 
 interface SliderProps {
   property_images: MediaAttributes[];
+  phone: string;
 }
 
-const DetailSlider: FC<SliderProps> = ({ property_images }) => {
+const DetailSlider: FC<SliderProps> = ({ property_images, phone }) => {
+  const whatsapp = "wa.me/" + phone;
   return (
     <div className="relative bg-right-top bg-no-repeat md:bg-nk-bg">
       <Swiper
@@ -44,7 +48,10 @@ const DetailSlider: FC<SliderProps> = ({ property_images }) => {
                   />
 
                   <div className="absolute bottom-2 right-4  z-10 flex items-center justify-center gap-2 md:gap-2 md:bottom-3 md:right-3 lg:bottom-6 lg:right-6">
-                    <button className="group flex h-8 w-10 items-center justify-center overflow-hidden rounded-md border bg-nk-white transition-all delay-200 duration-500 hover:shadow-lg sm:h-10 sm:w-12 md:h-12 md:w-14">
+                    <Link
+                      href={whatsapp}
+                      className="group flex h-8 w-10 items-center justify-center overflow-hidden rounded-md border bg-nk-white transition-all delay-200 duration-500 hover:shadow-lg sm:h-10 sm:w-12 md:h-12 md:w-14"
+                    >
                       <Image
                         src={WhatsAppIcon}
                         width={40}
@@ -52,9 +59,12 @@ const DetailSlider: FC<SliderProps> = ({ property_images }) => {
                         alt="contact-whatsapp"
                         className="w-5 transition-all delay-200 duration-500 group-hover:scale-110 sm:w-6 md:w-8"
                       />
-                    </button>
+                    </Link>
 
-                    <button className="group flex h-8 w-10 items-center justify-center overflow-hidden rounded-md border bg-nk-white transition-all delay-200 duration-500 hover:shadow-lg sm:h-10 sm:w-12 md:h-12 md:w-14">
+                    <Link
+                      className="group flex h-8 w-10 items-center justify-center overflow-hidden rounded-md border bg-nk-white transition-all delay-200 duration-500 hover:shadow-lg sm:h-10 sm:w-12 md:h-12 md:w-14"
+                      href={`tel:${phone}`}
+                    >
                       <Image
                         src={PhoneIcon}
                         width={40}
@@ -62,7 +72,7 @@ const DetailSlider: FC<SliderProps> = ({ property_images }) => {
                         alt="contact-phone"
                         className="w-5 transition-all delay-200 duration-500 group-hover:scale-110 sm:w-6 md:w-8"
                       />
-                    </button>
+                    </Link>
                   </div>
                 </div>
               </SwiperSlide>
