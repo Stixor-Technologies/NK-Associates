@@ -6,6 +6,7 @@ export interface EventsImage {
   }[];
 }
 export interface Contacts {
+  isHeadOffice?: boolean;
   attributes: {
     location: string;
     address: string;

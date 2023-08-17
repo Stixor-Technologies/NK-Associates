@@ -13,6 +13,7 @@ const fieldTypes = {
   name: "text",
   email: "text",
   phone: "text",
+  subject: "text",
   category: "dropdown",
   message: "textarea",
 };
@@ -21,12 +22,14 @@ const placeholders = {
   name: "Write your name here",
   email: "Write your email address",
   phone: "Write your phone number here",
+  subject: "Write your subject here",
 };
 
 const initialValues = {
   name: "",
   email: "",
   phone: "",
+  subject: "",
   category: "",
   message: "",
 };
@@ -45,7 +48,14 @@ const ContactForm: React.FC<ContactFormProps> = ({ categories }) => {
   const [showToast, setShowToast] = useState<boolean>(false);
   const [toastMessage, setToastMessage] = useState<string>("");
 
-  const formFields = ["name", "email", "phone", "category", "message"];
+  const formFields = [
+    "name",
+    "email",
+    "phone",
+    "subject",
+    "category",
+    "message",
+  ];
 
   const onSubmit = async (values, { resetForm }) => {
     setLoading(true);
@@ -59,23 +69,28 @@ const ContactForm: React.FC<ContactFormProps> = ({ categories }) => {
           name: values.name,
           email: values.email,
           phone: values.phone,
+          subject: values.subject,
           category: values.category,
           message: values.message,
         }),
       });
 
       const data = await res.json();
-      setToastMessage(data?.message);
-      setShowToast(true);
-
-      setTimeout(() => {
-        setShowToast(false);
-        resetForm();
-      }, 1000);
+      if (data === 202) {
+        setToastMessage("Email has been sent");
+        setShowToast(true);
+        setTimeout(() => {
+          setShowToast(false);
+          resetForm();
+        }, 1000);
+      } else {
+        console.log(data);
+        setToastMessage(`Error: Error sending email`);
+        setShowToast(true);
+        setTimeout(() => setShowToast(false), 1000);
+      }
     } catch (error) {
-      setToastMessage(`Error: ${error?.message}`);
-      setShowToast(true);
-      setTimeout(() => setShowToast(false), 1000);
+      console.error(error);
     } finally {
       setLoading(false);
     }
@@ -175,7 +190,7 @@ const ContactForm: React.FC<ContactFormProps> = ({ categories }) => {
                               ? "border-nk-red"
                               : " focus:border-nk-gray focus:ring-nk-gray"
                           }`}
-                          placeholder="Enter your message"
+                          placeholder="Write your message here"
                           rows={6}
                         />
                         {touched.message && errors.message && (
@@ -192,7 +207,11 @@ const ContactForm: React.FC<ContactFormProps> = ({ categories }) => {
                       key={fieldName}
                       hasError={errors[fieldName]}
                       isTouched={touched[fieldName]}
-                      label={`Your ${fieldName}`}
+                      label={
+                        fieldName === "subject"
+                          ? fieldName
+                          : `Your ${fieldName}`
+                      }
                       name={fieldName}
                       placeholder={placeholders[fieldName]}
                       errorMessage={errors[fieldName]}

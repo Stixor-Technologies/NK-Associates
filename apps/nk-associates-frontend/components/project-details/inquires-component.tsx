@@ -1,5 +1,5 @@
 "use client";
-import LinkButton from "../../../components/button/link-button";
+import LinkButton from "../button/link-button";
 
 const InquiresCompnent = () => {
   const handleInquiresClick = () => {
