@@ -20,7 +20,7 @@ interface SliderProps {
 }
 
 const DetailSlider: FC<SliderProps> = ({ property_images, phone }) => {
-  const whatsapp = "wa.me/" + phone;
+  const whatsapp = "https:wa.me/" + phone;
   return (
     <div className="relative bg-right-top bg-no-repeat md:bg-nk-bg">
       <Swiper
