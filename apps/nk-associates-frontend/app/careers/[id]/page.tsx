@@ -84,7 +84,7 @@ function JobDetail({ params: { id } }: JobDetailProps) {
         {description}
       </div>
       <div className="font-metropolis-semibold pb-[0.789rem] pt-[1.999rem] text-[1rem] md:text-[1.5rem]">
-        No. of Positions: {positions}
+        No. of positions: {positions}
       </div>
       <LinkButton
         text="Apply Now"
@@ -93,8 +93,8 @@ function JobDetail({ params: { id } }: JobDetailProps) {
         clickEvent={openModal}
       />
 
-      <div className="font-metropolis-bold pb-[1.595rem] pt-[4.813rem] text-left text-[1.75rem] md:text-[2rem] leading-[2.1rem]">
-        KEY RESPONSIBILITIES:
+      <div className="font-metropolis-bold pb-[1.595rem] pt-[4.813rem] text-left text-[1.75rem] md:text-[2rem] leading-[2.1rem] uppercase">
+        key responsibilities:
       </div>
       <div className="pb-4 pt-2 text-left text-[0.875rem] md:text-[1.5rem]">
         <ul className="font-metropolis-thin list-disc pl-5">
@@ -107,8 +107,8 @@ function JobDetail({ params: { id } }: JobDetailProps) {
         </ul>
       </div>
 
-      <div className="font-metropolis-bold pb-[2.524rem] pt-[4.241rem] text-left text-[1.75rem] md:text-[2rem] leading-[2.1rem]">
-        JOB SPECIFICATIONS
+      <div className="font-metropolis-bold pb-[2.524rem] pt-[4.241rem] text-left text-[1.75rem] md:text-[2rem] leading-[2.1rem] uppercase">
+        job specifications
       </div>
 
       <div className="font-metropolis text-left text-[1rem] md:text-[1.5rem]">
@@ -123,8 +123,8 @@ function JobDetail({ params: { id } }: JobDetailProps) {
         {experience?.trim()}
       </div>
 
-      <div className="font-metropolis-bold pb-[2.524rem] pt-[4.241rem] text-left text-[1.75rem] md:text-[2rem] leading-[2.1rem]">
-        Skills Required
+      <div className="font-metropolis-bold pb-[2.524rem] pt-[4.241rem] text-left text-[1.75rem] md:text-[2rem] leading-[2.1rem] uppercase">
+        skills required
       </div>
 
       <ul className="font-metropolis-thin text-nk-black list-disc pl-5 text-left text-[0.875rem] md:text-[1.5rem]">
@@ -136,22 +136,22 @@ function JobDetail({ params: { id } }: JobDetailProps) {
         ))}
       </ul>
 
-      <div className="font-metropolis-bold pb-[1.555rem] pt-[4.241rem] text-left text-[1.75rem] md:text-[2rem] leading-[2.1rem]">
-        Office Timings
+      <div className="font-metropolis-bold pb-[1.555rem] pt-[4.241rem] text-left text-[1.75rem] md:text-[2rem] leading-[2.1rem] uppercase">
+        office timings
       </div>
       {start && end && (
-        <div className="font-metropolis-medium text-left text-[1rem] md:text-[1.5rem]">
+        <div className="font-metropolis-medium text-left text-[1rem] md:text-[1.5rem] uppercase">
           {formatTime(start)} to {formatTime(end)} ({displayDays(days)})
         </div>
       )}
-      <div className="font-metropolis-bold pb-[1.555rem] pt-[4.254rem] text-left text-[1.75rem] md:text-[2rem] leading-[2.1rem]">
-        Location
+      <div className="font-metropolis-bold pb-[1.555rem] pt-[4.254rem] text-left text-[1.75rem] md:text-[2rem] leading-[2.1rem] uppercase">
+        location
       </div>
-      <div className="font-metropolis-medium text-left text-[1rem] md:text-[1.5rem]">
+      <div className="font-metropolis-medium text-left text-[1rem] md:text-[1.5rem] uppercase">
         {location}
       </div>
       <div className="font-metropolis-semibold pb-[1.063rem] pt-[5.218rem] text-[1rem] md:text-[1.5rem]">
-        No. of Positions: {positions}
+        No. of positions: {positions}
       </div>
       <div className="pb-[5.25rem]">
         <LinkButton
