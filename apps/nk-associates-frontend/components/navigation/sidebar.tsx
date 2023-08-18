@@ -29,31 +29,32 @@ const Sidebar: React.ForwardRefRenderFunction<HTMLDivElement, SidebarProps> = (
     { pathName: "#", label: "Services" },
     { pathName: "careers", label: "Career" },
     { pathName: "events", label: "Event" },
-    { pathName: "contact", label: "Contact Us" },
+    { pathName: "contact", label: "Contact" },
   ];
 
   const menuList = menuItems.map((menuItem, index) => (
-    <li
+    <div
       key={`${index}-${menuItem.pathName}`}
       onClick={handleLinkClick}
-      className={`my-3 lg:my-5 xl:my-8 transition-colors duration-500 ease-in-out ${
+      className={`transition-colors duration-500 ease-in-out ${
         pathName == menuItem.pathName ? "text-nk-dark-gray" : "text-nk-white "
       } hover:text-nk-dark-gray `}
     >
       <Link href={`/${menuItem.pathName}`}>{menuItem.label}</Link>
-    </li>
+    </div>
   ));
 
   return (
     <div
       ref={ref}
       className={`fixed right-0 top-0 -mr-[100%] bg-nk-red
-       h-full w-full overflow-y-auto will-change-auto md:-mr-[50vw] md:w-[50vw]  lg:-mr-[35vw] lg:w-[35vw] 
+       h-full w-full overflow-y-auto will-change-auto sm:-mr-[65vw] sm:w-[65vw] md:w-[50vw] md:-mr-[50vw]  lg:-mr-[35vw] lg:w-[35vw] 
+       
       `}
     >
-      <ul className="h-full py-[5.75rem] px-[2.125rem] md:px-[2.375rem] lg:px-[2.625rem] xl:px-[2.75rem] 2xl:px-[3rem] text-right font-metropolis-bold text-[2.75rem] md:text-[2.5rem]">
+      <div className="flex flex-col items-center justify-center h-full py-[5.75rem] px-[2.125rem] md:px-[2.375rem] lg:px-[2.625rem] xl:px-[2.75rem] 2xl:px-[3rem] text-center font-metropolis-bold text-[3rem] md:text-[3rem] lg:text-[3rem] xl:text-[4rem] 2xl:[3.85rem]">
         {menuList}
-      </ul>
+      </div>
     </div>
   );
 };
