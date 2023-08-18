@@ -10,7 +10,6 @@ gsap.registerPlugin(ScrollTrigger);
 
 const ServicesList: FC = () => {
   const [services, setServices] = useState<Service[]>([]);
-  const [total, setTotal] = useState<number | null>(null);
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const ref = useRef<HTMLDivElement | null>(null);
 

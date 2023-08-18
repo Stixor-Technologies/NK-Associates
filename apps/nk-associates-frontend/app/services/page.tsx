@@ -22,8 +22,6 @@ const page = () => {
             className="h-11 w-72 md:h-[3.125rem] md:my-5"
           />
         </div>
-
-        {/* cards go here */}
         <ServicesList />
       </div>
     </section>

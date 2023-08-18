@@ -269,8 +269,7 @@ export const getSocials = async () => {
 
 export const getServices = async () => {
   try {
-    let apiUrl = `${BASE_URL}/api/services?populate=*`;
-    const resp = await fetch(apiUrl);
+    const resp = await fetch(`${BASE_URL}/api/services?populate=deep`);
     const data = await resp.json();
     return data;
   } catch (error) {

@@ -1,0 +1,29 @@
+{
+  "collectionName": "components_service_process_service_processes",
+  "info": {
+    "displayName": "Service-Process"
+  },
+  "options": {},
+  "attributes": {
+    "process_image": {
+      "allowedTypes": [
+        "images"
+      ],
+      "type": "media",
+      "multiple": false,
+      "required": true
+    },
+    "process_title": {
+      "type": "string",
+      "required": true,
+      "minLength": 6,
+      "maxLength": 40
+    },
+    "process_description": {
+      "type": "text",
+      "required": true,
+      "minLength": 6,
+      "maxLength": 500
+    }
+  }
+}

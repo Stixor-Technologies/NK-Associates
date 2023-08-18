@@ -168,15 +168,22 @@ export interface Service {
   attributes: {
     title: string;
     company: string;
-    image: {
+    service_image: {
       data: MediaAttributes;
     };
-    logo: {
+    company_logo: {
       data: MediaAttributes;
     };
-    process: string;
     expertise: string;
     description: string;
+    process: {
+      id: number;
+      process_title: string;
+      process_description: string;
+      process_image: {
+        data: MediaAttributes;
+      };
+    }[];
   };
   id: number;
 }

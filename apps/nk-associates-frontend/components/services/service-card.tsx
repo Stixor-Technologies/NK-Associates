@@ -1,6 +1,5 @@
 import React, { FC } from "react";
 import { BASE_URL } from "../../utils/constants";
-import ServiceLogo from "../../public/assets/images/serviceLogo.svg";
 import Arrow from "../../public/assets/images/arrow.svg";
 import Image from "next/image";
 import Link from "next/link";
@@ -13,8 +12,9 @@ interface CardProps {
 const serviceCard: FC<CardProps> = ({ service }) => {
   const { title, description, company } = service?.attributes;
   const id = service?.id;
-  const thumbnailImage = service?.attributes?.image?.data?.attributes?.url;
-  const logo = service?.attributes?.logo?.data?.attributes?.url;
+  const thumbnailImage =
+    service?.attributes?.service_image?.data?.attributes?.url;
+  const company_logo = service?.attributes?.company_logo?.data?.attributes?.url;
   // bg-custom-gradient
   return (
     <div className="service-card min-h-screen h-full flex-col relative items-start justify-center">
@@ -43,7 +43,7 @@ const serviceCard: FC<CardProps> = ({ service }) => {
             </p>
 
             <Image
-              src={`${BASE_URL}${logo || "/"}`}
+              src={`${BASE_URL}${company_logo || "/"}`}
               alt="service Logo"
               className="mx-auto pt-2 md:mx-0 md:pt-0"
               width={190}
