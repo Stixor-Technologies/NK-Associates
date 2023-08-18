@@ -1,6 +1,6 @@
 import React, { FC } from "react";
 import { BASE_URL } from "../../utils/constants";
-import Arrow from "../../public/assets/images/arrow.svg";
+import Arrow from "../../public/assets/images/Arrow.svg";
 import Image from "next/image";
 import Link from "next/link";
 import { Service } from "../../utils/types/types";
