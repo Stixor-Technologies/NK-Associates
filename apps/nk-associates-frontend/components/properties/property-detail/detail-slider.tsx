@@ -20,6 +20,7 @@ interface SliderProps {
 }
 
 const DetailSlider: FC<SliderProps> = ({ property_images, phone }) => {
+  phone = "923245724522";
   const whatsapp = `https://wa.me/${phone}?text=I'm%20interested%20in%20your%20property`;
   return (
     <div className="relative bg-right-top bg-no-repeat md:bg-nk-bg">
@@ -51,8 +52,8 @@ const DetailSlider: FC<SliderProps> = ({ property_images, phone }) => {
                     <div className="absolute bottom-2 right-4 z-20 flex items-center justify-center gap-2 md:gap-2 md:bottom-3 md:right-3 lg:bottom-6 lg:right-6">
                       <Link
                         className="group flex h-8 w-10 z-50 items-center justify-center overflow-hidden rounded-md border bg-nk-white transition-all delay-200 duration-500 hover:shadow-lg sm:h-10 sm:w-12 md:h-12 md:w-14"
-                        href="https://wa.me/923245724522?text=I'm%20interested%20in%20your%20property"
-                        rel="noopener noreferrer"
+                        href={`https://wa.me/${phone}?text=I'm%20interested%20in%20your%20property`}
+                        rel="noopener norefferrer"
                         target="_blank"
                       >
                         <Image
@@ -64,8 +65,8 @@ const DetailSlider: FC<SliderProps> = ({ property_images, phone }) => {
                         />
                       </Link>
                       <Link
-                        href={`tel:923245724522`}
-                        rel="noopener noreferrer"
+                        href={`tel:${phone}`}
+                        rel="noopener norefferrer"
                         target="_blank"
                         className="group flex h-8 w-10 items-center justify-center overflow-hidden rounded-md border bg-nk-white transition-all delay-200 duration-500 hover:shadow-lg sm:h-10 sm:w-12 md:h-12 md:w-14"
                       >
