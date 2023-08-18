@@ -15,15 +15,14 @@ const serviceCard: FC<CardProps> = ({ service }) => {
   const thumbnailImage =
     service?.attributes?.service_image?.data?.attributes?.url;
   const company_logo = service?.attributes?.company_logo?.data?.attributes?.url;
-  // bg-custom-gradient
   return (
-    <div className="service-card min-h-screen h-full flex-col relative items-start justify-center">
-      <div className="absolute left-0 right-0 my-12 border bg-nk-white rounded-xl flex-col md:flex-row justify-center md:mx-auto ">
-        <div className="justify-center text-center text-nk-black p-4 md:flex md:gap-4 lg:gap-8">
+    <div className="service-card h-full flex-col relative items-start justify-center md:min-h-screen">
+      <div className="left-0 right-0 my-6 border bg-custom-gradient rounded-xl flex-col md:flex-row justify-center md:my-12 md:mx-auto md:absolute">
+        <div className="justify-center text-center text-nk-black p-2 sm:flex sm:gap-4 sm:p-3 md:p-4 lg:gap-8">
           <Link
             href={`service/${id}`}
             rel="noopener noreferrer"
-            className="block relative md:w-1/2 lg:w-[45%] max-w-xl w-full min-h-[400px] h-full rounded-xl overflow-hidden items-center justify-center my-auto"
+            className="block relative sm:w-1/2 lg:w-[45%] min-h-[300px] md:min-h-[300px] lg:min-h-[400px] w-full h-full rounded-xl overflow-hidden items-center justify-center my-auto"
           >
             <Image
               src={`${BASE_URL}${thumbnailImage || "/"}`}
@@ -34,25 +33,27 @@ const serviceCard: FC<CardProps> = ({ service }) => {
           </Link>
 
           {/* Text section */}
-          <div className="relative py-4 md:py-8 md:pr-3 md:w-1/2 md:flex-col md:text-left lg:w-[55%]">
-            <h1 className="font-metropolis-bold text-2xl pb-2 md:pt-6 lg:text-3xl">
+          <div className="relative py-4 lg:py-8 md:pr-3 sm:w-1/2 md:flex-col sm:text-left lg:w-[55%]">
+            <h1 className="font-metropolis-bold text-2xl lg:pb-2 lg:pt-6 lg:text-3xl">
               {title}
             </h1>
-            <p className="text-sm font-metropolis-thin my-2 md:my-4 md:text-xl md:leading-none lg:leading-normal">
-              {description}
-            </p>
 
+            <div className="my-2 md:my-3 line-clamp-4 lg:line-clamp-6">
+              <p className="break-words sm:block text-sm font-metropolis-thin md:text-xl ">
+                {description}
+              </p>
+            </div>
             <Image
               src={`${BASE_URL}${company_logo || "/"}`}
               alt="service Logo"
-              className="mx-auto pt-2 md:mx-0 md:pt-0"
+              className="mx-auto pt-2 sm:mx-0 md:pt-0"
               width={190}
               height={47}
             />
             <Link
               href={`service/${id}`}
               rel="noopener noreferrer"
-              className="group absolute bottom-0 right-0"
+              className="hidden group absolute bottom-0 right-0 sm:block"
             >
               <Image
                 src={Arrow}

@@ -18,7 +18,7 @@ const ServicesList: FC = () => {
       try {
         const resp = await getServices();
         if (resp?.data) {
-          setServices(resp.data);
+          setServices(resp?.data);
         }
       } catch (error) {
         console.error("Error fetching services:", error);
@@ -30,20 +30,20 @@ const ServicesList: FC = () => {
   }, []);
 
   useEffect(() => {
-    if (services.length > 0) {
+    const isScreenWideEnough = window.innerWidth > 768;
+    if (isScreenWideEnough && services.length > 0) {
       const cards = gsap.utils.toArray(".service-card");
-      const spacer = 19;
+      const spacer = 21;
       const minScale = 0.95;
 
       const distributor = gsap.utils.distribute({
         base: minScale,
         amount: 0.05,
       });
-      cards.forEach((card: HTMLDivElement, index) => {
+      cards.forEach((card: HTMLDivElement, index: number) => {
         const scaleVal = distributor(index, cards[index], cards);
 
         const tween = gsap.to(card, {
-          duration: 2,
           scrollTrigger: {
             trigger: card,
             start: `top top`,
@@ -54,18 +54,17 @@ const ServicesList: FC = () => {
         });
 
         gsap.to(card, {
-          ease: "none",
-          opacity: 1,
-          stagger: 0.5,
+          duration: 1.5,
           scrollTrigger: {
-            trigger: card as gsap.DOMTarget,
+            trigger: card,
             start: `top-=${index * spacer} 20%`,
             endTrigger: ".card-container",
             end: `bottom center+=${370 + cards.length * spacer}`,
             pin: true,
             markers: true,
             pinSpacing: false,
-            id: "pin",
+            id: `pin-${index}`,
+            scrub: 0,
             invalidateOnRefresh: true,
           },
         });
@@ -74,7 +73,7 @@ const ServicesList: FC = () => {
   }, [services]);
 
   return (
-    <div ref={ref} className="card-container py-1 min-h-screen">
+    <div ref={ref} className="card-container py-8 min-h-screen md:py-1">
       {isLoading && services.length === 0 ? (
         <div className="my-4 flex justify-center">
           <Spinner />

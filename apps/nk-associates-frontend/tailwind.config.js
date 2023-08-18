@@ -55,7 +55,7 @@ module.exports = {
       },
       backgroundImage: (theme) => ({
         "custom-gradient":
-          "linear-gradient(180deg, #EFEFEF 0%, rgba(255, 255, 255, 0.00) 100%)",
+          "linear-gradient(180deg, #EFEFEF 0%, rgba(255, 255, 255, 1) 100%)",
       }),
     },
   },
