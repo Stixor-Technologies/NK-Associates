@@ -276,3 +276,16 @@ export const getServices = async () => {
     console.error("There was an error getting services", error);
   }
 };
+
+export const getPhone = async () => {
+  try {
+    let apiUrl = `${BASE_URL}/api/phone`;
+    const resp = await fetch(apiUrl, {
+      cache: "no-store",
+    });
+    const links = await resp.json();
+    return links;
+  } catch (error) {
+    console.error("There was an error getting the phone number", error);
+  }
+};

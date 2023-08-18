@@ -32,9 +32,9 @@ const Sidebar: React.ForwardRefRenderFunction<HTMLDivElement, SidebarProps> = (
     { pathName: "contact", label: "Contact Us" },
   ];
 
-  const menuList = menuItems.map((menuItem) => (
+  const menuList = menuItems.map((menuItem, index) => (
     <li
-      key={menuItem.pathName}
+      key={`${index}-${menuItem.pathName}`}
       onClick={handleLinkClick}
       className={`transition-colors duration-500 ease-in-out ${
         pathName == menuItem.pathName ? "text-nk-dark-gray" : "text-nk-white "
@@ -48,12 +48,12 @@ const Sidebar: React.ForwardRefRenderFunction<HTMLDivElement, SidebarProps> = (
     <div
       ref={ref}
       className={`fixed right-0 top-0 -mr-[100%]
-       h-full w-full overflow-y-auto will-change-auto lg:-mr-[35vw] lg:w-[35vw] 
+       h-full w-full overflow-y-auto will-change-auto md:-mr-[50vw] md:w-[50vw]  lg:-mr-[35vw] lg:w-[35vw] 
       `}
     >
       <div className="absolute -z-10 h-full w-full bg-nk-red"></div>
       <div className="mx-auto flex h-full w-full flex-col items-center justify-center overflow-y-auto px-2 md:pt-20 ">
-        <ul className=" space-y-8 text-right font-metropolis-bold text-4xl lg:text-4xl">
+        <ul className=" space-y-8 text-right font-metropolis-bold text-[2.375em] md:text-[2.5rem] lg:text-4xl">
           {menuList}
         </ul>
       </div>

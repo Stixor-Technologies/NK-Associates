@@ -105,6 +105,9 @@ export interface Project {
     comparisonImages: {
       id: number;
     }[];
+    threeDModel: {
+      data: { attributes: { url: string } };
+    };
   };
 }
 
