@@ -8,7 +8,8 @@
   "attributes": {
     "contact_number": {
       "type": "string",
-      "regex": "^((\\+92|0|92)[0-9]{10}|051[0-9]{7})$"
+      "regex": "^((\\+92|0|92)[0-9]{10}|051[0-9]{7})$",
+      "required": false
     }
   }
 }

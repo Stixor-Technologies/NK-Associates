@@ -4,6 +4,7 @@ import Link from "next/link";
 import {
   getPropertyDetail,
   getSimilarProperties,
+  getPhone,
 } from "../../../utils/api-calls";
 import DetailSlider from "../../../components/properties/property-detail/detail-slider";
 import MapComponent from "../../../components/shared/map-component";
@@ -52,9 +53,15 @@ async function PropertyDetail({ params: { id } }: PropertyDetailProps) {
 
   const center = { lat: latitude, lng: longitude };
 
+  const phoneResponse = await getPhone();
+  const phoneNumber = phoneResponse?.data?.attributes?.number;
+
   return (
     <section>
-      <DetailSlider property_images={property_images?.data} />
+      <DetailSlider
+        property_images={property_images?.data}
+        phone={phoneNumber}
+      />
 
       <div className="relative mt-14 md:mt-3">
         {/* 360 Tour Button */}
