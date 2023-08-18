@@ -61,7 +61,6 @@ const ServicesList: FC = () => {
             endTrigger: ".card-container",
             end: `bottom center+=${370 + cards.length * spacer}`,
             pin: true,
-            markers: true,
             pinSpacing: false,
             id: `pin-${index}`,
             scrub: 0,
