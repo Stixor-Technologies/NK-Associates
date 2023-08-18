@@ -12,6 +12,8 @@ module.exports = {
     screens: {
       xs: "350px",
       ...defaultTheme.screens,
+      "below-md": { max: "767px" },
+      "above-md": { min: "769px" },
     },
     extend: {
       backgroundImage: {

@@ -16,8 +16,8 @@ const serviceCard: FC<CardProps> = ({ service }) => {
     service?.attributes?.service_image?.data?.attributes?.url;
   const company_logo = service?.attributes?.company_logo?.data?.attributes?.url;
   return (
-    <div className="service-card h-full flex-col relative items-start justify-center md:min-h-screen">
-      <div className="left-0 right-0 my-6 border bg-custom-gradient rounded-xl flex-col md:flex-row justify-center md:my-12 md:mx-auto md:absolute">
+    <div className="service-card flex-col relative items-start justify-center above-md:min-h-screen above-md:h-full">
+      <div className="left-0 right-0 my-6 border bg-custom-gradient rounded-xl flex-col md:flex-row justify-center md:my-12 md:mx-auto above-md:absolute">
         <div className="justify-center text-center text-nk-black p-2 sm:flex sm:gap-4 sm:p-3 md:p-4 lg:gap-8">
           <Link
             href={`service/${id}`}
@@ -43,13 +43,26 @@ const serviceCard: FC<CardProps> = ({ service }) => {
                 {description}
               </p>
             </div>
-            <Image
-              src={`${BASE_URL}${company_logo || "/"}`}
-              alt="service Logo"
-              className="mx-auto pt-2 sm:mx-0 md:pt-0"
-              width={190}
-              height={47}
-            />
+
+            <div className="my-4">
+              <span className=" font-metropolis-extralight text-nk-gray">
+                Powered By:{" "}
+              </span>
+              <span className="text-nk-red font-metropolis-semibold">
+                {company}
+              </span>
+            </div>
+
+            {company_logo && (
+              <Image
+                src={`${BASE_URL}${company_logo || "/"}`}
+                alt="service Logo"
+                className="mx-auto pt-2 sm:mx-0 md:pt-0"
+                width={190}
+                height={47}
+              />
+            )}
+
             <Link
               href={`service/${id}`}
               rel="noopener noreferrer"
