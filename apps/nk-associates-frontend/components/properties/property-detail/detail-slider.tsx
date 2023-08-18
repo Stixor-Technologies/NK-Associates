@@ -12,7 +12,6 @@ import { Navigation, Pagination, Keyboard } from "swiper/modules";
 import "./slider-styles.css";
 import WhatsAppIcon from "../../../public/assets/icons/whatsapp-icon.svg";
 import PhoneIcon from "../../../public/assets/icons/phone-icon.svg";
-import { string } from "yup";
 
 interface SliderProps {
   property_images: MediaAttributes[];
@@ -52,7 +51,7 @@ const DetailSlider: FC<SliderProps> = ({ property_images, phone }) => {
                       <Link
                         className="group flex h-8 w-10 z-50 items-center justify-center overflow-hidden rounded-md border bg-nk-white transition-all delay-200 duration-500 hover:shadow-lg sm:h-10 sm:w-12 md:h-12 md:w-14"
                         href={whatsapp}
-                        rel="noopener norefferrer"
+                        rel="noopener noreferrer"
                         target="_blank"
                       >
                         <Image
@@ -65,7 +64,7 @@ const DetailSlider: FC<SliderProps> = ({ property_images, phone }) => {
                       </Link>
                       <Link
                         href={`tel:${phone}`}
-                        rel="noopener norefferrer"
+                        rel="noopener noreferrer"
                         target="_blank"
                         className="group flex h-8 w-10 items-center justify-center overflow-hidden rounded-md border bg-nk-white transition-all delay-200 duration-500 hover:shadow-lg sm:h-10 sm:w-12 md:h-12 md:w-14"
                       >
