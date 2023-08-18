@@ -1,0 +1,21 @@
+{
+  "kind": "singleType",
+  "collectionName": "phones",
+  "info": {
+    "singularName": "phone",
+    "pluralName": "phones",
+    "displayName": "phone",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "number": {
+      "type": "string",
+      "required": true,
+      "regex": "^((\\92)[0-9]{10})$"
+    }
+  }
+}
