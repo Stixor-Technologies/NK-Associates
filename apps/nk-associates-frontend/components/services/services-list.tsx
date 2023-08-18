@@ -6,11 +6,13 @@ import { getServices } from "../../utils/api-calls";
 import Spinner from "../spinner";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+gsap.registerPlugin(ScrollTrigger);
 
 const ServicesList: FC = () => {
   const [services, setServices] = useState<Service[]>([]);
   const [total, setTotal] = useState<number | null>(null);
   const [isLoading, setIsLoading] = useState<boolean>(true);
+  const ref = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -28,31 +30,52 @@ const ServicesList: FC = () => {
     fetchData();
   }, []);
 
-  const containerRef = useRef<HTMLDivElement | null>(null);
-  const cardsRef = useRef<HTMLDivElement[]>([]);
-  // animations not functional here
   useEffect(() => {
-    gsap.registerPlugin(ScrollTrigger);
-    const timeline = gsap.timeline({
-      scrollTrigger: {
-        trigger: containerRef.current,
-        start: "top center",
-        scrub: true,
-      },
-    });
+    if (services.length > 0) {
+      const cards = gsap.utils.toArray(".service-card");
+      const spacer = 19;
+      const minScale = 0.95;
 
-    cardsRef.current.forEach((card, index) => {
-      timeline.fromTo(
-        card,
-        { y: "100%" },
-        { y: `-${index * 100}%`, ease: "power1.out" },
-        0,
-      );
-    });
-  }, []);
+      const distributor = gsap.utils.distribute({
+        base: minScale,
+        amount: 0.05,
+      });
+      cards.forEach((card: HTMLDivElement, index) => {
+        const scaleVal = distributor(index, cards[index], cards);
+
+        const tween = gsap.to(card, {
+          duration: 2,
+          scrollTrigger: {
+            trigger: card,
+            start: `top top`,
+            scrub: true,
+            invalidateOnRefresh: true,
+          },
+          scale: scaleVal,
+        });
+
+        gsap.to(card, {
+          ease: "none",
+          opacity: 1,
+          stagger: 0.5,
+          scrollTrigger: {
+            trigger: card as gsap.DOMTarget,
+            start: `top-=${index * spacer} 20%`,
+            endTrigger: ".card-container",
+            end: `bottom center+=${370 + cards.length * spacer}`,
+            pin: true,
+            markers: true,
+            pinSpacing: false,
+            id: "pin",
+            invalidateOnRefresh: true,
+          },
+        });
+      });
+    }
+  }, [services]);
 
   return (
-    <div className="py-1-">
+    <div ref={ref} className="card-container py-1 min-h-screen">
       {isLoading && services.length === 0 ? (
         <div className="my-4 flex justify-center">
           <Spinner />

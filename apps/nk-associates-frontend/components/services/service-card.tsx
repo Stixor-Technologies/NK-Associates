@@ -15,15 +15,15 @@ const serviceCard: FC<CardProps> = ({ service }) => {
   const id = service?.id;
   const thumbnailImage = service?.attributes?.image?.data?.attributes?.url;
   const logo = service?.attributes?.logo?.data?.attributes?.url;
-
+  // bg-custom-gradient
   return (
-    <div className={""}>
-      <div className="my-12 border bg-custom-gradient rounded-xl flex-col md:flex-row justify-center md:mx-auto ">
+    <div className="service-card min-h-screen h-full flex-col relative items-start justify-center">
+      <div className="absolute left-0 right-0 my-12 border bg-nk-white rounded-xl flex-col md:flex-row justify-center md:mx-auto ">
         <div className="justify-center text-center text-nk-black p-4 md:flex md:gap-4 lg:gap-8">
           <Link
             href={`service/${id}`}
             rel="noopener noreferrer"
-            className="block relative md:w-1/2 lg:w-2/5 min-h-[400px] rounded-xl overflow-hidden items-center justify-center my-auto"
+            className="block relative md:w-1/2 lg:w-[45%] max-w-xl w-full min-h-[400px] h-full rounded-xl overflow-hidden items-center justify-center my-auto"
           >
             <Image
               src={`${BASE_URL}${thumbnailImage || "/"}`}
@@ -34,15 +34,14 @@ const serviceCard: FC<CardProps> = ({ service }) => {
           </Link>
 
           {/* Text section */}
-          <div className="relative py-4 md:py-8 md:pr-3 md:w-1/2 md:flex-col md:text-left lg:w-3/5">
+          <div className="relative py-4 md:py-8 md:pr-3 md:w-1/2 md:flex-col md:text-left lg:w-[55%]">
             <h1 className="font-metropolis-bold text-2xl pb-2 md:pt-6 lg:text-3xl">
               {title}
             </h1>
-            <p className="text-sm font-metropolis-thin my-2 md:my-4 md:text-xl">
+            <p className="text-sm font-metropolis-thin my-2 md:my-4 md:text-xl md:leading-none lg:leading-normal">
               {description}
             </p>
 
-            {/* <div className="flex justify-center md:justify-between"> */}
             <Image
               src={`${BASE_URL}${logo || "/"}`}
               alt="service Logo"
