@@ -70,7 +70,7 @@ async function ProjectDetails({ params: { id } }: ProjectDetailProps) {
           href={`${BASE_URL}${pdfUrl}`}
           target="_blank"
           rel="noopener noreferrer"
-          className="group relative z-10 mx-auto my-12 flex w-[13.75rem] items-center justify-center gap-4 rounded-full border bg-gradient-to-b from-nk-gradient-red-one to-nk-gradient-red-two px-4 py-2.5 text-sm text-nk-white transition-all duration-100 hover:border-nk-red hover:shadow-lg md:w-[25rem] md:justify-center lg:text-lg"
+          className="group relative z-10 mx-auto mb-12 flex w-[13.75rem] items-center justify-center gap-4 rounded-full border bg-gradient-to-b from-nk-gradient-red-one to-nk-gradient-red-two px-4 py-2.5 text-sm text-nk-white transition-all duration-100 hover:border-nk-red hover:shadow-lg md:w-[25rem] md:justify-center lg:text-lg"
         >
           Download Brochure
           <span className="block">
