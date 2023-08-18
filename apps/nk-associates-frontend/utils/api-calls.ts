@@ -279,3 +279,15 @@ export const getPhone = async () => {
     console.error("There was an error getting the phone number", error);
   }
 };
+
+export const getServiceDetail = async (id: string) => {
+  try {
+    const resp = await fetch(`${BASE_URL}/api/service/${id}?populate=*`, {
+      cache: "no-store",
+    });
+    const data = await resp.json();
+    return data?.data;
+  } catch (error) {
+    console.error("There was an error getting the services", error);
+  }
+};
