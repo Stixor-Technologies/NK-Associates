@@ -47,12 +47,12 @@ const Sidebar: React.ForwardRefRenderFunction<HTMLDivElement, SidebarProps> = (
   return (
     <div
       ref={ref}
-      className={`fixed right-0 top-0 -mr-[100%] bg-nk-red
-       h-full w-full overflow-y-auto will-change-auto sm:-mr-[65vw] sm:w-[65vw] md:w-[50vw] md:-mr-[50vw]  lg:-mr-[35vw] lg:w-[35vw] 
+      className={`fixed right-0 top-0 -mr-[100%] h-full
+       w-full overflow-y-auto bg-nk-red will-change-auto sm:-mr-[65vw] sm:w-[65vw] md:-mr-[50vw] md:w-[50vw]  lg:-mr-[35vw] lg:w-[35vw] 
        
       `}
     >
-      <div className="flex flex-col items-center justify-center h-full py-[5.75rem] px-[2.125rem] md:px-[2.375rem] lg:px-[2.625rem] xl:px-[2.75rem] 2xl:px-[3rem] text-center font-metropolis-bold text-[3rem] md:text-[3rem] lg:text-[3rem] xl:text-[4rem] 2xl:[3.85rem]">
+      <div className="2xl:[3.85rem] flex h-full flex-col items-center justify-center px-[2.125rem] py-[5.75rem] text-center font-metropolis-bold text-[3rem] md:px-[2.375rem] md:text-[3rem] lg:px-[2.625rem] lg:text-[3rem] xl:px-[2.75rem] xl:text-[3.2rem] 2xl:px-[3rem]">
         {menuList}
       </div>
     </div>
