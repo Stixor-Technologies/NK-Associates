@@ -1,6 +1,7 @@
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
+import ExpertiseOutcomes from "../../../components/services/service-detail/expertise-outcomes";
 import WhatsAppIcon from "../../../public/assets/icons/whatsapp-white-icon.svg";
 import PhoneIcon from "../../../public/assets/icons/phone-white-icon.svg";
 
@@ -61,6 +62,7 @@ async function ServiceDetail({ params: { id } }: ServiceDetailProps) {
             </Link>
           </div>
         </div>
+        <ExpertiseOutcomes />
       </div>
     </section>
   );
