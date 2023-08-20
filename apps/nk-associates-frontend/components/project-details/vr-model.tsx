@@ -20,7 +20,7 @@ const VRModel = ({ modelURL }: PropTypes) => {
       <Canvas
         shadows
         dpr={[1, 2]}
-        camera={{ position: [0, 0, 4], fov: 50 }}
+        camera={{ position: [0, 0, 14], fov: 10 }}
         className="bg-black"
       >
         <Suspense fallback={null}>
