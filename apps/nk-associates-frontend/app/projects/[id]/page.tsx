@@ -2,7 +2,6 @@ import Link from "next/link";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-import ProjectDetailsVR from "../../../components/project-details/project-details-vr";
 import ProjectIntroduction from "../../../components/project-details/project-introduction";
 import ProjectGallery from "../../../components/project-details/project-gallery";
 import ProjectTimeline from "../../../components/project-details/project-timeline";
@@ -31,14 +30,8 @@ async function ProjectDetails({ params: { id } }: ProjectDetailProps) {
     return `${BASE_URL}${picture?.attributes?.url}`;
   });
 
-  const modelURL =
-    project.threeDModel && project.threeDModel.data
-      ? `${BASE_URL}${project?.threeDModel?.data?.attributes?.url}`
-      : undefined;
-
   return (
     <>
-      <ProjectDetailsVR modelURL={modelURL} />
       <ProjectIntroduction
         projectName={project.title}
         description={project.description}

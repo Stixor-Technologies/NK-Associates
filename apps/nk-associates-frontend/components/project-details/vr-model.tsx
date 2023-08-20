@@ -2,8 +2,10 @@
 
 import { Suspense } from "react";
 import { Canvas, useLoader } from "@react-three/fiber";
-import { Environment, OrbitControls, Loader } from "@react-three/drei";
+import { Environment, OrbitControls, useProgress } from "@react-three/drei";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
+
+import ThreeDModelLoading from "./threeD-model-loading";
 
 type PropTypes = {
   modelURL: string;
@@ -11,6 +13,7 @@ type PropTypes = {
 
 const VRModel = ({ modelURL }: PropTypes) => {
   const gltf = useLoader(GLTFLoader, modelURL);
+  const { progress } = useProgress();
 
   return (
     <>
@@ -26,7 +29,13 @@ const VRModel = ({ modelURL }: PropTypes) => {
           <OrbitControls />
         </Suspense>
       </Canvas>
-      <Loader />
+      <section
+        className={`absolute top-0 left-0 w-full ${
+          progress >= 100 ? "hidden" : ""
+        }`}
+      >
+        <ThreeDModelLoading />
+      </section>
     </>
   );
 };
