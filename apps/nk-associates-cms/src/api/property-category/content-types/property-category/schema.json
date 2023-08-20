@@ -1,0 +1,26 @@
+{
+  "kind": "collectionType",
+  "collectionName": "property_categories",
+  "info": {
+    "singularName": "property-category",
+    "pluralName": "property-categories",
+    "displayName": "property_category",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "property_types": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::property-type.property-type",
+      "mappedBy": "property_categories"
+    }
+  }
+}
