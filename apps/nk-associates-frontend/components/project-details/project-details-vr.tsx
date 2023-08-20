@@ -42,7 +42,7 @@ const ProjectDetailsVR = ({ modelURL = undefined }: PropTypes) => {
       {showToast && (
         <Toast message={"Error: 3D model isn't available at the moment."} />
       )}
-      <section data-project-3d className={stageClasses}>
+      {/* <section data-project-3d className={stageClasses}>
         <div className="absolute left-0 top-0 h-full w-full bg-black/50" />
         <section className="container relative mx-auto flex h-full flex-1 flex-col items-center justify-center p-4 text-white md:p-6 xl:p-8">
           <div className="flex flex-col items-center justify-center">
@@ -160,7 +160,7 @@ const ProjectDetailsVR = ({ modelURL = undefined }: PropTypes) => {
             </button>
           </div>
         </section>
-      </section>
+      </section> */}
 
       <section className={modelClasses}>
         {modelURL && <VRModel modelURL={modelURL} />}
