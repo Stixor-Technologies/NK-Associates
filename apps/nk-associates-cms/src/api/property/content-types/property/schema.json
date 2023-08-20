@@ -118,6 +118,16 @@
       "allowedTypes": [
         "files"
       ]
+    },
+    "property_category": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::property-category.property-category"
+    },
+    "property_type": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::property-type.property-type"
     }
   }
 }
