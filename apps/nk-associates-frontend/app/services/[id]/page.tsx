@@ -1,17 +1,20 @@
-import React from "react";
+import React, { FC, useEffect, useRef } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import ProcessSteps from "../../../components/services/service-detail/process-steps";
 import ExpertiseOutcomes from "../../../components/services/service-detail/expertise-outcomes";
 import WhatsAppIcon from "../../../public/assets/icons/whatsapp-white-icon.svg";
 import PhoneIcon from "../../../public/assets/icons/phone-white-icon.svg";
 
-type ServiceDetailProps = {
+interface ServiceDetailProps {
   params: {
     id: string;
   };
-};
+}
 
 async function ServiceDetail({ params: { id } }: ServiceDetailProps) {
+  // const ServiceDetail: FC<ServiceDetailProps> = () => {
+
   return (
     <section className="bg-right-top bg-no-repeat md:bg-nk-bg">
       <div className="container">
@@ -62,6 +65,7 @@ async function ServiceDetail({ params: { id } }: ServiceDetailProps) {
             </Link>
           </div>
         </div>
+        <ProcessSteps />
         <ExpertiseOutcomes />
       </div>
     </section>
