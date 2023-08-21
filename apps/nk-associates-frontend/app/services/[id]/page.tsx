@@ -17,12 +17,12 @@ async function ServiceDetail({ params: { id } }: ServiceDetailProps) {
 
   return (
     <section className="bg-right-top bg-no-repeat md:bg-nk-bg">
-      <div className="container">
+      <div className="container overflow-hidden">
         <div className="text-center py-6 md:py-20">
           <h1 className="text-3xl font-metropolis-bold text-nk-black md:text-5xl">
             NK Design and Construction
           </h1>
-          <p className="text-sm font-metropolis-thin text-nk-black md:text-[1.25rem] md:leading-snug md:py-7">
+          <p className="text-sm font-metropolis-thin text-nk-black py-5 md:text-[1.25rem] md:leading-snug md:py-7">
             NK Design and Construction is a real estate development company that
             specializes in providing bespoke services for residential and
             commercial properties in Pakistan. The company mastery of
@@ -43,7 +43,7 @@ async function ServiceDetail({ params: { id } }: ServiceDetailProps) {
               href="#"
               target="_blank"
               rel="noopener noreferrer"
-              className="group flex items-center justify-center gap-2 rounded-full border w-[10.5rem] bg-nk-red py-2 text-lg text-nk-white transition-all duration-300 ease-in-out hover:bg-nk-gradient-red-sharp-one md:w-[14.125rem] md:py-2.5"
+              className="group flex items-center justify-center gap-2 rounded-full border w-[10.5rem] bg-nk-red py-2  text-nk-white text-base transition-all duration-300 ease-in-out hover:bg-nk-gradient-red-sharp-one md:w-[14.125rem] md:py-2.5 md:text-lg"
             >
               Call Us
               <Image src={PhoneIcon} alt="call-icon" width={25} height={25} />
@@ -53,7 +53,7 @@ async function ServiceDetail({ params: { id } }: ServiceDetailProps) {
               href="#"
               target="_blank"
               rel="noopener noreferrer"
-              className="group flex items-center justify-center gap-2 rounded-full border w-[10.5rem] bg-nk-red py-2 text-lg text-nk-white transition-all duration-300 ease-in-out hover:bg-nk-gradient-red-sharp-one md:w-[14.125rem] md:py-2.5"
+              className="group flex items-center justify-center gap-2 rounded-full border w-[10.5rem] bg-nk-red py-2 text-base text-nk-white transition-all duration-300 ease-in-out hover:bg-nk-gradient-red-sharp-one md:w-[14.125rem] md:py-2.5 md:text-lg"
             >
               Whatsapp
               <Image
@@ -65,7 +65,7 @@ async function ServiceDetail({ params: { id } }: ServiceDetailProps) {
             </Link>
           </div>
         </div>
-        {/* <ProcessSteps /> */}
+        <ProcessSteps />
         <ExpertiseOutcomes />
       </div>
     </section>

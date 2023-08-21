@@ -23,20 +23,14 @@ const ProcessSteps: FC<ProcessStepsProps> = () => {
         start: "top 15%",
         end: `+=${cards[0].clientHeight * (cards.length * 1.5)}`,
         pin: true,
-        scrub: 2,
+        markers: true,
         pinSpacing: true,
       },
     });
 
     cards.forEach((card, index) => {
-      // if (index !== 0) {
-      //   gsap.set(card, {
-      //     x: `${index * 100}%`,
-      //   });
-      // }
       gsap.to(card, {
         x: "0%",
-        ease: "slow(0.7, 0.7, false)",
         duration: 1,
         scrollTrigger: {
           trigger: card,
@@ -50,24 +44,24 @@ const ProcessSteps: FC<ProcessStepsProps> = () => {
   }, []);
 
   return (
-    <div data-cards-container className="h-screen py-10 text-nk-black">
-      <h3 className="text-center font-metropolis-semibold text-[1.75rem] md:text-4xl md:mb-12">
+    <div data-cards-container className="min-h-[34.688rem] py-10 text-nk-black">
+      <h3 className="text-center font-metropolis-semibold text-[1.75rem] mb-7 md:text-4xl md:mb-12">
         Service Process
       </h3>
-      <div className="panels-container relative bg-green-300 ">
+      <div className="panels-container relative">
         {sam.map((index) => (
           <div
             key={index}
-            className="process-card absolute w-full flex items-center bg-nk-white rounded-xl shadow-md md:gap-8 md:px-8 md:py-12"
+            className="process-card absolute w-full flex flex-col items-center bg-nk-white rounded-xl shadow-md gap-8 px-6 py-8 md:flex-row md:gap-8 md:px-8 md:py-12"
           >
             <div>
               <Image src={Vector} width={226} height={229} alt="" />
             </div>
-            <div className="flex-1">
+            <div className="flex-1 text-center md:text-left">
               <h2 className="text-2xl font-metropolis-semibold md:text-[2.5rem]">
                 Initial Consultation:
               </h2>
-              <p className="text-xl font-metropolis-thin mt-6 md:text-[2rem]">
+              <p className="text-xl font-metropolis-thin mt-2 md:mt-6 md:text-[2rem]">
                 Understand client requirements and project objectives
               </p>
             </div>

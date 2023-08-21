@@ -97,8 +97,8 @@ const ExpertiseOutcomes: FC<OutcomesProps> = ({
     });
   }, []);
   return (
-    <div data-expertise-outcomes className="min-h-screen">
-      <div className="h-full flex items-center">
+    <div data-expertise-outcomes className="md:min-h-screen">
+      <div className="h-full flex items-center flex-col md:flex-row">
         <div className="w-1/2">
           <div className="flex">
             {images.map((img, index) => {
@@ -109,7 +109,6 @@ const ExpertiseOutcomes: FC<OutcomesProps> = ({
                   key={index}
                   className={`relative w-[400px] h-[500px] ml-[${left}]`}
                 >
-                  {/* <div className="relative h-full w-full"> */}
                   <Image
                     src={`/assets/images/${img}.png`}
                     fill
@@ -117,7 +116,6 @@ const ExpertiseOutcomes: FC<OutcomesProps> = ({
                     className=""
                   />
                 </div>
-                // </div>
               );
             })}
           </div>
