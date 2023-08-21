@@ -219,12 +219,12 @@ const EventModal: React.FC<ModalProps> = ({ open, onClose }) => {
                     </h4>
                     <Form>
                       <div className="grid grid-cols-1 gap-6 py-6 md:grid-cols-2 md:py-8 2xl:px-4">
-                        {formFields.map((fieldName) => {
+                        {formFields.map((fieldName, index) => {
                           const fieldType = fieldTypes[fieldName];
 
                           if (fieldType === "dropdown") {
                             return (
-                              <div key={fieldName}>
+                              <div key={index}>
                                 <label
                                   htmlFor={fieldName}
                                   className="font-metropolis-thin  text-nk-black relative capitalize md:text-base"
@@ -281,7 +281,7 @@ const EventModal: React.FC<ModalProps> = ({ open, onClose }) => {
                           if (fieldType === "file") {
                             return (
                               <div
-                                key={fieldName}
+                                key={index}
                                 className={`${
                                   fieldName === "resume" && "col-start-1 "
                                 } `}
@@ -346,12 +346,12 @@ const EventModal: React.FC<ModalProps> = ({ open, onClose }) => {
 
                           return (
                             <div
+                              key={index}
                               className={`${
                                 fieldName === "father_name" && "mt-1"
                               }`}
                             >
                               <Input
-                                key={fieldName}
                                 hasError={errors[fieldName]}
                                 isTouched={touched[fieldName]}
                                 label={getFieldLabel(fieldName)}
