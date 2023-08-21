@@ -120,7 +120,6 @@ const EventModal: React.FC<ModalProps> = ({ open, onClose }) => {
         resume: "",
         cover_letter: "",
       });
-      console.log(values.department);
       const res = await fetch("/api/jobs", {
         headers: {
           "Content-Type": "application/json",
@@ -146,6 +145,7 @@ const EventModal: React.FC<ModalProps> = ({ open, onClose }) => {
         setTimeout(() => {
           setShowToast(false);
           resetForm();
+          closeModal();
         }, 1000);
       } else {
         console.log(data);
