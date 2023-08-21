@@ -1,6 +1,8 @@
-import React, { FC, useEffect, useRef } from "react";
+import React from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { getServiceDetail } from "../../../utils/api-calls";
+import { Services } from "../../../utils/types/types";
 import ProcessSteps from "../../../components/services/service-detail/process-steps";
 import ExpertiseOutcomes from "../../../components/services/service-detail/expertise-outcomes";
 import WhatsAppIcon from "../../../public/assets/icons/whatsapp-white-icon.svg";
@@ -15,28 +17,19 @@ interface ServiceDetailProps {
 async function ServiceDetail({ params: { id } }: ServiceDetailProps) {
   // const ServiceDetail: FC<ServiceDetailProps> = () => {
 
+  const data: Services = await getServiceDetail(id);
+  const { title, description, process } = data?.attributes;
+  const descriptionParas: string[] | string = description.split("\n\n");
+
   return (
     <section className="bg-right-top bg-no-repeat md:bg-nk-bg">
       <div className="container overflow-hidden">
         <div className="text-center py-6 md:py-20">
           <h1 className="text-3xl font-metropolis-bold text-nk-black md:text-5xl">
-            NK Design and Construction
+            {title}
           </h1>
           <p className="text-sm font-metropolis-thin text-nk-black py-5 md:text-[1.25rem] md:leading-snug md:py-7">
-            NK Design and Construction is a real estate development company that
-            specializes in providing bespoke services for residential and
-            commercial properties in Pakistan. The company mastery of
-            architecture, construction, and interior design results in
-            spectacular outcomes that prioritize client satisfaction. NK Design
-            and Construction is committed to providing its clients with the
-            highest quality real estate development services, and its team of
-            experienced professionals is dedicated to creating beautiful and
-            functional spaces. NK Design and Construction company has a proven
-            track record of delivering exceptional outcomes for its clients, and
-            its team of experienced professionals is dedicated to creating
-            spaces that are both beautiful and functional. Entrust NK Design and
-            Construction with your dream residential or commercial project, and
-            witness their unwavering dedication to excellence firsthand.
+            {descriptionParas}
           </p>
           <div className="flex items-center justify-center gap-5 md:py-7">
             <Link
@@ -65,8 +58,8 @@ async function ServiceDetail({ params: { id } }: ServiceDetailProps) {
             </Link>
           </div>
         </div>
-        <ProcessSteps />
-        <ExpertiseOutcomes />
+        <ProcessSteps process={process} />
+        {/* <ExpertiseOutcomes /> */}
       </div>
     </section>
   );

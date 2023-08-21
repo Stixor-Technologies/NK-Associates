@@ -167,7 +167,7 @@ export interface socials {
     appgallery: string;
   };
 }
-export interface Service {
+export interface Services {
   attributes: {
     title: string;
     company: string;
@@ -179,14 +179,16 @@ export interface Service {
     };
     expertise: string;
     description: string;
-    process: {
-      id: number;
-      process_title: string;
-      process_description: string;
-      process_image: {
-        data: MediaAttributes;
-      };
-    }[];
+    process: ServiceProcess[];
   };
   id: number;
+}
+
+export interface ServiceProcess {
+  id: number;
+  process_title: string;
+  process_description: string;
+  process_image: {
+    data: MediaAttributes;
+  };
 }
