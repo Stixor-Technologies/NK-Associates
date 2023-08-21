@@ -52,7 +52,7 @@ const Sidebar: React.ForwardRefRenderFunction<HTMLDivElement, SidebarProps> = (
        
       `}
     >
-      <div className="2xl:[3.85rem] flex h-full flex-col items-center justify-center px-[2.125rem] py-[5.75rem] text-center font-metropolis-bold text-[3rem] md:px-[2.375rem] md:text-[3rem] lg:px-[2.625rem] lg:text-[3rem] xl:px-[2.75rem] xl:text-[3.2rem] 2xl:px-[3rem]">
+      <div className="2xl:text-[3.85rem] flex h-full flex-col items-center justify-center px-[2.125rem] py-[5.75rem] text-center font-metropolis-bold text-[3rem] md:px-[2.375rem] md:text-[3rem] lg:px-[2.625rem] lg:text-[3rem] xl:px-[2.75rem] xl:text-[3.2rem] 2xl:px-[3rem]">
         {menuList}
       </div>
     </div>
