@@ -1,5 +1,6 @@
 import { BASE_URL } from "./constants";
-import { Department } from "./types/types";
+import { Department, Property } from "./types/types";
+import { SIMILAR_PROPERTIES_LIMIT } from "./constants";
 export const getGridProperties = async (start: number, limit = 12) => {
   try {
     const resp = await fetch(
@@ -39,6 +40,52 @@ export const getPropertyDetail = async (id: string) => {
   } catch (error) {
     console.error("There was an error getting the Property List", error);
   }
+};
+
+export const getSimilarProperties = async (
+  type: string,
+  category: string,
+  currentPropertyId: string,
+) => {
+  const FILTER_PRIORITY = [
+    { key: "type", value: "" },
+    { key: "category", value: "" },
+  ];
+  try {
+    let properties: Property[] = [];
+    const uniquePropertyIds = new Set();
+
+    FILTER_PRIORITY[0].value = type;
+    FILTER_PRIORITY[1].value = category;
+
+    for (let filter of FILTER_PRIORITY) {
+      if (properties.length >= 4) break;
+
+      const resp = await getPropertiesByFilter(filter, currentPropertyId);
+      const data = await resp.json();
+      for (let prop of data.data) {
+        if (!uniquePropertyIds.has(prop.id) && properties.length < 4) {
+          properties.push(prop);
+          uniquePropertyIds.add(prop.id);
+        }
+      }
+    }
+
+    return properties;
+  } catch (error) {
+    console.error("There was an error getting the Similar Properties", error);
+  }
+};
+
+const getPropertiesByFilter = async (
+  filter: { key: string; value: string },
+  excludeId: string,
+) => {
+  return fetch(
+    `${BASE_URL}/api/properties?populate=*&filters[id][$ne]=${excludeId}&filters[${filter.key}]=${filter.value}&pagination[limit]=${SIMILAR_PROPERTIES_LIMIT}&sort[1]=id`,
+
+    { cache: "no-store" },
+  );
 };
 
 export const getJobDetail = async (id: string) => {
@@ -217,5 +264,18 @@ export const getSocials = async () => {
     return links;
   } catch (error) {
     console.error("There was an error getting social media links", error);
+  }
+};
+
+export const getPhone = async () => {
+  try {
+    let apiUrl = `${BASE_URL}/api/phone`;
+    const resp = await fetch(apiUrl, {
+      cache: "no-store",
+    });
+    const links = await resp.json();
+    return links;
+  } catch (error) {
+    console.error("There was an error getting the phone number", error);
   }
 };

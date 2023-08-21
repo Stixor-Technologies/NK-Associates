@@ -69,14 +69,14 @@ const ProjectOutcome = ({ outcomeImage, outcomeDescription }: PropTypes) => {
         </div>
       </div>
 
-      <div className="w-full md:px-8 lg:w-7/12">
-        <h2 className="mb-4 text-center font-metropolis-bold text-2xl md:mb-8 opacity-0 translate-y-full">
+      <div className="w-full md:px-8 lg:w-7/12 ">
+        <h2 className="mb-4 text-center lg:text-left font-metropolis-bold text-2xl md:mb-8 opacity-0 translate-y-full">
           Project Outcomes
         </h2>
 
         <p
           data-project-outcome-description
-          className="whitespace-pre-line text-center opacity-0"
+          className="whitespace-pre-line text-center lg:text-left opacity-0"
         >
           {outcomeDescription}
         </p>

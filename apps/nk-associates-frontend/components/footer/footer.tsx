@@ -84,8 +84,11 @@ async function Footer() {
         ? links.slice(startIndex, endIndex)
         : links.slice(startIndex);
 
-    const footerPageList = slicedLinks.map((pageLink) => (
-      <li key={pageLink.pathName} className="md:mb-2 md:mt-0 mt-6 mb-1">
+    const footerPageList = slicedLinks.map((pageLink, index) => (
+      <li
+        key={`${index}-${pageLink.pathName}`}
+        className="md:mb-2 md:mt-0 mt-6 mb-1"
+      >
         <Link
           href={`${pageLink.pathName}`}
           className="inline-block bg-gradient-to-r from-nk-white to-nk-white bg-[length:0%_8%] bg-left-bottom bg-no-repeat font-metropolis-thin transition-all duration-500 ease-out hover:bg-[length:100%_8%]"
