@@ -19,14 +19,15 @@ interface ModalProps {
 
 const EventModal: React.FC<ModalProps> = ({ open, onClose }) => {
   const modalElement = useRef<HTMLDivElement | null>(null);
+  const [uploadedFiles, setUploadedFiles] = useState({
+    resume: "",
+    cover_letter: "",
+  });
 
-  //change to get departments
   const [Departments, setDepartments] = useState<any>();
   useEffect(() => {
-    // Fetch Departments and update the state when the component mounts
     FetchDepartments()
       .then((DepartmentsData) => {
-        console.log(DepartmentsData);
         setDepartments(DepartmentsData);
       })
       .catch((error) => {
@@ -86,31 +87,72 @@ const EventModal: React.FC<ModalProps> = ({ open, onClose }) => {
   const [showToast, setShowToast] = useState<boolean>(false);
   const [toastMessage, setToastMessage] = useState<string>("");
 
+  const readFileAsBase64 = (file) => {
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.onload = (event) => {
+        const base64String = (event.target.result as string).split(",")[1];
+        resolve(base64String);
+      };
+
+      reader.onerror = (error) => {
+        reject(error);
+      };
+
+      reader.readAsDataURL(file);
+    });
+  };
+
   const onSubmit = async (values, { resetForm }) => {
     setLoading(true);
+    console.log("resumeBase64");
+
+    const resumeBase64 = values.resume
+      ? await readFileAsBase64(values.resume)
+      : null;
+    console.log(resumeBase64);
+    const coverLetterBase64 = values.cover_letter
+      ? await readFileAsBase64(values.cover_letter)
+      : null;
+    console.log(coverLetterBase64);
     try {
-      const res = await fetch("api/contact", {
+      setUploadedFiles({
+        resume: "",
+        cover_letter: "",
+      });
+      console.log(values.department);
+      const res = await fetch("/api/jobs", {
         headers: {
           "Content-Type": "application/json",
         },
         method: "POST",
         body: JSON.stringify({
           name: values.name,
+          father_name: values.father_name,
           email: values.email,
           phone: values.phone,
-          Departments: values.Departments,
-          message: values.message,
+          current_address: values.current_address,
+          permanent_address: values.permanent_address,
+          department: values.department,
+          resume: resumeBase64,
+          cover_letter: coverLetterBase64,
         }),
       });
 
       const data = await res.json();
-      setToastMessage(data?.message);
-      setShowToast(true);
-
-      setTimeout(() => {
-        setShowToast(false);
-        resetForm();
-      }, 2000);
+      if (data === 202) {
+        setToastMessage("Email has been sent");
+        setShowToast(true);
+        setTimeout(() => {
+          setShowToast(false);
+          resetForm();
+        }, 1000);
+      } else {
+        console.log(data);
+        setToastMessage(`Error: Error sending email`);
+        setShowToast(true);
+        setTimeout(() => setShowToast(false), 1000);
+      }
     } catch (error) {
       setToastMessage(`Error: ${error?.message}`);
       setShowToast(true);
@@ -177,7 +219,7 @@ const EventModal: React.FC<ModalProps> = ({ open, onClose }) => {
       ref={modalElement}
       tabIndex={-1}
       aria-hidden="true"
-      className="fixed inset-0 z-50 hidden w-full overflow-y-auto overflow-x-hidden p-4 md:h-full"
+      className="fixed inset-0 py-[6rem] z-50 hidden w-full overflow-y-auto overflow-x-hidden p-4 md:h-full"
     >
       <div className="relative m-auto w-full max-w-4xl overflow-hidden rounded-3xl bg-white">
         <button
@@ -204,13 +246,13 @@ const EventModal: React.FC<ModalProps> = ({ open, onClose }) => {
           </svg>
         </button>
         <div>
-          <div className="font-metropolis text-nk-black flex flex-wrap text-left text-[0.938rem]">
+          <div className="font-metropolis text-nk-black flex flex-wrap text-left text-[0.938rem] ">
             <Formik
               initialValues={initialValues}
               onSubmit={onSubmit}
               validationSchema={JobFormSchema}
             >
-              {({ errors, touched }) => (
+              {({ errors, touched, setFieldValue }) => (
                 <>
                   <div className="bg-nk-light-gray w-full rounded-3xl px-4 py-7 md:px-12 md:py-14">
                     {showToast && <Toast message={toastMessage} />}
@@ -237,7 +279,7 @@ const EventModal: React.FC<ModalProps> = ({ open, onClose }) => {
                                 <div className="relative">
                                   <Field
                                     as="select"
-                                    name={fieldName}
+                                    name="department"
                                     className={`font-metropolis-light text-nk-black placeholder-nk-gray placeholder:font-metropolis-thin mt-1 flex h-[3.625rem] w-full appearance-none items-center rounded-lg border px-4 py-4 shadow-md placeholder:text-base focus:outline-none ${
                                       touched.message && errors.message
                                         ? "border-nk-red"
@@ -247,12 +289,11 @@ const EventModal: React.FC<ModalProps> = ({ open, onClose }) => {
                                     <option value="" disabled>
                                       Select Department
                                     </option>
-                                    {/* fetch departments and map over them */}
                                     {Departments?.map((department, index) => {
                                       return (
                                         <option
                                           key={index}
-                                          value={`${department?.attributes?.Departments?.toLowerCase()}`}
+                                          value={`${department?.attributes?.name?.toLowerCase()}`}
                                         >
                                           {department?.attributes?.name}
                                         </option>
@@ -270,9 +311,9 @@ const EventModal: React.FC<ModalProps> = ({ open, onClose }) => {
                                   </div>
                                 </div>
 
-                                {touched.Departments && errors.Departments && (
+                                {touched.department && errors.department && (
                                   <p className="text-nk-red mt-2 text-sm italic">
-                                    {errors.Departments as string}
+                                    {errors.department as string}
                                   </p>
                                 )}
                               </div>
@@ -313,17 +354,31 @@ const EventModal: React.FC<ModalProps> = ({ open, onClose }) => {
                                         multiple={false}
                                         className="hidden"
                                         type="file"
+                                        onChange={(event) => {
+                                          const file = event.target.files[0];
+                                          setFieldValue(fieldName, file);
+                                          setUploadedFiles((prevFiles) => ({
+                                            ...prevFiles,
+                                            [fieldName]: file ? file.name : "",
+                                          }));
+                                        }}
                                       />
 
                                       <div className="aspect-w-1 aspect-h-1 relative  flex h-full w-full items-center justify-center">
-                                        <div className="h-[3.5rem] w-[3.5rem]">
-                                          <Image
-                                            src={uploadIcon}
-                                            alt="Preview"
-                                            className="object-contain"
-                                            style={{ objectFit: "contain" }}
-                                          />
-                                        </div>
+                                        {uploadedFiles[fieldName] ? (
+                                          <p className="text-nk-black font-metropolis-light text-center">
+                                            {uploadedFiles[fieldName]}
+                                          </p>
+                                        ) : (
+                                          <div className="h-[3.5rem] w-[3.5rem]">
+                                            <Image
+                                              src={uploadIcon}
+                                              alt="Preview"
+                                              className="object-contain"
+                                              style={{ objectFit: "contain" }}
+                                            />
+                                          </div>
+                                        )}
                                       </div>
                                     </label>
                                   </div>
@@ -335,9 +390,9 @@ const EventModal: React.FC<ModalProps> = ({ open, onClose }) => {
                                   </p>
                                 </div>
 
-                                {touched.Departments && errors.Departments && (
+                                {touched[fieldName] && errors[fieldName] && (
                                   <p className="text-nk-red mt-2 text-sm italic">
-                                    {errors.Departments as string}
+                                    {errors[fieldName] as string}
                                   </p>
                                 )}
                               </div>
@@ -355,7 +410,7 @@ const EventModal: React.FC<ModalProps> = ({ open, onClose }) => {
                                 hasError={errors[fieldName]}
                                 isTouched={touched[fieldName]}
                                 label={getFieldLabel(fieldName)}
-                                name={getFieldLabel(fieldName)}
+                                name={fieldName}
                                 placeholder={placeholders[fieldName]}
                                 errorMessage={errors[fieldName]}
                                 isRequired={

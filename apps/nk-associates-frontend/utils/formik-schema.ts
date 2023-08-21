@@ -1,4 +1,5 @@
 import * as Yup from "yup";
+const FILE_SIZE = 5 * 1000 * 1000;
 
 export const ContactFormSchema = Yup.object().shape({
   name: Yup.string()
@@ -31,7 +32,7 @@ export const JobFormSchema = Yup.object().shape({
   name: Yup.string()
     .min(3, "Minimum 3 characters")
     .max(20, "Maximum 25 characters")
-    .required("Please enter you name"),
+    .required("Please enter your name"),
 
   father_name: Yup.string()
     .min(3, "Minimum 3 characters")
@@ -48,12 +49,30 @@ export const JobFormSchema = Yup.object().shape({
   current_address: Yup.string()
     .min(3, "Minimum 3 characters")
     .max(100, "Maximum 100 characters")
-    .required("Please enter you current address"),
+    .required("Please enter your current address"),
 
   permanent_address: Yup.string()
     .min(3, "Minimum 3 characters")
     .max(100, "Maximum 100 characters")
-    .required("Please enter you permanent address"),
+    .required("Please enter your permanent address"),
 
-  department: Yup.string().required("Please select category"),
+  department: Yup.string().required("Please select department"),
+
+  resume: Yup.mixed()
+    .test("fileRequired", "Please attach your resume", function (value) {
+      return Boolean(value && value instanceof File);
+    })
+    .test("fileSize", "Image file should not exceed 5MB", function (value) {
+      if (!value) return true;
+      return value.size <= FILE_SIZE;
+    }),
+
+  cover_letter: Yup.mixed().test(
+    "fileSize",
+    "Image file should not exceed 5MB",
+    function (value) {
+      if (!value) return true;
+      return value.size <= FILE_SIZE;
+    },
+  ),
 });
