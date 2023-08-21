@@ -9,7 +9,7 @@ interface CardProps {
   service: Service;
 }
 
-const serviceCard: FC<CardProps> = ({ service }) => {
+const ServiceCard: FC<CardProps> = ({ service }) => {
   const { title, description, company } = service?.attributes;
   const id = service?.id;
   const thumbnailImage =
@@ -22,7 +22,7 @@ const serviceCard: FC<CardProps> = ({ service }) => {
           <Link
             href={`service/${id}`}
             rel="noopener noreferrer"
-            className="block relative sm:w-1/2 lg:w-[45%] min-h-[300px] md:min-h-[300px] lg:min-h-[400px] w-full h-full rounded-xl overflow-hidden items-center justify-center my-auto"
+            className="block relative sm:w-1/2 lg:w-[45%] min-h-[18.75rem] lg:min-h-[400px] w-full h-full rounded-xl overflow-hidden items-center justify-center my-auto"
           >
             <Image
               src={`${BASE_URL}${thumbnailImage || "/"}`}
@@ -55,7 +55,7 @@ const serviceCard: FC<CardProps> = ({ service }) => {
 
             {company_logo && (
               <Image
-                src={`${BASE_URL}${company_logo || "/"}`}
+                src={`${BASE_URL}${company_logo}`}
                 alt="service Logo"
                 className="mx-auto pt-2 sm:mx-0 md:pt-0"
                 width={190}
@@ -83,4 +83,4 @@ const serviceCard: FC<CardProps> = ({ service }) => {
   );
 };
 
-export default serviceCard;
+export default ServiceCard;

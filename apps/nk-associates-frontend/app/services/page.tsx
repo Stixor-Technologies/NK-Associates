@@ -2,7 +2,7 @@ import React from "react";
 import LinkButton from "../../components/button/link-button";
 import ServicesList from "../../components/services/services-list";
 
-const page = () => {
+const Services = () => {
   return (
     <section className="bg-right-top bg-no-repeat md:bg-nk-bg">
       <div className="container flex flex-col">
@@ -28,4 +28,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Services;
