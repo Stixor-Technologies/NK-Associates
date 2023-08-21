@@ -1,5 +1,7 @@
 #!/bin/bash
 
+export PATH=$PATH:/home/ubuntu/.npm-global/bin
+
 # Give permission for everything in the directory
 sudo chmod -R 777 /home/ubuntu/app
 
@@ -11,4 +13,4 @@ yarn install
 # Navigate to your project directory and start the app
 cd /home/ubuntu/app/apps/nk-associates-cms
 pm2 kill
-pm2 start yarn --name nk-associates-cms -- start
+pm2 start ./scripts/pm2.sh --name nk-cms

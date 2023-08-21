@@ -66,7 +66,7 @@ async function Footer() {
     { pathName: "/contact", label: "Contact Us" },
     { pathName: "/careers", label: "Career" },
     { pathName: "/events", label: "Events" },
-    { pathName: "#", label: "Services" },
+    { pathName: "/services", label: "Services" },
   ];
 
   const footerSocialLinks: footerSocialLink[] = [
@@ -127,7 +127,7 @@ async function Footer() {
   });
 
   return (
-    <footer className="min-h-fit bg-nk-dark-gray font-metropolis text-nk-white">
+    <footer className="z-10 relative min-h-fit bg-nk-dark-gray font-metropolis text-nk-white">
       <div className="mx-auto py-6 pb-2 md:py-4 md:pt-12">
         <div className="mx-5 sm:mx-10 md:mx-auto">
           <div className="md:flex md:justify-between">

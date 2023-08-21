@@ -1,15 +1,12 @@
 import Link from "next/link";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-
-import ProjectDetailsVR from "../../../components/project-details/project-details-vr";
 import ProjectIntroduction from "../../../components/project-details/project-introduction";
 import ProjectGallery from "../../../components/project-details/project-gallery";
 import ProjectTimeline from "../../../components/project-details/project-timeline";
 import ProjectComparison from "../../../components/project-details/project-comparison";
 import ProjectOutcome from "../../../components/project-details/project-outcome";
 import ProjectMap from "../../../components/project-details/project-map";
-
 import { Project } from "../../../utils/types/types";
 import { getProjectDetail } from "../../../utils/api-calls";
 import { BASE_URL } from "../../../utils/constants";
@@ -31,14 +28,8 @@ async function ProjectDetails({ params: { id } }: ProjectDetailProps) {
     return `${BASE_URL}${picture?.attributes?.url}`;
   });
 
-  const modelURL =
-    project.threeDModel && project.threeDModel.data
-      ? `${BASE_URL}${project?.threeDModel?.data?.attributes?.url}`
-      : undefined;
-
   return (
     <>
-      <ProjectDetailsVR modelURL={modelURL} />
       <ProjectIntroduction
         projectName={project.title}
         description={project.description}
@@ -70,7 +61,7 @@ async function ProjectDetails({ params: { id } }: ProjectDetailProps) {
           href={`${BASE_URL}${pdfUrl}`}
           target="_blank"
           rel="noopener noreferrer"
-          className="group relative z-10 mx-auto my-12 flex w-[13.75rem] items-center justify-center gap-4 rounded-full border bg-gradient-to-b from-nk-gradient-red-one to-nk-gradient-red-two px-4 py-2.5 text-sm text-nk-white transition-all duration-100 hover:border-nk-red hover:shadow-lg md:w-[25rem] md:justify-center lg:text-lg"
+          className="group relative z-10 mx-auto mb-12 flex w-[13.75rem] items-center justify-center gap-4 rounded-full border bg-gradient-to-b from-nk-gradient-red-one to-nk-gradient-red-two px-4 py-2.5 text-sm text-nk-white transition-all duration-100 hover:border-nk-red hover:shadow-lg md:w-[25rem] md:justify-center lg:text-lg"
         >
           Download Brochure
           <span className="block">

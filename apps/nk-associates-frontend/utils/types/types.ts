@@ -167,3 +167,26 @@ export interface socials {
     appgallery: string;
   };
 }
+export interface Service {
+  attributes: {
+    title: string;
+    company: string;
+    service_image: {
+      data: MediaAttributes;
+    };
+    company_logo: {
+      data: MediaAttributes;
+    };
+    expertise: string;
+    description: string;
+    process: {
+      id: number;
+      process_title: string;
+      process_description: string;
+      process_image: {
+        data: MediaAttributes;
+      };
+    }[];
+  };
+  id: number;
+}

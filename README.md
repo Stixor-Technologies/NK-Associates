@@ -33,31 +33,31 @@ NK Associates & Builders Pvt Ltd, established in 2004, is a prominent real estat
 
 ## Tools Used
 
-#### Turbo-Repo
+### Turbo-Repo
 
 Turbo-Repo is a web-based Git repository manager that provides a simple and user-friendly interface for managing Git repositories. It provides features such as Git hosting, code review, issue tracking, dependency management, code generation, automated testing, and deployment capabilities.Furthermore it is the development platform used for this project which simplifies the development process by integrating various tools and workflows.
 
-#### Strapi
+### Strapi
 
 Some of the key features of Strapi include:
 
-##### Customizable content types and fields:
+#### Customizable content types and fields:
 
 Strapi provides a powerful content modeling system that allows us to create custom content types and fields to suit the needs of our application.
 
-##### API-first approach:
+#### API-first approach:
 
 Strapi is designed to provide an API-first approach to content management, making integration of our content with other web applications or services easy.
 
-##### User management:
+#### User management:
 
 Strapi provides a built-in user management system that enables us to manage user authentication and authorization for our application.
 
-##### Flexible plugins and extensions:
+#### Flexible plugins and extensions:
 
 Strapi provides a flexible plugin system that allows us to extend its functionality to meet the needs of your application.
 
-##### Multi-database support:
+#### Multi-database support:
 
 Strapi supports multiple databases, including MongoDB, Postgres, MySQL, and SQLite.
 
