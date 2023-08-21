@@ -51,7 +51,7 @@ const ProcessSteps: FC<ProcessStepsProps> = () => {
       <h3 className="text-center font-metropolis-semibold text-[1.75rem] mb-7 md:text-4xl md:mb-12">
         Service Process
       </h3>
-      <div className="panels-container relative">
+      <div className="panels-container relative min-h-[324px]">
         {sam.map((index) => (
           <div
             key={index}
@@ -71,6 +71,11 @@ const ProcessSteps: FC<ProcessStepsProps> = () => {
           </div>
         ))}
       </div>
+      <p className=" max-w-5xl mx-auto text-center mt-4 text-base font-metropolis-thin text-nk-black md:mt-8 md:text-2xl">
+        NK Design and Construction's commitment to innovation, collaboration,
+        and attention to detail ensures that every project is a testament to our
+        expertise and the vision of our clients.
+      </p>
     </div>
   );
 };
