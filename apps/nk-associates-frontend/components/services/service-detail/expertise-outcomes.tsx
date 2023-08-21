@@ -20,24 +20,42 @@ const ExpertiseOutcomes: FC<OutcomesProps> = ({
   const images = ["placeholder", "placeholder2", "placeholder"];
 
   useLayoutEffect(() => {
+    // expertise text and images animation
+    const expertiseImages: HTMLDivElement[] =
+      gsap.utils.toArray(".expertise-images");
     const ourText = new SplitType("[data-expertise] h2", { types: "chars" });
     const chars = ourText.chars;
 
-    // expertise animation
     const expertiseTl = gsap.timeline({
       scrollTrigger: {
         trigger: "[data-expertise]",
-        start: "top 70%",
-        toggleActions: "play none none none",
+        start: "top 30%",
+        // toggleActions: "play none none none",
       },
     });
-    expertiseTl.from(chars, {
-      y: 100,
+
+    expertiseTl.from(".expertise-images", {
+      xPercent: 60,
       opacity: 0,
+      yPercent: 12,
+      stagger: 0.3,
       duration: 1,
-      stagger: 0.03,
-      ease: "power4.out",
+      // scale: 0,
+      scale: 0.5,
+      ease: "power2.out",
     });
+
+    expertiseTl.from(
+      chars,
+      {
+        y: 100,
+        opacity: 0,
+        duration: 1,
+        stagger: 0.03,
+        ease: "power4.out",
+      },
+      "<0.5",
+    );
     expertiseTl.from(
       "[data-expertise] p",
       {
@@ -108,7 +126,7 @@ const ExpertiseOutcomes: FC<OutcomesProps> = ({
               return (
                 <div
                   key={index}
-                  className="absolute w-full max-w-[400px] h-[500px] origin-left"
+                  className="expertise-images absolute w-[80%] max-w-[400px] h-[500px] origin-left"
                   style={{
                     transform: `scale(${scale})`,
                     left: `${left}%`,
@@ -118,7 +136,7 @@ const ExpertiseOutcomes: FC<OutcomesProps> = ({
                     src={`/assets/images/bg-project.jpeg`}
                     fill
                     alt=""
-                    className=" w-full h-full object-cover rounded-xl"
+                    className="object-cover rounded-xl"
                   />
                 </div>
               );
@@ -127,7 +145,7 @@ const ExpertiseOutcomes: FC<OutcomesProps> = ({
         </div>
 
         <div className="w-1/2 relative flex items-center  justify-center h-full">
-          <div data-expertise className="text-panel absolute bg-nk-background">
+          <div data-expertise className="text-panel absolute bg-transparent">
             <div className="overflow-hidden">
               <h2 className="text-[1.75rem] font-metropolis-bold text-nk-black md:text-5xl">
                 Areas of Expertise
@@ -145,7 +163,7 @@ const ExpertiseOutcomes: FC<OutcomesProps> = ({
             </p>
           </div>
 
-          <div className="text-panel absolute bg-nk-background">
+          <div className="text-panel absolute bg-transparent">
             <h2 className="text-[1.75rem] font-metropolis-bold text-nk-black md:text-5xl">
               Outcomes
             </h2>
