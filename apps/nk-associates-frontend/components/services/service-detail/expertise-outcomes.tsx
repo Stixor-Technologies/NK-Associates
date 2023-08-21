@@ -99,21 +99,26 @@ const ExpertiseOutcomes: FC<OutcomesProps> = ({
   return (
     <div data-expertise-outcomes className="md:min-h-screen">
       <div className="h-full flex items-center flex-col md:flex-row">
-        <div className="w-1/2">
-          <div className="flex">
+        <div className="w-1/2 h-full">
+          <div className="relative flex items-center h-full">
             {images.map((img, index) => {
-              const left = `${index * 20}px`;
-              const scal = 1;
+              const numberOfImages = images.length;
+              const scale = 1 - 0.1 * (numberOfImages - index - 1);
+              const left = index * 10;
               return (
                 <div
                   key={index}
-                  className={`relative w-[400px] h-[500px] ml-[${left}]`}
+                  className="absolute w-full max-w-[400px] h-[500px] origin-left"
+                  style={{
+                    transform: `scale(${scale})`,
+                    left: `${left}%`,
+                  }}
                 >
                   <Image
-                    src={`/assets/images/${img}.png`}
+                    src={`/assets/images/bg-project.jpeg`}
                     fill
                     alt=""
-                    className=""
+                    className=" w-full h-full object-cover rounded-xl"
                   />
                 </div>
               );
@@ -121,7 +126,7 @@ const ExpertiseOutcomes: FC<OutcomesProps> = ({
           </div>
         </div>
 
-        <div className="w-1/2 relative flex items-center  justify-center ">
+        <div className="w-1/2 relative flex items-center  justify-center h-full">
           <div data-expertise className="text-panel absolute bg-nk-background">
             <div className="overflow-hidden">
               <h2 className="text-[1.75rem] font-metropolis-bold text-nk-black md:text-5xl">

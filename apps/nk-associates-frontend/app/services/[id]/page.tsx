@@ -65,7 +65,7 @@ async function ServiceDetail({ params: { id } }: ServiceDetailProps) {
             </Link>
           </div>
         </div>
-        <ProcessSteps />
+        {/* <ProcessSteps /> */}
         <ExpertiseOutcomes />
       </div>
     </section>
