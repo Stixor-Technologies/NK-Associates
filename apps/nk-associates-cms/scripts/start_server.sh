@@ -1,5 +1,7 @@
 #!/bin/bash
 
+export PATH=$PATH:/home/ubuntu/.npm-global/bin
+
 # Give permission for everything in the directory
 sudo chmod -R 777 /home/ubuntu/app
 
