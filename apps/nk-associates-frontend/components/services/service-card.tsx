@@ -22,7 +22,7 @@ const ServiceCard: FC<CardProps> = ({ service }) => {
           <Link
             href={`service/${id}`}
             rel="noopener noreferrer"
-            className="block relative sm:w-1/2 lg:w-[45%] min-h-[18.75rem] lg:min-h-[400px] w-full h-full rounded-xl overflow-hidden items-center justify-center my-auto"
+            className="block relative sm:w-1/2 lg:w-[45%] min-h-[18.75rem] lg:min-h-[25rem] w-full h-full rounded-xl overflow-hidden items-center justify-center my-auto"
           >
             <Image
               src={`${BASE_URL}${thumbnailImage || "/"}`}
