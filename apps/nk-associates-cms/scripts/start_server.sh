@@ -11,4 +11,4 @@ yarn install
 # Navigate to your project directory and start the app
 cd /home/ubuntu/app/apps/nk-associates-cms
 pm2 kill
-pm2 start ./scripts/start.sh --name nk-cms
+pm2 start ./scripts/pm2.sh --name nk-cms
