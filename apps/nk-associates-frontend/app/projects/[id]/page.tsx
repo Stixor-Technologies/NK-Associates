@@ -1,14 +1,12 @@
 import Link from "next/link";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-
 import ProjectIntroduction from "../../../components/project-details/project-introduction";
 import ProjectGallery from "../../../components/project-details/project-gallery";
 import ProjectTimeline from "../../../components/project-details/project-timeline";
 import ProjectComparison from "../../../components/project-details/project-comparison";
 import ProjectOutcome from "../../../components/project-details/project-outcome";
 import ProjectMap from "../../../components/project-details/project-map";
-
 import { Project } from "../../../utils/types/types";
 import { getProjectDetail } from "../../../utils/api-calls";
 import { BASE_URL } from "../../../utils/constants";
