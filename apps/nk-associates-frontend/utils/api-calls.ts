@@ -1,5 +1,5 @@
 import { BASE_URL } from "./constants";
-import { Department, Property } from "./types/types";
+import { Department, Service, Property } from "./types/types";
 import { SIMILAR_PROPERTIES_LIMIT } from "./constants";
 export const getGridProperties = async (start: number, limit = 12) => {
   try {
@@ -264,6 +264,16 @@ export const getSocials = async () => {
     return links;
   } catch (error) {
     console.error("There was an error getting social media links", error);
+  }
+};
+
+export const getServices = async () => {
+  try {
+    const resp = await fetch(`${BASE_URL}/api/services?populate=deep`);
+    const data = await resp.json();
+    return data;
+  } catch (error) {
+    console.error("There was an error getting services", error);
   }
 };
 

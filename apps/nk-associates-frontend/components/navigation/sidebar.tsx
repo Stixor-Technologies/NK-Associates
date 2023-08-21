@@ -26,7 +26,7 @@ const Sidebar: React.ForwardRefRenderFunction<HTMLDivElement, SidebarProps> = (
     { pathName: "#", label: "About Us" },
     { pathName: "properties", label: "Property" },
     { pathName: "projects", label: "Projects" },
-    { pathName: "#", label: "Services" },
+    { pathName: "services", label: "Services" },
     { pathName: "careers", label: "Career" },
     { pathName: "events", label: "Event" },
     { pathName: "contact", label: "Contact" },
