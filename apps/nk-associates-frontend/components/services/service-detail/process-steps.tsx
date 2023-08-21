@@ -13,34 +13,37 @@ const ProcessSteps: FC<ProcessStepsProps> = () => {
   const sam = [1, 2, 3, 5];
 
   useLayoutEffect(() => {
-    const cards = gsap.utils.toArray(".process-card");
-    gsap.set(".process-card:not(:first-child)", { x: "200%" });
+    const isScreenWideEnough = window.innerWidth > 768;
+    if (isScreenWideEnough) {
+      const cards: HTMLDivElement[] = gsap.utils.toArray(".process-card");
+      gsap.set(".process-card:not(:first-child)", { x: "200%" });
 
-    gsap.to("[data-cards-container]", {
-      scrollTrigger: {
-        trigger: "[data-cards-container]",
-        endTrigger: ".panels-container",
-        start: "top 15%",
-        end: `+=${cards[0].clientHeight * (cards.length * 1.5)}`,
-        pin: true,
-        markers: true,
-        pinSpacing: true,
-      },
-    });
-
-    cards.forEach((card, index) => {
-      gsap.to(card, {
-        x: "0%",
-        duration: 1,
+      gsap.to("[data-cards-container]", {
         scrollTrigger: {
-          trigger: card,
-          start: `${index * 100}% top`,
-          end: `${(index + 1) * 100}% top`,
-          scrub: 1.5,
-          invalidateOnRefresh: true,
+          trigger: "[data-cards-container]",
+          endTrigger: ".panels-container",
+          start: "top 15%",
+          end: `+=${cards[0].clientHeight * (cards.length * 1.5)}`,
+          pin: true,
+          markers: true,
+          pinSpacing: true,
         },
       });
-    });
+
+      cards.forEach((card, index) => {
+        gsap.to(card, {
+          x: "0%",
+          duration: 1,
+          scrollTrigger: {
+            trigger: card,
+            start: `${index * 100}% top`,
+            end: `${(index + 1) * 100}% top`,
+            scrub: 1.5,
+            invalidateOnRefresh: true,
+          },
+        });
+      });
+    }
   }, []);
 
   return (
@@ -52,12 +55,12 @@ const ProcessSteps: FC<ProcessStepsProps> = () => {
         {sam.map((index) => (
           <div
             key={index}
-            className="process-card absolute w-full flex flex-col items-center bg-nk-white rounded-xl shadow-md gap-8 px-6 py-8 md:flex-row md:gap-8 md:px-8 md:py-12"
+            className="process-card w-full my-5 flex flex-col items-center bg-nk-white rounded-xl shadow-md gap-8 sm:gap-6 px-6 py-8 sm:flex-row md:gap-8 md:px-8 md:py-12 md:absolute md:my-0"
           >
-            <div>
-              <Image src={Vector} width={226} height={229} alt="" />
+            <div className="relative w-[142px] h-[144px] md:w-[226px] md:h-[228px]">
+              <Image src={Vector} fill alt={`process-img-${index}`} />
             </div>
-            <div className="flex-1 text-center md:text-left">
+            <div className="flex-1 text-center sm:text-left">
               <h2 className="text-2xl font-metropolis-semibold md:text-[2.5rem]">
                 Initial Consultation:
               </h2>
