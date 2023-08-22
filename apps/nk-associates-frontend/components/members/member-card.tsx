@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import React, { FC, useState } from "react";
 import { BASE_URL } from "../../utils/constants";
 import Image from "next/image";
 import Link from "next/link";
@@ -19,6 +19,8 @@ const memberCard: FC<CardProps> = ({ member, className }) => {
   const id = member?.id;
   const member_image = member?.attributes?.member_image?.data?.attributes?.url;
 
+  const [showFullDescription, setShowFullDescription] = useState(false);
+
   interface SocialLink {
     pathName: string;
     image;
@@ -31,7 +33,15 @@ const memberCard: FC<CardProps> = ({ member, className }) => {
     { pathName: WA, image: WhatsAppIcon },
   ];
 
-  console.log("image url", member_image);
+  const toggleDescription = () => {
+    setShowFullDescription(!showFullDescription);
+  };
+
+  let truncatedDescription = description.slice(0, 100);
+  if (description.length > 100) {
+    truncatedDescription += "....";
+  }
+
   const SocialList = SocialLinks.map((socialLink, index) => {
     return (
       socialLink?.pathName && (
@@ -48,13 +58,14 @@ const memberCard: FC<CardProps> = ({ member, className }) => {
               src={socialLink.image}
               width={20}
               height={30}
-              alt="Facebook"
+              alt="Social Link"
             />
           </Link>
         </div>
       )
     );
   });
+
   return (
     <div className="flex flex-col items-center flex-grow max-w-[18.125rem] min-w-[17.288rem]">
       <Image
@@ -67,18 +78,31 @@ const memberCard: FC<CardProps> = ({ member, className }) => {
       <div className="font-metropolis-bold text-center text-[1.625rem]">
         {name}
       </div>
-      <div className="my-1 font-metropolis-semibold text-center text-nk-red text-base">
+      <div className="font-metropolis-semibold text-center text-nk-red text-base">
         {role}
       </div>
-      <div className="my-1 font-metropolis text-center text-nk-dark-gray text-xs ">
-        {description}
+      <div className="font-metropolis text-center text-nk-dark-gray text-xs">
+        {showFullDescription ? description : truncatedDescription}
+        {!showFullDescription && (
+          <div className="mt-1">
+            <button
+              className="text-nk-red text-metropolis-semibold underline text-xs"
+              onClick={toggleDescription}
+            >
+              View More
+            </button>
+          </div>
+        )}
       </div>
-      <Link
-        href={`teams/${id}`}
-        className="my-2 text-nk-red font-metropolis-semibold text-xs underline"
-      >
-        View More
-      </Link>
+
+      {showFullDescription && (
+        <button
+          className="text-nk-red text-metropolis-semibold underline pt-1 text-xs"
+          onClick={toggleDescription}
+        >
+          View Less
+        </button>
+      )}
       <div className="flex gap-2">{SocialList}</div>
     </div>
   );
