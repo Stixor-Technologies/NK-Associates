@@ -25,7 +25,7 @@ const EventModal: React.FC<ModalProps> = ({ open, onClose }) => {
     cover_letter: "",
   });
 
-  const [Departments, setDepartments] = useState<Department>();
+  const [Departments, setDepartments] = useState<Department[]>();
   useEffect(() => {
     FetchDepartments()
       .then((DepartmentsData) => {
