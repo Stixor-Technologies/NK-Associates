@@ -11,6 +11,7 @@ import Toast from "../../components/shared/toast";
 import { BASE_URL } from "../../utils/constants";
 import { JobFormSchema } from "../../utils/formik-schema";
 import uploadIcon from "../../public/assets/icons/upload-icon.svg";
+import { Department } from "../../utils/types/types";
 
 interface ModalProps {
   open: boolean;
@@ -24,7 +25,7 @@ const EventModal: React.FC<ModalProps> = ({ open, onClose }) => {
     cover_letter: "",
   });
 
-  const [Departments, setDepartments] = useState<any>();
+  const [Departments, setDepartments] = useState<Department>();
   useEffect(() => {
     FetchDepartments()
       .then((DepartmentsData) => {
@@ -105,16 +106,13 @@ const EventModal: React.FC<ModalProps> = ({ open, onClose }) => {
 
   const onSubmit = async (values, { resetForm }) => {
     setLoading(true);
-    console.log("resumeBase64");
 
     const resumeBase64 = values.resume
       ? await readFileAsBase64(values.resume)
       : null;
-    console.log(resumeBase64);
     const coverLetterBase64 = values.cover_letter
       ? await readFileAsBase64(values.cover_letter)
       : null;
-    console.log(coverLetterBase64);
     try {
       setUploadedFiles({
         resume: "",
@@ -148,7 +146,6 @@ const EventModal: React.FC<ModalProps> = ({ open, onClose }) => {
           closeModal();
         }, 1000);
       } else {
-        console.log(data);
         setToastMessage(`Error: Error sending email`);
         setShowToast(true);
         setTimeout(() => setShowToast(false), 1000);
