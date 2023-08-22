@@ -13,7 +13,7 @@ interface CardProps {
   className: string;
 }
 
-const memberCard: FC<CardProps> = ({ member, className }) => {
+const MemberCard: FC<CardProps> = ({ member, className }) => {
   const { name, role, description, whatsapp, linkedin, instagram, facebook } =
     member?.attributes;
   const id = member?.id;
@@ -108,4 +108,4 @@ const memberCard: FC<CardProps> = ({ member, className }) => {
   );
 };
 
-export default memberCard;
+export default MemberCard;
