@@ -12,7 +12,7 @@ export async function POST(request: NextRequest) {
   if (data?.resume) {
     attachments.push({
       content: data.resume,
-      filename: "resume.pdf", // or any other naming convention you prefer
+      filename: "resume",
       type: "application/pdf",
       disposition: "attachment",
     });
