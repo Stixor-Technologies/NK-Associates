@@ -43,7 +43,7 @@ const MembersList: FC = () => {
         ))
       ) : (
         <div>
-          <p className="font-metropolis text-nk-dark-gray py-10 text-center text-base">
+          <p className="font-metropolis text-nk-dark-gray py-10 text-center text-base my-4 mx-auto">
             No Members Available
           </p>
         </div>
