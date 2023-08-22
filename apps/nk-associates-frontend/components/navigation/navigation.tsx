@@ -82,7 +82,7 @@ const Navigation = () => {
 
   return (
     <div>
-      <div className="fixed top-0 z-50 w-full flex-col bg-nk-white-dark">
+      <div className="fixed top-0 z-40 w-full flex-col bg-nk-white-dark">
         <div className="mx-auto my-auto flex w-[95%] items-center justify-between px-3 py-3">
           <div>
             {/* Will be changed to point to home page once it is developed */}
