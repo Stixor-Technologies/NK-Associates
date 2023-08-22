@@ -29,7 +29,7 @@ const MembersList: FC = () => {
   return (
     <div
       ref={ref}
-      className="md:py-1 property-carousel flex flex-nowrap overflow-x-scroll px-4 gap-4 py-8 pb-12 md:px-8 md:pb-16 md:gap-6 xl:px-0"
+      className="md:py-1 property-carousel flex flex-nowrap overflow-x-scroll px-4 gap-4 py-8 pb-12 md:px-8 md:pb-16 md:gap-6 xl:px-0 mx-auto"
     >
       {isLoading && members.length === 0 ? (
         <div className="my-4 mx-auto">
@@ -42,8 +42,8 @@ const MembersList: FC = () => {
           </div>
         ))
       ) : (
-        <div>
-          <p className="font-metropolis text-nk-dark-gray py-10 text-center text-base my-4 mx-auto">
+        <div className="text-center mx-auto">
+          <p className="font-metropolis text-nk-dark-gray py-10 text-base">
             No Members Available
           </p>
         </div>
