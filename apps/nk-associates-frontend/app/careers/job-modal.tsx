@@ -115,10 +115,6 @@ const EventModal: React.FC<ModalProps> = ({ open, onClose }) => {
       ? await readFileAsBase64(values.cover_letter)
       : null;
     try {
-      setUploadedFiles({
-        resume: "",
-        cover_letter: "",
-      });
       const res = await fetch("/api/jobs", {
         headers: {
           "Content-Type": "application/json",
