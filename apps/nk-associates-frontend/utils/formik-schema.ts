@@ -62,17 +62,17 @@ export const JobFormSchema = Yup.object().shape({
     .test("fileRequired", "Please attach your resume", function (value) {
       return Boolean(value && value instanceof File);
     })
-    .test("fileSize", "Image file should not exceed 5MB", function (value) {
+    .test("fileSize", "File should not exceed 5MB", function (value) {
       if (!value) return true;
-      return value.size <= FILE_SIZE;
+      return value instanceof File && value.size <= FILE_SIZE;
     }),
 
   cover_letter: Yup.mixed().test(
     "fileSize",
-    "Image file should not exceed 5MB",
+    "File should not exceed 5MB",
     function (value) {
       if (!value) return true;
-      return value.size <= FILE_SIZE;
+      return value instanceof File && value.size <= FILE_SIZE;
     },
   ),
 });
