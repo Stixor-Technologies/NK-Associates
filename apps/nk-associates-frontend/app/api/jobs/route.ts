@@ -21,7 +21,7 @@ export async function POST(request: NextRequest) {
   if (data?.cover_letter) {
     attachments.push({
       content: data.cover_letter,
-      filename: "cover_letter.pdf",
+      filename: "cover_letter",
       type: "application/pdf",
       disposition: "attachment",
     });
