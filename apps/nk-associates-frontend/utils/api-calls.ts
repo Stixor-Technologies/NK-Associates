@@ -290,6 +290,19 @@ export const getContactNumber = async () => {
   }
 };
 
+export const getMembers = async () => {
+  try {
+    let apiUrl = `${BASE_URL}/api/teams?populate=*`;
+    const resp = await fetch(apiUrl, {
+      cache: "no-store",
+    });
+    const links = await resp.json();
+    return links;
+  } catch (error) {
+    console.error("There was an error getting the team members", error);
+  }
+};
+
 export const getServiceDetail = async (id: string) => {
   try {
     const resp = await fetch(`${BASE_URL}/api/services/${id}?populate=deep`, {

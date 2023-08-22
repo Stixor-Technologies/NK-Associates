@@ -199,3 +199,19 @@ export interface ServiceProcess {
     data: MediaAttributes;
   };
 }
+
+export interface Member {
+  id: number;
+  attributes: {
+    name: string;
+    role: string;
+    description: string;
+    whatsapp: string;
+    linkedin: string;
+    instagram: string;
+    facebook: string;
+    member_image: {
+      data: MediaAttributes;
+    };
+  };
+}
