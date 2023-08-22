@@ -1,6 +1,5 @@
 import React, { FC } from "react";
 import { BASE_URL } from "../../utils/constants";
-import placeholder from "../../public/assets/images/placeholder2.svg";
 import Image from "next/image";
 import Link from "next/link";
 import { Member } from "../../utils/types/types";
