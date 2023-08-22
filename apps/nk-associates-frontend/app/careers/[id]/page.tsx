@@ -77,7 +77,7 @@ function JobDetail({ params: { id } }: JobDetailProps) {
   }
 
   return (
-    <div className=" block text-center container">
+    <div className=" block text-center container text-nk-black">
       <JobModal onClose={closeModal} open={isOpen} />
 
       <div className="font-metropolis-bold pb-[0.764rem] md:pb-[2.058rem] pt-[1rem] md:pt-[2.912rem] text-[1.875rem] md:text-[3rem]">
@@ -86,7 +86,7 @@ function JobDetail({ params: { id } }: JobDetailProps) {
       <div className="font-metropolis-thin text-nk-black text-[0.875rem] md:text-[1.25rem]">
         {description}
       </div>
-      <div className="font-metropolis-semibold pb-[0.764rem] md:pb-[0.789rem] pt-[0.764rem] md:pt-[1.999rem] text-[1rem] md:text-[1.5rem]">
+      <div className="font-metropolis-semibold pb-[0.764rem] md:pb-[0.789rem] pt-[0.764rem] md:pt-[1.999rem] text-[1rem] md:text-[1.5rem] text-black">
         No. of positions: {positions}
       </div>
       <LinkButton
@@ -151,7 +151,7 @@ function JobDetail({ params: { id } }: JobDetailProps) {
       <div className="font-metropolis-medium text-left text-[1rem] md:text-[1.5rem] uppercase">
         {location}
       </div>
-      <div className="font-metropolis-semibold pb-[0.764rem] md:pb-[1.063rem] pt-[2.101rem] md:pt-[5.218rem] text-[1rem] md:text-[1.5rem]">
+      <div className="text-black font-metropolis-semibold pb-[0.764rem] md:pb-[1.063rem] pt-[2.101rem] md:pt-[5.218rem] text-[1rem] md:text-[1.5rem]">
         No. of positions: {positions}
       </div>
       <div className="pb-[3.999rem] md:pb-[5.25rem]">
