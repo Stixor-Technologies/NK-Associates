@@ -19,105 +19,109 @@ const ExpertiseOutcomes: FC<OutcomesProps> = ({
 }) => {
   const images = ["placeholder", "placeholder2", "placeholder"];
 
-  useLayoutEffect(() => {
-    // expertise text and images animation
-    const expertiseImages: HTMLDivElement[] =
-      gsap.utils.toArray(".expertise-images");
-    const ourText = new SplitType("[data-expertise] h2", { types: "chars" });
-    const chars = ourText.chars;
+  // useLayoutEffect(() => {
+  //   // expertise text and images animation
+  //   const expertiseImages: HTMLDivElement[] =
+  //     gsap.utils.toArray(".expertise-images");
+  //   const ourText = new SplitType("[data-expertise] h2", { types: "chars" });
+  //   const chars = ourText.chars;
 
-    const expertiseTl = gsap.timeline({
-      scrollTrigger: {
-        trigger: "[data-expertise]",
-        start: "top 30%",
-        // toggleActions: "play none none none",
-      },
-    });
+  //   const expertiseTl = gsap.timeline({
+  //     scrollTrigger: {
+  //       trigger: "[data-expertise]",
+  //       start: "top 30%",
+  //       // toggleActions: "play none none none",
+  //     },
+  //   });
 
-    expertiseTl.from(".expertise-images", {
-      xPercent: 60,
-      opacity: 0,
-      yPercent: 12,
-      stagger: 0.3,
-      duration: 1,
-      // scale: 0,
-      scale: 0.5,
-      ease: "power2.out",
-    });
+  //   expertiseTl.from(".expertise-images", {
+  //     xPercent: 60,
+  //     opacity: 0,
+  //     yPercent: 12,
+  //     stagger: 0.3,
+  //     duration: 1,
+  //     // scale: 0,
+  //     scale: 0.5,
+  //     ease: "power2.out",
+  //   });
 
-    expertiseTl.from(
-      chars,
-      {
-        y: 100,
-        opacity: 0,
-        duration: 1,
-        stagger: 0.03,
-        ease: "power4.out",
-      },
-      "<0.5",
-    );
-    expertiseTl.from(
-      "[data-expertise] p",
-      {
-        x: "50%",
-        opacity: 0,
-        duration: 1,
-        ease: "sine.out",
-      },
-      "<",
-    );
+  //   expertiseTl.from(
+  //     chars,
+  //     {
+  //       y: 100,
+  //       opacity: 0,
+  //       duration: 1,
+  //       stagger: 0.03,
+  //       ease: "power4.out",
+  //     },
+  //     "<0.5",
+  //   );
+  //   expertiseTl.from(
+  //     "[data-expertise] p",
+  //     {
+  //       x: "50%",
+  //       opacity: 0,
+  //       duration: 1,
+  //       ease: "sine.out",
+  //     },
+  //     "<",
+  //   );
 
-    // pinned animation
-    const textPanels: HTMLElement[] = gsap.utils.toArray(".text-panel");
-    const outcomeTl = gsap.timeline({
-      scrollTrigger: {
-        trigger: "[data-expertise-outcomes]",
-        start: "top top",
-        end: `+=${40 * textPanels.length}%`,
-        pin: true,
-        scrub: 1,
-        invalidateOnRefresh: true,
-        snap: {
-          snapTo: 1 / (textPanels.length - 1),
-          duration: 0.5,
-          ease: "power2.out",
-        },
-      },
-    });
+  //   // pinned animation
+  //   const textPanels: HTMLElement[] = gsap.utils.toArray(".text-panel");
+  //   const outcomeTl = gsap.timeline({
+  //     scrollTrigger: {
+  //       trigger: "[data-expertise-outcomes]",
+  //       start: "top top",
+  //       end: `+=${40 * textPanels.length}%`,
+  //       pin: true,
+  //       scrub: 1,
+  //       // markers: true
+  //       invalidateOnRefresh: true,
+  //       snap: {
+  //         snapTo: 1 / (textPanels.length - 1),
+  //         duration: 0.5,
+  //         ease: "power2.out",
+  //       },
+  //     },
+  //   });
 
-    textPanels.forEach((panel, index) => {
-      if (index !== 0) {
-        gsap.set(panel, {
-          y: `${index * 50}%`,
-          opacity: 0,
-        });
-      }
-      const pos = index ? "+=0.5" : "";
-      if (textPanels[index + 1]) {
-        outcomeTl
-          .to(
-            panel,
-            {
-              opacity: 0,
-              y: "-50%",
-            },
-            pos,
-          )
-          .to(
-            textPanels[index + 1],
-            {
-              opacity: 1,
-              y: 0,
-            },
-            "<0.5",
-          );
-      }
-    });
-  }, []);
+  //   textPanels.forEach((panel, index) => {
+  //     if (index !== 0) {
+  //       gsap.set(panel, {
+  //         y: `${index * 50}%`,
+  //         opacity: 0,
+  //       });
+  //     }
+  //     const pos = index ? "+=0.5" : "";
+  //     if (textPanels[index + 1]) {
+  //       outcomeTl
+  //         .to(
+  //           panel,
+  //           {
+  //             opacity: 0,
+  //             y: "-50%",
+  //           },
+  //           pos,
+  //         )
+  //         .to(
+  //           textPanels[index + 1],
+  //           {
+  //             opacity: 1,
+  //             y: 0,
+  //           },
+  //           "<0.5",
+  //         );
+  //     }
+  //   });
+  // }, []);
+  // md:h-screen
+  // h-[600px]
+
   return (
-    <div data-expertise-outcomes className="md:min-h-screen">
-      <div className="h-full flex items-center flex-col md:flex-row">
-        <div className="w-1/2 h-full">
+    <div data-expertise-outcomes className="min-h-[600px] bg-slate-300">
+      <div className="h-full flex items-center flex-col md:flex-row md:w-1/2">
+        <div className="w-full h-full">
           <div className="relative flex items-center h-full">
             {images.map((img, index) => {
               const numberOfImages = images.length;
@@ -144,7 +148,7 @@ const ExpertiseOutcomes: FC<OutcomesProps> = ({
           </div>
         </div>
 
-        <div className="w-1/2 relative flex items-center  justify-center h-full">
+        <div className="w-full relative flex items-center justify-center h-full md:w-1/2">
           <div data-expertise className="text-panel absolute bg-transparent">
             <div className="overflow-hidden">
               <h2 className="text-[1.75rem] font-metropolis-bold text-nk-black md:text-5xl">
@@ -152,14 +156,7 @@ const ExpertiseOutcomes: FC<OutcomesProps> = ({
               </h2>
             </div>
             <p className="text-base font-metropolis-thin text-nk-black py-4 md:text-xl">
-              NK Design and Construction is a real estate development company
-              that specializes in residential and commercial architecture,
-              interior design, and construction management. The company has a
-              proven track record of delivering exceptional outcomes for its
-              clients, and its team of experienced professionals is dedicated to
-              creating beautiful and functional spaces. If you are looking for a
-              real estate development company that can help you achieve your
-              goals, NK Design and Construction is the perfect choice.
+              {expertise}
             </p>
           </div>
 

@@ -54,8 +54,6 @@ const ProcessSteps: FC<ProcessStepsProps> = ({ process }) => {
       </h3>
       <div className="panels-container relative min-h-[324px]">
         {process.map((step, index) => {
-          console.log(step);
-          console.log(step?.process_image?.data?.attributes?.url);
           const processImage = step?.process_image?.data?.attributes?.url;
           return (
             <div

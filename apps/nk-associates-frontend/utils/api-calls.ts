@@ -277,7 +277,7 @@ export const getServices = async () => {
   }
 };
 
-export const getPhone = async () => {
+export const getContactNumber = async () => {
   try {
     let apiUrl = `${BASE_URL}/api/phone`;
     const resp = await fetch(apiUrl, {
