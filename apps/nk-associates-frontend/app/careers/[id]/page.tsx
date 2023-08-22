@@ -77,17 +77,16 @@ function JobDetail({ params: { id } }: JobDetailProps) {
   }
 
   return (
-    <div className=" block text-center container  ">
-      {/* <div className="absolute left-0 top-0 z-50 flex h-screen w-screen items-center justify-center overflow-hidden bg-[#00000046]"> */}
+    <div className=" block text-center container">
       <JobModal onClose={closeModal} open={isOpen} />
 
-      <div className="font-metropolis-bold pb-[2.058rem] pt-[2.912rem] text-[1.875rem] md:text-[3rem]">
+      <div className="font-metropolis-bold pb-[0.764rem] md:pb-[2.058rem] pt-[1rem] md:pt-[2.912rem] text-[1.875rem] md:text-[3rem]">
         {title}
       </div>
       <div className="font-metropolis-thin text-nk-black text-[0.875rem] md:text-[1.25rem]">
         {description}
       </div>
-      <div className="font-metropolis-semibold pb-[0.789rem] pt-[1.999rem] text-[1rem] md:text-[1.5rem]">
+      <div className="font-metropolis-semibold pb-[0.764rem] md:pb-[0.789rem] pt-[0.764rem] md:pt-[1.999rem] text-[1rem] md:text-[1.5rem]">
         No. of positions: {positions}
       </div>
       <LinkButton
@@ -97,10 +96,10 @@ function JobDetail({ params: { id } }: JobDetailProps) {
         clickEvent={openModal}
       />
 
-      <div className="font-metropolis-bold pb-[1.595rem] pt-[4.813rem] text-left text-[1.75rem] md:text-[2rem] leading-[2.1rem] uppercase">
+      <div className="font-metropolis-bold pb-[0.875rem] md:pb-[1.595rem] pt-[2.566rem] md:pt-[4.813rem] text-left text-[1.75rem] md:text-[2rem] leading-[2.1rem] uppercase">
         key responsibilities:
       </div>
-      <div className="pb-4 pt-2 text-left text-[0.875rem] md:text-[1.5rem]">
+      <div className="pb-[1.261rem] md:pb-4 pt-2 text-left text-[0.875rem] md:text-[1.5rem]">
         <ul className="font-metropolis-thin list-disc pl-5">
           {responsibilityArray?.map((responsibility, index) => (
             <li key={index} className="py-1">
@@ -110,7 +109,7 @@ function JobDetail({ params: { id } }: JobDetailProps) {
         </ul>
       </div>
 
-      <div className="font-metropolis-bold pb-[2.524rem] pt-[4.241rem] text-left text-[1.75rem] md:text-[2rem] leading-[2.1rem] uppercase">
+      <div className="font-metropolis-bold pb-[0.438rem] md:pb-[2.524rem] pt-[1.261rem] md:pt-[4.241rem] text-left text-[1.75rem] md:text-[2rem] leading-[2.1rem] uppercase">
         job specifications
       </div>
 
@@ -126,7 +125,7 @@ function JobDetail({ params: { id } }: JobDetailProps) {
         {experience?.trim()}
       </div>
 
-      <div className="font-metropolis-bold pb-[2.524rem] pt-[4.241rem] text-left text-[1.75rem] md:text-[2rem] leading-[2.1rem] uppercase">
+      <div className="font-metropolis-bold pb-[1.274rem] md:pb-[2.524rem] pt-[1.274rem] md:pt-[4.241rem] text-left text-[1.75rem] md:text-[2rem] leading-[2.1rem] uppercase">
         skills required
       </div>
 
@@ -138,7 +137,7 @@ function JobDetail({ params: { id } }: JobDetailProps) {
         ))}
       </ul>
 
-      <div className="font-metropolis-bold pb-[1.555rem] pt-[4.241rem] text-left text-[1.75rem] md:text-[2rem] leading-[2.1rem] uppercase">
+      <div className="font-metropolis-bold pb-[0.438rem] md:pb-[1.555rem] pt-[2.101rem] md:pt-[4.241rem] text-left text-[1.75rem] md:text-[2rem] leading-[2.1rem] uppercase">
         office timings
       </div>
       {start && end && (
@@ -146,16 +145,16 @@ function JobDetail({ params: { id } }: JobDetailProps) {
           {formatTime(start)} to {formatTime(end)} ({displayDays(days)})
         </div>
       )}
-      <div className="font-metropolis-bold pb-[1.555rem] pt-[4.254rem] text-left text-[1.75rem] md:text-[2rem] leading-[2.1rem] uppercase">
+      <div className="font-metropolis-bold pb-[0.438rem] md:pb-[1.555rem] pt-[1.294rem] md:pt-[4.254rem] text-left text-[1.75rem] md:text-[2rem] leading-[2.1rem] uppercase">
         location
       </div>
       <div className="font-metropolis-medium text-left text-[1rem] md:text-[1.5rem] uppercase">
         {location}
       </div>
-      <div className="font-metropolis-semibold pb-[1.063rem] pt-[5.218rem] text-[1rem] md:text-[1.5rem]">
+      <div className="font-metropolis-semibold pb-[0.764rem] md:pb-[1.063rem] pt-[2.101rem] md:pt-[5.218rem] text-[1rem] md:text-[1.5rem]">
         No. of positions: {positions}
       </div>
-      <div className="pb-[5.25rem]">
+      <div className="pb-[3.999rem] md:pb-[5.25rem]">
         <LinkButton
           text="Apply Now"
           type="solid"
