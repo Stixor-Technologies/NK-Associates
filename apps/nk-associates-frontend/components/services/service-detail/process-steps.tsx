@@ -1,5 +1,5 @@
 "use client";
-import React, { FC, useLayoutEffect } from "react";
+import React, { FC, useEffect, useLayoutEffect, useState } from "react";
 import { BASE_URL } from "../../../utils/constants";
 import { ServiceProcess } from "../../../utils/types/types";
 import Image from "next/image";
@@ -13,27 +13,44 @@ interface ProcessStepsProps {
 }
 
 const ProcessSteps: FC<ProcessStepsProps> = ({ process }) => {
+  const [windowSize, setWindowSize] = useState(window.innerWidth);
+  const breakPoint = 768;
+
+  useEffect(() => {
+    const handleWindowResize = () => {
+      setWindowSize(window.innerWidth);
+    };
+
+    window.addEventListener("resize", handleWindowResize);
+
+    return () => {
+      window.removeEventListener("resize", handleWindowResize);
+    };
+  }, []);
+
   useLayoutEffect(() => {
-    const isScreenWideEnough = window.innerWidth > 768;
-    if (isScreenWideEnough) {
+    ScrollTrigger.getById("processTriger")?.kill();
+    if (windowSize > breakPoint) {
       const cards: HTMLDivElement[] = gsap.utils.toArray(".process-card");
       gsap.set(".process-card:not(:first-child)", { x: "200%" });
 
       gsap.to("[data-cards-container]", {
         scrollTrigger: {
+          id: "processTriger",
           trigger: "[data-cards-container]",
           endTrigger: ".panels-container",
           start: "top 15%",
           end: `+=${cards[0].clientHeight * (cards.length * 1.5)}`,
           pin: true,
-          markers: true,
           pinSpacing: true,
+          invalidateOnRefresh: true,
         },
       });
 
       cards.forEach((card, index) => {
         gsap.to(card, {
           x: "0%",
+          opacity: 1,
           duration: 1,
           scrollTrigger: {
             trigger: card,
@@ -44,8 +61,13 @@ const ProcessSteps: FC<ProcessStepsProps> = ({ process }) => {
           },
         });
       });
+      ScrollTrigger.refresh();
+    } else {
+      gsap.set(".process-card:not(:first-child)", { x: "0%" });
     }
-  }, []);
+  }, [windowSize]);
+
+  console.log(windowSize);
 
   return (
     <div data-cards-container className="min-h-[34.688rem] py-10 text-nk-black">

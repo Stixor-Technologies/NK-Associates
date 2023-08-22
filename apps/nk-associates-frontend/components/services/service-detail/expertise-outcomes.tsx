@@ -1,5 +1,5 @@
 "use client";
-import React, { FC, useLayoutEffect } from "react";
+import React, { FC, useLayoutEffect, useEffect, useState } from "react";
 import Image from "next/image";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -17,164 +17,141 @@ const ExpertiseOutcomes: FC<OutcomesProps> = ({
   expertise,
   outcomes,
 }) => {
-  const images = ["placeholder", "placeholder2", "placeholder"];
+  const [windowSize, setWindowSize] = useState(window.innerWidth);
+  const breakPoint = 1024;
 
-  // useLayoutEffect(() => {
-  //   // expertise text and images animation
-  //   const expertiseImages: HTMLDivElement[] =
-  //     gsap.utils.toArray(".expertise-images");
-  //   const ourText = new SplitType("[data-expertise] h2", { types: "chars" });
-  //   const chars = ourText.chars;
+  useEffect(() => {
+    const handleWindowResize = () => {
+      setWindowSize(window.innerWidth);
+    };
+    window.addEventListener("resize", handleWindowResize);
 
-  //   const expertiseTl = gsap.timeline({
-  //     scrollTrigger: {
-  //       trigger: "[data-expertise]",
-  //       start: "top 30%",
-  //       // toggleActions: "play none none none",
-  //     },
-  //   });
+    return () => {
+      window.removeEventListener("resize", handleWindowResize);
+    };
+  }, []);
 
-  //   expertiseTl.from(".expertise-images", {
-  //     xPercent: 60,
-  //     opacity: 0,
-  //     yPercent: 12,
-  //     stagger: 0.3,
-  //     duration: 1,
-  //     // scale: 0,
-  //     scale: 0.5,
-  //     ease: "power2.out",
-  //   });
+  useLayoutEffect(() => {
+    // pinned animation
+    ScrollTrigger.getById("expertiseTrigger")?.kill();
+    let pinnedTl = null; // Initialize the variable
 
-  //   expertiseTl.from(
-  //     chars,
-  //     {
-  //       y: 100,
-  //       opacity: 0,
-  //       duration: 1,
-  //       stagger: 0.03,
-  //       ease: "power4.out",
-  //     },
-  //     "<0.5",
-  //   );
-  //   expertiseTl.from(
-  //     "[data-expertise] p",
-  //     {
-  //       x: "50%",
-  //       opacity: 0,
-  //       duration: 1,
-  //       ease: "sine.out",
-  //     },
-  //     "<",
-  //   );
+    if (windowSize > breakPoint) {
+      const panels: HTMLElement[] = gsap.utils.toArray(".panels");
+      const textPanels: HTMLElement[] = gsap.utils.toArray(".text-panel");
+      const imagesPanel: HTMLElement[] = gsap.utils.toArray(".images-panel");
 
-  //   // pinned animation
-  //   const textPanels: HTMLElement[] = gsap.utils.toArray(".text-panel");
-  //   const outcomeTl = gsap.timeline({
-  //     scrollTrigger: {
-  //       trigger: "[data-expertise-outcomes]",
-  //       start: "top top",
-  //       end: `+=${40 * textPanels.length}%`,
-  //       pin: true,
-  //       scrub: 1,
-  //       // markers: true
-  //       invalidateOnRefresh: true,
-  //       snap: {
-  //         snapTo: 1 / (textPanels.length - 1),
-  //         duration: 0.5,
-  //         ease: "power2.out",
-  //       },
-  //     },
-  //   });
+      pinnedTl = gsap.timeline({
+        scrollTrigger: {
+          id: "expertiseTrigger",
+          trigger: "[data-expertise-outcomes]",
+          start: "top 10%",
+          end: `+=${35 * panels.length}%`,
+          pin: true,
+          scrub: 1,
+          invalidateOnRefresh: true,
+          markers: true,
+          snap: {
+            snapTo: 1 / (textPanels.length - 1),
+            duration: 0.5,
+            ease: "power2.out",
+          },
+        },
+      });
 
-  //   textPanels.forEach((panel, index) => {
-  //     if (index !== 0) {
-  //       gsap.set(panel, {
-  //         y: `${index * 50}%`,
-  //         opacity: 0,
-  //       });
-  //     }
-  //     const pos = index ? "+=0.5" : "";
-  //     if (textPanels[index + 1]) {
-  //       outcomeTl
-  //         .to(
-  //           panel,
-  //           {
-  //             opacity: 0,
-  //             y: "-50%",
-  //           },
-  //           pos,
-  //         )
-  //         .to(
-  //           textPanels[index + 1],
-  //           {
-  //             opacity: 1,
-  //             y: 0,
-  //           },
-  //           "<0.5",
-  //         );
-  //     }
-  //   });
-  // }, []);
-  // md:h-screen
-  // h-[600px]
+      panels.forEach((panel, index) => {
+        if (imagesPanel[index + 1]) {
+          pinnedTl
+            .to(textPanels[index], {
+              opacity: 0,
+            })
+            .to(
+              textPanels[index + 1],
+              {
+                opacity: 1,
+              },
+              "<0.1",
+            )
+            .to(
+              imagesPanel[index + 1],
+              {
+                opacity: 1,
+                y: 0,
+                rotate: 6,
+              },
+              "<0.1",
+            );
+        }
+      });
+    }
+
+    // Clear the timeline if it exists and windowSize is below the breakpoint
+    if (pinnedTl && windowSize <= breakPoint) {
+      gsap.set(".text-panel", { opacity: 1 });
+      gsap.set(".image-panel", { opacity: 1, y: 0, rotate: 0 });
+
+      pinnedTl.clear();
+      pinnedTl = null; // Clear the reference after clearing the timeline
+    }
+  }, [windowSize]);
 
   return (
-    <div data-expertise-outcomes className="min-h-[600px] bg-slate-300">
-      <div className="h-full flex items-center flex-col md:flex-row md:w-1/2">
-        <div className="w-full h-full">
-          <div className="relative flex items-center h-full">
-            {images.map((img, index) => {
-              const numberOfImages = images.length;
-              const scale = 1 - 0.1 * (numberOfImages - index - 1);
-              const left = index * 10;
-              return (
-                <div
-                  key={index}
-                  className="expertise-images absolute w-[80%] max-w-[400px] h-[500px] origin-left"
-                  style={{
-                    transform: `scale(${scale})`,
-                    left: `${left}%`,
-                  }}
-                >
-                  <Image
-                    src={`/assets/images/bg-project.jpeg`}
-                    fill
-                    alt=""
-                    className="object-cover rounded-xl"
-                  />
-                </div>
-              );
-            })}
+    <div
+      data-expertise-outcomes
+      className="lg:h-[70vh] lg:flex lg:flex-col relative lg:justify-center"
+    >
+      {/* expertise */}
+      <div className="panels flex flex-col lg:flex-row gap-9 lg:absolute">
+        <div className="images-panel self-center w-full max-w-[22rem] md:max-w-[27rem] mx-auto lg:w-[45%] lg:-rotate-6">
+          <div className="relative aspect-square w-full">
+            <Image
+              src={`/assets/images/bg-project.jpeg`}
+              alt="expertise-picture"
+              fill
+              className="rounded-3xl shadow-xl object-cover"
+            />
           </div>
         </div>
-
-        <div className="w-full relative flex items-center justify-center h-full md:w-1/2">
-          <div data-expertise className="text-panel absolute bg-transparent">
-            <div className="overflow-hidden">
-              <h2 className="text-[1.75rem] font-metropolis-bold text-nk-black md:text-5xl">
-                Areas of Expertise
-              </h2>
-            </div>
-            <p className="text-base font-metropolis-thin text-nk-black py-4 md:text-xl">
-              {expertise}
-            </p>
+        <div className="text-panel self-center text-panel w-full bg-transparent text-center lg:text-left lg:w-[55%]">
+          <div className="overflow-hidden">
+            <h2 className="text-[1.75rem] font-metropolis-bold text-nk-black md:text-5xl">
+              Areas of Expertise
+            </h2>
           </div>
+          <p className="text-base font-metropolis-thin text-nk-black py-4 md:text-xl">
+            {expertise}
+          </p>
+        </div>
+      </div>
 
-          <div className="text-panel absolute bg-transparent">
+      {/* outcomes */}
+      <div className="panels flex flex-col lg:flex-row gap-9 my-10 lg:absolute">
+        <div className="self-center images-panel w-full max-w-[22rem] md:max-w-[27rem] mx-auto lg:w-[45%] lg:translate-y-full lg:opacity-0">
+          <div className="relative aspect-square w-full">
+            <Image
+              src={`/assets/images/bg-project.jpeg`}
+              alt="expertise-picture"
+              fill
+              className="rounded-3xl shadow-xl object-cover"
+            />
+          </div>
+        </div>
+        <div className="text-panel self-center w-full bg-transparent text-center lg:text-left lg:w-[55%] lg:opacity-0">
+          <div className="overflow-hidden">
             <h2 className="text-[1.75rem] font-metropolis-bold text-nk-black md:text-5xl">
               Outcomes
             </h2>
-            <p className="text-base font-metropolis-thin text-nk-black py-4 md:text-xl">
-              Contrary to popular belief, Lorem Ipsum is not simply random text.
-              It has roots in a piece of classical Latin literature from 45 BC,
-              making it over 2000 years old. Richard McClintock, a Latin
-              professor at Hampden-Sydney College in Virginia, looked up one of
-              the more obscure Latin words, consectetur, from a Lorem Ipsum
-              passage, and going through the cites of the word in classical
-              literature, discovered the undoubtable source. Lorem Ipsum comes
-              from sections 1.10.32 and 1.10.33
-            </p>
           </div>
+          <p className="text-base font-metropolis-thin text-nk-black py-4 md:text-xl">
+            Contrary to popular belief, Lorem Ipsum is not simply random text.
+            It has roots in a piece of classical Latin literature from 45 BC,
+            making it over 2000 years old. Richard McClintock, a Latin professor
+            at Hampden-Sydney College in Virginia, looked up one of the more
+            obscure Latin words, consectetur, from a Lorem Ipsum passage, and
+            going through the cites of the word in classical literature,
+            discovered the undoubtable source. Lorem Ipsum comes from sections
+            1.10.32 and 1.10.33
+          </p>
         </div>
       </div>
     </div>
