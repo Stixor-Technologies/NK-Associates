@@ -1,23 +1,44 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, useMemo } from "react";
 
 import FilterDropDown from "./filter-dropdown";
+import { SearchFilter } from "../../../utils/types/types";
+import useFilters from "./useFilters";
 
-const SearchBarTile = ({
-  tile,
-  filtersData,
-}: {
+type PropsType = {
   tile: { name: string; value: string };
-}) => {
+  filtersData: SearchFilter;
+};
+
+const SearchBarTile = ({ tile, filtersData }: PropsType) => {
   const searchFilterRef = useRef<HTMLDivElement>(null);
   const [activeFilter, setActiveFilter] = useState<boolean>(false);
-  const [filterPosition, setFilterPosition] = useState({ x: 0, y: 0 });
+
+  const [filtersState, filtersDispatch] = useFilters();
+
+  const filterPosition = useMemo(() => {
+    if (searchFilterRef.current) {
+      const containerPosition = searchFilterRef.current.getBoundingClientRect();
+      const windowWidth = window.innerWidth;
+
+      return {
+        x: containerPosition.left,
+        y:
+          windowWidth > 1024
+            ? containerPosition.top + 64
+            : containerPosition.top + 60,
+      };
+    }
+    return {
+      x: 0,
+      y: 0,
+    };
+  }, [activeFilter]);
 
   const handleFilterOptionClick = () => {
-    const containerPosition = searchFilterRef.current.getBoundingClientRect();
-    setFilterPosition({
-      x: containerPosition.left,
-      y: containerPosition.top + 60,
-    });
+    // setFilterPosition({
+    //   x: containerPosition.left,
+    //   y: containerPosition.top + 60,
+    // });
     setActiveFilter(!activeFilter);
   };
 
@@ -47,9 +68,11 @@ const SearchBarTile = ({
         className="h-full w-full bg-nk-white px-4 py-2 text-left"
         onClick={handleFilterOptionClick}
       >
-        <p className="text-base lg:text-xl text-nk-gray">{tile.name}</p>
+        <p className="text-base lg:text-lg text-nk-gray">{tile.name}</p>
         <div className="flex justify-between items-center">
-          <p className="text-sm lg:text-lg text-nk-black mr-2">{tile.value}</p>
+          <p className="text-sm lg:text-base text-nk-black mr-2">
+            {tile.value}
+          </p>
 
           <svg
             className="w-3 h-3"
@@ -65,9 +88,10 @@ const SearchBarTile = ({
           </svg>
         </div>
       </button>
+
       {activeFilter && (
         <div
-          className="fixed"
+          className="fixed z-10"
           style={{
             left: filterPosition.x,
             top: filterPosition.y + 10,

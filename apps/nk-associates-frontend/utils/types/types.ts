@@ -149,13 +149,17 @@ export interface Job {
     };
   };
 }
+
+type CategoryType = {
+  id: number;
+  name: string;
+  types: {
+    id: number;
+    name: string;
+  }[];
+};
 export interface SearchFilter {
-  type: {
-    enum: string[];
-  };
-  purpose: {
-    enum: string[];
-  };
+  propertyTypes: CategoryType[] | undefined;
 }
 
 export interface socials {

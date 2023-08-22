@@ -1,28 +1,71 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useReducer } from "react";
 import Image from "next/image";
 import FilterDropDown from "./filter-dropdown";
-import { fetchPropertyTypesEnum } from "../../utils/api-calls";
-import { SearchFilter } from "../../utils/types/types";
+import { fetchPropertyTypesEnum } from "../../../utils/api-calls";
+import { SearchFilter } from "../../../utils/types/types";
 import SearchBarTile from "./search-bar-tile";
-import FiltersModal from "./filters-modal";
+import FiltersModal from "../filters-modal";
+import useFilters, { FiltersProvider } from "./useFilters";
+
+import {
+  fetchPropertyCategoriesList,
+  fetchPropertyTypesList,
+} from "../../../utils/api-calls";
+
+const searchTiles = [
+  { name: "Property Type", value: "Any" },
+  { name: "Price Range", value: "Any" },
+  { name: "Project", value: "Any" },
+  { name: "Location", value: "Any" },
+  { name: "Purpose", value: "Any" },
+];
 
 const SearchBar = () => {
-  const [filtersData, setFiltersData] = useState(null);
-  const [open, setOpen] = useState(false);
-  const searchFilterRef = useRef<HTMLDivElement>(null);
+  const [filtersData, setFiltersData] = useState<SearchFilter>({
+    propertyTypes: undefined,
+  });
+  const [filtersState, filtersDispatch] = useFilters();
+  const [openFilter, setOpenFilter] = useState(false);
 
-  const searchTiles = [
-    { name: "Property Type", value: "Any" },
-    { name: "Price Range", value: "Any" },
-    { name: "Project", value: "Any" },
-    { name: "Location", value: "Any" },
-    { name: "Purpose", value: "Any" },
-  ];
+  const getPropertyTypes = async () => {
+    const respCategories = await fetchPropertyCategoriesList();
+
+    const categoriesList = respCategories.map((category) => {
+      const typesList = category.attributes.property_types.data.map((type) => {
+        return {
+          id: type.id,
+          name: type.attributes.name,
+        };
+      });
+
+      return {
+        id: category.id,
+        name: category.attributes.name,
+        types: typesList,
+      };
+    });
+
+    filtersDispatch({
+      type: "setSelectedCategoryId",
+      payload: categoriesList[0].id,
+    });
+
+    filtersDispatch({
+      type: "setSelectedTypeId",
+      payload: categoriesList[0].types[0].id,
+    });
+
+    setFiltersData((oldState) => ({
+      ...oldState,
+      propertyTypes: categoriesList,
+    }));
+  };
 
   const fetchData = async () => {
-    const resp: SearchFilter = await fetchPropertyTypesEnum();
-    if (resp) {
-      setFiltersData(resp);
+    try {
+      await getPropertyTypes();
+    } catch (error) {
+      console.log(error);
     }
   };
 
@@ -32,7 +75,10 @@ const SearchBar = () => {
 
   return (
     <section className="container relative my-4 flex flex-col">
-      <div className="md:hidden w-full flex justify-between items-center border border-nk-gray bg-white rounded-full px-5 py-2 cursor-pointer">
+      <div
+        className="md:hidden w-full flex justify-between items-center border border-nk-gray bg-white rounded-full px-5 py-2 cursor-pointer"
+        onClick={() => setOpenFilter(true)}
+      >
         <p className="text-nk-gray">Search here</p>
 
         <svg
@@ -56,6 +102,7 @@ const SearchBar = () => {
             <SearchBarTile key={index} tile={tile} filtersData={filtersData} />
           );
         })}
+
         <button className="flex items-center justify-center bg-nk-red px-6 py-4 min-w-fit flex-1">
           <svg
             className="w-8 h-8"
@@ -71,7 +118,10 @@ const SearchBar = () => {
         </button>
       </div>
 
-      <div className="hidden md:flex items-center justify-center ml-auto border-nk-gray bg-white rounded-full px-5 py-1.5 cursor-pointer shadow-3xl" onClick={() => setOpen(true)}>
+      <div
+        className="hidden md:flex items-center justify-center ml-auto border-nk-gray bg-white rounded-full px-5 py-1.5 cursor-pointer shadow-3xl"
+        onClick={() => setOpenFilter(true)}
+      >
         <p className="text-nk-black mr-6">Filters</p>
 
         <svg
@@ -89,9 +139,15 @@ const SearchBar = () => {
         </svg>
       </div>
 
-      <FiltersModal open={open} onClose={() => setOpen(false)} />
+      <FiltersModal open={openFilter} onClose={() => setOpenFilter(false)} />
     </section>
   );
 };
 
-export default SearchBar;
+export default function SearchBarWithProvider() {
+  return (
+    <FiltersProvider>
+      <SearchBar />
+    </FiltersProvider>
+  );
+}

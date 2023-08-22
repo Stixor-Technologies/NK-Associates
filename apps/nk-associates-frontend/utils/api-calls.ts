@@ -43,13 +43,37 @@ export const getPropertyDetail = async (id: string) => {
 
 export const fetchPropertyTypesEnum = async () => {
   const data = await fetch(
-    BASE_URL + "/api/content-type-builder/content-types/api::property.property"
+    BASE_URL + "/api/content-type-builder/content-types/api::property.property",
   );
-  const res = await data.json()
-  console.log(res)
+  const res = await data.json();
   return res?.data?.schema.attributes;
 };
 
+export const fetchPropertyCategoriesList = async () => {
+  try {
+    const resp = await fetch(`${BASE_URL}/api/property-categories?populate=*`);
+    const data = await resp.json();
+    return data?.data;
+  } catch (error) {
+    console.error(
+      "There was an error getting the Property Categories List",
+      error,
+    );
+  }
+};
+
+export const fetchPropertyTypesList = async () => {
+  try {
+    const resp = await fetch(`${BASE_URL}/api/property-types?populate=*`);
+    const data = await resp.json();
+    return data?.data;
+  } catch (error) {
+    console.error(
+      "There was an error getting the Property Categories List",
+      error,
+    );
+  }
+};
 
 export const getJobDetail = async (id: string) => {
   try {
@@ -79,7 +103,6 @@ export const getProjects = async ({
   try {
     const fetchOptions: { [key: string]: any } = cachePolicy ? cachePolicy : {};
     const res = await fetch(
-      //using concatenation because autosave causes linebreak in ` ` in the api call
       `${BASE_URL}/api/projects?populate=*${
         category ? `&filters[category]=${category}` : ""
       }${`&pagination[start]=${start}&pagination[limit]=${limit}&sort[1]=id`}`,
