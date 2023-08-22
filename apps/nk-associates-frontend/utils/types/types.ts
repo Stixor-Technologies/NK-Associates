@@ -153,6 +153,18 @@ export interface Job {
   };
 }
 
+type CategoryType = {
+  id: number;
+  name: string;
+  types: {
+    id: number;
+    name: string;
+  }[];
+};
+export interface SearchFilter {
+  propertyTypes: CategoryType[] | undefined;
+}
+
 export interface Socials {
   id: number;
   attributes: {
