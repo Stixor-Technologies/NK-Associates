@@ -12,6 +12,7 @@ import { BASE_URL } from "../../utils/constants";
 import { JobFormSchema } from "../../utils/formik-schema";
 import uploadIcon from "../../public/assets/icons/upload-icon.svg";
 import { Department } from "../../utils/types/types";
+import LinkButton from "../../components/button/link-button";
 
 interface ModalProps {
   open: boolean;
@@ -379,10 +380,10 @@ const EventModal: React.FC<ModalProps> = ({ open, onClose }) => {
                                       </div>
                                     </label>
                                   </div>
-                                  <p className="text-light-gray font-metropolis-thin text-center text-[0.875rem] text-[#969696]">
-                                    Drag & Drop here or enter to upload manually
+                                  <p className="text-light-gray font-metropolis-thin text-center text-[0.875rem] text-nk-grey">
+                                    {placeholders[fieldName]}
                                   </p>
-                                  <p className="text-light-gray font-metropolis-thin text-center text-[0.625rem] text-[#969696]">
+                                  <p className="text-light-gray font-metropolis-thin text-center text-[0.625rem] text-nk-grey">
                                     (File types: pdf, doc, docx, txt, rtf)
                                   </p>
                                 </div>
@@ -418,10 +419,7 @@ const EventModal: React.FC<ModalProps> = ({ open, onClose }) => {
                           );
                         })}
                       </div>
-                      <button
-                        type="submit"
-                        className="bg-nk-red font-metropolis mx-auto mt-4 block h-12 w-full rounded-full py-3 text-center capitalize text-white transition-all duration-300 ease-in-out hover:shadow-lg hover:delay-100 sm:w-[22.5rem] md:w-[25rem] md:text-lg"
-                      >
+                      <div className="mx-auto mt-4 flex h-12 cursor-pointer items-center justify-center rounded-full bg-nk-red sm:w-[22.5rem] md:w-[25rem]">
                         {loading ? (
                           <Spinner
                             color="fill-white"
@@ -429,9 +427,14 @@ const EventModal: React.FC<ModalProps> = ({ open, onClose }) => {
                             width="w-10"
                           />
                         ) : (
-                          <span>Submit</span>
+                          <LinkButton
+                            text="Submit"
+                            type="solid"
+                            buttonType="submit"
+                            className="h-full w-full md:text-lg"
+                          />
                         )}
-                      </button>
+                      </div>
                     </Form>
                   </div>
                 </>
