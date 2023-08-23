@@ -215,3 +215,39 @@ export interface Member {
     };
   };
 }
+
+export interface About1 {
+  attributes: {
+    question: string;
+    title: string;
+    description: string;
+    card_image: {
+      data: MediaAttributes;
+    };
+    card_icon: {
+      data: MediaAttributes;
+    };
+  };
+  id: number;
+}
+
+export interface About2 {
+  attributes: {
+    title: string;
+    list: {
+      id: number;
+      title: string;
+      description: string;
+      icon: {
+        data: MediaAttributes;
+      };
+    }[];
+    card_image: {
+      data: MediaAttributes;
+    };
+    card_icon: {
+      data: MediaAttributes;
+    };
+  };
+  id: number;
+}

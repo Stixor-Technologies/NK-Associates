@@ -1,0 +1,29 @@
+{
+  "collectionName": "components_list_item_listing_items",
+  "info": {
+    "displayName": "Listing Item",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "icon": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "title": {
+      "type": "string",
+      "maxLength": 50,
+      "required": false
+    },
+    "description": {
+      "type": "string",
+      "minLength": 6,
+      "maxLength": 150,
+      "required": true
+    }
+  }
+}

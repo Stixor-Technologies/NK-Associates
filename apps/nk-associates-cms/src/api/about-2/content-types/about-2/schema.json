@@ -1,0 +1,43 @@
+{
+  "kind": "collectionType",
+  "collectionName": "about_2s",
+  "info": {
+    "singularName": "about-2",
+    "pluralName": "about-2s",
+    "displayName": "About-2",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "card_icon": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "card_image": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "list": {
+      "type": "component",
+      "repeatable": true,
+      "component": "list-item.listing-item",
+      "required": true
+    },
+    "title": {
+      "type": "string",
+      "required": true,
+      "minLength": 6
+    }
+  }
+}
