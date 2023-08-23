@@ -289,3 +289,15 @@ export const getPhone = async () => {
     console.error("There was an error getting the phone number", error);
   }
 };
+
+export const getFeaturedProperties = async () => {
+  try {
+    const resp = await fetch(
+      `${BASE_URL}/api/featured-properties?populate=deep&sort[1]=id`,
+    );
+    const data = await resp.json();
+    return data;
+  } catch (error) {
+    console.error("There was an error getting the featured properties", error);
+  }
+};

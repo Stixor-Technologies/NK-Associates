@@ -12,19 +12,34 @@ interface CardProps {
   property: Property;
   actMap?: boolean;
   actSim?: boolean;
+  actFeatured?: boolean;
 }
 
-const PropertyCard: FC<CardProps> = ({ property, actMap, actSim }) => {
+const PropertyCard: FC<CardProps> = ({
+  property,
+  actMap,
+  actSim,
+  actFeatured,
+}) => {
   const { title, category, purpose, area, area_type, type, price, address } =
     property?.attributes;
   const id = property?.id;
   const thumbnailImage =
     property?.attributes?.image_thumbnail?.data?.attributes?.url;
-
   const categoryTextSize = actMap || actSim ? "text-[0.688rem]" : "text-sm";
   return (
     <div
-      className={`${actSim && "flex-grow max-w-[18.125rem] min-w-[17.288rem]"}`}
+      // className={`${actSim && "flex-grow max-w-[18.125rem] min-w-[17.288rem]"}`}
+      // className={`${(actSim || actFeatured) && "flex-grow min-w-[17.288rem]"} ${
+      //   actSim ? "max-w-[18.125rem]" : actFeatured ? "max-w-[384px] w-full" : ""
+      // }`}
+      className={`${(actSim || actFeatured) && "flex-grow"} ${
+        actSim
+          ? "min-w-[17.288rem] max-w-[18.125rem]"
+          : actFeatured
+          ? "min-w-[374px] max-w-[384px] w-full"
+          : "min-w-[17.288rem]"
+      }`}
     >
       <Link
         href={`/properties/${id}`}
@@ -32,9 +47,16 @@ const PropertyCard: FC<CardProps> = ({ property, actMap, actSim }) => {
         rel={actMap ? "noopener noreferrer" : undefined}
       >
         <div
+          // className={`aspect-w-1 aspect-h-1 group relative w-full max-w-[37.5rem] overflow-hidden ${
+          //   actMap ? "h-52 rounded-t-xl" : "h-[17.5rem] rounded-xl"
+          // }`}
           className={`aspect-w-1 aspect-h-1 group relative w-full max-w-[37.5rem] overflow-hidden ${
-            actMap ? "h-52 rounded-t-xl" : "h-[17.5rem] rounded-xl"
-          }`}
+            actMap
+              ? "h-52 rounded-t-xl"
+              : actFeatured
+              ? "h-[358px]"
+              : "h-[17.5rem]"
+          } rounded-xl`}
         >
           <Image
             src={`${BASE_URL}${thumbnailImage || "/"}`}
