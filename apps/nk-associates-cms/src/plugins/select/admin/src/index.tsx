@@ -14,6 +14,7 @@ const selectConfig = {
       name: "select",
       pluginId: "select",
       type: "json",
+      inputSize: 12,
       intlLabel: {
         id: getTrad("select.label"),
         defaultMessage: "Select",
@@ -32,17 +33,10 @@ const selectConfig = {
             sectionTitle: null,
             items: [
               {
-                name: "options.relation",
+                intlLabel: { id: "FIXME", defaultMessage: "FIXME" },
+                name: "options-relation",
+                size: 12,
                 type: "relation",
-                intlLabel: {
-                  id: getTrad("select.relation.label"),
-                  defaultMessage: "Options (one per line)",
-                },
-                description: {
-                  id: getTrad("select.relation.description"),
-                  defaultMessage:
-                    'Enter one option per line. You can also add a value and a label separated by a colon (e.g. "label:value").\nIf no value is provided, the label will be used as the value',
-                },
               },
             ],
           },
@@ -79,6 +73,44 @@ const selectConfig = {
                   defaultMessage:
                     "This field will not show up in the API response",
                 },
+              },
+            ],
+          },
+          {
+            sectionTitle: null,
+            items: [
+              {
+                autoFocus: true,
+                type: "select-default-boolean",
+                intlLabel: {
+                  id: getTrad("form.attribute.settings.default"),
+                  defaultMessage: "Default value",
+                },
+                name: "default",
+                options: [
+                  {
+                    value: "true",
+                    key: "true",
+                    metadatas: {
+                      intlLabel: { id: "true", defaultMessage: "true" },
+                    },
+                  },
+                  {
+                    value: "",
+                    key: "null",
+                    metadatas: {
+                      intlLabel: { id: "null", defaultMessage: "null" },
+                    },
+                  },
+                  {
+                    value: "false",
+                    key: "false",
+                    metadatas: {
+                      intlLabel: { id: "false", defaultMessage: "false" },
+                    },
+                  },
+                ],
+                // validations: {},
               },
             ],
           },
