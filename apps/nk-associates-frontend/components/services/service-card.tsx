@@ -3,10 +3,10 @@ import { BASE_URL } from "../../utils/constants";
 import Arrow from "../../public/assets/images/Arrow.svg";
 import Image from "next/image";
 import Link from "next/link";
-import { Service } from "../../utils/types/types";
+import { Services } from "../../utils/types/types";
 
 interface CardProps {
-  service: Service;
+  service: Services;
 }
 
 const ServiceCard: FC<CardProps> = ({ service }) => {
@@ -20,7 +20,7 @@ const ServiceCard: FC<CardProps> = ({ service }) => {
       <div className="left-0 right-0 my-6 border bg-custom-gradient rounded-xl flex-col md:flex-row justify-center md:my-12 md:mx-auto above-md:absolute">
         <div className="justify-center text-center text-nk-black p-2 sm:flex sm:gap-4 sm:p-3 md:p-4 lg:gap-8">
           <Link
-            href={`service/${id}`}
+            href={`services/${id}`}
             rel="noopener noreferrer"
             className="block relative sm:w-1/2 lg:w-[45%] min-h-[18.75rem] lg:min-h-[25rem] w-full h-full rounded-xl overflow-hidden items-center justify-center my-auto"
           >
@@ -64,7 +64,7 @@ const ServiceCard: FC<CardProps> = ({ service }) => {
             )}
 
             <Link
-              href={`service/${id}`}
+              href={`services/${id}`}
               rel="noopener noreferrer"
               className="hidden group absolute bottom-0 right-0 sm:block"
             >

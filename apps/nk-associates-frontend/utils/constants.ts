@@ -5,3 +5,4 @@ export const EMAIL_TO = process.env["NEXT_SENDGRID_EMAIL_TO"];
 export const EMAIL_FROM = process.env["NEXT_SENDGRID_EMAIL_FROM"];
 
 export const SIMILAR_PROPERTIES_LIMIT = 4;
+export const DEFAULT_CHAT_MESSAGE = "I'm interested in your property";

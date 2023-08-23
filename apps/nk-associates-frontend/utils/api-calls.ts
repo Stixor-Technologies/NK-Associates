@@ -1,5 +1,5 @@
 import { BASE_URL } from "./constants";
-import { Department, Service, Property } from "./types/types";
+import { Department, Property } from "./types/types";
 import { SIMILAR_PROPERTIES_LIMIT } from "./constants";
 export const getGridProperties = async (start: number, limit = 12) => {
   try {
@@ -277,7 +277,7 @@ export const getServices = async () => {
   }
 };
 
-export const getPhone = async () => {
+export const getContactNumber = async () => {
   try {
     let apiUrl = `${BASE_URL}/api/phone`;
     const resp = await fetch(apiUrl, {
@@ -287,5 +287,17 @@ export const getPhone = async () => {
     return links;
   } catch (error) {
     console.error("There was an error getting the phone number", error);
+  }
+};
+
+export const getServiceDetail = async (id: string) => {
+  try {
+    const resp = await fetch(`${BASE_URL}/api/services/${id}?populate=deep`, {
+      cache: "no-store",
+    });
+    const data = await resp.json();
+    return data?.data;
+  } catch (error) {
+    console.error("There was an error getting the service detail", error);
   }
 };

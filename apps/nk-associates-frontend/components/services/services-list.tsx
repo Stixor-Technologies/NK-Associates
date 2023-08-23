@@ -1,7 +1,7 @@
 "use client";
 import React, { FC, useState, useEffect, useRef } from "react";
 import ServiceCard from "./service-card";
-import { Service } from "../../utils/types/types";
+import { Services } from "../../utils/types/types";
 import { getServices } from "../../utils/api-calls";
 import Spinner from "../spinner";
 import { gsap } from "gsap";
@@ -9,7 +9,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
 
 const ServicesList: FC = () => {
-  const [services, setServices] = useState<Service[]>([]);
+  const [services, setServices] = useState<Services[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const ref = useRef<HTMLDivElement | null>(null);
 
