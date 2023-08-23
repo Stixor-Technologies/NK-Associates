@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from "react";
 import MapComponent from "../shared/map-component";
 import { getOfficeAddress, getHeadOffice } from "../../utils/api-calls";
-import { Contacts } from "../../utils/types/types";
+import { Offices } from "../../utils/types/types";
 import Image from "next/image";
 
 type Coordinates = {
@@ -11,13 +11,13 @@ type Coordinates = {
 };
 
 const Offices = () => {
-  const [offices, setOffices] = useState<Contacts[]>([]);
+  const [offices, setOffices] = useState<Offices[]>([]);
   const [coordinates, setCoordinates] = useState<Coordinates[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(true);
 
-  const collectCoordinates = (Offices: Contacts[]) => {
+  const collectCoordinates = (offices: Offices[]) => {
     return (
-      Offices?.map((office) => ({
+      offices?.map((office) => ({
         lat: office?.attributes?.latitude,
         lng: office?.attributes?.longitude,
       })) || []
@@ -30,7 +30,7 @@ const Offices = () => {
     const headOfficeAddress = await getHeadOffice();
 
     if (resp) {
-      const combinedAddresses: Contacts[] = [
+      const combinedAddresses: Offices[] = [
         ...(headOfficeAddress
           ? [{ ...headOfficeAddress, isHeadOffice: true }]
           : []),

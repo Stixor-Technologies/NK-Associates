@@ -135,7 +135,7 @@ export const getProjects = async ({
 
 export const getOfficeAddress = async () => {
   try {
-    const response = await fetch(`${BASE_URL}/api/contacts?populate=*`, {
+    const response = await fetch(`${BASE_URL}/api/offices?populate=*`, {
       cache: "no-store",
     });
     if (!response.ok) {
