@@ -1,0 +1,18 @@
+{
+  "kind": "collectionType",
+  "collectionName": "property_purposes",
+  "info": {
+    "singularName": "property-purpose",
+    "pluralName": "property-purposes",
+    "displayName": "Property_purpose"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    }
+  }
+}
