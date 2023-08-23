@@ -3,12 +3,14 @@ import LinkButton from "../../components/button/link-button";
 import ContactForm from "../../components/shared/contact-form";
 import { getCategories } from "../../utils/api-calls";
 import ServicesOverview from "../../components/shared/service-overview";
+import Goals from "../../components/about-us/goals";
 
 const AboutUs = async () => {
   const categories = await getCategories();
   return (
     <div className="container">
       <div className="text-center text-black">
+        <Goals />
         <div className="text-[1.875rem] md:text-[3rem] font-metropolis-extrabold pt-[1rem] pb-[1.563rem] md:pt-[3rem] md:pb-[2.563rem]">
           About Us
         </div>

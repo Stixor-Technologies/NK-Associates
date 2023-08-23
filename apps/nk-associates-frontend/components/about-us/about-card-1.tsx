@@ -1,31 +1,29 @@
 import React, { FC } from "react";
 import Image from "next/image";
 import { BASE_URL } from "../../utils/constants";
-import { VisionMission } from "../../utils/types/types";
+import { About1 } from "../../utils/types/types";
 
 interface CardProps {
-  about: VisionMission;
-  spin: number;
+  about: About1;
 }
-const AboutCard1: FC<CardProps> = ({ about, spin }) => {
-  const { question, title, description } = about;
+const AboutCard1: FC<CardProps> = ({ about }) => {
+  const { question, title, description } = about?.attributes;
   const id = about?.id;
-  const cardImage = about?.card_image?.data?.attributes?.url;
-  const cardIcon = about?.card_icon?.data?.attributes?.url;
+  const cardImage = about?.attributes?.card_image?.data?.attributes?.url;
+  const cardIcon = about?.attributes?.card_icon?.data?.attributes?.url;
 
   return (
-    <div className="card lg:absolute w-full h-full mb-12 lg:mb-0 overflow-hidden lg:overflow-visible">
-      <div className="flex flex-col lg:flex-row gap-2 lg:gap-10 xl:gap-5 px-4 about-card">
-        <div className="relative images-about max-w-[25rem]  w-full min-h-[32rem] lg:min-h-[37rem] mx-auto mb-8 lg:mb-0">
+    <div>
+      <div className="flex flex-col lg:flex-row gap-10">
+        <div className="relative max-w-[32rem] w-full min-h-[32rem] sm:min-h-[42rem] mx-auto">
           <Image
             src={`${BASE_URL}${cardImage || "/"}`}
             alt="Card Image 1"
             fill
-            style={{ transform: `rotate(${spin}deg)` }}
-            className="object-cover rounded-2xl"
+            className="lg:p-3"
           />
         </div>
-        <div className="text-about flex flex-col font-metropolis text-xl text-center lg:text-left text-nk-dark-gray lg:w-[55%]  my-auto">
+        <div className="flex flex-col font-metropolis text-xl text-center lg:text-left text-nk-dark-gray lg:w-1/2 my-auto mx-auto">
           <div className="relative max-w-[6.25rem] w-full min-h-[5rem] my-1 mx-auto lg:mx-0">
             <Image src={`${BASE_URL}${cardIcon || "/"}`} alt="Card Icon" fill />
           </div>
@@ -33,7 +31,7 @@ const AboutCard1: FC<CardProps> = ({ about, spin }) => {
           <h1 className="font-metropolis-bold text-[2.75rem] mt-3 mb-8">
             {title}
           </h1>
-          <p className="lg:pr-10"> {description}</p>
+          <p className=""> {description}</p>
         </div>
       </div>
     </div>
