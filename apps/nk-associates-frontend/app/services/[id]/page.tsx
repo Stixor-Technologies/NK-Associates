@@ -1,3 +1,4 @@
+// "use client";
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
@@ -19,8 +20,18 @@ async function ServiceDetail({ params: { id } }: ServiceDetailProps) {
   // const ServiceDetail: FC<ServiceDetailProps> = () => {
 
   const data: Services = await getServiceDetail(id);
-  const { title, description, process, expertise } = data?.attributes;
+  const {
+    title,
+    description,
+    process,
+    expertise,
+    outcome,
+    expertise_image,
+    outcome_image,
+  } = data?.attributes;
   const descriptionParas: string[] | string = description.split("\n\n");
+  const expertiseImage = expertise_image?.data?.attributes?.url;
+  const outcomeImage = outcome_image?.data?.attributes?.url;
 
   const contactNumber = await getContactNumber();
   const number = contactNumber?.data?.attributes.number;
@@ -68,7 +79,12 @@ async function ServiceDetail({ params: { id } }: ServiceDetailProps) {
           )}
         </div>
         <ProcessSteps process={process} />
-        <ExpertiseOutcomes expertise={expertise} />
+        <ExpertiseOutcomes
+          expertise={expertise}
+          expertise_image={expertiseImage}
+          outcome={outcome}
+          outcome_image={outcomeImage}
+        />
       </div>
     </section>
   );

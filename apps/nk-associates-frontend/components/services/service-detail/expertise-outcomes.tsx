@@ -3,19 +3,21 @@ import React, { FC, useLayoutEffect, useEffect, useState } from "react";
 import Image from "next/image";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import SplitType from "split-type";
+import { BASE_URL } from "../../../utils/constants";
 
 gsap.registerPlugin(ScrollTrigger);
 interface OutcomesProps {
-  outcome_images?: string[];
-  expertise?: string;
-  outcomes?: String;
+  expertise: string;
+  expertise_image: string;
+  outcome: string;
+  outcome_image: string;
 }
 
 const ExpertiseOutcomes: FC<OutcomesProps> = ({
-  outcome_images,
   expertise,
-  outcomes,
+  expertise_image,
+  outcome,
+  outcome_image,
 }) => {
   const [windowSize, setWindowSize] = useState(window.innerWidth);
   const breakPoint = 1024;
@@ -32,25 +34,40 @@ const ExpertiseOutcomes: FC<OutcomesProps> = ({
   }, []);
 
   useLayoutEffect(() => {
-    // pinned animation
     ScrollTrigger.getById("expertiseTrigger")?.kill();
-    let pinnedTl = null; // Initialize the variable
+    ScrollTrigger.getById("mobileExpertiseTrigger")?.kill();
+    ScrollTrigger.getById("mobileOutcomeTrigger")?.kill();
 
-    if (windowSize > breakPoint) {
+    if (windowSize >= breakPoint) {
+      gsap.set("[data-expertise] .images-panel:first-child", {
+        opacity: 1,
+        y: 0,
+        x: "0%",
+        rotate: -6,
+      });
+
+      gsap.set("[data-outcome] .images-panel:first-child", {
+        opacity: 0,
+        y: "100%",
+        x: "0%",
+        rotate: 0,
+      });
+
+      gsap.set("[data-outcome] .text-panel:nth-child(2)", { opacity: 0 });
+
       const panels: HTMLElement[] = gsap.utils.toArray(".panels");
       const textPanels: HTMLElement[] = gsap.utils.toArray(".text-panel");
       const imagesPanel: HTMLElement[] = gsap.utils.toArray(".images-panel");
 
-      pinnedTl = gsap.timeline({
+      const pinnedTl = gsap.timeline({
         scrollTrigger: {
           id: "expertiseTrigger",
           trigger: "[data-expertise-outcomes]",
-          start: "top 10%",
-          end: `+=${35 * panels.length}%`,
+          start: "top 20%",
+          end: `+=${40 * panels.length}%`,
           pin: true,
           scrub: 1,
           invalidateOnRefresh: true,
-          markers: true,
           snap: {
             snapTo: 1 / (textPanels.length - 1),
             duration: 0.5,
@@ -83,29 +100,66 @@ const ExpertiseOutcomes: FC<OutcomesProps> = ({
             );
         }
       });
-    }
+    } else {
+      gsap.set(".text-panel", {
+        opacity: 1,
+      });
 
-    // Clear the timeline if it exists and windowSize is below the breakpoint
-    if (pinnedTl && windowSize <= breakPoint) {
-      gsap.set(".text-panel", { opacity: 1 });
-      gsap.set(".image-panel", { opacity: 1, y: 0, rotate: 0 });
+      gsap.set(".images-panel", { opacity: 0, y: 0, x: "-100%", rotate: 0 });
+      const expertiseTl = gsap.timeline({
+        scrollTrigger: {
+          id: "mobileExpertiseTrigger",
+          trigger: "[data-expertise]",
+          start: "top 70%",
+        },
+      });
 
-      pinnedTl.clear();
-      pinnedTl = null; // Clear the reference after clearing the timeline
+      expertiseTl.to("[data-expertise] .images-panel:first-child", {
+        x: 0,
+        opacity: 1,
+        duration: 0.7,
+        ease: "power2.out",
+      });
+      expertiseTl.to("[data-expertise] .images-panel:first-child", {
+        rotate: -6,
+      });
+
+      const outComeTl = gsap.timeline({
+        scrollTrigger: {
+          id: "mobileOutcomeTrigger",
+          trigger: "[data-outcome]",
+          start: "top 70%",
+        },
+      });
+
+      outComeTl.to("[data-outcome] .images-panel:first-child", {
+        x: 0,
+        opacity: 1,
+        duration: 0.7,
+        ease: "power2.out",
+      });
+
+      outComeTl.to("[data-outcome] .images-panel:first-child", {
+        rotate: -6,
+      });
     }
   }, [windowSize]);
 
   return (
     <div
       data-expertise-outcomes
-      className="lg:h-[70vh] lg:flex lg:flex-col relative lg:justify-center"
+      className="relative lg:h-[70vh] lg:flex lg:flex-col lg:my-24 lg:justify-center"
     >
       {/* expertise */}
-      <div className="panels flex flex-col lg:flex-row gap-9 lg:absolute">
-        <div className="images-panel self-center w-full max-w-[22rem] md:max-w-[27rem] mx-auto lg:w-[45%] lg:-rotate-6">
+      <div
+        data-expertise
+        className="panels my-10 flex flex-col gap-10 sm:my-0 lg:flex-row lg:my-0 lg:absolute"
+      >
+        <div className="images-panel self-center w-[90%] max-w-[22rem] mx-auto sm:w-full md:max-w-[27rem] lg:w-[45%] lg:-rotate-6">
           <div className="relative aspect-square w-full">
             <Image
-              src={`/assets/images/bg-project.jpeg`}
+              // src={`/assets/images/bg-project.jpeg`}
+              src={`${BASE_URL}${expertise_image || "/"}`}
               alt="expertise-picture"
               fill
               className="rounded-3xl shadow-xl object-cover"
@@ -118,18 +172,21 @@ const ExpertiseOutcomes: FC<OutcomesProps> = ({
               Areas of Expertise
             </h2>
           </div>
-          <p className="text-base font-metropolis-thin text-nk-black py-4 md:text-xl">
+          <p className="text-base font-metropolis-thin text-nk-black md:py-4 md:text-xl">
             {expertise}
           </p>
         </div>
       </div>
 
       {/* outcomes */}
-      <div className="panels flex flex-col lg:flex-row gap-9 my-10 lg:absolute">
-        <div className="self-center images-panel w-full max-w-[22rem] md:max-w-[27rem] mx-auto lg:w-[45%] lg:translate-y-full lg:opacity-0">
+      <div
+        data-outcome
+        className="panels my-10 flex flex-col gap-10 lg:flex-row lg:my-0 lg:absolute"
+      >
+        <div className="images-panel self-center w-[90%] max-w-[22rem] mx-auto sm:w-full md:max-w-[27rem] lg:w-[45%] lg:translate-y-full lg:opacity-0">
           <div className="relative aspect-square w-full">
             <Image
-              src={`/assets/images/bg-project.jpeg`}
+              src={`${BASE_URL}${outcome_image || "/"}`}
               alt="expertise-picture"
               fill
               className="rounded-3xl shadow-xl object-cover"
@@ -142,15 +199,8 @@ const ExpertiseOutcomes: FC<OutcomesProps> = ({
               Outcomes
             </h2>
           </div>
-          <p className="text-base font-metropolis-thin text-nk-black py-4 md:text-xl">
-            Contrary to popular belief, Lorem Ipsum is not simply random text.
-            It has roots in a piece of classical Latin literature from 45 BC,
-            making it over 2000 years old. Richard McClintock, a Latin professor
-            at Hampden-Sydney College in Virginia, looked up one of the more
-            obscure Latin words, consectetur, from a Lorem Ipsum passage, and
-            going through the cites of the word in classical literature,
-            discovered the undoubtable source. Lorem Ipsum comes from sections
-            1.10.32 and 1.10.33
+          <p className="text-base font-metropolis-thin text-nk-black md:py-4 md:text-xl">
+            {outcome}
           </p>
         </div>
       </div>

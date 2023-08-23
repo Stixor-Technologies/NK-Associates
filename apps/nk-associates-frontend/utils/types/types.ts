@@ -178,6 +178,13 @@ export interface Services {
       data: MediaAttributes;
     };
     expertise: string;
+    expertise_image: {
+      data: MediaAttributes;
+    };
+    outcome: string;
+    outcome_image: {
+      data: MediaAttributes;
+    };
     description: string;
     process: ServiceProcess[];
   };

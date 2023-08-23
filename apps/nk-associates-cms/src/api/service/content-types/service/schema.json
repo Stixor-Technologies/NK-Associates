@@ -55,6 +55,27 @@
       "repeatable": true,
       "component": "service-process.service-process",
       "required": true
+    },
+    "outcome": {
+      "type": "text",
+      "required": true,
+      "minLength": 6
+    },
+    "expertise_image": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "outcome_image": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images"
+      ]
     }
   }
 }

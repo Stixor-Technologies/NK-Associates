@@ -31,6 +31,7 @@ const ProcessSteps: FC<ProcessStepsProps> = ({ process }) => {
   useLayoutEffect(() => {
     ScrollTrigger.getById("processTriger")?.kill();
     if (windowSize > breakPoint) {
+      console.log("break");
       const cards: HTMLDivElement[] = gsap.utils.toArray(".process-card");
       gsap.set(".process-card:not(:first-child)", { x: "200%" });
 
@@ -63,7 +64,10 @@ const ProcessSteps: FC<ProcessStepsProps> = ({ process }) => {
       });
       ScrollTrigger.refresh();
     } else {
-      gsap.set(".process-card:not(:first-child)", { x: "0%" });
+      // console.log("clear");
+
+      gsap.set(".process-card", { x: "40%" });
+      // ScrollTrigger.getById("processTriger")?.kill();
     }
   }, [windowSize]);
 
