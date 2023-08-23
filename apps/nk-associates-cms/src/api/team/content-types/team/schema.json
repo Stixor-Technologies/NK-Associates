@@ -37,20 +37,20 @@
     },
     "whatsapp": {
       "type": "string",
-      "required": true,
+      "required": false,
       "regex": "^((\\92)[0-9]{10})$"
     },
     "linkedin": {
       "type": "string",
-      "required": true
+      "required": false
     },
     "instagram": {
       "type": "string",
-      "required": true
+      "required": false
     },
     "facebook": {
       "type": "string",
-      "required": true
+      "required": false
     }
   }
 }

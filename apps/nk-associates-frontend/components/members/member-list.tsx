@@ -1,55 +1,40 @@
-"use client";
-import React, { FC, useState, useEffect, useRef } from "react";
+import React from "react";
 import MemberCard from "./member-card";
 import { Member } from "../../utils/types/types";
 import { getMembers } from "../../utils/api-calls";
-import Spinner from "../spinner";
 
-const MembersList: FC = () => {
-  const [members, setMembers] = useState<Member[]>([]);
-  const [isLoading, setIsLoading] = useState<boolean>(true);
-  const ref = useRef<HTMLDivElement | null>(null);
+async function fetchMembers() {
+  try {
+    const response = await getMembers();
+    return response?.data;
+  } catch (error) {
+    console.error("Error fetching social links:", error);
+    throw error;
+  }
+}
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const resp = await getMembers();
-        if (resp?.data) {
-          setMembers(resp?.data);
-        }
-      } catch (error) {
-        console.error("Error fetching members:", error);
-      } finally {
-        setIsLoading(false);
-      }
-    };
-    fetchData();
-  }, []);
+async function MembersList() {
+  const data: Member[] = await fetchMembers();
 
+  const renderMembers = () => {
+    if (data?.length === 0 || !data) {
+      return (
+        <p className="font-metropolis text-nk-dark-gray py-10 text-base">
+          No Members Available
+        </p>
+      );
+    }
+    return data?.map((member, index) => (
+      <div key={index}>
+        <MemberCard member={member} />
+      </div>
+    ));
+  };
   return (
-    <div
-      ref={ref}
-      className="md:py-1 property-carousel flex flex-nowrap overflow-x-scroll px-4 gap-4 py-8 pb-12 md:px-8 md:pb-16 md:gap-6 xl:px-0 mx-auto"
-    >
-      {isLoading && members.length === 0 ? (
-        <div className="my-4 mx-auto">
-          <Spinner />
-        </div>
-      ) : members.length > 0 ? (
-        members.map((member, index) => (
-          <div key={index} className="">
-            <MemberCard member={member} className="" />
-          </div>
-        ))
-      ) : (
-        <div className="text-center mx-auto">
-          <p className="font-metropolis text-nk-dark-gray py-10 text-base">
-            No Members Available
-          </p>
-        </div>
-      )}
+    <div className="md:py-1 property-carousel flex flex-nowrap overflow-x-scroll px-4 gap-4 py-8 pb-12 md:px-8 md:pb-16 md:gap-6 xl:px-0 mx-auto">
+      {renderMembers()}
     </div>
   );
-};
+}
 
 export default MembersList;

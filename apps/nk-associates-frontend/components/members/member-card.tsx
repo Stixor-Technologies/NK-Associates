@@ -1,3 +1,4 @@
+"use client";
 import React, { FC, useState } from "react";
 import { BASE_URL } from "../../utils/constants";
 import Image from "next/image";
@@ -10,10 +11,9 @@ import LinkedinIcon from "../../public/assets/icons/linkedIn-icon.svg";
 
 interface CardProps {
   member: Member;
-  className: string;
 }
 
-const MemberCard: FC<CardProps> = ({ member, className }) => {
+const MemberCard: FC<CardProps> = ({ member }) => {
   const { name, role, description, whatsapp, linkedin, instagram, facebook } =
     member?.attributes;
   const id = member?.id;
@@ -25,7 +25,10 @@ const MemberCard: FC<CardProps> = ({ member, className }) => {
     pathName: string;
     image;
   }
-  const WA = `https://wa.me/${whatsapp}?text=I%20would%20like%20to%20connect`;
+  let WA = `https://wa.me/${whatsapp}?text=I%20would%20like%20to%20connect`;
+  if (!whatsapp || whatsapp.length <= 0) {
+    WA = "";
+  }
   const SocialLinks: SocialLink[] = [
     { pathName: facebook, image: FbIcon },
     { pathName: instagram, image: InstagramIcon },
@@ -44,7 +47,8 @@ const MemberCard: FC<CardProps> = ({ member, className }) => {
 
   const SocialList = SocialLinks.map((socialLink, index) => {
     return (
-      socialLink?.pathName && (
+      socialLink?.pathName &&
+      socialLink.pathName.length > 0 && (
         <div
           key={index}
           className="my-2 flex h-9 w-9 cursor-pointer items-center justify-center rounded-md bg-nk-red transition-all duration-300 hover:bg-opacity-75"
@@ -71,7 +75,7 @@ const MemberCard: FC<CardProps> = ({ member, className }) => {
       <Image
         src={`${BASE_URL}${member_image || "/"}`}
         alt="Member Picture"
-        className="justify-center items-center object-contain m-2"
+        className="flex justify-center items-center object-contain m-2"
         width={284}
         height={290}
       />
