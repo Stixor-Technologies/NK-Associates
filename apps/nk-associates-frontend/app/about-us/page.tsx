@@ -3,13 +3,14 @@ import LinkButton from "../../components/button/link-button";
 import ContactForm from "../../components/shared/contact-form";
 import { getCategories } from "../../utils/api-calls";
 import ServicesOverview from "../../components/shared/service-overview";
+import CeoMessage from "../../components/about-us/ceo-message";
 import Goals from "../../components/about-us/goals";
 
 const AboutUs = async () => {
   const categories = await getCategories();
   return (
-    <div className="container">
-      <div className="text-center text-black">
+    <div>
+      <div className="text-center text-black container">
         <Goals />
         <div className="text-[1.875rem] md:text-[3rem] font-metropolis-extrabold pt-[1rem] pb-[1.563rem] md:pt-[3rem] md:pb-[2.563rem]">
           About Us
@@ -30,13 +31,15 @@ const AboutUs = async () => {
           />
         </div>
       </div>
-      <div>Our Mission Component</div>
-      <div>Ceos Message Component</div>
+      <div className="container">Our Mission Component</div>
+      <div className="container">
+        <CeoMessage />
+      </div>
 
       <ServicesOverview />
 
-      <div>Meet Our best inclass team Component</div>
-      <div>
+      <div className="container">Meet Our best inclass team Component</div>
+      <div className="pb-[2.958rem] md:pb-[3.603rem]">
         <ContactForm categories={categories} heading="Get In Touch" />
       </div>
     </div>
