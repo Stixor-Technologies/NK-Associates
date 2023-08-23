@@ -27,55 +27,50 @@
     "description": {
       "type": "text",
       "required": true,
-      "minLength": 6
+      "minLength": 6,
+      "maxLength": 1000
     },
     "service_image": {
       "type": "media",
       "multiple": false,
       "required": true,
-      "allowedTypes": [
-        "images"
-      ]
+      "allowedTypes": ["images"]
     },
     "company_logo": {
       "type": "media",
       "multiple": false,
       "required": false,
-      "allowedTypes": [
-        "images"
-      ]
+      "allowedTypes": ["images"]
     },
     "expertise": {
       "type": "text",
       "minLength": 6,
-      "required": true
+      "required": true,
+      "maxLength": 500
+    },
+    "outcome": {
+      "type": "text",
+      "required": true,
+      "minLength": 6,
+      "maxLength": 500
+    },
+    "expertise_image": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": ["images"]
+    },
+    "outcome_image": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": ["images"]
     },
     "process": {
       "type": "component",
       "repeatable": true,
       "component": "service-process.service-process",
       "required": true
-    },
-    "outcome": {
-      "type": "text",
-      "required": true,
-      "minLength": 6
-    },
-    "expertise_image": {
-      "type": "media",
-      "multiple": false,
-      "required": true,
-      "allowedTypes": [
-        "images"
-      ]
-    },
-    "outcome_image": {
-      "type": "media",
-      "multiple": false,
-      "required": true,
-      "allowedTypes": [
-        "images"
-      ]
     }
   }
 }

@@ -42,9 +42,14 @@ async function ServiceDetail({ params: { id } }: ServiceDetailProps) {
           <h1 className="text-3xl font-metropolis-bold text-nk-black md:text-5xl">
             {title}
           </h1>
-          <p className="text-sm font-metropolis-thin text-nk-black py-5 md:text-[1.25rem] md:leading-snug md:py-7">
-            {descriptionParas}
-          </p>
+          {descriptionParas.map((paragraph: string, index: number) => (
+            <p
+              key={index}
+              className="text-sm font-metropolis-thin text-nk-black py-3 md:text-[1.25rem] md:leading-snug md:py-7"
+            >
+              {descriptionParas}
+            </p>
+          ))}
 
           {number && (
             <div className="flex items-center justify-center gap-5 md:py-7">
