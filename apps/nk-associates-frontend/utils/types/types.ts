@@ -1,3 +1,5 @@
+import { string } from "yup";
+
 export interface EventsImage {
   data: {
     attributes: {
@@ -218,6 +220,15 @@ export interface Member {
     facebook: string;
     member_image: {
       data: MediaAttributes;
+    };
+  };
+}
+
+export interface About {
+  data: {
+    attributes: {
+      ceo_image: { data: MediaAttributes };
+      message: string;
     };
   };
 }
