@@ -1,4 +1,3 @@
-// "use client";
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
@@ -17,8 +16,6 @@ interface ServiceDetailProps {
 }
 
 async function ServiceDetail({ params: { id } }: ServiceDetailProps) {
-  // const ServiceDetail: FC<ServiceDetailProps> = () => {
-
   const data: Services = await getServiceDetail(id);
   const {
     title,

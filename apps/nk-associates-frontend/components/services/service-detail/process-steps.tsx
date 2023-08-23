@@ -31,7 +31,6 @@ const ProcessSteps: FC<ProcessStepsProps> = ({ process }) => {
   useLayoutEffect(() => {
     ScrollTrigger.getById("processTriger")?.kill();
     if (windowSize > breakPoint) {
-      console.log("break");
       const cards: HTMLDivElement[] = gsap.utils.toArray(".process-card");
       gsap.set(".process-card:not(:first-child)", { x: "200%" });
 
@@ -62,23 +61,17 @@ const ProcessSteps: FC<ProcessStepsProps> = ({ process }) => {
           },
         });
       });
-      ScrollTrigger.refresh();
     } else {
-      // console.log("clear");
-
-      gsap.set(".process-card", { x: "40%" });
-      // ScrollTrigger.getById("processTriger")?.kill();
+      gsap.set(".process-card", { x: "0%" });
     }
   }, [windowSize]);
 
-  console.log(windowSize);
-
   return (
-    <div data-cards-container className="min-h-[34.688rem] py-10 text-nk-black">
+    <div data-cards-container className="min-h-[34.688rem] py-8 text-nk-black">
       <h3 className="text-center font-metropolis-semibold text-[1.75rem] mb-7 md:text-4xl md:mb-12">
         Service Process
       </h3>
-      <div className="panels-container relative min-h-[324px]">
+      <div className="panels-container relative min-h-[20.25rem]">
         {process.map((step, index) => {
           const processImage = step?.process_image?.data?.attributes?.url;
           return (
@@ -86,7 +79,7 @@ const ProcessSteps: FC<ProcessStepsProps> = ({ process }) => {
               key={index}
               className="process-card w-full my-5 flex flex-col items-center bg-nk-white rounded-xl shadow-md gap-8 sm:gap-6 px-6 py-8 sm:flex-row md:gap-8 md:px-8 md:py-12 md:absolute md:my-0"
             >
-              <div className="relative w-[142px] h-[144px] md:w-[226px] md:h-[228px]">
+              <div className="relative w-[8.875rem] h-[9rem] md:w-[14.125rem] md:h-[14.25rem]">
                 <Image
                   src={`${BASE_URL}${processImage || "/"}`}
                   fill
@@ -106,9 +99,9 @@ const ProcessSteps: FC<ProcessStepsProps> = ({ process }) => {
         })}
       </div>
       <p className=" max-w-5xl mx-auto text-center mt-4 text-base font-metropolis-thin text-nk-black md:mt-8 md:text-2xl">
-        NK Design and Construction's commitment to innovation, collaboration,
-        and attention to detail ensures that every project is a testament to our
-        expertise and the vision of our clients.
+        NK Design and Construction&rsquo;s commitment to innovation,
+        collaboration, and attention to detail ensures that every project is a
+        testament to our expertise and the vision of our clients.
       </p>
     </div>
   );

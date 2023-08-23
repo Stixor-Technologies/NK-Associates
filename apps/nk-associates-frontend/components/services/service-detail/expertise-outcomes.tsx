@@ -148,7 +148,7 @@ const ExpertiseOutcomes: FC<OutcomesProps> = ({
   return (
     <div
       data-expertise-outcomes
-      className="relative lg:h-[70vh] lg:flex lg:flex-col lg:my-24 lg:justify-center"
+      className="relative lg:h-[70vh] lg:flex lg:flex-col lg:my-[5.625rem] lg:justify-center"
     >
       {/* expertise */}
       <div
