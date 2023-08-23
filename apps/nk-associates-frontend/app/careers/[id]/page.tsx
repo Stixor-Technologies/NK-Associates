@@ -73,10 +73,10 @@ function JobDetail({ params: { id } }: JobDetailProps) {
     }
   }
 
-  function openModal(): void {
+  const openModal = () => {
     document.body.style.overflow = "hidden";
     setIsOpen(true);
-  }
+  };
 
   return (
     <div className=" block text-center container text-nk-black">
