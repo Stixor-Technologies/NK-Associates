@@ -158,7 +158,6 @@ const ExpertiseOutcomes: FC<OutcomesProps> = ({
         <div className="images-panel self-center w-[90%] max-w-[22rem] mx-auto sm:w-full md:max-w-[27rem] lg:w-[45%] lg:-rotate-6">
           <div className="relative aspect-square w-full">
             <Image
-              // src={`/assets/images/bg-project.jpeg`}
               src={`${BASE_URL}${expertise_image || "/"}`}
               alt="expertise-picture"
               fill
