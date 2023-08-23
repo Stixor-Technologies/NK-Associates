@@ -15,6 +15,7 @@ function JobDetail({ params: { id } }: JobDetailProps) {
   const [isOpen, setIsOpen] = useState<boolean>(false);
 
   const closeModal = () => {
+    document.body.style.overflow = "auto";
     setIsOpen(false);
   };
 
@@ -72,9 +73,10 @@ function JobDetail({ params: { id } }: JobDetailProps) {
     }
   }
 
-  function openModal(): void {
+  const openModal = () => {
+    document.body.style.overflow = "hidden";
     setIsOpen(true);
-  }
+  };
 
   return (
     <div className=" block text-center container text-nk-black">
