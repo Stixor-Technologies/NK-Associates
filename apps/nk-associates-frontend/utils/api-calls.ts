@@ -293,11 +293,21 @@ export const getPhone = async () => {
 export const getFeaturedProperties = async () => {
   try {
     const resp = await fetch(
-      `${BASE_URL}/api/featured-properties?populate=deep&sort[1]=id`,
+      `${BASE_URL}/api/featured-properties?populate=deep`,
     );
     const data = await resp.json();
     return data;
   } catch (error) {
     console.error("There was an error getting the featured properties", error);
+  }
+};
+
+export const getFeaturedProjects = async () => {
+  try {
+    const resp = await fetch(`${BASE_URL}/api/featured-project?populate=deep`);
+    const data = await resp.json();
+    return data;
+  } catch (error) {
+    console.error("There was an error getting the featured projects", error);
   }
 };
