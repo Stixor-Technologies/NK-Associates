@@ -15,6 +15,7 @@ function JobDetail({ params: { id } }: JobDetailProps) {
   const [isOpen, setIsOpen] = useState<boolean>(false);
 
   const closeModal = () => {
+    document.body.style.overflow = "auto";
     setIsOpen(false);
   };
 
@@ -73,6 +74,7 @@ function JobDetail({ params: { id } }: JobDetailProps) {
   }
 
   function openModal(): void {
+    document.body.style.overflow = "hidden";
     setIsOpen(true);
   }
 
