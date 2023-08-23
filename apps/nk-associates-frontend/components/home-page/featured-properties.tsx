@@ -30,7 +30,7 @@ const FeaturedProperties = () => {
   return (
     <>
       {featuredProperties.length > 0 || isLoading ? (
-        <div className="xl:container md:my-20">
+        <div className="xl:container my-12 md:my-20">
           <h6 className="text-[2rem] text-center font-metropolis-semibold px-4 md:px-8 md:text-4xl xl:px-0">
             Featured Properties
           </h6>
@@ -41,7 +41,7 @@ const FeaturedProperties = () => {
             </div>
           ) : (
             <div className="flex flex-col">
-              <div className="property-carousel flex flex-nowrap overflow-x-scroll px-4 gap-8 md:py-8 md:px-8 xl:px-0">
+              <div className="property-carousel flex flex-nowrap overflow-x-scroll px-4 py-9 gap-8 md:py-8 md:px-8 xl:px-0">
                 {featuredProperties?.map(
                   (property: Property, index: number) => (
                     <PropertyCard key={index} property={property} actFeatured />
