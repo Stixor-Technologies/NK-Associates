@@ -311,6 +311,16 @@ export const getFeaturedProjects = async () => {
   }
 };
 
+export const getPopularCategories = async () => {
+  try {
+    const resp = await fetch(`${BASE_URL}/api/popular-categories?populate=*`);
+    const data = await resp.json();
+    return data;
+  } catch (error) {
+    console.error("There was an error getting the popular categories", error);
+  }
+};
+
 export const getBannerImages = async () => {
   try {
     const resp = await fetch(`${BASE_URL}/api/banner-image`);
