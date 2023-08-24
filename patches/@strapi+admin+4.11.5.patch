@@ -1,0 +1,241 @@
+diff --git a/node_modules/@strapi/admin/admin/src/content-manager/components/RelationInput/RelationInput.js b/node_modules/@strapi/admin/admin/src/content-manager/components/RelationInput/RelationInput.js
+index aa5d980..33e401f 100644
+--- a/node_modules/@strapi/admin/admin/src/content-manager/components/RelationInput/RelationInput.js
++++ b/node_modules/@strapi/admin/admin/src/content-manager/components/RelationInput/RelationInput.js
+@@ -16,6 +16,10 @@ import { Cross, Refresh } from '@strapi/icons';
+ import PropTypes from 'prop-types';
+ import { FixedSizeList as List } from 'react-window';
+ import styled from 'styled-components';
++import {
++  useFetchClient,
++  useCMEditViewDataManager,
++} from "@strapi/helper-plugin";
+ 
+ import { usePrev } from '../../hooks';
+ 
+@@ -86,6 +90,179 @@ const RelationInput = ({
+   const listRef = useRef();
+   const outerListRef = useRef();
+ 
++  // Changes for the conditional dependency selection
++
++  const [results, setResults] = useState();
++  const [fieldDisabled, setFieldDisabled] = useState(false);
++  const { get } = useFetchClient();
++
++  const {
++    slug,
++    initialData,
++    modifiedData,
++    relationConnect,
++    relationDisconnect,
++    relationLoad,
++    relationReorder,
++  } = useCMEditViewDataManager();
++
++  const fetchRelations = async () => {
++    try {
++      const { data } = await get(
++        "/content-manager/relations/api::property.property/property_type?populate=*",
++        {
++          params: {
++            page: 1,
++          },
++        }
++      );
++
++      return data;
++    } catch (err) {
++      return null;
++    }
++  };
++  const fetchSelectedPropertyPurpose = async () => {
++    try {
++      const { data } = await get(
++        "/content-manager/relations/api::property.property/1/property_purpose",
++        {
++          params: {
++            page: 1,
++          },
++        }
++      );
++
++      return data;
++    } catch (err) {
++      return null;
++    }
++  };
++  const fetchSelectedPropertyCategory = async () => {
++    try {
++      const { data } = await get(
++        "/content-manager/relations/api::property.property/1/property_category",
++        {
++          params: {
++            page: 1,
++          },
++        }
++      );
++
++      return data;
++    } catch (err) {
++      return null;
++    }
++  };
++  const clearCurrentSelectionIfNoParentIsSelected = (name, id) => {
++    relationDisconnect({ name, id });
++  };
++
++  useEffect(() => {
++    if (label.includes("property_type")) {
++      const fetch = async () => {
++        const selectedPropertyCategoryResp =
++          await fetchSelectedPropertyCategory();
++        const propertyTypesWithRelationsResp = await fetchRelations();
++
++        const findSelectedCatagory = () => {
++          if (
++            modifiedData &&
++            modifiedData.property_category &&
++            modifiedData.property_category.length
++          ) {
++            return modifiedData.property_category[0].name;
++          }
++
++          return selectedPropertyCategoryResp.data
++            ? selectedPropertyCategoryResp.data.name
++            : undefined;
++        };
++
++        const selectedPropertyCategory = findSelectedCatagory();
++        if (selectedPropertyCategory) {
++          setFieldDisabled(false);
++          const checkIfIncludes = (type, selectedCategory) => {
++            const index = type.property_categories.findIndex(
++              (category) => category.name === selectedCategory
++            );
++            return index >= 0;
++          };
++
++          const filteredPropertyTypes = propertyTypesWithRelationsResp.results
++            .map((type) => {
++              const included = checkIfIncludes(type, selectedPropertyCategory);
++              if (!included) return null;
++              return type;
++            })
++            .filter((item) => item !== null);
++
++          const normalizedResults = filteredPropertyTypes.map((type) => {
++            return {
++              ...type,
++              mainField: type.name,
++            };
++          });
++
++          setResults(normalizedResults);
++
++          console.log({
++            selectedPropertyCategoryResp,
++            propertyTypesWithRelationsResp,
++            selectedPropertyCategory,
++            filteredPropertyTypes,
++            normalizedResults,
++          });
++        } else {
++          setResults(undefined);
++          setFieldDisabled(true);
++          if (relations && relations.length) {
++            clearCurrentSelectionIfNoParentIsSelected(
++              "property_type",
++              relations[0].id
++            );
++          }
++        }
++      };
++      fetch();
++    }
++    if (label.includes("rent_frequency")) {
++      const fetch = async () => {
++        const findSelectedPurpose = async () => {
++          if (
++            modifiedData &&
++            modifiedData.property_purpose &&
++            modifiedData.property_purpose.length
++          ) {
++            return modifiedData.property_purpose[0].name;
++          }
++
++          const selectedPropertyPurpose = await fetchSelectedPropertyPurpose();
++
++          return selectedPropertyPurpose && selectedPropertyPurpose.data
++            ? selectedPropertyPurpose.data.name
++            : undefined;
++        };
++
++        const selectedPropertyPurpose = await findSelectedPurpose();
++        if (selectedPropertyPurpose && selectedPropertyPurpose === "Rent") {
++          setFieldDisabled(false);
++        } else {
++          setFieldDisabled(true);
++          if (relations && relations.length) {
++            clearCurrentSelectionIfNoParentIsSelected(
++              "rent_frequency",
++              relations[0].id
++            );
++          }
++        }
++      };
++      fetch();
++    }
++  }, [searchResults]);
++
++  // Changes for the conditional dependency selection
++
+   const { data } = searchResults;
+ 
+   const relations = paginatedRelations.data;
+@@ -104,18 +281,24 @@ const RelationInput = ({
+ 
+   const shouldDisplayLoadMoreButton = !!labelLoadMore && paginatedRelations.hasNextPage;
+ 
+-  const options = useMemo(
+-    () =>
+-      data
+-        .flat()
+-        .filter(Boolean)
+-        .map((result) => ({
+-          ...result,
+-          value: result.id,
+-          label: result.mainField,
+-        })),
+-    [data]
+-  );
++  // Changes are done inside options computed prop, for the conditional dependency selection
++  const options = useMemo(() => {
++    const optionsList =
++      modifiedData &&
++      modifiedData.property_category &&
++      results &&
++      results.length
++        ? results
++        : data;
++    return optionsList
++      .flat()
++      .filter(Boolean)
++      .map((result) => ({
++        ...result,
++        value: result.id,
++        label: result.mainField,
++      }));
++  }, [data, results, modifiedData]);
+ 
+   useEffect(() => {
+     if (totalNumberOfRelations <= numberOfRelationsToDisplay) {
+@@ -214,7 +397,7 @@ const RelationInput = ({
+           required={required}
+           label={label}
+           labelAction={labelAction}
+-          disabled={disabled}
++          disabled={disabled || fieldDisabled} // Changes are done here, for the conditional dependency selection
+           placeholder={placeholder}
+           hasMoreItems={searchResults.hasNextPage}
+           loading={searchResults.isLoading}
