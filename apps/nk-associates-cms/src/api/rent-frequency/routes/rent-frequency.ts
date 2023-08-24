@@ -2,6 +2,6 @@
  * rent-frequency router
  */
 
-import { factories } from '@strapi/strapi';
+import { factories } from "@strapi/strapi";
 
-export default factories.createCoreRouter('api::rent-frequency.rent-frequency');
+export default factories.createCoreRouter("api::rent-frequency.rent-frequency");
