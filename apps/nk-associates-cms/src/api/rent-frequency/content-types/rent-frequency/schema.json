@@ -4,7 +4,8 @@
   "info": {
     "singularName": "rent-frequency",
     "pluralName": "rent-frequencies",
-    "displayName": "Rent_frequency"
+    "displayName": "Rent_frequency",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -12,7 +13,9 @@
   "pluginOptions": {},
   "attributes": {
     "name": {
-      "type": "string"
+      "type": "string",
+      "required": true,
+      "unique": true
     }
   }
 }

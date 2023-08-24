@@ -4,7 +4,8 @@
   "info": {
     "singularName": "completion-status",
     "pluralName": "completion-statuses",
-    "displayName": "Completion_status"
+    "displayName": "Completion_status",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -12,7 +13,9 @@
   "pluginOptions": {},
   "attributes": {
     "name": {
-      "type": "string"
+      "type": "string",
+      "required": true,
+      "unique": true
     }
   }
 }

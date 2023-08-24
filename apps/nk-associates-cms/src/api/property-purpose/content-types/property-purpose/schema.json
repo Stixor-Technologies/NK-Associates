@@ -4,7 +4,8 @@
   "info": {
     "singularName": "property-purpose",
     "pluralName": "property-purposes",
-    "displayName": "Property_purpose"
+    "displayName": "Property_purpose",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -12,7 +13,9 @@
   "pluginOptions": {},
   "attributes": {
     "name": {
-      "type": "string"
+      "type": "string",
+      "required": true,
+      "unique": true
     }
   }
 }
