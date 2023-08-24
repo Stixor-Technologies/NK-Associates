@@ -13,6 +13,10 @@ type Coordinates = {
 const Offices = () => {
   const [offices, setOffices] = useState<Offices[]>([]);
   const [coordinates, setCoordinates] = useState<Coordinates[]>([]);
+  const [selectedOfficeIndex, setSelectedOfficeIndex] = useState<number | null>(
+    0,
+  );
+
   const [isLoading, setIsLoading] = useState<boolean>(true);
 
   const collectCoordinates = (offices: Offices[]) => {
@@ -50,23 +54,31 @@ const Offices = () => {
     fetchOfficesAddress();
   }, []);
 
-  console.log(coordinates);
+  const handleAddressClick = (index: number) => {
+    setSelectedOfficeIndex(index);
+  };
 
   return (
-    <div className="container bg-nk-red">
+    <div className="container my-10">
       <h6 className="text-[2rem] text-center text-nk-black font-metropolis-semibold px-4 md:px-8 md:text-4xl xl:px-0">
         Our Offices
       </h6>
 
-      <div className="flex gap-4">
-        <div className="w-[40%] flex flex-col gap-3">
+      <div className="flex gap-4 my-10 bg-nk-red rounded-2xl px-5 py-3">
+        <div className="w-[40%] my-3 flex flex-col gap-3">
           {offices.map((office, index) => (
             <button
               key={index}
-              className="flex flex-col bg-nk-white px-4 py-3 rounded-xl"
+              onClick={() => handleAddressClick(index)}
+              className="flex flex-col bg-nk-white text-left px-4 py-3 rounded-xl"
             >
-              <span className="text-nk-red md:text-2xl">
+              <span className="text-nk-red flex items-center gap-2 font-metropolis-semibold md:text-2xl">
                 {office?.attributes?.location}
+                {office?.isHeadOffice && (
+                  <span className=" text-base font-metropolis text-nk-gray">
+                    (Head Office)
+                  </span>
+                )}
               </span>
               <span className="text-nk-black font-metropolis-thin text-base">
                 {office?.attributes?.address}
@@ -74,8 +86,11 @@ const Offices = () => {
             </button>
           ))}
         </div>
-        <div className="w-[60%]">
-          <MapComponent locations={coordinates} />
+        <div className="w-[60%] shrink-0">
+          <MapComponent
+            locations={coordinates}
+            selectedOfficeIndex={selectedOfficeIndex}
+          />
           {/* <p>
             Lorem ipsum, dolor sit amet consectetur adipisicing elit. Architecto
             dolor soluta perferendis cumque aspernatur, deleniti cupiditate
