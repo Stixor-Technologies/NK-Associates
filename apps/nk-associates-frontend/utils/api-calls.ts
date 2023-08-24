@@ -256,11 +256,11 @@ export const getDepartments = async () => {
 
 export const getSocials = async () => {
   try {
-    let apiUrl = `${BASE_URL}/api/socials`;
-    const resp = await fetch(apiUrl, {
+    const resp = await fetch(`${BASE_URL}/api/social`, {
       cache: "no-store",
     });
     const links = await resp.json();
+    console.log(links);
     return links;
   } catch (error) {
     console.error("There was an error getting social media links", error);

@@ -153,7 +153,7 @@ export interface Job {
   };
 }
 
-export interface socials {
+export interface Socials {
   id: number;
   attributes: {
     twitter: string;

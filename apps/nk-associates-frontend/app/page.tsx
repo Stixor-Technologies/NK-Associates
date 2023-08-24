@@ -1,6 +1,7 @@
 import Image from "next/image";
 import FeaturedProjects from "../components/home-page/featured-projects";
 import FeaturedProperties from "../components/home-page/featured-properties";
+import NkApp from "../components/home-page/mobile-app";
 import Offices from "../components/home-page/offices";
 
 export default function Home() {
@@ -8,7 +9,9 @@ export default function Home() {
     <section>
       {/* <FeaturedProjects /> */}
       {/* <FeaturedProperties /> */}
+
       <Offices />
+      <NkApp />
     </section>
   );
 }
