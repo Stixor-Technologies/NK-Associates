@@ -11,7 +11,6 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
 
 const Goals: FC = () => {
-  // const [about, setAbout] = useState<About>();
   const [card1, setCard1] = useState<VisionMission[]>([]);
   const [card2, setCard2] = useState<ValueGoals[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(true);
@@ -37,7 +36,6 @@ const Goals: FC = () => {
     const isScreenWideEnough = window.innerWidth > 1024;
     if (isScreenWideEnough && card1.length > 0) {
       const cards = gsap.utils.toArray(".card");
-
       const textAbout: HTMLElement[] = gsap.utils.toArray(".text-about");
       const imagesAbout: HTMLElement[] = gsap.utils.toArray(".images-about");
 
@@ -56,7 +54,6 @@ const Goals: FC = () => {
           pin: true,
           scrub: 1,
           invalidateOnRefresh: true,
-          markers: true,
         },
       });
 
@@ -89,42 +86,34 @@ const Goals: FC = () => {
 
   return (
     <div className="card-container relative py-8 min-h-screen md:py-1 my-32">
-      <div className="panel-container">
-        <>
-          {isLoading && card1.length === 0 ? (
-            <div className="my-4 flex justify-center">
-              <Spinner />
-            </div>
-          ) : card1.length > 0 ? (
-            card1.map((card1, index) => (
-              <AboutCard1 key={index} about={card1} />
-            ))
-          ) : (
-            <div>
-              <p className="font-metropolis text-nk-dark-gray py-10 text-center text-base">
-                No Information Available
-              </p>
-            </div>
-          )}
-        </>
-        <>
-          {isLoading && card2.length === 0 ? (
-            <div className=" flex justify-center">
-              <Spinner />
-            </div>
-          ) : card2.length > 0 ? (
-            card2.map((card2, index) => (
-              <AboutCard2 key={index} about={card2} />
-            ))
-          ) : (
-            <div>
-              <p className="font-metropolis text-nk-dark-gray py-10 text-center text-base">
-                No Information Available
-              </p>
-            </div>
-          )}
-        </>
-      </div>
+      <>
+        {isLoading && card1.length === 0 && card2.length === 0 ? (
+          <div className="my-4 flex justify-center">
+            <Spinner />
+          </div>
+        ) : card1.length > 0 ? (
+          card1.map((card1, index) => <AboutCard1 key={index} about={card1} />)
+        ) : (
+          <div>
+            <p className="font-metropolis text-nk-dark-gray py-10 text-center text-base">
+              No Information Available
+            </p>
+          </div>
+        )}
+      </>
+      <>
+        {isLoading && card2.length === 0 ? (
+          <></>
+        ) : card2.length > 0 ? (
+          card2.map((card2, index) => <AboutCard2 key={index} about={card2} />)
+        ) : (
+          <div>
+            <p className="font-metropolis text-nk-dark-gray py-10 text-center text-base">
+              No Information Available
+            </p>
+          </div>
+        )}
+      </>
     </div>
   );
 };
