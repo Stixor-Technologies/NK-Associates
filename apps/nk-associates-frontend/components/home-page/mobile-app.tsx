@@ -1,7 +1,6 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
-import Spinner from "../spinner";
 import { getSocials } from "../../utils/api-calls";
 import FloatingMobile from "../../public/assets/images/floating-mobile.png";
 import GooglePlayIcon from "../../public/assets/icons/play-store-home.svg";
