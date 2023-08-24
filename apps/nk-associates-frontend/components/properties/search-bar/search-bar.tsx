@@ -134,8 +134,7 @@ const SearchBar = ({ onFilter }: { onFilter: () => void }) => {
     const pricesArr = resp.data.map((property) => {
       return property.attributes.price;
     });
-    const duplicatesRemoved = [...new Set(pricesArr)];
-    const sortedPrices = duplicatesRemoved.sort((a, b) => a - b);
+    const sortedPrices = pricesArr.sort((a, b) => a - b);
 
     setFiltersProperties((oldState) => ({
       ...oldState,
