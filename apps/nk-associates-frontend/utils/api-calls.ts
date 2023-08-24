@@ -139,8 +139,6 @@ const getPropertiesByFilter = async (
 
     { cache: "no-store" },
   );
-  const res = await data.json();
-  return res?.data?.schema.attributes;
 };
 
 export const fetchPropertyCategoriesList = async () => {
