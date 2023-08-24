@@ -1,36 +1,73 @@
-import React, { useEffect, useState } from "react";
+"use client";
+import React, { useRef, useEffect } from "react";
 import Image from "next/image";
-import ceoImage from "./ceoImage.jpeg";
 import { About } from "../../utils/types/types";
 import { getAbout } from "../../utils/api-calls";
 import { BASE_URL } from "../../utils/constants";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/all";
 
-const CeoMessage = async () => {
-  const aboutInfo: About = await getAbout();
+gsap.registerPlugin(ScrollTrigger);
+
+interface CeoMessageProps {
+  ceoMessage: string;
+  ceoImage: string;
+}
+
+const CeoMessage: React.FC<CeoMessageProps> = ({ ceoMessage, ceoImage }) => {
+  const ceoRef = useRef(null);
+  const textRef = useRef(null);
+  const startRef = useRef(null);
+
+  useEffect(() => {
+    const el1 = ceoRef.current;
+    const el2 = textRef.current;
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: startRef.current,
+        markers: true,
+        start: "50% 70%",
+        end: "center 50%",
+        // scrub: true,
+        // toggleActions: "play reverse play reverse",
+      },
+    });
+    tl.from(el2, {
+      x: 1000,
+      duration: 0.8,
+    }).from(el1, { x: -1000, duration: 0.8 }, "<");
+  }, []);
 
   return (
-    <div className="flex flex-col items-center justify-center pt-[5.063rem] md:pt-[11.254rem]">
-      <div className="w-full max-w-[25rem] md:px-4 pb-[1.313rem] md:max-w-[39.6rem]">
+    <div
+      ref={startRef}
+      className="overflow-x-clip flex flex-col lg:flex-row items-center justify-center lg:justify-start pt-[5.063rem] lg:pt-[11.254rem] lg:relative lg:mb-[16.75rem] md:mb-[3.75rem]"
+    >
+      <div
+        className="w-full max-w-[25rem] lg:px-4 pb-[1.313rem] lg:max-w-[39.6rem]"
+        ref={ceoRef}
+      >
         <div className="relative aspect-square h-[100%] w-[100%]">
           <Image
-            src={`${BASE_URL}${aboutInfo?.data?.attributes?.ceo_image?.data?.attributes?.url}`}
+            src={ceoImage}
             alt="Ceo Image"
             fill
-            className="rounded-[1.563rem]"
+            className="rounded-[1.563rem] object-cover"
           />
         </div>
       </div>
       <div
-        className="bg-gradient-to-b from-nk-gradient-red-one to-nk-gradient-red-two text-nk-white text-center rounded-[1.563rem] 
-        px-[1.188rem] py-[1.063rem] max-w-[25rem] md:max-w-[40.4rem] md:h-[37.9rem] md:mb-[3.6rem]"
+        className="lg:text-left bg-gradient-to-b from-nk-gradient-red-one to-nk-gradient-red-two text-nk-white rounded-[1.563rem] 
+        px-[2rem] py-[1.063rem] max-w-[25rem] lg:max-w-[39.6rem] lg:h-[37.9rem] lg:mb-[3.6rem] lg:absolute lg:right-[47px] lg:bottom-[-270px]"
+        ref={textRef}
       >
-        <div className="font-metropolis-bold text-[2rem] pb-[0.625rem] md:text-[2.955rem]">
+        <div className="font-metropolis-bold text-[2rem] pb-[0.625rem] lg:text-[2.955rem]">
           CEO&apos;s Message
         </div>
-        <div className="text-[0.813rem] pb-[0.625rem] md:text-[1.375rem]">
-          {aboutInfo.data.attributes.message}
+        <div className="text-[0.813rem] pb-[0.625rem] lg:text-[1.375rem]">
+          {ceoMessage}
         </div>
-        <div className="uppercase text-[1.375rem] font-metropolis-semibold md:hidden">
+        <div className="uppercase text-[1.375rem] font-metropolis-semibold lg:hidden">
           nazim khadim
         </div>
       </div>

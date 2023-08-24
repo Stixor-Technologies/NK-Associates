@@ -7,10 +7,13 @@ import CeoMessage from "../../components/about-us/ceo-message";
 import Goals from "../../components/about-us/goals";
 import { getAbout } from "../../utils/api-calls";
 import { About } from "../../utils/types/types";
+import { BASE_URL } from "../../utils/constants";
 
 const AboutUs = async () => {
   const categories = await getCategories();
   const aboutInfo: About = await getAbout();
+  const ceoMessage: string = aboutInfo.data.attributes.message;
+  const ceoImage: string = `${BASE_URL}${aboutInfo?.data?.attributes?.ceo_image?.data?.attributes?.url}`;
   return (
     <div>
       <div className="text-center text-black container">
@@ -36,7 +39,7 @@ const AboutUs = async () => {
       </div>
       <div className="container">Our Mission Component</div>
       <div className="container">
-        <CeoMessage />
+        <CeoMessage ceoImage={ceoImage} ceoMessage={ceoMessage} />
       </div>
 
       <ServicesOverview />
