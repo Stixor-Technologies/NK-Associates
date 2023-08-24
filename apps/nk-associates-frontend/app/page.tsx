@@ -1,4 +1,5 @@
 import Image from "next/image";
+import HomeBanner from "../components/home-page/hero-banner/hero-banner";
 import FeaturedProjects from "../components/home-page/featured-projects";
 import FeaturedProperties from "../components/home-page/featured-properties";
 import ServicesOverview from "../components/shared/service-overview";
@@ -9,10 +10,10 @@ export default function Home() {
   return (
     <section>
       {/* <FeaturedProjects /> */}
-      {/* <FeaturedProperties /> */}
-
+      <HomeBanner />
+      <FeaturedProperties />
       <Offices />
-      <ServicesOverview />
+      {/* <ServicesOverview /> */}
       <NkApp />
     </section>
   );

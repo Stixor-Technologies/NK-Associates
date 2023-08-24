@@ -260,7 +260,6 @@ export const getSocials = async () => {
       cache: "no-store",
     });
     const links = await resp.json();
-    console.log(links);
     return links;
   } catch (error) {
     console.error("There was an error getting social media links", error);
@@ -309,5 +308,15 @@ export const getFeaturedProjects = async () => {
     return data;
   } catch (error) {
     console.error("There was an error getting the featured projects", error);
+  }
+};
+
+export const getBannerImages = async () => {
+  try {
+    const resp = await fetch(`${BASE_URL}/api/banner-image`);
+    const images = await resp.json();
+    return images;
+  } catch (error) {
+    console.error("There was an error getting the banner images", error);
   }
 };

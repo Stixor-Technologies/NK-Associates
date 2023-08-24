@@ -21,7 +21,6 @@ const MapComponent: FC<IProps> = ({ locations, selectedOfficeIndex }) => {
   const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
   const mapRef = useRef<google.maps.Map | null>(null);
   const { isLoaded } = useMapApi();
-  console.log(selectedOfficeIndex);
   const allLocations = useMemo(
     () => (Array.isArray(locations) ? locations : [locations]),
     [locations],

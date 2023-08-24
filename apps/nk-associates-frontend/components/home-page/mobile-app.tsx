@@ -21,7 +21,6 @@ const NkApp = () => {
     const resp = await getSocials();
     if (resp?.data) {
       const { playstore, appstore, appgallery } = resp?.data?.attributes;
-      console.log(playstore);
 
       setStoreLinks({
         playstore,
