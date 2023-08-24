@@ -1,44 +1,48 @@
 import React, { useState, useEffect, useRef, useMemo } from "react";
 
 import FilterDropDown from "./filter-dropdown";
-import { SearchFilter } from "../../../utils/types/types";
-import useFilters from "./useFilters";
+import { SearchFilterProperties } from "../../../utils/types/types";
+import useFilters from "../../../utils/useFilters";
 
 type PropsType = {
   tile: { name: string; value: string };
-  filtersData: SearchFilter;
+  filtersProperties: SearchFilterProperties;
 };
 
-const SearchBarTile = ({ tile, filtersData }: PropsType) => {
+const SearchBarTile = ({ tile, filtersProperties }: PropsType) => {
   const searchFilterRef = useRef<HTMLDivElement>(null);
   const [activeFilter, setActiveFilter] = useState<boolean>(false);
 
   const [filtersState, filtersDispatch] = useFilters();
+  const [scroll, setScroll] = useState(0);
 
   const filterPosition = useMemo(() => {
     if (searchFilterRef.current) {
       const containerPosition = searchFilterRef.current.getBoundingClientRect();
       const windowWidth = window.innerWidth;
 
+      const tooCloseToTheEdge = windowWidth - containerPosition.left < 400;
+
       return {
-        x: containerPosition.left,
+        x: tooCloseToTheEdge
+          ? containerPosition.right - 360
+          : containerPosition.left,
         y:
           windowWidth > 1024
-            ? containerPosition.top + 64
+            ? containerPosition.top + containerPosition.height
             : containerPosition.top + 60,
+        tooCloseToTheEdge,
       };
     }
+
     return {
       x: 0,
       y: 0,
+      tooCloseToTheEdge: false,
     };
-  }, [activeFilter]);
+  }, [activeFilter, scroll]);
 
   const handleFilterOptionClick = () => {
-    // setFilterPosition({
-    //   x: containerPosition.left,
-    //   y: containerPosition.top + 60,
-    // });
     setActiveFilter(!activeFilter);
   };
 
@@ -51,11 +55,17 @@ const SearchBarTile = ({ tile, filtersData }: PropsType) => {
     }
   };
 
+  const handleScroll = (e) => {
+    setScroll(window.scrollY);
+  };
+
   useEffect(() => {
     document.addEventListener("mousedown", handleOutsideClick);
+    window.addEventListener("scroll", handleScroll);
 
     return () => {
       document.removeEventListener("mousedown", handleOutsideClick);
+      window.removeEventListener("scroll", handleScroll);
     };
   }, []);
 
@@ -69,6 +79,7 @@ const SearchBarTile = ({ tile, filtersData }: PropsType) => {
         onClick={handleFilterOptionClick}
       >
         <p className="text-base lg:text-lg text-nk-gray">{tile.name}</p>
+
         <div className="flex justify-between items-center">
           <p className="text-sm lg:text-base text-nk-black mr-2">
             {tile.value}
@@ -91,13 +102,17 @@ const SearchBarTile = ({ tile, filtersData }: PropsType) => {
 
       {activeFilter && (
         <div
-          className="fixed z-10"
+          className="w-[22.5rem] fixed z-10"
           style={{
             left: filterPosition.x,
             top: filterPosition.y + 10,
           }}
         >
-          <FilterDropDown filterName={tile.name} filtersData={filtersData} />
+          <FilterDropDown
+            position={filterPosition.tooCloseToTheEdge ? "end" : "start"}
+            filterName={tile.name}
+            filtersProperties={filtersProperties}
+          />
         </div>
       )}
     </div>

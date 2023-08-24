@@ -161,8 +161,25 @@ type CategoryType = {
     name: string;
   }[];
 };
-export interface SearchFilter {
-  propertyTypes: CategoryType[] | undefined;
+export interface SearchFilterProperties {
+  propertyTypesList: CategoryType[] | undefined;
+  completionStatusList: { id: number; name: string }[] | undefined;
+  rentFrequencyList: { id: number; name: string }[] | undefined;
+  propertyPurposeList: { id: number; name: string }[] | undefined;
+  projectsList: { id: number; name: string }[] | undefined;
+  priceRange: [number, number];
+}
+
+export interface FiltersStateType {
+  selectedCompletionStatusId: string | number | undefined;
+  selectedRentFrequencyId: string | number | undefined;
+  selectedCategoryId: string | number | undefined;
+  selectedTypeId: string | number | undefined;
+  selectedProjectId: string | number | undefined;
+  selectedPurposeId: string | number | undefined;
+  minSelectedPrice: number;
+  maxSelectedPrice: number;
+  location: string | undefined;
 }
 
 export interface Socials {
