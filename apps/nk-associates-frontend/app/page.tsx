@@ -7,7 +7,7 @@ export default function Home() {
   return (
     <section>
       {/* <FeaturedProjects /> */}
-      <FeaturedProperties />
+      {/* <FeaturedProperties /> */}
       <Offices />
     </section>
   );

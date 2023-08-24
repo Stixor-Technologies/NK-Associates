@@ -59,18 +59,20 @@ const Offices = () => {
   };
 
   return (
-    <div className="container my-10">
+    <div className="container mb-10 mt-10 md:mb-20">
       <h6 className="text-[2rem] text-center text-nk-black font-metropolis-semibold px-4 md:px-8 md:text-4xl xl:px-0">
         Our Offices
       </h6>
 
-      <div className="flex gap-4 my-10 bg-nk-red rounded-2xl px-5 py-3">
-        <div className="w-[40%] my-3 flex flex-col gap-3">
+      <div className="flex flex-col my-5 gap-8 rounded-[1.25rem] lg:flex-row md:my-10 md:py-5 md:px-2 lg:gap-0 md:bg-nk-red">
+        <div className="lg:w-[40%] max-h-[60vh] hidden overflow-auto px-3 md:flex flex-col gap-3">
           {offices.map((office, index) => (
             <button
               key={index}
               onClick={() => handleAddressClick(index)}
-              className="flex flex-col bg-nk-white text-left px-4 py-3 rounded-xl"
+              className={`flex flex-col bg-nk-white text-left px-4 py-3 rounded-xl border ${
+                selectedOfficeIndex === index && "border-nk-black"
+              }`}
             >
               <span className="text-nk-red flex items-center gap-2 font-metropolis-semibold md:text-2xl">
                 {office?.attributes?.location}
@@ -86,23 +88,11 @@ const Offices = () => {
             </button>
           ))}
         </div>
-        <div className="w-[60%] shrink-0">
+        <div className="lg:w-[60%] shrink-0 md:px-3">
           <MapComponent
             locations={coordinates}
             selectedOfficeIndex={selectedOfficeIndex}
           />
-          {/* <p>
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Architecto
-            dolor soluta perferendis cumque aspernatur, deleniti cupiditate
-            repudiandae porro? Eos facere neque nobis magnam nemo suscipit
-            dolorum eligendi omnis. Sapiente, cumque! Necessitatibus saepe
-            incidunt laboriosam quia. Ipsum dolores similique amet cumque quas
-            distinctio odit quam exercitationem. Eius temporibus autem
-            accusantium error labore quia fugiat quas mollitia natus? Qui
-            consectetur fuga in. Rem velit corporis illo explicabo ullam a
-            quaerat necessitatibus nesciunt voluptatibus culpa unde quia
-            consequuntur odio, consectetur veritatis animi et corrupti.
-          </p> */}
         </div>
       </div>
     </div>

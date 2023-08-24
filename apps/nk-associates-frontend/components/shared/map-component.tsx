@@ -18,18 +18,30 @@ interface IProps {
 const MapComponent: FC<IProps> = ({ locations, selectedOfficeIndex }) => {
   const [mapCenter, setMapCenter] = useState<Location | null>(null);
   const [mapZoom, setMapZoom] = useState<number>(10);
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
   const mapRef = useRef<google.maps.Map | null>(null);
   const { isLoaded } = useMapApi();
-
+  console.log(selectedOfficeIndex);
   const allLocations = useMemo(
     () => (Array.isArray(locations) ? locations : [locations]),
     [locations],
   );
 
+  let containerClass = "h-96 my-3";
+  if (!isMobile && selectedOfficeIndex >= 0) {
+    containerClass = "min-h-[31.5rem]";
+  } else if (
+    isMobile &&
+    selectedOfficeIndex !== null &&
+    selectedOfficeIndex !== undefined
+  ) {
+    containerClass = "h-96";
+  }
+
   const mapOptions = {
     disableDefaultUI: false,
     mapTypeControl: true,
-    zoomControl: false,
+    zoomControl: true,
     streetViewControl: false,
     fullscreenControl: false,
     keyboardShortcuts: false,
@@ -38,44 +50,48 @@ const MapComponent: FC<IProps> = ({ locations, selectedOfficeIndex }) => {
   };
 
   useEffect(() => {
-    if (isLoaded && mapRef.current) {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+    window.addEventListener("resize", handleResize);
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
+  useEffect(() => {
+    if (isLoaded && mapRef.current && (isMobile || !selectedOfficeIndex)) {
       const bounds = new google.maps.LatLngBounds();
       allLocations.forEach((location) => {
         bounds.extend(new google.maps.LatLng(location.lat, location.lng));
       });
       mapRef.current.fitBounds(bounds);
     }
-  }, [isLoaded, allLocations]);
+  }, [isLoaded, allLocations, isMobile]);
 
   useEffect(() => {
     if (
       isLoaded &&
       mapRef.current &&
+      !isMobile &&
       selectedOfficeIndex !== null &&
       selectedOfficeIndex !== undefined
     ) {
       const selectedLocation = allLocations[selectedOfficeIndex];
-
-      console.log(
-        "Attempting pan to index:",
-        selectedOfficeIndex,
-        "Location:",
-        selectedLocation,
-      );
       setMapZoom(12);
       mapRef.current.panTo(selectedLocation);
     }
-  }, [isLoaded, allLocations, selectedOfficeIndex]);
+  }, [isLoaded, allLocations, selectedOfficeIndex, isMobile]);
 
   return (
-    <div className="relative my-3 flex h-96 w-full items-center sm:pb-1/2">
+    <div
+      className={`relative flex w-full items-center sm:pb-1/2 ${containerClass}`}
+    >
       {isLoaded ? (
         <GoogleMap
           id="google-map"
           zoom={mapZoom}
-          center={mapCenter || allLocations[1]}
-          // zoom={10}
-          // center={allLocations[0]}
+          center={mapCenter || allLocations[0]}
           options={mapOptions}
           onLoad={(map) => {
             mapRef.current = map;
@@ -86,16 +102,29 @@ const MapComponent: FC<IProps> = ({ locations, selectedOfficeIndex }) => {
             <Marker
               key={index}
               position={location}
-              icon={{
-                url:
-                  index === selectedOfficeIndex
-                    ? "/assets/icons/marker-black.svg"
-                    : "/assets/icons/area-marker.svg",
+              // icon={{
+              //   url:
+              //     index === selectedOfficeIndex
+              //       ? "/assets/icons/marker-black.svg"
+              //       : "/assets/icons/area-marker.svg",
 
-                scaledSize:
-                  index === selectedOfficeIndex
-                    ? new window.google.maps.Size(40, 40)
-                    : new window.google.maps.Size(30, 30),
+              //   scaledSize:
+              //     index === selectedOfficeIndex
+              //       ? new window.google.maps.Size(40, 40)
+              //       : new window.google.maps.Size(30, 30),
+              // }}
+              icon={{
+                url: isMobile
+                  ? "/assets/icons/area-marker.svg"
+                  : index === selectedOfficeIndex
+                  ? "/assets/icons/marker-black.svg"
+                  : "/assets/icons/area-marker.svg",
+
+                scaledSize: isMobile
+                  ? new window.google.maps.Size(30, 30) // you can adjust this size for mobile if needed
+                  : index === selectedOfficeIndex
+                  ? new window.google.maps.Size(40, 40)
+                  : new window.google.maps.Size(30, 30),
               }}
             />
           ))}
