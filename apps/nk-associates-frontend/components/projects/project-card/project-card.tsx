@@ -24,6 +24,7 @@ interface ProjectCardProps {
   propertyDescription: string;
   propertyType: string;
   primaryColor?: boolean;
+  actHome?: boolean;
 }
 
 const ProjectCard: React.FC<ProjectCardProps> = ({
@@ -37,6 +38,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
   propertyDescription,
   propertyType,
   primaryColor = true,
+  actHome,
 }) => {
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
@@ -53,11 +55,17 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
     : "bg-white";
   const textColor = primaryColor ? "text-white" : "text-black";
   const flexDirection = primaryColor ? "sm:flex-row-reverse" : "sm:flex-row";
+  const cardHeight = actHome
+    ? "h-[35rem] sm:h-[16.875rem] md:h-[20.625rem] lg:h-[25rem]"
+    : "h-[35rem] sm:h-[21rem] md:h-[26rem] lg:h-[31.25rem]";
 
   return (
     <Link href={`projects/${id}`}>
-      <div
+      {/* <div
         className={`project-card mb-[2.3rem] flex h-[35rem] w-full flex-col overflow-hidden rounded-2xl shadow-md last-of-type:mb-4 sm:h-[21rem] md:mb-[4.5rem] md:h-[26rem] lg:h-[31.25rem] ${flexDirection} md:rounded-3xl ${backgroundColor} ${textColor}`}
+      > */}
+      <div
+        className={`project-card mb-[2.3rem] flex w-full flex-col overflow-hidden rounded-2xl shadow-md last-of-type:mb-4  md:mb-[4.5rem] ${flexDirection} md:rounded-3xl ${backgroundColor} ${textColor} ${cardHeight}`}
       >
         <div className="relative h-full min-h-[21rem] w-full sm:h-auto sm:w-[65%]">
           {imagesList.length > 0 ? (

@@ -9,8 +9,8 @@ import Offices from "../components/home-page/offices";
 export default function Home() {
   return (
     <section>
-      {/* <FeaturedProjects /> */}
       <HomeBanner />
+      <FeaturedProjects />
       <FeaturedProperties />
       <Offices />
       {/* <ServicesOverview /> */}

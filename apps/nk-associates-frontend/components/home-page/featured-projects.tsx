@@ -48,6 +48,7 @@ const FeaturedProjects = () => {
                       key={index}
                       project={project}
                       index={index}
+                      actHome
                     />
                   );
                 })}

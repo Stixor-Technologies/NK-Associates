@@ -6,9 +6,11 @@ import { Project } from "../../../utils/types/types";
 const ProjectCardItem = ({
   project,
   index,
+  actHome,
 }: {
   project: Project;
   index: number;
+  actHome?: boolean;
 }) => {
   const imagesList = useMemo(() => {
     if (
@@ -37,6 +39,7 @@ const ProjectCardItem = ({
       propertyDescription={project.attributes.description}
       propertyType={project.attributes.category}
       primaryColor={index % 2 == 0 ? true : false}
+      actHome
     />
   );
 };
