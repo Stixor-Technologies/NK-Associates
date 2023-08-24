@@ -29,10 +29,6 @@ const PropertyCard: FC<CardProps> = ({
   const categoryTextSize = actMap || actSim ? "text-[0.688rem]" : "text-sm";
   return (
     <div
-      // className={`${actSim && "flex-grow max-w-[18.125rem] min-w-[17.288rem]"}`}
-      // className={`${(actSim || actFeatured) && "flex-grow min-w-[17.288rem]"} ${
-      //   actSim ? "max-w-[18.125rem]" : actFeatured ? "max-w-[384px] w-full" : ""
-      // }`}
       className={`${(actSim || actFeatured) && "flex-grow"} ${
         actSim
           ? "min-w-[17.288rem] max-w-[18.125rem]"
@@ -47,9 +43,6 @@ const PropertyCard: FC<CardProps> = ({
         rel={actMap ? "noopener noreferrer" : undefined}
       >
         <div
-          // className={`aspect-w-1 aspect-h-1 group relative w-full max-w-[37.5rem] overflow-hidden ${
-          //   actMap ? "h-52 rounded-t-xl" : "h-[17.5rem] rounded-xl"
-          // }`}
           className={`aspect-w-1 aspect-h-1 group relative w-full max-w-[37.5rem] overflow-hidden ${
             actMap
               ? "h-52 rounded-t-xl"

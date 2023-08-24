@@ -36,48 +36,50 @@ const NkApp = () => {
 
   return (
     <div className="container my-20">
-      <div className="flex flex-col sm:flex-row gap-4 sm:gap-0">
+      <div className="flex flex-col sm:flex-row gap-8 sm:gap-0">
         <div className="sm:w-1/2 ">
           <Image
             src={FloatingMobile}
-            width={400}
-            height={400}
+            width={470}
+            height={470}
             alt="floating-mobile"
             className="mx-auto"
           />
         </div>
         <div className="sm:w-1/2 flex flex-col justify-center sm:items-start lg:px-14">
-          <div className="order-1 mt-5 flex flex-col items-center gap-2.5 sm:mt-0 sm:order-none">
+          <div className="order-1 mt-5 flex flex-col items-center gap-3 sm:mt-0 sm:order-none">
             <Link
               href={storeLinks?.playstore || "#"}
               target={storeLinks?.playstore ? "_blank" : "_self"}
               rel="noopener noreferrer"
-              className="bg-black rounded-lg inline-flex items-center justify-center w-full h-[70px] sm:w-[300px] md:w-[340px]"
+              className="relative bg-black rounded-xl inline-flex items-center justify-center w-full h-[88px] sm:w-[300px] md:w-[350px] lg:w-[394px] transition-all duration-100 hover:scale-[1.01]"
             >
-              <Image src={GooglePlayIcon} width={240} height={140} alt="app" />
+              <Image src={GooglePlayIcon} fill alt="play-store-link" />
             </Link>
 
             <Link
               href={storeLinks?.appstore || "#"}
               target={storeLinks?.appstore ? "_blank" : "_self"}
-              className="bg-black rounded-lg inline-flex items-center justify-center w-full h-[70px] sm:w-[300px] md:w-[340px]"
+              className="relative bg-black rounded-xl inline-flex items-center justify-center w-full h-[88px] sm:w-[300px] md:w-[350px] lg:w-[394px] transition-all duration-100 hover:scale-[1.01]"
             >
-              <Image src={AppStoreIcon} width={240} height={140} alt="app" />
+              <Image src={AppStoreIcon} fill alt="app-store-link" />
             </Link>
 
             <Link
               href={storeLinks?.appgallery || "#"}
               target={storeLinks?.appgallery ? "_blank" : "_self"}
               rel="noopener noreferrer"
-              className="bg-black rounded-lg inline-flex items-center justify-center w-full h-[70px] sm:w-[300px] md:w-[340px]"
+              className="relative bg-black rounded-xl inline-flex items-center justify-center w-full h-[88px] sm:w-[300px] md:w-[350px] lg:w-[394px] transition-all duration-100 hover:scale-[1.01]"
             >
-              <Image src={AppGalleryIcon} width={240} height={140} alt="app" />
+              <Image src={AppGalleryIcon} fill alt="app-gallery-link" />
             </Link>
           </div>
 
           <div className="order-0 sm:order-none sm:max-w-[450px]">
-            <p className="text-center text-2xl font-metropolis-semibold leading-tight text-nk-black sm:font-metropolis sm:text-left md:text-4xl sm:mt-7">
-              Download NK Associates App Today
+            <p className="text-center text-2xl font-metropolis-semibold leading-tight text-nk-black sm:font-metropolis sm:text-left lg:text-4xl sm:mt-10">
+              Download
+              <span className="font-metropolis-bold"> NK Associates </span>
+              App Today
             </p>
           </div>
         </div>

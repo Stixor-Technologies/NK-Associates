@@ -12,9 +12,9 @@ export default function Home() {
       <HomeBanner />
       <FeaturedProjects />
       <FeaturedProperties />
-      <Offices />
-      {/* <ServicesOverview /> */}
+      <ServicesOverview />
       <NkApp />
+      <Offices />
     </section>
   );
 }

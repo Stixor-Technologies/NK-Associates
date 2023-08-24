@@ -31,7 +31,7 @@ const FeaturedProjects = () => {
     <>
       {featuredProjects.length > 0 || isLoading ? (
         <div className="xl:container py-10">
-          <h6 className="text-[2rem] text-center font-metropolis-semibold px-4 md:px-8 md:text-4xl xl:px-0">
+          <h6 className="text-[2rem] text-nk-black text-center font-metropolis-semibold px-4 md:px-8 md:text-4xl xl:px-0">
             Featured Projects
           </h6>
 
