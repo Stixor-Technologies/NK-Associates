@@ -1,26 +1,25 @@
 import React, { FC } from "react";
 import Image from "next/image";
 import { BASE_URL } from "../../utils/constants";
-import { About1 } from "../../utils/types/types";
+import { VisionMission } from "../../utils/types/types";
 
 interface CardProps {
-  about: About1;
+  about: VisionMission;
 }
 const AboutCard1: FC<CardProps> = ({ about }) => {
-  const { question, title, description } = about?.attributes;
+  const { question, title, description } = about;
   const id = about?.id;
-  const cardImage = about?.attributes?.card_image?.data?.attributes?.url;
-  const cardIcon = about?.attributes?.card_icon?.data?.attributes?.url;
+  const cardImage = about?.card_image?.data?.attributes?.url;
+  const cardIcon = about?.card_icon?.data?.attributes?.url;
 
   return (
     <div>
-      <div className="flex flex-col lg:flex-row gap-10">
+      <div className="flex flex-col lg:flex-row gap-2 lg:gap-10 px-4">
         <div className="relative max-w-[32rem] w-full min-h-[32rem] sm:min-h-[42rem] mx-auto">
           <Image
             src={`${BASE_URL}${cardImage || "/"}`}
             alt="Card Image 1"
             fill
-            className="lg:p-3"
           />
         </div>
         <div className="flex flex-col font-metropolis text-xl text-center lg:text-left text-nk-dark-gray lg:w-1/2 my-auto mx-auto">

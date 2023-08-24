@@ -315,22 +315,9 @@ export const getServiceDetail = async (id: string) => {
   }
 };
 
-export const getAboutCard1 = async () => {
+export const getAbout = async () => {
   try {
-    let apiUrl = `${BASE_URL}/api/about-1s?populate=deep`;
-    const resp = await fetch(apiUrl, {
-      cache: "no-store",
-    });
-    const links = await resp.json();
-    return links;
-  } catch (error) {
-    console.error("There was an error getting company information", error);
-  }
-};
-
-export const getAboutCard2 = async () => {
-  try {
-    let apiUrl = `${BASE_URL}/api/about-2s?populate=deep`;
+    let apiUrl = `${BASE_URL}/api/about?populate=deep`;
     const resp = await fetch(apiUrl, {
       cache: "no-store",
     });
