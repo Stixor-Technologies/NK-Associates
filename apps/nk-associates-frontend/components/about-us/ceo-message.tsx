@@ -1,9 +1,6 @@
 "use client";
 import React, { useRef, useEffect } from "react";
 import Image from "next/image";
-import { About } from "../../utils/types/types";
-import { getAbout } from "../../utils/api-calls";
-import { BASE_URL } from "../../utils/constants";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/all";
 
@@ -20,22 +17,22 @@ const CeoMessage: React.FC<CeoMessageProps> = ({ ceoMessage, ceoImage }) => {
   const startRef = useRef(null);
 
   useEffect(() => {
-    const el1 = ceoRef.current;
-    const el2 = textRef.current;
-    const tl = gsap.timeline({
-      scrollTrigger: {
-        trigger: startRef.current,
-        markers: true,
-        start: "50% 70%",
-        end: "center 50%",
-        // scrub: true,
-        // toggleActions: "play reverse play reverse",
-      },
-    });
-    tl.from(el2, {
-      x: 1000,
-      duration: 0.8,
-    }).from(el1, { x: -1000, duration: 0.8 }, "<");
+    const screenWidth = window.innerWidth;
+    if (screenWidth >= 1024) {
+      const el1 = ceoRef.current;
+      const el2 = textRef.current;
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: startRef.current,
+          start: "50% 70%",
+          end: "center 50%",
+        },
+      });
+      tl.from(el2, {
+        x: 1000,
+        duration: 0.8,
+      }).from(el1, { x: -1000, duration: 0.8 }, "<");
+    }
   }, []);
 
   return (

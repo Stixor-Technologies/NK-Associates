@@ -8,6 +8,7 @@ import Goals from "../../components/about-us/goals";
 import { getAbout } from "../../utils/api-calls";
 import { About } from "../../utils/types/types";
 import { BASE_URL } from "../../utils/constants";
+import MembersList from "../../components/members/member-list";
 
 const AboutUs = async () => {
   const categories = await getCategories();
@@ -44,8 +45,15 @@ const AboutUs = async () => {
 
       <ServicesOverview />
 
-      <div className="container">Meet Our best inclass team Component</div>
-      <div className="pb-[2.958rem] md:pb-[3.603rem]">
+      <div className="container pt-[3.25rem] lg:pt-[6.688rem] text-center">
+        <span className="text-[2rem] font-metropolis-bold pb-[3.5rem]">
+          Our Mission
+        </span>
+        <div className="lg:pt-[3.635rem]">
+          <MembersList />
+        </div>
+      </div>
+      <div className="pb-[2.958rem] md:pb-[3.603rem] pt-[5.05rem] lg:flex lg:justify-center lg:m-0">
         <ContactForm categories={categories} heading="Get In Touch" />
       </div>
     </div>
