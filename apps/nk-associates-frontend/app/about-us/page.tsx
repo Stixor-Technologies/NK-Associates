@@ -33,8 +33,8 @@ const AboutUs = async () => {
           <LinkButton
             text="Contact Us"
             type="solid"
-            buttonType="submit"
             className="h-[2.75rem] w-[14.063rem] text-[1rem] md:text-lg md:text-[1.094rem]"
+            navigateTo="#form"
           />
         </div>
       </div>
@@ -53,7 +53,10 @@ const AboutUs = async () => {
           <MembersList />
         </div>
       </div>
-      <div className="pb-[2.958rem] md:pb-[3.603rem] pt-[5.05rem] lg:flex lg:justify-center lg:m-0">
+      <div
+        id="form"
+        className="pb-[2.958rem] md:pb-[3.603rem] pt-[5.05rem] lg:flex lg:justify-center lg:m-0"
+      >
         <ContactForm categories={categories} heading="Get In Touch" />
       </div>
     </div>
