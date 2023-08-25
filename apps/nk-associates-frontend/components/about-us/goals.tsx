@@ -1,5 +1,5 @@
 "use client";
-import React, { FC, useState, useEffect, useLayoutEffect } from "react";
+import React, { FC, useState, useEffect, useRef } from "react";
 import AboutCard1 from "./about-card-1";
 import AboutCard2 from "./about-card-2";
 import { getAbout } from "../../utils/api-calls";
@@ -14,6 +14,7 @@ const Goals: FC = () => {
   const [card1, setCard1] = useState<VisionMission[]>([]);
   const [card2, setCard2] = useState<ValueGoals[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(true);
+  const component = useRef(null);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -34,11 +35,11 @@ const Goals: FC = () => {
 
   useEffect(() => {
     const isScreenWideEnough = window.innerWidth > 1024;
-    if (isScreenWideEnough && card1.length > 0) {
-      const cards = gsap.utils.toArray(".card");
-      const textAbout: HTMLElement[] = gsap.utils.toArray(".text-about");
-      const imagesAbout: HTMLElement[] = gsap.utils.toArray(".images-about");
+    const cards = gsap.utils.toArray(".card");
+    const textAbout: HTMLElement[] = gsap.utils.toArray(".text-about");
+    const imagesAbout: HTMLElement[] = gsap.utils.toArray(".images-about");
 
+    if (isScreenWideEnough && card1.length > 0) {
       gsap.set(".card:not(:first-child) .text-about", { opacity: 0 });
       gsap.set(".card:not(:first-child) .images-about", {
         opacity: 0,
@@ -82,17 +83,59 @@ const Goals: FC = () => {
         }
       });
     }
-  }, [card1, card2]);
+    if (!isScreenWideEnough && card1.length > 0) {
+      gsap.set(".text-about", { opacity: 1 });
+      gsap.set(".images-about", { opacity: 1, y: 0, x: "0%", rotate: 0 });
+
+      // const cards = gsap.utils.toArray(".card");
+      console.log(cards[0]);
+      let ctx = gsap.context(() => {
+        let cards: HTMLElement[] = gsap.utils.toArray(".images-about");
+        cards.forEach((card, index) => {
+          gsap.from(card, {
+            opacity: 0,
+            x: 100,
+            scrollTrigger: {
+              trigger: card,
+              start: "top 40%",
+              markers: true,
+            },
+          });
+        });
+      });
+      // const tl = gsap.timeline({
+      //   scrollTrigger: {
+      //     trigger: ".mobileTrigger",
+      //     start: "top top",
+      //     markers: true,
+      //   },
+      // });
+
+      // cards.forEach((card, index) => {
+      //   if (imagesAbout[index + 1]) {
+      //     tl
+      //       .to(".mobileTrigger .images-about:first-child", {
+      //         x: 0,
+      //         opacity: 1,
+      //         duration: 0.7,
+      //         ease: "power2.out",
+      //       });
+      //   }
+      // });
+    }
+  }, [card1, card2, component]);
 
   return (
-    <div className="card-container relative py-8 min-h-screen md:py-1 my-32">
+    <div className="card-container  cardTrigger relative py-8 min-h-screen md:py-1 my-32">
       <>
         {isLoading && card1.length === 0 && card2.length === 0 ? (
           <div className="my-4 flex justify-center">
             <Spinner />
           </div>
         ) : card1.length > 0 ? (
-          card1.map((card1, index) => <AboutCard1 key={index} about={card1} />)
+          card1.map((card, index) => (
+            <AboutCard1 key={index} about={card} className="" />
+          ))
         ) : (
           <div>
             <p className="font-metropolis text-nk-dark-gray py-10 text-center text-base">
@@ -105,7 +148,9 @@ const Goals: FC = () => {
         {isLoading && card2.length === 0 ? (
           <></>
         ) : card2.length > 0 ? (
-          card2.map((card2, index) => <AboutCard2 key={index} about={card2} />)
+          card2.map((card2, index) => (
+            <AboutCard2 key={index} about={card2} className="" />
+          ))
         ) : (
           <div>
             <p className="font-metropolis text-nk-dark-gray py-10 text-center text-base">

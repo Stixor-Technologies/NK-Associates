@@ -5,21 +5,22 @@ import { ValueGoals } from "../../utils/types/types";
 
 interface CardProps {
   about: ValueGoals;
+  className: string;
 }
-const AboutCard2: FC<CardProps> = ({ about }) => {
+const AboutCard2: FC<CardProps> = ({ about, className }) => {
   const { title, list } = about;
   const cardImage = about?.card_image?.data?.attributes?.url;
   const cardIcon = about?.card_icon?.data?.attributes?.url;
 
   return (
-    <div className="card lg:absolute w-full ">
+    <div className="card lg:absolute w-full mobileTrigger overflow-hidden ">
       <div className="flex flex-col lg:flex-row gap-2 lg:gap-10 px-4 about-card">
         <div className="relative images-about max-w-[32rem] w-full min-h-[32rem] sm:min-h-[42rem] mx-auto ">
           <Image
             src={`${BASE_URL}${cardImage || "/"}`}
             alt="Card Image 1"
             fill
-            className=""
+            className={className}
           />
         </div>
         <div className="text-about flex flex-col font-metropolis text-xl text-center lg:text-left text-nk-dark-gray lg:w-1/2 my-auto">
