@@ -190,3 +190,10 @@ export interface Service {
   };
   id: number;
 }
+
+export interface PopularCategory {
+  category_name: string;
+  category_image: {
+    data: MediaAttributes;
+  };
+}
