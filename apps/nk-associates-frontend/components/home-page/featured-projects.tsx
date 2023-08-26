@@ -1,14 +1,19 @@
 "use client";
-import React, { useState, useEffect, useMemo } from "react";
+import React, { useState, useEffect, useRef, useLayoutEffect } from "react";
 import Spinner from "../spinner";
 import { Project } from "../../utils/types/types";
 import { getFeaturedProjects } from "../../utils/api-calls";
 import LinkButton from "../button/link-button";
 import ProjectCardItem from "../projects/project-card/project-card-item";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
 
 const FeaturedProjects = () => {
   const [featuredProjects, setFeaturedProjects] = useState<Project[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(true);
+  const cardsContainer = useRef<HTMLDivElement | null>(null);
 
   const fetchFeaturedProjects = async () => {
     setIsLoading(true);
@@ -27,10 +32,31 @@ const FeaturedProjects = () => {
     fetchFeaturedProjects();
   }, []);
 
+  useLayoutEffect(() => {
+    if (featuredProjects.length > 0) {
+      const projectCards: HTMLDivElement[] =
+        gsap.utils.toArray(".project-card");
+      projectCards.forEach((box, index) => {
+        if (index >= 1) {
+          gsap.from(box, {
+            y: 65,
+            scrollTrigger: {
+              trigger: box,
+              start: "top 90%",
+              end: "+=350",
+              scrub: true,
+              markers: true,
+            },
+          });
+        }
+      });
+    }
+  }, [featuredProjects]);
+
   return (
     <>
       {featuredProjects.length > 0 || isLoading ? (
-        <div className="xl:container py-10">
+        <div ref={cardsContainer} className="container py-10">
           <h6 className="text-[2rem] text-nk-black text-center font-metropolis-semibold mb-7 md:mb-9 md:text-4xl xl:px-0">
             Featured Projects
           </h6>
@@ -41,7 +67,7 @@ const FeaturedProjects = () => {
             </div>
           ) : (
             <div className="flex flex-col">
-              <div className="property-carousel flex flex-col px-4 gap-3 md:gap-6 md:px-8 xl:px-0">
+              <div className="flex flex-col px-4 gap-3 md:gap-6 md:px-8 xl:px-0">
                 {featuredProjects?.map((project: Project, index: number) => {
                   return (
                     <ProjectCardItem
