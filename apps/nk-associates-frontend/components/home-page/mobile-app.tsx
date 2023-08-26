@@ -54,8 +54,6 @@ const NkApp = () => {
         scrollTrigger: {
           trigger: mobileAppSection.current,
           start: "top 25%",
-          markers: true,
-          // scrub: true,
           toggleActions: "play none none none",
         },
       });
@@ -101,6 +99,7 @@ const NkApp = () => {
             width={470}
             height={470}
             alt="floating-mobile"
+            priority={true}
             className="floating-mobile mx-auto"
           />
         </div>
