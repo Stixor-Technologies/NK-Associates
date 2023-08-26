@@ -20,7 +20,7 @@ type StoreLinks = {
 
 const NkApp = () => {
   const [storeLinks, setStoreLinks] = useState<StoreLinks>(null);
-  const ref = useRef<HTMLDivElement | null>(null);
+  const mobileAppSection = useRef<HTMLDivElement | null>(null);
 
   const fetchSocials = async () => {
     const resp = await getSocials();
@@ -39,37 +39,15 @@ const NkApp = () => {
     fetchSocials();
   }, []);
 
-  // useEffect(() => {
-  //   const tl = gsap.timeline({
-  //     scrollTrigger: {
-  //       trigger: ref.current,
-  //       start: "top top",
-  //       markers: true,
-  //       toggleActions: "play none none none",
-  //     },
-  //   });
-  //   tl.from(".floating-mobile", {
-  //     opacity: 0,
-  //     x: -200,
-  //     y: 200,
-  //     scale: 0,
-  //     duration: 0.5,
-  //   });
-  //   tl.from(".link", {
-  //     opacity: 0,
-  //     xPercent: -60,
-  //     scale: 0,
-  //     stagger: 0.2,
-  //     ease: "circ.out",
-  //   });
-  // }, []);
-
   useEffect(() => {
+    console.log(mobileAppSection.current);
+
     const tl = gsap.timeline({
       scrollTrigger: {
-        trigger: ref.current,
+        trigger: mobileAppSection.current,
         start: "top top",
-        markers: true,
+        // markers: true,
+        // scrub: true,
         toggleActions: "play none none none",
       },
     });
@@ -80,14 +58,14 @@ const NkApp = () => {
       scale: 0,
       duration: 0.5,
     }),
-      tl.to(".link", {
-        opacity: 1,
-        x: 0,
-        // scale: 1,
-        duration: 0.5,
-        stagger: 0.2,
-        ease: "circ.out",
-      }),
+      // tl.to(".link", {
+      //   opacity: 1,
+      //   x: 0,
+      //   // scale: 1,
+      //   duration: 0.5,
+      //   stagger: 0.2,
+      //   ease: "circ.out",
+      // }),
       tl.to(".download-text", {
         opacity: 1,
         y: 0,
@@ -97,7 +75,7 @@ const NkApp = () => {
   }, []);
 
   return (
-    <div ref={ref} className="container my-20">
+    <div ref={mobileAppSection} data-mobile-app className=" mobile-app my-20">
       <div className="flex flex-col sm:flex-row gap-8 sm:gap-0">
         <div className="sm:w-1/2 ">
           <Image
@@ -114,7 +92,7 @@ const NkApp = () => {
               href={storeLinks?.playstore || "#"}
               target={storeLinks?.playstore ? "_blank" : "_self"}
               rel="noopener noreferrer"
-              className="link relative -translate-x-16 opacity-0 bg-black rounded-xl inline-flex items-center justify-center w-full h-[88px] sm:w-[300px] md:w-[350px] lg:w-[394px] transition-all duration-100 hover:scale-[1.01]"
+              className="link relative -translate-x-16 opacity-1 bg-black rounded-xl inline-flex items-center justify-center w-full h-[88px] sm:w-[300px] md:w-[350px] lg:w-[394px] transition-all duration-300 hover:scale-[1.015]"
             >
               <Image src={GooglePlayIcon} fill alt="play-store-link" />
             </Link>
@@ -122,7 +100,7 @@ const NkApp = () => {
             <Link
               href={storeLinks?.appstore || "#"}
               target={storeLinks?.appstore ? "_blank" : "_self"}
-              className="link relative -translate-x-16 opacity-0 bg-black rounded-xl inline-flex items-center justify-center w-full h-[88px] sm:w-[300px] md:w-[350px] lg:w-[394px] transition-all duration-100 hover:scale-[1.01]"
+              className="link relative -translate-x-16 opacity-1 bg-black rounded-xl inline-flex items-center justify-center w-full h-[88px] sm:w-[300px] md:w-[350px] lg:w-[394px] transition-all duration-300 hover:scale-[1.015]"
             >
               <Image src={AppStoreIcon} fill alt="app-store-link" />
             </Link>
@@ -131,7 +109,7 @@ const NkApp = () => {
               href={storeLinks?.appgallery || "#"}
               target={storeLinks?.appgallery ? "_blank" : "_self"}
               rel="noopener noreferrer"
-              className="link relative -translate-x-16  opacity-0 bg-black rounded-xl inline-flex items-center justify-center w-full h-[88px] sm:w-[300px] md:w-[350px] lg:w-[394px] transition-all duration-100 hover:scale-[1.01]"
+              className="link relative -translate-x-16  opacity-1 bg-black rounded-xl inline-flex items-center justify-center w-full h-[88px] sm:w-[300px] md:w-[350px] lg:w-[394px] transition-all duration-300 hover:scale-[1.015]"
             >
               <Image src={AppGalleryIcon} fill alt="app-gallery-link" />
             </Link>
