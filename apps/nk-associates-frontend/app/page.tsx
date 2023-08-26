@@ -9,7 +9,7 @@ import Offices from "../components/home-page/offices";
 
 export default function Home() {
   return (
-    <section>
+    <section className="overflow-hidden">
       <HomeBanner />
       <FeaturedProjects />
       <FeaturedProperties />

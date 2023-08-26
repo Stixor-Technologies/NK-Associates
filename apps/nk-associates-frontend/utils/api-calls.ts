@@ -323,7 +323,7 @@ export const getPopularCategories = async () => {
 
 export const getBannerImages = async () => {
   try {
-    const resp = await fetch(`${BASE_URL}/api/banner-image`);
+    const resp = await fetch(`${BASE_URL}/api/banner-image?populate=*`);
     const images = await resp.json();
     return images;
   } catch (error) {
