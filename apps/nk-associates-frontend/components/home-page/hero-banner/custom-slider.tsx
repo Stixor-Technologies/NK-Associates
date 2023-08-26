@@ -1,4 +1,4 @@
-import React, { FC, useState, useEffect } from "react";
+import React, { FC, useState, useEffect, useMemo } from "react";
 import { MediaAttributes } from "../../../utils/types/types";
 import { BASE_URL } from "../../../utils/constants";
 import Image from "next/image";
@@ -11,8 +11,26 @@ interface BannerImagesProps {
 const CustomSlider: FC<BannerImagesProps> = ({ banner_images }) => {
   const [activeIndex, setActiveIndex] = useState(0);
   const [hoveredSlide, setHoveredSlide] = useState(null);
+  const [windowSize, setWindowSize] = useState(window.innerWidth);
 
-  const slideWidth = 158;
+  const breakPoint = 640;
+
+  useEffect(() => {
+    const handleWindowResize = () => {
+      setWindowSize(window.innerWidth);
+    };
+    window.addEventListener("resize", handleWindowResize);
+
+    return () => {
+      window.removeEventListener("resize", handleWindowResize);
+    };
+  }, []);
+
+  const slideWidth = useMemo(
+    () => (windowSize >= breakPoint ? 158 : 112),
+    [windowSize],
+  );
+
   const slideMargin = 20;
 
   const leftMargin = -((slideWidth + slideMargin) * activeIndex);
