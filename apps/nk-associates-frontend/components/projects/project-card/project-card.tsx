@@ -68,7 +68,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
         className={`project-card mb-[2.3rem] flex w-full flex-col overflow-hidden rounded-2xl shadow-md last-of-type:mb-4  md:mb-[4.5rem] ${flexDirection} md:rounded-3xl ${backgroundColor} ${textColor} ${cardHeight}`}
       >
         <div className="relative h-full min-h-[21rem] w-full sm:h-auto sm:w-[65%]">
-          {imagesList.length > 0 ? (
+          {imagesList?.length > 0 ? (
             <Swiper
               grabCursor={true}
               centeredSlides={true}

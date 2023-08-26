@@ -30,7 +30,7 @@ const FeaturedProperties = () => {
   return (
     <>
       {featuredProperties.length > 0 || isLoading ? (
-        <div className="xl:container py-10 md:py-16">
+        <div className="xl:container py-10 md:py-16 min-h-[41.125rem] h-full">
           <h6 className="text-[2rem] text-nk-black text-center font-metropolis-semibold mb-7 md:mb-9 md:text-4xl xl:px-0">
             Featured Properties
           </h6>

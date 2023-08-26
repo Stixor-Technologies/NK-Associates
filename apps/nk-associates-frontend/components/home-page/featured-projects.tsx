@@ -22,7 +22,6 @@ const FeaturedProjects = () => {
       const projectsArray = Object.keys(resp?.data?.attributes)
         .filter((key) => !["createdAt", "updatedAt"]?.includes(key))
         .map((key) => resp?.data?.attributes[key]?.data);
-
       setFeaturedProjects(projectsArray);
     }
     setIsLoading(false);
@@ -45,7 +44,6 @@ const FeaturedProjects = () => {
               start: "top 90%",
               end: "+=350",
               scrub: true,
-              markers: true,
             },
           });
         }
@@ -56,7 +54,10 @@ const FeaturedProjects = () => {
   return (
     <>
       {featuredProjects.length > 0 || isLoading ? (
-        <div ref={cardsContainer} className="container py-10">
+        <div
+          ref={cardsContainer}
+          className="container py-10 min-h-screen h-full"
+        >
           <h6 className="text-[2rem] text-nk-black text-center font-metropolis-semibold mb-7 md:mb-9 md:text-4xl xl:px-0">
             Featured Projects
           </h6>
