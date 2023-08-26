@@ -21,7 +21,9 @@ const FeaturedProjects = () => {
     if (resp?.data) {
       const projectsArray = Object.keys(resp?.data?.attributes)
         .filter((key) => !["createdAt", "updatedAt"]?.includes(key))
-        .map((key) => resp?.data?.attributes[key]?.data);
+        .map((key) => resp?.data?.attributes[key]?.data)
+        .filter((project) => project !== null);
+
       setFeaturedProjects(projectsArray);
     }
     setIsLoading(false);

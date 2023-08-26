@@ -16,7 +16,8 @@ const FeaturedProperties = () => {
     if (resp?.data) {
       const propertyArray = Object.keys(resp?.data?.attributes)
         .filter((key) => !["createdAt", "updatedAt"]?.includes(key))
-        .map((key) => resp?.data?.attributes[key]?.data);
+        .map((key) => resp?.data?.attributes[key]?.data)
+        .filter((property) => property !== null);
 
       setFeaturedProperties(propertyArray);
     }
