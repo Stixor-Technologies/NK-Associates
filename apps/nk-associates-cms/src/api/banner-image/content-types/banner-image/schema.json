@@ -4,7 +4,8 @@
   "info": {
     "singularName": "banner-image",
     "pluralName": "banner-images",
-    "displayName": "Banner Images"
+    "displayName": "Banner Images",
+    "description": ""
   },
   "options": {
     "draftAndPublish": false
@@ -12,12 +13,12 @@
   "pluginOptions": {},
   "attributes": {
     "banner_images": {
-      "allowedTypes": [
-        "images"
-      ],
       "type": "media",
       "multiple": true,
-      "required": true
+      "required": false,
+      "allowedTypes": [
+        "images"
+      ]
     }
   }
 }
