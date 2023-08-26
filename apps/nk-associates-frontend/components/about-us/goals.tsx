@@ -66,12 +66,12 @@ const Goals: FC = () => {
         scrollTrigger: {
           id: "aboutTrigger",
           trigger: ".card-container",
-          // markers: true,
-          start: "top 5%",
+          start: "top 15%",
           end: `+=${40 * cards.length}%`,
           pin: true,
           scrub: 1,
           invalidateOnRefresh: true,
+          // markers: true,
         },
       });
 
@@ -103,27 +103,27 @@ const Goals: FC = () => {
       gsap.set(".text-about", { opacity: 1 });
       gsap.set(".images-about", { opacity: 1, y: 0, x: "0%", rotate: 0 });
 
-      let ctx = gsap.context(() => {
-        let cards: HTMLElement[] = gsap.utils.toArray(".images-about");
-        cards.forEach((card, index) => {
-          gsap.from(card, {
-            x: 600,
-            scrollTrigger: {
-              id: "mobileTrigger",
-              trigger: card,
-              start: "top 40%",
-              // markers: true,
-            },
-          });
+      let cards: HTMLElement[] = gsap.utils.toArray(".images-about");
+      cards.forEach((card, index) => {
+        gsap.from(card, {
+          x: "100%",
+          duration: 1,
+          ease: "power2.out",
+          scrollTrigger: {
+            id: "mobileTrigger",
+            trigger: card,
+            start: "top 40%",
+            // markers: true,
+          },
         });
       });
     }
   }, [card1, card2, component, windowSize]);
 
-  let spin = 0;
-  let spin2 = -8;
+  let spin = -4;
+  let spin2 = 9;
   return (
-    <div className="card-container container cardTrigger relative py-8 min-h-screen md:py-1 my-32">
+    <div className="card-container lg:container cardTrigger relative min-h-screen md:py-1 my-32">
       <>
         {isLoading && card1.length === 0 && card2.length === 0 ? (
           <div className="my-4 flex justify-center">
@@ -131,19 +131,11 @@ const Goals: FC = () => {
           </div>
         ) : card1.length > 0 ? (
           card1.map((card, index) => {
-            const cardSpin = spin;
             spin += 2;
             if (window.innerWidth < 1024) {
               spin = 0;
             }
-            return (
-              <AboutCard1
-                key={index}
-                about={card}
-                className=""
-                spin={cardSpin}
-              />
-            );
+            return <AboutCard1 key={index} about={card} spin={spin} />;
           })
         ) : (
           <div>
@@ -158,19 +150,11 @@ const Goals: FC = () => {
           <></>
         ) : card2.length > 0 ? (
           card2.map((card2, index) => {
-            let cardSpin = spin2;
-            cardSpin += 7;
+            spin2 -= 6;
             if (window.innerWidth < 1024) {
-              cardSpin = 0;
+              spin2 = 0;
             }
-            return (
-              <AboutCard2
-                key={index}
-                about={card2}
-                className=""
-                spin={cardSpin}
-              />
-            );
+            return <AboutCard2 key={index} about={card2} spin={spin2} />;
           })
         ) : (
           <div>

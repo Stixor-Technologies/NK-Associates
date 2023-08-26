@@ -5,7 +5,6 @@ import { ValueGoals } from "../../utils/types/types";
 
 interface CardProps {
   about: ValueGoals;
-  className: string;
   spin: number;
 }
 const AboutCard2: FC<CardProps> = ({ about, spin }) => {
@@ -14,17 +13,18 @@ const AboutCard2: FC<CardProps> = ({ about, spin }) => {
   const cardIcon = about?.card_icon?.data?.attributes?.url;
 
   return (
-    <div className="card lg:absolute w-full h-full mobileTrigger overflow-hidden ">
-      <div className="flex flex-col lg:flex-row gap-2 lg:gap-10 px-4 about-card">
-        <div className="relative images-about max-w-[24rem] w-full min-h-[30rem] sm:min-h-[42rem] mx-auto p-10">
+    <div className="card lg:absolute w-full h-full mobileTrigger mb-12 lg:mb-0 overflow-hidden lg:overflow-visible">
+      <div className="flex flex-col lg:flex-row gap-2 lg:gap-10 xl:gap-5 px-4 about-card">
+        <div className="relative images-about max-w-[25rem] xl:max-w-[26rem] w-full min-h-[32rem] lg:min-h-[37rem] mx-auto mb-8 lg:mb-0">
           <Image
             src={`${BASE_URL}${cardImage || "/"}`}
             alt="Card Image 1"
             fill
             style={{ transform: `rotate(${spin}deg)` }}
+            className="object-cover rounded-2xl "
           />
         </div>
-        <div className="text-about flex flex-col font-metropolis text-xl text-center lg:text-left text-nk-dark-gray lg:w-[55%] my-auto">
+        <div className="text-about flex flex-col font-metropolis text-xl text-center lg:text-left text-nk-dark-gray lg:w-[55%]  my-auto">
           <div className="relative max-w-[6rem] w-full min-h-[5rem] my-1 mx-auto lg:mx-0">
             <Image src={`${BASE_URL}${cardIcon || "/"}`} alt="Card Icon" fill />
           </div>
@@ -47,7 +47,7 @@ const AboutCard2: FC<CardProps> = ({ about, spin }) => {
                     width={32}
                   />
                 </div>
-                <p className="font-metropolis-light text-nk-dark-gray text-left text-base pr-10">
+                <p className="font-metropolis-light text-nk-dark-gray text-left text-base lg:pr-10">
                   {item.title && (
                     <span className="font-metropolis-semibold text-[1.375rem]]">
                       {item.title + " : "}
