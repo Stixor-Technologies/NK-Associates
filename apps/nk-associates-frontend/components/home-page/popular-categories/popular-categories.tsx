@@ -39,8 +39,8 @@ const PopularCategories = () => {
   return (
     <>
       {categories.length > 0 || isLoading ? (
-        <div className="xl:container my-12 md:my-20">
-          <h6 className="text-[2rem] text-nk-black text-center font-metropolis-semibold px-4 md:px-8 md:text-4xl xl:px-0">
+        <div className="container py-10 md:py-12">
+          <h6 className="text-[2rem] text-nk-black text-center font-metropolis-semibold mb-7 md:mb-9  md:text-4xl xl:px-0">
             Popular Categories
           </h6>
 
@@ -49,7 +49,8 @@ const PopularCategories = () => {
               <Spinner />
             </div>
           ) : (
-            <div className="property-carousel flex flex-nowrap overflow-x-scroll px-4 py-9 gap-8 md:py-8 md:px-8 xl:px-0">
+            // <div className="property-carousel flex flex-nowrap overflow-x-scroll px-4 py-9 gap-8 md:py-8 md:px-8 xl:px-0">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 md:gap-6 lg:grid-cols-3">
               {categories?.map((category: PopularCategory, index: number) => (
                 <CategoryCard key={index} category={category} />
               ))}

@@ -75,7 +75,11 @@ const NkApp = () => {
   }, []);
 
   return (
-    <div ref={mobileAppSection} data-mobile-app className=" mobile-app my-20">
+    <div
+      ref={mobileAppSection}
+      data-mobile-app
+      className="pt-20 pb-10 md:pt-16 md:pb-4"
+    >
       <div className="flex flex-col sm:flex-row gap-8 sm:gap-0">
         <div className="sm:w-1/2 ">
           <Image

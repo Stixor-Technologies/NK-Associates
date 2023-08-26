@@ -10,12 +10,10 @@ type CategoryCardProps = {
 
 const CategoryCard: FC<CategoryCardProps> = ({ category }) => {
   const cat_image = category?.category_image?.data.attributes.url;
+  // max-w-[384px] min-w-[374px]
   return (
-    <Link
-      href={`/properties}`}
-      className="group relative inline-block max-w-[384px] min-w-[374px] w-full"
-    >
-      <div className="aspect-w-1 aspect-h-1 group relative w-full max-w-[37.5rem] overflow-hidden h-[358px] rounded-xl  before:transition-all before:duration-500 before:ease-in-out before:content-[''] before:absolute before:block before:w-full before:h-full before:bg-overlay-black before:opacity-0 before:z-10 group-hover:before:opacity-100 ">
+    <Link href={`/properties}`} className="group relative  w-full">
+      <div className="aspect-w-1 aspect-h-1 group relative w-full overflow-hidden h-[358px] rounded-xl before:transition-all before:duration-500 before:ease-in-out before:content-[''] before:absolute before:block before:w-full before:h-full before:bg-overlay-black before:opacity-0 before:z-10 group-hover:before:opacity-100 ">
         <Image
           src={`${BASE_URL}${cat_image || "/"}`}
           fill

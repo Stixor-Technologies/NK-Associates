@@ -59,12 +59,12 @@ const Offices = () => {
   };
 
   return (
-    <div className="container mb-10 mt-10 md:mb-20">
-      <h6 className="text-[2rem] text-center text-nk-black font-metropolis-semibold px-4 md:px-8 md:text-4xl xl:px-0">
+    <div className="container pb-14 pt-10 md:pt-12 md:pb-20">
+      <h6 className="text-[2rem] text-center text-nk-black font-metropolis-semibold mb-5 md:mb-7 md:text-4xl xl:px-0">
         Our Offices
       </h6>
 
-      <div className="flex flex-col my-5 gap-8 rounded-[1.25rem] lg:flex-row md:my-10 md:py-5 md:px-2 lg:gap-0 md:bg-nk-red">
+      <div className="flex flex-col gap-8 rounded-[1.25rem] lg:flex-row md:py-5 md:px-2 lg:gap-0 md:bg-nk-red">
         <div className="lg:w-[40%] max-h-[60vh] hidden overflow-auto px-3 md:flex flex-col gap-3">
           {offices.map((office, index) => (
             <button
