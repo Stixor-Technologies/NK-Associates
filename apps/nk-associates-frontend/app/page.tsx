@@ -13,8 +13,24 @@ export default async function Home() {
   const data = await getHomeData();
   const resp = await getSocials();
 
-  const { featured_project1, featured_project2, featured_project3 } =
-    data?.data?.attributes;
+  const {
+    featured_project1,
+    featured_project2,
+    featured_project3,
+    featured_property1,
+    featured_property2,
+    featured_property3,
+    popular_category1,
+    popular_category1_image,
+    popular_category2,
+    popular_category2_image,
+    popular_category3,
+    popular_category3_image,
+    about_summary,
+    summary_image1,
+    summary_image2,
+    banner_images,
+  } = data?.data?.attributes || {};
 
   const projectDataArray = [
     featured_project1?.data,
@@ -26,9 +42,6 @@ export default async function Home() {
     (projectData) => projectData !== null,
   );
 
-  const { featured_property1, featured_property2, featured_property3 } =
-    data?.data?.attributes;
-
   const propertyDataArray = [
     featured_property1?.data,
     featured_property2?.data,
@@ -39,7 +52,7 @@ export default async function Home() {
     (propertyData) => propertyData !== null,
   );
 
-  const { playstore, appstore, appgallery } = resp?.data?.attributes;
+  const { playstore, appstore, appgallery } = resp?.data?.attributes || {};
 
   const storeLinks = [
     {
@@ -58,30 +71,23 @@ export default async function Home() {
 
   const popularCategories = [
     {
-      category_name: data?.data?.attributes?.popular_category1,
-      category_image: data?.data?.attributes?.popular_category1_image,
+      category_name: popular_category1,
+      category_image: popular_category1_image,
     },
     {
-      category_name: data?.data?.attributes?.popular_category2,
-      category_image: data?.data?.attributes?.popular_category2_image,
+      category_name: popular_category2,
+      category_image: popular_category2_image,
     },
     {
-      category_name: data?.data?.attributes?.popular_category3,
-      category_image: data?.data?.attributes?.popular_category3_image,
+      category_name: popular_category3,
+      category_image: popular_category3_image,
     },
   ];
-
-  const { about_summary, summary_image1, summary_image2 } =
-    data?.data?.attributes;
-
-  const {
-    banner_images: { data: bannerImages },
-  } = data?.data?.attributes;
 
   return (
     <section className="overflow-hidden">
       <HomeBanner>
-        <BannerSlider banner_images={bannerImages} />
+        <BannerSlider banner_images={banner_images?.data} />
       </HomeBanner>
       <AboutSummary
         about_summary={about_summary}
