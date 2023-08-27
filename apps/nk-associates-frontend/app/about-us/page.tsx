@@ -4,7 +4,6 @@ import ContactForm from "../../components/shared/contact-form";
 import { getCategories } from "../../utils/api-calls";
 import ServicesOverview from "../../components/shared/service-overview";
 import CeoMessage from "../../components/about-us/ceo-message";
-import Goals from "../../components/about-us/goals";
 import { getAbout } from "../../utils/api-calls";
 import { About } from "../../utils/types/types";
 import { BASE_URL } from "../../utils/constants";
@@ -18,7 +17,6 @@ const AboutUs = async () => {
   return (
     <div>
       <div className="text-center text-black container">
-        <Goals />
         <div className="text-[1.875rem] md:text-[3rem] font-metropolis-extrabold pt-[1rem] pb-[1.563rem] md:pt-[3rem] md:pb-[2.563rem]">
           About Us
         </div>
