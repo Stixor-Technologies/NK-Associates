@@ -1,9 +1,7 @@
 "use client";
-import React, { FC, useState, useEffect, useRef, useLayoutEffect } from "react";
-import Spinner from "../spinner";
+import React, { FC, useRef, useLayoutEffect } from "react";
 import PropertyCard from "../properties/property-card";
 import { Property } from "../../utils/types/types";
-import { getFeaturedProperties } from "../../utils/api-calls";
 import LinkButton from "../button/link-button";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";

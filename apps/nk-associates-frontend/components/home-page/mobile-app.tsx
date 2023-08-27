@@ -1,8 +1,7 @@
 "use client";
-import React, { FC, useState, useEffect, useLayoutEffect, useRef } from "react";
+import React, { FC, useLayoutEffect, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { getSocials } from "../../utils/api-calls";
 import FloatingMobile from "../../public/assets/images/floating-mobile.png";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
