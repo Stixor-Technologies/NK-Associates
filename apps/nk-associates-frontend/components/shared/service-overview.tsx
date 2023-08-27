@@ -39,7 +39,7 @@ const ServicesOverview = () => {
   return (
     <div
       ref={ref}
-      className="relative mt-4 bg-[url('/assets/images/detail-service-bg.svg')] bg-cover bg-right-top bg-no-repeat py-9 text-center text-nk-white md:mt-0 md:py-20 md:text-left"
+      className="relative min-h-[442px] h-full mt-4 bg-[url('/assets/images/detail-service-bg.svg')] bg-cover bg-right-top bg-no-repeat py-9 text-center text-nk-white md:mt-0 md:py-20 md:text-left"
     >
       <div className="container relative z-20 mx-auto">
         <div className="max-w-4xl">

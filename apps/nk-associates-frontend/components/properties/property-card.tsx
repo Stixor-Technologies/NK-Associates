@@ -58,7 +58,7 @@ const PropertyCard: FC<CardProps> = ({
 
   return (
     <div
-      className={`${(actSim || actFeatured) && "flex-grow"} ${
+      className={`property-card ${(actSim || actFeatured) && "flex-grow"} ${
         actSim
           ? "min-w-[17.288rem] max-w-[18.125rem]"
           : actFeatured
@@ -72,7 +72,7 @@ const PropertyCard: FC<CardProps> = ({
         rel={actMap ? "noopener noreferrer" : undefined}
       >
         <div
-          className={`aspect-w-1 aspect-h-1 group relative w-full max-w-[37.5rem] overflow-hidden ${
+          className={` aspect-w-1 aspect-h-1 group relative w-full max-w-[37.5rem] overflow-hidden ${
             actMap
               ? "h-52 rounded-t-xl"
               : actFeatured
@@ -84,14 +84,18 @@ const PropertyCard: FC<CardProps> = ({
             src={`${BASE_URL}${thumbnailImage || "/"}`}
             fill
             alt=""
-            className={`object-cover transition-all duration-700 ease-in-out ${
+            className={`property-image object-cover transition-all duration-700 ease-in-out ${
               !actMap && "hover:scale-110"
             }`}
           />
         </div>
       </Link>
 
-      <div className={`${actMap && "bg-nk-white px-3 pb-4"}`}>
+      <div
+        className={`property-card-text scale-[0.95] -z-10 relative ${
+          actMap && "bg-nk-white px-3 pb-4"
+        }`}
+      >
         <div className="flex items-center justify-between py-3">
           <div className="flex items-center gap-2">
             <span

@@ -1,5 +1,4 @@
-import Image from "next/image";
-import HomeBanner from "../components/home-page/hero-banner/hero-banner";
+import HeroSection from "../components/home-page/hero-home/hero-home";
 import FeaturedProjects from "../components/home-page/featured-projects";
 import FeaturedProperties from "../components/home-page/featured-properties";
 import ServicesOverview from "../components/shared/service-overview";
@@ -10,7 +9,7 @@ import Offices from "../components/home-page/offices";
 export default function Home() {
   return (
     <section className="overflow-hidden">
-      <HomeBanner />
+      <HeroSection />
       <FeaturedProjects />
       <FeaturedProperties />
       <ServicesOverview />

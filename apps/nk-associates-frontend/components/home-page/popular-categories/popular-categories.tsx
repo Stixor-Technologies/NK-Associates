@@ -73,13 +73,11 @@ const PopularCategories = () => {
       gsap.set(".category-name", { x: 0 });
 
       if (windowSize >= breakPoint) {
-        console.log("if");
         const tl = gsap.timeline({
           scrollTrigger: {
             id: "webCategoriesTrigger",
             trigger: popularSection.current,
             start: "top 25%",
-            markers: true,
             toggleActions: "play none none none",
           },
         });
@@ -102,17 +100,14 @@ const PopularCategories = () => {
         );
       } else {
         categoryCard.forEach((card, index) => {
-          console.log("else");
           const imageElement = card.querySelector(".category-image");
           const textElement = card.querySelector(".category-name");
-          console.log(imageElement);
           const tl = gsap.timeline({
             scrollTrigger: {
               id: "mobileCategoriesTrigger",
               trigger: card,
               start: "top center",
               end: "bottom",
-              markers: true,
             },
           });
 

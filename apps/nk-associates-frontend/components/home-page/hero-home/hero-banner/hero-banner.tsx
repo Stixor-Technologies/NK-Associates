@@ -1,29 +1,12 @@
 "use client";
-import React, { useState, useEffect } from "react";
-import { getBannerImages } from "../../../utils/api-calls";
-import { MediaAttributes } from "../../../utils/types/types";
-import CustomSlider from "./custom-slider";
-import LinkButton from "../../button/link-button";
+import React from "react";
+import LinkButton from "../../../button/link-button";
 
-const HomeBanner = () => {
-  const [bannerImages, setBannerImages] = useState<MediaAttributes[]>([]);
-  const [isLoading, setIsLoading] = useState<boolean>(true);
-
-  const fetchImages = async () => {
-    setIsLoading(true);
-    const resp = await getBannerImages();
-    if (resp?.data) {
-      setBannerImages(resp?.data?.attributes?.banner_images?.data);
-    }
-    setIsLoading(false);
-  };
-
-  useEffect(() => {
-    fetchImages();
-  }, []);
+const HomeBanner = ({ children }) => {
+  // h-[793px] lg:h-[525px]
 
   return (
-    <div className="container flex flex-col gap-6 py-6 md:gap-10 md:py-14 lg:flex-row">
+    <div className="container flex flex-col gap-6 py-6 md:gap-10 md:py-14 lg:flex-row min-h-[525px] h-full">
       <div className="flex-none lg:max-w-[28.125rem]">
         <h3 className="text-[2.875rem] text-center font-metropolis-bold hidden leading-tight md:flex md:flex-col mb-6 lg:text-left lg:mb-0">
           <span>A Proptech Company with A</span>
@@ -46,9 +29,7 @@ const HomeBanner = () => {
       </div>
 
       <div className="flex-grow -mr-[10px] flex flex-col justify-center">
-        <div className="overflow-hidden">
-          <CustomSlider banner_images={bannerImages} />
-        </div>
+        <div className="overflow-hidden">{children}</div>
       </div>
 
       <div className="flex gap-4 justify-center mt-5 md:hidden">

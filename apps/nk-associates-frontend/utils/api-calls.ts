@@ -321,12 +321,15 @@ export const getPopularCategories = async () => {
   }
 };
 
-export const getBannerImages = async () => {
+export const getHeroInfo = async () => {
   try {
-    const resp = await fetch(`${BASE_URL}/api/banner-image?populate=*`);
-    const images = await resp.json();
-    return images;
+    const resp = await fetch(`${BASE_URL}/api/home?populate=*`);
+    const data = await resp.json();
+    return data;
   } catch (error) {
-    console.error("There was an error getting the banner images", error);
+    console.error(
+      "There was an error getting the hero section information",
+      error,
+    );
   }
 };

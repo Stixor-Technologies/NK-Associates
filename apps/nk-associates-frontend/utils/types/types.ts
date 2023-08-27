@@ -197,3 +197,13 @@ export interface PopularCategory {
     data: MediaAttributes;
   };
 }
+
+export interface AboutOverview {
+  about_summary: string;
+  summary_image1: {
+    data: MediaAttributes;
+  };
+  summary_image2: {
+    data: MediaAttributes;
+  };
+}
