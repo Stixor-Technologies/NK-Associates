@@ -3,8 +3,6 @@ import React from "react";
 import LinkButton from "../../../button/link-button";
 
 const HomeBanner = ({ children }) => {
-  // h-[793px] lg:h-[525px]
-
   return (
     <div className="container flex flex-col gap-6 py-6 md:gap-10 md:py-14 lg:flex-row">
       <div className="flex-none lg:max-w-[28.125rem]">
