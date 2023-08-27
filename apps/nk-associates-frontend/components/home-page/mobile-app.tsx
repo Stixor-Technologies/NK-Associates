@@ -28,7 +28,6 @@ const NkApp: FC<NKAppProps> = ({ storeLinks }) => {
           trigger: mobileAppSection.current,
           start: "top 35%",
           toggleActions: "play none none none",
-          markers: true,
         },
       });
       tl.from(".floating-mobile", {
