@@ -18,7 +18,7 @@ interface IProps {
 const MapComponent: FC<IProps> = ({ locations, selectedOfficeIndex }) => {
   const [mapCenter, setMapCenter] = useState<Location | null>(null);
   const [mapZoom, setMapZoom] = useState<number>(10);
-  const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
+  const [isMobile, setIsMobile] = useState<boolean>(false);
   const mapRef = useRef<google.maps.Map | null>(null);
   const { isLoaded } = useMapApi();
   const allLocations = useMemo(
@@ -52,6 +52,8 @@ const MapComponent: FC<IProps> = ({ locations, selectedOfficeIndex }) => {
     const handleResize = () => {
       setIsMobile(window.innerWidth <= 768);
     };
+    handleResize();
+
     window.addEventListener("resize", handleResize);
     return () => {
       window.removeEventListener("resize", handleResize);

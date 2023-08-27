@@ -13,7 +13,7 @@ const PopularCategories = () => {
   const [categories, setCategories] = useState<PopularCategory[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const popularSection = useRef<HTMLDivElement | null>(null);
-  const [windowSize, setWindowSize] = useState(window.innerWidth);
+  const [windowSize, setWindowSize] = useState<number>(0);
 
   const breakPoint = 640;
 
@@ -21,6 +21,9 @@ const PopularCategories = () => {
     const handleWindowResize = () => {
       setWindowSize(window.innerWidth);
     };
+
+    handleWindowResize();
+
     window.addEventListener("resize", handleWindowResize);
 
     return () => {
@@ -71,7 +74,6 @@ const PopularCategories = () => {
 
       gsap.set(".category-image", { scale: 1 });
       gsap.set(".category-name", { x: 0 });
-
       if (windowSize >= breakPoint) {
         const tl = gsap.timeline({
           scrollTrigger: {
@@ -110,7 +112,6 @@ const PopularCategories = () => {
               end: "bottom",
             },
           });
-
           tl.from(imageElement, {
             scale: 1.5,
             duration: 0.7,

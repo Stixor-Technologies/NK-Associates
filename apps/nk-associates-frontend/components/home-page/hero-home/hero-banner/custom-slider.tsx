@@ -10,7 +10,7 @@ interface BannerImagesProps {
 const CustomSlider: FC<BannerImagesProps> = ({ banner_images }) => {
   const [activeIndex, setActiveIndex] = useState(0);
   const [hoveredSlide, setHoveredSlide] = useState(null);
-  const [windowSize, setWindowSize] = useState(window.innerWidth);
+  const [windowSize, setWindowSize] = useState<number>(0);
 
   const breakPoint = 640;
 
@@ -18,6 +18,9 @@ const CustomSlider: FC<BannerImagesProps> = ({ banner_images }) => {
     const handleWindowResize = () => {
       setWindowSize(window.innerWidth);
     };
+
+    handleWindowResize();
+
     window.addEventListener("resize", handleWindowResize);
 
     return () => {
