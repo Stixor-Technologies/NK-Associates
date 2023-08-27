@@ -18,11 +18,11 @@ const HomeBanner = ({ children }) => {
           amplify value and assure long-term triumph. Our industry acumen is
           extensive, matched only by our unwavering commitment to excellence. We
           traverse the dynamic real estate terrain, delivering unmatched
-          outcomes. Whether you're an investor, developer, lender, operator, or
-          owner, our dedicated team is equipped to guide you through every
-          phase, converting opportunities into sustainable, lucrative ventures.
-          Experience the unique difference of partnering with us to build
-          enduring value.
+          outcomes. Whether you&apos;re an investor, developer, lender,
+          operator, or owner, our dedicated team is equipped to guide you
+          through every phase, converting opportunities into sustainable,
+          lucrative ventures. Experience the unique difference of partnering
+          with us to build enduring value.
         </p>
       </div>
 
