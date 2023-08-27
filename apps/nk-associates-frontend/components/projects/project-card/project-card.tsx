@@ -65,9 +65,6 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
 
   return (
     <Link href={`projects/${id}`}>
-      {/* <div
-        className={`project-card mb-[2.3rem] flex h-[35rem] w-full flex-col overflow-hidden rounded-2xl shadow-md last-of-type:mb-4 sm:h-[21rem] md:mb-[4.5rem] md:h-[26rem] lg:h-[31.25rem] ${flexDirection} md:rounded-3xl ${backgroundColor} ${textColor}`}
-      > */}
       <div
         className={`project-card mb-[2.3rem] flex w-full flex-col overflow-hidden rounded-2xl shadow-md last-of-type:mb-4  md:mb-[4.5rem] ${flexDirection} md:rounded-3xl ${backgroundColor} ${textColor} ${cardHeight}`}
       >
