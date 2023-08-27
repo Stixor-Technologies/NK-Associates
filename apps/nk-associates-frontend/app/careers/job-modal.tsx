@@ -51,7 +51,7 @@ const EventModal: React.FC<ModalProps> = ({ open, onClose }) => {
 
   const placeholders = {
     name: "Write your complete name here",
-    father_name: "Write your fathers name",
+    father_name: "Write your father's name",
     email: "Write your email address here",
     phone: "03xx xxxx xxx",
     current_address: "Write current address here",
@@ -141,6 +141,10 @@ const EventModal: React.FC<ModalProps> = ({ open, onClose }) => {
           setShowToast(false);
           resetForm();
           closeModal();
+          setUploadedFiles({
+            resume: "",
+            cover_letter: "",
+          });
         }, 1000);
       } else {
         setToastMessage(`Error: Error sending email`);
@@ -327,18 +331,20 @@ const EventModal: React.FC<ModalProps> = ({ open, onClose }) => {
                                 >
                                   {getFieldLabel(fieldName)}
                                   {fieldName !== "cover_letter" && (
-                                    <sup className="font-metropolis-thin text-nk-black top-[0.031rem] ml-[0.063rem] text-lg">
-                                      *
+                                    <sup className="font-metropolis-thin text-nk-black top-[0.031rem] ml-[0.063rem] text-base">
+                                      /CV*
+                                    </sup>
+                                  )}
+                                  {fieldName === "cover_letter" && (
+                                    <sup className="font-metropolis-thin text-nk-black top-[0.031rem] ml-[0.063rem] text-base">
+                                      {" "}
+                                      (Optional)
                                     </sup>
                                   )}
                                 </label>
 
                                 <div
-                                  className={`${
-                                    fieldName === "cover_letter"
-                                      ? "mt-2"
-                                      : "mt-1"
-                                  } bg-nk-white font-metropolis-light text-nk-black placeholder-nk-gray placeholder:font-metropolis-thin focus:border-nk-gray focus:ring-nk-gray  w-full rounded-lg border px-4 py-4 shadow-md  placeholder:text-base focus:outline-none`}
+                                  className={`bg-nk-white font-metropolis-light text-nk-black placeholder-nk-gray placeholder:font-metropolis-thin focus:border-nk-gray focus:ring-nk-gray  w-full rounded-lg border px-4 py-4 shadow-md  placeholder:text-base focus:outline-none`}
                                 >
                                   <div className=" h-[4rem]">
                                     <label className="w-full cursor-pointer text-center">

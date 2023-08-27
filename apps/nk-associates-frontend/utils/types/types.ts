@@ -167,7 +167,7 @@ export interface Socials {
     appgallery: string;
   };
 }
-export interface Service {
+export interface Services {
   attributes: {
     title: string;
     company: string;
@@ -178,15 +178,15 @@ export interface Service {
       data: MediaAttributes;
     };
     expertise: string;
+    expertise_image: {
+      data: MediaAttributes;
+    };
+    outcome: string;
+    outcome_image: {
+      data: MediaAttributes;
+    };
     description: string;
-    process: {
-      id: number;
-      process_title: string;
-      process_description: string;
-      process_image: {
-        data: MediaAttributes;
-      };
-    }[];
+    process: ServiceProcess[];
   };
   id: number;
 }
@@ -194,6 +194,14 @@ export interface Service {
 export interface PopularCategory {
   category_name: string;
   category_image: {
+    data: MediaAttributes;
+  };
+}
+export interface ServiceProcess {
+  id: number;
+  process_title: string;
+  process_description: string;
+  process_image: {
     data: MediaAttributes;
   };
 }
@@ -205,5 +213,21 @@ export interface AboutOverview {
   };
   summary_image2: {
     data: MediaAttributes;
+  };
+}
+
+export interface Member {
+  id: number;
+  attributes: {
+    name: string;
+    role: string;
+    description: string;
+    whatsapp: string;
+    linkedin: string;
+    instagram: string;
+    facebook: string;
+    member_image: {
+      data: MediaAttributes;
+    };
   };
 }

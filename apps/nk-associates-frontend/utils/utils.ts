@@ -1,3 +1,5 @@
+import { DEFAULT_CHAT_MESSAGE } from "./constants";
+
 export const convertToPakistaniNumbering = (input: number | string) => {
   let num: number = typeof input === "string" ? parseInt(input) : input;
   let res: number;
@@ -43,4 +45,9 @@ export const convertAreaToSqFeet = (area: number, areaType: string) => {
   }
 
   return areaSqFeet;
+};
+
+export const whatsAppChatLink = (number: string) => {
+  const encodedText = encodeURIComponent(DEFAULT_CHAT_MESSAGE);
+  return `https://wa.me/${number}?text=${encodedText}`;
 };

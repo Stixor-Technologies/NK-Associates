@@ -4,7 +4,7 @@ import Link from "next/link";
 import {
   getPropertyDetail,
   getSimilarProperties,
-  getPhone,
+  getContactNumber,
 } from "../../../utils/api-calls";
 import DetailSlider from "../../../components/properties/property-detail/detail-slider";
 import MapComponent from "../../../components/shared/map-component";
@@ -53,7 +53,7 @@ async function PropertyDetail({ params: { id } }: PropertyDetailProps) {
 
   const center = { lat: latitude, lng: longitude };
 
-  const phoneResponse = await getPhone();
+  const phoneResponse = await getContactNumber();
   const phoneNumber = phoneResponse?.data?.attributes?.number;
 
   return (
