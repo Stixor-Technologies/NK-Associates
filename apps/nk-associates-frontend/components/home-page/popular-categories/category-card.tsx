@@ -12,10 +12,10 @@ const CategoryCard: FC<CategoryCardProps> = ({ category }) => {
   const cat_image = category?.category_image?.data.attributes.url;
   return (
     <Link
-      href={`/properties}`}
+      href={`/properties`}
       className="group relative category-card w-full overflow-hidden"
     >
-      <div className="aspect-w-1 aspect-h-1 group relative w-full overflow-hidden h-[358px] rounded-xl before:transition-all before:duration-500 before:ease-in-out before:content-[''] before:absolute before:block before:w-full before:h-full before:bg-overlay-black before:opacity-0 before:z-10 group-hover:before:opacity-100 ">
+      <div className="aspect-w-1 aspect-h-1 group relative w-full overflow-hidden h-[22.375rem] rounded-xl before:transition-all before:duration-500 before:ease-in-out before:content-[''] before:absolute before:block before:w-full before:h-full before:bg-overlay-black before:opacity-0 before:z-10 group-hover:before:opacity-100 ">
         <Image
           src={`${BASE_URL}${cat_image || "/"}`}
           fill

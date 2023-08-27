@@ -52,15 +52,15 @@ const FeaturedProjects = () => {
       });
     }
   }, [featuredProjects]);
-
+  // 2000, 1130, 1340 1550
   return (
     <>
       {featuredProjects.length > 0 || isLoading ? (
         <div
           ref={cardsContainer}
-          className="container py-10 min-h-screen h-full"
+          className="container py-10 lg:min-h-[96.875rem] h-full"
         >
-          <h6 className="text-[2rem] text-nk-black text-center font-metropolis-semibold mb-7 md:mb-9 md:text-4xl xl:px-0">
+          <h6 className="text-[2rem] text-nk-black text-center font-metropolis-semibold mb-7 md:mb-9 md:text-4xl">
             Featured Projects
           </h6>
 
@@ -70,7 +70,7 @@ const FeaturedProjects = () => {
             </div>
           ) : (
             <div className="flex flex-col">
-              <div className="flex flex-col px-4 gap-3 md:gap-6 md:px-8 xl:px-0">
+              <div className="flex flex-col gap-3 md:gap-6">
                 {featuredProjects?.map((project: Project, index: number) => {
                   return (
                     <ProjectCardItem

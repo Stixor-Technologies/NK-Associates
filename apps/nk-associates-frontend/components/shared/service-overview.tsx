@@ -11,7 +11,7 @@ const ServicesOverview = () => {
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: ref.current,
-          start: "top 80%",
+          start: "top 60%",
           toggleActions: "play none none none",
         },
       });
@@ -39,7 +39,7 @@ const ServicesOverview = () => {
   return (
     <div
       ref={ref}
-      className="relative min-h-[442px] h-full mt-4 bg-[url('/assets/images/detail-service-bg.svg')] bg-cover bg-right-top bg-no-repeat py-9 text-center text-nk-white md:mt-0 md:py-20 md:text-left"
+      className="relative mt-4 bg-[url('/assets/images/detail-service-bg.svg')] bg-cover bg-right-top bg-no-repeat py-9 text-center text-nk-white md:mt-0 md:py-20 md:text-left"
     >
       <div className="container relative z-20 mx-auto">
         <div className="max-w-4xl">

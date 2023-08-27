@@ -132,7 +132,7 @@ const PopularCategories = () => {
     <>
       {categories.length > 0 || isLoading ? (
         <div ref={popularSection} className="container py-10 md:py-12">
-          <h6 className="text-[2rem] text-nk-black text-center font-metropolis-semibold mb-7 md:mb-9  md:text-4xl xl:px-0">
+          <h6 className="text-[2rem] text-nk-black text-center font-metropolis-semibold mb-7 md:mb-9 md:text-4xl">
             Popular Categories
           </h6>
 

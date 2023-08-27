@@ -4,9 +4,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { getSocials } from "../../utils/api-calls";
 import FloatingMobile from "../../public/assets/images/floating-mobile.png";
-import GooglePlayIcon from "../../public/assets/icons/play-store-home.svg";
-import AppStoreIcon from "../../public/assets/icons/app-store-home.svg";
-import AppGalleryIcon from "../../public/assets/icons/app-gallery-home.svg";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
@@ -56,7 +53,6 @@ const NkApp = () => {
           trigger: mobileAppSection.current,
           start: "top 25%",
           toggleActions: "play none none none",
-          markers: true,
         },
       });
       tl.from(".floating-mobile", {

@@ -35,7 +35,7 @@ const HeroSection = () => {
   }, []);
 
   return (
-    <>
+    <div className="min-h-[78.188rem] h-full">
       {isLoading && bannerImages.length === 0 && !aboutOverview ? (
         <div className="min-h-[50vh] flex flex-1">
           <Spinner />
@@ -48,7 +48,7 @@ const HeroSection = () => {
           <AboutSummary aboutOverview={aboutOverview} />
         </>
       ) : null}
-    </>
+    </div>
   );
 };
 

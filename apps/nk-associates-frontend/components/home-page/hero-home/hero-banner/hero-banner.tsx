@@ -6,7 +6,7 @@ const HomeBanner = ({ children }) => {
   // h-[793px] lg:h-[525px]
 
   return (
-    <div className="container flex flex-col gap-6 py-6 md:gap-10 md:py-14 lg:flex-row min-h-[525px] h-full">
+    <div className="container flex flex-col gap-6 py-6 md:gap-10 md:py-14 lg:flex-row">
       <div className="flex-none lg:max-w-[28.125rem]">
         <h3 className="text-[2.875rem] text-center font-metropolis-bold hidden leading-tight md:flex md:flex-col mb-6 lg:text-left lg:mb-0">
           <span>A Proptech Company with A</span>

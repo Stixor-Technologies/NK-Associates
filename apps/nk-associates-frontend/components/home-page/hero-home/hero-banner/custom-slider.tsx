@@ -2,7 +2,6 @@ import React, { FC, useState, useEffect, useMemo } from "react";
 import { MediaAttributes } from "../../../../utils/types/types";
 import { BASE_URL } from "../../../../utils/constants";
 import Image from "next/image";
-import "./banner-styles.css";
 
 interface BannerImagesProps {
   banner_images: MediaAttributes[];
