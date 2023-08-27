@@ -103,17 +103,6 @@ const MapComponent: FC<IProps> = ({ locations, selectedOfficeIndex }) => {
             <Marker
               key={index}
               position={location}
-              // icon={{
-              //   url:
-              //     index === selectedOfficeIndex
-              //       ? "/assets/icons/marker-black.svg"
-              //       : "/assets/icons/area-marker.svg",
-
-              //   scaledSize:
-              //     index === selectedOfficeIndex
-              //       ? new window.google.maps.Size(40, 40)
-              //       : new window.google.maps.Size(30, 30),
-              // }}
               icon={{
                 url: isMobile
                   ? "/assets/icons/area-marker.svg"
@@ -122,7 +111,7 @@ const MapComponent: FC<IProps> = ({ locations, selectedOfficeIndex }) => {
                   : "/assets/icons/area-marker.svg",
 
                 scaledSize: isMobile
-                  ? new window.google.maps.Size(30, 30) // you can adjust this size for mobile if needed
+                  ? new window.google.maps.Size(30, 30)
                   : index === selectedOfficeIndex
                   ? new window.google.maps.Size(40, 40)
                   : new window.google.maps.Size(30, 30),

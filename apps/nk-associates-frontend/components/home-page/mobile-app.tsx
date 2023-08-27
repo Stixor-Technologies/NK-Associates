@@ -24,7 +24,7 @@ const NkApp = () => {
       const { playstore, appstore, appgallery } = resp?.data?.attributes;
       const storeLinksArray = [
         {
-          name: "google-play-home",
+          name: "play-store-home",
           link: playstore,
         },
         {
@@ -109,7 +109,7 @@ const NkApp = () => {
                   className="relative bg-black rounded-xl inline-flex items-center justify-center w-full h-[5.5rem] sm:w-[18.75rem] md:w-[21.875rem] lg:w-[24.625rem] transition-all duration-300 hover:!scale-[1.015]"
                 >
                   <Image
-                    src={`/assets/images/${store?.name}.svg`}
+                    src={`/assets/icons/${store?.name}.svg`}
                     width={300}
                     height={200}
                     alt={`${store.name}`}
