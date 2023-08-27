@@ -27,8 +27,9 @@ const NkApp: FC<NKAppProps> = ({ storeLinks }) => {
         scrollTrigger: {
           id: "MobileTrigger",
           trigger: mobileAppSection.current,
-          start: "top 25%",
+          start: "top 35%",
           toggleActions: "play none none none",
+          markers: true,
         },
       });
       tl.from(".floating-mobile", {
