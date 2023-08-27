@@ -52,7 +52,6 @@ const FeaturedProjects = () => {
       });
     }
   }, [featuredProjects]);
-  // 2000, 1130, 1340 1550
   return (
     <>
       {featuredProjects.length > 0 || isLoading ? (
