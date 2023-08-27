@@ -13,25 +13,27 @@ export default async function Home() {
   const data = await getHomeData();
   const resp = await getSocials();
 
-  const {
-    featured_project1: { data: project1Data },
-    featured_project2: { data: project2Data },
-    featured_project3: { data: project3Data },
-  } = data?.data?.attributes;
+  const { featured_project1, featured_project2, featured_project3 } =
+    data?.data?.attributes;
 
-  const projectDataArray = [project1Data, project2Data, project3Data];
+  const projectDataArray = [
+    featured_project1?.data,
+    featured_project2?.data,
+    featured_project3?.data,
+  ];
 
   const featuredProjects = projectDataArray.filter(
     (projectData) => projectData !== null,
   );
 
-  const {
-    featured_property1: { data: property1Data },
-    featured_property2: { data: property2Data },
-    featured_property3: { data: property3Data },
-  } = data?.data?.attributes;
+  const { featured_property1, featured_property2, featured_property3 } =
+    data?.data?.attributes;
 
-  const propertyDataArray = [property1Data, property2Data, property3Data];
+  const propertyDataArray = [
+    featured_property1?.data,
+    featured_property2?.data,
+    featured_property3?.data,
+  ];
 
   const featuredProperties = propertyDataArray.filter(
     (propertyData) => propertyData !== null,
