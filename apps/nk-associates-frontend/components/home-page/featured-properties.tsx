@@ -36,7 +36,6 @@ const FeaturedProperties: FC<FeaturedPropertyProps> = ({
     }
   }, [featuredProperties]);
 
-  // lg:min-h-[50.25rem] h-full
   return (
     <>
       {featuredProperties?.length > 0 && (
