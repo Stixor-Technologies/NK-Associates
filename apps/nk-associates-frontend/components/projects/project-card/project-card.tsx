@@ -40,14 +40,18 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
   primaryColor = true,
   actHome,
 }) => {
-  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+  const [windowWidth, setWindowWidth] = useState<number>(0);
 
   useEffect(() => {
-    const handleResize = () => setWindowWidth(window.innerWidth);
-    window.addEventListener("resize", handleResize);
+    const handleResize = () => {
+      setWindowWidth(window.innerWidth);
+    };
+    handleResize();
 
-    // Clean up event listener on unmount
-    return () => window.removeEventListener("resize", handleResize);
+    window.addEventListener("resize", handleResize);
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
   }, []);
 
   const backgroundColor = primaryColor

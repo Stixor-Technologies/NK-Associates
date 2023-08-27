@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import LinkButton from "../../../button/link-button";
+import LinkButton from "../../button/link-button";
 
 const HomeBanner = ({ children }) => {
   return (

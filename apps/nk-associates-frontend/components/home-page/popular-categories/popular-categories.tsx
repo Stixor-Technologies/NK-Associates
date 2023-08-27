@@ -1,7 +1,5 @@
 "use client";
-import React, { useState, useEffect, useRef, useLayoutEffect } from "react";
-import Spinner from "../../spinner";
-import { getPopularCategories } from "../../../utils/api-calls";
+import React, { FC, useState, useEffect, useRef, useLayoutEffect } from "react";
 import CategoryCard from "./category-card";
 import { PopularCategory } from "../../../utils/types/types";
 import { gsap } from "gsap";
@@ -9,9 +7,13 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const PopularCategories = () => {
-  const [categories, setCategories] = useState<PopularCategory[]>([]);
-  const [isLoading, setIsLoading] = useState<boolean>(true);
+interface PopularCategoriesProps {
+  popularCategories: PopularCategory[];
+}
+
+const PopularCategories: FC<PopularCategoriesProps> = ({
+  popularCategories,
+}) => {
   const popularSection = useRef<HTMLDivElement | null>(null);
   const [windowSize, setWindowSize] = useState<number>(0);
 
@@ -31,35 +33,8 @@ const PopularCategories = () => {
     };
   }, []);
 
-  const transformResponse = (response) => {
-    const categoryKeys = Object.keys(response).filter(
-      (key) => key.includes("category") && !key.includes("image"),
-    );
-    return categoryKeys.map((categoryKey) => {
-      const imageKey = `${categoryKey}_image`;
-      return {
-        category_name: response[categoryKey],
-        category_image: response[imageKey],
-      };
-    });
-  };
-
-  const fetchPopularCategories = async () => {
-    setIsLoading(true);
-    const resp = await getPopularCategories();
-    if (resp?.data) {
-      const transformedData = transformResponse(resp?.data?.attributes);
-      setCategories(transformedData);
-    }
-    setIsLoading(false);
-  };
-
-  useEffect(() => {
-    fetchPopularCategories();
-  }, []);
-
   useLayoutEffect(() => {
-    if (categories?.length > 0) {
+    if (popularCategories?.length > 0) {
       ScrollTrigger.getById("webCategoriesTrigger")?.kill();
       const allTriggers = ScrollTrigger.getAll();
 
@@ -127,29 +102,25 @@ const PopularCategories = () => {
         });
       }
     }
-  }, [categories, windowSize]);
+  }, [popularCategories, windowSize]);
 
   return (
     <>
-      {categories.length > 0 || isLoading ? (
+      {popularCategories.length > 0 && (
         <div ref={popularSection} className="container py-10 md:py-12">
           <h6 className="text-[2rem] text-nk-black text-center font-metropolis-semibold mb-7 md:mb-9 md:text-4xl">
             Popular Categories
           </h6>
 
-          {isLoading && categories.length === 0 ? (
-            <div className="min-h-[50vh] flex flex-1">
-              <Spinner />
-            </div>
-          ) : (
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 md:gap-6 lg:grid-cols-3">
-              {categories?.map((category: PopularCategory, index: number) => (
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 md:gap-6 lg:grid-cols-3">
+            {popularCategories?.map(
+              (category: PopularCategory, index: number) => (
                 <CategoryCard key={index} category={category} />
-              ))}
-            </div>
-          )}
+              ),
+            )}
+          </div>
         </div>
-      ) : null}
+      )}
     </>
   );
 };

@@ -334,6 +334,18 @@ export const getHeroInfo = async () => {
   }
 };
 
+export const getHomeData = async () => {
+  try {
+    const resp = await fetch(`${BASE_URL}/api/home?populate=deep`, {
+      cache: "no-store",
+    });
+    const data = await resp.json();
+    return data;
+  } catch (error) {
+    console.error("There was an error getting the home information", error);
+  }
+};
+
 export const getMembers = async () => {
   try {
     let apiUrl = `${BASE_URL}/api/teams?populate=*`;

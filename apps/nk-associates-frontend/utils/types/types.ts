@@ -206,16 +206,6 @@ export interface ServiceProcess {
   };
 }
 
-export interface AboutOverview {
-  about_summary: string;
-  summary_image1: {
-    data: MediaAttributes;
-  };
-  summary_image2: {
-    data: MediaAttributes;
-  };
-}
-
 export interface Member {
   id: number;
   attributes: {

@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, useEffect, useLayoutEffect, useRef } from "react";
+import React, { FC, useState, useEffect, useLayoutEffect, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { getSocials } from "../../utils/api-calls";
@@ -14,36 +14,12 @@ type StoreLinks = {
   link: string;
 };
 
-const NkApp = () => {
-  const [storeLinks, setStoreLinks] = useState<StoreLinks[]>(null);
+interface NKAppProps {
+  storeLinks: StoreLinks[];
+}
+
+const NkApp: FC<NKAppProps> = ({ storeLinks }) => {
   const mobileAppSection = useRef<HTMLDivElement | null>(null);
-
-  const fetchSocials = async () => {
-    const resp = await getSocials();
-    if (resp?.data) {
-      const { playstore, appstore, appgallery } = resp?.data?.attributes;
-      const storeLinksArray = [
-        {
-          name: "play-store-home",
-          link: playstore,
-        },
-        {
-          name: "app-store-home",
-          link: appstore,
-        },
-        {
-          name: "app-gallery-home",
-          link: appgallery,
-        },
-      ];
-
-      setStoreLinks(storeLinksArray);
-    }
-  };
-
-  useEffect(() => {
-    fetchSocials();
-  }, []);
 
   useLayoutEffect(() => {
     if (storeLinks?.length > 0) {

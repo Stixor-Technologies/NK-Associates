@@ -1,13 +1,15 @@
+"use client";
 import React, { FC, useState, useEffect, useMemo } from "react";
-import { MediaAttributes } from "../../../../utils/types/types";
-import { BASE_URL } from "../../../../utils/constants";
+import { MediaAttributes } from "../../../utils/types/types";
+import { BASE_URL } from "../../../utils/constants";
 import Image from "next/image";
 
 interface BannerImagesProps {
   banner_images: MediaAttributes[];
 }
 
-const CustomSlider: FC<BannerImagesProps> = ({ banner_images }) => {
+const BannerSlider: FC<BannerImagesProps> = ({ banner_images }) => {
+  console.log(banner_images);
   const [activeIndex, setActiveIndex] = useState(0);
   const [hoveredSlide, setHoveredSlide] = useState(null);
   const [windowSize, setWindowSize] = useState<number>(0);
@@ -54,7 +56,7 @@ const CustomSlider: FC<BannerImagesProps> = ({ banner_images }) => {
       className="slider-container flex overflow-hidden transition-all duration-500 ease-out relative z-10"
       style={{ marginLeft: `${leftMargin}px` }}
     >
-      {banner_images.map((img, index) => (
+      {banner_images?.map((img, index) => (
         <div
           key={index}
           onMouseEnter={() => setHoveredSlide(index)}
@@ -77,4 +79,4 @@ const CustomSlider: FC<BannerImagesProps> = ({ banner_images }) => {
     </div>
   );
 };
-export default CustomSlider;
+export default BannerSlider;

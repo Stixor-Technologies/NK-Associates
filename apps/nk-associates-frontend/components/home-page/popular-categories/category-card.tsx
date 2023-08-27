@@ -9,7 +9,7 @@ type CategoryCardProps = {
 };
 
 const CategoryCard: FC<CategoryCardProps> = ({ category }) => {
-  const cat_image = category?.category_image?.data.attributes.url;
+  const cat_image = category?.category_image?.data?.attributes?.url;
   return (
     <Link
       href={`/properties`}
@@ -19,7 +19,7 @@ const CategoryCard: FC<CategoryCardProps> = ({ category }) => {
         <Image
           src={`${BASE_URL}${cat_image || "/"}`}
           fill
-          alt={`${category.category_name}-image`}
+          alt={`${category?.category_name}-image`}
           className="object-cover category-image"
         />
       </div>

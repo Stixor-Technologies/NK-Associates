@@ -1,21 +1,32 @@
+"use client";
 import React, { FC, useState, useEffect } from "react";
-import { AboutOverview } from "../../../utils/types/types";
+import { MediaAttributes } from "../../utils/types/types";
 import Image from "next/image";
-import { BASE_URL } from "../../../utils/constants";
-import LinkButton from "../../button/link-button";
+import { BASE_URL } from "../../utils/constants";
+import LinkButton from "../button/link-button";
 
 interface AboutSummaryProp {
-  aboutOverview: AboutOverview;
+  about_summary: string;
+  summary_image1: {
+    data: MediaAttributes;
+  };
+  summary_image2: {
+    data: MediaAttributes;
+  };
 }
 
-const AboutSummary: FC<AboutSummaryProp> = ({ aboutOverview }) => {
-  const [windowSize, setWindowSize] = useState(window.innerWidth);
+const AboutSummary: FC<AboutSummaryProp> = ({
+  about_summary,
+  summary_image1,
+  summary_image2,
+}) => {
+  const [windowSize, setWindowSize] = useState<number>(0);
 
-  const totalLength = aboutOverview?.about_summary?.length;
+  const totalLength = about_summary?.length;
   const halfLength = Math.ceil(totalLength / 2);
 
-  const firstHalf = aboutOverview?.about_summary.slice(0, halfLength);
-  const secondHalf = aboutOverview?.about_summary.slice(halfLength);
+  const firstHalf = about_summary?.slice(0, halfLength);
+  const secondHalf = about_summary?.slice(halfLength);
 
   const breakPoint = 768;
 
@@ -23,6 +34,9 @@ const AboutSummary: FC<AboutSummaryProp> = ({ aboutOverview }) => {
     const handleWindowResize = () => {
       setWindowSize(window.innerWidth);
     };
+
+    handleWindowResize();
+
     window.addEventListener("resize", handleWindowResize);
 
     return () => {
@@ -39,9 +53,7 @@ const AboutSummary: FC<AboutSummaryProp> = ({ aboutOverview }) => {
               About US
             </h2>
             <p className="text-base text-nk-black font-metropolis-thin leading-tight my-5 md:my-3 md:text-lg">
-              {windowSize > breakPoint
-                ? firstHalf
-                : aboutOverview?.about_summary}
+              {windowSize > breakPoint ? firstHalf : about_summary}
             </p>
             <LinkButton
               text="About Us"
@@ -51,24 +63,20 @@ const AboutSummary: FC<AboutSummaryProp> = ({ aboutOverview }) => {
             />
           </div>
           <Image
-            src={`${BASE_URL}${
-              aboutOverview?.summary_image1?.data?.attributes?.url || "/"
-            }`}
+            src={`${BASE_URL}${summary_image1?.data?.attributes?.url || "/"}`}
             width={600}
             height={400}
-            alt={`${aboutOverview?.summary_image1?.data?.attributes?.name}`}
+            alt={`${summary_image1?.data?.attributes?.name}`}
             className="rounded-2xl mt-10 h-[23.938rem] order-0 md:order-none"
           />
         </div>
 
         <div className="hidden md:block">
           <Image
-            src={`${BASE_URL}${
-              aboutOverview?.summary_image2?.data?.attributes?.url || "/"
-            }`}
+            src={`${BASE_URL}${summary_image2?.data?.attributes?.url || "/"}`}
             width={600}
             height={400}
-            alt={`${aboutOverview?.summary_image2?.data?.attributes?.name}`}
+            alt={`${summary_image2?.data?.attributes?.name}`}
             className="rounded-2xl md:mb-10 md:h-[23.938rem]"
           />
           <p className="text-base text-nk-black font-metropolis-thin leading-tight md:text-lg">
