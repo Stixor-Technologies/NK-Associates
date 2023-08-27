@@ -47,7 +47,7 @@ const AboutSummary: FC<AboutSummaryProp> = ({
   return (
     <div className="container py-7 md:pt-12 md:pb-0">
       <div className="flex gap-14">
-        <div className="text-center flex gap-14 flex-col md:block md:py-14 md:text-left">
+        <div className="text-center flex gap-14 flex-col items-center md:block md:py-14 md:text-left">
           <div className="order-1 md:order-none">
             <h2 className="text-3xl text-nk-black font-metropolis-semibold md:text-5xl">
               About US
