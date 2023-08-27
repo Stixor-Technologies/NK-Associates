@@ -14,9 +14,9 @@ const AboutCard1: FC<CardProps> = ({ about, spin }) => {
   const cardIcon = about?.card_icon?.data?.attributes?.url;
 
   return (
-    <div className="card lg:absolute w-full h-full mobileTrigger mb-12 lg:mb-0 overflow-hidden lg:overflow-visible">
+    <div className="card lg:absolute w-full h-full mb-12 lg:mb-0 overflow-hidden lg:overflow-visible">
       <div className="flex flex-col lg:flex-row gap-2 lg:gap-10 xl:gap-5 px-4 about-card">
-        <div className="relative images-about max-w-[25rem] xl:max-w-[26rem] w-full min-h-[32rem] lg:min-h-[37rem] mx-auto mb-8 lg:mb-0">
+        <div className="relative images-about max-w-[25rem]  w-full min-h-[32rem] lg:min-h-[37rem] mx-auto mb-8 lg:mb-0">
           <Image
             src={`${BASE_URL}${cardImage || "/"}`}
             alt="Card Image 1"

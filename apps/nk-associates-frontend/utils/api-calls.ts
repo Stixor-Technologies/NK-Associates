@@ -317,12 +317,9 @@ export const getServiceDetail = async (id: string) => {
 
 export const getAbout = async () => {
   try {
-    let apiUrl = `${BASE_URL}/api/about?populate=deep`;
-    const resp = await fetch(apiUrl, {
-      cache: "no-store",
-    });
-    const links = await resp.json();
-    return links;
+    const resp = await fetch(`${BASE_URL}/api/about?populate=deep`);
+    const data = await resp.json();
+    return data;
   } catch (error) {
     console.error("There was an error getting company information", error);
   }

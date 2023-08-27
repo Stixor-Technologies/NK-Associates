@@ -71,7 +71,6 @@ const Goals: FC = () => {
           pin: true,
           scrub: 1,
           invalidateOnRefresh: true,
-          // markers: true,
         },
       });
 
@@ -106,14 +105,13 @@ const Goals: FC = () => {
       let cards: HTMLElement[] = gsap.utils.toArray(".images-about");
       cards.forEach((card, index) => {
         gsap.from(card, {
-          x: "100%",
+          x: "150%",
           duration: 1,
           ease: "power2.out",
           scrollTrigger: {
             id: "mobileTrigger",
             trigger: card,
             start: "top 40%",
-            // markers: true,
           },
         });
       });
@@ -123,7 +121,7 @@ const Goals: FC = () => {
   let spin = -4;
   let spin2 = 9;
   return (
-    <div className="card-container lg:container cardTrigger relative min-h-screen md:py-1 my-32">
+    <div className="card-container container cardTrigger relative min-h-screen md:py-1 my-32">
       <>
         {isLoading && card1.length === 0 && card2.length === 0 ? (
           <div className="my-4 flex justify-center">
