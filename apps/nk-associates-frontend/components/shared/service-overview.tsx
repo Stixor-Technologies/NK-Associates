@@ -60,7 +60,7 @@ const ServicesOverview = () => {
             <LinkButton
               text="Explore all"
               type="inverted"
-              navigateTo="#"
+              navigateTo="/services"
               className="mx-auto mt-3 w-64 h-11 border py-2.5 text-lg hover:border-nk-red hover:shadow-md md:mx-0 md:w-[25rem] md:h-[3.125rem]"
             />
           </div>

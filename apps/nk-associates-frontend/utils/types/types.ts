@@ -283,8 +283,13 @@ export interface ValueGoals {
 }
 
 export interface About {
-  attributes: {
-    card_1: VisionMission[];
-    card_2: ValueGoals[];
+  data: {
+    attributes: {
+      card_1: VisionMission[];
+      card_2: ValueGoals[];
+      ceo_image: { data: MediaAttributes };
+      ceo_message: string;
+      ceo_name: string;
+    };
   };
 }

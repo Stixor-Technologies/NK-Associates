@@ -21,6 +21,22 @@
       "type": "component",
       "repeatable": true,
       "component": "card-2.about-us-card-2"
+    },
+    "ceo_message": {
+      "type": "text",
+      "required": true
+    },
+    "ceo_image": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "ceo_name": {
+      "type": "string",
+      "required": true
     }
   }
 }
