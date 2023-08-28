@@ -23,7 +23,8 @@
     "pg": "8.8.0",
     "postinstall-postinstall": "^2.1.0",
     "strapi-plugin-multi-select": "^1.2.2",
-    "strapi-plugin-populate-deep": "^3.0.0"
+    "strapi-plugin-populate-deep": "^3.0.0",
+    "select": "*"
   },
   "author": {
     "name": "A Strapi developer"
