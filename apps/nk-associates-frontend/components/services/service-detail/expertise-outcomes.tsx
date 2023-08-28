@@ -47,8 +47,8 @@ const ExpertiseOutcomes: FC<OutcomesProps> = ({
       });
 
       gsap.set("[data-outcome] .images-panel:first-child", {
-        opacity: 0,
-        y: "100%",
+        opacity: 1,
+        y: "200%",
         x: "0%",
         rotate: 0,
       });
@@ -153,7 +153,7 @@ const ExpertiseOutcomes: FC<OutcomesProps> = ({
       {/* expertise */}
       <div
         data-expertise
-        className="panels my-10 flex flex-col gap-10 sm:my-0 lg:flex-row lg:my-0 lg:absolute"
+        className="panels my-10 flex flex-col w-full gap-10 sm:my-0 lg:flex-row lg:my-0 lg:absolute"
       >
         <div className="images-panel self-center w-[90%] max-w-[22rem] mx-auto sm:w-full md:max-w-[27rem] lg:w-[45%] lg:-rotate-6">
           <div className="relative aspect-square w-full">
@@ -180,9 +180,9 @@ const ExpertiseOutcomes: FC<OutcomesProps> = ({
       {/* outcomes */}
       <div
         data-outcome
-        className="panels my-10 flex flex-col gap-10 lg:flex-row lg:my-0 lg:absolute"
+        className="panels my-10 flex flex-col w-full gap-10 lg:flex-row lg:my-0 lg:absolute"
       >
-        <div className="images-panel self-center w-[90%] max-w-[22rem] mx-auto sm:w-full md:max-w-[27rem] lg:w-[45%] lg:translate-y-full lg:opacity-0">
+        <div className="images-panel self-center w-[90%] max-w-[22rem] mx-auto sm:w-full md:max-w-[27rem] lg:w-[45%] lg:translate-y-[200%] opacity-0 lg:opacity-1">
           <div className="relative aspect-square w-full">
             <Image
               src={`${BASE_URL}${outcome_image || "/"}`}
