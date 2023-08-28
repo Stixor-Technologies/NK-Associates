@@ -13,16 +13,15 @@ interface ProcessStepsProps {
 }
 
 const ProcessSteps: FC<ProcessStepsProps> = ({ process }) => {
-  const [windowSize, setWindowSize] = useState(window.innerWidth);
+  const [windowSize, setWindowSize] = useState<number>(0);
   const breakPoint = 768;
 
   useEffect(() => {
     const handleWindowResize = () => {
       setWindowSize(window.innerWidth);
     };
-
+    handleWindowResize();
     window.addEventListener("resize", handleWindowResize);
-
     return () => {
       window.removeEventListener("resize", handleWindowResize);
     };

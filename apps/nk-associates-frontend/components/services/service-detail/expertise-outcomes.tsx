@@ -19,15 +19,15 @@ const ExpertiseOutcomes: FC<OutcomesProps> = ({
   outcome,
   outcome_image,
 }) => {
-  const [windowSize, setWindowSize] = useState(window.innerWidth);
+  const [windowSize, setWindowSize] = useState<number>(0);
   const breakPoint = 1024;
 
   useEffect(() => {
     const handleWindowResize = () => {
       setWindowSize(window.innerWidth);
     };
+    handleWindowResize();
     window.addEventListener("resize", handleWindowResize);
-
     return () => {
       window.removeEventListener("resize", handleWindowResize);
     };
