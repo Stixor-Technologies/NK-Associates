@@ -15,13 +15,15 @@ const Goals: FC = () => {
   const [card2, setCard2] = useState<ValueGoals[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const component = useRef(null);
-  const [windowSize, setWindowSize] = useState(window.innerWidth);
+  const [windowSize, setWindowSize] = useState<number>(0);
   const breakPoint = 1024;
 
   useEffect(() => {
     const handleWindowResize = () => {
       setWindowSize(window.innerWidth);
     };
+    handleWindowResize();
+
     window.addEventListener("resize", handleWindowResize);
 
     return () => {
