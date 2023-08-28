@@ -11,7 +11,7 @@ const ServicesOverview = () => {
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: ref.current,
-          start: "top 80%",
+          start: "top 60%",
           toggleActions: "play none none none",
         },
       });

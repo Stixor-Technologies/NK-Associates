@@ -2,7 +2,7 @@ import React from "react";
 import ContactForm from "../../components/shared/contact-form";
 import ContactDetails from "../../components/contact/contact-details";
 import MapComponent from "../../components/shared/map-component";
-import { Contacts } from "../../utils/types/types";
+import { Offices } from "../../utils/types/types";
 import {
   getOfficeAddress,
   getHeadOffice,
@@ -15,11 +15,11 @@ interface Location {
 }
 
 const ContactUs = async () => {
-  const data: Contacts[] = await getOfficeAddress();
+  const data: Offices[] = await getOfficeAddress();
   const headOfficeAddress = await getHeadOffice();
   const categories = await getCategories();
 
-  const combinedAddresses: Contacts[] = [
+  const combinedAddresses: Offices[] = [
     ...(headOfficeAddress
       ? [{ ...headOfficeAddress, isHeadOffice: true }]
       : []),

@@ -135,7 +135,7 @@ export const getProjects = async ({
 
 export const getOfficeAddress = async () => {
   try {
-    const response = await fetch(`${BASE_URL}/api/contacts?populate=*`, {
+    const response = await fetch(`${BASE_URL}/api/offices?populate=*`, {
       cache: "no-store",
     });
     if (!response.ok) {
@@ -256,8 +256,7 @@ export const getDepartments = async () => {
 
 export const getSocials = async () => {
   try {
-    let apiUrl = `${BASE_URL}/api/socials`;
-    const resp = await fetch(apiUrl, {
+    const resp = await fetch(`${BASE_URL}/api/social`, {
       cache: "no-store",
     });
     const links = await resp.json();
@@ -287,6 +286,18 @@ export const getContactNumber = async () => {
     return links;
   } catch (error) {
     console.error("There was an error getting the phone number", error);
+  }
+};
+
+export const getHomeData = async () => {
+  try {
+    const resp = await fetch(`${BASE_URL}/api/home?populate=deep`, {
+      cache: "no-store",
+    });
+    const data = await resp.json();
+    return data;
+  } catch (error) {
+    console.error("There was an error getting the home information", error);
   }
 };
 

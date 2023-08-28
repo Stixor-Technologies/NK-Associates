@@ -5,13 +5,13 @@ export interface EventsImage {
     };
   }[];
 }
-export interface Contacts {
+export interface Offices {
   isHeadOffice?: boolean;
   attributes: {
     location: string;
     address: string;
-    latitude?: number;
-    longitude?: number;
+    latitude: number;
+    longitude: number;
     emails: {
       id: number;
       email: string;
@@ -153,7 +153,7 @@ export interface Job {
   };
 }
 
-export interface socials {
+export interface Socials {
   id: number;
   attributes: {
     twitter: string;
@@ -191,6 +191,12 @@ export interface Services {
   id: number;
 }
 
+export interface PopularCategory {
+  category_name: string;
+  category_image: {
+    data: MediaAttributes;
+  };
+}
 export interface ServiceProcess {
   id: number;
   process_title: string;
