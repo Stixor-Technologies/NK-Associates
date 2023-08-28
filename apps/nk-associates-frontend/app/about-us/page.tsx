@@ -12,8 +12,10 @@ import MembersList from "../../components/members/member-list";
 const AboutUs = async () => {
   const categories = await getCategories();
   const aboutInfo: About = await getAbout();
-  const ceoMessage: string = aboutInfo.data.attributes.message;
+  const ceoMessage: string = aboutInfo?.data?.attributes.ceo_message;
   const ceoImage: string = `${BASE_URL}${aboutInfo?.data?.attributes?.ceo_image?.data?.attributes?.url}`;
+  console.log(aboutInfo);
+  console.log(ceoMessage);
   return (
     <div>
       <div className="text-center text-black container">
@@ -36,7 +38,7 @@ const AboutUs = async () => {
           />
         </div>
       </div>
-      <div className="container">Our Mission Component</div>
+      <div className="container">{/* <Goals /> */}</div>
       <div className="container">
         <CeoMessage ceoImage={ceoImage} ceoMessage={ceoMessage} />
       </div>
