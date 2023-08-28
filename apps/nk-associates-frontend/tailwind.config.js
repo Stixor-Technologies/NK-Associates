@@ -58,6 +58,12 @@ module.exports = {
       backgroundImage: (theme) => ({
         "custom-gradient":
           "linear-gradient(180deg, #EFEFEF 0%, rgba(255, 255, 255, 1) 100%)",
+
+        "overlay-black":
+          "linear-gradient(180deg,rgba(0,0,0,.0001),rgba(0,0,0,.601863))",
+
+        "fade-red":
+          "linear-gradient(90deg, rgba(228, 64, 74, 0.82) 0%, rgba(235, 75, 94, 0.50) 100%)",
       }),
     },
   },

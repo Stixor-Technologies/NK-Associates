@@ -162,6 +162,12 @@
       "allowedTypes": [
         "files"
       ]
+    },
+    "properties": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::property.property",
+      "mappedBy": "project"
     }
   }
 }

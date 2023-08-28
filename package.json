@@ -4,7 +4,8 @@
     "build": "turbo run build",
     "dev": "turbo run dev",
     "lint": "turbo run lint",
-    "format": "prettier --write \"**/*.{ts,tsx,md,js,jsx}\""
+    "format": "prettier --write \"**/*.{ts,tsx,md,js,jsx}\"",
+    "postinstall": "patch-package"
   },
   "devDependencies": {
     "@turbo/gen": "^1.9.7",
@@ -18,6 +19,7 @@
   "packageManager": "yarn@1.22.19",
   "workspaces": [
     "apps/*",
+    "apps/nk-associates-cms/src/plugins/*",
     "packages/*"
   ]
 }

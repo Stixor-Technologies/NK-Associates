@@ -5,10 +5,12 @@
   "description": "A Strapi application",
   "scripts": {
     "dev": "strapi develop",
+    "dev-watch": "strapi develop --watch-admin",
     "start": "strapi start",
     "build": "strapi build",
     "strapi": "strapi",
-    "lint": "eslint . --ext .ts,.tsx"
+    "lint": "eslint . --ext .ts,.tsx",
+    "postinstall": "patch-package"
   },
   "devDependencies": {
     "eslint-config-custom": "*"
@@ -17,9 +19,12 @@
     "@strapi/plugin-i18n": "4.11.5",
     "@strapi/plugin-users-permissions": "4.11.5",
     "@strapi/strapi": "4.11.5",
+    "patch-package": "^8.0.0",
     "pg": "8.8.0",
+    "postinstall-postinstall": "^2.1.0",
     "strapi-plugin-multi-select": "^1.2.2",
-    "strapi-plugin-populate-deep": "^3.0.0"
+    "strapi-plugin-populate-deep": "^3.0.0",
+    "select": "*"
   },
   "author": {
     "name": "A Strapi developer"
