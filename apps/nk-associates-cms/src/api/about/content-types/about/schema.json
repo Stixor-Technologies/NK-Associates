@@ -27,11 +27,15 @@
       "required": true
     },
     "ceo_image": {
-      "allowedTypes": [
-        "images"
-      ],
       "type": "media",
       "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "ceo_name": {
+      "type": "string",
       "required": true
     }
   }

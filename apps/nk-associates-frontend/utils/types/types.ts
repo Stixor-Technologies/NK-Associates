@@ -1,5 +1,3 @@
-import { string } from "yup";
-
 export interface EventsImage {
   data: {
     attributes: {
@@ -262,6 +260,7 @@ export interface About {
       card_2: ValueGoals[];
       ceo_image: { data: MediaAttributes };
       ceo_message: string;
+      ceo_name: string;
     };
   };
 }

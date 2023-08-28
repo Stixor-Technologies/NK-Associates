@@ -9,9 +9,14 @@ gsap.registerPlugin(ScrollTrigger);
 interface CeoMessageProps {
   ceoMessage: string;
   ceoImage: string;
+  ceoName: string;
 }
 
-const CeoMessage: React.FC<CeoMessageProps> = ({ ceoMessage, ceoImage }) => {
+const CeoMessage: React.FC<CeoMessageProps> = ({
+  ceoMessage,
+  ceoImage,
+  ceoName,
+}) => {
   const ceoRef = useRef(null);
   const textRef = useRef(null);
   const startRef = useRef(null);
@@ -26,9 +31,6 @@ const CeoMessage: React.FC<CeoMessageProps> = ({ ceoMessage, ceoImage }) => {
           trigger: startRef.current,
           start: "50% 70%",
           end: "center 50%",
-          // markers: true,
-          // start: "99% 15%",
-          // end: "99% 10%",
         },
       });
       tl.from(el2, {
@@ -68,7 +70,7 @@ const CeoMessage: React.FC<CeoMessageProps> = ({ ceoMessage, ceoImage }) => {
           {ceoMessage}
         </div>
         <div className="uppercase text-[1.375rem] font-metropolis-semibold lg:hidden">
-          nazim khadim
+          {ceoName}
         </div>
       </div>
     </div>

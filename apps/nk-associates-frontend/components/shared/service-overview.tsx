@@ -13,7 +13,6 @@ const ServicesOverview = () => {
           trigger: ref.current,
           start: "top 60%",
           toggleActions: "play none none none",
-          // markers: true,
         },
       });
       tl.from(".text", {
