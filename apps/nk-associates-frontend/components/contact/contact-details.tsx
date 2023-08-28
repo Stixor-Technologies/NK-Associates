@@ -3,16 +3,16 @@ import Image from "next/image";
 import AreaMarker from "../../public/assets/icons/area-marker.svg";
 import Envelope from "../../public/assets/icons/envelope-icon.svg";
 import ContactIcon from "../../public/assets/icons/telephone-icon.svg";
-import { Contacts } from "../../utils/types/types";
+import { Offices } from "../../utils/types/types";
 
 interface ContactDetailProps {
-  data: Contacts[];
+  data: Offices[];
 }
 
 const ContactDetails: React.FC<ContactDetailProps> = ({ data }) => {
   return (
     <>
-      {data?.map((contactItem: Contacts, index: number) => {
+      {data?.map((contactItem: Offices, index: number) => {
         return (
           <div
             key={index}

@@ -12,6 +12,8 @@ module.exports = {
     screens: {
       xs: "350px",
       ...defaultTheme.screens,
+      "below-md": { max: "767px" },
+      "above-md": { min: "769px" },
     },
     extend: {
       backgroundImage: {
@@ -41,6 +43,7 @@ module.exports = {
         "nk-dark-gray": "#303030", //footer
         "nk-grey": "#727272",
         "nk-background": "#f5f5f5",
+        "nk-off-white": "#E3E3E3", // used in service cards
       },
       boxShadow: {
         "3xl": "0.25rem 0.188rem 1.375rem 0rem rgba(0, 0, 0, 0.092)",
@@ -52,6 +55,16 @@ module.exports = {
       maxWidth: {
         container: "78.25rem",
       },
+      backgroundImage: (theme) => ({
+        "custom-gradient":
+          "linear-gradient(180deg, #EFEFEF 0%, rgba(255, 255, 255, 1) 100%)",
+
+        "overlay-black":
+          "linear-gradient(180deg,rgba(0,0,0,.0001),rgba(0,0,0,.601863))",
+
+        "fade-red":
+          "linear-gradient(90deg, rgba(228, 64, 74, 0.82) 0%, rgba(235, 75, 94, 0.50) 100%)",
+      }),
     },
   },
   plugins: [],

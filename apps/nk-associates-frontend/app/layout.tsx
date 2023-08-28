@@ -62,7 +62,7 @@ export default function RootLayout({
       >
         <Navigation />
         <MapApiProvider>
-          <main className="mt-[7rem]">{children}</main>
+          <main className="mt-[5.5rem]">{children}</main>
         </MapApiProvider>
         <Footer />
       </body>

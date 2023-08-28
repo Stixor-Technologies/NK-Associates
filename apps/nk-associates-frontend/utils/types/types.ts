@@ -5,13 +5,13 @@ export interface EventsImage {
     };
   }[];
 }
-export interface Contacts {
+export interface Offices {
   isHeadOffice?: boolean;
   attributes: {
     location: string;
     address: string;
-    latitude?: number;
-    longitude?: number;
+    latitude: number;
+    longitude: number;
     emails: {
       id: number;
       email: string;
@@ -153,7 +153,36 @@ export interface Job {
   };
 }
 
-export interface socials {
+type CategoryType = {
+  id: number;
+  name: string;
+  types: {
+    id: number;
+    name: string;
+  }[];
+};
+export interface SearchFilterProperties {
+  propertyTypesList: CategoryType[] | undefined;
+  completionStatusList: { id: number; name: string }[] | undefined;
+  rentFrequencyList: { id: number; name: string }[] | undefined;
+  propertyPurposeList: { id: number; name: string }[] | undefined;
+  projectsList: { id: number; name: string }[] | undefined;
+  priceRange: [number, number];
+}
+
+export interface FiltersStateType {
+  selectedCompletionStatusId: string | number | undefined;
+  selectedRentFrequencyId: string | number | undefined;
+  selectedCategoryId: string | number | undefined;
+  selectedTypeId: string | number | undefined;
+  selectedProjectId: string | number | undefined;
+  selectedPurposeId: string | number | undefined;
+  minSelectedPrice: number;
+  maxSelectedPrice: number;
+  location: string | undefined;
+}
+
+export interface Socials {
   id: number;
   attributes: {
     twitter: string;
@@ -165,5 +194,102 @@ export interface socials {
     playstore: string;
     appstore: string;
     appgallery: string;
+  };
+}
+export interface Services {
+  attributes: {
+    title: string;
+    company: string;
+    service_image: {
+      data: MediaAttributes;
+    };
+    company_logo: {
+      data: MediaAttributes;
+    };
+    expertise: string;
+    expertise_image: {
+      data: MediaAttributes;
+    };
+    outcome: string;
+    outcome_image: {
+      data: MediaAttributes;
+    };
+    description: string;
+    process: ServiceProcess[];
+  };
+  id: number;
+}
+
+export interface PopularCategory {
+  category_name: string;
+  category_image: {
+    data: MediaAttributes;
+  };
+}
+export interface ServiceProcess {
+  id: number;
+  process_title: string;
+  process_description: string;
+  process_image: {
+    data: MediaAttributes;
+  };
+}
+
+export interface Member {
+  id: number;
+  attributes: {
+    name: string;
+    role: string;
+    description: string;
+    whatsapp: string;
+    linkedin: string;
+    instagram: string;
+    facebook: string;
+    member_image: {
+      data: MediaAttributes;
+    };
+  };
+}
+
+export interface VisionMission {
+  question: string;
+  title: string;
+  description: string;
+  card_image: {
+    data: MediaAttributes;
+  };
+  card_icon: {
+    data: MediaAttributes;
+  };
+  id: number;
+}
+
+export interface ValueGoals {
+  title: string;
+  list: {
+    id: number;
+    title: string;
+    description: string;
+    icon: {
+      data: MediaAttributes;
+    };
+  }[];
+  card_image: {
+    data: MediaAttributes;
+  };
+  card_icon: {
+    data: MediaAttributes;
+  };
+}
+
+export interface About {
+  data: {
+    attributes: {
+      card_1: VisionMission[];
+      card_2: ValueGoals[];
+      ceo_image: { data: MediaAttributes };
+      ceo_message: string;
+      ceo_name: string;
+    };
   };
 }

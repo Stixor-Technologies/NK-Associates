@@ -117,7 +117,8 @@
         "Hotel",
         "Apartments"
       ],
-      "customField": "plugin::multi-select.multi-select"
+      "customField": "plugin::multi-select.multi-select",
+      "required": true
     },
     "projectOutcomeDescription": {
       "type": "text",
@@ -151,15 +152,22 @@
       "displayName": "comparison-images",
       "type": "component",
       "repeatable": true,
-      "component": "comparison-images.comparison-images"
+      "component": "comparison-images.comparison-images",
+      "required": true
     },
     "threeDModel": {
-      "allowedTypes": [
-        "files"
-      ],
       "type": "media",
       "multiple": false,
-      "required": false
+      "required": true,
+      "allowedTypes": [
+        "files"
+      ]
+    },
+    "properties": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::property.property",
+      "mappedBy": "project"
     }
   }
 }

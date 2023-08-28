@@ -2,29 +2,49 @@
 
 import { Suspense } from "react";
 import { Canvas, useLoader } from "@react-three/fiber";
-import { Environment, OrbitControls } from "@react-three/drei";
+import { Environment, OrbitControls, useProgress } from "@react-three/drei";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
+import { DRACOLoader } from "three/examples/jsm/loaders/DRACOLoader";
+
+import ThreeDModelLoading from "./threeD-model-loading";
 
 type PropTypes = {
   modelURL: string;
 };
 
 const VRModel = ({ modelURL }: PropTypes) => {
-  const gltf = useLoader(GLTFLoader, modelURL);
+  const gltf = useLoader(GLTFLoader, modelURL, (loader) => {
+    const dracoLoader = new DRACOLoader();
+    dracoLoader.setDecoderPath(
+      "https://www.gstatic.com/draco/versioned/decoders/1.5.6/",
+    );
+    loader.setDRACOLoader(dracoLoader);
+  });
+  const { progress } = useProgress();
 
   return (
-    <Canvas
-      shadows
-      dpr={[1, 2]}
-      camera={{ position: [0, 0, 4], fov: 50 }}
-      className="bg-black"
-    >
-      <Suspense fallback={null}>
-        <primitive object={gltf.scene} scale={0.05} />
-        <Environment preset="city" />
-        <OrbitControls />
-      </Suspense>
-    </Canvas>
+    <>
+      <Canvas
+        shadows
+        dpr={[1, 2]}
+        camera={{ position: [-5, 5, 5], fov: 25 }}
+        className="bg-nk-gray"
+      >
+        <Suspense fallback={null}>
+          <Environment preset="city" />
+          <primitive object={gltf.scene} scale={0.05} />
+          <OrbitControls makeDefault minDistance={5} maxDistance={15} />
+        </Suspense>
+      </Canvas>
+
+      <section
+        className={`absolute top-0 left-0 w-full ${
+          progress >= 100 ? "hidden" : ""
+        }`}
+      >
+        <ThreeDModelLoading />
+      </section>
+    </>
   );
 };
 

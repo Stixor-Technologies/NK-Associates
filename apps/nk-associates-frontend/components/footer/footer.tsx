@@ -12,7 +12,7 @@ import SnapIcon from "../../public/assets/icons/snapchat-icon.svg";
 import YtIcon from "../../public/assets/icons/youtube-icon.svg";
 import AppGalleryIcon from "../../public/assets/icons/app-gallery.svg";
 import { getSocials } from "../../utils/api-calls";
-import { socials } from "../../utils/types/types";
+import { Socials } from "../../utils/types/types";
 
 async function fetchSocialLinks() {
   try {
@@ -25,7 +25,7 @@ async function fetchSocialLinks() {
 }
 
 async function Footer() {
-  const data: socials = await fetchSocialLinks();
+  const data: Socials = await fetchSocialLinks();
   let twitter,
     facebook,
     youtube,
@@ -36,7 +36,7 @@ async function Footer() {
     appstore,
     appgallery;
 
-  if (data && data[0].attributes) {
+  if (data && data.attributes) {
     ({
       twitter,
       facebook,
@@ -47,7 +47,7 @@ async function Footer() {
       playstore,
       appstore,
       appgallery,
-    } = data[0].attributes);
+    } = data?.attributes);
   }
   interface footerSocialLink {
     pathName: string;
@@ -66,7 +66,7 @@ async function Footer() {
     { pathName: "/contact", label: "Contact Us" },
     { pathName: "/careers", label: "Career" },
     { pathName: "/events", label: "Events" },
-    { pathName: "#", label: "Services" },
+    { pathName: "/services", label: "Services" },
   ];
 
   const footerSocialLinks: footerSocialLink[] = [
@@ -102,7 +102,7 @@ async function Footer() {
 
   const PageColumnA = generateFooterPageList(footerPageLinks, 0, 5);
   const PageColumnB = generateFooterPageList(footerPageLinks, 5);
-  const footerSocialList = footerSocialLinks.map((socialLink, index) => {
+  const footerSocialList = footerSocialLinks?.map((socialLink, index) => {
     return (
       socialLink?.pathName && (
         <div
@@ -115,7 +115,7 @@ async function Footer() {
             rel="noopener noreferrer"
           >
             <Image
-              src={socialLink.image}
+              src={socialLink?.image}
               width={20}
               height={30}
               alt="Facebook"
@@ -127,7 +127,7 @@ async function Footer() {
   });
 
   return (
-    <footer className="min-h-fit bg-nk-dark-gray font-metropolis text-nk-white">
+    <footer className="z-10 relative min-h-fit bg-nk-dark-gray font-metropolis text-nk-white">
       <div className="mx-auto py-6 pb-2 md:py-4 md:pt-12">
         <div className="mx-5 sm:mx-10 md:mx-auto">
           <div className="md:flex md:justify-between">
@@ -184,7 +184,7 @@ async function Footer() {
                 </div>
               </div>
               <div className="hidden w-1/4 md:block">
-                {data && data[0].attributes ? (
+                {data && data.attributes ? (
                   <h2 className="mb-1 text-base uppercase tracking-[0.2rem] text-nk-white md:font-metropolis-medium">
                     social
                   </h2>

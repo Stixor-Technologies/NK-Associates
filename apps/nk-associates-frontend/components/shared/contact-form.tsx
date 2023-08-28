@@ -41,9 +41,10 @@ interface ContactFormProps {
       category: string;
     };
   }[];
+  heading: string;
 }
 
-const ContactForm: React.FC<ContactFormProps> = ({ categories }) => {
+const ContactForm: React.FC<ContactFormProps> = ({ categories, heading }) => {
   const [loading, setLoading] = useState<boolean>(false);
   const [showToast, setShowToast] = useState<boolean>(false);
   const [toastMessage, setToastMessage] = useState<string>("");
@@ -107,7 +108,7 @@ const ContactForm: React.FC<ContactFormProps> = ({ categories }) => {
           <div className="rounded-3xl bg-nk-light-gray px-4 py-7 md:px-12 md:py-14">
             {showToast && <Toast message={toastMessage} />}
             <h4 className="text-center font-metropolis-bold text-[1.75rem] text-nk-black md:text-5xl">
-              Contact Us
+              {heading}
             </h4>
             <Form>
               <div className="grid grid-cols-1 gap-6 py-6 md:grid-cols-2 md:py-8 2xl:px-4">
