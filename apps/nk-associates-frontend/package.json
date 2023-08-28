@@ -12,7 +12,6 @@
     "@react-google-maps/api": "^2.19.2",
     "@react-three/drei": "^9.80.3",
     "@react-three/fiber": "^8.13.6",
-    "@react-google-maps/api": "^2.19.2",
     "@sendgrid/mail": "^7.7.0",
     "@strapi/provider-email-sendgrid": "^4.12.1",
     "@types/node": "20.4.2",
