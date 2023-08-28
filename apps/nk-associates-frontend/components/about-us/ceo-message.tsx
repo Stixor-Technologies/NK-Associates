@@ -26,6 +26,9 @@ const CeoMessage: React.FC<CeoMessageProps> = ({ ceoMessage, ceoImage }) => {
           trigger: startRef.current,
           start: "50% 70%",
           end: "center 50%",
+          // markers: true,
+          // start: "99% 15%",
+          // end: "99% 10%",
         },
       });
       tl.from(el2, {
@@ -38,7 +41,7 @@ const CeoMessage: React.FC<CeoMessageProps> = ({ ceoMessage, ceoImage }) => {
   return (
     <div
       ref={startRef}
-      className="overflow-x-clip flex flex-col lg:flex-row items-center justify-center lg:justify-start pt-[5.063rem] lg:pt-[11.254rem] lg:relative lg:mb-[16.75rem] md:mb-[3.75rem]"
+      className="overflow-x-clip flex flex-col lg:flex-row items-center justify-center lg:justify-start lg:relative lg:mb-[16.75rem] md:mb-[3.75rem]"
     >
       <div
         className="w-full max-w-[25rem] lg:px-4 pb-[1.313rem] lg:max-w-[39.6rem]"

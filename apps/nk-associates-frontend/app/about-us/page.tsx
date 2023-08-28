@@ -8,6 +8,7 @@ import { getAbout } from "../../utils/api-calls";
 import { About } from "../../utils/types/types";
 import { BASE_URL } from "../../utils/constants";
 import MembersList from "../../components/members/member-list";
+import Goals from "../../components/about-us/goals";
 
 const AboutUs = async () => {
   const categories = await getCategories();
@@ -19,7 +20,7 @@ const AboutUs = async () => {
   return (
     <div>
       <div className="text-center text-black container">
-        <div className="text-[1.875rem] md:text-[3rem] font-metropolis-extrabold pt-[1rem] pb-[1.563rem] md:pt-[3rem] md:pb-[2.563rem]">
+        <div className="text-[1.875rem] md:text-[3rem] font-metropolis-extrabold pt-[1rem]  md:pt-[3rem]">
           About Us
         </div>
         <div className="pb-[1.563rem] text-[0.875rem] md:text-[1.25rem] md:pb-[2.563rem]">
@@ -29,7 +30,7 @@ const AboutUs = async () => {
           within Bahria Town and DHA. Our aim is to evolve into a Proptech
           company that holds a real estate license.
         </div>
-        <div className="pb-[3.803rem] md:pb-[9rem]">
+        <div>
           <LinkButton
             text="Contact Us"
             type="solid"
@@ -38,7 +39,9 @@ const AboutUs = async () => {
           />
         </div>
       </div>
-      <div className="container">{/* <Goals /> */}</div>
+      <div className="container min-h-[250vh]">
+        <Goals />
+      </div>
       <div className="container">
         <CeoMessage ceoImage={ceoImage} ceoMessage={ceoMessage} />
       </div>
@@ -46,9 +49,6 @@ const AboutUs = async () => {
       <ServicesOverview />
 
       <div className="container pt-[3.25rem] lg:pt-[6.688rem] text-center">
-        <span className="text-[2rem] font-metropolis-bold pb-[3.5rem]">
-          Our Mission
-        </span>
         <div className="lg:pt-[3.635rem]">
           <MembersList />
         </div>
