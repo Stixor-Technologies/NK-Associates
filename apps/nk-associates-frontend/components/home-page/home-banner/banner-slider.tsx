@@ -9,7 +9,6 @@ interface BannerImagesProps {
 }
 
 const BannerSlider: FC<BannerImagesProps> = ({ banner_images }) => {
-  console.log(banner_images);
   const [activeIndex, setActiveIndex] = useState(0);
   const [hoveredSlide, setHoveredSlide] = useState(null);
   const [windowSize, setWindowSize] = useState<number>(0);
