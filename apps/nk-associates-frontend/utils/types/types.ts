@@ -215,3 +215,41 @@ export interface Member {
     };
   };
 }
+
+export interface VisionMission {
+  question: string;
+  title: string;
+  description: string;
+  card_image: {
+    data: MediaAttributes;
+  };
+  card_icon: {
+    data: MediaAttributes;
+  };
+  id: number;
+}
+
+export interface ValueGoals {
+  title: string;
+  list: {
+    id: number;
+    title: string;
+    description: string;
+    icon: {
+      data: MediaAttributes;
+    };
+  }[];
+  card_image: {
+    data: MediaAttributes;
+  };
+  card_icon: {
+    data: MediaAttributes;
+  };
+}
+
+export interface About {
+  attributes: {
+    card_1: VisionMission[];
+    card_2: ValueGoals[];
+  };
+}
