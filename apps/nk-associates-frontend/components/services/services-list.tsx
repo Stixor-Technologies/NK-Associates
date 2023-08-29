@@ -1,5 +1,5 @@
 "use client";
-import React, { FC, useState, useEffect, useRef } from "react";
+import React, { FC, useState, useEffect, useRef, useLayoutEffect } from "react";
 import ServiceCard from "./service-card";
 import { Services } from "../../utils/types/types";
 import { getServices } from "../../utils/api-calls";
@@ -13,6 +13,7 @@ const ServicesList: FC = () => {
   const ref = useRef<HTMLDivElement | null>(null);
   const [windowSize, setWindowSize] = useState<number>(0);
   const breakPoint = 768;
+  const triggerIdsRef = useRef([]);
 
   useEffect(() => {
     const handleWindowResize = () => {
@@ -41,20 +42,27 @@ const ServicesList: FC = () => {
     fetchData();
   }, []);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (windowSize > breakPoint) {
+      const newTriggerIds = [];
+
       const cards: HTMLDivElement[] = gsap.utils.toArray(".service-card");
       const spacer = 21;
       cards.forEach((card, index) => {
+        const triggerId1 = "service_card_trigger" + index;
+        const triggerId2 = "service_card-" + index;
+
+        newTriggerIds.push(triggerId1, triggerId2);
         gsap.to(card, {
           scale: () => 0.85 + index * 0.02,
           ease: "none",
           scrollTrigger: {
-            id: "service_card_trigger-" + index,
+            id: "service_card_trigger" + index,
             trigger: card,
             start: "top-=" + 40 * index + " 40%",
             end: "top 20%",
             scrub: true,
+            markers: true,
           },
         });
         gsap.to(card, {
@@ -70,11 +78,17 @@ const ServicesList: FC = () => {
           },
         });
       });
+      triggerIdsRef.current = newTriggerIds;
     } else {
-      ScrollTrigger.killAll();
+      triggerIdsRef.current.forEach((triggerId) => {
+        ScrollTrigger.getById(triggerId)?.kill();
+      });
     }
+
     return () => {
-      ScrollTrigger.killAll();
+      triggerIdsRef.current.forEach((triggerId) => {
+        ScrollTrigger.getById(triggerId)?.kill();
+      });
     };
   }, [services, windowSize]);
 

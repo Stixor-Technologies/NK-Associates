@@ -28,7 +28,6 @@ const ProcessSteps: FC<ProcessStepsProps> = ({ process }) => {
   useLayoutEffect(() => {
     if (windowSize >= breakPoint) {
       const cards: HTMLDivElement[] = gsap.utils.toArray(".process-card");
-
       gsap.to(cards, {
         xPercent: -100 * (cards.length - 1),
         ease: "none",
@@ -38,15 +37,16 @@ const ProcessSteps: FC<ProcessStepsProps> = ({ process }) => {
           pin: true,
           start: "top 15%",
           scrub: true,
+          markers: true,
           end: () => "+=" + cards[0].clientWidth * (cards.length * 1),
         },
       });
     } else {
-      ScrollTrigger.killAll();
+      ScrollTrigger.getById("process-step-trigger")?.kill();
     }
 
     return () => {
-      ScrollTrigger.killAll();
+      ScrollTrigger.getById("process-step-trigger")?.kill();
     };
   }, [windowSize]);
 
