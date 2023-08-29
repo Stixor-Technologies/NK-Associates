@@ -4,9 +4,7 @@ import { BASE_URL } from "../../../utils/constants";
 import { ServiceProcess } from "../../../utils/types/types";
 import Image from "next/image";
 import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-
-// gsap.registerPlugin(ScrollTrigger);
+import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 
 interface ProcessStepsProps {
   process: ServiceProcess[];
@@ -14,7 +12,7 @@ interface ProcessStepsProps {
 
 const ProcessSteps: FC<ProcessStepsProps> = ({ process }) => {
   const [windowSize, setWindowSize] = useState<number>(0);
-  const breakPoint = 768;
+  const breakPoint = 1024;
 
   useEffect(() => {
     const handleWindowResize = () => {
@@ -28,74 +26,81 @@ const ProcessSteps: FC<ProcessStepsProps> = ({ process }) => {
   }, []);
 
   useLayoutEffect(() => {
-    ScrollTrigger.getById("processTriger")?.kill();
-    if (windowSize > breakPoint) {
+    if (windowSize >= breakPoint) {
       const cards: HTMLDivElement[] = gsap.utils.toArray(".process-card");
-      gsap.set(".process-card:not(:first-child)", { x: "200%" });
 
-      gsap.to("[data-cards-container]", {
+      gsap.to(cards, {
+        xPercent: -100 * (cards.length - 1),
+        ease: "none",
         scrollTrigger: {
-          id: "processTriger",
+          id: "process-step-trigger",
           trigger: "[data-cards-container]",
-          endTrigger: ".panels-container",
-          start: "top 15%",
-          end: `+=${cards[0].clientHeight * (cards.length * 1.5)}`,
           pin: true,
-          pinSpacing: true,
-          invalidateOnRefresh: true,
+          start: "top 15%",
+          scrub: true,
+          end: () => "+=" + cards[0].clientWidth * (cards.length * 1),
         },
       });
-
-      cards.forEach((card, index) => {
-        gsap.to(card, {
-          x: "0%",
-          opacity: 1,
-          duration: 1,
-          scrollTrigger: {
-            trigger: card,
-            start: `${index * 100}% top`,
-            end: `${(index + 1) * 100}% top`,
-            scrub: 1.5,
-            invalidateOnRefresh: true,
-          },
-        });
-      });
     } else {
-      gsap.set(".process-card", { x: "0%" });
+      ScrollTrigger.killAll();
     }
+
+    return () => {
+      ScrollTrigger.killAll();
+    };
   }, [windowSize]);
 
   return (
-    <div data-cards-container className="min-h-[34.688rem] py-8 text-nk-black">
-      <h3 className="text-center font-metropolis-semibold text-[1.75rem] mb-7 md:text-4xl md:mb-12">
-        Service Process
-      </h3>
-      <div className="panels-container relative min-h-[20.25rem]">
-        {process.map((step, index) => {
-          const processImage = step?.process_image?.data?.attributes?.url;
-          return (
-            <div
-              key={index}
-              className="process-card w-full my-5 flex flex-col items-center bg-nk-white rounded-xl shadow-md gap-8 sm:gap-6 px-6 py-8 sm:flex-row md:gap-8 md:px-8 md:py-12 md:absolute md:my-0"
-            >
-              <div className="relative w-[8.875rem] h-[9rem] md:w-[14.125rem] md:h-[14.25rem]">
-                <Image
-                  src={`${BASE_URL}${processImage || "/"}`}
-                  fill
-                  alt={`process-img-${index}`}
-                />
-              </div>
-              <div className="flex-1 text-center sm:text-left">
-                <h2 className="text-2xl font-metropolis-semibold md:text-[2.5rem]">
-                  {`${step?.process_title}: `}
-                </h2>
-                <p className="text-xl font-metropolis-thin mt-2 md:mt-6 md:text-[2rem]">
-                  {`${step?.process_description}`}
-                </p>
+    <div className="w-full text-nk-black py-2 lg:py-10">
+      <div>
+        <h3 className="text-center font-metropolis-semibold mb-8 text-[1.75rem] md:text-4xl md:mb-12">
+          Service Process
+        </h3>
+        <div
+          data-cards-container
+          className="min-h-[80vh] container lg:flex lg:items-center"
+        >
+          <div className="flex flex-col justify-center">
+            <div className="">
+              <div className="panels-container relative flex flex-col gap-8 lg:flex-row lg:items-start lg:flex-nowrap p-0">
+                {process.map((step, index) => {
+                  const processImage =
+                    step?.process_image?.data?.attributes?.url;
+                  const formattedIndex =
+                    index < 9 ? `0${index + 1}` : index + 1;
+
+                  return (
+                    <div
+                      key={index}
+                      className={` flex-shrink-0 process-card relative flex flex-col lg:flex-row lg:items-center w-[100%] border bg-nk-white rounded-xl min-h-[35rem] shadow-md px-8 py-6 md:gap-[3.125rem] md:px-12 md:py-16`}
+                    >
+                      <div className="relative shrink-0 self-center w-[25rem] h-[25rem] md:w-[37.5rem] md:h-[37.5rem] lg:w-[40%] lg:h-[20.125rem]">
+                        <Image
+                          src={`${BASE_URL}${processImage || "/"}`}
+                          fill
+                          alt={`process-img-${index}`}
+                          className="object-contain"
+                        />
+                      </div>
+                      <div className="lg:w-[60%]">
+                        <h2 className="text-2xl font-metropolis-semibold md:text-[2.5rem]">
+                          {`${step?.process_title}: `}
+                        </h2>
+                        <p className="text-xl font-metropolis-thin text-nk-black leading-tight mt-6 md:text-[1.75rem]">
+                          {`${step?.process_description}`}
+                        </p>
+                      </div>
+
+                      <span className="absolute leading-none top-3 right-5 text-nk-red opacity-20 font-metropolis-extrabold text-2xl sm:text-6xl md:text-[5.625rem]">
+                        {formattedIndex}
+                      </span>
+                    </div>
+                  );
+                })}
               </div>
             </div>
-          );
-        })}
+          </div>
+        </div>
       </div>
       <p className=" max-w-5xl mx-auto text-center mt-4 text-base font-metropolis-thin text-nk-black md:mt-8 md:text-2xl">
         NK Design and Construction&rsquo;s commitment to innovation,

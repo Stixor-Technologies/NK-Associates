@@ -36,7 +36,6 @@ const ExpertiseOutcomes: FC<OutcomesProps> = ({
     ScrollTrigger.getById("expertiseTrigger")?.kill();
     ScrollTrigger.getById("mobileExpertiseTrigger")?.kill();
     ScrollTrigger.getById("mobileOutcomeTrigger")?.kill();
-
     if (windowSize >= breakPoint) {
       gsap.set("[data-expertise] .images-panel:first-child", {
         opacity: 1,
@@ -153,7 +152,7 @@ const ExpertiseOutcomes: FC<OutcomesProps> = ({
   return (
     <div
       data-expertise-outcomes
-      className="relative lg:h-[70vh] lg:flex lg:flex-col lg:my-[5.625rem] lg:justify-center"
+      className="container relative lg:h-[70vh] lg:flex lg:flex-col lg:my-[5.625rem] lg:justify-center"
     >
       {/* expertise */}
       <div

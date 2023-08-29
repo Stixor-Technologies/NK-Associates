@@ -11,6 +11,19 @@ const ServicesList: FC = () => {
   const [services, setServices] = useState<Services[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const ref = useRef<HTMLDivElement | null>(null);
+  const [windowSize, setWindowSize] = useState<number>(0);
+  const breakPoint = 768;
+
+  useEffect(() => {
+    const handleWindowResize = () => {
+      setWindowSize(window.innerWidth);
+    };
+    handleWindowResize();
+    window.addEventListener("resize", handleWindowResize);
+    return () => {
+      window.removeEventListener("resize", handleWindowResize);
+    };
+  }, []);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -29,8 +42,7 @@ const ServicesList: FC = () => {
   }, []);
 
   useEffect(() => {
-    const isScreenWideEnough = window.innerWidth > 768;
-    if (isScreenWideEnough && services.length > 0) {
+    if (windowSize > breakPoint) {
       const cards: HTMLDivElement[] = gsap.utils.toArray(".service-card");
       const spacer = 21;
       cards.forEach((card, index) => {
@@ -58,11 +70,13 @@ const ServicesList: FC = () => {
           },
         });
       });
+    } else {
+      ScrollTrigger.killAll();
     }
     return () => {
       ScrollTrigger.killAll();
     };
-  }, [services]);
+  }, [services, windowSize]);
 
   return (
     <div ref={ref} className="card-container py-8 min-h-screen md:py-1">
