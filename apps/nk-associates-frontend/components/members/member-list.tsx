@@ -32,7 +32,7 @@ async function MembersList() {
   };
   return (
     <div>
-      <div className="md:py-1 property-carousel -mr-[20px] flex flex-nowrap overflow-x-scroll px-4 gap-4 pb-12 md:px-8 md:pb-16 md:gap-6 xl:px-0 mx-auto">
+      <div className="md:py-1 property-carousel -mr-[2rem] flex flex-nowrap overflow-x-scroll px-4 gap-4 pb-12 md:px-8 md:pb-16 md:gap-6 xl:px-0 mx-auto">
         {renderMembers()}
       </div>
     </div>

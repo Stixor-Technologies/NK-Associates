@@ -55,7 +55,7 @@ const AboutUs = async () => {
         <div className="text-nk-dark-gray font-metropolis-bold text-[2.25rem] text-center mb-[3.625]">
           Meet Our Best-In-Class Team
         </div>
-        <div className="pt-12 -mr-[24px]">
+        <div className="pt-12 -mr-[1.5rem]">
           <MembersList />
         </div>
       </div>
