@@ -7,13 +7,21 @@
   },
   "options": {},
   "attributes": {
-    "comparison_images": {
+    "render_image": {
       "type": "media",
-      "multiple": true,
+      "multiple": false,
       "required": true,
       "allowedTypes": [
         "images"
       ]
+    },
+    "actual_image": {
+      "allowedTypes": [
+        "images"
+      ],
+      "type": "media",
+      "multiple": false,
+      "required": true
     }
   }
 }
