@@ -47,12 +47,15 @@ const AboutUs = async () => {
           ceoMessage={ceoMessage}
           ceoName={ceoName}
         />
-      </div>
+      </div> 
 
       <ServicesOverview />
 
       <div className="container pt-[3.25rem] lg:pt-[6.688rem] text-center">
-        <div className="lg:pt-[3.635rem]">
+        <div className="text-nk-dark-gray font-metropolis-bold text-[2.25rem] text-center mb-[3.625]">
+          Meet Our Best-In-Class Team
+        </div>
+        <div className="pt-12 -mr-[24px]">
           <MembersList />
         </div>
       </div>

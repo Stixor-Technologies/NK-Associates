@@ -71,14 +71,15 @@ const MemberCard: FC<CardProps> = ({ member }) => {
   });
 
   return (
-    <div className="flex flex-col items-center flex-grow max-w-[18.125rem] min-w-[17.288rem]">
-      <Image
-        src={`${BASE_URL}${member_image || "/"}`}
-        alt="Member Picture"
-        className="flex justify-center items-center object-contain m-2"
-        width={284}
-        height={290}
-      />
+    <div className="flex flex-col  items-center flex-grow max-w-[17.75rem] min-w-[17.288rem]">
+      <div className="relative w-[17.75rem] h-[17.75rem] mb-4">
+        <Image
+          src={`${BASE_URL}${member_image || "/"}`}
+          alt="Member Picture"
+          className="object-fill rounded-2xl"
+          fill
+        />
+      </div>
       <div className="font-metropolis-bold text-center text-[1.625rem]">
         {name}
       </div>
