@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { useLayoutEffect } from "react";
 import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 
 type PropTypes = {
   outcomeImage: string;
@@ -11,43 +12,48 @@ type PropTypes = {
 
 const ProjectOutcome = ({ outcomeImage, outcomeDescription }: PropTypes) => {
   useLayoutEffect(() => {
-    gsap.to("[data-project-outcome-image]", {
+    const projectOutcomeTl = gsap.timeline({
+      scrollTrigger: {
+        id: "data-project-outcome",
+        trigger: "[data-project-outcome]",
+        start: "top 60%",
+      },
+    });
+
+    projectOutcomeTl.to("[data-project-outcome-image]", {
       opacity: 1,
       translateX: "0%",
       duration: 0.5,
-      scrollTrigger: {
-        trigger: "[data-project-outcome]",
-        start: "top 60%",
-      },
     });
-    gsap.to("[data-project-outcome-image]", {
+
+    projectOutcomeTl.to(
+      "[data-project-outcome] h2",
+      {
+        opacity: 1,
+        transform: "translateY(0%)",
+      },
+      "<0.2",
+    );
+
+    projectOutcomeTl.to(
+      "[data-project-outcome-description]",
+      {
+        opacity: 1,
+        duration: 0.3,
+        transform: "translateY(0%)",
+      },
+      "<",
+    );
+
+    projectOutcomeTl.to("[data-project-outcome-image]", {
       rotate: -4,
       duration: 0.3,
-      delay: 0.4,
-      scrollTrigger: {
-        trigger: "[data-project-outcome]",
-        start: "top 60%",
-      },
+      delay: 0.2,
     });
 
-    gsap.to("[data-project-outcome] h2", {
-      opacity: 1,
-      transform: "translateY(0%)",
-      scrollTrigger: {
-        trigger: "[data-project-outcome]",
-        start: "top 80%",
-      },
-    });
-
-    gsap.to("[data-project-outcome-description]", {
-      opacity: 1,
-      duration: 0.3,
-      transform: "translateY(0%)",
-      scrollTrigger: {
-        trigger: "[data-project-outcome]",
-        start: "top 65%",
-      },
-    });
+    return () => {
+      ScrollTrigger.getById("data-project-outcome")?.kill();
+    };
   }, []);
 
   return (

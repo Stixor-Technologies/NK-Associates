@@ -16,6 +16,7 @@ import "swiper/css/free-mode";
 import "swiper/css/thumbs";
 import "swiper/css/pagination";
 import "./project-comparison.css";
+import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 
 import { getComparisonImages } from "../../utils/api-calls";
 import { BASE_URL } from "../../utils/constants";
@@ -184,23 +185,26 @@ const ProjectComparison = ({ projectId }: PropTypes) => {
   }, []);
 
   useLayoutEffect(() => {
-    gsap.to("[data-project-comparison] h2", {
-      opacity: 1,
-      transform: "translateY(0%)",
+    const projectComparisonTl = gsap.timeline({
       scrollTrigger: {
+        id: "data-project-comparison",
         trigger: "[data-project-comparison]",
         start: "top 80%",
       },
     });
 
-    gsap.to("[data-project-comparison-content]", {
+    projectComparisonTl.to("[data-project-comparison] h2", {
+      opacity: 1,
+      transform: "translateY(0%)",
+    });
+
+    projectComparisonTl.to("[data-project-comparison-content]", {
       opacity: 1,
       duration: 0.8,
-      scrollTrigger: {
-        trigger: "[data-project-comparison]",
-        start: "top 70%",
-      },
     });
+    return () => {
+      ScrollTrigger.getById("data-project-comparison")?.kill();
+    };
   }, []);
 
   return (

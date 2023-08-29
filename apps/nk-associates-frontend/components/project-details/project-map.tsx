@@ -2,6 +2,7 @@
 
 import { useLayoutEffect } from "react";
 import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 
 import MapComponent from "../shared/map-component";
 
@@ -15,23 +16,26 @@ type PropTypes = {
 
 const ProjectMap = ({ address, coordinates }: PropTypes) => {
   useLayoutEffect(() => {
-    gsap.to("[data-project-map] h2", {
-      opacity: 1,
-      transform: "translateY(0%)",
+    const projectMapTl = gsap.timeline({
       scrollTrigger: {
+        id: "data-project-map",
         trigger: "[data-project-map]",
         start: "top 80%",
       },
     });
 
-    gsap.to("[data-project-map-content]", {
+    projectMapTl.to("[data-project-map] h2", {
+      opacity: 1,
+      transform: "translateY(0%)",
+    });
+
+    projectMapTl.to("[data-project-map-content]", {
       opacity: 1,
       duration: 0.8,
-      scrollTrigger: {
-        trigger: "[data-project-map]",
-        start: "top 70%",
-      },
     });
+    return () => {
+      ScrollTrigger.getById("data-project-map")?.kill();
+    };
   }, []);
 
   return (

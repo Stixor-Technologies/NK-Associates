@@ -8,7 +8,6 @@ import { BASE_URL } from "../../utils/constants";
 import Spinner from "../../components/spinner";
 import { gsap } from "gsap";
 import InfiniteScroll from "react-infinite-scroll-component";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 type OptionsType = "All" | "Residential" | "Commercial" | "Hotel";
 
@@ -120,7 +119,6 @@ export default function Projects() {
       }, main.current); // <- Scope!
       return () => {
         ctx.revert();
-        ScrollTrigger.killAll();
       }; // <- Cleanup!
     }
   }, [projectsData]);
