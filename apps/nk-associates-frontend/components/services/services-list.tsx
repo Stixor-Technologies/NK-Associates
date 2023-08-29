@@ -38,7 +38,7 @@ const ServicesList: FC = () => {
           scale: () => 0.85 + index * 0.02,
           ease: "none",
           scrollTrigger: {
-            id: "card_trigger",
+            id: "service_card_trigger-" + index,
             trigger: card,
             start: "top-=" + 40 * index + " 40%",
             end: "top 20%",
@@ -53,15 +53,14 @@ const ServicesList: FC = () => {
             end: `bottom center+=${370 + cards.length * spacer}`,
             pin: true,
             pinSpacing: false,
-            id: "card-" + index,
+            id: "service_card-" + index,
             scrub: true,
           },
         });
       });
     }
-
     return () => {
-      ScrollTrigger.getById("card_trigger")?.kill();
+      ScrollTrigger.killAll();
     };
   }, [services]);
 

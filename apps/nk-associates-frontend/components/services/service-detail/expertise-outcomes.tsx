@@ -62,7 +62,7 @@ const ExpertiseOutcomes: FC<OutcomesProps> = ({
         scrollTrigger: {
           id: "expertiseTrigger",
           trigger: "[data-expertise-outcomes]",
-          start: "top 20%",
+          start: "top 15%",
           end: `+=${40 * panels.length}%`,
           pin: true,
           scrub: 1,
@@ -142,6 +142,12 @@ const ExpertiseOutcomes: FC<OutcomesProps> = ({
         rotate: -6,
       });
     }
+
+    // return () => {
+    //   ScrollTrigger.getById("expertiseTrigger")?.kill();
+    //   ScrollTrigger.getById("mobileExpertiseTrigger")?.kill();
+    //   ScrollTrigger.getById("mobileOutcomeTrigger")?.kill();
+    // };
   }, [windowSize]);
 
   return (

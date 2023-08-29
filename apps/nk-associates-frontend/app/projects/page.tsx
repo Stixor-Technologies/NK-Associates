@@ -12,8 +12,6 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 type OptionsType = "All" | "Residential" | "Commercial" | "Hotel";
 
-gsap.registerPlugin(ScrollTrigger);
-
 const optionsList = ["Residential", "Commercial", "Hotel", "All"];
 
 const ProjectCardItem = ({
@@ -120,7 +118,10 @@ export default function Projects() {
           });
         }
       }, main.current); // <- Scope!
-      return () => ctx.revert(); // <- Cleanup!
+      return () => {
+        ctx.revert();
+        ScrollTrigger.killAll();
+      }; // <- Cleanup!
     }
   }, [projectsData]);
 
