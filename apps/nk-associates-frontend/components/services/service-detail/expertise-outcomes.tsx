@@ -36,9 +36,6 @@ const ExpertiseOutcomes: FC<OutcomesProps> = ({
     if (windowSize >= breakPoint) {
       ScrollTrigger.getById("mobileExpertiseTrigger")?.kill();
       ScrollTrigger.getById("mobileOutcomeTrigger")?.kill();
-      // ScrollTrigger.getById("expertiseTrigger")?.kill();
-      // ScrollTrigger.getById("mobileExpertiseTrigger")?.kill();
-      // ScrollTrigger.getById("mobileOutcomeTrigger")?.kill();
       gsap.set("[data-expertise] .images-panel:first-child", {
         clearProps: true,
       });

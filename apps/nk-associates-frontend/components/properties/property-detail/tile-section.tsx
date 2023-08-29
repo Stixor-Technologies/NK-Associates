@@ -1,10 +1,8 @@
 "use client";
-import React, { FC, useEffect, useRef } from "react";
+import React, { FC, useLayoutEffect, useRef } from "react";
 import Tile from "../../shared/tile";
 import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-
-gsap.registerPlugin(ScrollTrigger);
+import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 
 interface TileSectionProps {
   category: string;
@@ -25,7 +23,7 @@ const TileSection: FC<TileSectionProps> = ({
 }) => {
   const ref = useRef<HTMLDivElement | null>(null);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     const divElement = ref.current;
     if (divElement) {
       gsap.from(divElement, {
@@ -34,11 +32,15 @@ const TileSection: FC<TileSectionProps> = ({
         duration: 0.5,
         ease: "powe2.out",
         scrollTrigger: {
+          id: "property-tile-trigger",
           trigger: divElement,
-          start: "top 70%",
+          start: "top 75%",
         },
       });
     }
+    return () => {
+      ScrollTrigger.getById("property-tile-trigger")?.kill();
+    };
   }, []);
 
   return (

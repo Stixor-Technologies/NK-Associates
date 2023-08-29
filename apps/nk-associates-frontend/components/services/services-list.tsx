@@ -62,7 +62,6 @@ const ServicesList: FC = () => {
             start: "top-=" + 40 * index + " 40%",
             end: "top 20%",
             scrub: true,
-            markers: true,
           },
         });
         gsap.to(card, {
