@@ -106,46 +106,69 @@ const Properties = () => {
     fetchGridData();
   }, []);
 
-  // useLayoutEffect(() => {
-  //   if (gridProperties.length > 0) {
-  //     ScrollTrigger.create({
-  //       trigger: buttonRef.current,
-  //       start: "top " + buttonRef.current.offsetTop,
-  //       end: "bottom",
-  //       pin: true,
-  //       pinSpacing: false,
-  //       markers: false,
-  //       id: "switch-button",
-  //     });
-  //   }
-  // }, [gridProperties]);
+  useEffect(() => {
+    if (gridProperties.length > 0) {
+      console.log(buttonRef.current.offsetTop);
+      ScrollTrigger.create({
+        trigger: buttonRef.current,
+        start: "top " + buttonRef.current.offsetTop,
+        endTrigger: ".container",
+        // end: "bottom",
+        pin: true,
+        pinSpacing: false,
+        markers: true,
+        id: "switch-button",
+      });
+    }
+  }, [gridProperties]);
 
   return (
     <>
-      {gridProperties.length > 0 && (
-        <button
-          ref={buttonRef}
-          className={`self-center fixed bottom-16 mb-4 left-1/2 z-20 flex -translate-x-1/2 items-center gap-2 rounded-full px-4 py-2 text-center text-sm capitalize text-nk-white transition-all duration-300 ease-in-out md:gap-4 md:px-6 md:py-3 md:text-2xl ${
-            isList
-              ? "bg-nk-gradient-red-one bg-gradient-to-b to-nk-gradient-red-two hover:scale-[1.1] hover:bg-nk-black"
-              : "bg-nk-black hover:scale-[1.1] hover:bg-nk-red"
-          }`}
-          onClick={() => {
-            setIsList(!isList);
-          }}
-        >
-          <span>{`${isList ? "Show Map" : "Show List"}`}</span>
-          <Image
-            src={isList ? MapBtn : ListIcon}
-            width={35}
-            height={35}
-            alt="properties-view"
-            className={`mx-auto ${
-              isList ? "w-[1.375rem] md:w-[2.188rem]" : " w-4 md:w-[1.7rem]"
-            } `}
-          />
-        </button>
-      )}
+      <button
+        ref={buttonRef}
+        className={` z-20 flex items-center -translate-x-1/2 gap-2 rounded-full px-4 py-2 text-center text-sm capitalize text-nk-white transition-all duration-200 ease-in-out delay-200 md:gap-4 md:px-6 md:py-3 md:text-2xl ${
+          isList
+            ? "bg-gradient-to-b bg-nk-gradient-red-one to-nk-gradient-red-two hover:bg-nk-black"
+            : "bg-nk-black hover:bg-nk-red"
+        }`}
+        onClick={() => setIsList(!isList)}
+      >
+        <span>{`${isList ? "Show Map" : "Show List"}`}</span>
+        <Image
+          src={isList ? MapBtn : ListIcon}
+          width={35}
+          height={35}
+          alt="properties-view"
+          className={`mx-auto ${
+            isList ? "w-[1.375rem] md:w-[2.188rem]" : " w-4 md:w-[1.7rem]"
+          } `}
+        />
+      </button>
+      {/* {gridProperties.length > 0 && (
+        // <button
+        //   ref={buttonRef}
+        //   className={`self-center sticky bottom-16 mb-4 left-1/2 z-20 flex -translate-x-1/2 items-center gap-2 rounded-full px-4 py-2 text-center text-sm capitalize text-nk-white transition-all duration-300 ease-in-out md:gap-4 md:px-6 md:py-3 md:text-2xl ${
+        //     isList
+        //       ? "bg-nk-gradient-red-one bg-gradient-to-b to-nk-gradient-red-two hover:scale-[1.1] hover:bg-nk-black"
+        //       : "bg-nk-black hover:scale-[1.1] hover:bg-nk-red"
+        //   }`}
+        //   onClick={() => {
+        //     setIsList(!isList);
+        //   }}
+        // >
+        //   <span>{`${isList ? "Show Map" : "Show List"}`}</span>
+        //   <Image
+        //     src={isList ? MapBtn : ListIcon}
+        //     width={35}
+        //     height={35}
+        //     alt="properties-view"
+        //     className={`mx-auto ${
+        //       isList ? "w-[1.375rem] md:w-[2.188rem]" : " w-4 md:w-[1.7rem]"
+        //     } `}
+        //   />
+        // </button>
+    
+      )} */}
       {isList && (
         <>
           {isLoading && gridProperties.length === 0 ? (
