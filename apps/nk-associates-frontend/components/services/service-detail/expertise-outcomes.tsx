@@ -33,22 +33,17 @@ const ExpertiseOutcomes: FC<OutcomesProps> = ({
   }, []);
 
   useLayoutEffect(() => {
-    ScrollTrigger.getById("expertiseTrigger")?.kill();
-    ScrollTrigger.getById("mobileExpertiseTrigger")?.kill();
-    ScrollTrigger.getById("mobileOutcomeTrigger")?.kill();
     if (windowSize >= breakPoint) {
+      ScrollTrigger.getById("mobileExpertiseTrigger")?.kill();
+      ScrollTrigger.getById("mobileOutcomeTrigger")?.kill();
+      // ScrollTrigger.getById("expertiseTrigger")?.kill();
+      // ScrollTrigger.getById("mobileExpertiseTrigger")?.kill();
+      // ScrollTrigger.getById("mobileOutcomeTrigger")?.kill();
       gsap.set("[data-expertise] .images-panel:first-child", {
-        opacity: 1,
-        y: 0,
-        x: "0%",
-        rotate: -6,
+        clearProps: true,
       });
-
       gsap.set("[data-outcome] .images-panel:first-child", {
-        opacity: 1,
-        y: "200%",
-        x: "0%",
-        rotate: 0,
+        clearProps: true,
       });
 
       gsap.set("[data-outcome] .text-panel:nth-child(2)", { opacity: 0 });
@@ -99,11 +94,9 @@ const ExpertiseOutcomes: FC<OutcomesProps> = ({
         }
       });
     } else {
-      gsap.set(".text-panel", {
-        opacity: 1,
-      });
-
-      gsap.set(".images-panel", { opacity: 0, y: 0, x: "-100%", rotate: 0 });
+      gsap.set(".images-panel", { clearProps: true });
+      gsap.set(".text-panel", { clearProps: true });
+      ScrollTrigger.getById("expertiseTrigger")?.kill();
       const expertiseTl = gsap.timeline({
         scrollTrigger: {
           id: "mobileExpertiseTrigger",
@@ -142,11 +135,11 @@ const ExpertiseOutcomes: FC<OutcomesProps> = ({
       });
     }
 
-    // return () => {
-    //   ScrollTrigger.getById("expertiseTrigger")?.kill();
-    //   ScrollTrigger.getById("mobileExpertiseTrigger")?.kill();
-    //   ScrollTrigger.getById("mobileOutcomeTrigger")?.kill();
-    // };
+    return () => {
+      ScrollTrigger.getById("expertiseTrigger")?.kill();
+      ScrollTrigger.getById("mobileExpertiseTrigger")?.kill();
+      ScrollTrigger.getById("mobileOutcomeTrigger")?.kill();
+    };
   }, [windowSize]);
 
   return (
@@ -159,7 +152,7 @@ const ExpertiseOutcomes: FC<OutcomesProps> = ({
         data-expertise
         className="panels my-10 flex flex-col w-full gap-10 sm:my-0 lg:flex-row lg:my-0 lg:absolute"
       >
-        <div className="images-panel self-center w-[90%] max-w-[22rem] mx-auto sm:w-full md:max-w-[27rem] lg:w-[45%] lg:-rotate-6">
+        <div className="images-panel self-center w-[90%] max-w-[22rem] mx-auto -translate-x-full opacity-0 sm:w-full md:max-w-[27rem] lg:-translate-x-0 lg:w-[45%] lg:opacity-100 lg:-rotate-6 lg:mx-10">
           <div className="relative aspect-square w-full">
             <Image
               src={`${BASE_URL}${expertise_image || "/"}`}
@@ -186,7 +179,7 @@ const ExpertiseOutcomes: FC<OutcomesProps> = ({
         data-outcome
         className="panels my-10 flex flex-col w-full gap-10 lg:flex-row lg:my-0 lg:absolute"
       >
-        <div className="images-panel self-center w-[90%] max-w-[22rem] mx-auto sm:w-full md:max-w-[27rem] lg:w-[45%] lg:translate-y-[200%] opacity-0 lg:opacity-1">
+        <div className="images-panel self-center w-[90%] max-w-[22rem] mx-auto -translate-x-full opacity-0 sm:w-full md:max-w-[27rem] lg:-translate-x-0 lg:w-[45%] lg:translate-y-[300%] lg:opacity-100 lg:mx-10">
           <div className="relative aspect-square w-full">
             <Image
               src={`${BASE_URL}${outcome_image || "/"}`}
