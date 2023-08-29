@@ -123,7 +123,7 @@ const Goals: FC = () => {
   let spin = -4;
   let spin2 = 9;
   return (
-    <div className="card-container container cardTrigger relative min-h-screen md:py-1 my-32">
+    <div className=" container card-container cardTrigger relative min-h-screen md:py-1 my-32">
       <>
         {isLoading && card1.length === 0 && card2.length === 0 ? (
           <div className="my-4 flex justify-center">

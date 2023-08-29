@@ -21,12 +21,18 @@ import MapStyles from "../../utils/map-styles.json";
 import "./map-info-window.css";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
+import SearchBar from "./search-bar";
+
+import useFilters, { FiltersProvider } from "../../utils/useFilters";
 
 const center = {
   lat: 33.58468464794478,
   lng: 73.04698696017488,
 };
+
 const Properties = () => {
+  const [filtersState, filtersDispatch] = useFilters();
+
   const [isList, setIsList] = useState<boolean>(true);
   const [gridProperties, setGridProperties] = useState<Property[]>([]);
   const [total, setTotal] = useState<number | null>(null);
@@ -41,11 +47,24 @@ const Properties = () => {
   const mapRef = useRef<google.maps.Map | null>(null);
   const buttonRef = useRef<HTMLButtonElement>(null);
 
-  const fetchGridData = async () => {
+  const fetchGridData = async (freshData?: boolean) => {
     setIsLoading(true);
-    const resp = await getGridProperties(gridProperties.length, 12);
+
+    const resp = await getGridProperties(
+      freshData ? 0 : gridProperties.length,
+      12,
+      filtersState,
+    );
+
     if (resp?.data) {
-      setGridProperties((prevProperties) => [...prevProperties, ...resp.data]);
+      if (freshData) {
+        setGridProperties(resp.data);
+      } else {
+        setGridProperties((prevProperties) => [
+          ...prevProperties,
+          ...resp.data,
+        ]);
+      }
       setTotal(resp.meta.pagination.total);
     }
     setIsLoading(false);
@@ -100,6 +119,10 @@ const Properties = () => {
     maxZoom: 40,
 
     styles: MapStyles,
+  };
+
+  const handleRefreshData = () => {
+    fetchGridData(true);
   };
 
   useEffect(() => {
@@ -169,6 +192,8 @@ const Properties = () => {
         // </button>
     
       )} */}
+      <SearchBar onFilter={handleRefreshData} />
+
       {isList && (
         <>
           {isLoading && gridProperties.length === 0 ? (
@@ -276,4 +301,10 @@ const Properties = () => {
   );
 };
 
-export default Properties;
+export default function PropertiesWithProvider() {
+  return (
+    <FiltersProvider>
+      <Properties />
+    </FiltersProvider>
+  );
+}

@@ -1,15 +1,68 @@
 import { BASE_URL } from "./constants";
-import { Department, Property } from "./types/types";
+import { Department, FiltersStateType, Property } from "./types/types";
+
 import { SIMILAR_PROPERTIES_LIMIT } from "./constants";
-export const getGridProperties = async (start: number, limit = 12) => {
+
+export const getGridProperties = async (
+  start: number,
+  limit = 12,
+  filters?: FiltersStateType,
+) => {
+  let url = `${BASE_URL}/api/properties?populate=*&pagination[start]=${start}&pagination[limit]=${limit}&sort[1]=id`;
+  let filtersString = "";
+
+  if (filters) {
+    if (filters.minSelectedPrice) {
+      filtersString += `&filters[price][$gte]=${filters.minSelectedPrice}`;
+    }
+
+    if (filters.maxSelectedPrice) {
+      filtersString += `&filters[price][$lte]=${filters.maxSelectedPrice}`;
+    }
+
+    if (filters.selectedCategoryId) {
+      filtersString += `&filters[property_category][id][$eq]=${filters.selectedCategoryId}`;
+    }
+
+    if (filters.selectedTypeId) {
+      filtersString += `&filters[property_type][id][$eq]=${filters.selectedTypeId}`;
+    }
+
+    if (filters.selectedProjectId) {
+      filtersString += `&filters[project][id][$eq]=${filters.selectedProjectId}`;
+    }
+
+    if (filters.selectedPurposeId) {
+      filtersString += `&filters[property_purpose][id][$eq]=${filters.selectedPurposeId}`;
+    }
+
+    if (filters.selectedCompletionStatusId) {
+      filtersString += `&filters[completion_status][id][$eq]=${filters.selectedCompletionStatusId}`;
+    }
+
+    if (filters.selectedRentFrequencyId) {
+      filtersString += `&filters[rent_frequency][id][$eq]=${filters.selectedRentFrequencyId}`;
+    }
+  }
+
   try {
-    const resp = await fetch(
-      `${BASE_URL}/api/properties?populate=*&pagination[start]=${start}&pagination[limit]=${limit}&sort[1]=id`,
-    );
+    const resp = await fetch(url + filtersString);
     const data = await resp.json();
     return data;
   } catch (error) {
     console.error("There was an error getting the Property List", error);
+  }
+};
+
+export const getPropertiesPrices = async () => {
+  let url = `${BASE_URL}/api/properties?fields[0]=price`;
+
+  try {
+    const resp = await fetch(url);
+    const data = await resp.json();
+    return data;
+  } catch (error) {
+    console.error("There was an error getting the Property Prices", error);
   }
 };
 
@@ -88,6 +141,65 @@ const getPropertiesByFilter = async (
   );
 };
 
+export const fetchPropertyCategoriesList = async () => {
+  try {
+    const resp = await fetch(`${BASE_URL}/api/property-categories?populate=*`);
+    const data = await resp.json();
+    return data?.data;
+  } catch (error) {
+    console.error(
+      "There was an error getting the Property Categories List",
+      error,
+    );
+  }
+};
+
+export const fetchPropertyTypesList = async () => {
+  try {
+    const resp = await fetch(`${BASE_URL}/api/property-types?populate=*`);
+    const data = await resp.json();
+    return data?.data;
+  } catch (error) {
+    console.error("There was an error getting the Property Types List", error);
+  }
+};
+
+export const fetchPropertyPurposeList = async () => {
+  try {
+    const resp = await fetch(`${BASE_URL}/api/property-purposes`);
+    const data = await resp.json();
+    return data?.data;
+  } catch (error) {
+    console.error(
+      "There was an error getting the Property Purpose List",
+      error,
+    );
+  }
+};
+
+export const fetchCompletionStatusList = async () => {
+  try {
+    const resp = await fetch(`${BASE_URL}/api/completion-statuses`);
+    const data = await resp.json();
+    return data?.data;
+  } catch (error) {
+    console.error(
+      "There was an error getting the Completion Status List",
+      error,
+    );
+  }
+};
+
+export const fetchRentFrequencyList = async () => {
+  try {
+    const resp = await fetch(`${BASE_URL}/api/rent-frequencies`);
+    const data = await resp.json();
+    return data?.data;
+  } catch (error) {
+    console.error("There was an error getting the Rent Frequency List", error);
+  }
+};
+
 export const getJobDetail = async (id: string) => {
   try {
     const resp = await fetch(`${BASE_URL}/api/jobs/${id}?populate=*`, {
@@ -99,7 +211,6 @@ export const getJobDetail = async (id: string) => {
     console.error("There was an error getting the Jobs Details", error);
   }
 };
-
 interface GetProjectsParams {
   category?: "Residential" | "Commercial" | "Hotel";
   cachePolicy?: { [key: string]: any };
@@ -116,7 +227,6 @@ export const getProjects = async ({
   try {
     const fetchOptions: { [key: string]: any } = cachePolicy ? cachePolicy : {};
     const res = await fetch(
-      //using concatenation because autosave causes linebreak in ` ` in the api call
       `${BASE_URL}/api/projects?populate=*${
         category ? `&filters[category]=${category}` : ""
       }${`&pagination[start]=${start}&pagination[limit]=${limit}&sort[1]=id`}`,
@@ -135,7 +245,7 @@ export const getProjects = async ({
 
 export const getOfficeAddress = async () => {
   try {
-    const response = await fetch(`${BASE_URL}/api/contacts?populate=*`, {
+    const response = await fetch(`${BASE_URL}/api/offices?populate=*`, {
       cache: "no-store",
     });
     if (!response.ok) {
@@ -256,8 +366,7 @@ export const getDepartments = async () => {
 
 export const getSocials = async () => {
   try {
-    let apiUrl = `${BASE_URL}/api/socials`;
-    const resp = await fetch(apiUrl, {
+    const resp = await fetch(`${BASE_URL}/api/social`, {
       cache: "no-store",
     });
     const links = await resp.json();
@@ -287,6 +396,18 @@ export const getContactNumber = async () => {
     return links;
   } catch (error) {
     console.error("There was an error getting the phone number", error);
+  }
+};
+
+export const getHomeData = async () => {
+  try {
+    const resp = await fetch(`${BASE_URL}/api/home?populate=deep`, {
+      cache: "no-store",
+    });
+    const data = await resp.json();
+    return data;
+  } catch (error) {
+    console.error("There was an error getting the home information", error);
   }
 };
 

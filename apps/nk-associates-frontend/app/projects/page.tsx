@@ -1,7 +1,7 @@
 "use client";
 import { useEffect, useState, useMemo, useLayoutEffect, useRef } from "react";
-import ProjectCard from "../../components/projects/project-card/project-card";
 import { getProjects } from "../../utils/api-calls";
+import ProjectCardItem from "../../components/projects/project-card/project-card-item";
 import LinkButton from "../../components/button/link-button";
 import { Project } from "../../utils/types/types";
 import { BASE_URL } from "../../utils/constants";
@@ -12,42 +12,6 @@ import InfiniteScroll from "react-infinite-scroll-component";
 type OptionsType = "All" | "Residential" | "Commercial" | "Hotel";
 
 const optionsList = ["Residential", "Commercial", "Hotel", "All"];
-
-const ProjectCardItem = ({
-  project,
-  index,
-}: {
-  project: Project;
-  index: number;
-}) => {
-  const imagesList = useMemo(() => {
-    if (
-      project.attributes.pictures.data &&
-      project.attributes.pictures.data.length > -1
-    ) {
-      const list: string[] = project.attributes.pictures.data.map((picture) => {
-        return `${BASE_URL}${picture.attributes.url}`;
-      });
-      return list;
-    }
-    return undefined;
-  }, [project.attributes.pictures]);
-
-  return (
-    <ProjectCard
-      id={project.id}
-      imagesList={imagesList}
-      propertyName={project.attributes.title}
-      plotSize={`${project.attributes.plotSize} ${project.attributes.plotSizeUnits}`}
-      plotNo={project.attributes.plotNumber}
-      coveredArea={`${project.attributes.coveredArea} ${project.attributes.coveredAreaUnits}`}
-      location={`${project.attributes.address}, ${project.attributes.city}`}
-      propertyDescription={project.attributes.description}
-      propertyType={project.attributes.category}
-      primaryColor={index % 2 == 0 ? true : false}
-    />
-  );
-};
 
 export default function Projects() {
   const [selectedButton, setSelectedButton] = useState<OptionsType>("All");

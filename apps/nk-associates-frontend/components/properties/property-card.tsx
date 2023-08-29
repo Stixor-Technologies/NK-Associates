@@ -12,19 +12,59 @@ interface CardProps {
   property: Property;
   actMap?: boolean;
   actSim?: boolean;
+  actFeatured?: boolean;
 }
 
-const PropertyCard: FC<CardProps> = ({ property, actMap, actSim }) => {
+const PropertyCard: FC<CardProps> = ({
+  property,
+  actMap,
+  actSim,
+  actFeatured,
+}) => {
   const { title, category, purpose, area, area_type, type, price, address } =
     property?.attributes;
   const id = property?.id;
   const thumbnailImage =
     property?.attributes?.image_thumbnail?.data?.attributes?.url;
+  const categoryTextSize = actFeatured
+    ? "text-[0.688rem] md:text-base"
+    : actMap || actSim
+    ? "text-[0.688rem] md:text-xs"
+    : "text-sm md:text-xs";
 
-  const categoryTextSize = actMap || actSim ? "text-[0.688rem]" : "text-sm";
+  const titleTextSize = actFeatured
+    ? "text-base md:text-[1.313rem]"
+    : actMap
+    ? "text-[0.911rem] md:text-base"
+    : actSim
+    ? "text-sm md:text-base"
+    : "text-xl md:text-base";
+
+  const priceTextSize = actFeatured
+    ? "text-base md:text-[1.5rem]"
+    : actMap
+    ? "text-[0.911rem] md:text-lg"
+    : actSim
+    ? "text-base md:text-lg"
+    : "text-[1.375rem] md:text-lg";
+
+  const addressTextSize = actFeatured
+    ? "text-xs md:text-base"
+    : actMap
+    ? "text-[0.684rem] md:text-xs"
+    : actSim
+    ? "text-xs md:text-xs"
+    : "text-sm md:text-xs";
+
   return (
     <div
-      className={`${actSim && "flex-grow max-w-[18.125rem] min-w-[17.288rem]"}`}
+      className={`property-card ${(actSim || actFeatured) && "flex-grow"} ${
+        actSim
+          ? "min-w-[17.288rem] max-w-[18.125rem]"
+          : actFeatured
+          ? "min-w-[17.25rem]  md:min-w-[22.125rem] md:max-w-[24rem] w-full"
+          : "min-w-[17.288rem]"
+      }`}
     >
       <Link
         href={`/properties/${id}`}
@@ -32,41 +72,59 @@ const PropertyCard: FC<CardProps> = ({ property, actMap, actSim }) => {
         rel={actMap ? "noopener noreferrer" : undefined}
       >
         <div
-          className={`aspect-w-1 aspect-h-1 group relative w-full max-w-[37.5rem] overflow-hidden ${
-            actMap ? "h-52 rounded-t-xl" : "h-[17.5rem] rounded-xl"
-          }`}
+          className={` aspect-w-1 aspect-h-1 group relative w-full max-w-[37.5rem] overflow-hidden ${
+            actMap
+              ? "h-52 rounded-t-xl"
+              : actFeatured
+              ? "h-[17.5rem] md:h-[22.375rem]"
+              : "h-[17.5rem]"
+          } rounded-xl`}
         >
           <Image
             src={`${BASE_URL}${thumbnailImage || "/"}`}
             fill
             alt=""
-            className={`object-cover transition-all duration-700 ease-in-out ${
+            className={`property-image object-cover transition-all duration-700 ease-in-out ${
               !actMap && "hover:scale-110"
             }`}
           />
         </div>
       </Link>
 
-      <div className={`${actMap && "bg-nk-white px-3 pb-4"}`}>
+      <div
+        className={`property-card-text scale-[0.95] -z-10 relative ${
+          actMap && "bg-nk-white px-3 pb-4"
+        }`}
+      >
         <div className="flex items-center justify-between py-3">
           <div className="flex items-center gap-2">
             <span
-              className={`rounded-full bg-white px-4 py-1 text-nk-gray shadow-lg md:text-xs ${categoryTextSize}`}
+              className={`rounded-full bg-white px-4 py-1 text-nk-gray shadow-lg ${categoryTextSize}`}
             >
               {category}
             </span>
             <span
-              className={`rounded-full bg-white px-4 py-1 text-nk-gray shadow-lg md:text-xs ${categoryTextSize}`}
+              className={`rounded-full bg-white px-4 py-1 text-nk-gray shadow-lg ${categoryTextSize}`}
             >
               {purpose}
             </span>
           </div>
 
           <div className="flex items-center gap-1">
-            <Image src={Area_Icon} width={13} height={13} alt="" />
+            <Image
+              src={Area_Icon}
+              width={13}
+              height={13}
+              alt=""
+              className={`${actFeatured && "w-3 md:w-4"}`}
+            />
             <span
-              className={`font-metropolis-light text-nk-grey md:text-[0.625rem] ${
-                actMap || actSim ? "text-[0.563rem]" : "text-xs"
+              className={`font-metropolis-light text-nk-grey ${
+                actFeatured
+                  ? "text-[0.563rem] md:text-[0.813rem]"
+                  : actMap || actSim
+                  ? "text-[0.563rem]"
+                  : "text-xs"
               }`}
             >
               {area} {area_type}
@@ -74,21 +132,14 @@ const PropertyCard: FC<CardProps> = ({ property, actMap, actSim }) => {
           </div>
         </div>
         <h2
-          className={`font-metropolis text-nk-black md:text-base ${
-            actMap ? "text-[0.911rem]" : actSim ? "text-sm" : "text-xl"
-          }`}
+          className={`font-metropolis text-nk-black line-clamp-1 ${titleTextSize}`}
         >
-          {title.length > 32 ? `${title.substring(0, 32)} ...` : title}
+          {title}
         </h2>
-
         <p
-          className={`my-1 font-metropolis-bold text-nk-black md:text-lg ${
-            actMap
-              ? "text-[0.911rem]"
-              : actSim
-              ? "text-base"
-              : "text-[1.375rem]"
-          }`}
+          className={`font-metropolis-bold text-nk-black ${
+            actFeatured ? "my-2" : "my-1"
+          } ${priceTextSize}`}
         >
           {`Rs. ${convertToPakistaniNumbering(price)}`}
         </p>
@@ -98,13 +149,10 @@ const PropertyCard: FC<CardProps> = ({ property, actMap, actSim }) => {
             width={12}
             height={18}
             alt="address-marker"
-            className={`${actSim && "w-2.5"}`}
+            className={`${actFeatured ? "w-3" : actSim ? "w-2.5" : ""}`}
           />
-
           <p
-            className={`font-metropolis-light text-nk-grey md:text-xs ${
-              actMap ? "text-[0.684rem]" : actSim ? "text-xs" : "text-sm"
-            }`}
+            className={`font-metropolis-light text-nk-grey ${addressTextSize}`}
           >
             {address}
           </p>
