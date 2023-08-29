@@ -11,8 +11,4 @@ module.exports = ({ env }) => ({
       },
     },
   },
-  select: {
-    enabled: true,
-    resolve: "./src/plugins/select", // path to plugin folder
-  },
 });
