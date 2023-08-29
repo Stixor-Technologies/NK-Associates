@@ -47,7 +47,7 @@ const AboutUs = async () => {
           ceoMessage={ceoMessage}
           ceoName={ceoName}
         />
-      </div> 
+      </div>
 
       <ServicesOverview />
 
