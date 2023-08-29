@@ -1,18 +1,22 @@
 "use client";
 import React, { FC, useState, useEffect, useRef } from "react";
-import AboutCard1 from "./about-card-1";
-import AboutCard2 from "./about-card-2";
 import { getAbout } from "../../utils/api-calls";
-import { VisionMission, ValueGoals } from "../../utils/types/types";
+import { Vision, Mission, Values, Goals } from "../../utils/types/types";
 import Spinner from "../spinner";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import MissionCard from "./mission";
+import ValuesCard from "./values";
+import VisionCard from "./vision";
+import GoalsCard from "./goal";
 
 gsap.registerPlugin(ScrollTrigger);
 
 const Goals: FC = () => {
-  const [card1, setCard1] = useState<VisionMission[]>([]);
-  const [card2, setCard2] = useState<ValueGoals[]>([]);
+  const [Vision, setVision] = useState<Vision>();
+  const [Mission, setMission] = useState<Mission>();
+  const [Values, setValues] = useState<Values>();
+  const [Goals, setGoals] = useState<Goals>();
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const component = useRef(null);
   const [windowSize, setWindowSize] = useState<number>(0);
@@ -36,8 +40,10 @@ const Goals: FC = () => {
       try {
         const resp = await getAbout();
         if (resp?.data) {
-          setCard1(resp?.data?.attributes?.card_1);
-          setCard2(resp?.data?.attributes?.card_2);
+          setVision(resp?.data?.attributes?.Vision);
+          setMission(resp?.data?.attributes?.Mission);
+          setValues(resp?.data?.attributes?.Values);
+          setGoals(resp?.data?.attributes?.Goals);
         }
       } catch (error) {
         console.error("Error fetching information:", error);
@@ -52,12 +58,11 @@ const Goals: FC = () => {
     ScrollTrigger.getById("aboutTrigger")?.kill();
     ScrollTrigger.getById("mobileTrigger")?.kill();
 
-    const isScreenWideEnough = window.innerWidth > 1024;
     const cards = gsap.utils.toArray(".card");
     const textAbout: HTMLElement[] = gsap.utils.toArray(".text-about");
     const imagesAbout: HTMLElement[] = gsap.utils.toArray(".images-about");
 
-    if (windowSize >= breakPoint && card1.length > 0) {
+    if (windowSize >= breakPoint && Vision) {
       gsap.set(".card:not(:first-child) .text-about", { opacity: 0 });
       gsap.set(".card:not(:first-child) .images-about", {
         y: "150%",
@@ -118,44 +123,26 @@ const Goals: FC = () => {
         });
       });
     }
-  }, [card1, card2, component, windowSize]);
+  }, [Vision, Mission, Values, Goals, component, windowSize]);
 
-  let spin = -4;
-  let spin2 = 9;
   return (
-    <div className=" container card-container cardTrigger relative min-h-screen md:py-1 my-32">
+    <div className=" container card-container cardTrigger relative min-h-[90vh] md:py-1 my-32">
       <>
-        {isLoading && card1.length === 0 && card2.length === 0 ? (
+        {isLoading && !Vision && !Mission && !Values && !Goals ? (
           <div className="my-4 flex justify-center">
             <Spinner />
           </div>
-        ) : card1.length > 0 ? (
-          card1.map((card, index) => {
-            spin += 2;
-            if (window.innerWidth < 1024) {
-              spin = 0;
-            }
-            return <AboutCard1 key={index} about={card} spin={spin} />;
-          })
-        ) : (
-          <div>
-            <p className="font-metropolis text-nk-dark-gray py-10 text-center text-base">
-              No Information Available
-            </p>
-          </div>
-        )}
-      </>
-      <>
-        {isLoading && card2.length === 0 ? (
-          <></>
-        ) : card2.length > 0 ? (
-          card2.map((card2, index) => {
-            spin2 -= 6;
-            if (window.innerWidth < 1024) {
-              spin2 = 0;
-            }
-            return <AboutCard2 key={index} about={card2} spin={spin2} />;
-          })
+        ) : Mission ? (
+          (() => {
+            return (
+              <div>
+                <MissionCard key={0} about={Mission} />
+                <VisionCard key={1} about={Vision} />
+                <ValuesCard key={2} about={Values} />
+                <GoalsCard key={3} about={Goals} />
+              </div>
+            );
+          })()
         ) : (
           <div>
             <p className="font-metropolis text-nk-dark-gray py-10 text-center text-base">

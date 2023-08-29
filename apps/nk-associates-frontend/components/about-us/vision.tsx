@@ -1,17 +1,16 @@
 import React, { FC } from "react";
 import Image from "next/image";
 import { BASE_URL } from "../../utils/constants";
-import { VisionMission } from "../../utils/types/types";
+import { Vision } from "../../utils/types/types";
 
 interface CardProps {
-  about: VisionMission;
-  spin: number;
+  about: Vision;
 }
-const AboutCard1: FC<CardProps> = ({ about, spin }) => {
+const VisionCard: FC<CardProps> = ({ about }) => {
   const { question, title, description } = about;
-  const id = about?.id;
   const cardImage = about?.card_image?.data?.attributes?.url;
   const cardIcon = about?.card_icon?.data?.attributes?.url;
+  const spin = -4;
 
   return (
     <div className="card lg:absolute w-full h-full mb-12 lg:mb-0 overflow-hidden lg:overflow-visible">
@@ -40,4 +39,4 @@ const AboutCard1: FC<CardProps> = ({ about, spin }) => {
   );
 };
 
-export default AboutCard1;
+export default VisionCard;

@@ -1,16 +1,16 @@
 import React, { FC } from "react";
 import Image from "next/image";
 import { BASE_URL } from "../../utils/constants";
-import { ValueGoals } from "../../utils/types/types";
+import { Goals } from "../../utils/types/types";
 
 interface CardProps {
-  about: ValueGoals;
-  spin: number;
+  about: Goals;
 }
-const AboutCard2: FC<CardProps> = ({ about, spin }) => {
+const GoalsCard: FC<CardProps> = ({ about }) => {
   const { title, list } = about;
   const cardImage = about?.card_image?.data?.attributes?.url;
   const cardIcon = about?.card_icon?.data?.attributes?.url;
+  const spin = -8;
 
   return (
     <div className="card lg:absolute w-full h-full mb-12 lg:mb-0 overflow-hidden lg:overflow-visible">
@@ -48,11 +48,6 @@ const AboutCard2: FC<CardProps> = ({ about, spin }) => {
                   />
                 </div>
                 <p className="font-metropolis-light text-nk-dark-gray text-left text-base lg:pr-10">
-                  {item.title && (
-                    <span className="font-metropolis-semibold text-[1.375rem]]">
-                      {item.title + " : "}
-                    </span>
-                  )}
                   {item.description}
                 </p>
               </div>
@@ -64,4 +59,4 @@ const AboutCard2: FC<CardProps> = ({ about, spin }) => {
   );
 };
 
-export default AboutCard2;
+export default GoalsCard;

@@ -1,17 +1,18 @@
 {
   "collectionName": "components_card_1_about_us_card_1s",
   "info": {
-    "displayName": "About-Us-Card-1"
+    "displayName": "Card",
+    "description": ""
   },
   "options": {},
   "attributes": {
     "card_image": {
-      "allowedTypes": [
-        "images"
-      ],
       "type": "media",
       "multiple": false,
-      "required": true
+      "required": true,
+      "allowedTypes": [
+        "images"
+      ]
     },
     "question": {
       "type": "string",
@@ -26,12 +27,12 @@
       "required": true
     },
     "card_icon": {
-      "allowedTypes": [
-        "images"
-      ],
       "type": "media",
       "multiple": false,
-      "required": true
+      "required": true,
+      "allowedTypes": [
+        "images"
+      ]
     }
   }
 }
