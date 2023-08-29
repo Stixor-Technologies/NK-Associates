@@ -20,10 +20,6 @@ phases:
   build:
     commands:
       - echo "Building the Strapi application"
-      - cd apps/nk-associates-cms/src/plugins/select
-      - yarn install
-      - yarn build
-      - cd ../../../..
       - yarn turbo build --filter=nk-associates-cms
 
 artifacts:
