@@ -37,7 +37,7 @@ async function ServiceDetail({ params: { id } }: ServiceDetailProps) {
 
   return (
     <section className="bg-right-top bg-no-repeat md:bg-nk-bg">
-      <div className="overflow-hidden">
+      <div className="overflow-hidden container">
         <div className="text-center py-6 md:py-20">
           <h1 className="text-3xl font-metropolis-bold text-nk-black md:text-5xl">
             {title}

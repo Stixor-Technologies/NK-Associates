@@ -5,8 +5,7 @@ import { Services } from "../../utils/types/types";
 import { getServices } from "../../utils/api-calls";
 import Spinner from "../spinner";
 import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-gsap.registerPlugin(ScrollTrigger);
+import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 
 const ServicesList: FC = () => {
   const [services, setServices] = useState<Services[]>([]);
@@ -32,29 +31,21 @@ const ServicesList: FC = () => {
   useEffect(() => {
     const isScreenWideEnough = window.innerWidth > 768;
     if (isScreenWideEnough && services.length > 0) {
-      const cards = gsap.utils.toArray(".service-card");
+      const cards: HTMLDivElement[] = gsap.utils.toArray(".service-card");
       const spacer = 21;
-      const minScale = 0.95;
-
-      const distributor = gsap.utils.distribute({
-        base: minScale,
-        amount: 0.05,
-      });
-      cards.forEach((card: HTMLDivElement, index: number) => {
-        const scaleVal = distributor(index, cards[index], cards);
-
-        const tween = gsap.to(card, {
-          scrollTrigger: {
-            trigger: card,
-            start: `top top`,
-            scrub: true,
-            invalidateOnRefresh: true,
-          },
-          scale: scaleVal,
-        });
-
+      cards.forEach((card, index) => {
         gsap.to(card, {
-          duration: 1.5,
+          scale: () => 0.85 + index * 0.02,
+          ease: "none",
+          scrollTrigger: {
+            id: "card_trigger",
+            trigger: card,
+            start: "top-=" + 40 * index + " 40%",
+            end: "top 20%",
+            scrub: true,
+          },
+        });
+        gsap.to(card, {
           scrollTrigger: {
             trigger: card,
             start: `top-=${index * spacer} 20%`,
@@ -62,13 +53,16 @@ const ServicesList: FC = () => {
             end: `bottom center+=${370 + cards.length * spacer}`,
             pin: true,
             pinSpacing: false,
-            id: `pin-${index}`,
-            scrub: 0,
-            invalidateOnRefresh: true,
+            id: "card-" + index,
+            scrub: true,
           },
         });
       });
     }
+
+    return () => {
+      ScrollTrigger.getById("card_trigger")?.kill();
+    };
   }, [services]);
 
   return (

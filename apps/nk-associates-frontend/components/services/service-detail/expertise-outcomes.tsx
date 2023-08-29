@@ -1,11 +1,10 @@
 "use client";
 import React, { FC, useLayoutEffect, useEffect, useState } from "react";
 import Image from "next/image";
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { BASE_URL } from "../../../utils/constants";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 
-gsap.registerPlugin(ScrollTrigger);
 interface OutcomesProps {
   expertise: string;
   expertise_image: string;

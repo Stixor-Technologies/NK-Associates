@@ -24,7 +24,7 @@
     "eslint-config-custom": "*",
     "flowbite": "^1.8.0",
     "formik": "^2.4.2",
-    "gsap": "^3.12.2",
+    "gsap": "./gsap-bonus.tgz",
     "lodash": "^4.17.21",
     "next": "13.4.10",
     "postcss": "8.4.26",

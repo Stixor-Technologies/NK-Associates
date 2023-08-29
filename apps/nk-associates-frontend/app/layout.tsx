@@ -1,6 +1,7 @@
 import "./globals.css";
 import type { Metadata } from "next";
 import localFont from "next/font/local";
+import SmoothScrollContainer from "./smooth-scroll";
 import Footer from "../components/footer/footer";
 import { MapApiProvider } from "./context/map-context";
 import Navigation from "../components/navigation/navigation";
@@ -60,11 +61,15 @@ export default function RootLayout({
       <body
         className={`${metropolisRegular.variable} ${metropolisMedium.variable} ${metropolisSemiBold.variable} ${metropolisBold.variable} ${metropolisExtraBold.variable} ${metropolisLight.variable} ${metropolisExtraLight.variable} ${metropolisThin.variable} bg-nk-background font-metropolis`}
       >
-        <Navigation />
-        <MapApiProvider>
-          <main className="mt-[5.5rem]">{children}</main>
-        </MapApiProvider>
-        <Footer />
+        <div id="smooth-wrapper">
+          <Navigation />
+          <div id="smooth-content">
+            <MapApiProvider>
+              <SmoothScrollContainer>{children}</SmoothScrollContainer>
+            </MapApiProvider>
+            <Footer />
+          </div>
+        </div>
       </body>
     </html>
   );
