@@ -136,10 +136,10 @@ const Goals: FC = () => {
           (() => {
             return (
               <div>
-                <MissionCard key={0} about={Mission} />
-                <VisionCard key={1} about={Vision} />
-                <ValuesCard key={2} about={Values} />
-                <GoalsCard key={3} about={Goals} />
+                <MissionCard about={Mission} />
+                <VisionCard about={Vision} />
+                <ValuesCard about={Values} />
+                <GoalsCard about={Goals} />
               </div>
             );
           })()

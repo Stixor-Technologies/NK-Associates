@@ -11,6 +11,7 @@ const MissionCard: FC<CardProps> = ({ about }) => {
   const cardImage = about?.card_image?.data?.attributes?.url;
   const cardIcon = about?.card_icon?.data?.attributes?.url;
   const spin = -4;
+
   return (
     <div className="card lg:absolute w-full h-full mb-12 lg:mb-0 overflow-hidden lg:overflow-visible">
       <div className="flex flex-col lg:flex-row gap-2 lg:gap-10 xl:gap-5 px-4 about-card">
@@ -19,8 +20,9 @@ const MissionCard: FC<CardProps> = ({ about }) => {
             src={`${BASE_URL}${cardImage || "/"}`}
             alt="Card Image 1"
             fill
-            style={{ transform: `rotate(${spin}deg)` }}
-            className="object-cover rounded-2xl"
+            className={`object-cover rounded-2xl ${
+              innerWidth > 1023 ? "-rotate-[4deg]" : ""
+            }`}
           />
         </div>
         <div className="text-about flex flex-col font-metropolis text-xl text-center lg:text-left text-nk-dark-gray lg:w-[55%]  my-auto">

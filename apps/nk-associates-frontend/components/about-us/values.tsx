@@ -10,8 +10,6 @@ const ValuesCard: FC<CardProps> = ({ about }) => {
   const { title, list } = about;
   const cardImage = about?.card_image?.data?.attributes?.url;
   const cardIcon = about?.card_icon?.data?.attributes?.url;
-  const valueTitle = about;
-  const spin = 1;
 
   return (
     <div className="card lg:absolute w-full h-full mb-12 lg:mb-0 overflow-hidden lg:overflow-visible">
@@ -21,8 +19,9 @@ const ValuesCard: FC<CardProps> = ({ about }) => {
             src={`${BASE_URL}${cardImage || "/"}`}
             alt="Card Image 1"
             fill
-            style={{ transform: `rotate(${spin}deg)` }}
-            className="object-cover rounded-2xl "
+            className={`object-cover rounded-2xl ${
+              innerWidth > 1023 ? "rotate-1" : ""
+            }`}
           />
         </div>
         <div className="text-about flex flex-col font-metropolis text-xl text-center lg:text-left text-nk-dark-gray lg:w-[55%]  my-auto">
@@ -36,7 +35,7 @@ const ValuesCard: FC<CardProps> = ({ about }) => {
             {list.map((item, index) => (
               <div
                 key={index}
-                className="flex font-metropolis text-base gap-4 mb-2.5 shrink-0 items-center"
+                className="flex font-metropolis text-base gap-4 mb-2.5 items-center"
               >
                 <div className="relative w-full max-w-[3rem] h-[3rem] bg-white rounded-full shadow-xl flex justify-center items-center">
                   <Image
