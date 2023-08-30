@@ -8,7 +8,12 @@ const PriceRangeFilter = ({ priceRange }: { priceRange: [number, number] }) => {
     range: [number, number],
     thumbIndex: number,
   ) => {
-    if (thumbIndex === 1) {
+    if (thumbIndex < 0) {
+      filtersDispatch({
+        type: "setBothSelectedPrice",
+        payload: range,
+      });
+    } else if (thumbIndex === 1) {
       filtersDispatch({
         type: "setMaxSelectedPrice",
         payload: range[thumbIndex],

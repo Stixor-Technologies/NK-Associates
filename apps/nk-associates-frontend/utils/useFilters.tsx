@@ -40,6 +40,10 @@ type ACTIONTYPE =
       payload: string | number;
     }
   | {
+      type: "setBothSelectedPrice";
+      payload: [number, number];
+    }
+  | {
       type: "resetFilters";
       payload?: unknown;
     };
@@ -101,6 +105,12 @@ const reducer = (state: FiltersStateType, action: ACTIONTYPE) => {
       return {
         ...state,
         maxSelectedPrice: action.payload,
+      };
+    case "setBothSelectedPrice":
+      return {
+        ...state,
+        minSelectedPrice: action.payload[0],
+        maxSelectedPrice: action.payload[1],
       };
     case "setLocation":
       console.log("do something");

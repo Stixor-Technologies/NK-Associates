@@ -269,7 +269,11 @@ const SearchBar = ({ onFilter }: { onFilter: () => void }) => {
         </button>
       </div>
 
-      <FiltersModal open={openFilter} onClose={() => setOpenFilter(false)} />
+      <FiltersModal
+        open={openFilter}
+        onClose={() => setOpenFilter(false)}
+        filtersProperties={filtersProperties}
+      />
     </section>
   );
 };

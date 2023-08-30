@@ -17,7 +17,7 @@ const RangeSelectorSlider = ({
 }: PropTypes) => {
   return (
     <ReactSlider
-      className={"w-full h-10 flex items-center"}
+      className={"w-full h-10 flex items-center cursor-pointer"}
       onChange={onChange}
       min={min}
       max={max}

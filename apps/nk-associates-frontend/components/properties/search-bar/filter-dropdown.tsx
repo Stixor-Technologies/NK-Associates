@@ -1,10 +1,10 @@
 import React, { FC } from "react";
 
 import PropertyTypeFilter from "./property-type-filter";
-import PriceRangeFilter from "./price-range-filter";
+import PriceRangeFilter from "../filters/price-range-filter";
 import ProjectFilter from "./project-filter";
 import LocationFilter from "./location-filter";
-import PurposeFilter from "./purpose-filter";
+import PurposeFilter from "../filters/purpose-filter";
 
 import { SearchFilterProperties } from "../../../utils/types/types";
 

@@ -7,18 +7,22 @@ import LinkButton from "../../button/link-button";
 import PillButton from "../../shared/pill-button";
 import PillRadio from "../../shared/pill-radio";
 import FilterButton from "./filter-button";
+import PriceRangeSection from "./price-range-section";
+import PurposeFilter from "../filters/purpose-filter";
+
+import { SearchFilterProperties } from "../../../utils/types/types";
 
 type PropType = {
   open: boolean;
   onClose: () => void;
+  filtersProperties: SearchFilterProperties;
 };
 
 const FilterFormSchema = {};
 
 const initialValues = {};
 
-const FiltersModal = ({ open, onClose }: PropType) => {
-  // const body = document.body;
+const FiltersModal = ({ open, onClose, filtersProperties }: PropType) => {
   const [selectedOption, setSelectedOption] = useState(undefined);
   const [selectedOption2, setSelectedOption2] = useState(undefined);
 
@@ -29,12 +33,16 @@ const FiltersModal = ({ open, onClose }: PropType) => {
   const onSubmit = () => {};
 
   const handleCloseModal = () => {
+    const body = document.body;
     onClose();
-    // body.classList.remove("overflow-hidden");
+    body.classList.remove("overflow-hidden");
   };
 
   useEffect(() => {
-    // body.classList.add("overflow-hidden");
+    const body = document.body;
+    if (open) {
+      body.classList.add("overflow-hidden");
+    }
   }, [open]);
 
   const content = (
@@ -84,42 +92,7 @@ const FiltersModal = ({ open, onClose }: PropType) => {
                 </button>
               </div>
 
-              <div className="w-full mb-4">
-                <h3 className="text-lg font-metropolis-semibold">
-                  Price range
-                </h3>
-
-                <div>
-                  <input
-                    id="default-range"
-                    type="range"
-                    value="50"
-                    className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer dark:bg-gray-700"
-                  />
-                </div>
-              </div>
-
-              <div className="w-full mb-4 md:w-1/2 md:pr-2.5">
-                <Input
-                  hasError={errors["max price"]}
-                  isTouched={touched["max price"]}
-                  label="Max Price"
-                  name="Max Price"
-                  placeholder={"PKR 10000000"}
-                  errorMessage={errors["max price"]}
-                />
-              </div>
-
-              <div className="w-full mb-4 md:w-1/2 md:pl-2.5">
-                <Input
-                  hasError={errors["min price"]}
-                  isTouched={touched["min price"]}
-                  label="Min Price"
-                  name="Min Price"
-                  placeholder={"PKR 100000"}
-                  errorMessage={errors["min price"]}
-                />
-              </div>
+              <PriceRangeSection priceRange={filtersProperties.priceRange} />
 
               <div className="w-full mb-4">
                 <h3 className="text-lg font-metropolis-semibold">Area</h3>
@@ -160,6 +133,13 @@ const FiltersModal = ({ open, onClose }: PropType) => {
                 <h3 className="text-lg font-metropolis-semibold mb-4">
                   Purpose
                 </h3>
+
+                <PurposeFilter
+                  propertyPurposeList={filtersProperties.propertyPurposeList}
+                  completionStatusList={filtersProperties.completionStatusList}
+                  rentFrequencyList={filtersProperties.rentFrequencyList}
+                  type="modal"
+                />
 
                 <div className="mb-4 md:flex items-center">
                   <FilterButton ariaLabel="Buy" active>
