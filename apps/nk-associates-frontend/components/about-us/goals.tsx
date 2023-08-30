@@ -4,13 +4,11 @@ import { getAbout } from "../../utils/api-calls";
 import { Vision, Mission, Values, Goals } from "../../utils/types/types";
 import Spinner from "../spinner";
 import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import MissionCard from "./mission";
 import ValuesCard from "./values";
 import VisionCard from "./vision";
 import GoalsCard from "./goal";
-
-gsap.registerPlugin(ScrollTrigger);
 
 const Goals: FC = () => {
   const [Vision, setVision] = useState<Vision>();
@@ -55,15 +53,24 @@ const Goals: FC = () => {
   }, []);
 
   useEffect(() => {
-    ScrollTrigger.getById("aboutTrigger")?.kill();
-    ScrollTrigger.getById("mobileTrigger")?.kill();
-
     const cards = gsap.utils.toArray(".card");
     const textAbout: HTMLElement[] = gsap.utils.toArray(".text-about");
     const imagesAbout: HTMLElement[] = gsap.utils.toArray(".images-about");
 
+    ScrollTrigger.getById("about-web-trigger")?.kill();
+    const allTriggers = ScrollTrigger.getAll();
+
+    allTriggers.forEach((trigger) => {
+      if (trigger.vars.id === "about-mobile-trigger") {
+        trigger.kill();
+      }
+    });
+
     if (windowSize >= breakPoint && Vision) {
       gsap.set(".card:not(:first-child) .text-about", { opacity: 0 });
+      gsap.set(".images-about", {
+        clearProps: true,
+      });
       gsap.set(".card:not(:first-child) .images-about", {
         y: "150%",
         x: "0%",
@@ -71,7 +78,7 @@ const Goals: FC = () => {
 
       const pinnedTl = gsap.timeline({
         scrollTrigger: {
-          id: "aboutTrigger",
+          id: "about-web-trigger",
           trigger: ".card-container",
           start: "top 15%",
           end: `+=${40 * cards.length}%`,
@@ -106,8 +113,13 @@ const Goals: FC = () => {
         }
       });
     } else {
-      gsap.set(".text-about", { opacity: 1 });
-      gsap.set(".images-about", { opacity: 1, y: 0, x: "0%", rotate: 0 });
+      gsap.set("text-about", {
+        clearProps: true,
+      });
+
+      gsap.set(".images-about", {
+        clearProps: true,
+      });
 
       let cards: HTMLElement[] = gsap.utils.toArray(".images-about");
       cards.forEach((card, index) => {
@@ -116,13 +128,23 @@ const Goals: FC = () => {
           duration: 1,
           ease: "power2.out",
           scrollTrigger: {
-            id: "mobileTrigger",
+            id: "about-mobile-trigger",
             trigger: card,
             start: "top 40%",
           },
         });
       });
     }
+
+    return () => {
+      ScrollTrigger.getById("about-web-trigger")?.kill();
+      const allTriggers = ScrollTrigger.getAll();
+      allTriggers.forEach((trigger) => {
+        if (trigger.vars.id === "about-mobile-trigger") {
+          trigger.kill();
+        }
+      });
+    };
   }, [Vision, Mission, Values, Goals, component, windowSize]);
 
   return (
