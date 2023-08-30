@@ -251,7 +251,7 @@ export interface Member {
   };
 }
 
-export interface VisionMission {
+export interface Vision {
   question: string;
   title: string;
   description: string;
@@ -261,14 +261,41 @@ export interface VisionMission {
   card_icon: {
     data: MediaAttributes;
   };
-  id: number;
 }
 
-export interface ValueGoals {
+export interface Mission {
+  question: string;
+  title: string;
+  description: string;
+  card_image: {
+    data: MediaAttributes;
+  };
+  card_icon: {
+    data: MediaAttributes;
+  };
+}
+
+export interface Values {
   title: string;
   list: {
     id: number;
-    title: string;
+    description: string;
+    icon: {
+      data: MediaAttributes;
+    };
+  }[];
+  card_image: {
+    data: MediaAttributes;
+  };
+  card_icon: {
+    data: MediaAttributes;
+  };
+}
+
+export interface Goals {
+  title: string;
+  list: {
+    id: number;
     description: string;
     icon: {
       data: MediaAttributes;
@@ -285,11 +312,13 @@ export interface ValueGoals {
 export interface About {
   data: {
     attributes: {
-      card_1: VisionMission[];
-      card_2: ValueGoals[];
       ceo_image: { data: MediaAttributes };
       ceo_message: string;
       ceo_name: string;
+      Vision: Vision;
+      Mission: Mission;
+      Values: Values;
+      Goals: Goals;
     };
   };
 }

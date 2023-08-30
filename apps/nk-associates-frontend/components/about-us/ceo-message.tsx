@@ -43,7 +43,7 @@ const CeoMessage: React.FC<CeoMessageProps> = ({
   return (
     <div
       ref={startRef}
-      className="overflow-x-clip flex flex-col lg:flex-row items-center justify-center lg:justify-start lg:relative lg:mb-[16.75rem] md:mb-[3.75rem]"
+      className="overflow-x-clip flex flex-col lg:flex-row items-center justify-center lg:justify-start lg:relative lg:mb-[16.75rem] md:mb-[3.75rem] lg:pt-[7rem] -mt-[2rem]"
     >
       <div
         className="w-full max-w-[25rem] lg:px-4 pb-[1.313rem] lg:max-w-[39.6rem]"
@@ -60,7 +60,7 @@ const CeoMessage: React.FC<CeoMessageProps> = ({
       </div>
       <div
         className="lg:text-left bg-gradient-to-b from-nk-gradient-red-one to-nk-gradient-red-two text-nk-white rounded-[1.563rem] 
-        px-[2rem] py-[1.063rem] max-w-[25rem] lg:max-w-[39.6rem] lg:h-[37.9rem] lg:mb-[3.6rem] lg:absolute lg:right-[47px] lg:bottom-[-270px]"
+        px-[2rem] py-[1.063rem] max-w-[25rem] lg:max-w-[39.6rem] lg:mb-[3.6rem] lg:absolute lg:right-[47px] lg:bottom-[-270px]"
         ref={textRef}
       >
         <div className="font-metropolis-bold text-[2rem] pb-[0.625rem] lg:text-[2.955rem]">
