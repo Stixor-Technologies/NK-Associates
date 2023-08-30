@@ -57,7 +57,7 @@ const Goals: FC = () => {
     const textAbout: HTMLElement[] = gsap.utils.toArray(".text-about");
     const imagesAbout: HTMLElement[] = gsap.utils.toArray(".images-about");
 
-    if (windowSize >= breakPoint && card1.length > 0) {
+    if (windowSize >= breakPoint && card1?.length > 0) {
       gsap.set(".card:not(:first-child) .text-about", { opacity: 0 });
       gsap.set(".card:not(:first-child) .images-about", {
         y: "150%",
@@ -125,12 +125,12 @@ const Goals: FC = () => {
   return (
     <div className=" container card-container cardTrigger relative min-h-screen md:py-1 my-32">
       <>
-        {isLoading && card1.length === 0 && card2.length === 0 ? (
+        {isLoading && card1?.length === 0 && card2?.length === 0 ? (
           <div className="my-4 flex justify-center">
             <Spinner />
           </div>
-        ) : card1.length > 0 ? (
-          card1.map((card, index) => {
+        ) : card1?.length > 0 ? (
+          card1?.map((card, index) => {
             spin += 2;
             if (window.innerWidth < 1024) {
               spin = 0;
@@ -146,10 +146,10 @@ const Goals: FC = () => {
         )}
       </>
       <>
-        {isLoading && card2.length === 0 ? (
+        {isLoading && card2?.length === 0 ? (
           <></>
-        ) : card2.length > 0 ? (
-          card2.map((card2, index) => {
+        ) : card2?.length > 0 ? (
+          card2?.map((card2, index) => {
             spin2 -= 6;
             if (window.innerWidth < 1024) {
               spin2 = 0;
