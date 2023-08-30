@@ -4,9 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import FloatingMobile from "../../public/assets/images/floating-mobile.png";
 import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-
-gsap.registerPlugin(ScrollTrigger);
+import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 
 type StoreLinks = {
   name: string;
@@ -24,7 +22,7 @@ const NkApp: FC<NKAppProps> = ({ storeLinks }) => {
     if (storeLinks?.length > 0) {
       const tl = gsap.timeline({
         scrollTrigger: {
-          id: "MobileTrigger",
+          id: "home-mobileapp-trigger",
           trigger: mobileAppSection.current,
           start: "top 35%",
           toggleActions: "play none none none",
@@ -54,6 +52,9 @@ const NkApp: FC<NKAppProps> = ({ storeLinks }) => {
         duration: 0.6,
       });
     }
+    return () => {
+      ScrollTrigger.getById("home-mobileapp-trigger")?.kill();
+    };
   }, [storeLinks]);
 
   return (

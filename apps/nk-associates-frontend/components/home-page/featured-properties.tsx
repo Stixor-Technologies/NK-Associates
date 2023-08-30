@@ -4,9 +4,7 @@ import PropertyCard from "../properties/property-card";
 import { Property } from "../../utils/types/types";
 import LinkButton from "../button/link-button";
 import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-
-gsap.registerPlugin(ScrollTrigger);
+import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 
 interface FeaturedPropertyProps {
   featuredProperties: Property[];
@@ -21,6 +19,7 @@ const FeaturedProperties: FC<FeaturedPropertyProps> = ({
     if (featuredProperties?.length > 0) {
       const tl = gsap.timeline({
         scrollTrigger: {
+          id: "featured-properties-trigger",
           trigger: featuredPropertiesSection.current,
           start: "top center",
           toggleActions: "play none none none",
@@ -32,6 +31,9 @@ const FeaturedProperties: FC<FeaturedPropertyProps> = ({
         stagger: 0.2,
       });
     }
+    return () => {
+      ScrollTrigger.getById("featured-properties-trigger")?.kill();
+    };
   }, [featuredProperties]);
 
   return (

@@ -12,9 +12,8 @@ const ServicesOverview = () => {
       scrollTrigger: {
         id: "services-overview-trigger",
         trigger: ref.current,
-        start: "top 80%",
+        start: "top 70%",
         toggleActions: "play none none none",
-        markers: true,
       },
     });
     tl.from(".text", {
