@@ -19,9 +19,7 @@ const ValuesCard: FC<CardProps> = ({ about }) => {
             src={`${BASE_URL}${cardImage || "/"}`}
             alt="Card Image 1"
             fill
-            className={`object-cover rounded-2xl ${
-              innerWidth > 1023 ? "rotate-1" : ""
-            }`}
+            className="object-cover rounded-2xl lg:rotate-1"
           />
         </div>
         <div className="text-about flex flex-col font-metropolis text-xl text-center lg:text-left text-nk-dark-gray lg:w-[55%]  my-auto">
