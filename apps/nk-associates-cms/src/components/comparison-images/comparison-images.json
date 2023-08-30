@@ -1,19 +1,18 @@
 {
   "collectionName": "components_comparison_images_comparison_images",
   "info": {
-    "displayName": "comparison-images",
-    "icon": "landscape",
-    "description": ""
+    "displayName": "Comparison-images",
+    "icon": "landscape"
   },
   "options": {},
   "attributes": {
     "render_image": {
-      "type": "media",
-      "multiple": false,
-      "required": true,
       "allowedTypes": [
         "images"
-      ]
+      ],
+      "type": "media",
+      "multiple": false,
+      "required": true
     },
     "actual_image": {
       "allowedTypes": [
