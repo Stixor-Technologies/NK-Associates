@@ -1,5 +1,5 @@
 "use client";
-import { useLayoutEffect, useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { gsap } from "gsap";
 import "swiper/css";
@@ -18,7 +18,7 @@ const ProjectGallery = ({ pictures }: PropTypes) => {
   const [thumbsSwiper, setThumbsSwiper] = useState(null);
   const divRef = useRef(null);
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     const projectGalleryTl = gsap.timeline({
       scrollTrigger: {
         id: "project-gallery-trigger",

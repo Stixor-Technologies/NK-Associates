@@ -1,5 +1,5 @@
 "use client";
-import React, { FC, useState, useEffect, useRef, useLayoutEffect } from "react";
+import React, { FC, useState, useEffect, useRef } from "react";
 import CategoryCard from "./category-card";
 import { PopularCategory } from "../../../utils/types/types";
 import { gsap } from "gsap";
@@ -31,7 +31,7 @@ const PopularCategories: FC<PopularCategoriesProps> = ({
     };
   }, []);
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     if (popularCategories?.length > 0) {
       ScrollTrigger.getById("web-categories-trigger")?.kill();
       const allTriggers = ScrollTrigger.getAll();

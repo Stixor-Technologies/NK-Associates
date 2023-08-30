@@ -1,5 +1,5 @@
 "use client";
-import React, { FC, useState, useEffect, useRef, useLayoutEffect } from "react";
+import React, { FC, useState, useEffect, useRef } from "react";
 import ServiceCard from "./service-card";
 import { Services } from "../../utils/types/types";
 import { getServices } from "../../utils/api-calls";
@@ -42,7 +42,7 @@ const ServicesList: FC = () => {
     fetchData();
   }, []);
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     if (windowSize > breakPoint) {
       const newTriggerIds = [];
 

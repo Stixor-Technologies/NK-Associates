@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useLayoutEffect } from "react";
+import { useEffect } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 
@@ -11,7 +11,7 @@ type PropTypes = {
 };
 
 const ProjectOutcome = ({ outcomeImage, outcomeDescription }: PropTypes) => {
-  useLayoutEffect(() => {
+  useEffect(() => {
     const projectOutcomeTl = gsap.timeline({
       scrollTrigger: {
         id: "data-project-outcome",

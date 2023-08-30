@@ -1,5 +1,5 @@
 "use client";
-import React, { FC, useRef, useLayoutEffect } from "react";
+import React, { FC, useRef, useEffect } from "react";
 import { Project } from "../../utils/types/types";
 import LinkButton from "../button/link-button";
 import ProjectCardItem from "../projects/project-card/project-card-item";
@@ -12,7 +12,7 @@ interface FeaturedProjectsProps {
 const FeaturedProjects: FC<FeaturedProjectsProps> = ({ featuredProjects }) => {
   const cardsContainer = useRef<HTMLDivElement | null>(null);
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     if (featuredProjects.length > 0) {
       const ctx = gsap.context((self) => {
         if (self && self.selector) {

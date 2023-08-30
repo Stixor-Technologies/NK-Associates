@@ -1,5 +1,5 @@
 "use client";
-import React, { FC, useRef, useLayoutEffect } from "react";
+import React, { FC, useRef, useEffect } from "react";
 import PropertyCard from "../properties/property-card";
 import { Property } from "../../utils/types/types";
 import LinkButton from "../button/link-button";
@@ -15,7 +15,7 @@ const FeaturedProperties: FC<FeaturedPropertyProps> = ({
 }) => {
   const featuredPropertiesSection = useRef<HTMLDivElement | null>(null);
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     if (featuredProperties?.length > 0) {
       const tl = gsap.timeline({
         scrollTrigger: {

@@ -1,10 +1,10 @@
 "use client";
-import { useLayoutEffect } from "react";
+import { useEffect } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 
 const ProjectTimeline = () => {
-  useLayoutEffect(() => {
+  useEffect(() => {
     const projectTimeLineTl = gsap.timeline({
       scrollTrigger: {
         id: "project-timeline-trigger",

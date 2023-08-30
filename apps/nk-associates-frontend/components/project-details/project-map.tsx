@@ -1,6 +1,6 @@
 "use client";
 
-import { useLayoutEffect } from "react";
+import { useEffect } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 
@@ -15,7 +15,7 @@ type PropTypes = {
 };
 
 const ProjectMap = ({ address, coordinates }: PropTypes) => {
-  useLayoutEffect(() => {
+  useEffect(() => {
     const projectMapTl = gsap.timeline({
       scrollTrigger: {
         id: "data-project-map",

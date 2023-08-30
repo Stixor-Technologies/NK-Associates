@@ -1,11 +1,5 @@
 "use client";
-import {
-  useState,
-  useRef,
-  useEffect,
-  TouchEvent,
-  useLayoutEffect,
-} from "react";
+import { useState, useRef, useEffect, TouchEvent } from "react";
 import Image from "next/image";
 import { gsap } from "gsap";
 import { Thumbs, FreeMode } from "swiper/modules";
@@ -192,7 +186,7 @@ const ProjectComparison = ({ projectId }: PropTypes) => {
     handleGetComparisonImages();
   }, []);
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     const projectComparisonTl = gsap.timeline({
       scrollTrigger: {
         id: "data-project-comparison",

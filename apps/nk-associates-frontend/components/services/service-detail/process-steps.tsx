@@ -1,5 +1,5 @@
 "use client";
-import React, { FC, useEffect, useLayoutEffect, useState } from "react";
+import React, { FC, useEffect, useState } from "react";
 import { BASE_URL } from "../../../utils/constants";
 import { ServiceProcess } from "../../../utils/types/types";
 import Image from "next/image";
@@ -25,7 +25,7 @@ const ProcessSteps: FC<ProcessStepsProps> = ({ process }) => {
     };
   }, []);
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     if (windowSize >= breakPoint) {
       const cards: HTMLDivElement[] = gsap.utils.toArray(".process-card");
       gsap.to(cards, {
@@ -37,7 +37,6 @@ const ProcessSteps: FC<ProcessStepsProps> = ({ process }) => {
           pin: true,
           start: "top 15%",
           scrub: true,
-          markers: true,
           end: () => "+=" + cards[0].clientWidth * (cards.length * 1),
         },
       });

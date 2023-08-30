@@ -1,5 +1,5 @@
 "use client";
-import React, { FC, useLayoutEffect, useEffect, useState } from "react";
+import React, { FC, useEffect, useState } from "react";
 import Image from "next/image";
 import { BASE_URL } from "../../../utils/constants";
 import { gsap } from "gsap";
@@ -32,7 +32,7 @@ const ExpertiseOutcomes: FC<OutcomesProps> = ({
     };
   }, []);
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     if (windowSize >= breakPoint) {
       ScrollTrigger.getById("mobileExpertiseTrigger")?.kill();
       ScrollTrigger.getById("mobileOutcomeTrigger")?.kill();

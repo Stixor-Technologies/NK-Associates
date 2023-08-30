@@ -1,5 +1,5 @@
 "use client";
-import React, { FC, useLayoutEffect, useRef } from "react";
+import React, { FC, useEffect, useRef } from "react";
 import Tile from "../../shared/tile";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
@@ -23,7 +23,7 @@ const TileSection: FC<TileSectionProps> = ({
 }) => {
   const ref = useRef<HTMLDivElement | null>(null);
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     const divElement = ref.current;
     if (divElement) {
       gsap.from(divElement, {
@@ -68,7 +68,7 @@ const TileSection: FC<TileSectionProps> = ({
       <div className="mx-auto flex rounded-r-xl w-full max-w-[300px] justify-center gap-1 shadow-3xl sm:max-w-sm md:max-w-md lg:flex-grow">
         <Tile
           label="Price"
-          value={`PKR: ${price.toString()}`}
+          value={`PKR: ${price?.toString()}`}
           className="flex-grow rounded-l-xl lg:rounded-l-none"
         />
         <Tile label="City" value={city} className="flex-grow rounded-r-xl" />
