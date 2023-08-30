@@ -92,8 +92,8 @@ export default async function Home() {
   return (
     <section className="overflow-hidden">
       <HomeBanner>
-        {/* <BannerSlider banner_images={banner_images?.data} /> */}
-        <MyCarousel banner_images={banner_images?.data} />
+        <BannerSlider banner_images={banner_images?.data} />
+        {/* <MyCarousel banner_images={banner_images?.data} /> */}
       </HomeBanner>
       <AboutSummary
         about_summary={about_summary}

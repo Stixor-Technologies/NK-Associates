@@ -110,15 +110,15 @@ const BannerSlider: FC<BannerImagesProps> = ({ banner_images }) => {
   useEffect(() => {
     const interval = setInterval(() => {
       if (hoveredSlide !== null) return;
-      setBannerImages((prevImages) => {
-        const updatedImages = [...prevImages];
-        const previousIndex =
-          activeIndex === 0 ? updatedImages.length - 1 : activeIndex - 1;
-        const previousImage = updatedImages[previousIndex];
-        updatedImages.splice(previousIndex, 1);
-        updatedImages.push(previousImage);
-        return updatedImages;
-      });
+      // setBannerImages((prevImages) => {
+      //   const updatedImages = [...prevImages];
+      //   const previousIndex =
+      //     activeIndex === 0 ? updatedImages.length - 1 : activeIndex - 1;
+      //   const previousImage = updatedImages[previousIndex];
+      //   updatedImages.splice(previousIndex, 1);
+      //   updatedImages.push(previousImage);
+      //   return updatedImages;
+      // });
 
       setActiveIndex((prevIndex) => (prevIndex + 1) % bImages?.length);
     }, 1500);
