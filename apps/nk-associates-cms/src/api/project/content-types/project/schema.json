@@ -162,10 +162,10 @@
       "target": "api::property.property",
       "mappedBy": "project"
     },
-    "comparisionImage": {
+    "comparisonImages": {
       "type": "component",
       "repeatable": true,
-      "component": "comparision-images.comparision-images",
+      "component": "comparison-images.comparison-images",
       "required": true
     }
   }
