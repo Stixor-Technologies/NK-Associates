@@ -2,7 +2,12 @@
 
 import { Suspense } from "react";
 import { Canvas, useLoader } from "@react-three/fiber";
-import { Environment, OrbitControls, useProgress } from "@react-three/drei";
+import {
+  Environment,
+  OrbitControls,
+  PerspectiveCamera,
+  useProgress,
+} from "@react-three/drei";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
 import { DRACOLoader } from "three/examples/jsm/loaders/DRACOLoader";
 
@@ -24,12 +29,8 @@ const VRModel = ({ modelURL }: PropTypes) => {
 
   return (
     <>
-      <Canvas
-        shadows
-        dpr={[1, 2]}
-        camera={{ position: [-5, 5, 5], fov: 25 }}
-        className="bg-nk-gray"
-      >
+      <Canvas shadows dpr={[1, 2]} className="bg-nk-gray">
+        <PerspectiveCamera makeDefault position={[0, 0, 7]} fov={25} />
         <Suspense fallback={null}>
           <primitive object={gltf.scene} scale={0.05} />
           <OrbitControls makeDefault minDistance={5} maxDistance={15} />
