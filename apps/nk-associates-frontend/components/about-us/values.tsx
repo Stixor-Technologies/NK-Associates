@@ -1,13 +1,12 @@
 import React, { FC } from "react";
 import Image from "next/image";
 import { BASE_URL } from "../../utils/constants";
-import { ValueGoals } from "../../utils/types/types";
+import { Values } from "../../utils/types/types";
 
 interface CardProps {
-  about: ValueGoals;
-  spin: number;
+  about: Values;
 }
-const AboutCard2: FC<CardProps> = ({ about, spin }) => {
+const ValuesCard: FC<CardProps> = ({ about }) => {
   const { title, list } = about;
   const cardImage = about?.card_image?.data?.attributes?.url;
   const cardIcon = about?.card_icon?.data?.attributes?.url;
@@ -20,8 +19,7 @@ const AboutCard2: FC<CardProps> = ({ about, spin }) => {
             src={`${BASE_URL}${cardImage || "/"}`}
             alt="Card Image 1"
             fill
-            style={{ transform: `rotate(${spin}deg)` }}
-            className="object-cover rounded-2xl "
+            className="object-cover rounded-2xl lg:rotate-1"
           />
         </div>
         <div className="text-about flex flex-col font-metropolis text-xl text-center lg:text-left text-nk-dark-gray lg:w-[55%]  my-auto">
@@ -35,7 +33,7 @@ const AboutCard2: FC<CardProps> = ({ about, spin }) => {
             {list.map((item, index) => (
               <div
                 key={index}
-                className="flex font-metropolis text-base gap-4 mb-2.5 shrink-0 items-center"
+                className="flex font-metropolis text-base gap-4 mb-2.5 items-center"
               >
                 <div className="relative w-full max-w-[3rem] h-[3rem] bg-white rounded-full shadow-xl flex justify-center items-center">
                   <Image
@@ -48,11 +46,10 @@ const AboutCard2: FC<CardProps> = ({ about, spin }) => {
                   />
                 </div>
                 <p className="font-metropolis-light text-nk-dark-gray text-left text-base lg:pr-10">
-                  {item.title && (
-                    <span className="font-metropolis-semibold text-[1.375rem]]">
-                      {item.title + " : "}
-                    </span>
-                  )}
+                  <span className="font-metropolis-semibold text-[1.375rem]]">
+                    {item.description.split(":")[0].trim() + " : "}
+                  </span>
+
                   {item.description}
                 </p>
               </div>
@@ -64,4 +61,4 @@ const AboutCard2: FC<CardProps> = ({ about, spin }) => {
   );
 };
 
-export default AboutCard2;
+export default ValuesCard;

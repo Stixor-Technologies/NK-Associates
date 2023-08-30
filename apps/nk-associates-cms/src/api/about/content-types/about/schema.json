@@ -12,16 +12,6 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "card_1": {
-      "type": "component",
-      "repeatable": true,
-      "component": "card-1.about-us-card-1"
-    },
-    "card_2": {
-      "type": "component",
-      "repeatable": true,
-      "component": "card-2.about-us-card-2"
-    },
     "ceo_message": {
       "type": "text",
       "required": true
@@ -36,6 +26,30 @@
     },
     "ceo_name": {
       "type": "string",
+      "required": true
+    },
+    "Vision": {
+      "type": "component",
+      "repeatable": false,
+      "component": "card-1.about-us-card-1",
+      "required": true
+    },
+    "Mission": {
+      "type": "component",
+      "repeatable": false,
+      "component": "card-1.about-us-card-1",
+      "required": true
+    },
+    "Values": {
+      "type": "component",
+      "repeatable": false,
+      "component": "card-2.about-us-card-2",
+      "required": true
+    },
+    "Goals": {
+      "type": "component",
+      "repeatable": false,
+      "component": "card-2.about-us-card-2",
       "required": true
     }
   }

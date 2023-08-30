@@ -1,25 +1,26 @@
 {
   "collectionName": "components_card_2_about_us_card_2s",
   "info": {
-    "displayName": "About-Us-Card-2"
+    "displayName": "Card",
+    "description": ""
   },
   "options": {},
   "attributes": {
     "card_icon": {
-      "allowedTypes": [
-        "images"
-      ],
       "type": "media",
       "multiple": false,
-      "required": true
+      "required": true,
+      "allowedTypes": [
+        "images"
+      ]
     },
     "card_image": {
-      "allowedTypes": [
-        "images"
-      ],
       "type": "media",
       "multiple": false,
-      "required": true
+      "required": true,
+      "allowedTypes": [
+        "images"
+      ]
     },
     "list": {
       "type": "component",
