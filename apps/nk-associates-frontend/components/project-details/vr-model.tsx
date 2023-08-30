@@ -31,7 +31,6 @@ const VRModel = ({ modelURL }: PropTypes) => {
         className="bg-nk-gray"
       >
         <Suspense fallback={null}>
-          <Environment preset="city" />
           <primitive object={gltf.scene} scale={0.05} />
           <OrbitControls makeDefault minDistance={5} maxDistance={15} />
         </Suspense>
