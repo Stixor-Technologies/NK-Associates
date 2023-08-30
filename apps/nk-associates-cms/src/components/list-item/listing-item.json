@@ -14,11 +14,6 @@
         "images"
       ]
     },
-    "title": {
-      "type": "string",
-      "maxLength": 50,
-      "required": false
-    },
     "description": {
       "type": "string",
       "minLength": 6,

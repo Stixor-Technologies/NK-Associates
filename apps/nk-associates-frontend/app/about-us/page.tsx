@@ -23,11 +23,11 @@ const AboutUs = async () => {
           About Us
         </div>
         <div className="pb-[1.563rem] text-[0.875rem] md:text-[1.25rem] md:pb-[2.563rem]">
-          NK Associates & Builders Pvt Ltd, established in 2004, is a leading
-          real estate development, construction, and investment consultancy
-          company. We specialize in the bulk sourcing and sale of properties
-          within Bahria Town and DHA. Our aim is to evolve into a Proptech
-          company that holds a real estate license.
+          Established in 2004, NK Associates & Builders Pvt Ltd is a prominent
+          figure in real estate development, construction, and investment
+          consultancy. Specializing in the bulk sourcing and sale of properties
+          within Bahria Town and DHA, we aim to evolve into a pioneering
+          Proptech company, backed by a real estate license.
         </div>
         <div>
           <LinkButton
@@ -52,7 +52,10 @@ const AboutUs = async () => {
       <ServicesOverview />
 
       <div className="container pt-[3.25rem] lg:pt-[6.688rem] text-center">
-        <div className="lg:pt-[3.635rem]">
+        <div className="text-nk-dark-gray font-metropolis-bold text-[2.25rem] text-center mb-[3.625rem]">
+          Meet Our Best-In-Class Team
+        </div>
+        <div className="pt-12 -mr-[1.5rem]">
           <MembersList />
         </div>
       </div>
