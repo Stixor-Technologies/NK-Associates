@@ -87,7 +87,7 @@ export default async function Home() {
 
   return (
     <section className="overflow-hidden">
-      <Cursor />
+      {/* <Cursor /> */}
       <HomeBanner>
         <BannerSlider banner_images={banner_images?.data} />
       </HomeBanner>
