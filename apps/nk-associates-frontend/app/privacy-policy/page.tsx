@@ -75,9 +75,9 @@ const Page = () => {
         which you provide when signing up for an account or interacting with our
         platform. We also collect usage data, such as the features you engage
         with and the pages you visit, to better understand user preferences and
-        enhance our offerings. It's important to note that we adhere to strict
-        security measures to protect your data from unauthorized access or
-        misuse. We do not share your personal information with third parties
+        enhance our offerings. It&aposs important to note that we adhere to
+        strict security measures to protect your data from unauthorized access
+        or misuse. We do not share your personal information with third parties
         without your consent, except when required by law. By utilizing your
         data responsibly, we aim to continuously improve our services and
         provide you with a tailored experience that meets your needs and
@@ -87,7 +87,7 @@ const Page = () => {
       <p className="font-metropolis text-base mb-6 text-[0.875rem] md:text-[1.25rem]">
         We use the data collected to provide and improve our services. This may
         include personalization of content, analyzing user trends, and enhancing
-        our platform's functionality. The insights gained from data analysis
+        our platform&aposs functionality. The insights gained from data analysis
         help us optimize user experience and develop new features that align
         with your preferences. We never use your data for purposes other than
         improving our services, and your personal information remains protected
@@ -109,7 +109,7 @@ const Page = () => {
         Information Sharing and Disclosure
       </h2>
       <p className="font-metropolis text-base mb-6 text-[0.875rem] md:text-[1.25rem]">
-        We understand the importance of your data's privacy. We do not sell,
+        We understand the importance of your data&aposs privacy. We do not sell,
         trade, or rent your personal information to third parties for marketing
         purposes. However, in certain cases, we may share your information with
         trusted partners who assist us in delivering our services. This includes
@@ -138,9 +138,9 @@ const Page = () => {
         We respect your privacy rights and provide options for managing your
         data. You have the right to access, correct, or delete your personal
         information. If you wish to exercise these rights or have questions
-        about your data's handling, please contact our Data Privacy Office using
-        the provided contact details. We are committed to assisting you and
-        addressing your concerns.
+        about your data&aposs handling, please contact our Data Privacy Office
+        using the provided contact details. We are committed to assisting you
+        and addressing your concerns.
       </p>
     </div>
   );
