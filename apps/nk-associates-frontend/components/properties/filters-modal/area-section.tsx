@@ -1,18 +1,21 @@
 import { useState } from "react";
-import PriceRangeFilter from "../filters/price-range-filter";
 import useFilters from "../../../utils/useFilters";
 
+import AreaRangeFilter from "../filters/area-range-filter";
+import AreaDropdown from "./area-dropdown";
+
 type PropTypes = {
-  priceRange: [number, number];
+  areaRange: [number, number];
+  areaUnitsList: { id: number; name: string }[];
 };
 
-const PriceRangeSection = ({ priceRange }: PropTypes) => {
+const AreaSection = ({ areaRange, areaUnitsList }: PropTypes) => {
   const [filtersState, filtersDispatch] = useFilters();
-  const [errorMinPrice, setErrorMinPrice] = useState({
+  const [errorMinArea, setErrorMinArea] = useState({
     error: false,
     message: "",
   });
-  const [errorMaxPrice, setErrorMaxPrice] = useState({
+  const [errorMaxArea, setErrorMaxArea] = useState({
     error: false,
     message: "",
   });
@@ -22,14 +25,14 @@ const PriceRangeSection = ({ priceRange }: PropTypes) => {
       return { message: "Only number values are allowed.", error: true };
 
     if (type === "min") {
-      if (+value < priceRange[0]) {
+      if (+value < areaRange[0]) {
         return {
           message: "Value can't be less than lower range limit.",
           error: true,
         };
       }
 
-      if (+value > filtersState.maxSelectedPrice) {
+      if (+value > filtersState.maxSelectedArea) {
         return {
           message: "Value can't be more than max range.",
           error: true,
@@ -38,14 +41,14 @@ const PriceRangeSection = ({ priceRange }: PropTypes) => {
     }
 
     if (type === "max") {
-      if (+value > priceRange[1]) {
+      if (+value > areaRange[1]) {
         return {
           message: "Value can't be more than higher range limit.",
           error: true,
         };
       }
 
-      if (+value < filtersState.minSelectedPrice) {
+      if (+value < filtersState.minSelectedArea) {
         return {
           message: "Value can't be less than min range.",
           error: true,
@@ -59,30 +62,30 @@ const PriceRangeSection = ({ priceRange }: PropTypes) => {
     };
   };
 
-  const handleMinPriceChange = (e) => {
+  const handleMinAreaChange = (e) => {
     const result = handleValidation("min", e.target.value);
 
-    setErrorMinPrice(result);
+    setErrorMinArea(result);
     if (result.error) {
       return;
     }
 
     filtersDispatch({
-      type: "setMinSelectedPrice",
+      type: "setMinSelectedArea",
       payload: e.target.value,
     });
   };
 
-  const handleMaxPriceChange = (e) => {
+  const handleMaxAreaChange = (e) => {
     const result = handleValidation("max", e.target.value);
 
-    setErrorMaxPrice(result);
+    setErrorMaxArea(result);
     if (result.error) {
       return;
     }
 
     filtersDispatch({
-      type: "setMaxSelectedPrice",
+      type: "setMaxSelectedArea",
       payload: e.target.value,
     });
   };
@@ -90,62 +93,66 @@ const PriceRangeSection = ({ priceRange }: PropTypes) => {
   return (
     <>
       <div className="w-full mb-4">
-        <h3 className="text-lg font-metropolis-semibold mb-4">Price range</h3>
-        <PriceRangeFilter priceRange={priceRange} />
+        <h3 className="text-lg font-metropolis-semibold capitalize">
+          Area ({filtersState.selectedAreaUnit})
+          <AreaDropdown areaUnitsList={areaUnitsList} />
+        </h3>
       </div>
+
+      <AreaRangeFilter areaRange={areaRange} />
 
       <div className="w-full mb-4 md:w-1/2 md:pr-2.5">
         <label
-          htmlFor="Min Price"
+          htmlFor="Min Area"
           className="font-metropolis-thin text-nk-black relative capitalize md:text-base"
         >
-          Min Price
+          Min Area
         </label>
 
         <input
           type="number"
-          name="Min Price"
+          name="Min Area"
           className={`font-metropolis-light text-nk-black placeholder-nk-gray placeholder:font-metropolis-thin mt-1 h-[3.625rem] w-full rounded-lg border px-4 py-4 shadow-md placeholder:text-base focus:outline-none ${
-            errorMinPrice.error
+            errorMinArea.error
               ? "border-nk-red"
               : " focus:border-nk-gray focus:ring-nk-gray"
           }`}
-          value={filtersState.minSelectedPrice}
-          onChange={handleMinPriceChange}
+          value={filtersState.minSelectedArea}
+          onChange={handleMinAreaChange}
           placeholder="PKR 100000"
         />
 
-        {errorMinPrice.error && (
+        {errorMinArea.error && (
           <p className="text-nk-red mt-2 text-sm italic">
-            {errorMinPrice.message as string}
+            {errorMinArea.message as string}
           </p>
         )}
       </div>
 
       <div className="w-full mb-4 md:w-1/2 md:pl-2.5">
         <label
-          htmlFor="Max Price"
+          htmlFor="Max Area"
           className="font-metropolis-thin text-nk-black relative capitalize md:text-base"
         >
-          Max Price
+          Max Area
         </label>
 
         <input
           type="number"
-          name="Max Price"
+          name="Max Area"
           className={`font-metropolis-light text-nk-black placeholder-nk-gray placeholder:font-metropolis-thin mt-1 h-[3.625rem] w-full rounded-lg border px-4 py-4 shadow-md placeholder:text-base focus:outline-none ${
-            errorMaxPrice.error
+            errorMaxArea.error
               ? "border-nk-red"
               : " focus:border-nk-gray focus:ring-nk-gray"
           }`}
-          value={filtersState.maxSelectedPrice}
-          onChange={handleMaxPriceChange}
+          value={filtersState.maxSelectedArea}
+          onChange={handleMaxAreaChange}
           placeholder="PKR 10000000"
         />
 
-        {errorMaxPrice.error && (
+        {errorMaxArea.error && (
           <p className="text-nk-red mt-2 text-sm italic">
-            {errorMaxPrice.message as string}
+            {errorMaxArea.message as string}
           </p>
         )}
       </div>
@@ -153,4 +160,4 @@ const PriceRangeSection = ({ priceRange }: PropTypes) => {
   );
 };
 
-export default PriceRangeSection;
+export default AreaSection;

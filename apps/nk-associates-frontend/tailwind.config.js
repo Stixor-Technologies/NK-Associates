@@ -45,6 +45,8 @@ module.exports = {
         "nk-background": "#f5f5f5",
         "nk-off-white": "#E3E3E3", // used in service cards
         "nk-skeleton-grey": "#E1E5EC", //used in skeletons
+        "nk-skeleton-start": "#F1F4F9",
+        "nk-skeleton-stop": "#E1E5EC",
       },
       boxShadow: {
         "3xl": "0.25rem 0.188rem 1.375rem 0rem rgba(0, 0, 0, 0.092)",

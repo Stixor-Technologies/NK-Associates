@@ -34,7 +34,7 @@ const RangeSelectorSlider = ({
         return (
           <div data-thumb {...prop}>
             <span
-              className={`px-2 bg-white whitespace-nowrap font-metropolis-bold border rounded-full text-xs absolute -top-2 ${xPosition}`}
+              className={`px-2 bg-white whitespace-nowrap capitalize font-metropolis-bold border rounded-full text-xs absolute -top-2 ${xPosition}`}
             >
               {`${thumbLabel} ${state.valueNow}`}
             </span>

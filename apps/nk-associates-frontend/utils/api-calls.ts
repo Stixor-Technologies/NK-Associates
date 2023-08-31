@@ -3,14 +3,8 @@ import { Department, FiltersStateType, Property } from "./types/types";
 
 import { SIMILAR_PROPERTIES_LIMIT } from "./constants";
 
-export const getGridProperties = async (
-  start: number,
-  limit = 12,
-  filters?: FiltersStateType,
-) => {
-  let url = `${BASE_URL}/api/properties?populate=*&pagination[start]=${start}&pagination[limit]=${limit}&sort[1]=id`;
+const applyFilters = (filters: FiltersStateType) => {
   let filtersString = "";
-
   if (filters) {
     if (filters.minSelectedPrice) {
       filtersString += `&filters[price][$gte]=${filters.minSelectedPrice}`;
@@ -43,7 +37,37 @@ export const getGridProperties = async (
     if (filters.selectedRentFrequencyId) {
       filtersString += `&filters[rent_frequency][id][$eq]=${filters.selectedRentFrequencyId}`;
     }
+
+    if (filters.selectedBathRoomsLimit) {
+      filtersString += `&filters[baths][$lte]=${filters.selectedBathRoomsLimit}`;
+    }
+
+    if (filters.selectedRoomsLimit) {
+      filtersString += `&filters[bedrooms][$lte]=${filters.selectedRoomsLimit}`;
+    }
+
+    if (filters.minSelectedArea) {
+      filtersString += `&filters[area][$gte]=${filters.minSelectedArea}`;
+    }
+
+    if (filters.maxSelectedArea) {
+      filtersString += `&filters[area][$lte]=${filters.maxSelectedArea}`;
+    }
+
+    if (filters.selectedAreaUnit) {
+      filtersString += `&filters[area_unit][name][$eq]=${filters.selectedAreaUnit}`;
+    }
   }
+  return filtersString;
+}
+
+export const getGridProperties = async (
+  start: number,
+  limit = 12,
+  filters?: FiltersStateType,
+) => {
+  let url = `${BASE_URL}/api/properties?populate=*&pagination[start]=${start}&pagination[limit]=${limit}&sort[1]=id`;
+  let filtersString = applyFilters(filters);
 
   try {
     const resp = await fetch(url + filtersString);
@@ -54,28 +78,18 @@ export const getGridProperties = async (
   }
 };
 
-export const getPropertiesPrices = async () => {
-  let url = `${BASE_URL}/api/properties?fields[0]=price`;
-
-  try {
-    const resp = await fetch(url);
-    const data = await resp.json();
-    return data;
-  } catch (error) {
-    console.error("There was an error getting the Property Prices", error);
-  }
-};
-
 export const getMapProperties = async (
   southLat: number,
   northLat: number,
   westLng: number,
   eastLng: number,
+  filters?: FiltersStateType,
 ) => {
+  let url = `${BASE_URL}/api/properties?populate=*&filters[latitude][$between]=${southLat}&filters[latitude][$between]=${northLat}&filters[longitude][$between]=${westLng}&filters[longitude][$between]=${eastLng}&sort[1]=id`;
+  let filtersString = applyFilters(filters);
+
   try {
-    const resp = await fetch(
-      `${BASE_URL}/api/properties?populate=*&filters[latitude][$between]=${southLat}&filters[latitude][$between]=${northLat}&filters[longitude][$between]=${westLng}&filters[longitude][$between]=${eastLng}&sort[1]=id`,
-    );
+    const resp = await fetch(url + filtersString);
     const data = await resp.json();
     return data;
   } catch (error) {
@@ -96,8 +110,12 @@ export const getPropertyDetail = async (id: string) => {
 };
 
 export const getSimilarProperties = async (
-  type: string,
-  category: string,
+  type: {
+      data: { id: number, attributes: { name: string } };
+    },
+  category: {
+      data: { id: number, attributes: { name: string } };
+    },
   currentPropertyId: string,
 ) => {
   const FILTER_PRIORITY = [
@@ -108,8 +126,8 @@ export const getSimilarProperties = async (
     let properties: Property[] = [];
     const uniquePropertyIds = new Set();
 
-    FILTER_PRIORITY[0].value = type;
-    FILTER_PRIORITY[1].value = category;
+    FILTER_PRIORITY[0].value = type?.data?.attributes?.name;
+    FILTER_PRIORITY[1].value = category?.data?.attributes?.name;
 
     for (let filter of FILTER_PRIORITY) {
       if (properties.length >= 4) break;
@@ -200,6 +218,16 @@ export const fetchRentFrequencyList = async () => {
   }
 };
 
+export const fetchFilterOptionsList = async () => {
+  try {
+    const resp = await fetch(`${BASE_URL}/api/filter-option?populate=*`);
+    const data = await resp.json();
+    return data?.data;
+  } catch (error) {
+    console.error("There was an error getting the Filter Options List", error);
+  }
+};
+
 export const getJobDetail = async (id: string) => {
   try {
     const resp = await fetch(`${BASE_URL}/api/jobs/${id}?populate=*`, {
@@ -211,6 +239,7 @@ export const getJobDetail = async (id: string) => {
     console.error("There was an error getting the Jobs Details", error);
   }
 };
+
 interface GetProjectsParams {
   category?: "Residential" | "Commercial" | "Hotel";
   cachePolicy?: { [key: string]: any };
