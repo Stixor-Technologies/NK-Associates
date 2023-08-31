@@ -59,7 +59,7 @@ const PropertyTypeSection = ({
           ))}
         </ul>
 
-        <hr className="md:hidden mt-4 border-t-[1px] border-nk-gray/70" />
+        <hr className="md:hidden mt-4 border-t border-nk-gray/70" />
 
         <ul className="flex flex-wrap gap-2 py-3.5">
           {selectedCategoryTypes.map((val, index) => (

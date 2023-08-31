@@ -138,7 +138,7 @@ const PurposeSection = ({
           ))}
         </ul>
 
-        <hr className="md:hidden mb-4 border-t-[1px] border-nk-gray/70" />
+        <hr className="md:hidden mb-4 border-t border-nk-gray/70" />
 
         <div className="w-full flex flex-col">{subOptionsContent}</div>
       </div>
