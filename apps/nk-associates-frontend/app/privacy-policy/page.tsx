@@ -3,7 +3,7 @@ import React from "react";
 
 const Page = () => {
   return (
-    <div className="block p-8 text-nk-dark-gray container">
+    <div className="block p-16 text-nk-dark-gray mb-20 ">
       <h1 className="font-metropolis-bold text-center text-5xl md:p-[2rem] md:pb-[1rem]">
         Privacy Policy
       </h1>
