@@ -1,10 +1,11 @@
 import MouseFollower from "mouse-follower";
 import { gsap } from "gsap";
+import { Container } from "postcss";
 
 class CursorUtility {
   private cursor: MouseFollower | null = null;
 
-  constructor(containerClass: string) {
+  constructor(containerClass: string | HTMLElement) {
     MouseFollower.registerGSAP(gsap);
     this.cursor = new MouseFollower({
       el: null,
@@ -17,24 +18,35 @@ class CursorUtility {
   showCursor() {
     if (this.cursor) {
       this.cursor.show();
+      this.cursor.setImg("/assets/icons/cursor-icon.svg");
+      this.cursor.setSkewing(3);
     }
   }
 
   hideCursor() {
     if (this.cursor) {
       this.cursor.hide();
+      this.cursor.removeImg();
     }
   }
 
-  setImage(imageUrl: string) {
+  setImage() {
     if (this.cursor) {
-      this.cursor.setImg(imageUrl);
+      // this.cursor.setImg("/assets/icons/cursor-icon.svg");
+      // this.cursor.setSkewing(3);
     }
   }
 
   removeImage() {
     if (this.cursor) {
-      this.cursor.removeImg();
+      // this.cursor.removeImg();
+    }
+  }
+
+  destroy() {
+    if (this.cursor) {
+      this.cursor.destroy();
+      // this.cursor = null;
     }
   }
 }

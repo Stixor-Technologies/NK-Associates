@@ -8,7 +8,6 @@ import NkApp from "../components/home-page/mobile-app";
 import PopularCategories from "../components/home-page/popular-categories/popular-categories";
 import Offices from "../components/home-page/offices";
 import { getHomeData, getSocials } from "../utils/api-calls";
-import Cursor from "../components/custom-cursor/cursor";
 
 export default async function Home() {
   const data = await getHomeData();
@@ -87,7 +86,6 @@ export default async function Home() {
 
   return (
     <section className="overflow-hidden">
-      {/* <Cursor /> */}
       <HomeBanner>
         <BannerSlider banner_images={banner_images?.data} />
       </HomeBanner>

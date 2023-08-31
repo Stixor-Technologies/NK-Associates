@@ -4,11 +4,11 @@ import { getProjects } from "../../utils/api-calls";
 import ProjectCardItem from "../../components/projects/project-card/project-card-item";
 import LinkButton from "../../components/button/link-button";
 import { Project } from "../../utils/types/types";
-import { BASE_URL } from "../../utils/constants";
 import Spinner from "../../components/spinner";
 import { gsap } from "gsap";
 import InfiniteScroll from "react-infinite-scroll-component";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import CursorUtility from "../../utils/cursor-utility";
 
 type OptionsType = "All" | "Residential" | "Commercial" | "Hotel";
 
@@ -23,6 +23,9 @@ export default function Projects() {
   const [buttonSwitched, setButtonSwitched] = useState<boolean>(false);
   const [projectsData, setProjectsData] = useState<Array<Project>>([]);
   const [total, setTotal] = useState<number | null>(null);
+
+  let cursorUtilityRef = useRef<CursorUtility | null>(null);
+  const main = useRef<HTMLDivElement | null>(null);
 
   const getProjectsData = async () => {
     try {
@@ -49,6 +52,17 @@ export default function Projects() {
 
   useEffect(() => {
     getProjectsData();
+
+    if (main?.current) {
+      cursorUtilityRef.current = new CursorUtility(main?.current);
+    }
+
+    return () => {
+      if (cursorUtilityRef?.current) {
+        cursorUtilityRef?.current?.destroy();
+        cursorUtilityRef.current = null;
+      }
+    };
   }, []);
 
   useEffect(() => {
@@ -61,8 +75,6 @@ export default function Projects() {
       }
     }
   }, [buttonSwitched, projectsData]);
-
-  const main = useRef();
 
   useLayoutEffect(() => {
     if (projectsData.length > -1) {
@@ -138,6 +150,7 @@ export default function Projects() {
                       key={index}
                       project={project}
                       index={index}
+                      cursorUtilityRef={cursorUtilityRef}
                     />
                   ))}
                 </div>

@@ -6,9 +6,6 @@ import { getServices } from "../../utils/api-calls";
 import Spinner from "../spinner";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import MouseFollower from "mouse-follower";
-MouseFollower.registerGSAP(gsap);
-import CursorUtility from "../../utils/cursor-utility";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -16,9 +13,6 @@ const ServicesList: FC = () => {
   const [services, setServices] = useState<Services[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const ref = useRef<HTMLDivElement | null>(null);
-
-  let cursor = useRef<MouseFollower | null>(null);
-  let cursorUtilityRef = useRef<CursorUtility | null>(null); // Create a ref to hold the instance
 
   useEffect(() => {
     const fetchData = async () => {
@@ -39,17 +33,6 @@ const ServicesList: FC = () => {
   useEffect(() => {
     const isScreenWideEnough = window.innerWidth > 768;
     if (isScreenWideEnough && services.length > 0) {
-      cursorUtilityRef.current = new CursorUtility(".card-container");
-
-      // cursor.current = new MouseFollower({
-      //   el: null,
-      //   container: ".card-container",
-      //   className: "mf-cursor",
-      //   initialPos: [200, 200],
-      //   visible: false,
-      // });
-
-      // console.log(cursor.current);
       const cards = gsap.utils.toArray(".service-card");
       const spacer = 21;
       const minScale = 0.95;
@@ -89,24 +72,9 @@ const ServicesList: FC = () => {
     }
   }, [services]);
 
-  const handleMouseEnter = () => {
-    // console.log(cursor.current);
-    cursorUtilityRef.current.setImage("/assets/icons/cursor-icon.svg");
-    cursorUtilityRef.current.showCursor();
-  };
-
-  const handleMouseLeave = () => {
-    // console.log("leave");
-    cursorUtilityRef.current.removeImage();
-    // cursor.current.removeImg();
-    // cursor.current.hide();
-  };
-
   return (
     <div
       ref={ref}
-      onMouseEnter={handleMouseEnter}
-      onMouseLeave={handleMouseLeave}
       data-cursor-text
       className="card-container py-8 min-h-screen md:py-1"
     >

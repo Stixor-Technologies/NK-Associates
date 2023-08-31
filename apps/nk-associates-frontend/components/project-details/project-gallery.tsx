@@ -1,5 +1,5 @@
 "use client";
-import { useLayoutEffect, useState, useRef } from "react";
+import { useLayoutEffect, useState, useRef, useEffect } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { gsap } from "gsap";
 import "swiper/css";
@@ -9,6 +9,7 @@ import "swiper/css/pagination";
 import Image from "next/image";
 import { Thumbs, FreeMode } from "swiper/modules";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import CursorUtility from "../../utils/cursor-utility";
 
 type PropTypes = {
   pictures: string[];
@@ -18,7 +19,8 @@ gsap.registerPlugin(ScrollTrigger);
 
 const ProjectGallery = ({ pictures }: PropTypes) => {
   const [thumbsSwiper, setThumbsSwiper] = useState(null);
-  const divRef = useRef(null);
+  let cursorUtilityRef = useRef<CursorUtility | null>(null);
+  const galleryContainer = useRef<HTMLDivElement | null>(null);
 
   useLayoutEffect(() => {
     gsap.to("[data-project-gallery] h2", {
@@ -40,6 +42,27 @@ const ProjectGallery = ({ pictures }: PropTypes) => {
     });
   }, []);
 
+  useEffect(() => {
+    if (galleryContainer?.current) {
+      cursorUtilityRef.current = new CursorUtility(galleryContainer?.current);
+    }
+
+    return () => {
+      if (cursorUtilityRef?.current) {
+        cursorUtilityRef?.current?.destroy();
+        cursorUtilityRef.current = null;
+      }
+    };
+  }, []);
+
+  const showAnimatedCursor = () => {
+    cursorUtilityRef?.current?.showCursor();
+  };
+
+  const hideAnimatedCursor = () => {
+    cursorUtilityRef?.current?.hideCursor();
+  };
+
   return (
     <section data-project-gallery className="container py-8 md:py-14">
       <h2 className="mb-4 text-center font-metropolis-bold text-2xl md:mb-8 opacity-0 translate-y-full">
@@ -49,28 +72,33 @@ const ProjectGallery = ({ pictures }: PropTypes) => {
       <div data-project-gallery-content className="opacity-0">
         {pictures.length > 0 ? (
           <>
-            <Swiper
-              centeredSlides={true}
-              initialSlide={0}
-              pagination={false}
-              thumbs={{
-                swiper: thumbsSwiper,
-              }}
-              className="mySwiper carousel-slider h-[25rem] w-full rounded-xl sm:aspect-video sm:h-auto"
-              modules={[Thumbs, FreeMode]}
+            <div
+              ref={galleryContainer}
+              onMouseEnter={showAnimatedCursor}
+              onMouseLeave={hideAnimatedCursor}
             >
-              {pictures?.map((url, index) => (
-                <SwiperSlide key={index}>
-                  <Image
-                    src={url}
-                    alt="Carousel Image"
-                    fill
-                    className="h-full w-full object-cover"
-                  />
-                </SwiperSlide>
-              ))}
-            </Swiper>
-
+              <Swiper
+                centeredSlides={true}
+                initialSlide={0}
+                pagination={false}
+                thumbs={{
+                  swiper: thumbsSwiper,
+                }}
+                className="mySwiper carousel-slider h-[25rem] w-full rounded-xl sm:aspect-video sm:h-auto"
+                modules={[Thumbs, FreeMode]}
+              >
+                {pictures?.map((url, index) => (
+                  <SwiperSlide key={index}>
+                    <Image
+                      src={url}
+                      alt="Carousel Image"
+                      fill
+                      className="h-full w-full object-cover"
+                    />
+                  </SwiperSlide>
+                ))}
+              </Swiper>
+            </div>
             <Swiper
               modules={[Thumbs, FreeMode]}
               watchSlidesProgress

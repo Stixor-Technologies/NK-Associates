@@ -1,10 +1,11 @@
 "use client";
-import React, { FC, useRef, useLayoutEffect } from "react";
+import React, { FC, useRef, useLayoutEffect, useEffect } from "react";
 import { Project } from "../../utils/types/types";
 import LinkButton from "../button/link-button";
 import ProjectCardItem from "../projects/project-card/project-card-item";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import CursorUtility from "../../utils/cursor-utility";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -14,6 +15,9 @@ interface FeaturedProjectsProps {
 
 const FeaturedProjects: FC<FeaturedProjectsProps> = ({ featuredProjects }) => {
   const cardsContainer = useRef<HTMLDivElement | null>(null);
+
+  let cursorUtilityRef = useRef<CursorUtility | null>(null);
+  const projectsContainer = useRef<HTMLDivElement | null>(null);
 
   useLayoutEffect(() => {
     if (featuredProjects.length > 0) {
@@ -34,6 +38,20 @@ const FeaturedProjects: FC<FeaturedProjectsProps> = ({ featuredProjects }) => {
       });
     }
   }, [featuredProjects]);
+
+  useEffect(() => {
+    if (projectsContainer?.current) {
+      cursorUtilityRef.current = new CursorUtility(projectsContainer?.current);
+    }
+
+    return () => {
+      if (cursorUtilityRef?.current) {
+        cursorUtilityRef?.current?.destroy();
+        cursorUtilityRef.current = null;
+      }
+    };
+  }, []);
+
   return (
     <>
       {featuredProjects.length > 0 && (
@@ -43,7 +61,10 @@ const FeaturedProjects: FC<FeaturedProjectsProps> = ({ featuredProjects }) => {
           </h6>
 
           <div className="flex flex-col">
-            <div className="flex flex-col gap-3 md:gap-6">
+            <div
+              ref={projectsContainer}
+              className="flex flex-col gap-3 md:gap-6"
+            >
               {featuredProjects?.map((project: Project, index: number) => {
                 return (
                   <ProjectCardItem
@@ -51,6 +72,7 @@ const FeaturedProjects: FC<FeaturedProjectsProps> = ({ featuredProjects }) => {
                     project={project}
                     index={index}
                     actHome
+                    cursorUtilityRef={cursorUtilityRef}
                   />
                 );
               })}

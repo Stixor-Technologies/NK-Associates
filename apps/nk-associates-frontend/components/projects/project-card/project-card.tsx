@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from "react";
+import React, { useEffect, useState, useRef, MutableRefObject } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -26,6 +26,7 @@ interface ProjectCardProps {
   propertyType: string;
   primaryColor?: boolean;
   actHome?: boolean;
+  cursorUtilityRef: MutableRefObject<CursorUtility | null>;
 }
 
 const ProjectCard: React.FC<ProjectCardProps> = ({
@@ -40,13 +41,10 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
   propertyType,
   primaryColor = true,
   actHome,
+  cursorUtilityRef,
 }) => {
   const [windowWidth, setWindowWidth] = useState<number>(0);
-  let cursorUtilityRef = useRef<CursorUtility | null>(null);
-
   useEffect(() => {
-    cursorUtilityRef.current = new CursorUtility(".projects-carousel");
-
     const handleResize = () => {
       setWindowWidth(window.innerWidth);
     };
@@ -59,14 +57,11 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
   }, []);
 
   const showAnimatedCursor = () => {
-    console.log(cursorUtilityRef.current);
-    cursorUtilityRef.current.setImage("/assets/icons/cursor-icon.svg");
-    cursorUtilityRef.current.showCursor();
+    cursorUtilityRef?.current?.showCursor();
   };
 
   const hideAnimatedCursor = () => {
-    cursorUtilityRef.current.removeImage();
-    cursorUtilityRef.current.hideCursor();
+    cursorUtilityRef?.current?.hideCursor();
   };
 
   const backgroundColor = primaryColor
