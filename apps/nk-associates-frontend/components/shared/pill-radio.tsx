@@ -4,6 +4,8 @@ type PropTypes = {
   checked: boolean;
   onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
   type?: "default" | "tertiary" | "secondary";
+  id?: string | number;
+  value?: string | number;
 };
 
 const PillRadio = ({
@@ -12,6 +14,8 @@ const PillRadio = ({
   checked,
   onChange,
   type = "default",
+  id,
+  value,
 }: PropTypes) => {
   let classes = "";
 
@@ -26,9 +30,9 @@ const PillRadio = ({
   return (
     <div>
       <input
-        id={label}
+        id={`${id ? id : label}`}
         type="radio"
-        value={label}
+        value={value ? value : label}
         name={name}
         checked={checked}
         className="peer hidden"
@@ -36,7 +40,7 @@ const PillRadio = ({
       />
 
       <label
-        htmlFor={label}
+        htmlFor={`${id ? id : label}`}
         className={`block py-1 px-4 mr-3 mb-2 rounded-full transition-colors ${classes} peer-checked:bg-nk-red peer-checked:text-white cursor-pointer`}
       >
         {label}

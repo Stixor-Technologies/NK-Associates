@@ -5,7 +5,7 @@ import { SearchFilterProperties } from "../../../utils/types/types";
 import useFilters from "../../../utils/useFilters";
 
 type PropsType = {
-  tile: { name: string; value: string };
+  tile: { name: string };
   filtersProperties: SearchFilterProperties;
 };
 
@@ -15,6 +15,36 @@ const SearchBarTile = ({ tile, filtersProperties }: PropsType) => {
 
   const [filtersState, filtersDispatch] = useFilters();
   const [scroll, setScroll] = useState(0);
+  const [resize, setResize] = useState(0);
+
+  const filterValue = useMemo(() => {
+    if (tile.name === "Property Type") {
+      const selectedType = filtersProperties.propertyTypesList.filter(
+        (type) => +type.id === +filtersState.selectedCategoryId,
+      );
+      return selectedType && selectedType.length ? selectedType[0].name : "Any";
+    } else if (tile.name === "Price Range") {
+      return filtersState.minSelectedPrice || filtersState.maxSelectedPrice
+        ? `${filtersState.minSelectedPrice}, ${filtersState.maxSelectedPrice}`
+        : "Any";
+    } else if (tile.name === "Project") {
+      const selectedProject = filtersProperties.projectsList.filter(
+        (type) => +type.id === +filtersState.selectedProjectId,
+      );
+      return selectedProject && selectedProject.length
+        ? selectedProject[0].name
+        : "Any";
+    } else if (tile.name === "Purpose") {
+      const selectedPurpose = filtersProperties.propertyPurposeList.filter(
+        (type) => +type.id === +filtersState.selectedPurposeId,
+      );
+      return selectedPurpose && selectedPurpose.length
+        ? selectedPurpose[0].name
+        : "Any";
+    } else if (tile.name === "Location") {
+      return "Any";
+    }
+  }, [tile, filtersState]);
 
   const filterPosition = useMemo(() => {
     if (searchFilterRef.current) {
@@ -42,6 +72,19 @@ const SearchBarTile = ({ tile, filtersProperties }: PropsType) => {
     };
   }, [activeFilter, scroll]);
 
+  const filterWidth = useMemo(() => {
+    if (searchFilterRef.current) {
+      const element = document.querySelector(
+        `[data-filter-tile-title="${tile.name}"]`,
+      );
+      const containerPosition = element.getBoundingClientRect();
+      const widthInRems = containerPosition.width / 16;
+      return widthInRems / 1.5;
+    }
+
+    return 3;
+  }, [resize]);
+
   const handleFilterOptionClick = () => {
     setActiveFilter(!activeFilter);
   };
@@ -59,13 +102,19 @@ const SearchBarTile = ({ tile, filtersProperties }: PropsType) => {
     setScroll(window.scrollY);
   };
 
+  const handleResize = (e) => {
+    setResize(window.innerWidth);
+  };
+
   useEffect(() => {
     document.addEventListener("mousedown", handleOutsideClick);
     window.addEventListener("scroll", handleScroll);
+    window.addEventListener("resize", handleResize);
 
     return () => {
       document.removeEventListener("mousedown", handleOutsideClick);
       window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("resize", handleResize);
     };
   }, []);
 
@@ -78,11 +127,20 @@ const SearchBarTile = ({ tile, filtersProperties }: PropsType) => {
         className="h-full w-full bg-nk-white px-4 py-2 text-left"
         onClick={handleFilterOptionClick}
       >
-        <p className="text-base lg:text-lg text-nk-gray">{tile.name}</p>
+        <p
+          data-filter-tile-title={tile.name}
+          className="text-base lg:text-lg text-nk-gray"
+        >
+          {tile.name}
+        </p>
 
         <div className="flex justify-between items-center">
-          <p className="text-sm lg:text-base text-nk-black mr-2">
-            {tile.value}
+          <p
+            className="text-sm lg:text-base text-nk-black mr-2 truncate whitespace-nowrap"
+            style={{ width: filterWidth + "rem" }}
+            title={filterValue}
+          >
+            {filterValue}
           </p>
 
           <svg

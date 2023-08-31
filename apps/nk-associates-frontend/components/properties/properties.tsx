@@ -95,6 +95,7 @@ const Properties = () => {
           bounds.north,
           bounds.west,
           bounds.east,
+          filtersState,
         );
         if (resp?.data) {
           setMapProperties(resp?.data);
@@ -120,7 +121,11 @@ const Properties = () => {
   };
 
   const handleRefreshData = () => {
-    fetchGridData(true);
+    if (isList) {
+      fetchGridData(true);
+    } else {
+      onBoundsChanged();
+    }
   };
 
   useEffect(() => {

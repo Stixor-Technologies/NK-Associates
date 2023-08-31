@@ -36,8 +36,6 @@ async function PropertyDetail({ params: { id } }: PropertyDetailProps) {
     baths,
     area,
     area_type,
-    category,
-    type,
     price,
     description,
     latitude,
@@ -45,11 +43,14 @@ async function PropertyDetail({ params: { id } }: PropertyDetailProps) {
     property_images,
     address,
     city,
+    property_category,
+    property_type,
   } = data?.attributes || {};
-
-  console.log(data);
-
-  const similarProperties = await getSimilarProperties(type, category, id);
+  const similarProperties = await getSimilarProperties(
+    property_type,
+    property_category,
+    id,
+  );
 
   const pdfUrl: string = data?.attributes?.property_pdf?.data?.attributes?.url;
   const paragraphs: string[] | string = description?.split("\n\n");
@@ -148,10 +149,18 @@ async function PropertyDetail({ params: { id } }: PropertyDetailProps) {
           {/* Tiles section */}
 
           <TileSection
-            category={category}
+            category={
+              property_category && property_category?.data
+                ? property_category?.data?.attributes?.name
+                : "Not Available"
+            }
             area={area}
             area_type={area_type}
-            type={type}
+            type={
+              property_type && property_type?.data
+                ? property_type?.data?.attributes?.name
+                : "Not Available"
+            }
             price={price}
             city={city}
           />

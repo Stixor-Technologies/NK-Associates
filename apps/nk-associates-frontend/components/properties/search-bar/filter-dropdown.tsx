@@ -1,7 +1,7 @@
 import React, { FC } from "react";
 
 import PropertyTypeFilter from "./property-type-filter";
-import PriceRangeFilter from "./price-range-filter";
+import PriceRangeFilter from "../filters/price-range-filter";
 import ProjectFilter from "./project-filter";
 import LocationFilter from "./location-filter";
 import PurposeFilter from "./purpose-filter";
@@ -48,7 +48,7 @@ const FilterDropDown: FC<DropDownProps> = ({
 
   return (
     <div
-      className={`w-full bg-nk-white px-6 py-6 ${
+      className={`w-full bg-nk-white px-6 py-6 shadow-lg ${
         position === "start"
           ? "rounded-r-[1.25rem] rounded-bl-[1.25rem]"
           : "rounded-l-[1.25rem] rounded-br-[1.25rem]"

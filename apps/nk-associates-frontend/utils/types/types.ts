@@ -51,22 +51,28 @@ export interface Property {
     };
     baths: number;
     bedrooms: number;
-    category: string;
     latitude: number;
     longitude: number;
     price: number;
     property_images: {
       data: MediaAttributes[];
     };
-    purpose: string;
     title: string;
-    type: string;
     address: string;
     city: string;
     description: string;
     property_pdf: {
       data: MediaAttributes;
     };
+    property_purpose: {
+      data: { id: number, attributes: { name: string } };
+    };
+    property_category: {
+      data: { id: number, attributes: { name: string } };
+    }
+    property_type: {
+      data: { id: number, attributes: { name: string } };
+    }
   };
   id: number;
 }
@@ -168,6 +174,8 @@ export interface SearchFilterProperties {
   propertyPurposeList: { id: number; name: string }[] | undefined;
   projectsList: { id: number; name: string }[] | undefined;
   priceRange: [number, number];
+  areaRange: [number, number];
+  areaUnitsList: { id: number; name: string }[] | undefined;
 }
 
 export interface FiltersStateType {
@@ -179,7 +187,13 @@ export interface FiltersStateType {
   selectedPurposeId: string | number | undefined;
   minSelectedPrice: number;
   maxSelectedPrice: number;
+  selectedRoomsLimit: number | undefined;
+  selectedBathRoomsLimit: number | undefined;
+  minSelectedArea: number;
+  maxSelectedArea: number;
+  selectedAreaUnit: string | undefined,
   location: string | undefined;
+  filterIsSelected: boolean;
 }
 
 export interface Socials {
