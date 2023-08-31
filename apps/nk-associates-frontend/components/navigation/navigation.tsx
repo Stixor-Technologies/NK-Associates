@@ -41,7 +41,7 @@ const Navigation = () => {
   useEffect(() => {
     let body = document.body;
     if (isMenuOpen) {
-      body.style.overflow = "hidden";
+      body.classList.add("overflow-hidden");
       if (sideBarMenu.current) {
         gsap.to(sideBarMenu.current, {
           x: -sideBarMenu?.current?.clientWidth,
@@ -56,7 +56,7 @@ const Navigation = () => {
         });
       }
     } else {
-      body.style.overflow = "auto";
+      body.classList.remove("overflow-hidden");
       if (sideBarMenu.current) {
         gsap.to(sideBarMenu.current, {
           x: 0,
