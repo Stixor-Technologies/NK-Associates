@@ -19,8 +19,6 @@ const SmoothScrollContainer = ({ children }: { children: ReactNode }) => {
       effects: true,
     });
 
-    console.log("initialize", smootherInstance);
-    console.log("scrollTrigger", ScrollTrigger.getAll());
     const excludedPaths = [
       "/properties",
       /^\/properties\/\d+$/,
@@ -32,7 +30,6 @@ const SmoothScrollContainer = ({ children }: { children: ReactNode }) => {
         typeof path === "string" ? pathname === path : path.test(pathname),
       )
     ) {
-      console.log("kill smoother instance");
       smootherInstance.kill();
     }
 
