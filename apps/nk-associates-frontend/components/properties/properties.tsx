@@ -129,26 +129,6 @@ const Properties = () => {
 
   return (
     <>
-      {/* <button
-        ref={buttonRef}
-        className={` z-20 flex items-center -translate-x-1/2 gap-2 rounded-full px-4 py-2 text-center text-sm capitalize text-nk-white transition-all duration-200 ease-in-out delay-200 md:gap-4 md:px-6 md:py-3 md:text-2xl ${
-          isList
-            ? "bg-gradient-to-b bg-nk-gradient-red-one to-nk-gradient-red-two hover:bg-nk-black"
-            : "bg-nk-black hover:bg-nk-red"
-        }`}
-        onClick={() => setIsList(!isList)}
-      >
-        <span>{`${isList ? "Show Map" : "Show List"}`}</span>
-        <Image
-          src={isList ? MapBtn : ListIcon}
-          width={35}
-          height={35}
-          alt="properties-view"
-          className={`mx-auto ${
-            isList ? "w-[1.375rem] md:w-[2.188rem]" : " w-4 md:w-[1.7rem]"
-          } `}
-        />
-      </button> */}
       <SearchBar onFilter={handleRefreshData} />
 
       {isList && (
