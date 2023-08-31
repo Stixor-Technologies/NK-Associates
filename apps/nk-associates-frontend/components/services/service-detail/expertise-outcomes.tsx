@@ -1,11 +1,10 @@
 "use client";
-import React, { FC, useLayoutEffect, useEffect, useState } from "react";
+import React, { FC, useEffect, useState } from "react";
 import Image from "next/image";
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { BASE_URL } from "../../../utils/constants";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 
-gsap.registerPlugin(ScrollTrigger);
 interface OutcomesProps {
   expertise: string;
   expertise_image: string;
@@ -19,38 +18,29 @@ const ExpertiseOutcomes: FC<OutcomesProps> = ({
   outcome,
   outcome_image,
 }) => {
-  const [windowSize, setWindowSize] = useState(window.innerWidth);
+  const [windowSize, setWindowSize] = useState<number>(0);
   const breakPoint = 1024;
 
   useEffect(() => {
     const handleWindowResize = () => {
       setWindowSize(window.innerWidth);
     };
+    handleWindowResize();
     window.addEventListener("resize", handleWindowResize);
-
     return () => {
       window.removeEventListener("resize", handleWindowResize);
     };
   }, []);
 
-  useLayoutEffect(() => {
-    ScrollTrigger.getById("expertiseTrigger")?.kill();
-    ScrollTrigger.getById("mobileExpertiseTrigger")?.kill();
-    ScrollTrigger.getById("mobileOutcomeTrigger")?.kill();
-
+  useEffect(() => {
     if (windowSize >= breakPoint) {
+      ScrollTrigger.getById("mobileExpertiseTrigger")?.kill();
+      ScrollTrigger.getById("mobileOutcomeTrigger")?.kill();
       gsap.set("[data-expertise] .images-panel:first-child", {
-        opacity: 1,
-        y: 0,
-        x: "0%",
-        rotate: -6,
+        clearProps: true,
       });
-
       gsap.set("[data-outcome] .images-panel:first-child", {
-        opacity: 0,
-        y: "100%",
-        x: "0%",
-        rotate: 0,
+        clearProps: true,
       });
 
       gsap.set("[data-outcome] .text-panel:nth-child(2)", { opacity: 0 });
@@ -63,7 +53,7 @@ const ExpertiseOutcomes: FC<OutcomesProps> = ({
         scrollTrigger: {
           id: "expertiseTrigger",
           trigger: "[data-expertise-outcomes]",
-          start: "top 20%",
+          start: "top 15%",
           end: `+=${40 * panels.length}%`,
           pin: true,
           scrub: 1,
@@ -101,11 +91,9 @@ const ExpertiseOutcomes: FC<OutcomesProps> = ({
         }
       });
     } else {
-      gsap.set(".text-panel", {
-        opacity: 1,
-      });
-
-      gsap.set(".images-panel", { opacity: 0, y: 0, x: "-100%", rotate: 0 });
+      gsap.set(".images-panel", { clearProps: true });
+      gsap.set(".text-panel", { clearProps: true });
+      ScrollTrigger.getById("expertiseTrigger")?.kill();
       const expertiseTl = gsap.timeline({
         scrollTrigger: {
           id: "mobileExpertiseTrigger",
@@ -143,19 +131,25 @@ const ExpertiseOutcomes: FC<OutcomesProps> = ({
         rotate: -6,
       });
     }
+
+    return () => {
+      ScrollTrigger.getById("expertiseTrigger")?.kill();
+      ScrollTrigger.getById("mobileExpertiseTrigger")?.kill();
+      ScrollTrigger.getById("mobileOutcomeTrigger")?.kill();
+    };
   }, [windowSize]);
 
   return (
     <div
       data-expertise-outcomes
-      className="relative lg:h-[70vh] lg:flex lg:flex-col lg:my-[5.625rem] lg:justify-center"
+      className="container relative lg:h-[70vh] lg:flex lg:flex-col lg:my-[5.625rem] lg:justify-center"
     >
       {/* expertise */}
       <div
         data-expertise
-        className="panels my-10 flex flex-col gap-10 sm:my-0 lg:flex-row lg:my-0 lg:absolute"
+        className="panels my-10 flex flex-col w-full gap-10 sm:my-0 lg:flex-row lg:my-0 lg:absolute"
       >
-        <div className="images-panel self-center w-[90%] max-w-[22rem] mx-auto sm:w-full md:max-w-[27rem] lg:w-[45%] lg:-rotate-6">
+        <div className="images-panel self-center w-[90%] max-w-[22rem] mx-auto -translate-x-full opacity-0 sm:w-full md:max-w-[27rem] lg:-translate-x-0 lg:w-[45%] lg:opacity-100 lg:-rotate-6 lg:mx-10">
           <div className="relative aspect-square w-full">
             <Image
               src={`${BASE_URL}${expertise_image || "/"}`}
@@ -180,9 +174,9 @@ const ExpertiseOutcomes: FC<OutcomesProps> = ({
       {/* outcomes */}
       <div
         data-outcome
-        className="panels my-10 flex flex-col gap-10 lg:flex-row lg:my-0 lg:absolute"
+        className="panels my-10 flex flex-col w-full gap-10 lg:flex-row lg:my-0 lg:absolute"
       >
-        <div className="images-panel self-center w-[90%] max-w-[22rem] mx-auto sm:w-full md:max-w-[27rem] lg:w-[45%] lg:translate-y-full lg:opacity-0">
+        <div className="images-panel self-center w-[90%] max-w-[22rem] mx-auto -translate-x-full opacity-0 sm:w-full md:max-w-[27rem] lg:-translate-x-0 lg:w-[45%] lg:translate-y-[300%] lg:opacity-100 lg:mx-10">
           <div className="relative aspect-square w-full">
             <Image
               src={`${BASE_URL}${outcome_image || "/"}`}

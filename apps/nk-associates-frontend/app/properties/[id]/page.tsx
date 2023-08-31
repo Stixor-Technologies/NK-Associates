@@ -45,7 +45,7 @@ async function PropertyDetail({ params: { id } }: PropertyDetailProps) {
     city,
     property_category,
     property_type,
-  } = data?.attributes;
+  } = data?.attributes || {};
   const similarProperties = await getSimilarProperties(
     property_type,
     property_category,
@@ -53,7 +53,7 @@ async function PropertyDetail({ params: { id } }: PropertyDetailProps) {
   );
 
   const pdfUrl: string = data?.attributes?.property_pdf?.data?.attributes?.url;
-  const paragraphs: string[] | string = description.split("\n\n");
+  const paragraphs: string[] | string = description?.split("\n\n");
 
   const center = { lat: latitude, lng: longitude };
 
@@ -87,14 +87,14 @@ async function PropertyDetail({ params: { id } }: PropertyDetailProps) {
           <div className="flex flex-col items-center gap-5 sm:flex-row sm:items-start sm:justify-between lg:items-center">
             <div
               className={`flex flex-col gap-5 lg:flex-row ${
-                title.length > 28
+                title?.length > 28
                   ? "lg:gap-8 2xl:gap-10"
                   : "lg:gap-10 xl:gap-20"
               }`}
             >
               <h2
                 className={`text-center font-metropolis-semibold text-4xl sm:text-left ${
-                  title.length > 28 && "lg:basis-1/2 2xl:basis-auto"
+                  title?.length > 28 && "lg:basis-1/2 2xl:basis-auto"
                 }`}
               >
                 {title}
@@ -166,7 +166,7 @@ async function PropertyDetail({ params: { id } }: PropertyDetailProps) {
           />
 
           {/* Property description */}
-          {paragraphs.map((paragraph: string, index: number) => (
+          {paragraphs?.map((paragraph: string, index: number) => (
             <p
               key={index}
               className="py-2 text-center font-metropolis-thin text-sm leading-snug text-nk-black md:py-3 md:text-left md:text-[1.375rem]"

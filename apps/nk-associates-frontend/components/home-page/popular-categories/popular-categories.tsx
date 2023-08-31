@@ -1,11 +1,9 @@
 "use client";
-import React, { FC, useState, useEffect, useRef, useLayoutEffect } from "react";
+import React, { FC, useState, useEffect, useRef } from "react";
 import CategoryCard from "./category-card";
 import { PopularCategory } from "../../../utils/types/types";
 import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-
-gsap.registerPlugin(ScrollTrigger);
+import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 
 interface PopularCategoriesProps {
   popularCategories: PopularCategory[];
@@ -33,13 +31,13 @@ const PopularCategories: FC<PopularCategoriesProps> = ({
     };
   }, []);
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     if (popularCategories?.length > 0) {
-      ScrollTrigger.getById("webCategoriesTrigger")?.kill();
+      ScrollTrigger.getById("web-categories-trigger")?.kill();
       const allTriggers = ScrollTrigger.getAll();
 
       allTriggers.forEach((trigger) => {
-        if (trigger.vars.id === "mobileCategoriesTrigger") {
+        if (trigger.vars.id === "mobile-categories-trigger") {
           trigger.kill();
         }
       });
@@ -52,7 +50,7 @@ const PopularCategories: FC<PopularCategoriesProps> = ({
       if (windowSize >= breakPoint) {
         const tl = gsap.timeline({
           scrollTrigger: {
-            id: "webCategoriesTrigger",
+            id: "web-categories-trigger",
             trigger: popularSection.current,
             start: "top 25%",
             toggleActions: "play none none none",
@@ -81,7 +79,7 @@ const PopularCategories: FC<PopularCategoriesProps> = ({
           const textElement = card.querySelector(".category-name");
           const tl = gsap.timeline({
             scrollTrigger: {
-              id: "mobileCategoriesTrigger",
+              id: "mobile-categories-trigger",
               trigger: card,
               start: "top center",
               end: "bottom",
@@ -102,6 +100,17 @@ const PopularCategories: FC<PopularCategoriesProps> = ({
         });
       }
     }
+
+    return () => {
+      ScrollTrigger.getById("web-categories-trigger")?.kill();
+      const allTriggers = ScrollTrigger.getAll();
+
+      allTriggers.forEach((trigger) => {
+        if (trigger.vars.id === "mobile-categories-trigger") {
+          trigger.kill();
+        }
+      });
+    };
   }, [popularCategories, windowSize]);
 
   return (

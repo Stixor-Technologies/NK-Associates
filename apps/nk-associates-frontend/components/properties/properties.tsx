@@ -1,12 +1,18 @@
 "use client";
-import React, { useState, useEffect, useCallback, useRef } from "react";
+import React, {
+  useState,
+  useEffect,
+  useCallback,
+  useRef,
+  useLayoutEffect,
+} from "react";
 import Image from "next/image";
 import { GoogleMap, Marker, InfoWindow } from "@react-google-maps/api";
 import PropertyList from "./property-list";
 import InfiniteScroll from "react-infinite-scroll-component";
 import { getGridProperties, getMapProperties } from "../../utils/api-calls";
 import { Property } from "../../utils/types/types";
-import { debounce } from "lodash";
+import { debounce, property } from "lodash";
 import MapBtn from "../../public/assets/icons/map-list-icon.svg";
 import ListIcon from "../../public/assets/icons/list-icon.svg";
 import PropertyCard from "./property-card";
@@ -37,6 +43,7 @@ const Properties = () => {
   const [hasMapRendered, setHasMapRendered] = useState<boolean>(false);
 
   const mapRef = useRef<google.maps.Map | null>(null);
+  const buttonRef = useRef<HTMLButtonElement>(null);
 
   const fetchGridData = async (freshData?: boolean) => {
     setIsLoading(true);
@@ -208,6 +215,7 @@ const Properties = () => {
 
       {gridProperties.length > 0 && (
         <button
+          ref={buttonRef}
           className={` self-center sticky top-0 mb-4 bottom-16 left-1/2 z-10 flex -translate-x-1/2 items-center gap-2 rounded-full px-4 py-2 text-center text-sm capitalize text-nk-white transition-all duration-300 ease-in-out md:gap-4 md:px-6 md:py-3 md:text-2xl ${
             isList
               ? "bg-nk-gradient-red-one bg-gradient-to-b to-nk-gradient-red-two hover:scale-[1.1] hover:bg-nk-black"
