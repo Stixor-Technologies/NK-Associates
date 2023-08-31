@@ -5,6 +5,7 @@ import { SearchFilterProperties } from "../../../utils/types/types";
 import SearchBarTile from "./search-bar-tile";
 import FiltersModal from "../filters-modal";
 import useFilters from "../../../utils/useFilters";
+import SearchBarSkeleton from "./search-bar-skeleton";
 
 import {
   fetchPropertyCategoriesList,
@@ -12,18 +13,19 @@ import {
   fetchCompletionStatusList,
   fetchRentFrequencyList,
   getProjects,
-  getPropertiesPrices,
+  fetchFilterOptionsList,
 } from "../../../utils/api-calls";
 
 const searchTiles = [
-  { name: "Property Type", value: "Any" },
-  { name: "Price Range", value: "Any" },
-  { name: "Project", value: "Any" },
-  { name: "Location", value: "Any" },
-  { name: "Purpose", value: "Any" },
+  { name: "Property Type" },
+  { name: "Price Range" },
+  { name: "Project" },
+  { name: "Location" },
+  { name: "Purpose" },
 ];
 
 const SearchBar = ({ onFilter }: { onFilter: () => void }) => {
+  const [loading, setLoading] = useState(true);
   const [filtersProperties, setFiltersProperties] =
     useState<SearchFilterProperties>({
       propertyTypesList: undefined,
@@ -32,12 +34,23 @@ const SearchBar = ({ onFilter }: { onFilter: () => void }) => {
       completionStatusList: undefined,
       rentFrequencyList: undefined,
       priceRange: undefined,
+      areaRange: undefined,
+      areaUnitsList: undefined,
     });
   const [filtersState, filtersDispatch] = useFilters();
   const [openFilter, setOpenFilter] = useState(false);
 
   const handleResetFilters = () => {
-    filtersDispatch({ type: "resetFilters" });
+    filtersDispatch({
+      type: "resetFilters",
+      payload: {
+        minSelectedArea: filtersProperties.areaRange[0],
+        maxSelectedArea: filtersProperties.areaRange[1],
+        minSelectedPrice: filtersProperties.priceRange[0],
+        maxSelectedPrice: filtersProperties.priceRange[1],
+        selectedAreaUnit: filtersProperties.areaUnitsList[0].name,
+      },
+    });
   };
 
   const getPropertyTypesList = async () => {
@@ -129,33 +142,61 @@ const SearchBar = ({ onFilter }: { onFilter: () => void }) => {
     }));
   };
 
-  const getPriceRange = async () => {
-    const resp = await getPropertiesPrices();
-    const pricesArr = resp.data.map((property) => {
-      return property.attributes.price;
-    });
-    const sortedPrices = pricesArr.sort((a, b) => a - b);
+  const getFiltersOptionsList = async () => {
+    const respFiltersOptions = await fetchFilterOptionsList();
+
+    const priceRange = respFiltersOptions?.attributes?.priceRange;
+    const areaRange = respFiltersOptions?.attributes?.areaRange;
+
+    const areaUnitsList = respFiltersOptions?.attributes?.areaUnits?.data?.map(
+      (unit) => {
+        return {
+          id: unit.id,
+          name: unit.attributes.name,
+        };
+      },
+    );
 
     setFiltersProperties((oldState) => ({
       ...oldState,
-      priceRange: [sortedPrices[0], sortedPrices[sortedPrices.length - 1]],
+      areaRange: [areaRange.minRange, areaRange.maxRange],
+      areaUnitsList: areaUnitsList,
+      priceRange: [priceRange.minRange, priceRange.maxRange],
     }));
 
-    filtersDispatch({ type: "setMinSelectedPrice", payload: sortedPrices[0] });
+    filtersDispatch({
+      type: "setMinSelectedArea",
+      payload: areaRange.minRange,
+    });
+    filtersDispatch({
+      type: "setMaxSelectedArea",
+      payload: areaRange.maxRange,
+    });
+    filtersDispatch({
+      type: "setSelectedAreaUnit",
+      payload: areaUnitsList[0].name,
+    });
+    filtersDispatch({
+      type: "setMinSelectedPrice",
+      payload: priceRange.minRange,
+    });
     filtersDispatch({
       type: "setMaxSelectedPrice",
-      payload: sortedPrices[sortedPrices.length - 1],
+      payload: priceRange.maxRange,
     });
   };
 
   const fetchFilterProperties = async () => {
+    setLoading(true);
     try {
       await getPropertyTypesList();
       await getCompletionStatusList();
       await getPropertyPurposeList();
       await getProjectsList();
       await getRentFrequencyList();
-      await getPriceRange();
+      await getFiltersOptionsList();
+      filtersDispatch({ type: "setFilterIsSelected", payload: false });
+      setLoading(false);
     } catch (error) {
       console.log(error);
     }
@@ -165,10 +206,14 @@ const SearchBar = ({ onFilter }: { onFilter: () => void }) => {
     fetchFilterProperties();
   }, []);
 
+  if (loading) {
+    return <SearchBarSkeleton />;
+  }
+
   return (
     <section className="container relative my-4 flex flex-col">
       <div
-        className="md:hidden w-full flex justify-between items-center border border-nk-gray bg-white rounded-full px-5 py-2 cursor-pointer"
+        className="md:hidden w-full flex justify-between items-center border border-nk-gray bg-white rounded-full px-5 py-2 mb-6 cursor-pointer"
         onClick={() => setOpenFilter(true)}
       >
         <p className="text-nk-gray">Search here</p>
@@ -217,39 +262,41 @@ const SearchBar = ({ onFilter }: { onFilter: () => void }) => {
         </button>
       </div>
 
-      <div className="hidden md:flex ml-auto">
-        {/* <button
-          className="flex items-center justify-center bg-white hover:text-nk-red rounded-full px-5 py-1.5 cursor-pointer shadow-3xl mr-4 transition-colors"
-          onClick={handleResetFilters}
-        >
-          Clear Filters
-          <svg
-            className="w-3.5 h-3.5 ml-2 text-nk-red"
-            viewBox="0 0 31 31"
-            fill="currentColor"
-            xmlns="http://www.w3.org/2000/svg"
+      <div className="flex ml-auto">
+        {filtersState.filterIsSelected && (
+          <button
+            className="flex items-center justify-center bg-white hover:text-nk-red rounded-full px-5 py-1.5 cursor-pointer shadow-3xl transition-colors"
+            onClick={handleResetFilters}
           >
-            <rect
-              x="0.980469"
-              y="3.05347"
-              width="4.06338"
-              height="38.3123"
-              rx="2.03169"
-              transform="rotate(-45 0.980469 3.05347)"
-            />
-            <rect
-              x="28.0713"
-              y="0.180176"
-              width="4.06338"
-              height="38.3123"
-              rx="2.03169"
-              transform="rotate(45 28.0713 0.180176)"
-            />
-          </svg>
-        </button> */}
+            Clear Filters
+            <svg
+              className="w-3.5 h-3.5 ml-2 text-nk-red"
+              viewBox="0 0 31 31"
+              fill="currentColor"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <rect
+                x="0.980469"
+                y="3.05347"
+                width="4.06338"
+                height="38.3123"
+                rx="2.03169"
+                transform="rotate(-45 0.980469 3.05347)"
+              />
+              <rect
+                x="28.0713"
+                y="0.180176"
+                width="4.06338"
+                height="38.3123"
+                rx="2.03169"
+                transform="rotate(45 28.0713 0.180176)"
+              />
+            </svg>
+          </button>
+        )}
 
         <button
-          className="flex items-center justify-center bg-white hover:text-nk-red rounded-full px-5 py-1.5 cursor-pointer shadow-3xl"
+          className="hidden md:flex items-center justify-center ml-4 bg-white hover:text-nk-red rounded-full px-5 py-1.5 cursor-pointer shadow-3xl"
           onClick={() => setOpenFilter(true)}
         >
           Filters
@@ -269,7 +316,12 @@ const SearchBar = ({ onFilter }: { onFilter: () => void }) => {
         </button>
       </div>
 
-      <FiltersModal open={openFilter} onClose={() => setOpenFilter(false)} />
+      <FiltersModal
+        open={openFilter}
+        onClose={() => setOpenFilter(false)}
+        filtersProperties={filtersProperties}
+        onFilter={onFilter}
+      />
     </section>
   );
 };

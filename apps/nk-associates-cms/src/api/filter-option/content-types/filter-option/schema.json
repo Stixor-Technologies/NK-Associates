@@ -1,0 +1,32 @@
+{
+  "kind": "singleType",
+  "collectionName": "filter_options",
+  "info": {
+    "singularName": "filter-option",
+    "pluralName": "filter-options",
+    "displayName": "Filter-Options",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "areaRange": {
+      "type": "component",
+      "repeatable": false,
+      "component": "area-range.area-range",
+      "required": true
+    },
+    "areaUnits": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::area-unit.area-unit"
+    },
+    "priceRange": {
+      "type": "component",
+      "repeatable": false,
+      "component": "price-range.price-range"
+    }
+  }
+}

@@ -21,8 +21,15 @@ const PropertyCard: FC<CardProps> = ({
   actSim,
   actFeatured,
 }) => {
-  const { title, category, purpose, area, area_type, type, price, address } =
-    property?.attributes;
+  const {
+    title,
+    area,
+    area_type,
+    price,
+    address,
+    property_category,
+    property_purpose,
+  } = property?.attributes;
   const id = property?.id;
   const thumbnailImage =
     property?.attributes?.image_thumbnail?.data?.attributes?.url;
@@ -98,16 +105,20 @@ const PropertyCard: FC<CardProps> = ({
       >
         <div className="flex items-center justify-between py-3">
           <div className="flex items-center gap-2">
-            <span
-              className={`rounded-full bg-white px-4 py-1 text-nk-gray shadow-lg ${categoryTextSize}`}
-            >
-              {category}
-            </span>
-            <span
-              className={`rounded-full bg-white px-4 py-1 text-nk-gray shadow-lg ${categoryTextSize}`}
-            >
-              {purpose}
-            </span>
+            {property_category && property_category?.data && (
+              <span
+                className={`rounded-full bg-white px-4 py-1 text-nk-gray shadow-lg ${categoryTextSize}`}
+              >
+                {property_category?.data?.attributes?.name}
+              </span>
+            )}
+            {property_purpose && property_purpose?.data && (
+              <span
+                className={`rounded-full bg-white px-4 py-1 text-nk-gray shadow-lg ${categoryTextSize}`}
+              >
+                {property_purpose?.data?.attributes?.name}
+              </span>
+            )}
           </div>
 
           <div className="flex items-center gap-1">

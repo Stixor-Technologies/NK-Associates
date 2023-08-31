@@ -1,0 +1,22 @@
+{
+  "collectionName": "components_area_range_area_ranges",
+  "info": {
+    "displayName": "Area-Range",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "minRange": {
+      "type": "integer",
+      "required": true,
+      "min": 1,
+      "default": 1
+    },
+    "maxRange": {
+      "required": true,
+      "type": "integer",
+      "default": 1,
+      "min": 1
+    }
+  }
+}

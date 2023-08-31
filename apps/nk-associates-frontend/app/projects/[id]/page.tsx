@@ -1,6 +1,5 @@
 import Link from "next/link";
 import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 import ProjectIntroduction from "../../../components/project-details/project-introduction";
 import ProjectGallery from "../../../components/project-details/project-gallery";
 import ProjectTimeline from "../../../components/project-details/project-timeline";
@@ -16,8 +15,6 @@ type ProjectDetailProps = {
     id: string;
   };
 };
-
-gsap.registerPlugin(ScrollTrigger);
 
 async function ProjectDetails({ params: { id } }: ProjectDetailProps) {
   const { attributes: project }: Project = await getProjectDetail(id);

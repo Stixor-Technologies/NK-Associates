@@ -1,5 +1,5 @@
 "use client";
-import { useLayoutEffect } from "react";
+import { useEffect } from "react";
 import { gsap } from "gsap";
 
 import { convertToPakistaniNumbering } from "../../utils/utils";
@@ -57,7 +57,7 @@ const ProjectIntroduction = ({
     },
   ];
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     gsap.to("[data-project-title]", {
       opacity: 1,
       transform: "translateY(0%)",

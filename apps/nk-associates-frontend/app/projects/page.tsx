@@ -4,15 +4,12 @@ import { getProjects } from "../../utils/api-calls";
 import ProjectCardItem from "../../components/projects/project-card/project-card-item";
 import LinkButton from "../../components/button/link-button";
 import { Project } from "../../utils/types/types";
-import Spinner from "../../components/spinner";
+import CursorUtility from "../../utils/cursor-utility";
 import { gsap } from "gsap";
 import InfiniteScroll from "react-infinite-scroll-component";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import CursorUtility from "../../utils/cursor-utility";
+import ProjectListSkeleton from "../../components/skeletons/projects/project-list-skeleton";
 
 type OptionsType = "All" | "Residential" | "Commercial" | "Hotel";
-
-gsap.registerPlugin(ScrollTrigger);
 
 const optionsList = ["Residential", "Commercial", "Hotel", "All"];
 
@@ -96,7 +93,9 @@ export default function Projects() {
           });
         }
       }, main.current); // <- Scope!
-      return () => ctx.revert(); // <- Cleanup!
+      return () => {
+        ctx.revert();
+      }; // <- Cleanup!
     }
   }, [projectsData]);
 
@@ -139,7 +138,7 @@ export default function Projects() {
                 dataLength={projectsData.length}
                 next={getProjectsData}
                 hasMore={total !== projectsData.length}
-                loader={loading && <Spinner />}
+                loader={loading && <ProjectListSkeleton />}
               >
                 <div
                   ref={main}

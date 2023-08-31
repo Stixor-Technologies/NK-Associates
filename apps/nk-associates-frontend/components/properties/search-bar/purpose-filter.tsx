@@ -4,6 +4,7 @@ const PurposeFilter = ({
   propertyPurposeList,
   rentFrequencyList,
   completionStatusList,
+  type = "dropdown",
 }) => {
   const [filtersState, filtersDispatch] = useFilters();
 
@@ -92,6 +93,66 @@ const PurposeFilter = ({
           </li>
         ));
 
+  if (type === "modal") {
+    return (
+      <div className={`flex ${type === "modal" ? "" : "flex-col"}`}>
+        <ul
+          className={`flex ${
+            type === "modal" ? "flex-col w-full md:max-w-[10rem]" : "flex-wrap"
+          } justify-center gap-2`}
+        >
+          {propertyPurposeList.map((purpose, index) =>
+            type === "modal" ? (
+              <li className="w-full" key={index}>
+                <input
+                  id={purpose.name}
+                  className="peer hidden"
+                  type="radio"
+                  name="purpose-radio"
+                  value={purpose.id}
+                  checked={filtersState.selectedPurposeId === purpose.id}
+                  onChange={() => handleSelectedPurposeChange(purpose.id)}
+                />
+
+                <label
+                  htmlFor={purpose.name}
+                  className="w-full block md:max-w-[10rem] px-4 py-2 text-lg cursor-pointer rounded-lg justify-center items-center text-center text-nk-black border border-nk-red hover:text-nk-red peer-checked:bg-nk-red peer-checked:text-white transition-colors"
+                >
+                  {purpose.name}
+                </label>
+              </li>
+            ) : (
+              <li key={index}>
+                <input
+                  id={purpose.name}
+                  className="peer hidden"
+                  type="radio"
+                  name="purpose-radio"
+                  value={purpose.id}
+                  checked={filtersState.selectedPurposeId === purpose.id}
+                  onChange={() => handleSelectedPurposeChange(purpose.id)}
+                />
+
+                <label
+                  htmlFor={purpose.name}
+                  className="px-4 py-2 text-lg cursor-pointer rounded-full justify-center items-center w-full text-nk-black border border-nk-red hover:text-nk-red peer-checked:bg-nk-red peer-checked:text-white transition-colors"
+                >
+                  {purpose.name}
+                </label>
+              </li>
+            ),
+          )}
+        </ul>
+
+        <hr className="my-4" />
+
+        <ul className="flex flex-wrap justify-center gap-2">
+          {subOptionsContent}
+        </ul>
+      </div>
+    );
+  }
+
   return (
     <>
       <ul className="flex flex-wrap justify-center gap-2">
@@ -106,6 +167,7 @@ const PurposeFilter = ({
               checked={filtersState.selectedPurposeId === purpose.id}
               onChange={() => handleSelectedPurposeChange(purpose.id)}
             />
+
             <label
               htmlFor={purpose.name}
               className="px-4 py-2 text-lg cursor-pointer rounded-full justify-center items-center w-full text-nk-black border border-nk-red hover:text-nk-red peer-checked:bg-nk-red peer-checked:text-white transition-colors"

@@ -1,5 +1,5 @@
 "use client";
-import { useLayoutEffect, useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { gsap } from "gsap";
 import "swiper/css";
@@ -8,38 +8,39 @@ import "swiper/css/thumbs";
 import "swiper/css/pagination";
 import Image from "next/image";
 import { Thumbs, FreeMode } from "swiper/modules";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 import CursorUtility from "../../utils/cursor-utility";
+import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 
 type PropTypes = {
   pictures: string[];
 };
-
-gsap.registerPlugin(ScrollTrigger);
 
 const ProjectGallery = ({ pictures }: PropTypes) => {
   const [thumbsSwiper, setThumbsSwiper] = useState(null);
   let cursorUtilityRef = useRef<CursorUtility | null>(null);
   const galleryContainer = useRef<HTMLDivElement | null>(null);
 
-  useLayoutEffect(() => {
-    gsap.to("[data-project-gallery] h2", {
-      opacity: 1,
-      transform: "translateY(0%)",
+  useEffect(() => {
+    const projectGalleryTl = gsap.timeline({
       scrollTrigger: {
+        id: "project-gallery-trigger",
         trigger: "[data-project-gallery]",
         start: "top 80%",
       },
     });
 
-    gsap.to("[data-project-gallery-content]", {
+    projectGalleryTl.to("[data-project-gallery] h2", {
+      opacity: 1,
+      transform: "translateY(0%)",
+    });
+
+    projectGalleryTl.to("[data-project-gallery-content]", {
       opacity: 1,
       duration: 0.8,
-      scrollTrigger: {
-        trigger: "[data-project-gallery]",
-        start: "top 70%",
-      },
     });
+    return () => {
+      ScrollTrigger.getById("project-gallery-trigger")?.kill();
+    };
   }, []);
 
   useEffect(() => {

@@ -2,9 +2,7 @@
 import React, { FC, useEffect, useRef } from "react";
 import Tile from "../../shared/tile";
 import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-
-gsap.registerPlugin(ScrollTrigger);
+import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 
 interface TileSectionProps {
   category: string;
@@ -34,11 +32,15 @@ const TileSection: FC<TileSectionProps> = ({
         duration: 0.5,
         ease: "powe2.out",
         scrollTrigger: {
+          id: "property-tile-trigger",
           trigger: divElement,
-          start: "top 70%",
+          start: "top 75%",
         },
       });
     }
+    return () => {
+      ScrollTrigger.getById("property-tile-trigger")?.kill();
+    };
   }, []);
 
   return (
@@ -66,7 +68,7 @@ const TileSection: FC<TileSectionProps> = ({
       <div className="mx-auto flex rounded-r-xl w-full max-w-[300px] justify-center gap-1 shadow-3xl sm:max-w-sm md:max-w-md lg:flex-grow">
         <Tile
           label="Price"
-          value={`PKR: ${price.toString()}`}
+          value={`PKR: ${price?.toString()}`}
           className="flex-grow rounded-l-xl lg:rounded-l-none"
         />
         <Tile label="City" value={city} className="flex-grow rounded-r-xl" />

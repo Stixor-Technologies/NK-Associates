@@ -2,9 +2,7 @@
 import React, { useRef, useEffect } from "react";
 import Image from "next/image";
 import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/all";
-
-gsap.registerPlugin(ScrollTrigger);
+import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 
 interface CeoMessageProps {
   ceoMessage: string;
@@ -28,6 +26,7 @@ const CeoMessage: React.FC<CeoMessageProps> = ({
       const el2 = textRef.current;
       const tl = gsap.timeline({
         scrollTrigger: {
+          id: "ceo-message-trigger",
           trigger: startRef.current,
           start: "50% 70%",
           end: "center 50%",
@@ -38,6 +37,10 @@ const CeoMessage: React.FC<CeoMessageProps> = ({
         duration: 0.8,
       }).from(el1, { x: -1000, duration: 0.8 }, "<");
     }
+
+    return () => {
+      ScrollTrigger.getById("ceo-message-trigger")?.kill();
+    };
   }, []);
 
   return (
