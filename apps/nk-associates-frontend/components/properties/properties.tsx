@@ -9,7 +9,6 @@ import React, {
 import Image from "next/image";
 import { GoogleMap, Marker, InfoWindow } from "@react-google-maps/api";
 import PropertyList from "./property-list";
-import Spinner from "../spinner";
 import InfiniteScroll from "react-infinite-scroll-component";
 import { getGridProperties, getMapProperties } from "../../utils/api-calls";
 import { Property } from "../../utils/types/types";
@@ -20,6 +19,7 @@ import PropertyCard from "./property-card";
 import MapStyles from "../../utils/map-styles.json";
 import "./map-info-window.css";
 import SearchBar from "./search-bar";
+import PropertyListSkeleton from "../skeletons/property/property-list-skeleton";
 
 import useFilters, { FiltersProvider } from "../../utils/useFilters";
 
@@ -154,15 +154,13 @@ const Properties = () => {
       {isList && (
         <>
           {isLoading && gridProperties.length === 0 ? (
-            <div className="min-h-[50vh] flex flex-1">
-              <Spinner />
-            </div>
+            <PropertyListSkeleton />
           ) : gridProperties && gridProperties.length > 0 ? (
             <InfiniteScroll
               dataLength={gridProperties.length}
               next={fetchGridData}
               hasMore={total !== gridProperties.length}
-              loader={isLoading && <Spinner />}
+              loader={isLoading && <PropertyListSkeleton />}
               className={isList ? "block" : "hidden"}
             >
               <PropertyList properties={gridProperties} />

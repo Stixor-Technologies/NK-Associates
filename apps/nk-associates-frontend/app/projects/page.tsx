@@ -5,9 +5,9 @@ import ProjectCardItem from "../../components/projects/project-card/project-card
 import LinkButton from "../../components/button/link-button";
 import { Project } from "../../utils/types/types";
 import { BASE_URL } from "../../utils/constants";
-import Spinner from "../../components/spinner";
 import { gsap } from "gsap";
 import InfiniteScroll from "react-infinite-scroll-component";
+import ProjectListSkeleton from "../../components/skeletons/projects/project-list-skeleton";
 
 type OptionsType = "All" | "Residential" | "Commercial" | "Hotel";
 
@@ -126,7 +126,7 @@ export default function Projects() {
                 dataLength={projectsData.length}
                 next={getProjectsData}
                 hasMore={total !== projectsData.length}
-                loader={loading && <Spinner />}
+                loader={loading && <ProjectListSkeleton />}
               >
                 <div
                   ref={main}
