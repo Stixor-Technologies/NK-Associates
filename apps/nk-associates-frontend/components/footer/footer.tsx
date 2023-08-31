@@ -232,13 +232,13 @@ async function Footer() {
           </span>
           <div className="mx-auto items-center flex justify-center gap-6 py-2 pb-2 text-xs sm:mt-0 md:text-base lg:text-lg">
             <Link
-              href="#"
+              href="terms-and-conditions"
               className="bg-gradient-to-r from-nk-white to-nk-white bg-[length:0%_8%] bg-left-bottom bg-no-repeat font-metropolis-thin transition-all duration-500 ease-out hover:bg-[length:100%_8%]"
             >
               Terms of Use
             </Link>
             <Link
-              href="#"
+              href="privacy-policy"
               className="bg-gradient-to-r from-nk-white to-nk-white bg-[length:0%_8%] bg-left-bottom bg-no-repeat font-metropolis-thin transition-all duration-500 ease-out hover:bg-[length:100%_8%]"
             >
               Privacy Policy
