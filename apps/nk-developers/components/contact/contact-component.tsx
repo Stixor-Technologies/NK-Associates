@@ -2,7 +2,7 @@
 import React, { useEffect } from "react";
 import Image from "next/image";
 import LinkButton from "../../components/button/link-button";
-import facebookIcon from "../../public/assets/icons/facebook.svg";
+import facebookIcon from "../../public/assets/icons/Facebook.svg";
 import instagramIcon from "../../public/assets/icons/instagram.svg";
 import youtubeIcon from "../../public/assets/icons/youtube.svg";
 import twitterIcon from "../../public/assets/icons/Twitter.svg";
