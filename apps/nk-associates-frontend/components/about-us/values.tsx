@@ -46,11 +46,18 @@ const ValuesCard: FC<CardProps> = ({ about }) => {
                   />
                 </div>
                 <p className="font-metropolis-light text-nk-dark-gray text-left text-base lg:pr-10">
-                  <span className="font-metropolis-semibold text-[1.375rem]]">
-                    {item.description.split(":")[0].trim() + " : "}
-                  </span>
-
-                  {item.description.split(":")[1]}
+                  {item.description.includes(":") ? (
+                    <p>
+                      <span className="font-metropolis-semibold text-[1.375rem]]">
+                        {item.description.split(":")[0].trim() + " : "}
+                      </span>
+                      {item.description.split(":")[1]}
+                    </p>
+                  ) : (
+                    <p>
+                      <span>{item.description}</span>
+                    </p>
+                  )}
                 </p>
               </div>
             ))}
