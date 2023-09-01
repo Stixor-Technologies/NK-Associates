@@ -58,14 +58,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <head>
-        {/* <link
-          rel="stylesheet"
-          href="https://unpkg.com/mouse-follower@1/dist/mouse-follower.min.css"
-        />
-
-        <script src="https://unpkg.com/mouse-follower@1/dist/mouse-follower.min.js"></script> */}
-      </head>
+      <head></head>
       <body
         className={`${metropolisRegular.variable} ${metropolisMedium.variable} ${metropolisSemiBold.variable} ${metropolisBold.variable} ${metropolisExtraBold.variable} ${metropolisLight.variable} ${metropolisExtraLight.variable} ${metropolisThin.variable} bg-nk-background font-metropolis`}
       >
