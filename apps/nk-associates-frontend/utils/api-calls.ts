@@ -57,6 +57,10 @@ const applyFilters = (filters: FiltersStateType) => {
     if (filters.selectedAreaUnit) {
       filtersString += `&filters[area_unit][name][$eq]=${filters.selectedAreaUnit}`;
     }
+
+    if (filters.location) {
+      filtersString += `&filters[property_location][id][$eq]=${filters.location}`;
+    }
   }
   return filtersString;
 }
@@ -182,6 +186,16 @@ export const fetchPropertyTypesList = async () => {
   }
 };
 
+export const fetchFilterProjectsList = async () => {
+  try {
+    const resp = await fetch(`${BASE_URL}/api/projects?fields[0]=title`);
+    const data = await resp.json();
+    return data?.data;
+  } catch (error) {
+    console.error("There was an error getting the Filter Projects List", error);
+  }
+};
+
 export const fetchPropertyPurposeList = async () => {
   try {
     const resp = await fetch(`${BASE_URL}/api/property-purposes`);
@@ -190,6 +204,19 @@ export const fetchPropertyPurposeList = async () => {
   } catch (error) {
     console.error(
       "There was an error getting the Property Purpose List",
+      error,
+    );
+  }
+};
+
+export const fetchPropertyLocationList = async () => {
+  try {
+    const resp = await fetch(`${BASE_URL}/api/property-locations`);
+    const data = await resp.json();
+    return data?.data;
+  } catch (error) {
+    console.error(
+      "There was an error getting the Property Location List",
       error,
     );
   }
