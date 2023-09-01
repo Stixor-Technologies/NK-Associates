@@ -53,6 +53,8 @@ const SearchBar = ({ onFilter }: { onFilter: () => void }) => {
         selectedAreaUnit: filtersProperties.areaUnitsList[0].name,
       },
     });
+
+    onFilter();
   };
 
   const getPropertyTypesList = async () => {
