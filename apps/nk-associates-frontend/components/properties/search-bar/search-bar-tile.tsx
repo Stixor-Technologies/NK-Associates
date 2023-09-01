@@ -86,6 +86,7 @@ const SearchBarTile = ({ tile, filtersProperties }: PropsType) => {
   }, [resize]);
 
   const handleFilterOptionClick = () => {
+    console.log("first");
     setActiveFilter(!activeFilter);
   };
 

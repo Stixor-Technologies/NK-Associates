@@ -13,11 +13,11 @@ const SmoothScrollContainer = ({ children }: { children: ReactNode }) => {
 
   useIsomorphicLayoutEffect(() => {
     gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
-    const smootherInstance = ScrollSmoother.create({
-      smooth: 2,
-      normalizeScroll: true,
-      effects: true,
-    });
+    // const smootherInstance = ScrollSmoother.create({
+    //   smooth: 2,
+    //   normalizeScroll: true,
+    //   effects: true,
+    // });
 
     const excludedPaths = [
       "/properties",
@@ -30,11 +30,11 @@ const SmoothScrollContainer = ({ children }: { children: ReactNode }) => {
         typeof path === "string" ? pathname === path : path.test(pathname),
       )
     ) {
-      smootherInstance.kill();
+      // smootherInstance.kill();
     }
 
     return () => {
-      smootherInstance.kill();
+      // smootherInstance.kill();
     };
   }, [pathname]);
 
