@@ -228,9 +228,27 @@ const SearchBar: FC<SearBarProps> = ({ onFilter, actHome = false }) => {
 
   const handleSearchHome = () => {
     console.log("search");
-    // router.push("/properties");
-    console.log("/properties" + "?" + createQueryString("sort", "asc"));
-    // router.push("/properties" + "?" + createQueryString("sort", "asc"));
+    console.log(filtersState);
+    const selectedKeys = [
+      "selectedTypeId",
+      "minSelectedPrice",
+      "maxSelectedPrice",
+      "selectedProjectId",
+      "selectedPurposeId",
+    ];
+    const filterObject = {};
+
+    const params = new URLSearchParams();
+
+    for (const key of selectedKeys) {
+      const value = filtersState[key];
+      if (value !== undefined) {
+        filterObject[key] = value;
+        params.set(key, value);
+      }
+    }
+    const queryString = params.toString();
+    router.push(`/properties?${queryString}`);
   };
 
   return (

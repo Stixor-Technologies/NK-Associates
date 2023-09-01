@@ -5,10 +5,6 @@ import { FiltersProvider } from "../../utils/useFilters";
 import useFilters from "../../utils/useFilters";
 
 const HomeSearch = () => {
-  const [filtersState, filtersDispatch] = useFilters();
-
-  console.log(filtersState);
-
   return <SearchBar actHome />;
 };
 

@@ -12,7 +12,7 @@ import PropertyList from "./property-list";
 import InfiniteScroll from "react-infinite-scroll-component";
 import { getGridProperties, getMapProperties } from "../../utils/api-calls";
 import { Property } from "../../utils/types/types";
-import { debounce, property } from "lodash";
+import { debounce } from "lodash";
 import MapBtn from "../../public/assets/icons/map-list-icon.svg";
 import ListIcon from "../../public/assets/icons/list-icon.svg";
 import PropertyCard from "./property-card";
@@ -20,6 +20,7 @@ import MapStyles from "../../utils/map-styles.json";
 import "./map-info-window.css";
 import SearchBar from "./search-bar";
 import PropertyListSkeleton from "../skeletons/property/property-list-skeleton";
+import { useSearchParams } from "next/navigation";
 
 import useFilters, { FiltersProvider } from "../../utils/useFilters";
 
@@ -29,8 +30,10 @@ const center = {
 };
 
 const Properties = () => {
-  const [filtersState, filtersDispatch] = useFilters();
+  const searchParams = useSearchParams();
+  const queryParams = Object.fromEntries(searchParams);
 
+  const [filtersState, filtersDispatch] = useFilters();
   const [isList, setIsList] = useState<boolean>(true);
   const [gridProperties, setGridProperties] = useState<Property[]>([]);
   const [total, setTotal] = useState<number | null>(null);
@@ -121,6 +124,7 @@ const Properties = () => {
   };
 
   const handleRefreshData = () => {
+    console.log(filtersState);
     if (isList) {
       fetchGridData(true);
     } else {
