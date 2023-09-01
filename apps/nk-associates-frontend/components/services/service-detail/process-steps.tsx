@@ -71,9 +71,9 @@ const ProcessSteps: FC<ProcessStepsProps> = ({ process }) => {
                   return (
                     <div
                       key={index}
-                      className={` flex-shrink-0 process-card relative flex flex-col lg:flex-row lg:items-center w-[100%] border bg-nk-white rounded-xl min-h-[35rem] shadow-md px-8 py-6 md:gap-[3.125rem] md:px-12 md:py-16`}
+                      className={` flex-shrink-0 process-card relative flex flex-col lg:flex-row lg:items-center w-[100%] border bg-nk-white rounded-xl sm:min-h-[35rem] gap-6 shadow-md px-8 py-6 md:gap-[3.125rem] md:px-12 md:py-16`}
                     >
-                      <div className="relative shrink-0 self-center w-[25rem] h-[25rem] md:w-[37.5rem] md:h-[37.5rem] lg:w-[40%] lg:h-[20.125rem]">
+                      <div className="relative shrink-0 self-center w-[15rem] h-[15rem] sm:w-[25rem] sm:h-[25rem] md:w-[37.5rem] md:h-[37.5rem] lg:w-[40%] lg:h-[20.125rem]">
                         <Image
                           src={`${BASE_URL}${processImage || "/"}`}
                           fill
@@ -85,7 +85,7 @@ const ProcessSteps: FC<ProcessStepsProps> = ({ process }) => {
                         <h2 className="text-2xl font-metropolis-semibold md:text-[2.5rem]">
                           {`${step?.process_title}: `}
                         </h2>
-                        <p className="text-xl font-metropolis-thin text-nk-black leading-tight mt-6 md:text-[1.75rem]">
+                        <p className="text-xl font-metropolis-thin text-nk-black leading-tight mt-3 sm:mt-6 md:text-[1.75rem]">
                           {`${step?.process_description}`}
                         </p>
                       </div>
