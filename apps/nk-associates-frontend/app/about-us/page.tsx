@@ -52,7 +52,7 @@ const AboutUs = async () => {
       <ServicesOverview />
 
       <div className="container pt-[3.25rem] lg:pt-[6.688rem] text-center">
-        <div className="text-nk-dark-gray font-metropolis-bold text-[2.25rem] text-center mb-[3.625rem]">
+        <div className="text-nk-dark-gray font-metropolis-bold text-[2.25rem] text-center">
           Meet Our Best-In-Class Team
         </div>
         <div className="pt-12 -mr-[1.5rem]">
