@@ -57,7 +57,7 @@ const ServiceCard: FC<CardProps> = ({ service }) => {
               <Image
                 src={`${BASE_URL}${company_logo}`}
                 alt="service Logo"
-                className="mx-auto pt-2 sm:mx-0 md:pt-0"
+                className="mx-auto pt-2 sm:mx-0 md:pt-0 w-[10.313rem] h-[2.563rem] object-cover"
                 width={190}
                 height={47}
               />
