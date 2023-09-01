@@ -50,7 +50,7 @@ const ValuesCard: FC<CardProps> = ({ about }) => {
                     {item.description.split(":")[0].trim() + " : "}
                   </span>
 
-                  {item.description}
+                  {item.description.split(":")[1]}
                 </p>
               </div>
             ))}
