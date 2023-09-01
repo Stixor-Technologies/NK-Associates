@@ -60,7 +60,7 @@ async function Footer() {
           D o w n l o a d
         </div>
         <div className="flex flex-row flex-wrap pt-[1.278rem] pb-[1.3rem] w-full justify-center">
-          <Link href={"Put appstore link here" || "#"}>
+          <Link href="https://www.apple.com/app-store/">
             <Image
               src={AppStoreIcon}
               alt="App Store"
@@ -68,7 +68,7 @@ async function Footer() {
             />
           </Link>
 
-          <Link href={"put playstore link here" || "#"}>
+          <Link href="https://play.google.com/">
             <Image
               src={GooglePlayIcon}
               alt="Google Play"
@@ -77,7 +77,7 @@ async function Footer() {
           </Link>
 
           <Link
-            href={"Put app gallery link here" || "#"}
+            href="https://appgallery.huawei.com/"
             className="justify-center items-center"
           >
             <Image
