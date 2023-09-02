@@ -32,6 +32,7 @@ const center = {
 const Properties = () => {
   const searchParams = useSearchParams();
   const queryParams = Object.fromEntries(searchParams);
+  // console.log("queryParams", queryParams);
 
   const [filtersState, filtersDispatch] = useFilters();
   const [isList, setIsList] = useState<boolean>(true);
@@ -48,9 +49,10 @@ const Properties = () => {
   const mapRef = useRef<google.maps.Map | null>(null);
   const buttonRef = useRef<HTMLButtonElement>(null);
 
+  console.log("useFilterState", filtersState);
+
   const fetchGridData = async (freshData?: boolean) => {
     setIsLoading(true);
-
     const resp = await getGridProperties(
       freshData ? 0 : gridProperties.length,
       12,
@@ -132,8 +134,32 @@ const Properties = () => {
     }
   };
 
+  console.log(filtersState);
+
   useEffect(() => {
-    fetchGridData();
+    if (queryParams) {
+      filtersDispatch({
+        type: "homeSearch",
+        payload: {
+          selectedTypeId: queryParams?.selectedTypeId
+            ? Number(queryParams.selectedTypeId)
+            : undefined,
+          minSelectedPrice: queryParams?.minSelectedPrice
+            ? Number(queryParams.minSelectedPrice)
+            : undefined,
+          maxSelectedPrice: queryParams?.maxSelectedPrice
+            ? Number(queryParams.maxSelectedPrice)
+            : undefined,
+          selectedProjectId: queryParams?.selectedProjectId
+            ? Number(queryParams.selectedProjectId)
+            : undefined,
+          selectedPurposeId: queryParams?.selectedPurposeId
+            ? Number(queryParams.selectedPurposeId)
+            : undefined,
+        },
+      });
+    }
+    // fetchGridData(queryParams ? true : false);
   }, []);
 
   return (
@@ -244,6 +270,8 @@ const Properties = () => {
     </>
   );
 };
+
+// export default Properties;
 
 export default function PropertiesWithProvider() {
   return (

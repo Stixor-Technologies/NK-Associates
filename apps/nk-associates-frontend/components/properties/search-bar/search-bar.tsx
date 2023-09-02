@@ -219,16 +219,7 @@ const SearchBar: FC<SearBarProps> = ({ onFilter, actHome = false }) => {
     return <SearchBarSkeleton />;
   }
 
-  const createQueryString = (name, value) => {
-    const params = new URLSearchParams();
-    params.set(name, value);
-
-    return params.toString();
-  };
-
   const handleSearchHome = () => {
-    console.log("search");
-    console.log(filtersState);
     const selectedKeys = [
       "selectedTypeId",
       "minSelectedPrice",

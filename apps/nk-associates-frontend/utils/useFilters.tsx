@@ -72,6 +72,16 @@ type ACTIONTYPE =
       payload: boolean;
     }
   | {
+      type: "homeSearch";
+      payload?: {
+        selectedTypeId?: number;
+        minSelectedPrice?: number;
+        maxSelectedPrice?: number;
+        selectedProjectId?: number;
+        selectedPurposeId?: number;
+      };
+    }
+  | {
       type: "resetFilters";
       payload?: {
         minSelectedArea: number;
@@ -206,11 +216,19 @@ const reducer = (state: FiltersStateType, action: ACTIONTYPE) => {
     case "setLocation":
       console.log("do something");
       break;
+
+    case "homeSearch":
+      return {
+        ...initialState,
+        ...action.payload,
+      };
+
     case "resetFilters":
       return {
         ...initialState,
         ...action.payload,
       };
+
     default:
       throw new Error("Couldn't find provided action");
   }

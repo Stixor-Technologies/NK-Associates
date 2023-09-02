@@ -59,7 +59,7 @@ const applyFilters = (filters: FiltersStateType) => {
     }
   }
   return filtersString;
-}
+};
 
 export const getGridProperties = async (
   start: number,
@@ -70,6 +70,7 @@ export const getGridProperties = async (
   let filtersString = applyFilters(filters);
 
   try {
+    console.log("url", url + filtersString);
     const resp = await fetch(url + filtersString);
     const data = await resp.json();
     return data;
@@ -111,11 +112,11 @@ export const getPropertyDetail = async (id: string) => {
 
 export const getSimilarProperties = async (
   type: {
-      data: { id: number, attributes: { name: string } };
-    },
+    data: { id: number; attributes: { name: string } };
+  },
   category: {
-      data: { id: number, attributes: { name: string } };
-    },
+    data: { id: number; attributes: { name: string } };
+  },
   currentPropertyId: string,
 ) => {
   const FILTER_PRIORITY = [
