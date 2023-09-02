@@ -64,7 +64,7 @@ export default function RootLayout({
       >
         <Navigation />
         <main className="mt-[5.5rem]">{children}</main>
-        {/* <Footer /> */}
+        <Footer />
       </body>
     </html>
   );

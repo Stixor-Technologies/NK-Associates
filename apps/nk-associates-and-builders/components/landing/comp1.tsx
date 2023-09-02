@@ -29,7 +29,6 @@ export default function ComponentOne() {
         trigger: imageOne.current,
         start: "top 70%", // Adjust as needed
         end: "center 50%",
-        markers: true,
       },
     });
 
@@ -42,7 +41,6 @@ export default function ComponentOne() {
         trigger: imageTwo.current,
         start: "top 70%", // Adjust as needed
         end: "center 50%",
-        markers: true,
       },
     });
 
@@ -55,7 +53,6 @@ export default function ComponentOne() {
         trigger: imageThree.current,
         start: "top 70%", // Adjust as needed
         end: "center 50%",
-        markers: true,
       },
     });
   }, []);
@@ -129,21 +126,23 @@ export default function ComponentOne() {
           </div>
         </div>
       </div>
-
-      <div className="flex-grow flex md:flex-col justify-center relative overflow-x-hidden overflow-y-auto lg:-mr-[10%] lg2:-mr-[15%] min-h-[21rem] lg:min-h-[35rem]">
+      <div className="flex-grow flex md:flex-col justify-center relative overflow-x-hidden overflow-y-auto lg:-mr-[9.9%]  min-h-[21rem] lg:min-h-[35rem]">
         <Image
+          priority={true}
           ref={imageOne}
           src={rectangle6}
           alt="rectangle"
           className="absolute lg:w-[33.8rem] w-[20.5rem] lg:h-[29.1rem] h-[17.7rem] mb-[5%]  -ml-[95%] sm:-ml-[60%] md:ml-[5%] lg:ml-[0%] lg2:-ml-[10%]"
         />
         <Image
+          priority={true}
           ref={imageTwo}
           src={rectangle7}
           alt="rectangle"
           className="absolute lg:w-[33.8rem] w-[20.5rem] lg:h-[29.1rem] h-[17.7rem] mb-[5%] sm:left-[] md:ml-[32.5%] lg:ml-[25%] lg2:ml-[27%]"
         />
         <Image
+          priority={true}
           ref={imageThree}
           src={rectangle8}
           alt="rectangle"

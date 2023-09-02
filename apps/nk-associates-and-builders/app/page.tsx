@@ -6,10 +6,10 @@ import ComponentOneV2 from "../components/landing/comp1v2";
 export default function Home() {
   return (
     <div className="container ">
-      <div>
+      <div className="">
         <ComponentOne />
       </div>
-      <div className="pt-2 overflow-x-hidden">
+      <div className="pt-2">
         <ComponentTwo
           title1="How it works."
           title2="This is how our products work."

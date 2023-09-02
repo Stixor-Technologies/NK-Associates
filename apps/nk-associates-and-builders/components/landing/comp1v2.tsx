@@ -23,7 +23,6 @@ export default function ComponentOneV2() {
         trigger: imageThree.current,
         start: "top 70%", // Adjust as needed
         end: "center 50%",
-        markers: true,
       },
     });
 
@@ -36,7 +35,6 @@ export default function ComponentOneV2() {
         trigger: imageTwo.current,
         start: "top 70%", // Adjust as needed
         end: "center 50%",
-        markers: true,
       },
     });
 
@@ -49,7 +47,6 @@ export default function ComponentOneV2() {
         trigger: imageOne.current,
         start: "top 70%", // Adjust as needed
         end: "center 50%",
-        markers: true,
       },
     });
   }, []);
