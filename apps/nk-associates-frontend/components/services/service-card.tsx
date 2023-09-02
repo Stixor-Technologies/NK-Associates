@@ -17,7 +17,7 @@ const ServiceCard: FC<CardProps> = ({ service }) => {
   const company_logo = service?.attributes?.company_logo?.data?.attributes?.url;
   return (
     <div className="service-card flex-col relative items-start justify-center above-md:min-h-screen above-md:h-full">
-      <div className="left-0 right-0 my-6 border bg-custom-gradient rounded-xl flex-col md:flex-row justify-center md:my-12 md:mx-auto above-md:absolute">
+      <div className="left-0 right-0 my-6 border bg-custom-gradient rounded-xl flex-col md:flex-row justify-center md:my-0 md:mx-auto above-md:absolute">
         <div className="justify-center text-center text-nk-black p-2 sm:flex sm:gap-4 sm:p-3 md:p-4 lg:gap-8">
           <Link
             href={`services/${id}`}
