@@ -33,7 +33,6 @@
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-infinite-scroll-component": "^6.1.0",
-    "react-photo-sphere-viewer": "^3.3.5-psv5.1.4",
     "react-slider": "^2.0.6",
     "split-type": "^0.3.3",
     "swiper": "^10.0.4",

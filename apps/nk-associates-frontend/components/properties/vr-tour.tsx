@@ -4,23 +4,14 @@ import { createPortal } from "react-dom";
 import Image from "next/image";
 import { Viewer } from "@photo-sphere-viewer/core";
 import { VirtualTourPlugin } from "@photo-sphere-viewer/virtual-tour-plugin";
-import { GalleryPlugin } from "@photo-sphere-viewer/gallery-plugin";
 import { MarkersPlugin } from "@photo-sphere-viewer/markers-plugin";
 
 import "@photo-sphere-viewer/core/index.css";
 import "@photo-sphere-viewer/virtual-tour-plugin/index.css";
-import "@photo-sphere-viewer/gallery-plugin/index.css";
 import "@photo-sphere-viewer/markers-plugin/index.css";
 
 const baseUrl = "https://photo-sphere-viewer-data.netlify.app/assets/";
 const caption = "Cape Florida Light, Key Biscayne <b>&copy; Pixexid</b>";
-
-// import {
-//   ReactPhotoSphereViewer,
-//   CompassPlugin,
-//   MarkersPlugin,
-//   VirtualTourPlugin,
-// } from "react-photo-sphere-viewer";
 
 import TourIcon from "../../public/assets/icons/360-icon.svg";
 
@@ -47,7 +38,7 @@ const VRTourScreen = ({ open, onClose }: PropsType) => {
 
   const markerLighthouse = {
     id: "marker-1",
-    image: baseUrl + "pictos/pin-red.png",
+    imageLayer: baseUrl + "pictos/pin-red.png",
     tooltip: "Cape Florida Light, Key Biscayne",
     size: { width: 32, height: 32 },
     anchor: "bottom center",
@@ -58,21 +49,14 @@ const VRTourScreen = ({ open, onClose }: PropsType) => {
     if (ScreenRef?.current && open) {
       const viewer = new Viewer({
         container: ScreenRef.current,
-        panorama: `${baseUrl}tour/key-biscayne-1.jpg`,
         loadingImg: baseUrl + "loader.gif",
         touchmoveTwoFingers: true,
         mousewheelCtrlKey: true,
         defaultYaw: "130deg",
-        navbar: "zoom move gallery caption fullscreen",
+        navbar: "zoom move caption fullscreen",
 
         plugins: [
           MarkersPlugin,
-          [
-            GalleryPlugin,
-            {
-              thumbnailSize: { width: 100, height: 100 },
-            },
-          ],
           [
             VirtualTourPlugin,
             {
@@ -199,12 +183,6 @@ const VRTourScreen = ({ open, onClose }: PropsType) => {
 
       <div className="w-full h-full">
         <div ref={ScreenRef} style={{ width: "100vw", height: "100vh" }}></div>
-        {/* <ReactPhotoSphereViewer
-          src={`${baseUrl}tour/key-biscayne-1.jpg`}
-          plugins={plugins}
-          height={"100vh"}
-          width={"100%"}
-        ></ReactPhotoSphereViewer> */}
       </div>
     </section>
   );

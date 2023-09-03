@@ -128,6 +128,11 @@
       "type": "relation",
       "relation": "oneToOne",
       "target": "api::area-unit.area-unit"
+    },
+    "vr_tour": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::vr-tour.vr-tour"
     }
   }
 }
