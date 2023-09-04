@@ -21,7 +21,7 @@ const CeoMessage: React.FC<CeoMessageProps> = ({
 
   useEffect(() => {
     const screenWidth = window.innerWidth;
-    if (screenWidth >= 1024 && ceoMessage) {
+    if (screenWidth >= 1024) {
       console.log("intializeTrigger CEO");
       const el1 = ceoRef.current;
       const el2 = textRef.current;
@@ -31,7 +31,6 @@ const CeoMessage: React.FC<CeoMessageProps> = ({
           trigger: startRef.current,
           start: "50% 70%",
           end: "center 50%",
-          markers: true,
         },
       });
       tl.from(el2, {

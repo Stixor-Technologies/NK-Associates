@@ -52,17 +52,15 @@ const AboutUs = async () => {
         />
       </div>
 
-      {mission && vision && values && goals && (
-        <div className="container">
-          <CeoMessage
-            ceoImage={ceoImage}
-            ceoMessage={ceoMessage}
-            ceoName={ceoName}
-          />
-        </div>
-      )}
+      <div className="container">
+        <CeoMessage
+          ceoImage={ceoImage}
+          ceoMessage={ceoMessage}
+          ceoName={ceoName}
+        />
+      </div>
 
-      {mission && <ServicesOverview />}
+      <ServicesOverview />
 
       <div className="xl:container pt-[3.25rem] lg:pt-[6.688rem] text-center">
         <div className="text-nk-dark-gray font-metropolis-bold text-[2.25rem] text-center">

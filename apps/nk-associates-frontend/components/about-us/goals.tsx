@@ -60,7 +60,7 @@ const Goals: FC<GoalProps> = ({ mission, vision, values, goals }) => {
   }, []);
 
   useEffect(() => {
-    const cards = gsap.utils.toArray(".card");
+    const cards: HTMLDivElement[] = gsap.utils.toArray(".card");
     const textAbout: HTMLElement[] = gsap.utils.toArray(".text-about");
     const imagesAbout: HTMLElement[] = gsap.utils.toArray(".images-about");
 
@@ -76,14 +76,9 @@ const Goals: FC<GoalProps> = ({ mission, vision, values, goals }) => {
     if (windowSize >= breakPoint) {
       console.log("intializeTrigger Goal");
 
-      // gsap.set(".card:not(:first-child) .text-about", { opacity: 0 });
       gsap.set(".images-about", {
         clearProps: true,
       });
-      // gsap.set(".card:not(:first-child) .images-about", {
-      //   y: "250%",
-      //   x: "0%",
-      // });
 
       const pinnedTl = gsap.timeline({
         scrollTrigger: {
@@ -91,6 +86,7 @@ const Goals: FC<GoalProps> = ({ mission, vision, values, goals }) => {
           trigger: ".card-container",
           start: "top 20%",
           end: `+=${40 * cards.length}%`,
+
           pin: true,
           scrub: 1,
           invalidateOnRefresh: true,
@@ -104,13 +100,9 @@ const Goals: FC<GoalProps> = ({ mission, vision, values, goals }) => {
             .to(textAbout[index], {
               opacity: 0,
             })
-            .to(
-              textAbout[index + 1],
-              {
-                opacity: 1,
-              },
-              "<0.1",
-            )
+            .to(textAbout[index + 1], {
+              opacity: 1,
+            })
             .to(
               imagesAbout[index + 1],
               {
@@ -158,7 +150,7 @@ const Goals: FC<GoalProps> = ({ mission, vision, values, goals }) => {
   }, [component, windowSize]);
 
   return (
-    <div className=" container card-container cardTrigger relative md:py-1 min-h-[60vh] lg:flex lg:flex-col justify-center my-20">
+    <div className="container card-container cardTrigger relative md:py-1 h-[60vh] lg:flex lg:flex-col justify-center my-20">
       {/* <>
         {isLoading && !Vision && !Mission && !Values && !Goals ? (
           <div className="my-4 flex justify-center">
