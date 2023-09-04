@@ -43,7 +43,7 @@ export default function ComponentOne() {
             text="Contact Us"
             type="solid"
             className="md:h-[3.666rem] md:w-[13.5rem] text-[1rem] md:text-lg md:text-[1.094rem] h-[2.75rem] w-[13.5rem]"
-            navigateTo="#form"
+            navigateTo="https://develop.d2vr74cwsk1kb.amplifyapp.com/contact"
           />
         </div>
         <div className="flex divide-x mb-[2.639rem]">
@@ -60,7 +60,7 @@ export default function ComponentOne() {
           </div>
           <div className="flex ml-2">
             <Link
-              href="/"
+              href="https://www.facebook.com/NKAssociatesOfficial/"
               target="_blank"
               rel="noopener noreferrer"
               className="px-2 shrink-0"
@@ -68,7 +68,7 @@ export default function ComponentOne() {
               <Image src={facebookIcon} width={20} height={30} alt="Facebook" />
             </Link>
             <Link
-              href="/"
+              href="https://www.youtube.com/channel/UCUdSaD4ZjxDYxXiQXZIM7tw"
               target="_blank"
               rel="noopener noreferrer"
               className="px-2 shrink-0"
@@ -76,7 +76,7 @@ export default function ComponentOne() {
               <Image src={youtubeIcon} width={20} height={30} alt="Youtube" />
             </Link>
             <Link
-              href="/"
+              href="https://twitter.com/NKAssociates6"
               target="_blank"
               rel="noopener noreferrer"
               className="px-2 shrink-0"
@@ -84,7 +84,7 @@ export default function ComponentOne() {
               <Image src={twitterIcon} width={20} height={30} alt="Twitter" />
             </Link>
             <Link
-              href="/"
+              href="https://www.instagram.com/nkassociatesofficial/"
               target="_blank"
               rel="noopener noreferrer"
               className="px-2 shrink-0"
@@ -107,27 +107,6 @@ export default function ComponentOne() {
           alt="rectangle1"
           className=""
         />
-        {/* <Image
-          priority={true}
-          ref={imageOne}
-          src={rectangle6}
-          alt="rectangle1"
-          className=""
-        />
-        <Image
-          priority={true}
-          ref={imageTwo}
-          src={rectangle7}
-          alt="rectangle2"
-          className=""
-        />
-        <Image
-          priority={true}
-          ref={imageThree}
-          src={rectangle8}
-          alt="rectangle3"
-          className=""
-        /> */}
       </div>
     </div>
   );
