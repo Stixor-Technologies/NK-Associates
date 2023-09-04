@@ -59,7 +59,7 @@ const applyFilters = (filters: FiltersStateType) => {
     }
   }
   return filtersString;
-}
+};
 
 export const getGridProperties = async (
   start: number,
@@ -111,11 +111,11 @@ export const getPropertyDetail = async (id: string) => {
 
 export const getSimilarProperties = async (
   type: {
-      data: { id: number, attributes: { name: string } };
-    },
+    data: { id: number; attributes: { name: string } };
+  },
   category: {
-      data: { id: number, attributes: { name: string } };
-    },
+    data: { id: number; attributes: { name: string } };
+  },
   currentPropertyId: string,
 ) => {
   const FILTER_PRIORITY = [
@@ -407,7 +407,9 @@ export const getSocials = async () => {
 
 export const getServices = async () => {
   try {
-    const resp = await fetch(`${BASE_URL}/api/services?populate=deep`);
+    const resp = await fetch(
+      `${BASE_URL}/api/services?populate=deep&sort[1]=id`,
+    );
     const data = await resp.json();
     return data;
   } catch (error) {

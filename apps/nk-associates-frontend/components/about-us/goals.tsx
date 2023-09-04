@@ -113,7 +113,7 @@ const Goals: FC = () => {
         }
       });
     } else {
-      gsap.set("text-about", {
+      gsap.set(".text-about", {
         clearProps: true,
       });
 
