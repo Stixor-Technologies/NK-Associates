@@ -1,17 +1,16 @@
 import React, { FC } from "react";
 import Image from "next/image";
 import { BASE_URL } from "../../utils/constants";
-import { VisionMission } from "../../utils/types/types";
+import { Mission } from "../../utils/types/types";
 
 interface CardProps {
-  about: VisionMission;
-  spin: number;
+  about: Mission;
 }
-const AboutCard1: FC<CardProps> = ({ about, spin }) => {
+const MissionCard: FC<CardProps> = ({ about }) => {
   const { question, title, description } = about;
-  const id = about?.id;
   const cardImage = about?.card_image?.data?.attributes?.url;
   const cardIcon = about?.card_icon?.data?.attributes?.url;
+  const spin = -4;
 
   return (
     <div className="card lg:absolute w-full h-full mb-12 lg:mb-0 overflow-hidden lg:overflow-visible">
@@ -21,8 +20,7 @@ const AboutCard1: FC<CardProps> = ({ about, spin }) => {
             src={`${BASE_URL}${cardImage || "/"}`}
             alt="Card Image 1"
             fill
-            style={{ transform: `rotate(${spin}deg)` }}
-            className="object-cover rounded-2xl"
+            className="object-cover rounded-2xl lg:-rotate-[4deg]"
           />
         </div>
         <div className="text-about flex flex-col font-metropolis text-xl text-center lg:text-left text-nk-dark-gray lg:w-[55%]  my-auto">
@@ -40,4 +38,4 @@ const AboutCard1: FC<CardProps> = ({ about, spin }) => {
   );
 };
 
-export default AboutCard1;
+export default MissionCard;

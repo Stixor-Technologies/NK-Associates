@@ -1,11 +1,5 @@
 "use client";
-import {
-  useState,
-  useRef,
-  useEffect,
-  TouchEvent,
-  useLayoutEffect,
-} from "react";
+import { useState, useRef, useEffect, TouchEvent } from "react";
 import Image from "next/image";
 import { gsap } from "gsap";
 import { Thumbs, FreeMode } from "swiper/modules";
@@ -16,6 +10,7 @@ import "swiper/css/free-mode";
 import "swiper/css/thumbs";
 import "swiper/css/pagination";
 import "./project-comparison.css";
+import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 
 import { getComparisonImages } from "../../utils/api-calls";
 import { BASE_URL } from "../../utils/constants";
@@ -29,18 +24,25 @@ type DirectionType = "vertical" | "horizontal";
 type ComparisonResponseType = {
   attributes: {
     comparisonImages: {
-      comparison_images: {
+      render_image: {
         data: {
           attributes: {
             url: string;
           };
-        }[];
+        };
+      };
+      actual_image: {
+        data: {
+          attributes: {
+            url: string;
+          };
+        };
       };
     }[];
   };
 };
 
-const CompareComponent = ({ url }) => {
+const CompareComponent = ({ url }: { url: [string, string] }) => {
   const compareImgContainer = useRef<HTMLDivElement>();
   const [imgRevealFraction, setImgRevealFraction] = useState(0.5);
 
@@ -157,7 +159,9 @@ const CompareComponent = ({ url }) => {
 const ProjectComparison = ({ projectId }: PropTypes) => {
   const [thumbsSwiper, setThumbsSwiper] = useState(null);
   const [direction, setDirection] = useState<DirectionType>("vertical");
-  const [pictures, setPictures] = useState<string[][]>([[]]);
+  const [pictures, setPictures] = useState<
+    { renderImage: string; actualImage: string }[]
+  >([]);
 
   const handleResize = (e) => {
     let direction = window.innerWidth <= 768 ? "horizontal" : "vertical";
@@ -170,11 +174,10 @@ const ProjectComparison = ({ projectId }: PropTypes) => {
     );
     const comparisonImages = [];
     response.attributes.comparisonImages.forEach((set) => {
-      const urlSets = [];
-      set["comparison_images"].data.map((image) =>
-        urlSets.push(image.attributes.url),
-      );
-      comparisonImages.push(urlSets);
+      comparisonImages.push({
+        renderImage: set.render_image.data.attributes.url,
+        actualImage: set.actual_image.data.attributes.url,
+      });
     });
     setPictures(comparisonImages);
   };
@@ -183,24 +186,27 @@ const ProjectComparison = ({ projectId }: PropTypes) => {
     handleGetComparisonImages();
   }, []);
 
-  useLayoutEffect(() => {
-    gsap.to("[data-project-comparison] h2", {
-      opacity: 1,
-      transform: "translateY(0%)",
+  useEffect(() => {
+    const projectComparisonTl = gsap.timeline({
       scrollTrigger: {
+        id: "data-project-comparison",
         trigger: "[data-project-comparison]",
         start: "top 80%",
       },
     });
 
-    gsap.to("[data-project-comparison-content]", {
+    projectComparisonTl.to("[data-project-comparison] h2", {
+      opacity: 1,
+      transform: "translateY(0%)",
+    });
+
+    projectComparisonTl.to("[data-project-comparison-content]", {
       opacity: 1,
       duration: 0.8,
-      scrollTrigger: {
-        trigger: "[data-project-comparison]",
-        start: "top 70%",
-      },
     });
+    return () => {
+      ScrollTrigger.getById("data-project-comparison")?.kill();
+    };
   }, []);
 
   return (
@@ -210,7 +216,7 @@ const ProjectComparison = ({ projectId }: PropTypes) => {
       </h2>
 
       <div data-project-comparison-content className="opacity-0">
-        {pictures.length > 0 && pictures[0].length > 0 ? (
+        {pictures.length > 0 ? (
           <div className="gap-3 md:flex">
             <Swiper
               centeredSlides={true}
@@ -223,9 +229,11 @@ const ProjectComparison = ({ projectId }: PropTypes) => {
               className="mySwiper carousel-slider h-[25rem] w-full sm:aspect-video sm:h-auto md:w-10/12 md:rounded-xl"
               modules={[Thumbs, FreeMode]}
             >
-              {pictures?.map((url, index) => (
+              {pictures?.map((images, index) => (
                 <SwiperSlide key={index} className="relative">
-                  <CompareComponent url={[url[0], url[1]]} />
+                  <CompareComponent
+                    url={[images.actualImage, images.renderImage]}
+                  />
                 </SwiperSlide>
               ))}
             </Swiper>
@@ -240,13 +248,13 @@ const ProjectComparison = ({ projectId }: PropTypes) => {
               direction={direction}
               onResize={handleResize}
             >
-              {pictures?.map((url, index) => (
+              {pictures?.map((images, index) => (
                 <SwiperSlide
                   key={index}
                   className="aspect-video !w-[8.125rem] cursor-pointer md:max-h-[6.25rem] md:!w-auto lg:max-h-[7.5rem]"
                 >
                   <Image
-                    src={`${BASE_URL}${url[0]}`}
+                    src={`${BASE_URL}${images.renderImage}`}
                     alt="Thumb Item"
                     fill
                     className="w-full rounded-lg"

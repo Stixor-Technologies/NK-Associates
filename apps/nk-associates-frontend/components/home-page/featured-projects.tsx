@@ -1,12 +1,11 @@
 "use client";
-import React, { FC, useRef, useLayoutEffect } from "react";
+import React, { FC, useRef, useEffect } from "react";
 import { Project } from "../../utils/types/types";
 import LinkButton from "../button/link-button";
 import ProjectCardItem from "../projects/project-card/project-card-item";
 import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-
-gsap.registerPlugin(ScrollTrigger);
+import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
+import CursorUtility from "../../utils/cursor-utility";
 
 interface FeaturedProjectsProps {
   featuredProjects: Project[];
@@ -15,25 +14,52 @@ interface FeaturedProjectsProps {
 const FeaturedProjects: FC<FeaturedProjectsProps> = ({ featuredProjects }) => {
   const cardsContainer = useRef<HTMLDivElement | null>(null);
 
-  useLayoutEffect(() => {
+  let cursorUtilityRef = useRef<CursorUtility | null>(null);
+  const projectsContainer = useRef<HTMLDivElement | null>(null);
+
+  useEffect(() => {
     if (featuredProjects.length > 0) {
-      const projectCards: HTMLDivElement[] =
-        gsap.utils.toArray(".project-card");
-      projectCards.forEach((box, index) => {
-        if (index >= 1) {
-          gsap.from(box, {
-            y: 65,
-            scrollTrigger: {
-              trigger: box,
-              start: "top 90%",
-              end: "+=350",
-              scrub: true,
-            },
+      const ctx = gsap.context((self) => {
+        if (self && self.selector) {
+          const boxes: HTMLDivElement[] = self.selector(".project-card");
+          boxes.forEach((box, index) => {
+            if (index >= 1) {
+              gsap.from(box, {
+                y: 85,
+                scrollTrigger: {
+                  trigger: box,
+                  start: "top 90%",
+                  end: "+=350",
+                  scrub: true,
+                },
+              });
+            }
           });
         }
-      });
+      }, cardsContainer.current); // <- Scope!
+      return () => {
+        ctx.revert();
+      }; // <- Cleanup!
     }
+
+    return () => {
+      ScrollTrigger.getById("project-card-home")?.kill();
+    };
   }, [featuredProjects]);
+
+  useEffect(() => {
+    if (projectsContainer?.current) {
+      cursorUtilityRef.current = new CursorUtility(projectsContainer?.current);
+    }
+
+    return () => {
+      if (cursorUtilityRef?.current) {
+        cursorUtilityRef?.current?.destroy();
+        cursorUtilityRef.current = null;
+      }
+    };
+  }, []);
+
   return (
     <>
       {featuredProjects.length > 0 && (
@@ -43,7 +69,10 @@ const FeaturedProjects: FC<FeaturedProjectsProps> = ({ featuredProjects }) => {
           </h6>
 
           <div className="flex flex-col">
-            <div className="flex flex-col gap-3 md:gap-6">
+            <div
+              ref={projectsContainer}
+              className="flex flex-col gap-3 md:gap-6"
+            >
               {featuredProjects?.map((project: Project, index: number) => {
                 return (
                   <ProjectCardItem
@@ -51,6 +80,7 @@ const FeaturedProjects: FC<FeaturedProjectsProps> = ({ featuredProjects }) => {
                     project={project}
                     index={index}
                     actHome
+                    cursorUtilityRef={cursorUtilityRef}
                   />
                 );
               })}

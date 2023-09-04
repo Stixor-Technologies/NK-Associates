@@ -1,26 +1,31 @@
 "use client";
-import { useLayoutEffect } from "react";
+import { useEffect } from "react";
 import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 
 const ProjectTimeline = () => {
-  useLayoutEffect(() => {
-    gsap.to("[data-project-timeline] h2", {
-      opacity: 1,
-      transform: "translateY(0%)",
+  useEffect(() => {
+    const projectTimeLineTl = gsap.timeline({
       scrollTrigger: {
+        id: "project-timeline-trigger",
         trigger: "[data-project-timeline]",
         start: "top 80%",
       },
     });
 
-    gsap.to("[data-project-timeline] svg", {
+    projectTimeLineTl.to("[data-project-timeline] h2", {
+      opacity: 1,
+      transform: "translateY(0%)",
+    });
+
+    projectTimeLineTl.to("[data-project-timeline] svg", {
       opacity: 1,
       duration: 0.8,
-      scrollTrigger: {
-        trigger: "[data-project-timeline]",
-        start: "top 70%",
-      },
     });
+
+    return () => {
+      ScrollTrigger.getById("project-timeline-trigger")?.kill();
+    };
   }, []);
 
   return (

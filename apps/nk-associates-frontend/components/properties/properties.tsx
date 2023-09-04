@@ -1,24 +1,36 @@
 "use client";
-import React, { useState, useEffect, useCallback, useRef } from "react";
+import React, {
+  useState,
+  useEffect,
+  useCallback,
+  useRef,
+  useLayoutEffect,
+} from "react";
 import Image from "next/image";
 import { GoogleMap, Marker, InfoWindow } from "@react-google-maps/api";
 import PropertyList from "./property-list";
-import Spinner from "../spinner";
 import InfiniteScroll from "react-infinite-scroll-component";
 import { getGridProperties, getMapProperties } from "../../utils/api-calls";
 import { Property } from "../../utils/types/types";
-import { debounce } from "lodash";
+import { debounce, property } from "lodash";
 import MapBtn from "../../public/assets/icons/map-list-icon.svg";
 import ListIcon from "../../public/assets/icons/list-icon.svg";
 import PropertyCard from "./property-card";
 import MapStyles from "../../utils/map-styles.json";
 import "./map-info-window.css";
+import SearchBar from "./search-bar";
+import PropertyListSkeleton from "../skeletons/property/property-list-skeleton";
+
+import useFilters, { FiltersProvider } from "../../utils/useFilters";
 
 const center = {
   lat: 33.58468464794478,
   lng: 73.04698696017488,
 };
+
 const Properties = () => {
+  const [filtersState, filtersDispatch] = useFilters();
+
   const [isList, setIsList] = useState<boolean>(true);
   const [gridProperties, setGridProperties] = useState<Property[]>([]);
   const [total, setTotal] = useState<number | null>(null);
@@ -31,12 +43,26 @@ const Properties = () => {
   const [hasMapRendered, setHasMapRendered] = useState<boolean>(false);
 
   const mapRef = useRef<google.maps.Map | null>(null);
+  const buttonRef = useRef<HTMLButtonElement>(null);
 
-  const fetchGridData = async () => {
+  const fetchGridData = async (freshData?: boolean) => {
     setIsLoading(true);
-    const resp = await getGridProperties(gridProperties.length, 12);
+
+    const resp = await getGridProperties(
+      freshData ? 0 : gridProperties.length,
+      12,
+      filtersState,
+    );
+
     if (resp?.data) {
-      setGridProperties((prevProperties) => [...prevProperties, ...resp.data]);
+      if (freshData) {
+        setGridProperties(resp.data);
+      } else {
+        setGridProperties((prevProperties) => [
+          ...prevProperties,
+          ...resp.data,
+        ]);
+      }
       setTotal(resp.meta.pagination.total);
     }
     setIsLoading(false);
@@ -69,6 +95,7 @@ const Properties = () => {
           bounds.north,
           bounds.west,
           bounds.east,
+          filtersState,
         );
         if (resp?.data) {
           setMapProperties(resp?.data);
@@ -93,24 +120,32 @@ const Properties = () => {
     styles: MapStyles,
   };
 
+  const handleRefreshData = () => {
+    if (isList) {
+      fetchGridData(true);
+    } else {
+      onBoundsChanged();
+    }
+  };
+
   useEffect(() => {
     fetchGridData();
   }, []);
 
   return (
     <>
+      <SearchBar onFilter={handleRefreshData} />
+
       {isList && (
         <>
           {isLoading && gridProperties.length === 0 ? (
-            <div className="min-h-[50vh] flex flex-1">
-              <Spinner />
-            </div>
+            <PropertyListSkeleton />
           ) : gridProperties && gridProperties.length > 0 ? (
             <InfiniteScroll
               dataLength={gridProperties.length}
               next={fetchGridData}
               hasMore={total !== gridProperties.length}
-              loader={isLoading && <Spinner />}
+              loader={isLoading && <PropertyListSkeleton />}
               className={isList ? "block" : "hidden"}
             >
               <PropertyList properties={gridProperties} />
@@ -180,6 +215,7 @@ const Properties = () => {
 
       {gridProperties.length > 0 && (
         <button
+          ref={buttonRef}
           className={` self-center sticky top-0 mb-4 bottom-16 left-1/2 z-10 flex -translate-x-1/2 items-center gap-2 rounded-full px-4 py-2 text-center text-sm capitalize text-nk-white transition-all duration-300 ease-in-out md:gap-4 md:px-6 md:py-3 md:text-2xl ${
             isList
               ? "bg-nk-gradient-red-one bg-gradient-to-b to-nk-gradient-red-two hover:scale-[1.1] hover:bg-nk-black"
@@ -205,4 +241,10 @@ const Properties = () => {
   );
 };
 
-export default Properties;
+export default function PropertiesWithProvider() {
+  return (
+    <FiltersProvider>
+      <Properties />
+    </FiltersProvider>
+  );
+}

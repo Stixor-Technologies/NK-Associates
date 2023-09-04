@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef, MutableRefObject } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -6,6 +6,7 @@ import "swiper/css";
 import "swiper/css/effect-coverflow";
 import "swiper/css/pagination";
 import { Pagination } from "swiper/modules";
+import CursorUtility from "../../../utils/cursor-utility";
 
 import "./project-card.css";
 
@@ -25,6 +26,7 @@ interface ProjectCardProps {
   propertyType: string;
   primaryColor?: boolean;
   actHome?: boolean;
+  cursorUtilityRef: MutableRefObject<CursorUtility | null>;
 }
 
 const ProjectCard: React.FC<ProjectCardProps> = ({
@@ -39,9 +41,9 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
   propertyType,
   primaryColor = true,
   actHome,
+  cursorUtilityRef,
 }) => {
   const [windowWidth, setWindowWidth] = useState<number>(0);
-
   useEffect(() => {
     const handleResize = () => {
       setWindowWidth(window.innerWidth);
@@ -53,6 +55,14 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
       window.removeEventListener("resize", handleResize);
     };
   }, []);
+
+  const showAnimatedCursor = () => {
+    cursorUtilityRef?.current?.showCursor();
+  };
+
+  const hideAnimatedCursor = () => {
+    cursorUtilityRef?.current?.hideCursor();
+  };
 
   const backgroundColor = primaryColor
     ? "bg-gradient-to-b bg-nk-gradient-red-one to-nk-gradient-red-two"
@@ -68,7 +78,11 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
       <div
         className={`project-card mb-[2.3rem] flex w-full flex-col overflow-hidden rounded-2xl shadow-md last-of-type:mb-4  md:mb-[4.5rem] ${flexDirection} md:rounded-3xl ${backgroundColor} ${textColor} ${cardHeight}`}
       >
-        <div className="relative h-full min-h-[21rem] w-full sm:h-auto sm:w-[65%]">
+        <div
+          onMouseEnter={showAnimatedCursor}
+          onMouseLeave={hideAnimatedCursor}
+          className="projects-carousel relative h-full min-h-[21rem] w-full sm:h-auto sm:w-[65%]"
+        >
           {imagesList?.length > 0 ? (
             <Swiper
               grabCursor={true}

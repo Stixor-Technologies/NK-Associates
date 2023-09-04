@@ -12,15 +12,45 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "card_1": {
-      "type": "component",
-      "repeatable": true,
-      "component": "card-1.about-us-card-1"
+    "ceo_message": {
+      "type": "text",
+      "required": true
     },
-    "card_2": {
+    "ceo_image": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "ceo_name": {
+      "type": "string",
+      "required": true
+    },
+    "Vision": {
       "type": "component",
-      "repeatable": true,
-      "component": "card-2.about-us-card-2"
+      "repeatable": false,
+      "component": "card-1.about-us-card-1",
+      "required": true
+    },
+    "Mission": {
+      "type": "component",
+      "repeatable": false,
+      "component": "card-1.about-us-card-1",
+      "required": true
+    },
+    "Values": {
+      "type": "component",
+      "repeatable": false,
+      "component": "card-2.about-us-card-2",
+      "required": true
+    },
+    "Goals": {
+      "type": "component",
+      "repeatable": false,
+      "component": "card-2.about-us-card-2",
+      "required": true
     }
   }
 }

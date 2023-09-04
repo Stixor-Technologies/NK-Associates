@@ -1,5 +1,5 @@
 "use client";
-import { useLayoutEffect, useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { gsap } from "gsap";
 import "swiper/css";
@@ -8,37 +8,61 @@ import "swiper/css/thumbs";
 import "swiper/css/pagination";
 import Image from "next/image";
 import { Thumbs, FreeMode } from "swiper/modules";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
+import CursorUtility from "../../utils/cursor-utility";
+import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 
 type PropTypes = {
   pictures: string[];
 };
 
-gsap.registerPlugin(ScrollTrigger);
-
 const ProjectGallery = ({ pictures }: PropTypes) => {
   const [thumbsSwiper, setThumbsSwiper] = useState(null);
-  const divRef = useRef(null);
+  let cursorUtilityRef = useRef<CursorUtility | null>(null);
+  const galleryContainer = useRef<HTMLDivElement | null>(null);
 
-  useLayoutEffect(() => {
-    gsap.to("[data-project-gallery] h2", {
-      opacity: 1,
-      transform: "translateY(0%)",
+  useEffect(() => {
+    const projectGalleryTl = gsap.timeline({
       scrollTrigger: {
+        id: "project-gallery-trigger",
         trigger: "[data-project-gallery]",
         start: "top 80%",
       },
     });
 
-    gsap.to("[data-project-gallery-content]", {
+    projectGalleryTl.to("[data-project-gallery] h2", {
+      opacity: 1,
+      transform: "translateY(0%)",
+    });
+
+    projectGalleryTl.to("[data-project-gallery-content]", {
       opacity: 1,
       duration: 0.8,
-      scrollTrigger: {
-        trigger: "[data-project-gallery]",
-        start: "top 70%",
-      },
     });
+    return () => {
+      ScrollTrigger.getById("project-gallery-trigger")?.kill();
+    };
   }, []);
+
+  useEffect(() => {
+    if (galleryContainer?.current) {
+      cursorUtilityRef.current = new CursorUtility(galleryContainer?.current);
+    }
+
+    return () => {
+      if (cursorUtilityRef?.current) {
+        cursorUtilityRef?.current?.destroy();
+        cursorUtilityRef.current = null;
+      }
+    };
+  }, []);
+
+  const showAnimatedCursor = () => {
+    cursorUtilityRef?.current?.showCursor();
+  };
+
+  const hideAnimatedCursor = () => {
+    cursorUtilityRef?.current?.hideCursor();
+  };
 
   return (
     <section data-project-gallery className="container py-8 md:py-14">
@@ -49,28 +73,33 @@ const ProjectGallery = ({ pictures }: PropTypes) => {
       <div data-project-gallery-content className="opacity-0">
         {pictures.length > 0 ? (
           <>
-            <Swiper
-              centeredSlides={true}
-              initialSlide={0}
-              pagination={false}
-              thumbs={{
-                swiper: thumbsSwiper,
-              }}
-              className="mySwiper carousel-slider h-[25rem] w-full rounded-xl sm:aspect-video sm:h-auto"
-              modules={[Thumbs, FreeMode]}
+            <div
+              ref={galleryContainer}
+              onMouseEnter={showAnimatedCursor}
+              onMouseLeave={hideAnimatedCursor}
             >
-              {pictures?.map((url, index) => (
-                <SwiperSlide key={index}>
-                  <Image
-                    src={url}
-                    alt="Carousel Image"
-                    fill
-                    className="h-full w-full object-cover"
-                  />
-                </SwiperSlide>
-              ))}
-            </Swiper>
-
+              <Swiper
+                centeredSlides={true}
+                initialSlide={0}
+                pagination={false}
+                thumbs={{
+                  swiper: thumbsSwiper,
+                }}
+                className="mySwiper carousel-slider h-[25rem] w-full rounded-xl sm:aspect-video sm:h-auto"
+                modules={[Thumbs, FreeMode]}
+              >
+                {pictures?.map((url, index) => (
+                  <SwiperSlide key={index}>
+                    <Image
+                      src={url}
+                      alt="Carousel Image"
+                      fill
+                      className="h-full w-full object-cover"
+                    />
+                  </SwiperSlide>
+                ))}
+              </Swiper>
+            </div>
             <Swiper
               modules={[Thumbs, FreeMode]}
               watchSlidesProgress

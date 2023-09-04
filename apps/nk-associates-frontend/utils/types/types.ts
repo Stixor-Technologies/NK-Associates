@@ -51,22 +51,28 @@ export interface Property {
     };
     baths: number;
     bedrooms: number;
-    category: string;
     latitude: number;
     longitude: number;
     price: number;
     property_images: {
       data: MediaAttributes[];
     };
-    purpose: string;
     title: string;
-    type: string;
     address: string;
     city: string;
     description: string;
     property_pdf: {
       data: MediaAttributes;
     };
+    property_purpose: {
+      data: { id: number, attributes: { name: string } };
+    };
+    property_category: {
+      data: { id: number, attributes: { name: string } };
+    }
+    property_type: {
+      data: { id: number, attributes: { name: string } };
+    }
   };
   id: number;
 }
@@ -153,6 +159,43 @@ export interface Job {
   };
 }
 
+type CategoryType = {
+  id: number;
+  name: string;
+  types: {
+    id: number;
+    name: string;
+  }[];
+};
+export interface SearchFilterProperties {
+  propertyTypesList: CategoryType[] | undefined;
+  completionStatusList: { id: number; name: string }[] | undefined;
+  rentFrequencyList: { id: number; name: string }[] | undefined;
+  propertyPurposeList: { id: number; name: string }[] | undefined;
+  projectsList: { id: number; name: string }[] | undefined;
+  priceRange: [number, number];
+  areaRange: [number, number];
+  areaUnitsList: { id: number; name: string }[] | undefined;
+}
+
+export interface FiltersStateType {
+  selectedCompletionStatusId: string | number | undefined;
+  selectedRentFrequencyId: string | number | undefined;
+  selectedCategoryId: string | number | undefined;
+  selectedTypeId: string | number | undefined;
+  selectedProjectId: string | number | undefined;
+  selectedPurposeId: string | number | undefined;
+  minSelectedPrice: number;
+  maxSelectedPrice: number;
+  selectedRoomsLimit: number | undefined;
+  selectedBathRoomsLimit: number | undefined;
+  minSelectedArea: number;
+  maxSelectedArea: number;
+  selectedAreaUnit: string | undefined,
+  location: string | undefined;
+  filterIsSelected: boolean;
+}
+
 export interface Socials {
   id: number;
   attributes: {
@@ -222,7 +265,7 @@ export interface Member {
   };
 }
 
-export interface VisionMission {
+export interface Vision {
   question: string;
   title: string;
   description: string;
@@ -232,14 +275,41 @@ export interface VisionMission {
   card_icon: {
     data: MediaAttributes;
   };
-  id: number;
 }
 
-export interface ValueGoals {
+export interface Mission {
+  question: string;
+  title: string;
+  description: string;
+  card_image: {
+    data: MediaAttributes;
+  };
+  card_icon: {
+    data: MediaAttributes;
+  };
+}
+
+export interface Values {
   title: string;
   list: {
     id: number;
-    title: string;
+    description: string;
+    icon: {
+      data: MediaAttributes;
+    };
+  }[];
+  card_image: {
+    data: MediaAttributes;
+  };
+  card_icon: {
+    data: MediaAttributes;
+  };
+}
+
+export interface Goals {
+  title: string;
+  list: {
+    id: number;
     description: string;
     icon: {
       data: MediaAttributes;
@@ -254,8 +324,15 @@ export interface ValueGoals {
 }
 
 export interface About {
-  attributes: {
-    card_1: VisionMission[];
-    card_2: ValueGoals[];
+  data: {
+    attributes: {
+      ceo_image: { data: MediaAttributes };
+      ceo_message: string;
+      ceo_name: string;
+      Vision: Vision;
+      Mission: Mission;
+      Values: Values;
+      Goals: Goals;
+    };
   };
 }

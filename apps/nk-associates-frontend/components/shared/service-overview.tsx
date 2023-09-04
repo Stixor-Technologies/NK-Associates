@@ -2,37 +2,37 @@
 import React, { useEffect, useRef } from "react";
 import LinkButton from "../button/link-button";
 import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 
 const ServicesOverview = () => {
   const ref = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
-    const ctx = gsap.context(() => {
-      const tl = gsap.timeline({
-        scrollTrigger: {
-          trigger: ref.current,
-          start: "top 60%",
-          toggleActions: "play none none none",
-        },
-      });
-      tl.from(".text", {
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        id: "services-overview-trigger",
+        trigger: ref.current,
+        start: "top 70%",
+        toggleActions: "play none none none",
+      },
+    });
+    tl.from(".text", {
+      opacity: 0,
+      x: -200,
+      y: 200,
+      scale: 0,
+      duration: 0.5,
+    }),
+      tl.from(".btn", {
         opacity: 0,
-        x: -200,
-        y: 200,
+        xPercent: -60,
         scale: 0,
-        duration: 0.5,
-      }),
-        tl.from(".btn", {
-          opacity: 0,
-          xPercent: -60,
-          scale: 0,
-          stagger: 0.2,
-          ease: "circ.out",
-        });
-    }, ref);
+        stagger: 0.2,
+        ease: "circ.out",
+      });
 
     return () => {
-      ctx.revert();
+      ScrollTrigger.getById("services-overview-trigger")?.kill();
     };
   }, []);
 
@@ -60,7 +60,7 @@ const ServicesOverview = () => {
             <LinkButton
               text="Explore all"
               type="inverted"
-              navigateTo="#"
+              navigateTo="/services"
               className="mx-auto mt-3 w-64 h-11 border py-2.5 text-lg hover:border-nk-red hover:shadow-md md:mx-0 md:w-[25rem] md:h-[3.125rem]"
             />
           </div>
