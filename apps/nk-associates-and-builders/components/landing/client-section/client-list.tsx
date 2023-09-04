@@ -1,5 +1,6 @@
 import React from "react";
 import ClientCard from "./client-card";
+import Person from "../../../public/assets/icons/person.svg";
 
 const ClientList = () => {
   return (
@@ -18,9 +19,27 @@ const ClientList = () => {
       <div className="lg:contianer">
         <div className="flex flex-col">
           <div className="carousel flex flex-nowrap overflow-x-scroll px-4 gap-4 py-8 pb-12 md:px-8 md:pb-16 md:gap-6 xl:px-0 lg:justify-center">
-            <ClientCard center={false} />
-            <ClientCard center={false} />
-            <ClientCard center={false} />
+            <ClientCard
+              reviewerImage={Person}
+              center={false}
+              reviewDescription="Slate helps you see how many more days you need to work to reach your
+          financial goal."
+              reviewerName="Regina Miles"
+            />
+            <ClientCard
+              reviewerImage={Person}
+              center={false}
+              reviewDescription="Slate helps you see how many more days you need to work to reach your
+          financial goal."
+              reviewerName="Regina Miles"
+            />
+            <ClientCard
+              reviewerImage={Person}
+              center={false}
+              reviewDescription="Slate helps you see how many more days you need to work to reach your
+          financial goal."
+              reviewerName="Regina Miles"
+            />
           </div>
         </div>
       </div>

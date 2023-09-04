@@ -1,7 +1,7 @@
-import ComponentOne from "../components/landing/comp1";
-import ComponentTwo from "../components/landing/comp2";
+import ComponentOne from "../components/landing/first-component";
+import ComponentTwo from "../components/landing/how-works";
 import ClientList from "../components/landing/client-section/client-list";
-import ComponentOneV2 from "../components/landing/comp1v2";
+import ComponentOneV2 from "../components/landing/choose-us";
 
 export default function Home() {
   return (

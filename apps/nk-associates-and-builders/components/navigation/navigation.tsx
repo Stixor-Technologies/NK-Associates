@@ -18,11 +18,6 @@ const Navigation = () => {
             </Link>
           </div>
           <div className="flex justify-between">
-            {/* <button className="hidden pr-8 md:flex md:items-center">
-              <Image src={SearchIcon} alt="Search" />
-            </button>
-            commented out for now, will be implemented later */}
-
             <Link
               href="#"
               className=" mr-2 mt-4 h-10 cursor-pointer flex flex-row items-center rounded-full border border-nk-red bg-transparent px-6 text-center font-metropolis capitalize text-nk-red md:z-50"
