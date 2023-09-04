@@ -151,6 +151,7 @@ const ExpertiseOutcomes: FC<OutcomesProps> = ({
               src={`${BASE_URL}${expertise_image || "/"}`}
               alt="expertise-picture"
               fill
+              priority={true}
               className="rounded-3xl shadow-xl object-cover"
             />
           </div>
@@ -176,8 +177,9 @@ const ExpertiseOutcomes: FC<OutcomesProps> = ({
           <div className="relative aspect-square w-full">
             <Image
               src={`${BASE_URL}${outcome_image || "/"}`}
-              alt="expertise-picture"
+              alt="outcome-picture"
               fill
+              priority={true}
               className="rounded-3xl shadow-xl object-cover"
             />
           </div>
