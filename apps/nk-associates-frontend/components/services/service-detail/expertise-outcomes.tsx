@@ -72,13 +72,9 @@ const ExpertiseOutcomes: FC<OutcomesProps> = ({
             .to(textPanels[index], {
               opacity: 0,
             })
-            .to(
-              textPanels[index + 1],
-              {
-                opacity: 1,
-              },
-              "<0.1",
-            )
+            .to(textPanels[index + 1], {
+              opacity: 1,
+            })
             .to(
               imagesPanel[index + 1],
               {
@@ -86,7 +82,7 @@ const ExpertiseOutcomes: FC<OutcomesProps> = ({
                 y: 0,
                 rotate: 6,
               },
-              "<0.1",
+              "<",
             );
         }
       });
