@@ -25,11 +25,21 @@ const ComponentTwo: React.FC<props> = ({
         <div className="text-[1rem] md:text-[1.688rem] text-nk-black mb-[2.313rem] md:mb-[3.571rem] font-metropolis-extralight">
           {title2}
         </div>
-        <div>
+        <div className="flex flex-col md:flex-row justify-center">
           <Cards
-            src1={src2}
-            src2={src1}
-            src3={src3}
+            src={src2}
+            text1="Find Home"
+            text2="Lorem ipsum dolor sit amet consectetur. Massa nec mi justo pulvinar
+          iaculis. Id massa a aenean lacus orci sit vehicula."
+          />
+          <Cards
+            src={src1}
+            text1="Find Home"
+            text2="Lorem ipsum dolor sit amet consectetur. Massa nec mi justo pulvinar
+          iaculis. Id massa a aenean lacus orci sit vehicula."
+          />
+          <Cards
+            src={src3}
             text1="Find Home"
             text2="Lorem ipsum dolor sit amet consectetur. Massa nec mi justo pulvinar
           iaculis. Id massa a aenean lacus orci sit vehicula."
@@ -37,6 +47,6 @@ const ComponentTwo: React.FC<props> = ({
         </div>
       </div>
     </div>
-  );
+  ); //src2={src1}src3={src3}
 };
 export default ComponentTwo;

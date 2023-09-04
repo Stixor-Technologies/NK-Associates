@@ -14,12 +14,22 @@ import SnapIcon from "../../public/assets/icons/snapchat-icon.svg";
 import YtIcon from "../../public/assets/icons/youtube-icon.svg";
 
 const footerSocialLinks = [
-  { pathName: "Add link here", image: FbIcon },
-  { pathName: "Add link here", image: TwitterIcon },
-  { pathName: "Add link here", image: InstagramIcon },
-  { pathName: "Add link here", image: LinkedinIcon },
+  { pathName: "https://www.facebook.com/NKAssociatesOfficial/", image: FbIcon },
+  { pathName: "https://twitter.com/NKAssociates6", image: TwitterIcon },
+  {
+    pathName: "https://www.instagram.com/nkassociatesofficial/",
+    image: InstagramIcon,
+  },
+  {
+    pathName:
+      "https://www.linkedin.com/company/nk-associates-builders-pvt-ltd/",
+    image: LinkedinIcon,
+  },
   { pathName: "Add link here", image: SnapIcon },
-  { pathName: "Add link here", image: YtIcon },
+  {
+    pathName: "https://www.youtube.com/channel/UCUdSaD4ZjxDYxXiQXZIM7tw",
+    image: YtIcon,
+  },
 ];
 
 const footerSocialList = footerSocialLinks?.map((socialLink, index) => {
