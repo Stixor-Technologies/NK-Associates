@@ -1,9 +1,32 @@
-import Image from "next/image";
+import ComponentOne from "../components/landing/comp1";
+import ComponentTwo from "../components/landing/comp2";
+import ClientList from "../components/landing/client-section/client-list";
+import ComponentOneV2 from "../components/landing/comp1v2";
 
 export default function Home() {
   return (
-    <div>
-      <div>Helllooooo section 1</div>
+    <div className="container ">
+      <div className="">
+        <ComponentOne />
+      </div>
+      <div className="pt-2">
+        <ComponentTwo
+          title1="How it works."
+          title2="This is how our products work."
+        />
+      </div>
+      <div>
+        <ComponentOneV2 />
+      </div>
+      <div>
+        <ComponentTwo
+          title1="Our Services."
+          title2="One of our biggest product to be featured and that has sold out the most."
+        />
+      </div>
+      <div>
+        <ClientList />
+      </div>
     </div>
   );
 }
