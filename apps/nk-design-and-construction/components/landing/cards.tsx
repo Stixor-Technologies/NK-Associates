@@ -1,16 +1,19 @@
 import Image from "next/image";
 import React from "react";
-import Rectangle9 from "../../public/assets/images/Rectangle 9.png";
-import Rectangle10 from "../../public/assets/images/Rectangle 10.png";
-import Rectangle11 from "../../public/assets/images/Rectangle 11.png";
 
-export default function Cards() {
+interface props {
+  src1: string;
+  src2: string;
+  src3: string;
+}
+
+const Cards: React.FC<props> = ({ src1, src2, src3 }) => {
   return (
     <div className="flex flex-col md:flex-row justify-center">
       <div className="flex flex-col text-center items-center mr-[1rem] ml-[1rem]">
         <div className="overflow-hidden rounded-2xl">
           <Image
-            src={Rectangle9}
+            src={src1}
             alt="Rectange 9"
             className="transition-all duration-700 ease-in-out hover:scale-110"
           />
@@ -27,7 +30,7 @@ export default function Cards() {
       <div className="flex flex-col text-center items-center mr-[1rem] ml-[1rem] ">
         <div className="overflow-hidden rounded-2xl">
           <Image
-            src={Rectangle10}
+            src={src2}
             alt="Rectange 10"
             className="transition-all duration-700 ease-in-out hover:scale-110"
           />
@@ -43,7 +46,7 @@ export default function Cards() {
       <div className="flex flex-col text-center items-center mr-[1rem] ml-[1rem]">
         <div className="overflow-hidden rounded-2xl">
           <Image
-            src={Rectangle11}
+            src={src3}
             alt="Rectange 11"
             className="transition-all duration-700 ease-in-out hover:scale-110"
           />
@@ -59,4 +62,6 @@ export default function Cards() {
       </div>
     </div>
   );
-}
+};
+
+export default Cards;

@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import LinkButton from "../../components/button/link-button";
 import facebookIcon from "../../public/assets/icons/facebook.svg";
@@ -15,8 +15,10 @@ import { ScrollTrigger } from "gsap/all";
 gsap.registerPlugin(ScrollTrigger);
 
 export default function ComponentOne() {
+  const [animated, setAnimated] = useState(false);
   let imageOne = useRef(null);
   useEffect(() => {
+    setAnimated(true);
     gsap.from(imageOne.current, {
       x: -1000, // Initial off-screen position
       opacity: 1,
@@ -28,7 +30,7 @@ export default function ComponentOne() {
         end: "center 50%",
       },
     });
-  }, []);
+  }, [animated]);
   return (
     <div className="flex flex-col lg2:flex-row-reverse">
       <div className="flex flex-col w-full lg2:max-w-[560px]">
@@ -100,13 +102,15 @@ export default function ComponentOne() {
         </div>
       </div>
       <div className=" mr-[1.55rem] flex justify-center ">
-        <Image
-          priority={true}
-          ref={imageOne}
-          src={rectangle3}
-          alt="rectangle1"
-          className=""
-        />
+        {animated && (
+          <Image
+            priority={true}
+            ref={imageOne}
+            src={rectangle3}
+            alt="rectangle1"
+            className=""
+          />
+        )}
       </div>
     </div>
   );

@@ -4,9 +4,18 @@ import Cards from "./cards";
 interface props {
   title1: string;
   title2: string;
+  src1: string;
+  src2: string;
+  src3: string;
 }
 
-const ComponentTwo: React.FC<props> = ({ title1, title2 }) => {
+const ComponentTwo: React.FC<props> = ({
+  title1,
+  title2,
+  src1,
+  src2,
+  src3,
+}) => {
   return (
     <div>
       <div className="flex flex-col text-center">
@@ -17,7 +26,7 @@ const ComponentTwo: React.FC<props> = ({ title1, title2 }) => {
           {title2}
         </div>
         <div>
-          <Cards />
+          <Cards src1={src2} src2={src1} src3={src3} />
         </div>
       </div>
     </div>
