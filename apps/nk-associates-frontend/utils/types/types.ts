@@ -65,14 +65,14 @@ export interface Property {
       data: MediaAttributes;
     };
     property_purpose: {
-      data: { id: number, attributes: { name: string } };
+      data: { id: number; attributes: { name: string } };
     };
     property_category: {
-      data: { id: number, attributes: { name: string } };
-    }
+      data: { id: number; attributes: { name: string } };
+    };
     property_type: {
-      data: { id: number, attributes: { name: string } };
-    }
+      data: { id: number; attributes: { name: string } };
+    };
   };
   id: number;
 }
@@ -191,7 +191,7 @@ export interface FiltersStateType {
   selectedBathRoomsLimit: number | undefined;
   minSelectedArea: number;
   maxSelectedArea: number;
-  selectedAreaUnit: string | undefined,
+  selectedAreaUnit: string | undefined;
   location: string | undefined;
   filterIsSelected: boolean;
 }

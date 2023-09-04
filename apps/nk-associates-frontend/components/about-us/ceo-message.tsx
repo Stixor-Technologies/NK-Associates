@@ -21,7 +21,8 @@ const CeoMessage: React.FC<CeoMessageProps> = ({
 
   useEffect(() => {
     const screenWidth = window.innerWidth;
-    if (screenWidth >= 1024) {
+    if (screenWidth >= 1024 && ceoMessage) {
+      console.log("intializeTrigger CEO");
       const el1 = ceoRef.current;
       const el2 = textRef.current;
       const tl = gsap.timeline({
@@ -30,6 +31,7 @@ const CeoMessage: React.FC<CeoMessageProps> = ({
           trigger: startRef.current,
           start: "50% 70%",
           end: "center 50%",
+          markers: true,
         },
       });
       tl.from(el2, {
@@ -46,7 +48,7 @@ const CeoMessage: React.FC<CeoMessageProps> = ({
   return (
     <div
       ref={startRef}
-      className="overflow-x-clip flex flex-col lg:flex-row items-center justify-center lg:justify-start lg:relative lg:mb-[16.75rem] md:mb-[3.75rem] lg:pt-[7rem] -mt-[2rem]"
+      className="overflow-x-clip flex flex-col lg:flex-row items-center justify-center lg:justify-start lg:relative lg:mb-[16.75rem] md:mb-[3.75rem] lg:pt-[5rem] -mt-[2rem]"
     >
       <div
         className="w-full max-w-[25rem] lg:px-4 pb-[1.313rem] lg:max-w-[39.6rem]"

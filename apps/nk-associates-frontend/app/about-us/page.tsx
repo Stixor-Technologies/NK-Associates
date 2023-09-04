@@ -16,6 +16,11 @@ const AboutUs = async () => {
   const ceoMessage: string = aboutInfo?.data?.attributes?.ceo_message;
   const ceoImage: string = `${BASE_URL}${aboutInfo?.data?.attributes?.ceo_image?.data?.attributes?.url}`;
   const ceoName: string = aboutInfo?.data?.attributes?.ceo_name;
+  const mission = aboutInfo?.data?.attributes?.Mission;
+  const vision = aboutInfo?.data?.attributes?.Vision;
+  const values = aboutInfo?.data?.attributes?.Values;
+  const goals = aboutInfo?.data?.attributes?.Goals;
+  console.log(mission, vision, values, goals);
   return (
     <div>
       <div className="text-center text-black container">
@@ -38,18 +43,26 @@ const AboutUs = async () => {
           />
         </div>
       </div>
-      <div className="container min-h-[250vh]">
-        <Goals />
-      </div>
       <div className="container">
-        <CeoMessage
-          ceoImage={ceoImage}
-          ceoMessage={ceoMessage}
-          ceoName={ceoName}
+        <Goals
+          mission={mission}
+          vision={vision}
+          values={values}
+          goals={goals}
         />
       </div>
 
-      <ServicesOverview />
+      {mission && vision && values && goals && (
+        <div className="container">
+          <CeoMessage
+            ceoImage={ceoImage}
+            ceoMessage={ceoMessage}
+            ceoName={ceoName}
+          />
+        </div>
+      )}
+
+      {mission && <ServicesOverview />}
 
       <div className="xl:container pt-[3.25rem] lg:pt-[6.688rem] text-center">
         <div className="text-nk-dark-gray font-metropolis-bold text-[2.25rem] text-center">
