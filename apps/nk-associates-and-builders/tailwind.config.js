@@ -12,7 +12,7 @@ module.exports = {
     screens: {
       xs: "350px",
       ...defaultTheme.screens,
-      lg2: "1244px",
+      lg2: "1350px",
       "below-md": { max: "767px" },
       "above-md": { min: "769px" },
     },

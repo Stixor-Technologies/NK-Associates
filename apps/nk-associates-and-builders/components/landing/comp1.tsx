@@ -7,9 +7,7 @@ import instagramIcon from "../../public/assets/icons/instagram.svg";
 import youtubeIcon from "../../public/assets/icons/youtube.svg";
 import twitterIcon from "../../public/assets/icons/Twitter.svg";
 import callIcon from "../../public/assets/icons/call.svg";
-import rectangle6 from "../../public/assets/icons/Rectangle 6.svg";
-import rectangle7 from "../../public/assets/icons/Rectangle 7.svg";
-import rectangle8 from "../../public/assets/icons/Rectangle 8.svg";
+import rectangle3 from "../../public/assets/icons/Rectangle 3.svg";
 import Link from "next/link";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/all";
@@ -18,39 +16,13 @@ gsap.registerPlugin(ScrollTrigger);
 
 export default function ComponentOne() {
   let imageOne = useRef(null);
-  let imageTwo = useRef(null);
-  let imageThree = useRef(null);
   useEffect(() => {
     gsap.from(imageOne.current, {
-      x: 1000, // Initial off-screen position
-      opacity: 0,
+      x: 1000, // Initial off-screen positio
+      opacity: 1,
       duration: 1,
       scrollTrigger: {
         trigger: imageOne.current,
-        start: "top 70%", // Adjust as needed
-        end: "center 50%",
-      },
-    });
-
-    gsap.from(imageTwo.current, {
-      x: 1000, // Initial off-screen position
-      opacity: 0,
-      duration: 0.75,
-      delay: 1, // Delay for the second image
-      scrollTrigger: {
-        trigger: imageTwo.current,
-        start: "top 70%", // Adjust as needed
-        end: "center 50%",
-      },
-    });
-
-    gsap.from(imageThree.current, {
-      x: 1000, // Initial off-screen position
-      opacity: 0,
-      duration: 1,
-      delay: 1.5, // Delay for the third image
-      scrollTrigger: {
-        trigger: imageThree.current,
         start: "top 70%", // Adjust as needed
         end: "center 50%",
       },
@@ -126,28 +98,35 @@ export default function ComponentOne() {
           </div>
         </div>
       </div>
-      <div className="flex-grow flex md:flex-col justify-center relative overflow-x-hidden overflow-y-auto lg:-mr-[9.9%]  min-h-[21rem] lg:min-h-[35rem]">
+      <div className="ml-[1.55rem] flex justify-center">
         <Image
           priority={true}
           ref={imageOne}
-          src={rectangle6}
+          src={rectangle3}
           alt="rectangle"
-          className="absolute lg:w-[33.8rem] w-[20.5rem] lg:h-[29.1rem] h-[17.7rem] mb-[5%]  -ml-[95%] sm:-ml-[60%] md:ml-[5%] lg:ml-[0%] lg2:-ml-[10%]"
+          className=""
         />
-        <Image
-          priority={true}
-          ref={imageTwo}
-          src={rectangle7}
-          alt="rectangle"
-          className="absolute lg:w-[33.8rem] w-[20.5rem] lg:h-[29.1rem] h-[17.7rem] mb-[5%] sm:left-[] md:ml-[32.5%] lg:ml-[25%] lg2:ml-[27%]"
-        />
-        <Image
-          priority={true}
-          ref={imageThree}
-          src={rectangle8}
-          alt="rectangle"
-          className="absolute lg:w-[33.8rem] w-[20.5rem] lg:h-[29.1rem] h-[17.7rem] mb-[5%] -mr-[95%] sm:-mr-[60%] md:ml-[60%] lg:ml-[50%] lg2:ml-[64.5%]"
-        />
+        {/* <div>
+          
+        </div>
+        <div>
+          <Image
+            priority={true}
+            ref={imageTwo}
+            src={rectangle7}
+            alt="rectangle"
+            className="lg:mr-4 lg2:mr-0"
+          />
+        </div>
+        <div>
+          <Image
+            priority={true}
+            ref={imageThree}
+            src={rectangle8}
+            alt="rectangle"
+            className="lg:mr-4 lg2:mr-0"
+          />
+        </div> */}
       </div>
     </div>
   );

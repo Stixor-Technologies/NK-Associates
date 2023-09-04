@@ -1,48 +1,27 @@
 "use client";
 import React, { useEffect, useRef } from "react";
 import Image from "next/image";
-import rectangle6 from "../../public/assets/icons/Rectangle 6-2.svg";
-import rectangle7 from "../../public/assets/icons/Rectangle 7-2.svg";
-import rectangle8 from "../../public/assets/icons/Rectangle 8-2.svg";
-import checkIcon from "../../public/assets/icons/Vector.svg";
+import LinkButton from "../../components/button/link-button";
+import facebookIcon from "../../public/assets/icons/facebook.svg";
+import instagramIcon from "../../public/assets/icons/instagram.svg";
+import youtubeIcon from "../../public/assets/icons/youtube.svg";
+import twitterIcon from "../../public/assets/icons/Twitter.svg";
+import callIcon from "../../public/assets/icons/call.svg";
+import rectangle3 from "../../public/assets/icons/Rectangle 3.svg";
+import Link from "next/link";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/all";
 
 gsap.registerPlugin(ScrollTrigger);
 
-export default function ComponentOneV2() {
+export default function ComponentOne() {
   let imageOne = useRef(null);
-  let imageTwo = useRef(null);
-  let imageThree = useRef(null);
   useEffect(() => {
-    gsap.from(imageThree.current, {
-      x: -1000, // Initial off-screen position
-      opacity: 0,
-      duration: 1,
-      scrollTrigger: {
-        trigger: imageThree.current,
-        start: "top 70%", // Adjust as needed
-        end: "center 50%",
-      },
-    });
-
-    gsap.from(imageTwo.current, {
-      x: -1000, // Initial off-screen position
-      opacity: 0,
-      duration: 0.75,
-      delay: 1, // Delay for the second image
-      scrollTrigger: {
-        trigger: imageTwo.current,
-        start: "top 70%", // Adjust as needed
-        end: "center 50%",
-      },
-    });
-
     gsap.from(imageOne.current, {
       x: -1000, // Initial off-screen position
-      opacity: 0,
+      opacity: 1,
       duration: 1,
-      delay: 1.5, // Delay for the third image
+
       scrollTrigger: {
         trigger: imageOne.current,
         start: "top 70%", // Adjust as needed
@@ -51,56 +30,104 @@ export default function ComponentOneV2() {
     });
   }, []);
   return (
-    <div className="flex flex-col lg2:flex-row">
-      <div className="flex-grow flex md:flex-col justify-center relative overflow-x-hidden lg:-ml-[10%] lg2:-ml-[15%] min-h-[21rem] lg:min-h-[35rem]">
+    <div className="flex flex-col lg2:flex-row-reverse">
+      <div className="flex flex-col w-full lg2:max-w-[560px]">
+        <div className="flex text-[2.25rem] md:text-[3.5rem] text-nk-red font-metropolis-medium text-center lg2:text-left mb-[0.938rem] md:mb-[0.75rem] leading-tight">
+          Helping you find the property of your dreams.
+        </div>
+        <div className="flex w-full justify-center text-nk-black text-[1.25rem] md:text-[1.75rem] text-center md:text-left font-metropolis-extralight">
+          Creating quality lifestyles, building stronger communities
+        </div>
+        <div className="flex mt-[2.064rem] md:mt-[3rem] justify-center lg2:justify-normal mb-[1.875rem] md:mb-[2.7rem]">
+          <LinkButton
+            text="Contact Us"
+            type="solid"
+            className="md:h-[3.666rem] md:w-[13.5rem] text-[1rem] md:text-lg md:text-[1.094rem] h-[2.75rem] w-[13.5rem]"
+            navigateTo="#form"
+          />
+        </div>
+        <div className="flex divide-x mb-[2.639rem]">
+          <div className="flex font-metropolis-semibold text-[1.06rem]">
+            <Link
+              href="/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-2 shrink-0"
+            >
+              <Image src={callIcon} width={20} height={30} alt="Facebook" />
+            </Link>
+            3103365966
+          </div>
+          <div className="flex ml-2">
+            <Link
+              href="/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-2 shrink-0"
+            >
+              <Image src={facebookIcon} width={20} height={30} alt="Facebook" />
+            </Link>
+            <Link
+              href="/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-2 shrink-0"
+            >
+              <Image src={youtubeIcon} width={20} height={30} alt="Youtube" />
+            </Link>
+            <Link
+              href="/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-2 shrink-0"
+            >
+              <Image src={twitterIcon} width={20} height={30} alt="Twitter" />
+            </Link>
+            <Link
+              href="/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-2 shrink-0"
+            >
+              <Image
+                src={instagramIcon}
+                width={20}
+                height={30}
+                alt="Instagram"
+              />
+            </Link>
+          </div>
+        </div>
+      </div>
+      <div className=" mr-[1.55rem] flex justify-center ">
         <Image
+          priority={true}
           ref={imageOne}
-          src={rectangle8}
-          alt="rectangle"
-          className="absolute lg:w-[33.8rem] w-[18.375rem] lg:h-[29.1rem] h-[19.6rem] mb-[5%]  -ml-[75%] sm:-ml-[50%] md:ml-[0%] lg:ml-[3%] lg2:-ml-[14%]"
+          src={rectangle3}
+          alt="rectangle1"
+          className=""
+        />
+        {/* <Image
+          priority={true}
+          ref={imageOne}
+          src={rectangle6}
+          alt="rectangle1"
+          className=""
         />
         <Image
+          priority={true}
           ref={imageTwo}
           src={rectangle7}
-          alt="rectangle"
-          className="absolute lg:w-[33.8rem] w-[18.375rem] lg:h-[29.1rem] h-[19.6rem] mb-[5%] sm:left-[] md:ml-[28%] lg:ml-[29%] lg2:ml-[10%]"
+          alt="rectangle2"
+          className=""
         />
         <Image
+          priority={true}
           ref={imageThree}
-          src={rectangle6}
-          alt="rectangle"
-          className="absolute lg:w-[33.8rem] w-[18.375rem] lg:h-[29.1rem] h-[19.6rem] mb-[5%] -mr-[95%] sm:-mr-[60%] md:ml-[60%] lg:ml-[62%] lg2:ml-[41%]"
-        />
-      </div>
-      <div className="flex flex-col justify-center items-center">
-        <div className="flex text-[2rem] md:text-[2.673rem] text-nk-red font-metropolis-bold text-center lg2:text-left mb-[0.938rem] md:mb-[0.75rem] leading-tight">
-          Why you should choose us.
-        </div>
-        <div className="flex w-full justify-center text-nk-black text-[1.125rem] md:text-[1.336rem] text-center md:text-left font-metropolis-extralight">
-          Creating quality urban lifestyles, building stronger communities
-        </div>
-        <div className="flex flex-col mt-[2.064rem] md:mt-[3rem] justify-center lg2:justify-normal mb-[1.875rem] md:mb-[2.7rem]">
-          <div className="flex">
-            <Image src={checkIcon} alt="check" />
-            <span className="text-[1.25rem] font-metropolis-medium ml-1">
-              World class
-            </span>
-            <Image src={checkIcon} alt="check" className="ml-[2.75rem]" />
-            <span className="text-[1.25rem] font-metropolis-medium ml-1">
-              Affordable
-            </span>
-          </div>
-          <div className="flex">
-            <Image src={checkIcon} alt="check" />
-            <span className="text-[1.25rem] font-metropolis-medium ml-1">
-              Trusted
-            </span>
-            <Image src={checkIcon} alt="check" className="ml-[5rem]" />
-            <span className="text-[1.25rem] font-metropolis-medium ml-1">
-              Amenities
-            </span>
-          </div>
-        </div>
+          src={rectangle8}
+          alt="rectangle3"
+          className=""
+        /> */}
       </div>
     </div>
   );
