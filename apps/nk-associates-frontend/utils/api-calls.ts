@@ -62,16 +62,26 @@ const applyFilters = (filters: FiltersStateType) => {
 };
 
 export const getGridProperties = async (
+  freshData: boolean,
   start: number,
   limit = 12,
   filters?: FiltersStateType,
 ) => {
+  // console.log("start", start);
+  // console.log("limit", limit);
   let url = `${BASE_URL}/api/properties?populate=*&pagination[start]=${start}&pagination[limit]=${limit}&sort[1]=id`;
-  let filtersString = applyFilters(filters);
+
+  let filtersString = "";
+  console.log(freshData);
+  if (freshData) {
+    filtersString = applyFilters(filters);
+  }
 
   try {
     const resp = await fetch(url + filtersString);
     const data = await resp.json();
+    console.log(url + filtersString);
+    console.log(data);
     return data;
   } catch (error) {
     console.error("There was an error getting the Property List", error);
