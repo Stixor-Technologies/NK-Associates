@@ -1,7 +1,7 @@
 "use client";
 import React, { useEffect, useRef, useState } from "react";
 import Image from "next/image";
-import LinkButton from "../../components/button/link-button";
+import LinkButton from "../button/link-button";
 import facebookIcon from "../../public/assets/icons/facebook.svg";
 import instagramIcon from "../../public/assets/icons/instagram.svg";
 import youtubeIcon from "../../public/assets/icons/youtube.svg";

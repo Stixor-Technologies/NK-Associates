@@ -1,13 +1,13 @@
 "use client";
 import React, { useEffect, useRef, useState } from "react";
 import Image from "next/image";
-import LinkButton from "../../components/button/link-button";
-import facebookIcon from "../../public/assets/icons/facebook.svg";
-import instagramIcon from "../../public/assets/icons/instagram.svg";
-import youtubeIcon from "../../public/assets/icons/youtube.svg";
-import twitterIcon from "../../public/assets/icons/Twitter.svg";
-import callIcon from "../../public/assets/icons/call.svg";
-import rectangle3 from "../../public/assets/icons/Rectangle 3.svg";
+import LinkButton from "../button/link-button";
+import facebook_Icon from "../../public/assets/icons/facebook.svg";
+import instagram_Icon from "../../public/assets/icons/instagram.svg";
+import youtube_Icon from "../../public/assets/icons/youtube.svg";
+import twitter_Icon from "../../public/assets/icons/Twitter.svg";
+import call_Icon from "../../public/assets/icons/call.svg";
+import rectangle_3 from "../../public/assets/icons/Rectangle 3.svg";
 import Link from "next/link";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/all";
@@ -56,7 +56,7 @@ export default function ComponentOne() {
               rel="noopener noreferrer"
               className="px-2 shrink-0"
             >
-              <Image src={callIcon} width={20} height={30} alt="Facebook" />
+              <Image src={call_Icon} width={20} height={30} alt="Facebook" />
             </Link>
             3103365966
           </div>
@@ -67,7 +67,12 @@ export default function ComponentOne() {
               rel="noopener noreferrer"
               className="px-2 shrink-0"
             >
-              <Image src={facebookIcon} width={20} height={30} alt="Facebook" />
+              <Image
+                src={facebook_Icon}
+                width={20}
+                height={30}
+                alt="Facebook"
+              />
             </Link>
             <Link
               href="https://www.youtube.com/channel/UCUdSaD4ZjxDYxXiQXZIM7tw"
@@ -75,7 +80,7 @@ export default function ComponentOne() {
               rel="noopener noreferrer"
               className="px-2 shrink-0"
             >
-              <Image src={youtubeIcon} width={20} height={30} alt="Youtube" />
+              <Image src={youtube_Icon} width={20} height={30} alt="Youtube" />
             </Link>
             <Link
               href="https://twitter.com/NKAssociates6"
@@ -83,7 +88,7 @@ export default function ComponentOne() {
               rel="noopener noreferrer"
               className="px-2 shrink-0"
             >
-              <Image src={twitterIcon} width={20} height={30} alt="Twitter" />
+              <Image src={twitter_Icon} width={20} height={30} alt="Twitter" />
             </Link>
             <Link
               href="https://www.instagram.com/nkassociatesofficial/"
@@ -92,7 +97,7 @@ export default function ComponentOne() {
               className="px-2 shrink-0"
             >
               <Image
-                src={instagramIcon}
+                src={instagram_Icon}
                 width={20}
                 height={30}
                 alt="Instagram"
@@ -106,7 +111,7 @@ export default function ComponentOne() {
           <Image
             priority={true}
             ref={imageOne}
-            src={rectangle3}
+            src={rectangle_3}
             alt="rectangle1"
             className=""
           />

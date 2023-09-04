@@ -26,7 +26,14 @@ const ComponentTwo: React.FC<props> = ({
           {title2}
         </div>
         <div>
-          <Cards src1={src2} src2={src1} src3={src3} />
+          <Cards
+            src1={src2}
+            src2={src1}
+            src3={src3}
+            text1="Find Home"
+            text2="Lorem ipsum dolor sit amet consectetur. Massa nec mi justo pulvinar
+          iaculis. Id massa a aenean lacus orci sit vehicula."
+          />
         </div>
       </div>
     </div>
