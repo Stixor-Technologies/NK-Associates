@@ -17,7 +17,6 @@ gsap.registerPlugin(ScrollTrigger);
 export default function ContactComponent() {
   useEffect(() => {
     const cards: HTMLElement[] = gsap.utils.toArray(".family-image");
-    // gsap.set(".family-image", { opacity: 1, y: 0, x: "0%", rotate: 0 });
 
     cards.forEach((card, index) => {
       gsap.to(card, {

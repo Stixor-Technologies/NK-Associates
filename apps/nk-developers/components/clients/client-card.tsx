@@ -5,9 +5,11 @@ import Person from "../../public/assets/icons/person.svg";
 
 interface CardProp {
   center: boolean;
+  text1: string;
+  text2: string;
 }
 
-const ClientCard: FC<CardProp> = ({ center }) => {
+const ClientCard: FC<CardProp> = ({ center, text1, text2 }) => {
   let justify = "text-left justify-start";
   if (center) {
     justify = "text-center justify-center";
@@ -18,16 +20,13 @@ const ClientCard: FC<CardProp> = ({ center }) => {
         <div className="mb-[1.875rem]">
           <Image src={Stars} alt="stars rating" width={130} height={22} />
         </div>
-        <div>
-          Slate helps you see how many more days you need to work to reach your
-          financial goal.
-        </div>
+        <div>{text1}</div>
         <div className="flex  mt-[1.25rem] items-center ">
           <div className="rounded-full mr-[1rem]">
             <Image src={Person} alt="person profile" width={50} height={50} />
           </div>
           <span className="text-nk-red">
-            <p>Regina Miles</p>
+            <p>{text2}</p>
           </span>
         </div>
       </div>

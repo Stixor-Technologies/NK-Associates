@@ -1,10 +1,13 @@
 import React, { FC } from "react";
 import Image from "next/image";
+import { text } from "stream/consumers";
 
 interface CardProp {
   image: string;
+  text1: string;
+  text2: string;
 }
-const ServiceCard: FC<CardProp> = ({ image }) => {
+const ServiceCard: FC<CardProp> = ({ image, text1, text2 }) => {
   return (
     <div>
       <div className="h-[31.5rem] max-w-[24rem] lg:w-max-[15.875rem] mx-auto lg:mx-0">
@@ -18,12 +21,10 @@ const ServiceCard: FC<CardProp> = ({ image }) => {
           />
         </div>
         <h2 className="text-nk-red tex-[1.5rem] font-metropolis-bold mt-[1.474rem]">
-          Find Home
+          {text1}
         </h2>
         <p className="text-nk-dark-gray font-metropolis-light text-[0.875rem]">
-          Lorem ipsum dolor sit amet consectetur. Tincidunt elit proin in non.
-          Vulputate vivamus feugiat vitae viverra. Molestie diam dignissim
-          tortor morbi rhoncus massa amet.
+          {text2}
         </p>
       </div>
     </div>

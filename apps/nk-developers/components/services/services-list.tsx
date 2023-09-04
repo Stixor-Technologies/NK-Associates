@@ -15,10 +15,34 @@ const ServicesList = () => {
           </span>
         </div>
         <div className="flex flex-col lg:flex-row gap-[3.125rem] justify-center mt-[2.5rem] mx-auto lg:mx-0">
-          <ServiceCard image="/assets/images/image.svg" />
-          <ServiceCard image="/assets/images/image1.svg" />
-          <ServiceCard image="/assets/images/image2.svg" />
-          <ServiceCard image="/assets/images/image3.svg" />
+          <ServiceCard
+            image="/assets/images/image.svg"
+            text1="Find Home"
+            text2="Lorem ipsum dolor sit amet consectetur. Tincidunt elit proin in non.
+          Vulputate vivamus feugiat vitae viverra. Molestie diam dignissim
+          tortor morbi rhoncus massa amet."
+          />
+          <ServiceCard
+            image="/assets/images/image1.svg"
+            text1="Find Home"
+            text2="Lorem ipsum dolor sit amet consectetur. Tincidunt elit proin in non.
+          Vulputate vivamus feugiat vitae viverra. Molestie diam dignissim
+          tortor morbi rhoncus massa amet."
+          />
+          <ServiceCard
+            image="/assets/images/image2.svg"
+            text1="Find Home"
+            text2="Lorem ipsum dolor sit amet consectetur. Tincidunt elit proin in non.
+          Vulputate vivamus feugiat vitae viverra. Molestie diam dignissim
+          tortor morbi rhoncus massa amet."
+          />
+          <ServiceCard
+            image="/assets/images/image3.svg"
+            text1="Find Home"
+            text2="Lorem ipsum dolor sit amet consectetur. Tincidunt elit proin in non.
+          Vulputate vivamus feugiat vitae viverra. Molestie diam dignissim
+          tortor morbi rhoncus massa amet."
+          />
         </div>
       </div>
     </div>
