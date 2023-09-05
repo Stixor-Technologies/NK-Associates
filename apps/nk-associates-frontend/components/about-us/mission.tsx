@@ -7,7 +7,7 @@ interface CardProps {
   about: Mission;
 }
 const MissionCard: FC<CardProps> = ({ about }) => {
-  const { question, title, description } = about;
+  const { question, title, description } = about || {};
   const cardImage = about?.card_image?.data?.attributes?.url;
   const cardIcon = about?.card_icon?.data?.attributes?.url;
   const spin = -4;

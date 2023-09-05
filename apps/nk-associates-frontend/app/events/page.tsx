@@ -20,7 +20,7 @@ async function FetchData() {
 const collectImages = (data: Events[]) => {
   let urls: string[] = [];
   data?.map((dataItem, index) => {
-    dataItem?.attributes?.event_image?.data.map((imageData, index) => {
+    dataItem?.attributes?.event_image?.data?.map((imageData, index) => {
       urls.push(imageData?.attributes?.url);
     });
   });
