@@ -1,7 +1,6 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-import Logo from "../../public/assets/icons/nk-logo.svg";
 import GooglePlayIcon from "../../public/assets/icons/google-play.svg";
 import AppStoreIcon from "../../public/assets/icons/app-store.svg";
 import AppGalleryIcon from "../../public/assets/icons/app-gallery.svg";

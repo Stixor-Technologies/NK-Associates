@@ -7,7 +7,7 @@ import instagram_Icon from "../../public/assets/icons/instagram.svg";
 import youtube_Icon from "../../public/assets/icons/youtube.svg";
 import twitter_Icon from "../../public/assets/icons/Twitter.svg";
 import call_Icon from "../../public/assets/icons/call.svg";
-import rectangle_3 from "../../public/assets/icons/Rectangle 3.svg";
+import rectangle_3 from "../../public/assets/icons/rectangle-3.svg";
 import Link from "next/link";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/all";
