@@ -20,7 +20,6 @@ const AboutUs = async () => {
   const vision = aboutInfo?.data?.attributes?.Vision;
   const values = aboutInfo?.data?.attributes?.Values;
   const goals = aboutInfo?.data?.attributes?.Goals;
-  console.log(mission, vision, values, goals);
   return (
     <div>
       <div className="text-center text-black container">

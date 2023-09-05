@@ -17,12 +17,6 @@ interface GoalProps {
 }
 
 const Goals: FC<GoalProps> = ({ mission, vision, values, goals }) => {
-  // console.log(mission);
-  const [Vision, setVision] = useState<Vision>();
-  const [Mission, setMission] = useState<Mission>();
-  const [Values, setValues] = useState<Values>();
-  const [Goals, setGoals] = useState<Goals>();
-  const [isLoading, setIsLoading] = useState<boolean>(true);
   const component = useRef(null);
   const [windowSize, setWindowSize] = useState<number>(0);
   const breakPoint = 1024;
@@ -68,7 +62,6 @@ const Goals: FC<GoalProps> = ({ mission, vision, values, goals }) => {
           pin: true,
           scrub: 1,
           invalidateOnRefresh: true,
-          // markers: true,
         },
       });
 

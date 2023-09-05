@@ -8,7 +8,6 @@ const ServicesOverview = () => {
   const ref = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
-    console.log("initialize trigger services");
     const tl = gsap.timeline({
       scrollTrigger: {
         id: "services-overview-trigger",
