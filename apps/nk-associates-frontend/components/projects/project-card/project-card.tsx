@@ -76,7 +76,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
   return (
     <Link href={`projects/${id}`}>
       <div
-        className={`project-card mb-[1.5rem] flex w-full flex-col overflow-hidden rounded-2xl shadow-md md:mb-[3rem] ${flexDirection} md:rounded-3xl ${backgroundColor} ${textColor} ${cardHeight}`}
+        className={`project-card mb-[1.5rem] flex w-full flex-col overflow-hidden rounded-2xl shadow-md md:mb-[3rem] ${flexDirection} md:rounded-3xl ${textColor} ${cardHeight}`}
       >
         <div
           onMouseEnter={showAnimatedCursor}
@@ -122,7 +122,9 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
           )}
         </div>
 
-        <div className="flex flex-col px-4 py-3.5 sm:w-[35%] md:p-6">
+        <div
+          className={`flex flex-col px-4 py-3.5 sm:w-[35%] md:p-6 ${backgroundColor}`}
+        >
           <div className=" flex flex-col">
             <h1
               className="mb-1.5 truncate font-metropolis-extrabold text-[1.375rem] leading-5 md:mb-3 md:text-2xl md:leading-7 lg:text-3xl"
