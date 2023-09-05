@@ -8,7 +8,7 @@ import JobList from "../../components/job-card/job-list";
 
 const Careers = () => {
   const targetSectionRef = useRef(null);
-  function scrollToSection() {
+  const scrollToSection = () => {
     if (targetSectionRef.current) {
       const offset = -90;
       const scrollPosition =
@@ -20,7 +20,7 @@ const Careers = () => {
         behavior: "smooth",
       });
     }
-  }
+  };
   return (
     <div className="lg:p-0.50 grid grid-cols-1 p-3 sm:p-6 xl:p-20 2xl:p-32">
       <div className="mb-8">
