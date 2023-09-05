@@ -7,7 +7,7 @@ interface CardProps {
   about: Values;
 }
 const ValuesCard: FC<CardProps> = ({ about }) => {
-  const { title, list } = about;
+  const { title, list } = about || {};
   const cardImage = about?.card_image?.data?.attributes?.url;
   const cardIcon = about?.card_icon?.data?.attributes?.url;
 

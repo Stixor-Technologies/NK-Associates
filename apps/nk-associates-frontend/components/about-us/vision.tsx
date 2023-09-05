@@ -7,7 +7,7 @@ interface CardProps {
   about: Vision;
 }
 const VisionCard: FC<CardProps> = ({ about }) => {
-  const { question, title, description } = about;
+  const { question, title, description } = about || {};
   const cardImage = about?.card_image?.data?.attributes?.url;
   const cardIcon = about?.card_icon?.data?.attributes?.url;
 
