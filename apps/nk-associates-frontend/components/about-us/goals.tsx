@@ -55,8 +55,6 @@ const Goals: FC<GoalProps> = ({ mission, vision, values, goals }) => {
     });
 
     if (windowSize >= breakPoint) {
-      console.log("intializeTrigger Goal");
-
       gsap.set(".images-about", {
         clearProps: true,
       });
@@ -67,7 +65,6 @@ const Goals: FC<GoalProps> = ({ mission, vision, values, goals }) => {
           trigger: ".card-container",
           start: "top 20%",
           end: `+=${40 * cards.length}%`,
-
           pin: true,
           scrub: 1,
           invalidateOnRefresh: true,
@@ -113,7 +110,7 @@ const Goals: FC<GoalProps> = ({ mission, vision, values, goals }) => {
           scrollTrigger: {
             id: "about-mobile-trigger",
             trigger: card,
-            start: "top 40%",
+            start: "top 60%",
           },
         });
       });
