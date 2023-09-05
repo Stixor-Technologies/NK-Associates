@@ -30,7 +30,7 @@ const ValuesCard: FC<CardProps> = ({ about }) => {
             {title}
           </h1>
           <div>
-            {list.map((item, index) => (
+            {list?.map((item, index) => (
               <div
                 key={index}
                 className="flex font-metropolis text-base gap-4 mb-2.5 items-center"
