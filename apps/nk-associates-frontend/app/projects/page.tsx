@@ -1,8 +1,7 @@
 "use client";
-import { useEffect, useState, useMemo, useLayoutEffect, useRef } from "react";
+import { useEffect, useState, useLayoutEffect, useRef } from "react";
 import { getProjects } from "../../utils/api-calls";
 import ProjectCardItem from "../../components/projects/project-card/project-card-item";
-import LinkButton from "../../components/button/link-button";
 import { Project } from "../../utils/types/types";
 import CursorUtility from "../../utils/cursor-utility";
 import { gsap } from "gsap";
@@ -81,7 +80,7 @@ export default function Projects() {
           boxes.forEach((box, index) => {
             if (index >= 1) {
               gsap.from(box, {
-                y: 85,
+                y: 60,
                 scrollTrigger: {
                   trigger: box,
                   start: "top bottom",
@@ -127,7 +126,7 @@ export default function Projects() {
           </div>
         </div>
 
-        <div className="container my-20 flex flex-col items-center md:mt-16">
+        <div className="container my-12 flex flex-col items-center md:my-6">
           {error && !loading ? (
             <div className="text-md mb-18 font-metropolis-bold text-nk-black">
               Error loading projects.

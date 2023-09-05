@@ -76,7 +76,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
   return (
     <Link href={`projects/${id}`}>
       <div
-        className={`project-card mb-[2.3rem] flex w-full flex-col overflow-hidden rounded-2xl shadow-md last-of-type:mb-4  md:mb-[4.5rem] ${flexDirection} md:rounded-3xl ${backgroundColor} ${textColor} ${cardHeight}`}
+        className={`project-card mb-[1.5rem] flex w-full flex-col overflow-hidden rounded-2xl shadow-md md:mb-[3rem] ${flexDirection} md:rounded-3xl ${backgroundColor} ${textColor} ${cardHeight}`}
       >
         <div
           onMouseEnter={showAnimatedCursor}
