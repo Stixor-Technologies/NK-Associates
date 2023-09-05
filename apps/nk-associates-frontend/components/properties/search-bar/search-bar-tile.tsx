@@ -42,7 +42,12 @@ const SearchBarTile = ({ tile, filtersProperties }: PropsType) => {
         ? selectedPurpose[0].name
         : "Any";
     } else if (tile.name === "Location") {
-      return "Any";
+      const selectedLocation = filtersProperties.propertyLocationList.filter(
+        (type) => +type.id === +filtersState.location,
+      );
+      return selectedLocation && selectedLocation.length
+        ? selectedLocation[0].name
+        : "Any";
     }
   }, [tile, filtersState]);
 
@@ -160,7 +165,7 @@ const SearchBarTile = ({ tile, filtersProperties }: PropsType) => {
 
       {activeFilter && (
         <div
-          className="w-[22.5rem] fixed z-10"
+          className="w-[22.5rem] fixed z-50"
           style={{
             left: filterPosition.x,
             top: filterPosition.y + 10,

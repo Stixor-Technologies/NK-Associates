@@ -12,8 +12,9 @@ import {
   fetchPropertyPurposeList,
   fetchCompletionStatusList,
   fetchRentFrequencyList,
-  getProjects,
   fetchFilterOptionsList,
+  fetchPropertyLocationList,
+  fetchFilterProjectsList,
 } from "../../../utils/api-calls";
 
 const searchTiles = [
@@ -30,6 +31,7 @@ const SearchBar = ({ onFilter }: { onFilter: () => void }) => {
     useState<SearchFilterProperties>({
       propertyTypesList: undefined,
       propertyPurposeList: undefined,
+      propertyLocationList: undefined,
       projectsList: undefined,
       completionStatusList: undefined,
       rentFrequencyList: undefined,
@@ -51,6 +53,8 @@ const SearchBar = ({ onFilter }: { onFilter: () => void }) => {
         selectedAreaUnit: filtersProperties.areaUnitsList[0].name,
       },
     });
+
+    onFilter();
   };
 
   const getPropertyTypesList = async () => {
@@ -78,10 +82,9 @@ const SearchBar = ({ onFilter }: { onFilter: () => void }) => {
   };
 
   const getProjectsList = async () => {
-    const resp = await getProjects();
-    const data = await resp.json();
+    const resp = await fetchFilterProjectsList();
 
-    const normalizedProjectsList = data.data.map((project) => {
+    const normalizedProjectsList = resp.map((project) => {
       return {
         id: project.id,
         name: project.attributes.title,
@@ -142,6 +145,22 @@ const SearchBar = ({ onFilter }: { onFilter: () => void }) => {
     }));
   };
 
+  const getPropertyLocationList = async () => {
+    const respPropertyLocation = await fetchPropertyLocationList();
+
+    const propertyLocationList = respPropertyLocation.map((status) => {
+      return {
+        id: status.id,
+        name: status.attributes.name,
+      };
+    });
+
+    setFiltersProperties((oldState) => ({
+      ...oldState,
+      propertyLocationList: propertyLocationList,
+    }));
+  };
+
   const getFiltersOptionsList = async () => {
     const respFiltersOptions = await fetchFilterOptionsList();
 
@@ -193,6 +212,7 @@ const SearchBar = ({ onFilter }: { onFilter: () => void }) => {
       await getCompletionStatusList();
       await getPropertyPurposeList();
       await getProjectsList();
+      await getPropertyLocationList();
       await getRentFrequencyList();
       await getFiltersOptionsList();
       filtersDispatch({ type: "setFilterIsSelected", payload: false });
