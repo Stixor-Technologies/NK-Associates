@@ -83,7 +83,7 @@ const PropertyCard: FC<CardProps> = ({
             actMap
               ? "h-52 rounded-t-xl"
               : actFeatured
-              ? "h-[17.5rem] md:h-[22.375rem]"
+              ? "h-[17.5rem] md:h-[22.375rem] rounded-xl"
               : "h-[17.5rem] rounded-xl"
           }`}
         >
