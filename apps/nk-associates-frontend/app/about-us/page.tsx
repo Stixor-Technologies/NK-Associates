@@ -21,7 +21,7 @@ const AboutUs = async () => {
   const values = aboutInfo?.data?.attributes?.Values;
   const goals = aboutInfo?.data?.attributes?.Goals;
   return (
-    <div>
+    <div className="bg-right-top bg-no-repeat md:bg-nk-bg">
       <div className="text-center text-black container">
         <div className="text-[1.875rem] md:text-[3rem] font-metropolis-extrabold pt-[1rem]  md:pt-[3rem]">
           About Us
