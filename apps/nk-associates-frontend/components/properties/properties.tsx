@@ -12,7 +12,7 @@ import PropertyList from "./property-list";
 import InfiniteScroll from "react-infinite-scroll-component";
 import { getGridProperties, getMapProperties } from "../../utils/api-calls";
 import { Property } from "../../utils/types/types";
-import { debounce, property } from "lodash";
+import { debounce } from "lodash";
 import MapBtn from "../../public/assets/icons/map-list-icon.svg";
 import ListIcon from "../../public/assets/icons/list-icon.svg";
 import PropertyCard from "./property-card";
@@ -45,10 +45,12 @@ const Properties = () => {
   const mapRef = useRef<google.maps.Map | null>(null);
   const buttonRef = useRef<HTMLButtonElement>(null);
 
-  const fetchGridData = async (freshData?: boolean) => {
+  const fetchGridData = async (freshData?: boolean, moreLoad?: boolean) => {
     setIsLoading(true);
 
     const resp = await getGridProperties(
+      freshData,
+      moreLoad,
       freshData ? 0 : gridProperties.length,
       12,
       filtersState,
@@ -143,7 +145,9 @@ const Properties = () => {
           ) : gridProperties && gridProperties.length > 0 ? (
             <InfiniteScroll
               dataLength={gridProperties.length}
-              next={fetchGridData}
+              next={() => {
+                fetchGridData(false, filtersState?.filterIsSelected);
+              }}
               hasMore={total !== gridProperties.length}
               loader={isLoading && <PropertyListSkeleton />}
               className={isList ? "block" : "hidden"}

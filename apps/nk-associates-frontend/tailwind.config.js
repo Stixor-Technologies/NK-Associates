@@ -16,9 +16,6 @@ module.exports = {
       "above-md": { min: "769px" },
     },
     extend: {
-      backgroundImage: {
-        "nk-bg": "url('/assets/images/bg-property.svg')",
-      },
       fontFamily: {
         metropolis: ["var(--font-metroplis)"],
         "metropolis-semibold": ["var(--font-metroplis-semiBold)"],
@@ -59,6 +56,7 @@ module.exports = {
         container: "78.25rem",
       },
       backgroundImage: (theme) => ({
+        "nk-bg": "url('/assets/images/bg-property.svg')",
         "custom-gradient":
           "linear-gradient(180deg, #EFEFEF 0%, rgba(255, 255, 255, 1) 100%)",
 
