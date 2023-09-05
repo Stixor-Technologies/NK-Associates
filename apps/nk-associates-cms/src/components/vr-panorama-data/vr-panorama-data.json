@@ -1,0 +1,43 @@
+{
+  "collectionName": "components_vr_panorama_data_vr_panorama_data",
+  "info": {
+    "displayName": "VR-Panorama-Data",
+    "icon": "picture"
+  },
+  "options": {},
+  "attributes": {
+    "fullWidth": {
+      "type": "integer",
+      "required": true
+    },
+    "fullHeight": {
+      "type": "integer",
+      "required": true
+    },
+    "croppedWidth": {
+      "type": "integer",
+      "required": true
+    },
+    "croppedHeight": {
+      "type": "integer",
+      "required": true
+    },
+    "croppedX": {
+      "type": "integer",
+      "required": true
+    },
+    "croppedY": {
+      "type": "integer",
+      "required": true
+    },
+    "poseHeading": {
+      "type": "integer"
+    },
+    "posePitch": {
+      "type": "integer"
+    },
+    "poseRoll": {
+      "type": "integer"
+    }
+  }
+}

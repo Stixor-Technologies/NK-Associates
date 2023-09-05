@@ -53,6 +53,7 @@ async function PropertyDetail({ params: { id } }: PropertyDetailProps) {
     id,
   );
 
+  const vrTourId = data?.attributes?.vr_tour?.data?.id;
   const pdfUrl: string = data?.attributes?.property_pdf?.data?.attributes?.url;
   const paragraphs: string[] | string = description?.split("\n\n");
 
@@ -70,7 +71,7 @@ async function PropertyDetail({ params: { id } }: PropertyDetailProps) {
         />
 
         <div className="relative mt-14 md:mt-3">
-          <VRTour />
+          <VRTour vrTourId={vrTourId ? vrTourId : undefined} />
 
           <div className="container mx-auto py-4">
             {/* Property Info section */}

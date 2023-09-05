@@ -1879,14 +1879,7 @@
     "@nodelib/fs.scandir" "2.1.5"
     fastq "^1.6.0"
 
-"@photo-sphere-viewer/autorotate-plugin@5.3.0", "@photo-sphere-viewer/autorotate-plugin@^5.1.4":
-  version "5.3.0"
-  resolved "https://registry.yarnpkg.com/@photo-sphere-viewer/autorotate-plugin/-/autorotate-plugin-5.3.0.tgz#b266a0dd86c6ce963786358f44459bb5f833f6cf"
-  integrity sha512-E3RKAgf9AI5nVxKSncA8vuKpCMs3vLXKNIzb5lfJ96YZgxCxKlFEirJ8wbeXQDfUWpXSeWn/CSpR7ZmjPVH86g==
-  dependencies:
-    "@photo-sphere-viewer/core" "5.3.0"
-
-"@photo-sphere-viewer/compass-plugin@5.3.0", "@photo-sphere-viewer/compass-plugin@^5.1.4":
+"@photo-sphere-viewer/compass-plugin@5.3.0":
   version "5.3.0"
   resolved "https://registry.yarnpkg.com/@photo-sphere-viewer/compass-plugin/-/compass-plugin-5.3.0.tgz#93cfd5dbf2aa0fc14b6df4715e21ae6a9100b6a4"
   integrity sha512-AZYrtKih7nNsDouYiFwINluPsX2l189raqqtOtiCRQU1+dn52dRFtjTcXflLtOeJFyJU7cFweiPuI3cnJdpOyw==
@@ -1895,110 +1888,28 @@
   optionalDependencies:
     "@photo-sphere-viewer/markers-plugin" "5.3.0"
 
-"@photo-sphere-viewer/core@5.3.0", "@photo-sphere-viewer/core@^5.1.4", "@photo-sphere-viewer/core@^5.3.0":
+"@photo-sphere-viewer/core@5.3.0", "@photo-sphere-viewer/core@^5.3.0":
   version "5.3.0"
   resolved "https://registry.yarnpkg.com/@photo-sphere-viewer/core/-/core-5.3.0.tgz#c558f383670d924f9e157a8b89bafe20239303ec"
   integrity sha512-gIRJ/ODTVkiYKUoWPg2zThNYbf4RiwJfw0h302lRjaLsmFK20RaXknmHdtQsfNp5DU2J/tBZ5NOnXfMNr3GmlQ==
   dependencies:
     three "^0.155.0"
 
-"@photo-sphere-viewer/cubemap-adapter@5.3.0", "@photo-sphere-viewer/cubemap-adapter@^5.1.4":
-  version "5.3.0"
-  resolved "https://registry.yarnpkg.com/@photo-sphere-viewer/cubemap-adapter/-/cubemap-adapter-5.3.0.tgz#2a1e3db5823722d6cae5d277a881ad97f25f3a06"
-  integrity sha512-gFpXE0W4JJmP57lVzhM4mUxOTEdBUqLS4EEUOwAuGNon4j1mTf0KHbLHjLbdquTJ4D0cH18NlFE4lo6zGJTw5A==
-  dependencies:
-    "@photo-sphere-viewer/core" "5.3.0"
-
-"@photo-sphere-viewer/cubemap-tiles-adapter@^5.1.4":
-  version "5.3.0"
-  resolved "https://registry.yarnpkg.com/@photo-sphere-viewer/cubemap-tiles-adapter/-/cubemap-tiles-adapter-5.3.0.tgz#e679524d481324a368005cb4a3e55a70bd95ad9a"
-  integrity sha512-8TdcdjkooK52pZFiHCHdwfSz+YYXDHfG5ijRPQrhEGrR/shs2mTudI36clSv4F4EAiPrujXe7O3XLAE4bz3PcQ==
-  dependencies:
-    "@photo-sphere-viewer/core" "5.3.0"
-    "@photo-sphere-viewer/cubemap-adapter" "5.3.0"
-
-"@photo-sphere-viewer/cubemap-video-adapter@^5.1.4":
-  version "5.3.0"
-  resolved "https://registry.yarnpkg.com/@photo-sphere-viewer/cubemap-video-adapter/-/cubemap-video-adapter-5.3.0.tgz#f91eb123e57337469e13b7aef5164f155545293b"
-  integrity sha512-zozxYNbCEd4zumMpj1WYkASplna4pCJTWQe8y1CdUgwj6Xnjnh0g2FGthrsmUDezdufZU7YdyLfhtLylEDvZ7w==
-  dependencies:
-    "@photo-sphere-viewer/core" "5.3.0"
-
-"@photo-sphere-viewer/equirectangular-tiles-adapter@^5.1.4":
-  version "5.3.0"
-  resolved "https://registry.yarnpkg.com/@photo-sphere-viewer/equirectangular-tiles-adapter/-/equirectangular-tiles-adapter-5.3.0.tgz#11bba678759f358c9aa8aca2eea8d1f8cdd4c063"
-  integrity sha512-h+kPzSY0OxBiGRNvzTaLJXBG5et+bgVl2/rZ6prD2b2XfDF3WZDWPNmlCOjZwW0M/c9746KwcvSTV4/BAo1BIQ==
-  dependencies:
-    "@photo-sphere-viewer/core" "5.3.0"
-
-"@photo-sphere-viewer/equirectangular-video-adapter@^5.1.4":
-  version "5.3.0"
-  resolved "https://registry.yarnpkg.com/@photo-sphere-viewer/equirectangular-video-adapter/-/equirectangular-video-adapter-5.3.0.tgz#1da12309990728e5fd98a5fb6f4da7e4e84a1f68"
-  integrity sha512-81g/y+dBxsL9B5F47euxy/hVx1Lz1HLHCGE0EuNqJjNr6+M6WYkS/rWWJi3qezsW+XUyAyrbRdVScifCxkVeWg==
-  dependencies:
-    "@photo-sphere-viewer/core" "5.3.0"
-
-"@photo-sphere-viewer/gallery-plugin@5.3.0", "@photo-sphere-viewer/gallery-plugin@^5.1.4":
+"@photo-sphere-viewer/gallery-plugin@5.3.0":
   version "5.3.0"
   resolved "https://registry.yarnpkg.com/@photo-sphere-viewer/gallery-plugin/-/gallery-plugin-5.3.0.tgz#6523ace22aace44a27db9bdbb61fbf72afadf6fb"
   integrity sha512-q+IvY/gllcwMCg+d/NzroKVvZD29yJQe+lPJw3BNIPJtUhfukvZG1MOM4bLossr1DJvM5Qk2Rw9uBOVm1+9wSA==
   dependencies:
     "@photo-sphere-viewer/core" "5.3.0"
 
-"@photo-sphere-viewer/gyroscope-plugin@5.3.0", "@photo-sphere-viewer/gyroscope-plugin@^5.1.4":
-  version "5.3.0"
-  resolved "https://registry.yarnpkg.com/@photo-sphere-viewer/gyroscope-plugin/-/gyroscope-plugin-5.3.0.tgz#90922ebb5762ff1d2c1951fd7959e09e2ef373e4"
-  integrity sha512-QXAE/TxWKCdkcybmKYf0gaSQ+UjTj4H/dCU2RmgvyH//BIc6gU1dEXYQSPKzcdwEHCz9P95mwYJ5H76JdtkO3w==
-  dependencies:
-    "@photo-sphere-viewer/core" "5.3.0"
-
-"@photo-sphere-viewer/map-plugin@^5.1.4":
-  version "5.3.0"
-  resolved "https://registry.yarnpkg.com/@photo-sphere-viewer/map-plugin/-/map-plugin-5.3.0.tgz#08081afbbbc88accf80327d31a1507e1306cddf2"
-  integrity sha512-Aezj+0GJ+GAtQqVNDUtFo7iW6pfGU3n7PFzik0BhE2mAvEEG6WVEf2H2BusQoIwY1arCZJignA97BYbw7qa6Og==
-  dependencies:
-    "@photo-sphere-viewer/core" "5.3.0"
-
-"@photo-sphere-viewer/markers-plugin@5.3.0", "@photo-sphere-viewer/markers-plugin@^5.1.4":
+"@photo-sphere-viewer/markers-plugin@5.3.0":
   version "5.3.0"
   resolved "https://registry.yarnpkg.com/@photo-sphere-viewer/markers-plugin/-/markers-plugin-5.3.0.tgz#1b321823ba543e8d722d9776456984687f12fff7"
   integrity sha512-tIxALp2slUAZH8nQ8Z2rf21RMcVScnWQ/UmbQ7RDQkupyEJcw96T02NTjP4jv74+Sjnxrm/XWv+yJXoG/ZwBWw==
   dependencies:
     "@photo-sphere-viewer/core" "5.3.0"
 
-"@photo-sphere-viewer/resolution-plugin@^5.1.4":
-  version "5.3.0"
-  resolved "https://registry.yarnpkg.com/@photo-sphere-viewer/resolution-plugin/-/resolution-plugin-5.3.0.tgz#d8057e052a454fae27a2b9966717df23fa43e24e"
-  integrity sha512-QWjojZtkCWYIhGcuTvEa1FyBcOa0Pm74xwHcz4kbFuJk5I2GdUbpsDkokADAvhu1JnjFdAQvzqIERYNQWtJYKw==
-  dependencies:
-    "@photo-sphere-viewer/core" "5.3.0"
-    "@photo-sphere-viewer/settings-plugin" "5.3.0"
-
-"@photo-sphere-viewer/settings-plugin@5.3.0", "@photo-sphere-viewer/settings-plugin@^5.1.4":
-  version "5.3.0"
-  resolved "https://registry.yarnpkg.com/@photo-sphere-viewer/settings-plugin/-/settings-plugin-5.3.0.tgz#18c2970e820cc3d424fc0a4efe65901001e3ce2f"
-  integrity sha512-2jUjHKFVyG3ULHlE8IXc4+4SR0OIkkiknr1ot6n01vJcUFFbATXeuwPmHfbY/+qW58v9l/q20/EhrLINGdH3aQ==
-  dependencies:
-    "@photo-sphere-viewer/core" "5.3.0"
-
-"@photo-sphere-viewer/stereo-plugin@^5.1.4":
-  version "5.3.0"
-  resolved "https://registry.yarnpkg.com/@photo-sphere-viewer/stereo-plugin/-/stereo-plugin-5.3.0.tgz#cf9bb07ffa2f32792a49fdafe395f8a0622140f1"
-  integrity sha512-ixaqnFB/N+HsfC6SnEtPNa5ZYJ6pP+oja56/TbVEI1rKb+1jIBmbNOVWvtpMgfuqx+jZjEI0zuJEsFMPRCmKdw==
-  dependencies:
-    "@photo-sphere-viewer/core" "5.3.0"
-    "@photo-sphere-viewer/gyroscope-plugin" "5.3.0"
-
-"@photo-sphere-viewer/video-plugin@^5.1.4":
-  version "5.3.0"
-  resolved "https://registry.yarnpkg.com/@photo-sphere-viewer/video-plugin/-/video-plugin-5.3.0.tgz#6d811992d7c52bb518f580bd8548b6d6c671eeae"
-  integrity sha512-4mgFi6ZQXuv2x6DwUCcXEfhSmzbaa5EqZly7/iG2Gr0mYZV9BsE52nDwLYgUxlm2oxsZaWLar/ZCpsQnfwXKHw==
-  dependencies:
-    "@photo-sphere-viewer/core" "5.3.0"
-  optionalDependencies:
-    "@photo-sphere-viewer/autorotate-plugin" "5.3.0"
-
-"@photo-sphere-viewer/virtual-tour-plugin@^5.1.4":
+"@photo-sphere-viewer/virtual-tour-plugin@^5.3.0":
   version "5.3.0"
   resolved "https://registry.yarnpkg.com/@photo-sphere-viewer/virtual-tour-plugin/-/virtual-tour-plugin-5.3.0.tgz#89047bd0a6c768841253235b8fa8ea1d2ce44c7b"
   integrity sha512-JPzs7C4ziyii+T0IVff4oaxVweccTg3ApToPBaq4jg2KKr0AkYEmOQDReOYr5Aah7w6xP4pQlznEfO3js2E+8w==
@@ -2008,13 +1919,6 @@
     "@photo-sphere-viewer/compass-plugin" "5.3.0"
     "@photo-sphere-viewer/gallery-plugin" "5.3.0"
     "@photo-sphere-viewer/markers-plugin" "5.3.0"
-
-"@photo-sphere-viewer/visible-range-plugin@^5.1.4":
-  version "5.3.0"
-  resolved "https://registry.yarnpkg.com/@photo-sphere-viewer/visible-range-plugin/-/visible-range-plugin-5.3.0.tgz#6fbe517075fbf4d014eaa0eadc38434f42580c86"
-  integrity sha512-pC1hsB8JifSeci1PTkmVM8GX2SLj6qovSOLyQRJ5zPfmT9eT1K8p3Smy5IgFxFQ4aaVtYl6lroMO8x5Df3RF/w==
-  dependencies:
-    "@photo-sphere-viewer/core" "5.3.0"
 
 "@pkgr/utils@^2.3.1":
   version "2.4.2"
@@ -4185,7 +4089,7 @@ autoprefixer@10.4.14:
     picocolors "^1.0.0"
     postcss-value-parser "^4.2.0"
 
-autoprefixer@10.4.15, autoprefixer@^10.4.14:
+autoprefixer@10.4.15:
   version "10.4.15"
   resolved "https://registry.yarnpkg.com/autoprefixer/-/autoprefixer-10.4.15.tgz#a1230f4aeb3636b89120b34a1f513e2f6834d530"
   integrity sha512-KCuPB8ZCIqFdA4HwKXsvz7j6gvSDNhDP7WnUjBleRkKjPdvCmHFuQ77ocavI8FT6NdvlBnE2UFr2H4Mycn8Vew==
@@ -6401,11 +6305,6 @@ eventemitter3@^4.0.0:
   version "4.0.7"
   resolved "https://registry.npmjs.org/eventemitter3/-/eventemitter3-4.0.7.tgz"
   integrity sha512-8guHBZCwKnFhYdHr2ysuRWErTwhoN2X8XELRlrRwpmfeY2jjuUN4taQMsULKUVo1K4DvZl+0pgfyoysHxvmvEw==
-
-eventemitter3@^5.0.0:
-  version "5.0.1"
-  resolved "https://registry.yarnpkg.com/eventemitter3/-/eventemitter3-5.0.1.tgz#53f5ffd0a492ac800721bb42c66b841de96423c4"
-  integrity sha512-GWkBvjiSZK87ELrYOSESUYeVIc9mvLLf/nXalMOS5dYrgZq9o5OVkbZAVM06CVxYsCwH9BDZFPlQTlPA1j4ahA==
 
 events@^3.2.0:
   version "3.3.0"
@@ -10172,11 +10071,6 @@ pgpass@1.x:
   dependencies:
     split2 "^4.1.0"
 
-photo-sphere-viewer-lensflare-plugin@^1.1.1:
-  version "1.1.1"
-  resolved "https://registry.yarnpkg.com/photo-sphere-viewer-lensflare-plugin/-/photo-sphere-viewer-lensflare-plugin-1.1.1.tgz#86c8c19f065c8a391f655cc7759aadd4255917ed"
-  integrity sha512-2h5L+7sy/1JWoV0ZtPij/yQCMRImo1qe+TK0t7m+MURbNJKfLzouxaPp5itiTPN8sED8/G4E4KxdE26BEqXTTQ==
-
 picocolors@^1.0.0:
   version "1.0.0"
   resolved "https://registry.npmjs.org/picocolors/-/picocolors-1.0.0.tgz"
@@ -10660,33 +10554,6 @@ react-merge-refs@^1.1.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/react-merge-refs/-/react-merge-refs-1.1.0.tgz#73d88b892c6c68cbb7a66e0800faa374f4c38b06"
   integrity sha512-alTKsjEL0dKH/ru1Iyn7vliS2QRcBp9zZPGoWxUOvRGWPUYgjo+V01is7p04It6KhgrzhJGnIj9GgX8W4bZoCQ==
-
-react-photo-sphere-viewer@^3.3.5-psv5.1.4:
-  version "3.3.5-psv5.1.4"
-  resolved "https://registry.yarnpkg.com/react-photo-sphere-viewer/-/react-photo-sphere-viewer-3.3.5-psv5.1.4.tgz#521dd6839a9d2edb6ffe05ba7373827530714ec4"
-  integrity sha512-w4aGbYejYjHTtfOLWtMiHUOqKzSJCgR8zAgmfI5fNwIYLTB/3q9Xm/LtK4JCM6bA3T9+F+atF9TKLnKZK5jqfQ==
-  dependencies:
-    "@photo-sphere-viewer/autorotate-plugin" "^5.1.4"
-    "@photo-sphere-viewer/compass-plugin" "^5.1.4"
-    "@photo-sphere-viewer/core" "^5.1.4"
-    "@photo-sphere-viewer/cubemap-adapter" "^5.1.4"
-    "@photo-sphere-viewer/cubemap-tiles-adapter" "^5.1.4"
-    "@photo-sphere-viewer/cubemap-video-adapter" "^5.1.4"
-    "@photo-sphere-viewer/equirectangular-tiles-adapter" "^5.1.4"
-    "@photo-sphere-viewer/equirectangular-video-adapter" "^5.1.4"
-    "@photo-sphere-viewer/gallery-plugin" "^5.1.4"
-    "@photo-sphere-viewer/gyroscope-plugin" "^5.1.4"
-    "@photo-sphere-viewer/map-plugin" "^5.1.4"
-    "@photo-sphere-viewer/markers-plugin" "^5.1.4"
-    "@photo-sphere-viewer/resolution-plugin" "^5.1.4"
-    "@photo-sphere-viewer/settings-plugin" "^5.1.4"
-    "@photo-sphere-viewer/stereo-plugin" "^5.1.4"
-    "@photo-sphere-viewer/video-plugin" "^5.1.4"
-    "@photo-sphere-viewer/virtual-tour-plugin" "^5.1.4"
-    "@photo-sphere-viewer/visible-range-plugin" "^5.1.4"
-    autoprefixer "^10.4.14"
-    eventemitter3 "^5.0.0"
-    photo-sphere-viewer-lensflare-plugin "^1.1.1"
 
 react-query@3.39.3:
   version "3.39.3"

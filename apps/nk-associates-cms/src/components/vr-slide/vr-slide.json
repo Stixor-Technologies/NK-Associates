@@ -40,6 +40,11 @@
     "nodeID": {
       "type": "integer",
       "required": true
+    },
+    "pano_data": {
+      "type": "component",
+      "repeatable": false,
+      "component": "vr-panorama-data.vr-panorama-data"
     }
   }
 }

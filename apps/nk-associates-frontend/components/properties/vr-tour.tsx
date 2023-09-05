@@ -10,6 +10,9 @@ import "@photo-sphere-viewer/core/index.css";
 import "@photo-sphere-viewer/virtual-tour-plugin/index.css";
 import "@photo-sphere-viewer/markers-plugin/index.css";
 
+import { fetchVRTourDetailsById } from "../../utils/api-calls";
+import { BASE_URL } from "../../utils/constants";
+
 const baseUrl = "https://photo-sphere-viewer-data.netlify.app/assets/";
 const caption = "Cape Florida Light, Key Biscayne <b>&copy; Pixexid</b>";
 
@@ -18,9 +21,11 @@ import TourIcon from "../../public/assets/icons/360-icon.svg";
 type PropsType = {
   open: boolean;
   onClose: () => void;
+  loading: boolean;
+  slides: any;
 };
 
-const VRTourScreen = ({ open, onClose }: PropsType) => {
+const VRTourScreen = ({ open, onClose, loading, slides }: PropsType) => {
   const ScreenRef = useRef();
 
   const handleCloseModal = () => {
@@ -46,7 +51,7 @@ const VRTourScreen = ({ open, onClose }: PropsType) => {
   };
 
   useEffect(() => {
-    if (ScreenRef?.current && open) {
+    if (ScreenRef?.current && open && !loading) {
       const viewer = new Viewer({
         container: ScreenRef.current,
         loadingImg: baseUrl + "loader.gif",
@@ -67,87 +72,92 @@ const VRTourScreen = ({ open, onClose }: PropsType) => {
         ],
       });
 
-      const virtualTour = viewer.getPlugin(VirtualTourPlugin);
+      const virtualTour =
+        viewer.getPlugin<VirtualTourPlugin>(VirtualTourPlugin);
 
-      virtualTour?.setNodes(
-        [
-          {
-            id: "1",
-            panorama: baseUrl + "tour/key-biscayne-1.jpg",
-            thumbnail: baseUrl + "tour/key-biscayne-1-thumb.jpg",
-            name: "One",
-            caption: `[1] ${caption}`,
-            links: [{ nodeId: "2" }],
-            markers: [markerLighthouse],
-            gps: [-80.156479, 25.666725, 3],
-            panoData: { poseHeading: 327 },
-          },
-          {
-            id: "2",
-            panorama: baseUrl + "tour/key-biscayne-2.jpg",
-            thumbnail: baseUrl + "tour/key-biscayne-2-thumb.jpg",
-            name: "Two",
-            caption: `[2] ${caption}`,
-            links: [{ nodeId: "3" }, { nodeId: "1" }],
-            markers: [markerLighthouse],
-            gps: [-80.156168, 25.666623, 3],
-            panoData: { poseHeading: 318 },
-          },
-          {
-            id: "3",
-            panorama: baseUrl + "tour/key-biscayne-3.jpg",
-            thumbnail: baseUrl + "tour/key-biscayne-3-thumb.jpg",
-            name: "Three",
-            caption: `[3] ${caption}`,
-            links: [{ nodeId: "4" }, { nodeId: "2" }, { nodeId: "5" }],
-            gps: [-80.155932, 25.666498, 5],
-            panoData: { poseHeading: 310 },
-          },
-          {
-            id: "4",
-            panorama: baseUrl + "tour/key-biscayne-4.jpg",
-            thumbnail: baseUrl + "tour/key-biscayne-4-thumb.jpg",
-            name: "Four",
-            caption: `[4] ${caption}`,
-            links: [{ nodeId: "3" }, { nodeId: "5" }],
-            gps: [-80.156089, 25.666357, 3],
-            panoData: { poseHeading: 78 },
-          },
-          {
-            id: "5",
-            panorama: baseUrl + "tour/key-biscayne-5.jpg",
-            thumbnail: baseUrl + "tour/key-biscayne-5-thumb.jpg",
-            name: "Five",
-            caption: `[5] ${caption}`,
-            links: [{ nodeId: "6" }, { nodeId: "3" }, { nodeId: "4" }],
-            gps: [-80.156292, 25.666446, 2],
-            panoData: { poseHeading: 190 },
-          },
-          {
-            id: "6",
-            panorama: baseUrl + "tour/key-biscayne-6.jpg",
-            thumbnail: baseUrl + "tour/key-biscayne-6-thumb.jpg",
-            name: "Six",
-            caption: `[6] ${caption}`,
-            links: [{ nodeId: "5" }, { nodeId: "7" }],
-            gps: [-80.156465, 25.666496, 2],
-            panoData: { poseHeading: 295 },
-          },
-          {
-            id: "7",
-            panorama: baseUrl + "tour/key-biscayne-7.jpg",
-            thumbnail: baseUrl + "tour/key-biscayne-7-thumb.jpg",
-            name: "Seven",
-            caption: `[7] ${caption}`,
-            links: [{ nodeId: "6" }],
-            gps: [-80.15707, 25.6665, 3],
-            panoData: { poseHeading: 250, posePitch: 3 },
-          },
-        ],
-        "2",
-      );
+      console.log({ slides });
+
+      virtualTour.setNodes(slides);
+
+      // virtualTour.setNodes(
+      //   [
+      //     {
+      //       id: "1",
+      //       panorama: baseUrl + "tour/key-biscayne-1.jpg",
+      //       thumbnail: baseUrl + "tour/key-biscayne-1-thumb.jpg",
+      //       name: "One",
+      //       caption: `[1] ${caption}`,
+      //       links: [{ nodeId: "2" }],
+      //       // markers: [markerLighthouse],
+      //       gps: [-80.156479, 25.666725, 3],
+      //       panoData: { poseHeading: 327 },
+      //     },
+      //     {
+      //       id: "2",
+      //       panorama: baseUrl + "tour/key-biscayne-2.jpg",
+      //       thumbnail: baseUrl + "tour/key-biscayne-2-thumb.jpg",
+      //       name: "Two",
+      //       caption: `[2] ${caption}`,
+      //       links: [{ nodeId: "3" }, { nodeId: "1" }],
+      //       // markers: [markerLighthouse],
+      //       gps: [-80.156168, 25.666623, 3],
+      //       panoData: { poseHeading: 318 },
+      //     },
+      //     {
+      //       id: "3",
+      //       panorama: baseUrl + "tour/key-biscayne-3.jpg",
+      //       thumbnail: baseUrl + "tour/key-biscayne-3-thumb.jpg",
+      //       name: "Three",
+      //       caption: `[3] ${caption}`,
+      //       links: [{ nodeId: "4" }, { nodeId: "2" }, { nodeId: "5" }],
+      //       gps: [-80.155932, 25.666498, 5],
+      //       panoData: { poseHeading: 310 },
+      //     },
+      //     {
+      //       id: "4",
+      //       panorama: baseUrl + "tour/key-biscayne-4.jpg",
+      //       thumbnail: baseUrl + "tour/key-biscayne-4-thumb.jpg",
+      //       name: "Four",
+      //       caption: `[4] ${caption}`,
+      //       links: [{ nodeId: "3" }, { nodeId: "5" }],
+      //       gps: [-80.156089, 25.666357, 3],
+      //       panoData: { poseHeading: 78 },
+      //     },
+      //     {
+      //       id: "5",
+      //       panorama: baseUrl + "tour/key-biscayne-5.jpg",
+      //       thumbnail: baseUrl + "tour/key-biscayne-5-thumb.jpg",
+      //       name: "Five",
+      //       caption: `[5] ${caption}`,
+      //       links: [{ nodeId: "6" }, { nodeId: "3" }, { nodeId: "4" }],
+      //       gps: [-80.156292, 25.666446, 2],
+      //       panoData: { poseHeading: 190 },
+      //     },
+      //     {
+      //       id: "6",
+      //       panorama: baseUrl + "tour/key-biscayne-6.jpg",
+      //       thumbnail: baseUrl + "tour/key-biscayne-6-thumb.jpg",
+      //       name: "Six",
+      //       caption: `[6] ${caption}`,
+      //       links: [{ nodeId: "5" }, { nodeId: "7" }],
+      //       gps: [-80.156465, 25.666496, 2],
+      //       panoData: { poseHeading: 295 },
+      //     },
+      //     {
+      //       id: "7",
+      //       panorama: baseUrl + "tour/key-biscayne-7.jpg",
+      //       thumbnail: baseUrl + "tour/key-biscayne-7-thumb.jpg",
+      //       name: "Seven",
+      //       caption: `[7] ${caption}`,
+      //       links: [{ nodeId: "6" }],
+      //       gps: [-80.15707, 25.6665, 3],
+      //       panoData: { poseHeading: 250, posePitch: 3 },
+      //     },
+      //   ],
+      //   "2",
+      // );
     }
-  }, [ScreenRef.current, open]);
+  }, [ScreenRef.current, open, loading]);
 
   const content = (
     <section className="fixed top-0 left-0 w-screen h-screen bg-nk-gray z-[1000] flex items-center justify-center">
@@ -193,14 +203,58 @@ const VRTourScreen = ({ open, onClose }: PropsType) => {
   return null;
 };
 
-const VRTour = () => {
+const VRTour = ({ vrTourId }: { vrTourId: number | undefined }) => {
   const [open, setOpen] = useState(false);
+  const [loading, setLoading] = useState(true);
+  const [slides, setSlides] = useState([]);
+
+  console.log({ vrTourId });
+
+  const handleOpenClick = async () => {
+    setLoading(true);
+    if (!vrTourId) {
+      setLoading(false);
+      return;
+    }
+    setOpen(true);
+    const resp = await fetchVRTourDetailsById(vrTourId);
+    console.log({ resp });
+    const sanitizedSlides = resp.data.attributes.slides.map((slide) => {
+      const panoData = slide?.pano_data;
+      const slideLinks = slide?.vr_slide_links.map((link) => {
+        return {
+          nodeId: link?.nodeID,
+        };
+      });
+      return {
+        id: slide.id,
+        name: slide.name,
+        caption: slide.caption,
+        panorama: `${BASE_URL}${slide.panorama?.data?.attributes?.url}`,
+        panoData: panoData,
+        links: slideLinks,
+        gps: [
+          slide.gps_position.longitude,
+          slide.gps_position.latitude,
+          slide.gps_position.altitude,
+        ],
+      };
+    });
+    setSlides(sanitizedSlides);
+    setLoading(false);
+  };
 
   return (
     <>
-      <VRTourScreen open={open} onClose={() => setOpen(!open)} />
+      <VRTourScreen
+        open={open}
+        onClose={() => setOpen(!open)}
+        loading={loading}
+        slides={slides}
+      />
+
       <button
-        onClick={() => setOpen(true)}
+        onClick={handleOpenClick}
         className="group sticky top-[31.25rem] mb-4 z-30 ml-auto hidden w-[6rem] items-center gap-3 rounded-l-xl bg-nk-white px-4 py-3.5 shadow-3xl transition-all duration-500 ease-in-out hover:w-44 md:flex"
       >
         <Image
