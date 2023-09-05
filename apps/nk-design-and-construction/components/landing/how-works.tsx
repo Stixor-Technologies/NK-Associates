@@ -9,13 +9,7 @@ interface props {
   src3: string;
 }
 
-const ComponentTwo: React.FC<props> = ({
-  title1,
-  title2,
-  src1,
-  src2,
-  src3,
-}) => {
+const HowWorks: React.FC<props> = ({ title1, title2, src1, src2, src3 }) => {
   return (
     <div>
       <div className="flex flex-col text-center">
@@ -49,4 +43,4 @@ const ComponentTwo: React.FC<props> = ({
     </div>
   ); //src2={src1}src3={src3}
 };
-export default ComponentTwo;
+export default HowWorks;

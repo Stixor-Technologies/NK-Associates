@@ -14,7 +14,7 @@ import { ScrollTrigger } from "gsap/all";
 
 gsap.registerPlugin(ScrollTrigger);
 
-export default function ComponentOne() {
+export default function Banner() {
   const [animated, setAnimated] = useState(false);
 
   let imageOne = useRef(null);
