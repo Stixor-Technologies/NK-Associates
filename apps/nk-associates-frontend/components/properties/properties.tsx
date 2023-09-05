@@ -45,15 +45,14 @@ const Properties = () => {
   const mapRef = useRef<google.maps.Map | null>(null);
   const buttonRef = useRef<HTMLButtonElement>(null);
 
-  // console.log("selected filter", filtersState.filterIsSelected);
-
-  const fetchGridData = async (freshData?: boolean) => {
+  const fetchGridData = async (freshData?: boolean, moreLoad?: boolean) => {
     setIsLoading(true);
 
     const resp = await getGridProperties(
       freshData,
+      moreLoad,
       freshData ? 0 : gridProperties.length,
-      2,
+      12,
       filtersState,
     );
 
@@ -147,8 +146,7 @@ const Properties = () => {
             <InfiniteScroll
               dataLength={gridProperties.length}
               next={() => {
-                // console.log(filtersState.filterIsSelected);
-                fetchGridData(filtersState?.filterIsSelected);
+                fetchGridData(false, filtersState?.filterIsSelected);
               }}
               hasMore={total !== gridProperties.length}
               loader={isLoading && <PropertyListSkeleton />}
