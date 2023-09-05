@@ -133,111 +133,124 @@ const Properties = () => {
   }, []);
 
   return (
-    <>
-      <SearchBar onFilter={handleRefreshData} />
-
+    <div className="pt-6 flex flex-col md:pt-0">
       {isList && (
-        <>
-          {isLoading && gridProperties.length === 0 ? (
-            <PropertyListSkeleton />
-          ) : gridProperties && gridProperties.length > 0 ? (
-            <InfiniteScroll
-              dataLength={gridProperties.length}
-              next={fetchGridData}
-              hasMore={total !== gridProperties.length}
-              loader={isLoading && <PropertyListSkeleton />}
-              className={isList ? "block" : "hidden"}
-            >
-              <PropertyList properties={gridProperties} />
-            </InfiniteScroll>
-          ) : (
-            <div className="min-h-[50vh] flex flex-1 items-center justify-center text-nk-black">
-              <p className="text-center">No Properties Available</p>
-            </div>
-          )}
-        </>
-      )}
-
-      {(!isList || hasMapRendered) && (
-        <div className={`${isList ? "hidden" : "block"}`}>
-          <GoogleMap
-            zoom={11}
-            center={center}
-            onLoad={(map) => {
-              onMapLoad(map);
-              setHasMapRendered(true);
-            }}
-            options={mapOptions}
-            mapContainerClassName="h-screen w-full my-6"
-            onBoundsChanged={onBoundsChanged}
-          >
-            {mapProperties.map((location, index) => {
-              const position = {
-                lat: location.attributes.latitude,
-                lng: location.attributes.longitude,
-              };
-
-              const isSelected =
-                selectedProperty && selectedProperty.id === location.id;
-              return (
-                <Marker
-                  key={index}
-                  position={position}
-                  icon={{
-                    url: isSelected
-                      ? "assets/icons/marker-black.svg"
-                      : "assets/icons/area-marker.svg",
-                    scaledSize: isSelected
-                      ? new window.google.maps.Size(40, 40)
-                      : new window.google.maps.Size(30, 30),
-                  }}
-                  onClick={() => {
-                    setSelectedProperty(location);
-                  }}
-                />
-              );
-            })}
-
-            {selectedProperty && (
-              <InfoWindow
-                position={{
-                  lat: selectedProperty.attributes.latitude,
-                  lng: selectedProperty.attributes.longitude,
-                }}
-                onCloseClick={() => setSelectedProperty(null)}
-              >
-                <PropertyCard property={selectedProperty} actMap={true} />
-              </InfoWindow>
-            )}
-          </GoogleMap>
+        <div className="container mx-auto px-4 text-center">
+          <h2 className="pb-3 font-metropolis-bold text-3xl text-nk-black md:pb-6 md:text-5xl">
+            Property
+          </h2>
+          <p className="py-2 font-metropolis-light text-sm text-nk-black md:text-xl">
+            Unlock Your Perfect Property, Find, Buy, Rent with Ease
+          </p>
         </div>
       )}
+      <>
+        <SearchBar onFilter={handleRefreshData} />
 
-      {gridProperties.length > 0 && (
-        <button
-          ref={buttonRef}
-          className={` self-center sticky top-0 mb-4 bottom-16 left-1/2 z-10 flex -translate-x-1/2 items-center gap-2 rounded-full px-4 py-2 text-center text-sm capitalize text-nk-white transition-all duration-300 ease-in-out md:gap-4 md:px-6 md:py-3 md:text-2xl ${
-            isList
-              ? "bg-nk-gradient-red-one bg-gradient-to-b to-nk-gradient-red-two hover:scale-[1.1] hover:bg-nk-black"
-              : "bg-nk-black hover:scale-[1.1] hover:bg-nk-red"
-          }`}
-          onClick={() => {
-            setIsList(!isList);
-          }}
-        >
-          <span>{`${isList ? "Show Map" : "Show List"}`}</span>
-          <Image
-            src={isList ? MapBtn : ListIcon}
-            width={35}
-            height={35}
-            alt="properties-view"
-            className={`mx-auto ${
-              isList ? "w-[1.375rem] md:w-[2.188rem]" : " w-4 md:w-[1.7rem]"
-            } `}
-          />
-        </button>
-      )}
-    </>
+        {isList && (
+          <>
+            {isLoading && gridProperties.length === 0 ? (
+              <PropertyListSkeleton />
+            ) : gridProperties && gridProperties.length > 0 ? (
+              <InfiniteScroll
+                dataLength={gridProperties.length}
+                next={fetchGridData}
+                hasMore={total !== gridProperties.length}
+                loader={isLoading && <PropertyListSkeleton />}
+                className={isList ? "block" : "hidden"}
+              >
+                <PropertyList properties={gridProperties} />
+              </InfiniteScroll>
+            ) : (
+              <div className="min-h-[50vh] flex flex-1 items-center justify-center text-nk-black">
+                <p className="text-center">No Properties Available</p>
+              </div>
+            )}
+          </>
+        )}
+
+        {(!isList || hasMapRendered) && (
+          <div className={`${isList ? "hidden" : "block"}`}>
+            <GoogleMap
+              zoom={11}
+              center={center}
+              onLoad={(map) => {
+                onMapLoad(map);
+                setHasMapRendered(true);
+              }}
+              options={mapOptions}
+              // [calc(100vh-88px-162px-16px-64px-24px)]
+              mapContainerClassName="h-screen w-full my-6"
+              onBoundsChanged={onBoundsChanged}
+            >
+              {mapProperties.map((location, index) => {
+                const position = {
+                  lat: location.attributes.latitude,
+                  lng: location.attributes.longitude,
+                };
+
+                const isSelected =
+                  selectedProperty && selectedProperty.id === location.id;
+                return (
+                  <Marker
+                    key={index}
+                    position={position}
+                    icon={{
+                      url: isSelected
+                        ? "assets/icons/marker-black.svg"
+                        : "assets/icons/area-marker.svg",
+                      scaledSize: isSelected
+                        ? new window.google.maps.Size(40, 40)
+                        : new window.google.maps.Size(30, 30),
+                    }}
+                    onClick={() => {
+                      setSelectedProperty(location);
+                    }}
+                  />
+                );
+              })}
+
+              {selectedProperty && (
+                <InfoWindow
+                  position={{
+                    lat: selectedProperty.attributes.latitude,
+                    lng: selectedProperty.attributes.longitude,
+                  }}
+                  onCloseClick={() => setSelectedProperty(null)}
+                >
+                  <PropertyCard property={selectedProperty} actMap={true} />
+                </InfoWindow>
+              )}
+            </GoogleMap>
+          </div>
+        )}
+
+        {gridProperties.length > 0 && (
+          <button
+            ref={buttonRef}
+            className={` self-center sticky top-0 mb-4 bottom-16 left-1/2 z-10 flex -translate-x-1/2 items-center gap-2 rounded-full px-4 py-2 text-center text-sm capitalize text-nk-white transition-all duration-300 ease-in-out md:gap-4 md:px-6 md:py-3 md:text-2xl ${
+              isList
+                ? "bg-nk-gradient-red-one bg-gradient-to-b to-nk-gradient-red-two hover:scale-[1.1] hover:bg-nk-black"
+                : "bg-nk-black hover:scale-[1.1] hover:bg-nk-red"
+            }`}
+            onClick={() => {
+              setIsList(!isList);
+            }}
+          >
+            <span>{`${isList ? "Show Map" : "Show List"}`}</span>
+            <Image
+              src={isList ? MapBtn : ListIcon}
+              width={35}
+              height={35}
+              alt="properties-view"
+              className={`mx-auto ${
+                isList ? "w-[1.375rem] md:w-[2.188rem]" : " w-4 md:w-[1.7rem]"
+              } `}
+            />
+          </button>
+        )}
+      </>
+    </div>
   );
 };
 

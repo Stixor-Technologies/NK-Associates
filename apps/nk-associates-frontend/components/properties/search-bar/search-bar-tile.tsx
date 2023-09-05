@@ -41,14 +41,15 @@ const SearchBarTile = ({ tile, filtersProperties }: PropsType) => {
       return selectedPurpose && selectedPurpose.length
         ? selectedPurpose[0].name
         : "Any";
-    } else if (tile.name === "Location") {
-      const selectedLocation = filtersProperties.propertyLocationList.filter(
-        (type) => +type.id === +filtersState.location,
-      );
-      return selectedLocation && selectedLocation.length
-        ? selectedLocation[0].name
-        : "Any";
     }
+    // else if (tile.name === "Location") {
+    //   const selectedLocation = filtersProperties.propertyLocationList.filter(
+    //     (type) => +type.id === +filtersState.location,
+    //   );
+    //   return selectedLocation && selectedLocation.length
+    //     ? selectedLocation[0].name
+    //     : "Any";
+    // }
   }, [tile, filtersState]);
 
   const filterPosition = useMemo(() => {

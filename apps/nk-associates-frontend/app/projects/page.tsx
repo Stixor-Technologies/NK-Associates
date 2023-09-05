@@ -101,7 +101,7 @@ export default function Projects() {
 
   return (
     <div className="bg-nk-white-dark md:bg-nk-bg md:bg-auto md:bg-right-top md:bg-no-repeat">
-      <div className="md:py-18 relative py-10">
+      <div className="md:py-16 relative py-10">
         <div className="container mb-7 text-center font-metropolis-bold text-3xl text-nk-black md:mb-10 md:text-5xl">
           NK Projects
         </div>

@@ -212,7 +212,7 @@ const SearchBar = ({ onFilter }: { onFilter: () => void }) => {
       await getCompletionStatusList();
       await getPropertyPurposeList();
       await getProjectsList();
-      await getPropertyLocationList();
+      // await getPropertyLocationList();
       await getRentFrequencyList();
       await getFiltersOptionsList();
       filtersDispatch({ type: "setFilterIsSelected", payload: false });

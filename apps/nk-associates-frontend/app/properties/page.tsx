@@ -4,7 +4,7 @@ import Properties from "../../components/properties/properties";
 const PropertyPage = () => {
   return (
     <section className="flex flex-col bg-right-top bg-no-repeat md:bg-nk-bg">
-      <div className="pt-6 flex flex-col md:pt-16">
+      {/* <div className="pt-6 flex flex-col md:pt-16">
         <div className="container mx-auto px-4 text-center">
           <h2 className="py-3 font-metropolis-bold text-3xl text-nk-black md:py-6 md:text-5xl">
             Property
@@ -14,7 +14,8 @@ const PropertyPage = () => {
           </p>
         </div>
         <Properties />
-      </div>
+      </div> */}
+      <Properties />
     </section>
   );
 };
