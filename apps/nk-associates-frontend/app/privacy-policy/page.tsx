@@ -3,144 +3,165 @@ import React from "react";
 
 const Page = () => {
   return (
-    <div className="block p-[6.25rem] text-nk-dark-gray  ">
-      <h1 className="font-metropolis-bold text-center text-5xl md:p-[2rem] md:pb-[1rem]">
+    <div className="block pb-[2rem] md:pb-[6.25rem] px-[2rem] md:px-[6.25rem] text-nk-dark-gray container">
+      <h1 className="font-metropolis-bold text-center text-[1.6rem] md:text-5xl md:p-[2rem] md:pb-[1rem]">
         Privacy Policy
       </h1>
       <hr className="h-px mb-5 bg-nk-gray border"></hr>
       <p className="font-metropolis text-base mb-6 text-[0.875rem] md:text-[1.25rem]">
-        At NK Developers, accessible from nkassociates.co, one of our main
-        priorities is the privacy of our visitors. This Privacy Policy document
-        contains types of information that is collected and recorded by NK
-        Developers and how we use it
-      </p>
-      <p className="font-metropolis text-base mb-6 text-[0.875rem] md:text-[1.25rem]">
-        If you have any questions or concerns about this privacy policy or your
-        personal information, please contact us using the details provided in
-        the Section – ‘How do you contact us?’.
-      </p>
-      <p className="font-metropolis text-base mb-6 text-[0.875rem] md:text-[1.25rem]">
-        This Privacy Policy applies only to our online activities and is valid
-        for visitors to our website with regards to the information that they
-        shared and/or collect in NK Developers. This policy is not applicable to
-        any information collected offline or via channels other than this
-        website.’.
+        Welcome to NKAssociatesAndBuilders.com! This Privacy Policy explains how
+        we collect, use, and protect your personal information when you use our
+        website NKAssociatesAndBuilders.com. By using our website, you agree to
+        the practices outlined in this policy.
       </p>
 
-      <h2 className="font-metropolis-semibold text-3xl mb-4">Consent</h2>
+      <h2 className="font-metropolis-semibold text-xl md:text-3xl mb-4">
+        Infromation We Collect:
+      </h2>
+      <ul className="font-metropolis text-base mb-6 text-[0.875rem] md:text-[1.25rem] list-disc">
+        <li className="pb-1">
+          Personal Information: We may collect your name, email address, contact
+          information, and other relevant details when you register or make a
+          purchase.
+        </li>
+        <li className="pb-1">
+          Usage Data: We may collect information about how you use our website,
+          including your browsing history and interactions with our content.
+        </li>
+        <li className="pb-1">
+          Cookies: We use cookies and similar technologies to enhance your
+          experience and gather information about your usage patterns.
+        </li>
+      </ul>
+      <h2 className="font-metropolis-semibold text-xl md:text-3xl mb-4">
+        How We Use Your Information:
+      </h2>
+      <ul className="font-metropolis text-base mb-6 text-[0.875rem] md:text-[1.25rem] list-disc">
+        <li className="pb-1">To provide and improve our services.</li>
+        <li className="pb-1">To process transactions and fulfill orders.</li>
+        <li className="pb-1">
+          To communicate with you regarding your orders and updates.
+        </li>
+      </ul>
+
+      <h2 className="font-metropolis-semibold text-xl md:text-3xl mb-4">
+        Data Sharing
+      </h2>
       <p className="font-metropolis text-base mb-6 text-[0.875rem] md:text-[1.25rem]">
-        By using our website, you hereby consent to our Privacy Policy and agree
-        to its terms
+        We do not sell or rent your personal information to third parties.
+        However, we may share your information with service providers and
+        partners who assist us in operating our website and services.
+      </p>
+      <h2 className="font-metropolis-semibold text-xl md:text-3xl mb-4">
+        Opting Out of Cookies
+      </h2>
+      <p className="font-metropolis text-base mb-6 text-[0.875rem] md:text-[1.25rem]">
+        To ensure the best possible experience on our website, we utilize
+        cookies and similar technologies to analyze website traffic and optimize
+        your interactions. By accepting our use of cookies, your data will be
+        aggregated with all other user data. <br className="pb-1" />
+        Cookies are small text files that are stored on your device when you
+        visit our website. They enable us to understand how you interact with
+        our site, allowing us to tailor your experience and enhance our
+        website&apos;s functionality. Cookies may collect information about your
+        browsing history, preferences, and interactions with our content.
+        <br className="pb-1" /> We use both session cookies (which are temporary
+        and are deleted once you close your browser) and persistent cookies
+        (which remain on your device for a longer period). Some cookies are
+        essential for the proper functioning of our website, while others
+        enhance your browsing experience by remembering your preferences.{" "}
+        <br className="pb-1" /> By continuing to use our website or by accepting
+        our use of cookies through your browser settings, you consent to the use
+        of cookies as described in this policy. You can manage your cookie
+        preferences through your browser settings, and you have the option to
+        reject cookies or notify you when they are being used. However, please
+        note that disabling cookies may affect certain features and
+        functionality of our website.
       </p>
 
-      <h2 className="font-metropolis-semibold text-3xl mb-4">
-        Updates on Policy
+      <h2 className="font-metropolis-semibold text-xl md:text-3xl mb-4">
+        Your Rights
       </h2>
       <p className="font-metropolis text-base mb-6 text-[0.875rem] md:text-[1.25rem]">
-        This policy may change from time to time. Your continued use of our
-        platforms after we make changes is deemed to be acceptance of those
-        changes, so please check the policy periodically for updates.
+        You have the right to access, update, and delete your personal
+        information. If you have any concerns about your data, please contact us
+        at info@nkassociatesandbuilders.com.
+      </p>
+      <h2 className="font-metropolis-semibold text-xl md:text-3xl mb-4">
+        Security
+      </h2>
+      <p className="font-metropolis text-base mb-6 text-[0.875rem] md:text-[1.25rem]">
+        We employ industry-standard security measures to protect your
+        information from unauthorized access, disclosure, or alteration.
+      </p>
+      <h2 className="font-metropolis-semibold text-xl md:text-3xl mb-4">
+        Children&apos;s Privacy
+      </h2>
+      <p className="font-metropolis text-base mb-6 text-[0.875rem] md:text-[1.25rem]">
+        Our website is not directed at children under the age of 18, and we do
+        not knowingly collect personal information from them. if you are a
+        parent or guardian and become aware that your child has provided
+        personal information, you can contact us
+        info@nkassociatesandbuilders.com to have that information removed.
+      </p>
+      <h2 className="font-metropolis-semibold text-xl md:text-3xl mb-4">
+        Contacting Us Regarding Data Concerns
+      </h2>
+      <p className="font-metropolis text-base mb-6 text-[0.875rem] md:text-[1.25rem]">
+        We are dedicated to safeguarding your privacy and handling your personal
+        information responsibly. If you have any inquiries, concerns, or
+        requests related to your data, including accessing, updating, or
+        deleting your personal information, you have several options for
+        reaching out to us:
       </p>
 
-      <h2 className="font-metropolis-semibold text-3xl mb-4">
-        How to Contact Us
+      <h2 className="font-metropolis-semibold text-xl md:text-3xl mb-4">
+        Email
       </h2>
       <p className="font-metropolis text-base mb-6 text-[0.875rem] md:text-[1.25rem]">
-        In case of any queries related to this policy, you can contact our Data
-        Privacy Office.
-      </p>
-      <h2 className="font-metropolis-semibold text-3xl mb-4">
-        Sources of Personal Data
-      </h2>
-      <p className="font-metropolis text-base mb-6 text-[0.875rem] md:text-[1.25rem]">
-        We collect personal data from various sources in order to provide our
-        services. For instance, when you create an account on our platform, we
-        gather information such as your name, email address, and other contact
-        details. Additionally, we may collect data from your interactions with
-        our website, such as the pages you visit and the actions you take. Your
-        personal data may also be acquired from third-party partners and service
-        providers that help us offer our services to you effectively. This data
-        may include demographic information and preferences that enable us to
-        tailor our offerings to your needs. Rest assured, we handle all
-        collected data with care, in line with our Privacy Policy.
+        You can email us at info@nkassociatesandbuilders.com with the subject
+        line &quot;Data Privacy Inquiry&quot; or a relevant subject that clearly
+        indicates the nature of your query. We will make every effort to respond
+        promptly and address your concerns.
       </p>
 
-      <h2 className="font-metropolis-semibold text-3xl mb-4">
-        Information We Collect and How We Use It
+      <h2 className="font-metropolis-semibold text-xl md:text-3xl mb-4">
+        Contact Form
       </h2>
       <p className="font-metropolis text-base mb-6 text-[0.875rem] md:text-[1.25rem]">
-        At our company, we take the privacy of your data seriously. We gather
-        information to offer you a seamless experience while using our services.
-        This includes data like your name, email address, and contact details,
-        which you provide when signing up for an account or interacting with our
-        platform. We also collect usage data, such as the features you engage
-        with and the pages you visit, to better understand user preferences and
-        enhance our offerings. It&aposs important to note that we adhere to
-        strict security measures to protect your data from unauthorized access
-        or misuse. We do not share your personal information with third parties
-        without your consent, except when required by law. By utilizing your
-        data responsibly, we aim to continuously improve our services and
-        provide you with a tailored experience that meets your needs and
-        expectations.
-      </p>
-      <h2 className="font-metropolis-semibold text-3xl mb-4">Data Usage</h2>
-      <p className="font-metropolis text-base mb-6 text-[0.875rem] md:text-[1.25rem]">
-        We use the data collected to provide and improve our services. This may
-        include personalization of content, analyzing user trends, and enhancing
-        our platform&aposs functionality. The insights gained from data analysis
-        help us optimize user experience and develop new features that align
-        with your preferences. We never use your data for purposes other than
-        improving our services, and your personal information remains protected
-        and secure.
+        We provide a dedicated contact form on our website that you can use to
+        submit your data-related questions or requests. When using the form,
+        please provide accurate and comprehensive information to help us better
+        assist you.
       </p>
 
-      <h2 className="font-metropolis-semibold text-3xl mb-4">
-        Cookies and Tracking Technologies
+      <h2 className="font-metropolis-semibold text-xl md:text-3xl mb-4">
+        Phone
       </h2>
       <p className="font-metropolis text-base mb-6 text-[0.875rem] md:text-[1.25rem]">
-        Our website may utilize cookies and tracking technologies to enhance
-        your browsing experience. These tools allow us to remember your
-        preferences, offer relevant content, and analyze user behavior. Cookies
-        do not compromise your privacy, and you can manage their usage through
-        your browser settings. By accepting cookies, you help us customize your
-        experience and deliver content that aligns with your interests.
+        For immediate assistance or inquiries, you can call or WhatsApp our
+        customer support hotline at +923331999100. Our knowledgeable team will
+        be happy to assist you with your data-related questions.
       </p>
-      <h2 className="font-metropolis-semibold text-3xl mb-4">
-        Information Sharing and Disclosure
-      </h2>
       <p className="font-metropolis text-base mb-6 text-[0.875rem] md:text-[1.25rem]">
-        We understand the importance of your data&aposs privacy. We do not sell,
-        trade, or rent your personal information to third parties for marketing
-        purposes. However, in certain cases, we may share your information with
-        trusted partners who assist us in delivering our services. This includes
-        providing customer support, analyzing user data, and improving our
-        offerings. Any sharing of data is conducted in compliance with legal
-        requirements and our Privacy Policy.
+        We take the security and privacy of your personal information seriously
+        and are committed to resolving any concerns you may have. When
+        contacting us, please include relevant information to help us verify
+        your identity and ensure the confidentiality of your data. Please note
+        that while we take measures to ensure the privacy of your
+        communications, email and online communication may not be entirely
+        secure. Therefore, refrain from sharing sensitive or confidential
+        information through these channels.We value your privacy and appreciate
+        your trust in us to handle your data in a responsible and transparent
+        manne
       </p>
 
-      <h2 className="font-metropolis-semibold text-3xl mb-4">
-        Data Security and Retention
+      <h2 className="font-metropolis-semibold text-xl md:text-3xl mb-4">
+        Changes to Privacy Policy
       </h2>
       <p className="font-metropolis text-base mb-6 text-[0.875rem] md:text-[1.25rem]">
-        Safeguarding your data is our top priority. We implement
-        industry-standard security measures to protect your personal information
-        from unauthorized access, alteration, or disclosure. Our data retention
-        practices align with the purpose for which data was collected. We retain
-        your information only as long as necessary to fulfill these purposes. In
-        cases where data is no longer needed, it will be securely deleted or
-        anonymized to ensure your privacy.
-      </p>
-
-      <h2 className="font-metropolis-semibold text-3xl mb-4">
-        Your Privacy Rights
-      </h2>
-      <p className="font-metropolis text-base mb-6 text-[0.875rem] md:text-[1.25rem]">
-        We respect your privacy rights and provide options for managing your
-        data. You have the right to access, correct, or delete your personal
-        information. If you wish to exercise these rights or have questions
-        about your data&aposs handling, please contact our Data Privacy Office
-        using the provided contact details. We are committed to assisting you
-        and addressing your concerns.
+        We may update our privacy policy from time to time. Any changes will be
+        posted on this page and will become effective upon posting.
       </p>
     </div>
   );
