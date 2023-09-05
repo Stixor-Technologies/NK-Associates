@@ -68,8 +68,6 @@ export const getGridProperties = async (
   limit = 12,
   filters?: FiltersStateType,
 ) => {
-  console.log("start", start);
-  console.log("limit", limit);
   let url = `${BASE_URL}/api/properties?populate=*&pagination[start]=${start}&pagination[limit]=${limit}&sort[1]=id`;
 
   let filtersString = "";
