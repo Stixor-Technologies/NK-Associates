@@ -3,8 +3,8 @@ import React from "react";
 
 const Page = () => {
   return (
-    <div className="block pb-[3rem] md:pb-[6.25rem] px-[3rem] md:px-[6.25rem] text-nk-dark-gray container">
-      <h1 className="font-metropolis-bold text-center text-5xl md:p-[2rem] md:pb-[1rem]">
+    <div className="block pb-[2rem] md:pb-[6.25rem] px-[2rem] md:px-[6.25rem] text-nk-dark-gray container">
+      <h1 className="font-metropolis-bold text-center text-[1.6rem] md:text-5xl md:p-[2rem] md:pb-[1rem]">
         Privacy Policy
       </h1>
       <hr className="h-px mb-5 bg-nk-gray border"></hr>
@@ -15,7 +15,7 @@ const Page = () => {
         the practices outlined in this policy.
       </p>
 
-      <h2 className="font-metropolis-semibold text-3xl mb-4">
+      <h2 className="font-metropolis-semibold text-xl md:text-3xl mb-4">
         Infromation We Collect:
       </h2>
       <ul className="font-metropolis text-base mb-6 text-[0.875rem] md:text-[1.25rem] list-disc">
@@ -33,7 +33,7 @@ const Page = () => {
           experience and gather information about your usage patterns.
         </li>
       </ul>
-      <h2 className="font-metropolis-semibold text-3xl mb-4">
+      <h2 className="font-metropolis-semibold text-xl md:text-3xl mb-4">
         How We Use Your Information:
       </h2>
       <ul className="font-metropolis text-base mb-6 text-[0.875rem] md:text-[1.25rem] list-disc">
@@ -44,13 +44,15 @@ const Page = () => {
         </li>
       </ul>
 
-      <h2 className="font-metropolis-semibold text-3xl mb-4">Data Sharing</h2>
+      <h2 className="font-metropolis-semibold text-xl md:text-3xl mb-4">
+        Data Sharing
+      </h2>
       <p className="font-metropolis text-base mb-6 text-[0.875rem] md:text-[1.25rem]">
         We do not sell or rent your personal information to third parties.
         However, we may share your information with service providers and
         partners who assist us in operating our website and services.
       </p>
-      <h2 className="font-metropolis-semibold text-3xl mb-4">
+      <h2 className="font-metropolis-semibold text-xl md:text-3xl mb-4">
         Opting Out of Cookies
       </h2>
       <p className="font-metropolis text-base mb-6 text-[0.875rem] md:text-[1.25rem]">
@@ -77,18 +79,22 @@ const Page = () => {
         functionality of our website.
       </p>
 
-      <h2 className="font-metropolis-semibold text-3xl mb-4">Your Rights</h2>
+      <h2 className="font-metropolis-semibold text-xl md:text-3xl mb-4">
+        Your Rights
+      </h2>
       <p className="font-metropolis text-base mb-6 text-[0.875rem] md:text-[1.25rem]">
         You have the right to access, update, and delete your personal
         information. If you have any concerns about your data, please contact us
         at info@nkassociatesandbuilders.com.
       </p>
-      <h2 className="font-metropolis-semibold text-3xl mb-4">Security</h2>
+      <h2 className="font-metropolis-semibold text-xl md:text-3xl mb-4">
+        Security
+      </h2>
       <p className="font-metropolis text-base mb-6 text-[0.875rem] md:text-[1.25rem]">
         We employ industry-standard security measures to protect your
         information from unauthorized access, disclosure, or alteration.
       </p>
-      <h2 className="font-metropolis-semibold text-3xl mb-4">
+      <h2 className="font-metropolis-semibold text-xl md:text-3xl mb-4">
         Children&apos;s Privacy
       </h2>
       <p className="font-metropolis text-base mb-6 text-[0.875rem] md:text-[1.25rem]">
@@ -98,7 +104,7 @@ const Page = () => {
         personal information, you can contact us
         info@nkassociatesandbuilders.com to have that information removed.
       </p>
-      <h2 className="font-metropolis-semibold text-3xl mb-4">
+      <h2 className="font-metropolis-semibold text-xl md:text-3xl mb-4">
         Contacting Us Regarding Data Concerns
       </h2>
       <p className="font-metropolis text-base mb-6 text-[0.875rem] md:text-[1.25rem]">
@@ -109,7 +115,9 @@ const Page = () => {
         reaching out to us:
       </p>
 
-      <h2 className="font-metropolis-semibold text-3xl mb-4">Email</h2>
+      <h2 className="font-metropolis-semibold text-xl md:text-3xl mb-4">
+        Email
+      </h2>
       <p className="font-metropolis text-base mb-6 text-[0.875rem] md:text-[1.25rem]">
         You can email us at info@nkassociatesandbuilders.com with the subject
         line &quot;Data Privacy Inquiry&quot; or a relevant subject that clearly
@@ -117,7 +125,9 @@ const Page = () => {
         promptly and address your concerns.
       </p>
 
-      <h2 className="font-metropolis-semibold text-3xl mb-4">Contact Form</h2>
+      <h2 className="font-metropolis-semibold text-xl md:text-3xl mb-4">
+        Contact Form
+      </h2>
       <p className="font-metropolis text-base mb-6 text-[0.875rem] md:text-[1.25rem]">
         We provide a dedicated contact form on our website that you can use to
         submit your data-related questions or requests. When using the form,
@@ -125,7 +135,9 @@ const Page = () => {
         assist you.
       </p>
 
-      <h2 className="font-metropolis-semibold text-3xl mb-4">Phone</h2>
+      <h2 className="font-metropolis-semibold text-xl md:text-3xl mb-4">
+        Phone
+      </h2>
       <p className="font-metropolis text-base mb-6 text-[0.875rem] md:text-[1.25rem]">
         For immediate assistance or inquiries, you can call or WhatsApp our
         customer support hotline at +923331999100. Our knowledgeable team will
@@ -144,7 +156,7 @@ const Page = () => {
         manne
       </p>
 
-      <h2 className="font-metropolis-semibold text-3xl mb-4">
+      <h2 className="font-metropolis-semibold text-xl md:text-3xl mb-4">
         Changes to Privacy Policy
       </h2>
       <p className="font-metropolis text-base mb-6 text-[0.875rem] md:text-[1.25rem]">
