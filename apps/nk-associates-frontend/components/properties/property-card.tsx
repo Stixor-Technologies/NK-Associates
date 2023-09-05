@@ -99,7 +99,7 @@ const PropertyCard: FC<CardProps> = ({
       </Link>
 
       <div
-        className={`property-card-text scale-[0.95] -z-10 relative ${
+        className={`property-card-text -z-10 relative ${
           actMap && "bg-nk-white px-3 pb-4"
         }`}
       >
