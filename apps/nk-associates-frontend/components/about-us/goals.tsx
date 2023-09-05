@@ -41,25 +41,6 @@ const Goals: FC<GoalProps> = ({ mission, vision, values, goals }) => {
   }, []);
 
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const resp = await getAbout();
-        if (resp?.data) {
-          // setVision(resp?.data?.attributes?.Vision);
-          // setMission(resp?.data?.attributes?.Mission);
-          // setValues(resp?.data?.attributes?.Values);
-          // setGoals(resp?.data?.attributes?.Goals);
-        }
-      } catch (error) {
-        console.error("Error fetching information:", error);
-      } finally {
-        setIsLoading(false);
-      }
-    };
-    fetchData();
-  }, []);
-
-  useEffect(() => {
     const cards: HTMLDivElement[] = gsap.utils.toArray(".card");
     const textAbout: HTMLElement[] = gsap.utils.toArray(".text-about");
     const imagesAbout: HTMLElement[] = gsap.utils.toArray(".images-about");
@@ -150,32 +131,7 @@ const Goals: FC<GoalProps> = ({ mission, vision, values, goals }) => {
   }, [component, windowSize]);
 
   return (
-    <div className="container card-container cardTrigger relative md:py-1 h-[60vh] lg:flex lg:flex-col justify-center my-20">
-      {/* <>
-        {isLoading && !Vision && !Mission && !Values && !Goals ? (
-          <div className="my-4 flex justify-center">
-            <Spinner />
-          </div>
-        ) : Mission ? (
-          (() => {
-            return (
-              <>
-                <MissionCard about={Mission} />
-                <VisionCard about={Vision} />
-                <ValuesCard about={Values} />
-                <GoalsCard about={Goals} />
-              </>
-            );
-          })()
-        ) : (
-          <div>
-            <p className="font-metropolis text-nk-dark-gray py-10 text-center text-base">
-              No Information Available
-            </p>
-          </div>
-        )}
-      </> */}
-
+    <div className="container card-container cardTrigger relative md:py-1  lg:h-[60vh] lg:flex lg:flex-col justify-center my-20">
       <>
         <MissionCard about={mission} />
         <VisionCard about={vision} />

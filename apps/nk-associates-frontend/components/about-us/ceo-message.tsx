@@ -20,24 +20,20 @@ const CeoMessage: React.FC<CeoMessageProps> = ({
   const startRef = useRef(null);
 
   useEffect(() => {
-    const screenWidth = window.innerWidth;
-    if (screenWidth >= 1024) {
-      console.log("intializeTrigger CEO");
-      const el1 = ceoRef.current;
-      const el2 = textRef.current;
-      const tl = gsap.timeline({
-        scrollTrigger: {
-          id: "ceo-message-trigger",
-          trigger: startRef.current,
-          start: "50% 70%",
-          end: "center 50%",
-        },
-      });
-      tl.from(el2, {
-        x: 1000,
-        duration: 0.8,
-      }).from(el1, { x: -1000, duration: 0.8 }, "<");
-    }
+    const el1 = ceoRef.current;
+    const el2 = textRef.current;
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        id: "ceo-message-trigger",
+        trigger: startRef.current,
+        start: "50% 90%",
+        end: "center 50%",
+      },
+    });
+    tl.from(el2, {
+      x: 1000,
+      duration: 0.8,
+    }).from(el1, { x: -1000, duration: 0.8 }, "<");
 
     return () => {
       ScrollTrigger.getById("ceo-message-trigger")?.kill();
