@@ -1,6 +1,5 @@
 import HomeBanner from "../components/home-page/home-banner/hero-banner";
 import BannerSlider from "../components/home-page/home-banner/banner-slider";
-import MyCarousel from "../components/home-page/home-banner/slider";
 import AboutSummary from "../components/home-page/about-summary";
 import FeaturedProjects from "../components/home-page/featured-projects";
 import FeaturedProperties from "../components/home-page/featured-properties";
@@ -93,7 +92,6 @@ export default async function Home() {
     <section className="overflow-hidden">
       <HomeBanner>
         <BannerSlider banner_images={banner_images?.data} />
-        {/* <MyCarousel banner_images={banner_images?.data} /> */}
       </HomeBanner>
       <AboutSummary
         about_summary={about_summary}
