@@ -120,9 +120,11 @@ const JobList = () => {
               />
             </div>
           </div>
-          <div className="relative flex w-2/6 pt-4 md:hidden">
+          <div
+            ref={filterContainer}
+            className="relative flex w-2/6 pt-4 md:hidden"
+          >
             <div
-              ref={filterContainer}
               className={`text-nk-gray z-0 flex h-10 w-full items-center justify-center gap-2 rounded-full shadow ${
                 isClicked ? "bg-nk-red text-nk-white" : " border-nk-gray "
               }`}
@@ -133,7 +135,7 @@ const JobList = () => {
               {isClicked && <Image src={FilterAlt} alt="Filter Alt" />}
             </div>
             <div
-              className={`bg-nk-light-gray min-h-[9.75rem] absolute right-0 z-10 mt-11 flex w-80 flex-col rounded-lg p-2 shadow-xl transition-opacity duration-500 ease-in-out ${
+              className={`bg-nk-light-gray min-h-[9.75rem] absolute right-0 top-6 z-10 mt-11 flex w-80 flex-col rounded-lg p-2 shadow-xl transition-opacity duration-500 ease-in-out ${
                 isClicked ? "opacity-100" : "opacity-0"
               }`}
             >
