@@ -5,7 +5,7 @@ import Logo from "../../public/assets/icons/nk-logo.svg";
 import GooglePlayIcon from "../../public/assets/icons/google-play.svg";
 import AppStoreIcon from "../../public/assets/icons/app-store.svg";
 import AppGalleryIcon from "../../public/assets/icons/app-gallery.svg";
-import layer_2 from "../../public/assets/icons/Layer_2.svg";
+import layer_2 from "../../public/assets/icons/nk-logo-footer.svg";
 import FbIcon from "../../public/assets/icons/facebook-icon.svg";
 import TwitterIcon from "../../public/assets/icons/twitter-icon.svg";
 import InstagramIcon from "../../public/assets/icons/instagram-icon.svg";

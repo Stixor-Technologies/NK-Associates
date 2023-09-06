@@ -1,8 +1,8 @@
 import React from "react";
 import Card from "./cards";
-import Rectangle_9 from "../../public/assets/icons/Rectangle-9.svg";
-import Rectangle_10 from "../../public/assets/icons/Rectangle-10.svg";
-import Rectangle_11 from "../../public/assets/icons/Rectangle-11.svg";
+import Rectangle_9 from "../../public/assets/icons/rectangle-9.svg";
+import Rectangle_10 from "../../public/assets/icons/rectangle-10.svg";
+import Rectangle_11 from "../../public/assets/icons/rectangle-11.svg";
 interface Props {
   title1: string;
   title2: string;
