@@ -26,7 +26,9 @@ const VisionCard: FC<CardProps> = ({ about }) => {
           <div className="relative max-w-[6.25rem] w-full min-h-[5rem] my-1 mx-auto lg:mx-0">
             <Image src={`${BASE_URL}${cardIcon || "/"}`} alt="Card Icon" fill />
           </div>
-          <h4 className="text-nk-red my-1">{question}</h4>
+          <h4 className="text-nk-red my-1 text-[1.25rem] font-metropolis-bold">
+            {question}
+          </h4>
           <h1 className="font-metropolis-bold text-[2.75rem] mt-3 mb-8">
             {title}
           </h1>
