@@ -50,7 +50,7 @@ const AboutSummary: FC<AboutSummaryProp> = ({
         <div className="text-center flex gap-14 flex-col items-center md:block md:py-14 md:text-left">
           <div className="order-1 md:order-none">
             <h2 className="text-3xl text-nk-black font-metropolis-semibold md:text-5xl">
-              About US
+              About Us
             </h2>
             <p className="text-base text-nk-black font-metropolis-thin leading-tight my-5 md:my-3 md:text-lg">
               {windowSize > breakPoint ? firstHalf : about_summary}
@@ -58,7 +58,7 @@ const AboutSummary: FC<AboutSummaryProp> = ({
             <LinkButton
               text="About Us"
               type="solid"
-              navigateTo="#"
+              navigateTo="/about-us"
               className="w-[14.063rem] h-11 md:hidden"
             />
           </div>
@@ -86,7 +86,7 @@ const AboutSummary: FC<AboutSummaryProp> = ({
           <LinkButton
             text="About Us"
             type="solid"
-            navigateTo="#"
+            navigateTo="/about-us"
             className=" md:w-44 md:h-12 md:mt-8"
           />
         </div>
