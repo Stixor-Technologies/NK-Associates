@@ -132,7 +132,7 @@ export default function Projects() {
               Error loading projects.
             </div>
           ) : projectsData.length == 0 && !loading ? (
-            <div className="text-md mb-18 font-metropolis-bold text-nk-black">
+            <div className="min-h-[50vh] text-md mb-18 font-metropolis-bold text-nk-black">
               No projects found.
             </div>
           ) : (
