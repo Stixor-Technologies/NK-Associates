@@ -5,7 +5,7 @@ import LinkButton from "../button/link-button";
 import facebook_Icon from "../../public/assets/icons/facebook.svg";
 import instagram_Icon from "../../public/assets/icons/instagram.svg";
 import youtube_Icon from "../../public/assets/icons/youtube.svg";
-import twitter_Icon from "../../public/assets/icons/Twitter.svg";
+import twitterLogo from "../../public/assets/icons/twitter-logo.svg";
 import call_Icon from "../../public/assets/icons/call.svg";
 import rectangle_3 from "../../public/assets/icons/rectangle-3.svg";
 import Link from "next/link";
@@ -88,7 +88,7 @@ export default function ChooseUs() {
               rel="noopener noreferrer"
               className="px-2 shrink-0"
             >
-              <Image src={twitter_Icon} width={20} height={30} alt="Twitter" />
+              <Image src={twitterLogo} width={20} height={30} alt="Twitter" />
             </Link>
             <Link
               href="https://www.instagram.com/nkassociatesofficial/"

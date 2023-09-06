@@ -41,6 +41,6 @@ const HowWorks: React.FC<props> = ({ title1, title2, src1, src2, src3 }) => {
         </div>
       </div>
     </div>
-  ); //src2={src1}src3={src3}
+  );
 };
 export default HowWorks;

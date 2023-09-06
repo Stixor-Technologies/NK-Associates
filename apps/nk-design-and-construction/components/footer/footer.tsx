@@ -4,7 +4,7 @@ import Link from "next/link";
 import GooglePlayIcon from "../../public/assets/icons/google-play.svg";
 import AppStoreIcon from "../../public/assets/icons/app-store.svg";
 import AppGalleryIcon from "../../public/assets/icons/app-gallery.svg";
-import layer_2 from "../../public/assets/icons/Layer_2.svg";
+import footerLogo from "../../public/assets/icons/footerLogo.svg";
 import FbIcon from "../../public/assets/icons/facebook-icon.svg";
 import TwitterIcon from "../../public/assets/icons/twitter-icon.svg";
 import InstagramIcon from "../../public/assets/icons/instagram-icon.svg";
@@ -60,7 +60,7 @@ async function Footer() {
     <footer className="z-50 flex flex-col justify-center items-center min-h-fit bg-nk-dark-gray font-metropolis text-nk-white w-full">
       <div className="flex flex-col justify-center items-center w-fit">
         <div className="flex flex-row pt-[2.731rem] md:pt-[4rem]">
-          <Image src={layer_2} alt="logo" width={318} height={79} />
+          <Image src={footerLogo} alt="logo" width={318} height={79} />
         </div>
         <div className="flex flex-row md:hidden pt-[1.556rem] pb-[1rem]">
           {footerSocialList}

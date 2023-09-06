@@ -5,7 +5,7 @@ import LinkButton from "../button/link-button";
 import facebookIcon from "../../public/assets/icons/facebook.svg";
 import instagramIcon from "../../public/assets/icons/instagram.svg";
 import youtubeIcon from "../../public/assets/icons/youtube.svg";
-import twitterIcon from "../../public/assets/icons/Twitter.svg";
+import twitterLogo from "../../public/assets/icons/twitter-logo.svg";
 import callIcon from "../../public/assets/icons/call.svg";
 import house from "../../public/assets/icons/house.svg";
 import Link from "next/link";
@@ -83,7 +83,7 @@ export default function Banner() {
               rel="noopener noreferrer"
               className="px-2 shrink-0"
             >
-              <Image src={twitterIcon} width={20} height={30} alt="Twitter" />
+              <Image src={twitterLogo} width={20} height={30} alt="Twitter" />
             </Link>
             <Link
               href="https://www.instagram.com/nkassociatesofficial/"
