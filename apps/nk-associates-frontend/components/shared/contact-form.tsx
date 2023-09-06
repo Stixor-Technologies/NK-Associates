@@ -105,7 +105,7 @@ const ContactForm: React.FC<ContactFormProps> = ({ categories, heading }) => {
     >
       {({ errors, touched }) => (
         <>
-          <div className="rounded-3xl bg-nk-light-gray px-4 py-7 md:px-12 md:py-14">
+          <div className="rounded-3xl bg-nk-light-gray px-4 py-7 md:px-12 md:py-14 w-[47rem] container 2xl:w-full">
             {showToast && <Toast message={toastMessage} />}
             <h4 className="text-center font-metropolis-bold text-[1.75rem] text-nk-black md:text-5xl">
               {heading}
