@@ -3,283 +3,90 @@ import React from "react";
 
 const Page = () => {
   return (
-    <div className="block p-[6.25rem] text-nk-dark-gray  ">
-      <h1 className="font-metropolis-bold text-center text-5xl md:p-[2rem] md:pb-[1rem]">
+    <div className="block pb-[2rem] md:pb-[6.25rem] px-[2rem] md:px-[6.25rem] text-nk-dark-gray container">
+      <h1 className="font-metropolis-bold text-center text-[1.6rem] md:text-5xl md:p-[2rem] md:pb-[1rem]">
         Terms and Conditions
       </h1>
       <hr className="h-px mb-5 bg-nk-gray border"></hr>
-      <p className="font-metropolis text-base mb-6 text-[0.875rem] md:text-[1.25rem]">
-        These terms and conditions outline the rules and regulations for the use
-        of NK Associates&apos;s Website, located at nkassociates.co.
-      </p>
-      <p className="font-metropolis text-base mb-6 text-[0.875rem] md:text-[1.25rem]">
-        By accessing this website we assume you accept these terms and
-        conditions. Do not continue to use NK Developers if you do not agree to
-        take all of the terms and conditions stated on this page.
-      </p>
-      <p className="font-metropolis text-base mb-6 text-[0.875rem] md:text-[1.25rem]">
-        The following terminology applies to these Terms and Conditions, Privacy
-        Statement and Disclaimer Notice and all Agreements: &quot;Client&quot;,
-        &quot;You&quot; and &quot;Your&quot; refers to you, the person log on
-        this website and compliant to the Company&apos;s terms and conditions.
-        &quot;The Company&quot;, &quot;ourselves&quot;, &quot;We&quot;,
-        &quot;Our&quot; and &quot;Us&quot;, refers to our Company.
-        &quot;Party&quot;, &quot;Parties&quot;, or &quot;Us&quot;, refers to
-        both the Client and ourselves. All terms refer to the offer, acceptance
-        and consideration of payment necessary to undertake the process of our
-        assistance to the Client in the most appropriate manner for the express
-        purpose of meeting the Client&apos;s needs in respect of provision of
-        the Company&apos;s stated services, in accordance with and subject to,
-        prevailing law of pk. Any use of the above terminology or other words in
-        the singular, plural, capitalization and/or he/she or they, are taken as
-        interchangeable and therefore as referring to same.
-      </p>
-      <h2 className="font-metropolis-semibold text-3xl mb-4 mt-5">Cookies</h2>
-      <p className="font-metropolis text-base mb-6 text-[0.875rem] md:text-[1.25rem]">
-        We employ the use of cookies. By accessing NK Developers, you agreed to
-        use cookies in agreement with the NK Associates&apos;s Privacy Policy.
-      </p>
-      <p className="font-metropolis text-base mb-6 text-[0.875rem] md:text-[1.25rem]">
-        Most interactive websites use cookies to let us retrieve the user&apos;s
-        details for each visit. Cookies are used by our website to enable the
-        functionality of certain areas to make it easier for people visiting our
-        website. Some of our affiliate/advertising partners may also use
-        cookies.
-      </p>
-      <h2 className="font-metropolis-semibold text-3xl mb-4 mt-5">License</h2>
-      <p className="font-metropolis text-base mb-6 text-[0.875rem] md:text-[1.25rem]">
-        Unless otherwise stated, NK Associates and/or its licensors own the
-        intellectual property rights for all material on NK Developers. All
-        intellectual property rights are reserved. You may access this from NK
-        Developers for your own personal use subjected to restrictions set in
-        these terms and conditions.
-      </p>
-      <p className="font-metropolis text-base mb-3 text-[0.875rem] md:text-[1.25rem]">
-        You must not:
-      </p>
-      <ul className=" font-metropolis text-base text-nk-dark-gray list-disc my-4">
-        <li className="text-base">Republish material from NK Developers</li>
-        <li className="text-base">
-          Sell, rent or sub-license material from NK Developers
-        </li>
-        <li className="text-base">
-          Reproduce, duplicate or copy material from NK Developers
-        </li>
-        <li className="text-base">Redistribute content from NK Developers</li>
-      </ul>
-      <p className="font-metropolis text-base mb-6 text-[0.875rem] md:text-[1.25rem]">
-        Parts of this website offer an opportunity for users to post and
-        exchange opinions and information in certain areas of the website. NK
-        Associates does not filter, edit, publish or review Comments prior to
-        their presence on the website. Comments do not reflect the views and
-        opinions of NK Associates,its agents and/or affiliates. Comments reflect
-        the views and opinions of the person who post their views and opinions.
-        To the extent permitted by applicable laws, NK Associates shall not be
-        liable for the Comments or for any liability, damages or expenses caused
-        and/or suffered as a result of any use of and/or posting of and/or
-        appearance of the Comments on this website.
-      </p>
-      <p className="font-metropolis text-base mb-6 text-[0.875rem] md:text-[1.25rem]">
-        NK Associates reserves the right to monitor all Comments and to remove
-        any Comments which can be considered inappropriate, offensive or causes
-        breach of these Terms and Conditions.
-      </p>
-      <p className="font-metropolis text-base mb-6 text-[0.875rem] md:text-[1.25rem]">
-        You warrant and represent that:
-      </p>
-      <ul className=" font-metropolis text-base text-nk-dark-gray list-disc my-4">
-        <li className="text-base">
-          You are entitled to post the Comments on our website and have all
-          necessary licenses and consents to do so;
-        </li>
-        <li className="text-base">
-          The Comments do not invade any intellectual property right, including
-          without limitation copyright, patent or trademark of any third party;
-        </li>
-        <li className="text-base">
-          The Comments do not contain any defamatory, libelous, offensive,
-          indecent or otherwise unlawful material which is an invasion of
-          privacy
-        </li>
-        <li className="text-base">
-          The Comments will not be used to solicit or promote business or custom
-          or present commercial activities or unlawful activity.
-        </li>
-      </ul>
-      <p className="font-metropolis text-base mb-6 text-[0.875rem] md:text-[1.25rem]">
-        You hereby grant NK Associates a non-exclusive license to use,
-        reproduce, edit and authorize others to use, reproduce and edit any of
-        your Comments in any and all forms, formats or media.
-      </p>
-      <h2 className="font-metropolis-semibold text-3xl mb-4 mt-5">
-        Hyperlinking to our Content
+
+      <h2 className="font-metropolis-semibold text-xl md:text-3xl mb-4 mt-5">
+        Acceptance of Terms
       </h2>
       <p className="font-metropolis text-base mb-6 text-[0.875rem] md:text-[1.25rem]">
-        The following organizations may link to our Website without prior
-        written approval:
+        By using our website, you agree to abide by these Terms and Conditions.
       </p>
-      <ul className=" font-metropolis text-base text-nk-dark-gray list-disc my-4">
-        <li className="text-base">Government agencies;</li>
-        <li className="text-base">Search engines;</li>
-        <li className="text-base">News organizations;</li>
-        <li className="text-base">
-          Online directory distributors may link to our Website in the same
-          manner as they hyperlink to the Websites of other listed businesses;
-          and
-        </li>
-        <li className="text-base">
-          System wide Accredited Businesses except soliciting non-profit
-          organizations, charity shopping malls, and charity fundraising groups
-          which may not hyperlink to our Web site.
-        </li>
-      </ul>
-      <p className="font-metropolis text-base mb-6 text-[0.875rem] md:text-[1.25rem]">
-        These organizations may link to our home page, to publications or to
-        other Website information so long as the link: (a) is not in any way
-        deceptive; (b) does not falsely imply sponsorship, endorsement or
-        approval of the linking party and its products and/or services; and (c)
-        fits within the context of the linking party&apos;s site.
-      </p>
-      <p className="font-metropolis text-base mb-6 text-[0.875rem] md:text-[1.25rem]">
-        We may consider and approve other link requests from the following types
-        of organizations:
-      </p>
-      <ul className=" font-metropolis text-base text-nk-dark-gray list-disc my-4">
-        <li className="text-base">
-          commonly-known consumer and/or business information sources;
-        </li>
-        <li className="text-base">dot.com community sites;</li>
-        <li className="text-base">
-          associations or other groups representing charities;
-        </li>
-        <li className="text-base">online directory distributors;</li>
-        <li className="text-base">internet portals;</li>
-        <li className="text-base">accounting, law and consulting firms; and</li>
-        <li className="text-base">
-          educational institutions and trade associations.
-        </li>
-      </ul>
-      <p className="font-metropolis text-base mb-6 text-[0.875rem] md:text-[1.25rem]">
-        We will approve link requests from these organizations if we decide
-        that: (a) the link would not make us look unfavorably to ourselves or to
-        our accredited businesses; (b) the organization does not have any
-        negative records with us; (c) the benefit to us from the visibility of
-        the hyperlink compensates the absence of NK Associates; and (d) the link
-        is in the context of general resource information.
-      </p>
-      <p className="font-metropolis text-base mb-6 text-[0.875rem] md:text-[1.25rem]">
-        These organizations may link to our home page so long as the link: (a)
-        is not in any way deceptive; (b) does not falsely imply sponsorship,
-        endorsement or approval of the linking party and its products or
-        services; and (c) fits within the context of the linking party&apos;s
-        site.
-      </p>
-      <p className="font-metropolis text-base mb-6 text-[0.875rem] md:text-[1.25rem]">
-        If you are one of the organizations listed in paragraph 2 above and are
-        interested in linking to our website, you must inform us by sending an
-        e-mail to NK Associates. Please include your name, your organization
-        name, contact information as well as the URL of your site, a list of any
-        URLs from which you intend to link to our Website, and a list of the
-        URLs on our site to which you would like to link. Wait 2-3 weeks for a
-        response.
-      </p>
-      <p className="font-metropolis text-base mb-6 text-[0.875rem] md:text-[1.25rem]">
-        Approved organizations may hyperlink to our Website as follows:
-      </p>
-      <ul className=" font-metropolis text-base text-nk-dark-gray list-disc my-4">
-        <li className="text-base">By use of our corporate name; or</li>
-        <li className="text-base">
-          By use of the uniform resource locator being linked to; or
-        </li>
-        <li className="text-base">
-          By use of any other description of our Website being linked to that
-          makes sense within the context and format of content on the linking
-          party&apos;s site.
-        </li>
-      </ul>
-      <p className="font-metropolis text-base mb-6 text-[0.875rem] md:text-[1.25rem]">
-        No use of NK Associates&apos;s logo or other artwork will be allowed for
-        linking absent a trademark license agreement.
-      </p>
-      <h2 className="font-metropolis-semibold text-3xl mb-4 mt-5">iFrames</h2>
-      <p className="font-metropolis text-base mb-6 text-[0.875rem] md:text-[1.25rem]">
-        Without prior approval and written permission, you may not create frames
-        around our Webpages that alter in any way the visual presentation or
-        appearance of our Website.
-      </p>
-      <h2 className="font-metropolis-semibold text-3xl mb-4 mt-5">
-        Content Liability
+      <h2 className="font-metropolis-semibold text-xl md:text-3xl mb-4 mt-5">
+        User Conduct
       </h2>
       <p className="font-metropolis text-base mb-6 text-[0.875rem] md:text-[1.25rem]">
-        We shall not be hold responsible for any content that appears on your
-        Website. You agree to protect and defend us against all claims that is
-        rising on your Website. No link(s) should appear on any Website that may
-        be interpreted as libelous, obscene or criminal, or which infringes,
-        otherwise violates, or advocates the infringement or other violation of,
-        any third party rights.
+        You agree not to engage in any harmful, illegal, or abusive behaviour
+        while using our website. By using our website, you agree to engage in
+        responsible and respectful behaviour that aligns with the following
+        guidelines.
       </p>
-      <h2 className="font-metropolis-semibold text-3xl mb-4 mt-5">
-        Reservation of Rights
+      <h2 className="font-metropolis-semibold text-xl md:text-3xl mb-4 mt-5">
+        Harmful Behaviour
       </h2>
       <p className="font-metropolis text-base mb-6 text-[0.875rem] md:text-[1.25rem]">
-        We reserve the right to request that you remove all links or any
-        particular link to our Website. You approve to immediately remove all
-        links to our Website upon request. We also reserve the right to amen
-        these terms and conditions and it&apos;s linking policy at any time. By
-        continuously linking to our Website, you agree to be bound to and follow
-        these linking terms and conditions.
+        You are prohibited from engaging in any actions that could cause harm to
+        our website, other users, or third parties. This includes, but is not
+        limited to, attempting to gain unauthorized access to our systems,
+        introducing viruses or malicious code, and engaging in any form of
+        hacking or cyberattack.
       </p>
-      <h2 className="font-metropolis-semibold text-3xl mb-4 mt-5">
-        Removal of links from our website
+      <h2 className="font-metropolis-semibold text-xl md:text-3xl mb-4 mt-5">
+        Illegal Activities
       </h2>
       <p className="font-metropolis text-base mb-6 text-[0.875rem] md:text-[1.25rem]">
-        If you find any link on our Website that is offensive for any reason,
-        you are free to contact and inform us any moment. We will consider
-        requests to remove links but we are not obligated to or so or to respond
-        to you directly.
+        You must not use our website for any illegal purposes or activities.
+        This includes the distribution of illegal content, engaging in
+        fraudulent activities, and violating any local, national, or
+        international laws and regulations.
       </p>
-      <p className="font-metropolis text-base mb-6 text-[0.875rem] md:text-[1.25rem]">
-        We do not ensure that the information on this website is correct, we do
-        not warrant its completeness or accuracy; nor do we promise to ensure
-        that the website remains available or that the material on the website
-        is kept up to date.
-      </p>
-      <h2 className="font-metropolis-semibold text-3xl mb-4 mt-5">
-        Disclaimer
+      <h2 className="font-metropolis-semibold text-xl md:text-3xl mb-4 mt-5">
+        Abusive Behaviour
       </h2>
       <p className="font-metropolis text-base mb-6 text-[0.875rem] md:text-[1.25rem]">
-        To the maximum extent permitted by applicable law, we exclude all
-        representations, warranties and conditions relating to our website and
-        the use of this website. Nothing in this disclaimer will:
+        We foster a respectful online environment and do not tolerate any
+        abusive, offensive, or discriminatory language or behaviour. This
+        includes, but is not limited to, harassment, hate speech, threats, and
+        bullying directed at other users, our team, or any individuals or
+        groups.
       </p>
-      <ul className=" font-metropolis text-base text-nk-dark-gray list-disc my-4">
-        <li className="text-base">
-          Limit or exclude our or your liability for death or personal injury;
-        </li>
-        <li className="text-base">
-          Limit or exclude our or your liability for fraud or fraudulent
-          misrepresentation;
-        </li>
-        <li className="text-base">
-          Limit any of our or your liabilities in any way that is not permitted
-          under applicable law; or
-        </li>
-        <li className="text-base">
-          Exclude any of our or your liabilities that may not be excluded under
-          applicable law.
-        </li>
-      </ul>
+      <h2 className="font-metropolis-semibold text-xl md:text-3xl mb-4 mt-5">
+        Misuse of Content
+      </h2>
       <p className="font-metropolis text-base mb-6 text-[0.875rem] md:text-[1.25rem]">
-        The limitations and prohibitions of liability set in this Section and
-        elsewhere in this disclaimer: (a) are subject to the preceding
-        paragraph; and (b) govern all liabilities arising under the disclaimer,
-        including liabilities arising in contract, in tort and for breach of
-        statutory duty.
+        You are not allowed to use, reproduce, modify, or distribute any content
+        from our website without explicit permission. This includes copyrighted
+        materials, trademarks, and other intellectual property.
+      </p>
+      <h2 className="font-metropolis-semibold text-xl md:text-3xl mb-4 mt-5">
+        Disruption of Services
+      </h2>
+      <p className="font-metropolis text-base mb-6 text-[0.875rem] md:text-[1.25rem]">
+        Any actions that disrupt or interfere with the normal functioning of our
+        website, including the deliberate introduction of excessive traffic,
+        spam, or other disruptive elements, are strictly prohibited.
+      </p>
+      <h2 className="font-metropolis-semibold text-xl md:text-3xl mb-4 mt-5">
+        Respect for Privacy
+      </h2>
+      <p className="font-metropolis text-base mb-6 text-[0.875rem] md:text-[1.25rem]">
+        You must respect the privacy of other users and not share personal
+        information, private communications, or any other sensitive data without
+        the explicit consent of the individuals involved.
       </p>
       <p className="font-metropolis text-base mb-6 text-[0.875rem] md:text-[1.25rem]">
-        As long as the website and the information and services on the website
-        are provided free of charge, we will not be liable for any loss or
-        damage of any nature.
+        Failure to adhere to these guidelines may result in the suspension or
+        termination of your access to our website, as well as legal actions
+        where appropriate. We reserve the right to determine what constitutes a
+        violation of these guidelines and take necessary actions to protect the
+        integrity of our platform and the safety of our users.
+      </p>
+      <p className="font-metropolis text-base mb-6 text-[0.875rem] md:text-[1.25rem]">
+        Your cooperation in maintaining a positive and respectful online
+        environment is appreciated.
       </p>
     </div>
   );

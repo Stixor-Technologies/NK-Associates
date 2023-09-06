@@ -72,13 +72,9 @@ const ExpertiseOutcomes: FC<OutcomesProps> = ({
             .to(textPanels[index], {
               opacity: 0,
             })
-            .to(
-              textPanels[index + 1],
-              {
-                opacity: 1,
-              },
-              "<0.1",
-            )
+            .to(textPanels[index + 1], {
+              opacity: 1,
+            })
             .to(
               imagesPanel[index + 1],
               {
@@ -86,7 +82,7 @@ const ExpertiseOutcomes: FC<OutcomesProps> = ({
                 y: 0,
                 rotate: 6,
               },
-              "<0.1",
+              "<",
             );
         }
       });
@@ -155,6 +151,7 @@ const ExpertiseOutcomes: FC<OutcomesProps> = ({
               src={`${BASE_URL}${expertise_image || "/"}`}
               alt="expertise-picture"
               fill
+              priority={true}
               className="rounded-3xl shadow-xl object-cover"
             />
           </div>
@@ -180,8 +177,9 @@ const ExpertiseOutcomes: FC<OutcomesProps> = ({
           <div className="relative aspect-square w-full">
             <Image
               src={`${BASE_URL}${outcome_image || "/"}`}
-              alt="expertise-picture"
+              alt="outcome-picture"
               fill
+              priority={true}
               className="rounded-3xl shadow-xl object-cover"
             />
           </div>

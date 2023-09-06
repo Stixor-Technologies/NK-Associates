@@ -16,8 +16,12 @@ const AboutUs = async () => {
   const ceoMessage: string = aboutInfo?.data?.attributes?.ceo_message;
   const ceoImage: string = `${BASE_URL}${aboutInfo?.data?.attributes?.ceo_image?.data?.attributes?.url}`;
   const ceoName: string = aboutInfo?.data?.attributes?.ceo_name;
+  const mission = aboutInfo?.data?.attributes?.Mission;
+  const vision = aboutInfo?.data?.attributes?.Vision;
+  const values = aboutInfo?.data?.attributes?.Values;
+  const goals = aboutInfo?.data?.attributes?.Goals;
   return (
-    <div>
+    <div className="bg-right-top bg-no-repeat md:bg-nk-bg">
       <div className="text-center text-black container">
         <div className="text-[1.875rem] md:text-[3rem] font-metropolis-extrabold pt-[1rem]  md:pt-[3rem]">
           About Us
@@ -38,9 +42,15 @@ const AboutUs = async () => {
           />
         </div>
       </div>
-      <div className="container min-h-[250vh]">
-        <Goals />
+      <div className="container md:h-[230vh]">
+        <Goals
+          mission={mission}
+          vision={vision}
+          values={values}
+          goals={goals}
+        />
       </div>
+
       <div className="container">
         <CeoMessage
           ceoImage={ceoImage}
@@ -51,11 +61,11 @@ const AboutUs = async () => {
 
       <ServicesOverview />
 
-      <div className="container pt-[3.25rem] lg:pt-[6.688rem] text-center">
+      <div className="xl:container pt-[3.25rem] lg:pt-[6.688rem] text-center">
         <div className="text-nk-dark-gray font-metropolis-bold text-[2.25rem] text-center">
           Meet Our Best-In-Class Team
         </div>
-        <div className="pt-12 -mr-[1.5rem]">
+        <div className="pt-12 xl:-mr-[1.5rem]">
           <MembersList />
         </div>
       </div>
