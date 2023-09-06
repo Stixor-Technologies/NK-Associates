@@ -35,7 +35,6 @@ const TileSection: FC<TileSectionProps> = ({
           id: "property-tile-trigger",
           trigger: divElement,
           start: "top 88%",
-          markers: true,
         },
       });
     }
