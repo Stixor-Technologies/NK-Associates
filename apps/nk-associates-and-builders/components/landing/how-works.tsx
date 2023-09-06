@@ -1,14 +1,14 @@
 import React from "react";
 import Card from "./cards";
-import Rectangle_9 from "../../public/assets/icons/Rectangle 9.svg";
-import Rectangle_10 from "../../public/assets/icons/Rectangle 10.svg";
-import Rectangle_11 from "../../public/assets/icons/Rectangle 11.svg";
+import Rectangle_9 from "../../public/assets/icons/Rectangle-9.svg";
+import Rectangle_10 from "../../public/assets/icons/Rectangle-10.svg";
+import Rectangle_11 from "../../public/assets/icons/Rectangle-11.svg";
 interface Props {
   title1: string;
   title2: string;
 }
 
-const ComponentTwo: React.FC<Props> = ({ title1, title2 }) => {
+const HowWorks: React.FC<Props> = ({ title1, title2 }) => {
   const cardsData = [
     {
       text1: "Find Home",
@@ -58,4 +58,4 @@ const ComponentTwo: React.FC<Props> = ({ title1, title2 }) => {
   );
 };
 
-export default ComponentTwo;
+export default HowWorks;

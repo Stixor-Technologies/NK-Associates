@@ -7,14 +7,14 @@ import instagramIcon from "../../public/assets/icons/instagram.svg";
 import youtubeIcon from "../../public/assets/icons/youtube.svg";
 import twitterIcon from "../../public/assets/icons/Twitter.svg";
 import callIcon from "../../public/assets/icons/call.svg";
-import rectangle3 from "../../public/assets/icons/Rectangle 3.svg";
+import rectangle3 from "../../public/assets/icons/Rectangle-3.svg";
 import Link from "next/link";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/all";
 
 gsap.registerPlugin(ScrollTrigger);
 
-export default function ComponentOne() {
+export default function Banner() {
   const [animated, setAnimated] = useState(false);
   let imageOne = useRef(null);
   useEffect(() => {
