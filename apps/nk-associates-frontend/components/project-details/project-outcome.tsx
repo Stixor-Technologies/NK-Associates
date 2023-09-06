@@ -70,7 +70,7 @@ const ProjectOutcome = ({ outcomeImage, outcomeDescription }: PropTypes) => {
             src={outcomeImage}
             alt="Project Picture"
             fill
-            className="rounded-lg shadow-xl"
+            className="rounded-lg shadow-xl object-cover"
           />
         </div>
       </div>

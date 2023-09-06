@@ -25,7 +25,7 @@ const LocationFilter = ({ locationsList }: PropsType) => {
         onChange={handleLocationChange}
       >
         <option value={undefined}>Select Location</option>
-        {locationsList.map((location, index) => (
+        {locationsList?.map((location, index) => (
           <option key={index} value={location.id}>
             {location.name}
           </option>

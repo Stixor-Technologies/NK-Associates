@@ -70,7 +70,7 @@ const PropertyCard: FC<CardProps> = ({
           ? "min-w-[17.288rem] max-w-[18.125rem]"
           : actFeatured
           ? "min-w-[17.25rem]  md:min-w-[22.125rem] md:max-w-[24rem] w-full"
-          : "min-w-[17.288rem]"
+          : ""
       }`}
     >
       <Link
@@ -79,13 +79,13 @@ const PropertyCard: FC<CardProps> = ({
         rel={actMap ? "noopener noreferrer" : undefined}
       >
         <div
-          className={` aspect-w-1 aspect-h-1 group relative w-full max-w-[37.5rem] overflow-hidden ${
+          className={`aspect-w-1 aspect-h-1 group relative w-full max-w-[37.5rem] overflow-hidden ${
             actMap
               ? "h-52 rounded-t-xl"
               : actFeatured
-              ? "h-[17.5rem] md:h-[22.375rem]"
-              : "h-[17.5rem]"
-          } rounded-xl`}
+              ? "h-[17.5rem] md:h-[22.375rem] rounded-xl"
+              : "h-[17.5rem] rounded-xl"
+          }`}
         >
           <Image
             src={`${BASE_URL}${thumbnailImage || "/"}`}
@@ -99,7 +99,7 @@ const PropertyCard: FC<CardProps> = ({
       </Link>
 
       <div
-        className={`property-card-text scale-[0.95] -z-10 relative ${
+        className={`property-card-text -z-10 relative ${
           actMap && "bg-nk-white px-3 pb-4"
         }`}
       >

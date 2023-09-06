@@ -1,8 +1,7 @@
 "use client";
-import { useEffect, useState, useMemo, useLayoutEffect, useRef } from "react";
+import { useEffect, useState, useLayoutEffect, useRef } from "react";
 import { getProjects } from "../../utils/api-calls";
 import ProjectCardItem from "../../components/projects/project-card/project-card-item";
-import LinkButton from "../../components/button/link-button";
 import { Project } from "../../utils/types/types";
 import CursorUtility from "../../utils/cursor-utility";
 import { gsap } from "gsap";
@@ -81,7 +80,7 @@ export default function Projects() {
           boxes.forEach((box, index) => {
             if (index >= 1) {
               gsap.from(box, {
-                y: 85,
+                y: 60,
                 scrollTrigger: {
                   trigger: box,
                   start: "top bottom",
@@ -108,22 +107,26 @@ export default function Projects() {
 
         <div className="container flex justify-center overflow-hidden p-0">
           <div className="scrollbar-hide flex flex-nowrap gap-x-2 overflow-x-auto px-4 py-6 sm:gap-x-2.5">
-            {optionsList.map((label, index) => (
-              <LinkButton
+            {optionsList?.map((label, index) => (
+              <button
                 key={index}
-                text={label}
-                type={selectedButton == label ? "gradient" : "transparent"}
-                clickEvent={() => {
+                onClick={() => {
                   setSelectedButton(label as OptionsType);
                   setButtonSwitched(true);
                 }}
-                className=" h-8 w-[9.549rem] flex-none text-xs md:h-[3rem] md:w-[10.688rem] md:text-base lg:h-[3.2rem] lg:w-[13.688rem] lg:text-lg xl:h-[3.5rem] xl:w-[16.688rem] xl:text-xl"
-              />
+                className={`h-8 w-[9.549rem] flex-none text-xs md:h-[3rem] md:w-[10.688rem] md:text-base lg:h-[3.2rem] lg:w-[13.688rem] lg:text-lg xl:h-[3.5rem] xl:w-[16.688rem] xl:text-xl ${
+                  selectedButton === label
+                    ? "bg-gradient-to-b from-nk-gradient-red-one to-nk-gradient-red-two text-nk-white"
+                    : "bg-transparent text-nk-gray border border-nk-red hover:bg-nk-red hover:text-white transition-all duration-300 ease-in-out"
+                } rounded-full py-2 px-4 capitalize shadow-3xl`}
+              >
+                {label}
+              </button>
             ))}
           </div>
         </div>
 
-        <div className="container my-20 flex flex-col items-center md:mt-16">
+        <div className="container my-12 flex flex-col items-center md:my-6">
           {error && !loading ? (
             <div className="text-md mb-18 font-metropolis-bold text-nk-black">
               Error loading projects.

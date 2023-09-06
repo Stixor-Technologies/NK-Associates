@@ -19,7 +19,7 @@ const SearchBarTile = ({ tile, filtersProperties }: PropsType) => {
 
   const filterValue = useMemo(() => {
     if (tile.name === "Property Type") {
-      const selectedType = filtersProperties.propertyTypesList.filter(
+      const selectedType = filtersProperties?.propertyTypesList?.filter(
         (type) => +type.id === +filtersState.selectedCategoryId,
       );
       return selectedType && selectedType.length ? selectedType[0].name : "Any";
@@ -28,28 +28,27 @@ const SearchBarTile = ({ tile, filtersProperties }: PropsType) => {
         ? `${filtersState.minSelectedPrice}, ${filtersState.maxSelectedPrice}`
         : "Any";
     } else if (tile.name === "Project") {
-      const selectedProject = filtersProperties.projectsList.filter(
+      const selectedProject = filtersProperties?.projectsList?.filter(
         (type) => +type.id === +filtersState.selectedProjectId,
       );
       return selectedProject && selectedProject.length
         ? selectedProject[0].name
         : "Any";
     } else if (tile.name === "Purpose") {
-      const selectedPurpose = filtersProperties.propertyPurposeList.filter(
+      const selectedPurpose = filtersProperties?.propertyPurposeList?.filter(
         (type) => +type.id === +filtersState.selectedPurposeId,
       );
       return selectedPurpose && selectedPurpose.length
         ? selectedPurpose[0].name
         : "Any";
+    } else if (tile.name === "Location") {
+      const selectedLocation = filtersProperties?.propertyLocationList?.filter(
+        (type) => +type.id === +filtersState.location,
+      );
+      return selectedLocation && selectedLocation.length
+        ? selectedLocation[0].name
+        : "Any";
     }
-    // else if (tile.name === "Location") {
-    //   const selectedLocation = filtersProperties.propertyLocationList.filter(
-    //     (type) => +type.id === +filtersState.location,
-    //   );
-    //   return selectedLocation && selectedLocation.length
-    //     ? selectedLocation[0].name
-    //     : "Any";
-    // }
   }, [tile, filtersState]);
 
   const filterPosition = useMemo(() => {

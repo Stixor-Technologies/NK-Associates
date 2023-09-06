@@ -66,12 +66,18 @@ const applyFilters = (filters: FiltersStateType) => {
 };
 
 export const getGridProperties = async (
+  freshData: boolean,
+  moreLoad: boolean,
   start: number,
   limit = 12,
   filters?: FiltersStateType,
 ) => {
   let url = `${BASE_URL}/api/properties?populate=*&pagination[start]=${start}&pagination[limit]=${limit}&sort[1]=id`;
-  let filtersString = applyFilters(filters);
+
+  let filtersString = "";
+  if (freshData || moreLoad) {
+    filtersString = applyFilters(filters);
+  }
 
   try {
     const resp = await fetch(url + filtersString);

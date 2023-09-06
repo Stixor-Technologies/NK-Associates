@@ -12,7 +12,7 @@ import PropertyList from "./property-list";
 import InfiniteScroll from "react-infinite-scroll-component";
 import { getGridProperties, getMapProperties } from "../../utils/api-calls";
 import { Property } from "../../utils/types/types";
-import { debounce, property } from "lodash";
+import { debounce } from "lodash";
 import MapBtn from "../../public/assets/icons/map-list-icon.svg";
 import ListIcon from "../../public/assets/icons/list-icon.svg";
 import PropertyCard from "./property-card";
@@ -45,10 +45,12 @@ const Properties = () => {
   const mapRef = useRef<google.maps.Map | null>(null);
   const buttonRef = useRef<HTMLButtonElement>(null);
 
-  const fetchGridData = async (freshData?: boolean) => {
+  const fetchGridData = async (freshData?: boolean, moreLoad?: boolean) => {
     setIsLoading(true);
 
     const resp = await getGridProperties(
+      freshData,
+      moreLoad,
       freshData ? 0 : gridProperties.length,
       12,
       filtersState,
@@ -132,7 +134,7 @@ const Properties = () => {
   }, []);
 
   return (
-    <div className="pt-6 flex flex-col md:pt-0">
+    <div className="pt-6 flex flex-col md:pt-0 z-10">
       {isList && (
         <div className="container mx-auto px-4 text-center">
           <h2 className="pb-3 font-metropolis-bold text-3xl text-nk-black md:pb-6 md:text-5xl">
@@ -143,9 +145,31 @@ const Properties = () => {
           </p>
         </div>
       )}
-      <>
-        <SearchBar onFilter={handleRefreshData} isListView={isList} />
+      <SearchBar onFilter={handleRefreshData} isListView={isList} />
 
+      <>
+        {isLoading && gridProperties.length === 0 ? (
+          <PropertyListSkeleton />
+        ) : gridProperties && gridProperties.length > 0 ? (
+          <InfiniteScroll
+            dataLength={gridProperties.length}
+            next={() => {
+              fetchGridData(false, filtersState?.filterIsSelected);
+            }}
+            hasMore={total !== gridProperties.length}
+            loader={isLoading && <PropertyListSkeleton />}
+            className={isList ? "block" : "hidden"}
+          >
+            <PropertyList properties={gridProperties} />
+          </InfiniteScroll>
+        ) : (
+          <div className="min-h-[50vh] flex flex-1 items-center justify-center text-nk-black">
+            <p className="text-center">No Properties Available</p>
+          </div>
+        )}
+      </>
+
+      <>
         {isList && (
           <>
             {isLoading && gridProperties.length === 0 ? (
@@ -246,11 +270,7 @@ const Properties = () => {
         {gridProperties.length > 0 && (
           <button
             ref={buttonRef}
-            className={` self-center sticky top-0 mb-4 bottom-16 left-1/2 z-10 flex -translate-x-1/2 items-center gap-2 rounded-full px-4 py-2 text-center text-sm capitalize text-nk-white transition-all duration-300 ease-in-out md:gap-4 md:px-6 md:py-3 md:text-2xl ${
-              isList
-                ? "bg-nk-gradient-red-one bg-gradient-to-b to-nk-gradient-red-two hover:scale-[1.1] hover:bg-nk-black"
-                : "bg-nk-black hover:scale-[1.1] hover:bg-nk-red"
-            }`}
+            className={` self-center sticky top-0 mb-4 bottom-16 left-1/2 z-10 flex -translate-x-1/2 items-center gap-2 rounded-full px-4 py-2 text-center text-sm capitalize text-nk-white transition-all duration-300 ease-in-out md:gap-4 md:px-6 md:py-3 md:text-2xl ${"bg-nk-gradient-red-one bg-gradient-to-b to-nk-gradient-red-two hover:scale-[1.1]"}`}
             onClick={() => {
               setIsList(!isList);
             }}

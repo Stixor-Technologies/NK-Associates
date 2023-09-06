@@ -66,7 +66,7 @@ const SearchBar: FC<SearchBarProps> = ({ onFilter, isListView }) => {
   const getPropertyTypesList = async () => {
     const respCategories = await fetchPropertyCategoriesList();
 
-    const categoriesList = respCategories.map((category) => {
+    const categoriesList = respCategories?.map((category) => {
       const typesList = category.attributes.property_types.data.map((type) => {
         return {
           id: type.id,
@@ -90,7 +90,7 @@ const SearchBar: FC<SearchBarProps> = ({ onFilter, isListView }) => {
   const getProjectsList = async () => {
     const resp = await fetchFilterProjectsList();
 
-    const normalizedProjectsList = resp.map((project) => {
+    const normalizedProjectsList = resp?.map((project) => {
       return {
         id: project.id,
         name: project.attributes.title,
@@ -106,7 +106,7 @@ const SearchBar: FC<SearchBarProps> = ({ onFilter, isListView }) => {
   const getPropertyPurposeList = async () => {
     const resp = await fetchPropertyPurposeList();
 
-    const normalizedPropertyPurposeList = resp.map((purpose) => {
+    const normalizedPropertyPurposeList = resp?.map((purpose) => {
       return {
         id: purpose.id,
         name: purpose.attributes.name,
@@ -122,7 +122,7 @@ const SearchBar: FC<SearchBarProps> = ({ onFilter, isListView }) => {
   const getRentFrequencyList = async () => {
     const resp = await fetchRentFrequencyList();
 
-    const rentFrequencyList = resp.map((status) => {
+    const rentFrequencyList = resp?.map((status) => {
       return {
         id: status.id,
         name: status.attributes.name,
@@ -138,7 +138,7 @@ const SearchBar: FC<SearchBarProps> = ({ onFilter, isListView }) => {
   const getCompletionStatusList = async () => {
     const respCompletionStatus = await fetchCompletionStatusList();
 
-    const completionStatusList = respCompletionStatus.map((status) => {
+    const completionStatusList = respCompletionStatus?.map((status) => {
       return {
         id: status.id,
         name: status.attributes.name,
@@ -154,7 +154,7 @@ const SearchBar: FC<SearchBarProps> = ({ onFilter, isListView }) => {
   const getPropertyLocationList = async () => {
     const respPropertyLocation = await fetchPropertyLocationList();
 
-    const propertyLocationList = respPropertyLocation.map((status) => {
+    const propertyLocationList = respPropertyLocation?.map((status) => {
       return {
         id: status.id,
         name: status.attributes.name,
