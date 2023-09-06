@@ -26,7 +26,8 @@
     "priceRange": {
       "type": "component",
       "repeatable": false,
-      "component": "price-range.price-range"
+      "component": "price-range.price-range",
+      "required": true
     }
   }
 }

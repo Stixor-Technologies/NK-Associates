@@ -12,8 +12,9 @@ import {
   fetchPropertyPurposeList,
   fetchCompletionStatusList,
   fetchRentFrequencyList,
-  getProjects,
   fetchFilterOptionsList,
+  fetchPropertyLocationList,
+  fetchFilterProjectsList,
 } from "../../../utils/api-calls";
 
 const searchTiles = [
@@ -30,6 +31,7 @@ const SearchBar = ({ onFilter }: { onFilter: () => void }) => {
     useState<SearchFilterProperties>({
       propertyTypesList: undefined,
       propertyPurposeList: undefined,
+      propertyLocationList: undefined,
       projectsList: undefined,
       completionStatusList: undefined,
       rentFrequencyList: undefined,
@@ -51,12 +53,14 @@ const SearchBar = ({ onFilter }: { onFilter: () => void }) => {
         selectedAreaUnit: filtersProperties.areaUnitsList[0].name,
       },
     });
+
+    onFilter();
   };
 
   const getPropertyTypesList = async () => {
     const respCategories = await fetchPropertyCategoriesList();
 
-    const categoriesList = respCategories.map((category) => {
+    const categoriesList = respCategories?.map((category) => {
       const typesList = category.attributes.property_types.data.map((type) => {
         return {
           id: type.id,
@@ -78,10 +82,9 @@ const SearchBar = ({ onFilter }: { onFilter: () => void }) => {
   };
 
   const getProjectsList = async () => {
-    const resp = await getProjects();
-    const data = await resp.json();
+    const resp = await fetchFilterProjectsList();
 
-    const normalizedProjectsList = data.data.map((project) => {
+    const normalizedProjectsList = resp?.map((project) => {
       return {
         id: project.id,
         name: project.attributes.title,
@@ -97,7 +100,7 @@ const SearchBar = ({ onFilter }: { onFilter: () => void }) => {
   const getPropertyPurposeList = async () => {
     const resp = await fetchPropertyPurposeList();
 
-    const normalizedPropertyPurposeList = resp.map((purpose) => {
+    const normalizedPropertyPurposeList = resp?.map((purpose) => {
       return {
         id: purpose.id,
         name: purpose.attributes.name,
@@ -113,7 +116,7 @@ const SearchBar = ({ onFilter }: { onFilter: () => void }) => {
   const getRentFrequencyList = async () => {
     const resp = await fetchRentFrequencyList();
 
-    const rentFrequencyList = resp.map((status) => {
+    const rentFrequencyList = resp?.map((status) => {
       return {
         id: status.id,
         name: status.attributes.name,
@@ -129,7 +132,7 @@ const SearchBar = ({ onFilter }: { onFilter: () => void }) => {
   const getCompletionStatusList = async () => {
     const respCompletionStatus = await fetchCompletionStatusList();
 
-    const completionStatusList = respCompletionStatus.map((status) => {
+    const completionStatusList = respCompletionStatus?.map((status) => {
       return {
         id: status.id,
         name: status.attributes.name,
@@ -139,6 +142,22 @@ const SearchBar = ({ onFilter }: { onFilter: () => void }) => {
     setFiltersProperties((oldState) => ({
       ...oldState,
       completionStatusList: completionStatusList,
+    }));
+  };
+
+  const getPropertyLocationList = async () => {
+    const respPropertyLocation = await fetchPropertyLocationList();
+
+    const propertyLocationList = respPropertyLocation?.map((status) => {
+      return {
+        id: status.id,
+        name: status.attributes.name,
+      };
+    });
+
+    setFiltersProperties((oldState) => ({
+      ...oldState,
+      propertyLocationList: propertyLocationList,
     }));
   };
 
@@ -193,6 +212,7 @@ const SearchBar = ({ onFilter }: { onFilter: () => void }) => {
       await getCompletionStatusList();
       await getPropertyPurposeList();
       await getProjectsList();
+      await getPropertyLocationList();
       await getRentFrequencyList();
       await getFiltersOptionsList();
       filtersDispatch({ type: "setFilterIsSelected", payload: false });

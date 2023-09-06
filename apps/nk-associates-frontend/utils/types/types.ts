@@ -172,6 +172,7 @@ export interface SearchFilterProperties {
   completionStatusList: { id: number; name: string }[] | undefined;
   rentFrequencyList: { id: number; name: string }[] | undefined;
   propertyPurposeList: { id: number; name: string }[] | undefined;
+  propertyLocationList: { id: number; name: string }[] | undefined;
   projectsList: { id: number; name: string }[] | undefined;
   priceRange: [number, number];
   areaRange: [number, number];

@@ -117,7 +117,7 @@ const ProjectGallery = ({ pictures }: PropTypes) => {
                     src={url}
                     alt="Thumb Item"
                     fill
-                    className="h-full w-full rounded-lg"
+                    className="h-full w-full rounded-lg object-cover"
                   />
                 </SwiperSlide>
               ))}
