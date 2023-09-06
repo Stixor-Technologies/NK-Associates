@@ -21,7 +21,7 @@ interface SliderProps {
 const DetailSlider: FC<SliderProps> = ({ property_images, phone }) => {
   const whatsapp = `https://wa.me/${phone}?text=I'm%20interested%20in%20your%20property`;
   return (
-    <div className="relative">
+    <div className="relative bg-right-top bg-no-repeat md:bg-nk-bg">
       <Swiper
         cssMode={true}
         navigation={true}
