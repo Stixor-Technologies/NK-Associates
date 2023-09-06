@@ -117,7 +117,7 @@ export default function Projects() {
                 className={`h-8 w-[9.549rem] flex-none text-xs md:h-[3rem] md:w-[10.688rem] md:text-base lg:h-[3.2rem] lg:w-[13.688rem] lg:text-lg xl:h-[3.5rem] xl:w-[16.688rem] xl:text-xl ${
                   selectedButton === label
                     ? "bg-gradient-to-b from-nk-gradient-red-one to-nk-gradient-red-two text-nk-white"
-                    : "bg-transparent text-nk-gray border border-nk-red hover:bg-nk-red hover:text-white transition-all duration-300 ease-in-out"
+                    : "bg-transparent text-nk-gray border border-nk-red md:hover:bg-nk-red md:hover:text-white transition-all duration-300 ease-in-out"
                 } rounded-full py-2 px-4 capitalize shadow-3xl`}
               >
                 {label}

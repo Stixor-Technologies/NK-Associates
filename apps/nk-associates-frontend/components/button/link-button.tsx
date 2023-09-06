@@ -1,5 +1,5 @@
 "use client";
-import React, { FC, useRef } from "react";
+import React, { FC, useEffect, useRef } from "react";
 import Link from "next/link";
 import { gsap } from "gsap";
 import { CustomEase } from "gsap/CustomEase";
@@ -153,8 +153,16 @@ const LinkButton: FC<Props> = (props) => {
     return (
       <Link
         ref={anchorRef}
-        onMouseEnter={handleMouseEnter}
-        onMouseLeave={handleMouseLeave}
+        onMouseEnter={() => {
+          if (window?.innerWidth >= 768) {
+            handleMouseEnter();
+          }
+        }}
+        onMouseLeave={() => {
+          if (window?.innerWidth >= 768) {
+            handleMouseLeave();
+          }
+        }}
         className={classes}
         href={props.navigateTo}
       >
