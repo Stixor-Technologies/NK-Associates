@@ -102,7 +102,7 @@ const EventModal: React.FC<ModalProps> = ({ open, onClose, eventData }) => {
       aria-hidden="true"
       className="fixed inset-0 z-50 hidden w-full overflow-y-auto overflow-x-hidden p-4 md:h-full"
     >
-      <div className="m-auto w-full max-w-4xl overflow-hidden rounded-3xl bg-white">
+      <div className="m-auto w-full max-w-4xl 2xl:max-w-6xl overflow-hidden rounded-3xl bg-white">
         <div className="slide-container relative mb-3 overflow-hidden">
           <div
             ref={eventsModalSlider}
@@ -118,7 +118,7 @@ const EventModal: React.FC<ModalProps> = ({ open, onClose, eventData }) => {
               initialSlide={0}
               thumbs={{ swiper: thumbsSwiper }}
               modules={[Pagination, Thumbs]}
-              className="mySwiper2 h-[19.5rem] md:h-[32rem]"
+              className="mySwiper2 h-[19.5rem] md:h-[32rem] 2xl:h-[50rem]"
             >
               {eventData?.attributes?.event_image?.data?.map(
                 (imageData, index) => {
