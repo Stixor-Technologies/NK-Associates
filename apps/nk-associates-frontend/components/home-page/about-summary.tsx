@@ -50,7 +50,7 @@ const AboutSummary: FC<AboutSummaryProp> = ({
         <div className="text-center flex gap-14 flex-col items-center md:block md:py-14 md:text-left">
           <div className="order-1 md:order-none">
             <h2 className="text-3xl text-nk-black font-metropolis-semibold md:text-5xl">
-              About US
+              About Us
             </h2>
             <p className="text-base text-nk-black font-metropolis-thin leading-tight my-5 md:my-3 md:text-lg">
               {windowSize > breakPoint ? firstHalf : about_summary}
@@ -67,7 +67,7 @@ const AboutSummary: FC<AboutSummaryProp> = ({
             width={600}
             height={400}
             alt={`${summary_image1?.data?.attributes?.name}`}
-            className="rounded-2xl mt-10 h-[23.938rem] order-0 md:order-none"
+            className="rounded-2xl mt-10 md:h-[23.938rem] order-0 md:order-none object-cover"
           />
         </div>
 
@@ -77,7 +77,7 @@ const AboutSummary: FC<AboutSummaryProp> = ({
             width={600}
             height={400}
             alt={`${summary_image2?.data?.attributes?.name}`}
-            className="rounded-2xl md:mb-10 md:h-[23.938rem]"
+            className="rounded-2xl md:mb-10 md:h-[23.938rem] object-cover"
           />
           <p className="text-base text-nk-black font-metropolis-thin leading-tight md:text-lg">
             {secondHalf}
