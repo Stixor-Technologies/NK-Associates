@@ -222,6 +222,10 @@ const Properties = () => {
           ref={buttonRef}
           className={` self-center sticky top-0 mb-4 bottom-16 left-1/2 z-10 flex -translate-x-1/2 items-center gap-2 rounded-full px-4 py-2 text-center text-sm capitalize text-nk-white transition-all duration-300 ease-in-out md:gap-4 md:px-6 md:py-3 md:text-2xl ${"bg-nk-gradient-red-one bg-gradient-to-b to-nk-gradient-red-two hover:scale-[1.1]"}`}
           onClick={() => {
+            window.scrollTo({
+              top: 0,
+              behavior: "smooth",
+            });
             setIsList(!isList);
           }}
         >

@@ -30,17 +30,15 @@ const NkApp: FC<NKAppProps> = ({ storeLinks }) => {
       });
       tl.from(".floating-mobile", {
         opacity: 0,
-        x: -200,
-        y: 200,
-        scale: 0,
+        x: -250,
         duration: 0.5,
+        stagger: 0.2,
       }),
         tl.from(
           ".link",
           {
             opacity: 0,
             x: -250,
-            scale: 0,
             duration: 0.5,
             stagger: 0.2,
           },
@@ -49,7 +47,7 @@ const NkApp: FC<NKAppProps> = ({ storeLinks }) => {
       tl.from(".download-text", {
         opacity: 0,
         y: -60,
-        duration: 0.6,
+        duration: 0.5,
       });
     }
     return () => {

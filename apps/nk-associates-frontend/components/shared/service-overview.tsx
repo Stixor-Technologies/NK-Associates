@@ -16,20 +16,19 @@ const ServicesOverview = () => {
         toggleActions: "play none none none",
       },
     });
+
     tl.from(".text", {
       opacity: 0,
-      x: -200,
-      y: 200,
-      scale: 0,
+      y: 100,
       duration: 0.5,
-    }),
-      tl.from(".btn", {
-        opacity: 0,
-        xPercent: -60,
-        scale: 0,
-        stagger: 0.2,
-        ease: "circ.out",
-      });
+    });
+
+    tl.from(".btn", {
+      opacity: 0,
+      y: 50,
+      stagger: 0.2,
+      ease: "linear",
+    });
 
     return () => {
       ScrollTrigger.getById("services-overview-trigger")?.kill();
