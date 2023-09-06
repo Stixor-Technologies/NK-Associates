@@ -14,7 +14,7 @@ const GoalsCard: FC<CardProps> = ({ about }) => {
   return (
     <div className="card lg:absolute w-full mb-12 lg:mb-0 overflow-hidden lg:overflow-visible">
       <div className="flex flex-col lg:flex-row gap-2 lg:gap-10 xl:gap-5 px-0 about-card">
-        <div className="relative images-about max-w-[25rem]  w-full min-h-[32rem] lg:min-h-[37rem] mx-auto mb-8 lg:mb-0 translate-x-[200%] lg:translate-x-0 lg:translate-y-[250%]">
+        <div className="relative images-about max-w-[28rem]  w-full min-h-[38rem] lg:min-h-[40rem] mx-auto mb-8 lg:mb-0 translate-x-[200%] lg:translate-x-0 lg:translate-y-[250%]">
           <Image
             src={`${BASE_URL}${cardImage || "/"}`}
             alt="Card Image 1"
