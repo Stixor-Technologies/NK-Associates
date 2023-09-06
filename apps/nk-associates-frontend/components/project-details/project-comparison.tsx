@@ -257,7 +257,7 @@ const ProjectComparison = ({ projectId }: PropTypes) => {
                     src={`${BASE_URL}${images.renderImage}`}
                     alt="Thumb Item"
                     fill
-                    className="w-full rounded-lg"
+                    className="w-full rounded-lg object-cover"
                   />
                 </SwiperSlide>
               ))}
