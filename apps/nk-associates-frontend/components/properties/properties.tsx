@@ -145,7 +145,7 @@ const Properties = () => {
         </div>
       )}
       <>
-        <SearchBar onFilter={handleRefreshData} />
+        <SearchBar onFilter={handleRefreshData} isListView={isList} />
 
         {isList && (
           <>
