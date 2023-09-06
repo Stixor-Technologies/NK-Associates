@@ -1,10 +1,11 @@
 "use client";
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState, useRef, useLayoutEffect } from "react";
 import { createPortal } from "react-dom";
 import Image from "next/image";
 import { Viewer } from "@photo-sphere-viewer/core";
 import { VirtualTourPlugin } from "@photo-sphere-viewer/virtual-tour-plugin";
 import { MarkersPlugin } from "@photo-sphere-viewer/markers-plugin";
+import gsap from "gsap";
 
 import "@photo-sphere-viewer/core/index.css";
 import "@photo-sphere-viewer/virtual-tour-plugin/index.css";
@@ -14,7 +15,6 @@ import { fetchVRTourDetailsById } from "../../utils/api-calls";
 import { BASE_URL } from "../../utils/constants";
 
 const baseUrl = "https://photo-sphere-viewer-data.netlify.app/assets/";
-const caption = "Cape Florida Light, Key Biscayne <b>&copy; Pixexid</b>";
 
 import TourIcon from "../../public/assets/icons/360-icon.svg";
 
@@ -29,9 +29,12 @@ const VRTourScreen = ({ open, onClose, loading, slides }: PropsType) => {
   const ScreenRef = useRef();
 
   const handleCloseModal = () => {
-    const body = document.body;
     onClose();
-    body.classList.remove("overflow-hidden");
+    gsap.to("[data-vr-tour-container]", {
+      duration: 0.8,
+      translateX: "100%",
+      ease: "ease-in-out",
+    });
   };
 
   useEffect(() => {
@@ -75,94 +78,27 @@ const VRTourScreen = ({ open, onClose, loading, slides }: PropsType) => {
       const virtualTour =
         viewer.getPlugin<VirtualTourPlugin>(VirtualTourPlugin);
 
-      console.log({ slides });
-
       virtualTour.setNodes(slides);
-
-      // virtualTour.setNodes(
-      //   [
-      //     {
-      //       id: "1",
-      //       panorama: baseUrl + "tour/key-biscayne-1.jpg",
-      //       thumbnail: baseUrl + "tour/key-biscayne-1-thumb.jpg",
-      //       name: "One",
-      //       caption: `[1] ${caption}`,
-      //       links: [{ nodeId: "2" }],
-      //       // markers: [markerLighthouse],
-      //       gps: [-80.156479, 25.666725, 3],
-      //       panoData: { poseHeading: 327 },
-      //     },
-      //     {
-      //       id: "2",
-      //       panorama: baseUrl + "tour/key-biscayne-2.jpg",
-      //       thumbnail: baseUrl + "tour/key-biscayne-2-thumb.jpg",
-      //       name: "Two",
-      //       caption: `[2] ${caption}`,
-      //       links: [{ nodeId: "3" }, { nodeId: "1" }],
-      //       // markers: [markerLighthouse],
-      //       gps: [-80.156168, 25.666623, 3],
-      //       panoData: { poseHeading: 318 },
-      //     },
-      //     {
-      //       id: "3",
-      //       panorama: baseUrl + "tour/key-biscayne-3.jpg",
-      //       thumbnail: baseUrl + "tour/key-biscayne-3-thumb.jpg",
-      //       name: "Three",
-      //       caption: `[3] ${caption}`,
-      //       links: [{ nodeId: "4" }, { nodeId: "2" }, { nodeId: "5" }],
-      //       gps: [-80.155932, 25.666498, 5],
-      //       panoData: { poseHeading: 310 },
-      //     },
-      //     {
-      //       id: "4",
-      //       panorama: baseUrl + "tour/key-biscayne-4.jpg",
-      //       thumbnail: baseUrl + "tour/key-biscayne-4-thumb.jpg",
-      //       name: "Four",
-      //       caption: `[4] ${caption}`,
-      //       links: [{ nodeId: "3" }, { nodeId: "5" }],
-      //       gps: [-80.156089, 25.666357, 3],
-      //       panoData: { poseHeading: 78 },
-      //     },
-      //     {
-      //       id: "5",
-      //       panorama: baseUrl + "tour/key-biscayne-5.jpg",
-      //       thumbnail: baseUrl + "tour/key-biscayne-5-thumb.jpg",
-      //       name: "Five",
-      //       caption: `[5] ${caption}`,
-      //       links: [{ nodeId: "6" }, { nodeId: "3" }, { nodeId: "4" }],
-      //       gps: [-80.156292, 25.666446, 2],
-      //       panoData: { poseHeading: 190 },
-      //     },
-      //     {
-      //       id: "6",
-      //       panorama: baseUrl + "tour/key-biscayne-6.jpg",
-      //       thumbnail: baseUrl + "tour/key-biscayne-6-thumb.jpg",
-      //       name: "Six",
-      //       caption: `[6] ${caption}`,
-      //       links: [{ nodeId: "5" }, { nodeId: "7" }],
-      //       gps: [-80.156465, 25.666496, 2],
-      //       panoData: { poseHeading: 295 },
-      //     },
-      //     {
-      //       id: "7",
-      //       panorama: baseUrl + "tour/key-biscayne-7.jpg",
-      //       thumbnail: baseUrl + "tour/key-biscayne-7-thumb.jpg",
-      //       name: "Seven",
-      //       caption: `[7] ${caption}`,
-      //       links: [{ nodeId: "6" }],
-      //       gps: [-80.15707, 25.6665, 3],
-      //       panoData: { poseHeading: 250, posePitch: 3 },
-      //     },
-      //   ],
-      //   "2",
-      // );
     }
   }, [ScreenRef.current, open, loading]);
 
+  useLayoutEffect(() => {
+    if (open) {
+      gsap.to("[data-vr-tour-container]", {
+        duration: 0.8,
+        translateX: "0%",
+        ease: "ease-in-out",
+      });
+    }
+  }, [open, ScreenRef.current]);
+
   const content = (
-    <section className="fixed top-0 left-0 w-screen h-screen bg-nk-gray z-[1000] flex items-center justify-center">
+    <section
+      data-vr-tour-container
+      className="fixed top-0 right-0 translate-x-full w-screen h-screen bg-nk-gray z-[1000] flex items-center justify-center"
+    >
       <button
-        className="absolute top-0 right-0 p-1 m-4 md:m-6 text-nk-black hover:text-nk-red z-[1001]"
+        className="absolute top-0 right-0 m-4 md:m-6 text-nk-black hover:text-nk-red z-[1001] bg-white/70 p-3 rounded-full"
         onClick={handleCloseModal}
         title="Close Virtual Tour"
       >
@@ -204,56 +140,115 @@ const VRTourScreen = ({ open, onClose, loading, slides }: PropsType) => {
 };
 
 const VRTour = ({ vrTourId }: { vrTourId: number | undefined }) => {
+  const buttonRef = useRef();
+
   const [open, setOpen] = useState(false);
   const [loading, setLoading] = useState(true);
   const [slides, setSlides] = useState([]);
 
-  console.log({ vrTourId });
-
   const handleOpenClick = async () => {
     setLoading(true);
-    if (!vrTourId) {
-      setLoading(false);
-      return;
-    }
-    setOpen(true);
-    const resp = await fetchVRTourDetailsById(vrTourId);
-    console.log({ resp });
-    const sanitizedSlides = resp.data.attributes.slides.map((slide) => {
-      const panoData = slide?.pano_data;
-      const slideLinks = slide?.vr_slide_links.map((link) => {
+    try {
+      if (!vrTourId) {
+        setLoading(false);
+        return;
+      }
+      setOpen(true);
+      const resp = await fetchVRTourDetailsById(vrTourId);
+
+      const sanitizedSlides = resp.data.attributes.slides.map((slide) => {
+        const panoData = {};
+        if (slide?.pano_data?.fullWidth) {
+          panoData["fullWidth"] = slide?.pano_data?.fullWidth;
+        }
+        if (slide?.pano_data?.fullHeight) {
+          panoData["fullHeight"] = slide?.pano_data?.fullHeight;
+        }
+        if (slide?.pano_data?.croppedWidth) {
+          panoData["croppedWidth"] = slide?.pano_data?.croppedWidth;
+        }
+        if (slide?.pano_data?.croppedHeight) {
+          panoData["croppedHeight"] = slide?.pano_data?.croppedHeight;
+        }
+        if (slide?.pano_data?.croppedX) {
+          panoData["croppedX"] = slide?.pano_data?.croppedX;
+        }
+        if (slide?.pano_data?.croppedY) {
+          panoData["croppedY"] = slide?.pano_data?.croppedY;
+        }
+        if (slide?.pano_data?.poseHeading) {
+          panoData["poseHeading"] = slide?.pano_data?.poseHeading;
+        }
+        if (slide?.pano_data?.posePitch) {
+          panoData["posePitch"] = slide?.pano_data?.posePitch;
+        }
+        if (slide?.pano_data?.poseRoll) {
+          panoData["poseRoll"] = slide?.pano_data?.poseRoll;
+        }
+        const slideLinks = slide?.vr_slide_links.map((link) => {
+          return {
+            nodeId: link?.nodeID,
+          };
+        });
         return {
-          nodeId: link?.nodeID,
+          id: slide.id,
+          name: slide.name,
+          caption: slide.caption,
+          panorama: `${BASE_URL}${slide.panorama?.data?.attributes?.url}`,
+          panoData: panoData,
+          links: slideLinks,
+          gps: [
+            slide.gps_position.longitude,
+            slide.gps_position.latitude,
+            slide.gps_position.altitude,
+          ],
         };
       });
-      return {
-        id: slide.id,
-        name: slide.name,
-        caption: slide.caption,
-        panorama: `${BASE_URL}${slide.panorama?.data?.attributes?.url}`,
-        panoData: panoData,
-        links: slideLinks,
-        gps: [
-          slide.gps_position.longitude,
-          slide.gps_position.latitude,
-          slide.gps_position.altitude,
-        ],
-      };
-    });
-    setSlides(sanitizedSlides);
-    setLoading(false);
+
+      setSlides(sanitizedSlides);
+      setLoading(false);
+    } catch (err) {
+      console.error(
+        "An error occured while fetching and sanatizing VR Tour Slides",
+        err,
+      );
+    }
   };
+
+  const handleCloseVRTour = async () => {
+    // gsap.to(buttonRef.current, {
+    //   duration: 0.6,
+    //   translateX: -window.innerWidth,
+    //   ease: "ease-in-out",
+    // });
+    setTimeout(() => {
+      const body = document.body;
+      setOpen(!open);
+      body.classList.remove("overflow-hidden");
+    }, 1000);
+  };
+
+  // useLayoutEffect(() => {
+  //   if (open) {
+  //     gsap.to(buttonRef.current, {
+  //       duration: 0.6,
+  //       translateX: -window.innerWidth,
+  //       ease: "ease-in-out",
+  //     });
+  //   }
+  // }, [open]);
 
   return (
     <>
       <VRTourScreen
         open={open}
-        onClose={() => setOpen(!open)}
+        onClose={handleCloseVRTour}
         loading={loading}
         slides={slides}
       />
 
       <button
+        ref={buttonRef}
         onClick={handleOpenClick}
         className="group sticky top-[31.25rem] mb-4 z-30 ml-auto hidden w-[6rem] items-center gap-3 rounded-l-xl bg-nk-white px-4 py-3.5 shadow-3xl transition-all duration-500 ease-in-out hover:w-44 md:flex"
       >
