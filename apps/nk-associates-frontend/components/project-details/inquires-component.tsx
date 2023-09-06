@@ -1,9 +1,11 @@
 "use client";
+import { useRouter } from "next/navigation";
 import LinkButton from "../button/link-button";
 
 const InquiresCompnent = () => {
+  const router = useRouter();
   const handleInquiresClick = () => {
-    alert("Inquires clicked");
+    router.push("/contact");
   };
 
   return (
