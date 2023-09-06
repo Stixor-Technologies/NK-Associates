@@ -34,7 +34,7 @@ const TileSection: FC<TileSectionProps> = ({
         scrollTrigger: {
           id: "property-tile-trigger",
           trigger: divElement,
-          start: "top 75%",
+          start: "top 88%",
         },
       });
     }

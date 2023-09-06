@@ -59,8 +59,8 @@ async function Footer() {
   }
 
   const footerPageLinks: footerPageLink[] = [
-    { pathName: "#", label: "Home" },
-    { pathName: "#", label: "About" },
+    { pathName: "/", label: "Home" },
+    { pathName: "/about-us", label: "About" },
     { pathName: "/properties", label: "Property" },
     { pathName: "/projects", label: "Projects" },
     { pathName: "/contact", label: "Contact Us" },

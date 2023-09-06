@@ -3,12 +3,9 @@ import React, { useState, useEffect, useRef } from "react";
 import MemberCard from "./member-card";
 import { Member } from "../../utils/types/types";
 import { getMembers } from "../../utils/api-calls";
-import CursorUtility from "../../utils/cursor-utility";
 
 const MembersList = () => {
-  const [member, setMembers] = useState<Member[]>([]);
-  let cursorUtilityRef = useRef<CursorUtility | null>(null);
-  const membersContainer = useRef<HTMLDivElement | null>(null);
+  const [members, setMembers] = useState<Member[]>([]);
 
   const fetchMembers = async () => {
     try {
@@ -24,44 +21,26 @@ const MembersList = () => {
 
   useEffect(() => {
     fetchMembers();
-    cursorUtilityRef.current = new CursorUtility(membersContainer.current);
-    return () => {
-      if (cursorUtilityRef.current) {
-        cursorUtilityRef.current.destroy();
-        cursorUtilityRef.current = null;
-      }
-    };
   }, []);
 
   const renderMembers = () => {
-    if (member?.length === 0 || !member) {
+    if (members.length === 0) {
       return (
         <p className="font-metropolis text-nk-dark-gray py-10 text-base">
           No Members Available
         </p>
       );
     }
-    return member?.map((memberData, index) => (
-      <div key={index}>
+
+    return members.map((memberData, index) => (
+      <div key={index} className="w-full md:w-1/5 mb-4 md:mb-0">
         <MemberCard member={memberData} />
       </div>
     ));
   };
-  const showAnimatedCursor = () => {
-    cursorUtilityRef?.current?.showCursor();
-  };
-
-  const hideAnimatedCursor = () => {
-    cursorUtilityRef?.current?.hideCursor();
-  };
 
   return (
-    <div
-      ref={membersContainer}
-      onMouseEnter={showAnimatedCursor}
-      onMouseLeave={hideAnimatedCursor}
-      className="md:py-1 property-carousel flex flex-nowrap overflow-x-scroll px-4 gap-4 pb-12 md:px-8 md:pb-16 md:gap-6 xl:px-0 mx-auto"
-    >
+    <div className="flex flex-wrap md:justify-center gap-5 md:gap-20 xl:px-0 mx-auto">
       {renderMembers()}
     </div>
   );
