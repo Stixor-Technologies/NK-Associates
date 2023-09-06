@@ -58,7 +58,7 @@ const AboutSummary: FC<AboutSummaryProp> = ({
             <LinkButton
               text="About Us"
               type="solid"
-              navigateTo="#"
+              navigateTo="/about-us"
               className="w-[14.063rem] h-11 md:hidden"
             />
           </div>
@@ -86,7 +86,7 @@ const AboutSummary: FC<AboutSummaryProp> = ({
           <LinkButton
             text="About Us"
             type="solid"
-            navigateTo="#"
+            navigateTo="/about-us"
             className=" md:w-44 md:h-12 md:mt-8"
           />
         </div>
