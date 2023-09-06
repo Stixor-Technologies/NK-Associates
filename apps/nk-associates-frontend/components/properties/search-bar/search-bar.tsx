@@ -30,7 +30,6 @@ const searchTiles = [
   { name: "Purpose" },
 ];
 
-// const SearchBar = ({ onFilter }: { onFilter: () => void }) => {
 const SearchBar: FC<SearchBarProps> = ({ onFilter, isListView }) => {
   const [loading, setLoading] = useState(true);
   const [filtersProperties, setFiltersProperties] =
