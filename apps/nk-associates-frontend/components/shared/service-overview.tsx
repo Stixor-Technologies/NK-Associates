@@ -43,7 +43,7 @@ const ServicesOverview = () => {
       <div className="container relative z-20 mx-auto">
         <div className="max-w-4xl">
           <h3 className="text font-metropolis-semibold text-[1.625rem] md:text-4xl">
-            NK Associates Services
+            NK Associates and Services
           </h3>
           <p className="text py-5 text-base md:font-metropolis-extralight md:text-lg">
             Our core expertise lies in the meticulous design, precise
