@@ -103,7 +103,7 @@ const Goals: FC<GoalProps> = ({ mission, vision, values, goals }) => {
           scrollTrigger: {
             id: "about-mobile-trigger",
             trigger: card,
-            start: "top 60%",
+            start: "top 50%",
           },
         });
       });
