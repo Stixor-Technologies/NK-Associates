@@ -58,7 +58,6 @@ const ExpertiseOutcomes: FC<OutcomesProps> = ({
           pin: true,
           scrub: 1,
           invalidateOnRefresh: true,
-          markers: true,
           snap: {
             snapTo: 1 / (textPanels.length - 1),
             duration: 0.5,
