@@ -142,28 +142,6 @@ const Properties = () => {
       <SearchBar onFilter={handleRefreshData} isListView={isList} />
 
       <>
-        {isLoading && gridProperties.length === 0 ? (
-          <PropertyListSkeleton />
-        ) : gridProperties && gridProperties.length > 0 ? (
-          <InfiniteScroll
-            dataLength={gridProperties.length}
-            next={() => {
-              fetchGridData(false, filtersState?.filterIsSelected);
-            }}
-            hasMore={total !== gridProperties.length}
-            loader={isLoading && <PropertyListSkeleton />}
-            className={isList ? "block" : "hidden"}
-          >
-            <PropertyList properties={gridProperties} />
-          </InfiniteScroll>
-        ) : (
-          <div className="min-h-[50vh] flex flex-1 items-center justify-center text-nk-black">
-            <p className="text-center">No Properties Available</p>
-          </div>
-        )}
-      </>
-
-      <>
         {isList && (
           <>
             {isLoading && gridProperties.length === 0 ? (
@@ -171,7 +149,9 @@ const Properties = () => {
             ) : gridProperties && gridProperties.length > 0 ? (
               <InfiniteScroll
                 dataLength={gridProperties.length}
-                next={fetchGridData}
+                next={() => {
+                  fetchGridData(false, filtersState?.filterIsSelected);
+                }}
                 hasMore={total !== gridProperties.length}
                 loader={isLoading && <PropertyListSkeleton />}
                 className={isList ? "block" : "hidden"}
