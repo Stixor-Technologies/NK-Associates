@@ -100,7 +100,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
                       alt="Carousel Image"
                       layout="fill"
                       objectFit="cover"
-                      className="h-full w-full object-cover"
+                      className="h-full w-full object-cover bg-gray-300"
                     />
                   </SwiperSlide>
                 );

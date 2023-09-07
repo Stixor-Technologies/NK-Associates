@@ -44,6 +44,10 @@ const ProjectIntroduction = ({
       value: coveredArea + " " + coveredAreaUnits,
     },
     {
+      title: "Total Units",
+      value: totalUnits,
+    },
+    {
       title: "Types",
       value: types.join(", "),
     },
