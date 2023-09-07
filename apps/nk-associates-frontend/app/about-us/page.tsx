@@ -51,7 +51,7 @@ const AboutUs = async () => {
         />
       </div>
 
-      <div className="container lg:mt-[14rem]">
+      <div className="container lg:mt-[20rem]">
         <CeoMessage
           ceoImage={ceoImage}
           ceoMessage={ceoMessage}
@@ -64,7 +64,7 @@ const AboutUs = async () => {
 
       <div
         id="form"
-        className="pb-[2.958rem] md:pb-[3.603rem] pt-[5.05rem] lg:flex lg:justify-center lg:m-0"
+        className="container pb-[2.958rem] md:pb-[3.603rem] pt-[5.05rem] lg:flex lg:justify-center"
       >
         <ContactForm categories={categories} heading="Get In Touch" />
       </div>

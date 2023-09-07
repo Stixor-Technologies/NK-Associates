@@ -10,12 +10,11 @@ const MissionCard: FC<CardProps> = ({ about }) => {
   const { question, title, description } = about || {};
   const cardImage = about?.card_image?.data?.attributes?.url;
   const cardIcon = about?.card_icon?.data?.attributes?.url;
-  const spin = -4;
 
   return (
     <div className="card lg:absolute w-full mb-12 lg:mb-0 overflow-hidden lg:overflow-visible">
       <div className="flex flex-col lg:flex-row gap-2 lg:gap-10 xl:gap-5 px-0 about-card">
-        <div className="relative images-about max-w-[28rem] w-full h-[38rem] lg:max-w-[25rem] lg:h-[34rem] 2xl:h-[38rem] 2xl:max-w-[28rem] mx-auto mb-8 lg:mb-0 translate-x-[200%] lg:translate-x-0">
+        <div className="relative images-about max-w-[28rem] w-full h-[30rem] sm:max-w-[34rem] sm:h-[36rem] lg:max-w-[25rem] lg:h-[34rem] 2xl:h-[38rem] 2xl:max-w-[28rem] mx-auto mb-8 lg:mb-0 translate-x-[200%] lg:translate-x-0">
           <Image
             src={`${BASE_URL}${cardImage || "/"}`}
             alt="Card Image 1"
