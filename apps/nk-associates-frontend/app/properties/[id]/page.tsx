@@ -141,7 +141,7 @@ async function PropertyDetail({ params: { id } }: PropertyDetailProps) {
             <LinkButton
               text="Inquires"
               type="solid"
-              navigateTo="#"
+              navigateTo="/contact"
               className="mb-2 w-[11.75rem] text-lg sm:mb-0 md:w-[11.75rem]"
             />
           </div>
