@@ -46,7 +46,6 @@ const BannerSlider: FC<BannerImagesProps> = ({ banner_images }) => {
 
     return () => clearInterval(interval);
   }, [banner_images?.length, hoveredSlide]);
-  console.log(activeIndex);
 
   return (
     <div

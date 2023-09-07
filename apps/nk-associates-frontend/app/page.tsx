@@ -12,7 +12,6 @@ import { getHomeData, getSocials } from "../utils/api-calls";
 export default async function Home() {
   const data = await getHomeData();
   const resp = await getSocials();
-  console.log(data);
   const {
     featured_project1,
     featured_project2,
