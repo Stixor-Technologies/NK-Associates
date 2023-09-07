@@ -67,6 +67,7 @@ const MobileCarousel: React.FC<CarouselProps> = ({ images }) => {
                   alt="Carousel Image"
                   fill
                   className="h-full w-full object-cover"
+                  priority
                 />
                 <div className="gradient-overlay absolute bottom-[10rem] left-0 h-[10rem] w-full"></div>
               </SwiperSlide>

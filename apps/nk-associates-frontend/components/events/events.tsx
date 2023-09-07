@@ -30,12 +30,10 @@ const AllEvents: FC<AllEventsProps> = ({ data, images }) => {
       ref={eventsContainerRef}
       className="container w-full rounded-lg py-4 md:rounded-lg md:py-20"
     >
-      {data ? (
+      {data && (
         <div className="flex items-center justify-center md:hidden ">
           <MobileCarousel images={images} />
         </div>
-      ) : (
-        <div></div>
       )}
 
       <div className="text-center font-metropolis-extrabold text-3xl text-nk-black md:text-5xl">
