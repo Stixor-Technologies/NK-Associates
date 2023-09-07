@@ -53,6 +53,19 @@ const VRTourScreen = ({ open, onClose, loading, slides }: PropsType) => {
     gps: [-80.155973, 25.666601, 29 + 3],
   };
 
+  const customArrowStyle = {
+    color: 0x000000,
+    hoverColor: 0xaa5500,
+    outlineColor: 0xaaaaaa,
+    size: 1,
+  };
+
+  const customMarkerStyle = {
+    element: null,
+    imageLayer: "/assets/images/ProjectSampleImage.png",
+    size: { width: 80, height: 80 },
+    anchor: "bottom center",
+  };
   useEffect(() => {
     if (ScreenRef?.current && open && !loading) {
       const viewer = new Viewer({
@@ -62,14 +75,16 @@ const VRTourScreen = ({ open, onClose, loading, slides }: PropsType) => {
         mousewheelCtrlKey: true,
         defaultYaw: "130deg",
         navbar: "zoom move caption fullscreen",
-
         plugins: [
           MarkersPlugin,
+
           [
             VirtualTourPlugin,
             {
               positionMode: "gps",
-              renderMode: "3d",
+              renderMode: "markers",
+              // arrowStyle: customArrowStyle,
+              markerStyle: customMarkerStyle,
             },
           ],
         ],
@@ -156,7 +171,7 @@ const VRTour = ({ vrTourId }: { vrTourId: number | undefined }) => {
       setOpen(true);
       const resp = await fetchVRTourDetailsById(vrTourId);
 
-      const sanitizedSlides = resp.data.attributes.slides.map((slide) => {
+      const sanitizedSlides = resp.data.attributes.slides?.map((slide) => {
         const panoData = {};
         if (slide?.pano_data?.fullWidth) {
           panoData["fullWidth"] = slide?.pano_data?.fullWidth;
