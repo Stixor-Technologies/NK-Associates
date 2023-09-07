@@ -38,6 +38,7 @@ const ProcessSteps: FC<ProcessStepsProps> = ({ process }) => {
           start: "top 15%",
           scrub: true,
           end: () => "+=" + cards[0].clientWidth * (cards.length * 1),
+          markers: true,
         },
       });
     } else {
@@ -59,10 +60,10 @@ const ProcessSteps: FC<ProcessStepsProps> = ({ process }) => {
           data-cards-container
           className="min-h-[80vh] container lg:flex lg:items-center"
         >
-          <div className="flex flex-col justify-center">
-            <div className="">
-              <div className="panels-container relative flex flex-col gap-8 lg:flex-row lg:items-start lg:flex-nowrap p-0">
-                {process.map((step, index) => {
+          <div className="flex flex-col justify-center 2xl:h-[80%]">
+            <div className="h-full">
+              <div className="panels-container relative flex flex-col gap-8 lg:flex-row lg:items-start lg:flex-nowrap p-0 h-full">
+                {process?.map((step, index) => {
                   const processImage =
                     step?.process_image?.data?.attributes?.url;
                   const formattedIndex =
@@ -71,17 +72,17 @@ const ProcessSteps: FC<ProcessStepsProps> = ({ process }) => {
                   return (
                     <div
                       key={index}
-                      className={` flex-shrink-0 process-card relative flex flex-col lg:flex-row lg:items-center w-[100%] border bg-nk-white rounded-xl sm:min-h-[35rem] gap-6 shadow-md px-8 py-6 md:gap-[3.125rem] md:px-12 md:py-16`}
+                      className={`h-full flex-shrink-0 process-card relative flex flex-col lg:flex-row lg:items-center w-[100%] border bg-nk-white rounded-xl sm:min-h-[35rem] gap-6 shadow-md px-8 py-6 md:gap-[3.125rem] md:px-12 md:py-16`}
                     >
-                      <div className="relative shrink-0 self-center w-[15rem] h-[15rem] sm:w-[25rem] sm:h-[25rem] md:w-[37.5rem] md:h-[37.5rem] lg:w-[40%] lg:h-[20.125rem]">
+                      <div className="relative shrink-0 self-center w-[15rem] h-[15rem] sm:w-[25rem] sm:h-[25rem] md:w-[37.5rem] md:h-[37.5rem] lg:w-[40%] lg:h-[20.125rem] 2xl:h-[34rem]">
                         <Image
                           src={`${BASE_URL}${processImage || "/"}`}
                           fill
                           alt={`process-img-${index}`}
-                          className="object-contain"
+                          className="object-cover"
                         />
                       </div>
-                      <div className="lg:w-[60%]">
+                      <div className="lg:w-[60%] 2xl:pr-6">
                         <h2 className="text-2xl font-metropolis-semibold md:text-[2.5rem]">
                           {`${step?.process_title}: `}
                         </h2>

@@ -53,7 +53,8 @@ module.exports = {
         "3/4": "75%",
       },
       maxWidth: {
-        container: "78.25rem",
+        // container: "78.25rem",
+        container: "1536px",
       },
       backgroundImage: (theme) => ({
         "nk-bg": "url('/assets/images/bg-property.svg')",
