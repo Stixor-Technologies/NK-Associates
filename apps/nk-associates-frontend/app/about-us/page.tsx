@@ -60,15 +60,8 @@ const AboutUs = async () => {
       </div>
 
       <ServicesOverview />
+      <MembersList />
 
-      <div className="xl:container pt-[3.25rem] lg:pt-[6.688rem] text-center">
-        <div className="text-nk-dark-gray font-metropolis-bold text-[2.25rem] text-center">
-          Meet Our Best-In-Class Team
-        </div>
-        <div className="pt-12 xl:-mr-[1.5rem]">
-          <MembersList />
-        </div>
-      </div>
       <div
         id="form"
         className="pb-[2.958rem] md:pb-[3.603rem] pt-[5.05rem] lg:flex lg:justify-center lg:m-0"
