@@ -15,6 +15,7 @@ import "swiper/css/pagination";
 import "./events.css";
 import { BASE_URL } from "../../utils/constants";
 import { format } from "date-fns";
+import CursorUtility from "../../utils/cursor-utility";
 
 interface ModalProps {
   open: boolean;
@@ -24,7 +25,8 @@ interface ModalProps {
 
 const EventModal: React.FC<ModalProps> = ({ open, onClose, eventData }) => {
   const modalElement = useRef<HTMLDivElement | null>(null);
-
+  let cursorUtilityRef = useRef<CursorUtility | null>(null);
+  const eventsModalSlider = useRef<HTMLDivElement | null>(null);
   const modalOptions: ModalOptions = {
     placement: "center",
     backdrop: "dynamic",
@@ -56,6 +58,10 @@ const EventModal: React.FC<ModalProps> = ({ open, onClose, eventData }) => {
   }, [onClose]);
 
   useEffect(() => {
+    if (eventsModalSlider?.current) {
+      cursorUtilityRef.current = new CursorUtility(eventsModalSlider?.current);
+    }
+
     if (!modalElement.current || !modal) {
       return;
     }
@@ -72,7 +78,22 @@ const EventModal: React.FC<ModalProps> = ({ open, onClose, eventData }) => {
         thumbsSwiper.slideTo(0);
       }
     }
+
+    return () => {
+      if (cursorUtilityRef?.current) {
+        cursorUtilityRef?.current?.destroy();
+        cursorUtilityRef.current = null;
+      }
+    };
   }, [mainSwiper, modal, onClose, open, thumbsSwiper]);
+
+  const showAnimatedCursor = () => {
+    cursorUtilityRef?.current?.showCursor();
+  };
+
+  const hideAnimatedCursor = () => {
+    cursorUtilityRef?.current?.hideCursor();
+  };
 
   return (
     <div
@@ -81,34 +102,40 @@ const EventModal: React.FC<ModalProps> = ({ open, onClose, eventData }) => {
       aria-hidden="true"
       className="fixed inset-0 z-50 hidden w-full overflow-y-auto overflow-x-hidden p-4 md:h-full"
     >
-      <div className="m-auto w-full max-w-4xl overflow-hidden rounded-3xl bg-white">
+      <div className="m-auto w-full max-w-4xl 2xl:max-w-6xl overflow-hidden rounded-3xl bg-white">
         <div className="slide-container relative mb-3 overflow-hidden">
-          <Swiper
-            onSwiper={(swiper) => setMainSwiper(swiper)}
-            spaceBetween={10}
-            navigation={false}
-            loop={true}
-            pagination={true}
-            initialSlide={0}
-            thumbs={{ swiper: thumbsSwiper }}
-            modules={[Pagination, Thumbs]}
-            className="mySwiper2 h-[19.5rem] md:h-[32rem]"
+          <div
+            ref={eventsModalSlider}
+            onMouseEnter={showAnimatedCursor}
+            onMouseLeave={hideAnimatedCursor}
           >
-            {eventData?.attributes?.event_image?.data?.map(
-              (imageData, index) => {
-                return (
-                  <SwiperSlide key={index} className="h-full w-full">
-                    <Image
-                      src={`${BASE_URL}${imageData.attributes.url.trim()}`}
-                      alt="Slide Image"
-                      fill
-                      className="object-cover"
-                    />
-                  </SwiperSlide>
-                );
-              },
-            )}
-          </Swiper>
+            <Swiper
+              onSwiper={(swiper) => setMainSwiper(swiper)}
+              spaceBetween={10}
+              navigation={false}
+              loop={true}
+              pagination={true}
+              initialSlide={0}
+              thumbs={{ swiper: thumbsSwiper }}
+              modules={[Pagination, Thumbs]}
+              className="mySwiper2 h-[19.5rem] md:h-[32rem] 2xl:h-[50rem]"
+            >
+              {eventData?.attributes?.event_image?.data?.map(
+                (imageData, index) => {
+                  return (
+                    <SwiperSlide key={index} className="h-full w-full">
+                      <Image
+                        src={`${BASE_URL}${imageData.attributes.url.trim()}`}
+                        alt="Slide Image"
+                        fill
+                        className="object-cover"
+                      />
+                    </SwiperSlide>
+                  );
+                },
+              )}
+            </Swiper>
+          </div>
           <div className="mt-4 hidden md:block">
             <Swiper
               onSwiper={setThumbsSwiper}

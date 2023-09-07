@@ -1,15 +1,18 @@
-import React, { useMemo } from "react";
+import React, { useMemo, MutableRefObject } from "react";
 import { BASE_URL } from "../../../utils/constants";
 import ProjectCard from "./project-card";
 import { Project } from "../../../utils/types/types";
+import CursorUtility from "../../../utils/cursor-utility";
 
 const ProjectCardItem = ({
   project,
   index,
-  actHome,
+  cursorUtilityRef,
+  actHome = false,
 }: {
   project: Project;
   index: number;
+  cursorUtilityRef: MutableRefObject<CursorUtility | null>;
   actHome?: boolean;
 }) => {
   const imagesList = useMemo(() => {
@@ -39,7 +42,8 @@ const ProjectCardItem = ({
       propertyDescription={project?.attributes?.description}
       propertyType={project?.attributes?.category}
       primaryColor={index % 2 == 0 ? true : false}
-      actHome
+      cursorUtilityRef={cursorUtilityRef}
+      actHome={actHome}
     />
   );
 };

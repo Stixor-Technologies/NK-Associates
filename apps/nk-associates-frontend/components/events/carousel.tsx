@@ -1,5 +1,11 @@
 "use client";
-import React, { useState, useEffect } from "react";
+import React, {
+  FC,
+  MutableRefObject,
+  useState,
+  useEffect,
+  useRef,
+} from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/effect-coverflow";
@@ -9,17 +15,18 @@ import { EffectCoverflow, Pagination, Autoplay } from "swiper/modules";
 import { BASE_URL } from "../../utils/constants";
 import Spinner from "../spinner";
 import Image from "next/image";
+import CursorUtility from "../../utils/cursor-utility";
 
 interface CarouselProps {
   images: string[];
+  cursorUtilityRef: MutableRefObject<CursorUtility | null>;
 }
 
-const Carousel: React.FC<CarouselProps> = ({ images }) => {
+const Carousel: FC<CarouselProps> = ({ images, cursorUtilityRef }) => {
   const shuffledImages = images?.slice().sort(() => Math.random() - 0.5);
   const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
-    // Wait for images to load before setting the isLoaded state to true
     const imagePromises = shuffledImages.slice(0, 10).map((image) => {
       return new Promise<void>((resolve, reject) => {
         const img = new window.Image();
@@ -42,8 +49,20 @@ const Carousel: React.FC<CarouselProps> = ({ images }) => {
     );
   }
 
+  const showAnimatedCursor = () => {
+    cursorUtilityRef.current?.showCursor();
+  };
+
+  const hideAnimatedCursor = () => {
+    cursorUtilityRef?.current?.hideCursor();
+  };
+
   return (
-    <div className="container">
+    <div
+      className="container"
+      onMouseEnter={showAnimatedCursor}
+      onMouseLeave={hideAnimatedCursor}
+    >
       <Swiper
         effect={"coverflow"}
         grabCursor={true}

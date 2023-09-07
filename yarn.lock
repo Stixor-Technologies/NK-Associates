@@ -9151,6 +9151,11 @@ mmd-parser@^1.0.4:
   resolved "https://registry.yarnpkg.com/mmd-parser/-/mmd-parser-1.0.4.tgz#87cc05782cb5974ca854f0303fc5147bc9d690e7"
   integrity sha512-Qi0VCU46t2IwfGv5KF0+D/t9cizcDug7qnNoy9Ggk7aucp0tssV8IwTMkBlDbm+VqAf3cdQHTCARKSsuS2MYFg==
 
+mouse-follower@^1.1.2:
+  version "1.1.2"
+  resolved "https://registry.yarnpkg.com/mouse-follower/-/mouse-follower-1.1.2.tgz#1ec0bba53adb4aa7563a5c619992f58695403cd4"
+  integrity sha512-Wa/3MKMNWW1qy7XuG34NMRAm504p0PckJU4yTyXCoNYFaaIcZi+bpnTg0L2u8QuGBYgs2ue84wGCPIaQQzRV3Q==
+
 ms@2.0.0:
   version "2.0.0"
   resolved "https://registry.npmjs.org/ms/-/ms-2.0.0.tgz"

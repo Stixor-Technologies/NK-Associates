@@ -57,17 +57,27 @@ const applyFilters = (filters: FiltersStateType) => {
     if (filters.selectedAreaUnit) {
       filtersString += `&filters[area_unit][name][$eq]=${filters.selectedAreaUnit}`;
     }
+
+    if (filters.location) {
+      filtersString += `&filters[property_location][id][$eq]=${filters.location}`;
+    }
   }
   return filtersString;
-}
+};
 
 export const getGridProperties = async (
+  freshData: boolean,
+  moreLoad: boolean,
   start: number,
   limit = 12,
   filters?: FiltersStateType,
 ) => {
   let url = `${BASE_URL}/api/properties?populate=*&pagination[start]=${start}&pagination[limit]=${limit}&sort[1]=id`;
-  let filtersString = applyFilters(filters);
+
+  let filtersString = "";
+  if (freshData || moreLoad) {
+    filtersString = applyFilters(filters);
+  }
 
   try {
     const resp = await fetch(url + filtersString);
@@ -111,11 +121,11 @@ export const getPropertyDetail = async (id: string) => {
 
 export const getSimilarProperties = async (
   type: {
-      data: { id: number, attributes: { name: string } };
-    },
+    data: { id: number; attributes: { name: string } };
+  },
   category: {
-      data: { id: number, attributes: { name: string } };
-    },
+    data: { id: number; attributes: { name: string } };
+  },
   currentPropertyId: string,
 ) => {
   const FILTER_PRIORITY = [
@@ -182,6 +192,16 @@ export const fetchPropertyTypesList = async () => {
   }
 };
 
+export const fetchFilterProjectsList = async () => {
+  try {
+    const resp = await fetch(`${BASE_URL}/api/projects?fields[0]=title`);
+    const data = await resp.json();
+    return data?.data;
+  } catch (error) {
+    console.error("There was an error getting the Filter Projects List", error);
+  }
+};
+
 export const fetchPropertyPurposeList = async () => {
   try {
     const resp = await fetch(`${BASE_URL}/api/property-purposes`);
@@ -190,6 +210,19 @@ export const fetchPropertyPurposeList = async () => {
   } catch (error) {
     console.error(
       "There was an error getting the Property Purpose List",
+      error,
+    );
+  }
+};
+
+export const fetchPropertyLocationList = async () => {
+  try {
+    const resp = await fetch(`${BASE_URL}/api/property-locations`);
+    const data = await resp.json();
+    return data?.data;
+  } catch (error) {
+    console.error(
+      "There was an error getting the Property Location List",
       error,
     );
   }
@@ -407,7 +440,9 @@ export const getSocials = async () => {
 
 export const getServices = async () => {
   try {
-    const resp = await fetch(`${BASE_URL}/api/services?populate=deep`);
+    const resp = await fetch(
+      `${BASE_URL}/api/services?populate=deep&sort[1]=id`,
+    );
     const data = await resp.json();
     return data;
   } catch (error) {

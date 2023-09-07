@@ -1,5 +1,5 @@
 "use client";
-import React, { FC, useState } from "react";
+import React, { FC, useState, MutableRefObject } from "react";
 import { BASE_URL } from "../../utils/constants";
 import Image from "next/image";
 import Link from "next/link";
@@ -8,6 +8,7 @@ import FbIcon from "../../public/assets/icons/facebook-icon.svg";
 import WhatsAppIcon from "../../public/assets/icons/whatsapp-inverse.svg";
 import InstagramIcon from "../../public/assets/icons/instagram-icon.svg";
 import LinkedinIcon from "../../public/assets/icons/linkedIn-icon.svg";
+import CursorUtility from "../../utils/cursor-utility";
 
 interface CardProps {
   member: Member;
@@ -71,7 +72,7 @@ const MemberCard: FC<CardProps> = ({ member }) => {
   });
 
   return (
-    <div className="flex flex-col  items-center flex-grow max-w-[17.75rem] min-w-[17.288rem]">
+    <div className="flex flex-col  mx-auto items-center flex-grow max-w-[17.75rem] min-w-[17.288rem]">
       <div className="relative w-[17.75rem] h-[17.75rem] mb-4">
         <Image
           src={`${BASE_URL}${member_image || "/"}`}

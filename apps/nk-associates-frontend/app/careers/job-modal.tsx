@@ -206,6 +206,13 @@ const EventModal: React.FC<ModalProps> = ({ open, onClose }) => {
       onClose();
       modal?.hide();
     }
+
+    return () => {
+      if (open) {
+        onClose();
+        modal?.hide();
+      }
+    };
   }, [modal, onClose, open]);
 
   function getFieldLabel(fieldName) {

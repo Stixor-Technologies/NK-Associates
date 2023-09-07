@@ -52,13 +52,7 @@
     },
     "area_type": {
       "type": "enumeration",
-      "enum": [
-        "Sq.Yd",
-        "Sq.Ft",
-        "Sq.M",
-        "Marla",
-        "Kanal"
-      ],
+      "enum": ["Sq.Yd", "Sq.Ft", "Sq.M", "Marla", "Kanal"],
       "required": true
     },
     "latitude": {
@@ -73,25 +67,19 @@
       "type": "media",
       "multiple": false,
       "required": true,
-      "allowedTypes": [
-        "images"
-      ]
+      "allowedTypes": ["images"]
     },
     "property_images": {
       "type": "media",
       "multiple": true,
       "required": true,
-      "allowedTypes": [
-        "images"
-      ]
+      "allowedTypes": ["images"]
     },
     "property_pdf": {
       "type": "media",
       "multiple": false,
       "required": false,
-      "allowedTypes": [
-        "files"
-      ]
+      "allowedTypes": ["files"]
     },
     "property_category": {
       "type": "relation",
@@ -133,6 +121,11 @@
       "type": "relation",
       "relation": "oneToOne",
       "target": "api::vr-tour.vr-tour"
+    },
+    "property_location": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::property-location.property-location"
     }
   }
 }

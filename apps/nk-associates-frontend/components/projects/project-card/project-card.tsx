@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef, MutableRefObject } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -6,6 +6,7 @@ import "swiper/css";
 import "swiper/css/effect-coverflow";
 import "swiper/css/pagination";
 import { Pagination } from "swiper/modules";
+import CursorUtility from "../../../utils/cursor-utility";
 
 import "./project-card.css";
 
@@ -25,6 +26,7 @@ interface ProjectCardProps {
   propertyType: string;
   primaryColor?: boolean;
   actHome?: boolean;
+  cursorUtilityRef: MutableRefObject<CursorUtility | null>;
 }
 
 const ProjectCard: React.FC<ProjectCardProps> = ({
@@ -39,9 +41,9 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
   propertyType,
   primaryColor = true,
   actHome,
+  cursorUtilityRef,
 }) => {
   const [windowWidth, setWindowWidth] = useState<number>(0);
-
   useEffect(() => {
     const handleResize = () => {
       setWindowWidth(window.innerWidth);
@@ -54,21 +56,33 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
     };
   }, []);
 
+  const showAnimatedCursor = () => {
+    cursorUtilityRef?.current?.showCursor();
+  };
+
+  const hideAnimatedCursor = () => {
+    cursorUtilityRef?.current?.hideCursor();
+  };
+
   const backgroundColor = primaryColor
     ? "bg-gradient-to-b bg-nk-gradient-red-one to-nk-gradient-red-two"
     : "bg-white";
   const textColor = primaryColor ? "text-white" : "text-black";
   const flexDirection = primaryColor ? "sm:flex-row-reverse" : "sm:flex-row";
   const cardHeight = actHome
-    ? "h-[35rem] sm:h-[16.875rem] md:h-[20.625rem] lg:h-[25rem]"
+    ? "h-[35rem] sm:h-[16.875rem] md:h-[20.625rem] lg:h-[28.5rem]"
     : "h-[35rem] sm:h-[21rem] md:h-[26rem] lg:h-[31.25rem]";
 
   return (
     <Link href={`projects/${id}`}>
       <div
-        className={`project-card mb-[2.3rem] flex w-full flex-col overflow-hidden rounded-2xl shadow-md last-of-type:mb-4  md:mb-[4.5rem] ${flexDirection} md:rounded-3xl ${backgroundColor} ${textColor} ${cardHeight}`}
+        className={`project-card mb-[1.5rem] flex w-full flex-col overflow-hidden rounded-2xl shadow-md md:mb-[3rem] ${flexDirection} md:rounded-3xl ${textColor} ${cardHeight}`}
       >
-        <div className="relative h-full min-h-[21rem] w-full sm:h-auto sm:w-[65%]">
+        <div
+          onMouseEnter={showAnimatedCursor}
+          onMouseLeave={hideAnimatedCursor}
+          className="projects-carousel relative h-full min-h-[21rem] w-full sm:h-auto sm:w-[65%]"
+        >
           {imagesList?.length > 0 ? (
             <Swiper
               grabCursor={true}
@@ -108,7 +122,9 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
           )}
         </div>
 
-        <div className="flex flex-col px-4 py-3.5 sm:w-[35%] md:p-6">
+        <div
+          className={`flex flex-col px-4 py-3.5 sm:w-[35%] md:p-6 ${backgroundColor}`}
+        >
           <div className=" flex flex-col">
             <h1
               className="mb-1.5 truncate font-metropolis-extrabold text-[1.375rem] leading-5 md:mb-3 md:text-2xl md:leading-7 lg:text-3xl"

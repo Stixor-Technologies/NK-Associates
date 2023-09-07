@@ -92,7 +92,11 @@ const ServicesList: FC = () => {
   }, [services, windowSize]);
 
   return (
-    <div ref={ref} className="card-container py-8 min-h-screen md:py-1">
+    <div
+      ref={ref}
+      data-cursor-text
+      className="card-container py-8 min-h-screen md:py-1"
+    >
       {isLoading && services.length === 0 ? (
         <div className="my-4 flex justify-center">
           <Spinner />

@@ -14,7 +14,6 @@ const PopularCategories: FC<PopularCategoriesProps> = ({
 }) => {
   const popularSection = useRef<HTMLDivElement | null>(null);
   const [windowSize, setWindowSize] = useState<number>(0);
-
   const breakPoint = 640;
 
   useEffect(() => {
@@ -69,7 +68,7 @@ const PopularCategories: FC<PopularCategoriesProps> = ({
             x: "100%",
             duration: 1,
             stagger: 0.5,
-            ease: "bounce.out",
+            ease: "linear",
           },
           "<",
         );
@@ -81,7 +80,7 @@ const PopularCategories: FC<PopularCategoriesProps> = ({
             scrollTrigger: {
               id: "mobile-categories-trigger",
               trigger: card,
-              start: "top center",
+              start: "top 65%",
               end: "bottom",
             },
           });
@@ -93,7 +92,7 @@ const PopularCategories: FC<PopularCategoriesProps> = ({
             {
               x: "100%",
               duration: 1,
-              ease: "bounce.out",
+              ease: "linear",
             },
             "<0.1",
           );

@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import JobCard from "./job-card";
 import { Job } from "../../utils/types/types";
 import Spinner from "../spinner";
@@ -21,6 +21,9 @@ const JobList = () => {
   const [filteredCity, setFilteredCity] = useState<string | null>(null);
   const [departments, setDepartments] = useState<string[]>([]);
   const [cities, setCities] = useState<string[]>([]);
+  const [isClicked, setIsClicked] = useState(false);
+  const filterContainer = useRef<HTMLDivElement | null>(null);
+
   const fetchData = async () => {
     const resp = await getJobs(filteredDepartment, filteredCity);
     const departmentList = await getDepartments();
@@ -34,6 +37,27 @@ const JobList = () => {
     }
     setIsLoading(false);
   };
+
+  const handleOutsideClick = (event: MouseEvent) => {
+    if (
+      filterContainer.current &&
+      !filterContainer.current.contains(event.target as Node)
+    ) {
+      setIsClicked(false);
+    }
+  };
+
+  const handleFilterOptionClick = () => {
+    setIsClicked(!isClicked);
+  };
+
+  useEffect(() => {
+    document.addEventListener("mousedown", handleOutsideClick);
+
+    return () => {
+      document.removeEventListener("mousedown", handleOutsideClick);
+    };
+  }, []);
 
   useEffect(() => {
     fetchData();
@@ -57,8 +81,6 @@ const JobList = () => {
     job.attributes.title.toLowerCase().includes(searchQuery.toLowerCase()),
   );
 
-  const [isClicked, setIsClicked] = useState(false);
-
   return (
     <>
       <div className="bg-nk-white rounded-xl p-2 pb-4 shadow-xl">
@@ -80,7 +102,7 @@ const JobList = () => {
               </div>
             </div>
           </div>
-          <div className="hidden w-4/6 md:block md:flex">
+          <div className="hidden w-4/6 md:flex">
             <div className="mt-8 w-1/2">
               <JobFilter
                 selectedValue={filteredDepartment}
@@ -98,21 +120,22 @@ const JobList = () => {
               />
             </div>
           </div>
-          <div className="relative flex w-2/6 pt-4 md:hidden">
+          <div
+            ref={filterContainer}
+            className="relative flex w-2/6 pt-4 md:hidden"
+          >
             <div
               className={`text-nk-gray z-0 flex h-10 w-full items-center justify-center gap-2 rounded-full shadow ${
                 isClicked ? "bg-nk-red text-nk-white" : " border-nk-gray "
               }`}
-              onClick={() => {
-                setIsClicked(!isClicked);
-              }}
+              onClick={handleFilterOptionClick}
             >
               <p>Filters</p>
               {!isClicked && <Image src={FilterIcon} alt="Filter Icon" />}
               {isClicked && <Image src={FilterAlt} alt="Filter Alt" />}
             </div>
             <div
-              className={`bg-nk-light-gray absolute right-0 z-10 mt-11 flex w-80 flex-col rounded-lg p-2 shadow-xl transition-opacity duration-500 ease-in-out ${
+              className={`bg-nk-light-gray min-h-[9.75rem] absolute right-0 top-6 z-10 mt-11 flex w-80 flex-col rounded-lg p-2 shadow-xl transition-opacity duration-500 ease-in-out ${
                 isClicked ? "opacity-100" : "opacity-0"
               }`}
             >
