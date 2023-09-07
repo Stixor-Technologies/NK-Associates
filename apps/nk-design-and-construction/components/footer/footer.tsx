@@ -24,7 +24,11 @@ const footerSocialLinks = [
       "https://www.linkedin.com/company/nk-associates-builders-pvt-ltd/",
     image: LinkedinIcon,
   },
-  { pathName: "Add link here", image: SnapIcon },
+  {
+    pathName:
+      "https://www.snapchat.com/add/nkassociates23?share_id=IHFwtGuwCm0&locale=en-US",
+    image: SnapIcon,
+  },
   {
     pathName: "https://www.youtube.com/channel/UCUdSaD4ZjxDYxXiQXZIM7tw",
     image: YtIcon,
@@ -69,7 +73,7 @@ async function Footer() {
           D o w n l o a d
         </div>
         <div className="flex flex-row flex-wrap pt-[1.278rem] pb-[1.3rem] w-full justify-center">
-          <Link href={"Put appstore link here" || "#"}>
+          <Link href="#">
             <Image
               src={AppStoreIcon}
               alt="App Store"
@@ -77,7 +81,7 @@ async function Footer() {
             />
           </Link>
 
-          <Link href={"put playstore link here" || "#"}>
+          <Link href="#">
             <Image
               src={GooglePlayIcon}
               alt="Google Play"
@@ -85,10 +89,7 @@ async function Footer() {
             />
           </Link>
 
-          <Link
-            href={"Put app gallery link here" || "#"}
-            className="justify-center items-center"
-          >
+          <Link href="#" className="justify-center items-center">
             <Image
               src={AppGalleryIcon}
               alt="App Gallery"
