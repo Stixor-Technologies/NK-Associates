@@ -87,6 +87,75 @@ const Page = () => {
         Your cooperation in maintaining a positive and respectful online
         environment is appreciated.
       </p>
+      <h2 className="font-metropolis-semibold text-xl md:text-3xl mb-4 mt-5">
+        Intellectual Property
+      </h2>
+      <p className="font-metropolis text-base mb-6 text-[0.875rem] md:text-[1.25rem]">
+        All content on our website is protected by intellectual property laws.
+        You may not use, reproduce, or distribute our content without
+        permission.
+      </p>
+      <h2 className="font-metropolis-semibold text-xl md:text-3xl mb-4 mt-5">
+        Product / Service Descriptions
+      </h2>
+      <p className="font-metropolis text-base mb-6 text-[0.875rem] md:text-[1.25rem]">
+        We strive to provide accurate and up-to-date information about our
+        products and services. However, we cannot guarantee the accuracy of all
+        details.
+      </p>
+      <p className="font-metropolis text-base mb-6 text-[0.875rem] md:text-[1.25rem]">
+        Your satisfaction is important to us, and we strive to maintain
+        transparency and fairness in all transactions.
+      </p>
+      <h2 className="font-metropolis-semibold text-xl md:text-3xl mb-4 mt-5">
+        Liabilities and Disclaimers
+      </h2>
+      <p className="font-metropolis text-base mb-6 text-[0.875rem] md:text-[1.25rem]">
+        We are not liable for any inaccuracies, errors, or damages resulting
+        from the use of our website. We do not endorse or control the content of
+        third-party websites linked from our site.
+      </p>
+      <h2 className="font-metropolis-semibold text-xl md:text-3xl mb-4 mt-5">
+        Indemnity
+      </h2>
+      <p className="font-metropolis text-base mb-6 text-[0.875rem] md:text-[1.25rem]">
+        You agree to indemnify and hold us harmless from any claims, losses,
+        liabilities, and expenses arising from your use of our website or any
+        violations of these Terms and Conditions. This includes any third-party
+        claims resulting from your actions, content submissions, or interactions
+        on our website.
+      </p>
+      <p className="font-metropolis text-base mb-6 text-[0.875rem] md:text-[1.25rem]">
+        In simpler terms, by agreeing to indemnify us, you are agreeing to take
+        responsibility for any legal or financial consequences that may arise
+        from your use of our website, if it leads to harm or damage to us or
+        others. This clause helps us protect our business and interests, as well
+        as maintain a safe and respectful online environment for all users. We
+        appreciate your understanding and cooperation in ensuring a positive and
+        secure experience for everyone who engages with our website.
+      </p>
+      <h2 className="font-metropolis-semibold text-xl md:text-3xl mb-4 mt-5">
+        Governing Law
+      </h2>
+      <p className="font-metropolis text-base mb-6 text-[0.875rem] md:text-[1.25rem]">
+        These Terms and Conditions are governed by the laws of Pakistan, and any
+        disputes shall be subject to the exclusive jurisdiction of the courts of
+        Rawalpindi, Pakistan.
+      </p>
+      <h2 className="font-metropolis-semibold text-xl md:text-3xl mb-4 mt-5">
+        Termination
+      </h2>
+      <p className="font-metropolis text-base mb-6 text-[0.875rem] md:text-[1.25rem]">
+        We reserve the right to terminate your access to our website for
+        violations of these terms or any other reason.
+      </p>
+      <h2 className="font-metropolis-semibold text-xl md:text-3xl mb-4 mt-5">
+        Changes to Terms
+      </h2>
+      <p className="font-metropolis text-base mb-6 text-[0.875rem] md:text-[1.25rem]">
+        We may modify these Terms and Conditions at any time. Changes will be
+        effective upon posting on our website.
+      </p>
     </div>
   );
 };
