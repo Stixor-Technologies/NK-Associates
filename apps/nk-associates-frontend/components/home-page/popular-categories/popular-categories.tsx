@@ -68,7 +68,7 @@ const PopularCategories: FC<PopularCategoriesProps> = ({
             x: "100%",
             duration: 1,
             stagger: 0.5,
-            ease: "bounce.out",
+            ease: "linear",
           },
           "<",
         );
@@ -80,7 +80,7 @@ const PopularCategories: FC<PopularCategoriesProps> = ({
             scrollTrigger: {
               id: "mobile-categories-trigger",
               trigger: card,
-              start: "top center",
+              start: "top 65%",
               end: "bottom",
             },
           });
@@ -92,7 +92,7 @@ const PopularCategories: FC<PopularCategoriesProps> = ({
             {
               x: "100%",
               duration: 1,
-              ease: "bounce.out",
+              ease: "linear",
             },
             "<0.1",
           );
