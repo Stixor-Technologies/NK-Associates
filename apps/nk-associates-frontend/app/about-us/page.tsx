@@ -51,7 +51,7 @@ const AboutUs = async () => {
         />
       </div>
 
-      <div className="container lg:mt-[14rem] 2xl:mt-0">
+      <div className="container lg:mt-[14rem]">
         <CeoMessage
           ceoImage={ceoImage}
           ceoMessage={ceoMessage}

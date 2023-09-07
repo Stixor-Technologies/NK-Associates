@@ -57,7 +57,7 @@ const Goals: FC<GoalProps> = ({ mission, vision, values, goals }) => {
         scrollTrigger: {
           id: "about-web-trigger",
           trigger: ".card-container",
-          start: "top 20%",
+          start: "top 4%",
           end: `+=${40 * cards.length}%`,
           pin: true,
           scrub: 1,
@@ -122,7 +122,7 @@ const Goals: FC<GoalProps> = ({ mission, vision, values, goals }) => {
   }, [component, windowSize]);
 
   return (
-    <div className="container card-container cardTrigger relative md:py-1 lg:h-[100vh] lg:flex lg:flex-col justify-start my-20">
+    <div className="container card-container cardTrigger relative md:py-1 lg:h-[100vh] lg:flex lg:flex-col justify-center my-20">
       <>
         <MissionCard about={mission} />
         <VisionCard about={vision} />
