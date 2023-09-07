@@ -52,9 +52,6 @@ module.exports = {
         "1/2": "50%",
         "3/4": "75%",
       },
-      maxWidth: {
-        container: "1536px",
-      },
       backgroundImage: (theme) => ({
         "nk-bg": "url('/assets/images/bg-property.svg')",
         "custom-gradient":

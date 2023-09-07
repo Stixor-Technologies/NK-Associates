@@ -23,7 +23,7 @@ const AboutUs = async () => {
   return (
     <div className="bg-right-top bg-no-repeat md:bg-nk-bg">
       <div className="text-center text-black container">
-        <div className="text-[1.875rem] md:text-[3rem] font-metropolis-extrabold pt-[1rem]  md:pt-[3rem]">
+        <div className="text-[1.875rem] md:text-[3rem] font-metropolis-extrabold pt-[1rem] md:pt-[3rem]">
           About Us
         </div>
         <div className="pb-[1.563rem] text-[0.875rem] md:text-[1.25rem] md:pb-[2.563rem]">
@@ -51,7 +51,7 @@ const AboutUs = async () => {
         />
       </div>
 
-      <div className="container lg:mt-[20rem]">
+      <div className="container mb-28 lg:mt-[20rem]">
         <CeoMessage
           ceoImage={ceoImage}
           ceoMessage={ceoMessage}
