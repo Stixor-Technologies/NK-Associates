@@ -149,7 +149,9 @@ const Properties = () => {
             ) : gridProperties && gridProperties.length > 0 ? (
               <InfiniteScroll
                 dataLength={gridProperties.length}
-                next={fetchGridData}
+                next={() => {
+                  fetchGridData(false, filtersState?.filterIsSelected);
+                }}
                 hasMore={total !== gridProperties.length}
                 loader={isLoading && <PropertyListSkeleton />}
                 className={isList ? "block" : "hidden"}
