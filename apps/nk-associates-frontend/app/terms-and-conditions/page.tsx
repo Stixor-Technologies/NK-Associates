@@ -19,10 +19,9 @@ const Page = () => {
         User Conduct
       </h2>
       <p className="font-metropolis text-base mb-6 text-[0.875rem] md:text-[1.25rem]">
-        You agree not to engage in any harmful, illegal, or abusive behaviour
-        while using our website. By using our website, you agree to engage in
-        responsible and respectful behaviour that aligns with the following
-        guidelines.
+        You agree to use our website responsibly and respectfully, aligning with
+        the following guidelines and refraining from engaging in any harmful,
+        illegal, or abusive behavior.
       </p>
       <h2 className="font-metropolis-semibold text-xl md:text-3xl mb-4 mt-5">
         Harmful Behaviour
@@ -30,7 +29,7 @@ const Page = () => {
       <p className="font-metropolis text-base mb-6 text-[0.875rem] md:text-[1.25rem]">
         You are prohibited from engaging in any actions that could cause harm to
         our website, other users, or third parties. This includes, but is not
-        limited to, attempting to gain unauthorized access to our systems,
+        limited to attempting to gain unauthorized access to our systems,
         introducing viruses or malicious code, and engaging in any form of
         hacking or cyberattack.
       </p>
@@ -49,7 +48,7 @@ const Page = () => {
       <p className="font-metropolis text-base mb-6 text-[0.875rem] md:text-[1.25rem]">
         We foster a respectful online environment and do not tolerate any
         abusive, offensive, or discriminatory language or behaviour. This
-        includes, but is not limited to, harassment, hate speech, threats, and
+        includes, but is not limited to harassment, hate speech, threats, and
         bullying directed at other users, our team, or any individuals or
         groups.
       </p>
