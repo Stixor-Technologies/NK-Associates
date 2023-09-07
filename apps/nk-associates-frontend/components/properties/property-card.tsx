@@ -91,7 +91,7 @@ const PropertyCard: FC<CardProps> = ({
             src={`${BASE_URL}${thumbnailImage || "/"}`}
             fill
             alt=""
-            className={`property-image object-cover transition-all duration-700 ease-in-out ${
+            className={`property-image object-cover transition-all duration-700 ease-in-out bg-gray-300 ${
               !actMap && "hover:scale-110"
             }`}
           />
