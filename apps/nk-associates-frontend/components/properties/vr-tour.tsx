@@ -54,10 +54,10 @@ const VRTourScreen = ({ open, onClose, loading, slides }: PropsType) => {
   };
 
   const customArrowStyle = {
-    color: 0x000000,
-    hoverColor: 0xaa5500,
-    outlineColor: 0xaaaaaa,
-    size: 1,
+    color: 0xe74451,
+    hoverColor: 0xddd,
+    outlineColor: 0xffffff,
+    size: 0.5,
   };
 
   const customMarkerStyle = {
@@ -82,9 +82,9 @@ const VRTourScreen = ({ open, onClose, loading, slides }: PropsType) => {
             VirtualTourPlugin,
             {
               positionMode: "gps",
-              renderMode: "markers",
-              // arrowStyle: customArrowStyle,
-              markerStyle: customMarkerStyle,
+              renderMode: "3d",
+              arrowStyle: customArrowStyle,
+              // markerStyle: customMarkerStyle,
             },
           ],
         ],
