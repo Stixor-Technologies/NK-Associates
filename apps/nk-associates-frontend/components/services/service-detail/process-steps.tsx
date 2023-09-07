@@ -38,7 +38,6 @@ const ProcessSteps: FC<ProcessStepsProps> = ({ process }) => {
           start: "top 15%",
           scrub: true,
           end: () => "+=" + cards[0].clientWidth * (cards.length * 1),
-          //  markers: true,
         },
       });
     } else {
@@ -60,7 +59,7 @@ const ProcessSteps: FC<ProcessStepsProps> = ({ process }) => {
           data-cards-container
           className="min-h-[80vh] container lg:flex lg:items-center"
         >
-          <div className="flex flex-col justify-center 2xl:h-[90%]">
+          <div className="flex flex-col justify-center 2xl:h-[85%]">
             <div className="h-full">
               <div className="panels-container relative flex flex-col gap-8 lg:flex-row lg:items-start lg:flex-nowrap p-0 h-full">
                 {process?.map((step, index) => {
@@ -72,9 +71,9 @@ const ProcessSteps: FC<ProcessStepsProps> = ({ process }) => {
                   return (
                     <div
                       key={index}
-                      className={`h-full flex-shrink-0 process-card relative flex flex-col lg:flex-row lg:items-center w-[100%] border bg-nk-white rounded-xl sm:min-h-[35rem] gap-6 shadow-md px-8 py-6 md:gap-[3.125rem] md:px-12 md:py-16`}
+                      className={`h-full flex-shrink-0 process-card relative flex flex-col lg:flex-row lg:items-center w-[100%] border bg-nk-white rounded-xl sm:min-h-[35rem] gap-6 shadow-md px-4 py-6 md:gap-[3.125rem] md:px-8 md:py-16 lg:px-12 `}
                     >
-                      <div className="relative shrink-0 self-center w-[15rem] h-[15rem] sm:w-[25rem] sm:h-[25rem] md:w-[37.5rem] md:h-[37.5rem] lg:w-[40%] lg:h-[20.125rem] 3xl:h-[34rem]">
+                      <div className="relative shrink-0 self-center w-full mt-5 h-[18rem] sm:mt-14 sm:h-[25rem] md:h-[37.5rem] lg:w-[40%] lg:h-[20.125rem] 2xl:h-[32rem]">
                         <Image
                           src={`${BASE_URL}${processImage || "/"}`}
                           fill
@@ -83,10 +82,10 @@ const ProcessSteps: FC<ProcessStepsProps> = ({ process }) => {
                         />
                       </div>
                       <div className="lg:w-[60%] 2xl:pr-6">
-                        <h2 className="text-2xl font-metropolis-semibold md:text-[2.5rem]">
+                        <h2 className="text-2xl font-metropolis-semibold md:text-[2.5rem] 2xl:text-6xl">
                           {`${step?.process_title}: `}
                         </h2>
-                        <p className="text-xl font-metropolis-thin text-nk-black leading-tight mt-3 sm:mt-6 md:text-[1.75rem]">
+                        <p className="text-xl font-metropolis-thin text-nk-black leading-tight mt-3 sm:mt-6 md:text-[1.75rem] 2xl:text-4xl">
                           {`${step?.process_description}`}
                         </p>
                       </div>
@@ -102,7 +101,7 @@ const ProcessSteps: FC<ProcessStepsProps> = ({ process }) => {
           </div>
         </div>
       </div>
-      <p className="max-w-5xl mx-auto text-center mt-4 text-base font-metropolis-thin text-nk-black md:mt-8 md:text-2xl">
+      <p className="container md:max-w-5xl mx-auto text-center mt-4 text-base font-metropolis-thin text-nk-black md:mt-8 md:text-2xl">
         NK Design and Construction&rsquo;s commitment to innovation,
         collaboration, and attention to detail ensures that every project is a
         testament to our expertise and the vision of our clients.
