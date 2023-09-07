@@ -8,6 +8,9 @@ const Page = () => {
         Privacy Policy
       </h1>
       <hr className="h-px mb-5 bg-nk-gray border"></hr>
+      <h2 className="font-metropolis-semibold text-xl md:text-3xl mb-4">
+        Introduction
+      </h2>
       <p className="font-metropolis text-base mb-6 text-[0.875rem] md:text-[1.25rem]">
         Welcome to NKAssociatesAndBuilders.com! This Privacy Policy explains how
         we collect, use, and protect your personal information when you use our
@@ -16,9 +19,9 @@ const Page = () => {
       </p>
 
       <h2 className="font-metropolis-semibold text-xl md:text-3xl mb-4">
-        Infromation We Collect:
+        Information We Collect
       </h2>
-      <ul className="font-metropolis text-base mb-6 text-[0.875rem] md:text-[1.25rem] list-disc">
+      <ul className="font-metropolis text-base mb-6 text-[0.875rem] md:text-[1.25rem] list-disc ml-8">
         <li className="pb-1">
           Personal Information: We may collect your name, email address, contact
           information, and other relevant details when you register or make a
@@ -34,13 +37,17 @@ const Page = () => {
         </li>
       </ul>
       <h2 className="font-metropolis-semibold text-xl md:text-3xl mb-4">
-        How We Use Your Information:
+        How We Use Your Information
       </h2>
-      <ul className="font-metropolis text-base mb-6 text-[0.875rem] md:text-[1.25rem] list-disc">
+      <ul className="font-metropolis text-base mb-6 text-[0.875rem] md:text-[1.25rem] list-disc ml-8">
         <li className="pb-1">To provide and improve our services.</li>
         <li className="pb-1">To process transactions and fulfill orders.</li>
         <li className="pb-1">
           To communicate with you regarding your orders and updates.
+        </li>
+        <li className="pb-1">
+          To personalize your experience and improve our website&apos;s
+          functionality
         </li>
       </ul>
 
@@ -85,7 +92,11 @@ const Page = () => {
       <p className="font-metropolis text-base mb-6 text-[0.875rem] md:text-[1.25rem]">
         You have the right to access, update, and delete your personal
         information. If you have any concerns about your data, please contact us
-        at info@nkassociatesandbuilders.com.
+        at{" "}
+        <a href="mailto:info@nkassociatesandbuilders.com">
+          <span className="underline">info@nkassociatesandbuilders.com</span>
+        </a>
+        .
       </p>
       <h2 className="font-metropolis-semibold text-xl md:text-3xl mb-4">
         Security
@@ -99,10 +110,13 @@ const Page = () => {
       </h2>
       <p className="font-metropolis text-base mb-6 text-[0.875rem] md:text-[1.25rem]">
         Our website is not directed at children under the age of 18, and we do
-        not knowingly collect personal information from them. if you are a
+        not knowingly collect personal information from them. If you are a
         parent or guardian and become aware that your child has provided
-        personal information, you can contact us
-        info@nkassociatesandbuilders.com to have that information removed.
+        personal information, you can contact us at{" "}
+        <a href="mailto:info@nkassociatesandbuilders.com">
+          <span className="underline">info@nkassociatesandbuilders.com</span>
+        </a>{" "}
+        to have that information removed.
       </p>
       <h2 className="font-metropolis-semibold text-xl md:text-3xl mb-4">
         Contacting Us Regarding Data Concerns
@@ -114,46 +128,55 @@ const Page = () => {
         deleting your personal information, you have several options for
         reaching out to us:
       </p>
+      <div className="pl-6">
+        {" "}
+        <h2 className="font-metropolis-semibold text-[1rem] md:text-2xl mb-4">
+          Email:
+        </h2>
+        <p className="font-metropolis text-base mb-6 text-[0.875rem] md:text-[1.25rem]">
+          You can email us at{" "}
+          <a href="mailto:info@nkassociatesandbuilders.com">
+            <span className="underline">info@nkassociatesandbuilders.com</span>
+          </a>{" "}
+          with the subject line &quot;Data Privacy Inquiry&quot; or a relevant
+          subject that clearly indicates the nature of your query. We will make
+          every effort to respond promptly and address your concerns.
+        </p>
+        <h2 className="font-metropolis-semibold text-[1rem] md:text-2xl mb-4">
+          Contact Form:
+        </h2>
+        <p className="font-metropolis text-base mb-6 text-[0.875rem] md:text-[1.25rem]">
+          We provide a dedicated contact form on our website that you can use to
+          submit your data-related questions or requests. When using the form,
+          please provide accurate and comprehensive information to help us
+          better assist you.
+        </p>
+        <h2 className="font-metropolis-semibold text-[1rem] md:text-2xl mb-4">
+          Phone:
+        </h2>
+        <p className="font-metropolis text-base mb-6 text-[0.875rem] md:text-[1.25rem]">
+          For immediate assistance or inquiries, you can call or WhatsApp our
+          customer support hotline at{" "}
+          <a href="tel:+923331999100">
+            {" "}
+            <span className="underline">+923331999100</span>
+          </a>
+          . Our knowledgeable team will be happy to assist you with your
+          data-related questions.
+        </p>
+      </div>
 
-      <h2 className="font-metropolis-semibold text-xl md:text-3xl mb-4">
-        Email
-      </h2>
-      <p className="font-metropolis text-base mb-6 text-[0.875rem] md:text-[1.25rem]">
-        You can email us at info@nkassociatesandbuilders.com with the subject
-        line &quot;Data Privacy Inquiry&quot; or a relevant subject that clearly
-        indicates the nature of your query. We will make every effort to respond
-        promptly and address your concerns.
-      </p>
-
-      <h2 className="font-metropolis-semibold text-xl md:text-3xl mb-4">
-        Contact Form
-      </h2>
-      <p className="font-metropolis text-base mb-6 text-[0.875rem] md:text-[1.25rem]">
-        We provide a dedicated contact form on our website that you can use to
-        submit your data-related questions or requests. When using the form,
-        please provide accurate and comprehensive information to help us better
-        assist you.
-      </p>
-
-      <h2 className="font-metropolis-semibold text-xl md:text-3xl mb-4">
-        Phone
-      </h2>
-      <p className="font-metropolis text-base mb-6 text-[0.875rem] md:text-[1.25rem]">
-        For immediate assistance or inquiries, you can call or WhatsApp our
-        customer support hotline at +923331999100. Our knowledgeable team will
-        be happy to assist you with your data-related questions.
-      </p>
       <p className="font-metropolis text-base mb-6 text-[0.875rem] md:text-[1.25rem]">
         We take the security and privacy of your personal information seriously
         and are committed to resolving any concerns you may have. When
         contacting us, please include relevant information to help us verify
-        your identity and ensure the confidentiality of your data. Please note
-        that while we take measures to ensure the privacy of your
+        your identity and ensure the confidentiality of your data. <br />
+        Please note that while we take measures to ensure the privacy of your
         communications, email and online communication may not be entirely
         secure. Therefore, refrain from sharing sensitive or confidential
         information through these channels.We value your privacy and appreciate
         your trust in us to handle your data in a responsible and transparent
-        manne
+        manner
       </p>
 
       <h2 className="font-metropolis-semibold text-xl md:text-3xl mb-4">
