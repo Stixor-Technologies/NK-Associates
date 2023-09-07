@@ -7,7 +7,6 @@ import "swiper/css/pagination";
 import "./events.css";
 import { EffectCoverflow, Pagination, Autoplay } from "swiper/modules";
 import { BASE_URL } from "../../utils/constants";
-import Spinner from "../spinner";
 import Image from "next/image";
 
 interface CarouselProps {
@@ -18,29 +17,29 @@ const MobileCarousel: React.FC<CarouselProps> = ({ images }) => {
   const shuffledImages = images?.slice().sort(() => Math.random() - 0.5);
   const [isLoaded, setIsLoaded] = useState(false);
 
-  useEffect(() => {
-    // Wait for images to load before setting the isLoaded state to true
-    const imagePromises = shuffledImages.slice(0, 10).map((image) => {
-      return new Promise<void>((resolve, reject) => {
-        const img = new window.Image();
-        img.src = `${BASE_URL}${image}`;
-        img.onload = () => resolve();
-        img.onerror = (error) => reject(error);
-      });
-    });
+  // useEffect(() => {
+  //   // Wait for images to load before setting the isLoaded state to true
+  //   const imagePromises = shuffledImages.slice(0, 10).map((image) => {
+  //     return new Promise<void>((resolve, reject) => {
+  //       const img = new window.Image();
+  //       img.src = `${BASE_URL}${image}`;
+  //       img.onload = () => resolve();
+  //       img.onerror = (error) => reject(error);
+  //     });
+  //   });
 
-    Promise.all(imagePromises)
-      .then(() => setIsLoaded(true))
-      .catch((error) => console.error("Error loading images:", error));
-  }, [images]);
+  //   Promise.all(imagePromises)
+  //     .then(() => setIsLoaded(true))
+  //     .catch((error) => console.error("Error loading images:", error));
+  // }, [images]);
 
-  if (!isLoaded) {
-    return (
-      <div className="flex h-[10rem] items-center justify-center md:h-[20rem]">
-        <Spinner />
-      </div>
-    );
-  }
+  // if (!isLoaded) {
+  //   return (
+  //     <div className="flex h-[10rem] items-center justify-center md:h-[20rem]">
+  //       <Spinner />
+  //     </div>
+  //   );
+  // }
 
   return (
     <>

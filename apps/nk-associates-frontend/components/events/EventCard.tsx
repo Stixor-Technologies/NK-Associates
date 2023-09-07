@@ -51,7 +51,7 @@ const EventCard: FC<EventProps> = ({ dataItem, cursorUtilityRef }) => {
               slidesPerView={1}
               pagination={true}
               modules={[Pagination]}
-              className="mySwiper h-[20rem] w-full md:h-[25rem]"
+              className="mySwiper h-[20rem] w-full xl:h-[25rem]"
             >
               {dataItem?.attributes?.event_image?.data?.map(
                 (imageData, index) => {
@@ -75,16 +75,15 @@ const EventCard: FC<EventProps> = ({ dataItem, cursorUtilityRef }) => {
               {dataItem?.attributes?.event_title}
             </div>
             {dataItem?.attributes?.event_location && (
-              <div className="mb-3 mr-1 hidden max-w-[30%] gap-2 md:flex md:items-center ">
-                <>
-                  <Image
-                    src={LocationMarker}
-                    alt="Location Bar"
-                    width={20}
-                    height={20}
-                    className="flex-shrink-0"
-                  />
-                </>
+              <div className="mb-3 hidden gap-2 md:flex md:items-center ">
+                <Image
+                  src={LocationMarker}
+                  alt="Location Bar"
+                  width={20}
+                  height={20}
+                  className="flex-shrink-0"
+                />
+
                 <div className="font-metropolis-light text-lg text-red-500">
                   {dataItem?.attributes?.event_location}
                 </div>
