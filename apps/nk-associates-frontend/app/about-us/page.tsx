@@ -42,7 +42,7 @@ const AboutUs = async () => {
           />
         </div>
       </div>
-      <div className="container md:h-[230vh]">
+      <div className="container lg:h-[230vh]">
         <Goals
           mission={mission}
           vision={vision}
