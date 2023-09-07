@@ -3,7 +3,7 @@ import React from "react";
 
 const Page = () => {
   return (
-    <div className="block pb-[2rem] md:pb-[6.25rem] px-[2rem] md:px-[6.25rem] text-nk-dark-gray container">
+    <div className="block pb-[2rem] md:pb-[6.25rem] px-[2rem] lg:px-[6.25rem] text-nk-dark-gray container">
       <h1 className="font-metropolis-bold text-center text-[1.6rem] md:text-5xl md:p-[2rem] md:pb-[1rem]">
         Privacy Policy
       </h1>
@@ -128,8 +128,7 @@ const Page = () => {
         deleting your personal information, you have several options for
         reaching out to us:
       </p>
-      <div className="pl-6">
-        {" "}
+      <div>
         <h2 className="font-metropolis-semibold text-[1rem] md:text-2xl mb-4">
           Email:
         </h2>
