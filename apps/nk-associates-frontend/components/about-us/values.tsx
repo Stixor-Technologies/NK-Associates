@@ -12,7 +12,7 @@ const ValuesCard: FC<CardProps> = ({ about }) => {
   const cardIcon = about?.card_icon?.data?.attributes?.url;
 
   return (
-    <div className="card h-full flex flex-col justify-center lg:absolute w-full mb-12 lg:mb-0 overflow-hidden lg:overflow-visible">
+    <div className="card lg:absolute w-full mb-12 lg:mb-0 overflow-hidden lg:overflow-visible">
       <div className="flex flex-col lg:flex-row gap-2 lg:gap-10 xl:gap-5 px-0 about-card">
         <div className="relative images-about max-w-[28rem] w-full h-[38rem] lg:max-w-[25rem] lg:h-[34rem] 2xl:h-[38rem] 2xl:max-w-[28rem] mx-auto mb-8 lg:mb-0 translate-x-[200%] lg:translate-x-0 lg:translate-y-[250%]">
           <Image
