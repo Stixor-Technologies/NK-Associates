@@ -55,7 +55,7 @@ const VRTourScreen = ({ open, onClose, loading, slides }: PropsType) => {
 
   const customArrowStyle = {
     color: 0xe74451,
-    hoverColor: 0xddd,
+    hoverColor: 0xf42f4d,
     outlineColor: 0xffffff,
     size: 0.5,
   };
@@ -84,7 +84,6 @@ const VRTourScreen = ({ open, onClose, loading, slides }: PropsType) => {
               positionMode: "gps",
               renderMode: "3d",
               arrowStyle: customArrowStyle,
-              // markerStyle: customMarkerStyle,
             },
           ],
         ],

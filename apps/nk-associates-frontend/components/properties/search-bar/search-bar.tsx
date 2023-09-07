@@ -183,9 +183,9 @@ const SearchBar: FC<SearchBarProps> = ({ onFilter, isListView }) => {
 
     setFiltersProperties((oldState) => ({
       ...oldState,
-      areaRange: [areaRange.minRange, areaRange.maxRange],
+      areaRange: [areaRange?.minRange, areaRange?.maxRange],
       areaUnitsList: areaUnitsList,
-      priceRange: [priceRange.minRange, priceRange.maxRange],
+      priceRange: [priceRange?.minRange, priceRange?.maxRange],
     }));
 
     filtersDispatch({
