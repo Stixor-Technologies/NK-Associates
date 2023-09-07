@@ -26,8 +26,9 @@ const CeoMessage: React.FC<CeoMessageProps> = ({
       scrollTrigger: {
         id: "ceo-message-trigger",
         trigger: startRef.current,
-        start: "50% 90%",
+        start: "top 75%",
         end: "center 50%",
+        markers: true,
       },
     });
     tl.from(el2, {

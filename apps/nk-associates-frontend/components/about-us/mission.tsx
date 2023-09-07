@@ -12,7 +12,7 @@ const MissionCard: FC<CardProps> = ({ about }) => {
   const cardIcon = about?.card_icon?.data?.attributes?.url;
 
   return (
-    <div className="card lg:absolute w-full mb-12 lg:mb-0 overflow-hidden lg:overflow-visible">
+    <div className="card lg:absolute w-full mb-28 lg:mb-0 overflow-hidden lg:overflow-visible">
       <div className="flex flex-col lg:flex-row gap-2 lg:gap-10 xl:gap-5 px-0 about-card">
         <div className="relative images-about max-w-[28rem] w-full h-[30rem] sm:max-w-[34rem] sm:h-[36rem] lg:max-w-[25rem] lg:h-[34rem] 2xl:h-[38rem] 2xl:max-w-[28rem] mx-auto mb-8 lg:mb-0 translate-x-[200%] lg:translate-x-0">
           <Image
@@ -22,7 +22,7 @@ const MissionCard: FC<CardProps> = ({ about }) => {
             className="object-cover rounded-2xl lg:-rotate-[4deg]"
           />
         </div>
-        <div className="text-about flex flex-col font-metropolis text-xl text-center lg:text-left text-nk-dark-gray lg:w-[55%] my-auto">
+        <div className="text-about flex flex-col font-metropolis text-xl text-center lg:text-left text-nk-black lg:w-[55%] my-auto">
           <div className="relative max-w-[6.25rem] w-full min-h-[5rem] my-1 mx-auto lg:mx-0">
             <Image src={`${BASE_URL}${cardIcon || "/"}`} alt="Card Icon" fill />
           </div>
@@ -32,7 +32,7 @@ const MissionCard: FC<CardProps> = ({ about }) => {
           <h1 className="font-metropolis-bold text-[2.75rem] mt-3 mb-8">
             {title}
           </h1>
-          <p className="lg:pr-10"> {description}</p>
+          <p className="lg:pr-10 font-metropolis-thin"> {description}</p>
         </div>
       </div>
     </div>
