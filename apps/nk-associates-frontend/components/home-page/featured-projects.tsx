@@ -25,7 +25,7 @@ const FeaturedProjects: FC<FeaturedProjectsProps> = ({ featuredProjects }) => {
           boxes.forEach((box, index) => {
             if (index >= 1) {
               gsap.from(box, {
-                y: 85,
+                y: 60,
                 scrollTrigger: {
                   trigger: box,
                   start: "top 90%",

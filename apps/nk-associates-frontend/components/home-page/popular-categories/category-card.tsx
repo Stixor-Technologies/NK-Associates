@@ -23,7 +23,7 @@ const CategoryCard: FC<CategoryCardProps> = ({ category }) => {
           className="object-cover category-image"
         />
       </div>
-      <p className="category-name absolute w-full bottom-6 text-nk-white text-2xl font-metropolis-bold bg-fade-red py-3 z-20">
+      <p className="category-name absolute w-full bottom-6 text-nk-white text-2xl font-metropolis-bold bg-fade-red backdrop-blur-sm py-3 z-20">
         <span className="mx-8">{category.category_name}</span>
       </p>
     </Link>

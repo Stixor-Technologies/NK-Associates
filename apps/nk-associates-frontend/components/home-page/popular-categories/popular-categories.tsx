@@ -14,7 +14,6 @@ const PopularCategories: FC<PopularCategoriesProps> = ({
 }) => {
   const popularSection = useRef<HTMLDivElement | null>(null);
   const [windowSize, setWindowSize] = useState<number>(0);
-
   const breakPoint = 640;
 
   useEffect(() => {

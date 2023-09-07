@@ -41,14 +41,11 @@ const BannerSlider: FC<BannerImagesProps> = ({ banner_images }) => {
   useEffect(() => {
     const interval = setInterval(() => {
       if (hoveredSlide !== null) return;
-      if (activeIndex === banner_images.length - 1) {
-        setActiveIndex(0);
-      } else {
-        setActiveIndex((prev) => prev + 1);
-      }
+      setActiveIndex((prevIndex) => (prevIndex + 1) % banner_images?.length);
     }, 1500);
+
     return () => clearInterval(interval);
-  }, [activeIndex, banner_images, hoveredSlide]);
+  }, [banner_images?.length, hoveredSlide]);
 
   return (
     <div
@@ -60,22 +57,25 @@ const BannerSlider: FC<BannerImagesProps> = ({ banner_images }) => {
           key={index}
           onMouseEnter={() => setHoveredSlide(index)}
           onMouseLeave={() => setHoveredSlide(null)}
-          className={`relative slide flex-shrink-0 h-[18rem] sm:h-[23.813rem] mr-[1.25rem] transition-all duration-500 ease-out ${
+          className={`slide flex-shrink-0 h-[18rem] sm:h-[23.813rem] mr-[1.25rem] transition-all duration-500 ease-out ${
             index === hoveredSlide ||
             (index === activeIndex && hoveredSlide === null)
               ? "w-[15.625rem] sm:w-[21.938rem]"
               : "w-[7rem] sm:w-[9.875rem]"
           }`}
         >
-          <Image
-            src={`${BASE_URL}${img?.attributes?.url || "/"}`}
-            fill
-            alt="Banner-image"
-            className="rounded-2xl"
-          />
+          <div className="relative rounded-2xl overflow-hidden w-full h-full ">
+            <Image
+              src={`${BASE_URL}${img?.attributes?.url || "/"}`}
+              alt="Banner-image"
+              fill
+              className="w-full h-full object-cover"
+            />
+          </div>
         </div>
       ))}
     </div>
   );
 };
+
 export default BannerSlider;
