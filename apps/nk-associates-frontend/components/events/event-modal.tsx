@@ -27,15 +27,6 @@ const EventModal: React.FC<ModalProps> = ({ open, onClose, eventData }) => {
   const modalElement = useRef<HTMLDivElement | null>(null);
   let cursorUtilityRef = useRef<CursorUtility | null>(null);
   const eventsModalSlider = useRef<HTMLDivElement | null>(null);
-  const modalOptions: ModalOptions = {
-    placement: "center",
-    backdrop: "dynamic",
-    backdropClasses: "bg-gray-900 bg-opacity-70 fixed inset-0 z-40",
-    closable: true,
-    onHide: () => {
-      onClose();
-    },
-  };
 
   const [thumbsSwiper, setThumbsSwiper] = useState(null);
   const [mainSwiper, setMainSwiper] = useState(null);
@@ -83,6 +74,12 @@ const EventModal: React.FC<ModalProps> = ({ open, onClose, eventData }) => {
       if (cursorUtilityRef?.current) {
         cursorUtilityRef?.current?.destroy();
         cursorUtilityRef.current = null;
+      }
+
+      if (open) {
+        console.log("close");
+        onClose();
+        modal?.hide();
       }
     };
   }, [mainSwiper, modal, onClose, open, thumbsSwiper]);
