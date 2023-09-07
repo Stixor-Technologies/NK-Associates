@@ -62,6 +62,7 @@ const Goals: FC<GoalProps> = ({ mission, vision, values, goals }) => {
           pin: true,
           scrub: 1,
           invalidateOnRefresh: true,
+          markers: true,
         },
       });
 
@@ -121,7 +122,7 @@ const Goals: FC<GoalProps> = ({ mission, vision, values, goals }) => {
   }, [component, windowSize]);
 
   return (
-    <div className="container card-container cardTrigger relative md:py-1  lg:h-[60vh] lg:flex lg:flex-col justify-center my-20">
+    <div className="container card-container cardTrigger relative md:py-1 lg:h-[100vh] lg:flex lg:flex-col justify-start my-20">
       <>
         <MissionCard about={mission} />
         <VisionCard about={vision} />

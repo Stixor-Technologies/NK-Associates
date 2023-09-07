@@ -43,7 +43,7 @@ const CeoMessage: React.FC<CeoMessageProps> = ({
   return (
     <div
       ref={startRef}
-      className="overflow-x-clip flex flex-col lg:flex-row items-center justify-center lg:justify-start lg:relative lg:mb-[16.75rem] md:mb-[3.75rem] lg:pt-[5rem] -mt-[2rem]"
+      className="overflow-x-clip flex flex-col lg:flex-row items-center justify-center lg:justify-start lg:relative lg:mb-[16.75rem] md:mb-[3.75rem] -mt-[2rem]"
     >
       <div
         className="w-full max-w-[25rem] lg:px-4 pb-[1.313rem] lg:max-w-[39.6rem]"
