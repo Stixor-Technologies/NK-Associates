@@ -53,11 +53,12 @@ const ExpertiseOutcomes: FC<OutcomesProps> = ({
         scrollTrigger: {
           id: "expertiseTrigger",
           trigger: "[data-expertise-outcomes]",
-          start: "top 15%",
+          start: "top 7%",
           end: `+=${40 * panels.length}%`,
           pin: true,
           scrub: 1,
           invalidateOnRefresh: true,
+          markers: true,
           snap: {
             snapTo: 1 / (textPanels.length - 1),
             duration: 0.5,
@@ -138,7 +139,7 @@ const ExpertiseOutcomes: FC<OutcomesProps> = ({
   return (
     <div
       data-expertise-outcomes
-      className="container relative lg:h-[70vh] lg:flex lg:flex-col lg:my-[5.625rem] lg:justify-center"
+      className="container relative lg:h-[90vh] lg:flex lg:flex-col lg:my-[5.625rem] lg:justify-center"
     >
       {/* expertise */}
       <div
