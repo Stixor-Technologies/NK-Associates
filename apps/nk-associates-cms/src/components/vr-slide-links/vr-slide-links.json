@@ -1,0 +1,15 @@
+{
+  "collectionName": "components_vr_slide_links_vr_slide_links",
+  "info": {
+    "displayName": "VR-Slide-Links",
+    "icon": "link",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "nodeID": {
+      "type": "integer",
+      "required": true
+    }
+  }
+}

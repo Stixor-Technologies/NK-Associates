@@ -1,0 +1,50 @@
+{
+  "collectionName": "components_vr_slide_vr_slides",
+  "info": {
+    "displayName": "VR-Slide",
+    "icon": "picture",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true,
+      "minLength": 1
+    },
+    "panorama": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "caption": {
+      "type": "text",
+      "required": true
+    },
+    "gps_position": {
+      "type": "component",
+      "repeatable": false,
+      "component": "vr-gps-position.vr-gps-position",
+      "required": true
+    },
+    "vr_slide_links": {
+      "displayName": "VR-Slide-Links",
+      "type": "component",
+      "repeatable": true,
+      "component": "vr-slide-links.vr-slide-links",
+      "required": true
+    },
+    "nodeID": {
+      "type": "integer",
+      "required": true
+    },
+    "pano_data": {
+      "type": "component",
+      "repeatable": false,
+      "component": "vr-panorama-data.vr-panorama-data"
+    }
+  }
+}

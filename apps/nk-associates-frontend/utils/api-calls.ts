@@ -509,3 +509,13 @@ export const getAbout = async () => {
     console.error("There was an error getting company information", error);
   }
 };
+
+export const fetchVRTourDetailsById = async (id: number) => {
+  try {
+    const resp = await fetch(`${BASE_URL}/api/vr-tours/${id}?populate=deep`);
+    const data = await resp.json();
+    return data;
+  } catch (error) {
+    console.error(`There was an error getting VR Tour information for this ID: ${id}`, error);
+  }
+};

@@ -1879,6 +1879,47 @@
     "@nodelib/fs.scandir" "2.1.5"
     fastq "^1.6.0"
 
+"@photo-sphere-viewer/compass-plugin@5.3.0":
+  version "5.3.0"
+  resolved "https://registry.yarnpkg.com/@photo-sphere-viewer/compass-plugin/-/compass-plugin-5.3.0.tgz#93cfd5dbf2aa0fc14b6df4715e21ae6a9100b6a4"
+  integrity sha512-AZYrtKih7nNsDouYiFwINluPsX2l189raqqtOtiCRQU1+dn52dRFtjTcXflLtOeJFyJU7cFweiPuI3cnJdpOyw==
+  dependencies:
+    "@photo-sphere-viewer/core" "5.3.0"
+  optionalDependencies:
+    "@photo-sphere-viewer/markers-plugin" "5.3.0"
+
+"@photo-sphere-viewer/core@5.3.0", "@photo-sphere-viewer/core@^5.3.0":
+  version "5.3.0"
+  resolved "https://registry.yarnpkg.com/@photo-sphere-viewer/core/-/core-5.3.0.tgz#c558f383670d924f9e157a8b89bafe20239303ec"
+  integrity sha512-gIRJ/ODTVkiYKUoWPg2zThNYbf4RiwJfw0h302lRjaLsmFK20RaXknmHdtQsfNp5DU2J/tBZ5NOnXfMNr3GmlQ==
+  dependencies:
+    three "^0.155.0"
+
+"@photo-sphere-viewer/gallery-plugin@5.3.0":
+  version "5.3.0"
+  resolved "https://registry.yarnpkg.com/@photo-sphere-viewer/gallery-plugin/-/gallery-plugin-5.3.0.tgz#6523ace22aace44a27db9bdbb61fbf72afadf6fb"
+  integrity sha512-q+IvY/gllcwMCg+d/NzroKVvZD29yJQe+lPJw3BNIPJtUhfukvZG1MOM4bLossr1DJvM5Qk2Rw9uBOVm1+9wSA==
+  dependencies:
+    "@photo-sphere-viewer/core" "5.3.0"
+
+"@photo-sphere-viewer/markers-plugin@5.3.0":
+  version "5.3.0"
+  resolved "https://registry.yarnpkg.com/@photo-sphere-viewer/markers-plugin/-/markers-plugin-5.3.0.tgz#1b321823ba543e8d722d9776456984687f12fff7"
+  integrity sha512-tIxALp2slUAZH8nQ8Z2rf21RMcVScnWQ/UmbQ7RDQkupyEJcw96T02NTjP4jv74+Sjnxrm/XWv+yJXoG/ZwBWw==
+  dependencies:
+    "@photo-sphere-viewer/core" "5.3.0"
+
+"@photo-sphere-viewer/virtual-tour-plugin@^5.3.0":
+  version "5.3.0"
+  resolved "https://registry.yarnpkg.com/@photo-sphere-viewer/virtual-tour-plugin/-/virtual-tour-plugin-5.3.0.tgz#89047bd0a6c768841253235b8fa8ea1d2ce44c7b"
+  integrity sha512-JPzs7C4ziyii+T0IVff4oaxVweccTg3ApToPBaq4jg2KKr0AkYEmOQDReOYr5Aah7w6xP4pQlznEfO3js2E+8w==
+  dependencies:
+    "@photo-sphere-viewer/core" "5.3.0"
+  optionalDependencies:
+    "@photo-sphere-viewer/compass-plugin" "5.3.0"
+    "@photo-sphere-viewer/gallery-plugin" "5.3.0"
+    "@photo-sphere-viewer/markers-plugin" "5.3.0"
+
 "@pkgr/utils@^2.3.1":
   version "2.4.2"
   resolved "https://registry.npmjs.org/@pkgr/utils/-/utils-2.4.2.tgz"
@@ -5591,9 +5632,9 @@ electron-to-chromium@^1.4.431:
   integrity sha512-1JkvV2sgEGTDXjdsaQCeSwYYuhLRphRpc+g6EHTFELJXEiznLt3/0pZ9JuAOQ5p2rI3YxKTbivtvajirIfhrEQ==
 
 electron-to-chromium@^1.4.477:
-  version "1.4.508"
-  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.4.508.tgz#5641ff2f5ba11df4bd960fe6a2f9f70aa8b9af96"
-  integrity sha512-FFa8QKjQK/A5QuFr2167myhMesGrhlOBD+3cYNxO9/S4XzHEXesyTD/1/xF644gC8buFPz3ca6G1LOQD0tZrrg==
+  version "1.4.506"
+  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.4.506.tgz#59f64a211102db4c3ebae2f39cc0e8e1b12b3a07"
+  integrity sha512-xxGct4GPAKSRlrLBtJxJFYy74W11zX6PO9GyHgl/U+2s3Dp0ZEwAklDfNHXOWcvH7zWMpsmgbR0ggEuaYAVvHA==
 
 elliptic@^6.5.4:
   version "6.5.4"
