@@ -72,6 +72,7 @@ const AboutSummary: FC<AboutSummaryProp> = ({
                   width={800}
                   height={400}
                   alt={`${summary_image1?.data?.attributes?.name}`}
+                  priority
                   className="rounded-2xl mt-10 h-[19rem] lg:h-[23.938rem] order-0 md:order-none object-cover bg-gray-300"
                 />
               </div>
@@ -84,6 +85,7 @@ const AboutSummary: FC<AboutSummaryProp> = ({
                   width={800}
                   height={400}
                   alt={`${summary_image2?.data?.attributes?.name}`}
+                  priority
                   className="rounded-2xl md:mb-10 h-[19rem] lg:h-[23.938rem] object-cover bg-gray-300"
                 />
                 <p className="text-base text-nk-black font-metropolis-thin leading-tight md:text-lg">
