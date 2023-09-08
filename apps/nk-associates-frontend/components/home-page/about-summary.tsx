@@ -49,8 +49,8 @@ const AboutSummary: FC<AboutSummaryProp> = ({
         summary_image1?.data?.attributes?.url &&
         summary_image2?.data?.attributes?.url && (
           <div className="container py-7 md:pt-12 md:pb-0">
-            <div className="flex gap-14">
-              <div className="text-center flex gap-14 flex-col items-center md:block md:py-14 md:text-left">
+            <div className="flex gap-8 lg:gap-14">
+              <div className="flex-1 text-center flex gap-14 flex-col items-center md:block md:py-14 md:text-left">
                 <div className="order-1 md:order-none">
                   <h2 className="text-3xl text-nk-black font-metropolis-semibold md:text-5xl">
                     About Us
@@ -69,22 +69,22 @@ const AboutSummary: FC<AboutSummaryProp> = ({
                   src={`${BASE_URL}${
                     summary_image1?.data?.attributes?.url || "/"
                   }`}
-                  width={600}
+                  width={800}
                   height={400}
                   alt={`${summary_image1?.data?.attributes?.name}`}
-                  className="rounded-2xl mt-10 md:h-[23.938rem] order-0 md:order-none object-cover bg-gray-300"
+                  className="rounded-2xl mt-10 h-[19rem] lg:h-[23.938rem] order-0 md:order-none object-cover bg-gray-300"
                 />
               </div>
 
-              <div className="hidden md:block">
+              <div className="flex-1 hidden md:block">
                 <Image
                   src={`${BASE_URL}${
                     summary_image2?.data?.attributes?.url || "/"
                   }`}
-                  width={600}
+                  width={800}
                   height={400}
                   alt={`${summary_image2?.data?.attributes?.name}`}
-                  className="rounded-2xl md:mb-10 md:h-[23.938rem] object-cover bg-gray-300"
+                  className="rounded-2xl md:mb-10 h-[19rem] lg:h-[23.938rem] object-cover bg-gray-300"
                 />
                 <p className="text-base text-nk-black font-metropolis-thin leading-tight md:text-lg">
                   {secondHalf}
