@@ -62,14 +62,13 @@ const PropertyCard: FC<CardProps> = ({
     : actSim
     ? "text-xs md:text-xs"
     : "text-sm md:text-xs";
-
   return (
     <div
       className={`property-card ${(actSim || actFeatured) && "flex-grow"} ${
         actSim
           ? "min-w-[17.288rem] max-w-[18.125rem]"
           : actFeatured
-          ? "min-w-[17.25rem] md:min-w-[22.125rem] md:max-w-[24rem] 2xl:max-w-[32rem] w-full"
+          ? "min-w-[17.25rem] w-full overflow-hidden"
           : ""
       }`}
     >
@@ -83,7 +82,7 @@ const PropertyCard: FC<CardProps> = ({
             actMap
               ? "h-52 rounded-t-xl"
               : actFeatured
-              ? "h-[17.5rem] md:h-[22.375rem] 2xl:h-[29rem] rounded-xl"
+              ? "h-[17.5rem] aspect-w-1 aspect-h-1 md:h-[22.375rem] lg:h-[19rem] xl:h-[24rem] 2xl:h-[29rem] rounded-xl"
               : "h-[17.5rem] rounded-xl"
           }`}
         >

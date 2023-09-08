@@ -41,14 +41,14 @@ const FeaturedProperties: FC<FeaturedPropertyProps> = ({
       {featuredProperties?.length > 0 && (
         <div
           ref={featuredPropertiesSection}
-          className="xl:container py-10 md:py-16"
+          className="md:container py-10 md:py-16"
         >
           <h6 className="text-[2rem] text-nk-black text-center font-metropolis-semibold mb-7 md:mb-9 md:text-4xl xl:px-0">
             Featured Properties
           </h6>
 
           <div className="flex flex-col overflow-y-hidden">
-            <div className="property-carousel flex flex-nowrap overflow-x-scroll px-4 gap-6 md:px-8 xl:px-0">
+            <div className="property-carousel flex flex-nowrap overflow-x-scroll px-4 gap-6 md:grid md:grid-cols-2 lg:grid-cols-3 md:px-0 xl:px-0">
               {featuredProperties?.map((property: Property, index: number) => (
                 <PropertyCard key={index} property={property} actFeatured />
               ))}
