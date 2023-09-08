@@ -77,7 +77,6 @@ const EventModal: React.FC<ModalProps> = ({ open, onClose, eventData }) => {
       }
 
       if (open) {
-        console.log("close");
         onClose();
         modal?.hide();
       }
