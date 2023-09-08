@@ -30,8 +30,6 @@ const BannerSlider: FC<BannerImagesProps> = ({ banner_images }) => {
     ? [...banner_images, ...banner_images]
     : undefined;
 
-  console.log(displaySlides);
-
   useEffect(() => {
     const handleWindowResize = () => {
       setWindowSize(window.innerWidth);
