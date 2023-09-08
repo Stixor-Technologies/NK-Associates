@@ -23,7 +23,6 @@ const FeaturedProperties: FC<FeaturedPropertyProps> = ({
           id: "featured-properties-trigger",
           trigger: featuredPropertiesSection.current,
           start: "top 80%",
-          markers: true,
         },
       });
       tl.from(".property-image", {
