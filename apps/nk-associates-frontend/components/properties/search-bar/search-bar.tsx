@@ -264,7 +264,7 @@ const SearchBar: FC<SearchBarProps> = ({ onFilter, isListView }) => {
             isListView && "my-6"
           }`}
         >
-          {searchTiles.map((tile, index) => {
+          {searchTiles?.map((tile, index) => {
             return (
               <SearchBarTile
                 key={index}
@@ -297,7 +297,7 @@ const SearchBar: FC<SearchBarProps> = ({ onFilter, isListView }) => {
             !isListView && "absolute top-28 right-12 z-10"
           }`}
         >
-          {filtersState.filterIsSelected && (
+          {filtersState?.filterIsSelected && (
             <button
               className="flex items-center justify-center bg-white hover:text-nk-red rounded-full px-5 py-1.5 cursor-pointer shadow-3xl transition-colors"
               onClick={handleResetFilters}

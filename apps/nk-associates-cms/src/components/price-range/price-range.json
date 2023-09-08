@@ -9,8 +9,7 @@
     "minRange": {
       "type": "integer",
       "default": 1,
-      "required": true,
-      "min": 1
+      "required": true
     },
     "maxRange": {
       "type": "integer",

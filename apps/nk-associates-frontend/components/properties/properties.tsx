@@ -132,7 +132,9 @@ const Properties = () => {
   }, []);
 
   return (
-    <div className="pt-6 flex flex-col md:pt-0 z-10">
+    <div
+      className={`pt-6 relative flex flex-col md:pt-0 z-10 ${isList && "mb-4"}`}
+    >
       {isList && (
         <div className="container mx-auto px-4 text-center">
           <h2 className="pb-3 font-metropolis-bold text-3xl text-nk-black md:pb-6 md:text-5xl">
@@ -180,7 +182,7 @@ const Properties = () => {
                 setHasMapRendered(true);
               }}
               options={mapOptions}
-              mapContainerClassName="h-[calc(100vh-5.5rem-4.25rem-1.5rem)] w-full my-6"
+              mapContainerClassName="h-[calc(100vh-5.5rem-4.25rem-1.5rem)] w-full mt-6"
               onBoundsChanged={onBoundsChanged}
             >
               {mapProperties.map((location, index) => {
@@ -228,7 +230,9 @@ const Properties = () => {
         {gridProperties.length > 0 && (
           <button
             ref={buttonRef}
-            className={` self-center sticky top-0 mb-4 bottom-16 left-1/2 z-10 flex -translate-x-1/2 items-center gap-2 rounded-full px-4 py-2 text-center text-sm capitalize text-nk-white transition-all duration-300 ease-in-out md:gap-4 md:px-6 md:py-3 md:text-2xl ${"bg-nk-gradient-red-one bg-gradient-to-b to-nk-gradient-red-two hover:scale-[1.1]"}`}
+            className={`self-center left-1/2 z-10 flex -translate-x-1/2 items-center gap-2 rounded-full px-4 py-2 text-center text-sm capitalize text-nk-white transition-all duration-300 ease-in-out md:gap-4 md:px-6 md:py-3 md:text-2xl bg-nk-gradient-red-one bg-gradient-to-b to-nk-gradient-red-two hover:scale-[1.1] ${
+              isList ? "sticky bottom-10 top-0" : "absolute bottom-[2.5rem]"
+            }`}
             onClick={() => {
               window.scrollTo({
                 top: 0,
