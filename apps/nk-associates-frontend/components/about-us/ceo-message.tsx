@@ -28,7 +28,6 @@ const CeoMessage: React.FC<CeoMessageProps> = ({
         trigger: startRef.current,
         start: "top 75%",
         end: "center 50%",
-        markers: true,
       },
     });
     tl.from(el2, {
