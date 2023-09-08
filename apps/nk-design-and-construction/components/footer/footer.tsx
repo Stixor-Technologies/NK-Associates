@@ -43,8 +43,8 @@ const footerSocialList = footerSocialLinks?.map((socialLink, index) => {
         className="my-2 mr-3 flex h-9 w-9 cursor-pointer items-center justify-center rounded-full bg-nk-red transition-all duration-300 hover:bg-opacity-75"
       >
         <Link
-          href={`${socialLink?.pathName}`}
-          target="_blank"
+          href={socialLink?.pathName || "#"}
+          target={socialLink?.pathName ? "_blank" : "_self"}
           rel="noopener noreferrer"
         >
           <Image
@@ -60,6 +60,9 @@ const footerSocialList = footerSocialLinks?.map((socialLink, index) => {
 });
 
 async function Footer() {
+  const appStoreLink = "#";
+  const playStoreLink = "#";
+  const appGalleryLink = "#";
   return (
     <footer className="z-50 flex flex-col justify-center items-center min-h-fit bg-nk-dark-gray font-metropolis text-nk-white w-full">
       <div className="flex flex-col justify-center items-center w-fit">
@@ -73,7 +76,10 @@ async function Footer() {
           D o w n l o a d
         </div>
         <div className="flex flex-row flex-wrap pt-[1.278rem] pb-[1.3rem] w-full justify-center">
-          <Link href="#">
+          <Link
+            href={appStoreLink || "#"}
+            target={appStoreLink ? "_blank" : "_self"}
+          >
             <Image
               src={AppStoreIcon}
               alt="App Store"
@@ -81,7 +87,10 @@ async function Footer() {
             />
           </Link>
 
-          <Link href="#">
+          <Link
+            href={playStoreLink || "#"}
+            target={playStoreLink ? "_blank" : "_self"}
+          >
             <Image
               src={GooglePlayIcon}
               alt="Google Play"
@@ -89,7 +98,11 @@ async function Footer() {
             />
           </Link>
 
-          <Link href="#" className="justify-center items-center">
+          <Link
+            href={appGalleryLink || "#"}
+            target={appGalleryLink ? "_blank" : "_self"}
+            className="justify-center items-center"
+          >
             <Image
               src={AppGalleryIcon}
               alt="App Gallery"

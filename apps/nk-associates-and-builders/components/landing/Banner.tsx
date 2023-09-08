@@ -15,6 +15,11 @@ import { ScrollTrigger } from "gsap/all";
 gsap.registerPlugin(ScrollTrigger);
 
 export default function Banner() {
+  const facebookUrl = "https://www.facebook.com/NKAssociatesOfficial/";
+  const instagramUrl = "https://www.instagram.com/nkassociatesofficial/";
+  const twitterUrl = "https://twitter.com/NKAssociates6";
+  const youtubeUrl = "https://www.youtube.com/channel/UCUdSaD4ZjxDYxXiQXZIM7tw";
+  const phoneNumber = "tel:+923103365966";
   const [animated, setAnimated] = useState(false);
   let imageOne = useRef(null);
   useEffect(() => {
@@ -50,8 +55,8 @@ export default function Banner() {
         <div className="flex divide-x mb-[2.639rem]">
           <div className="flex font-metropolis-semibold text-[1.06rem]">
             <Link
-              href="/"
-              target="_blank"
+              href={phoneNumber || "#"}
+              target={phoneNumber ? "_blank" : "_self"}
               rel="noopener noreferrer"
               className="px-2 shrink-0"
             >
@@ -61,32 +66,32 @@ export default function Banner() {
           </div>
           <div className="flex ml-2">
             <Link
-              href="https://www.facebook.com/NKAssociatesOfficial/"
-              target="_blank"
+              href={facebookUrl || "#"}
+              target={facebookUrl ? "_blank" : "_self"}
               rel="noopener noreferrer"
               className="px-2 shrink-0"
             >
               <Image src={facebookIcon} width={20} height={30} alt="Facebook" />
             </Link>
             <Link
-              href="https://www.youtube.com/channel/UCUdSaD4ZjxDYxXiQXZIM7tw"
-              target="_blank"
+              href={youtubeUrl || "#"}
+              target={youtubeUrl ? "_blank" : "_self"}
               rel="noopener noreferrer"
               className="px-2 shrink-0"
             >
               <Image src={youtubeIcon} width={20} height={30} alt="Youtube" />
             </Link>
             <Link
-              href="https://twitter.com/NKAssociates6"
-              target="_blank"
+              href={twitterUrl || "#"}
+              target={twitterUrl ? "_blank" : "_self"}
               rel="noopener noreferrer"
               className="px-2 shrink-0"
             >
               <Image src={twitterIcon} width={20} height={30} alt="Twitter" />
             </Link>
             <Link
-              href="https://www.instagram.com/nkassociatesofficial/"
-              target="_blank"
+              href={instagramUrl || "#"}
+              target={instagramUrl ? "_blank" : "_self"}
               rel="noopener noreferrer"
               className="px-2 shrink-0"
             >
