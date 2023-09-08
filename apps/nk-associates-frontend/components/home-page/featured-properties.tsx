@@ -17,18 +17,19 @@ const FeaturedProperties: FC<FeaturedPropertyProps> = ({
 
   useEffect(() => {
     if (featuredProperties?.length > 0) {
+      gsap.set(".property-image", { scale: 1 });
       const tl = gsap.timeline({
         scrollTrigger: {
           id: "featured-properties-trigger",
           trigger: featuredPropertiesSection.current,
-          start: "top center",
-          toggleActions: "play none none none",
+          start: "top 80%",
+          markers: true,
         },
       });
-      tl.from(".property-card", {
-        y: 80,
+      tl.from(".property-image", {
+        scale: 2.5,
         duration: 0.7,
-        stagger: 0.2,
+        stagger: 0.3,
       });
     }
     return () => {
