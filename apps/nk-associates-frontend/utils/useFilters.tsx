@@ -207,6 +207,7 @@ const reducer = (state: FiltersStateType, action: ACTIONTYPE) => {
       return {
         ...state,
         location: action.payload,
+        filterIsSelected: true,
       };
     case "resetFilters":
       return {
