@@ -8,6 +8,7 @@ import Link from "next/link";
 import Image from "next/image";
 import Logo from "../../public/assets/icons/nk-logo.svg";
 import SearchIcon from "../../public/assets/icons/search-icon.svg";
+import LinkButton from "../button/link-button";
 
 const Navigation = () => {
   const menuButtonRef = useRef<HTMLButtonElement | null>(null);
@@ -99,7 +100,7 @@ const Navigation = () => {
             <Link
               ref={getInTouch}
               href="/contact"
-              className=" mr-2 mt-4 hidden h-10 cursor-pointer flex-row items-center rounded-full border border-nk-red bg-transparent px-6 text-center font-metropolis capitalize text-nk-red md:z-50 md:flex"
+              className="mr-2 mt-4 hidden h-10 cursor-pointer flex-row items-center rounded-full border border-nk-red bg-transparent px-6 text-center font-metropolis capitalize text-nk-red hover:!text-nk-white hover:bg-nk-red md:z-50 md:flex"
             >
               Get in touch
             </Link>
