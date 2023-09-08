@@ -51,7 +51,7 @@ const PopularCategories: FC<PopularCategoriesProps> = ({
           scrollTrigger: {
             id: "web-categories-trigger",
             trigger: popularSection.current,
-            start: "top 25%",
+            start: "top 45%",
             toggleActions: "play none none none",
           },
         });
@@ -80,7 +80,7 @@ const PopularCategories: FC<PopularCategoriesProps> = ({
             scrollTrigger: {
               id: "mobile-categories-trigger",
               trigger: card,
-              start: "top 65%",
+              start: "top 85%",
               end: "bottom",
             },
           });
