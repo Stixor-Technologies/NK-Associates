@@ -26,28 +26,28 @@ const Carousel: FC<CarouselProps> = ({ images, cursorUtilityRef }) => {
   const shuffledImages = images?.slice()?.sort(() => Math.random() - 0.5);
   const [isLoaded, setIsLoaded] = useState(false);
 
-  // useEffect(() => {
-  //   const imagePromises = shuffledImages.slice(0, 10).map((image) => {
-  //     return new Promise<void>((resolve, reject) => {
-  //       const img = new window.Image();
-  //       img.src = `${BASE_URL}${image}`;
-  //       img.onload = () => resolve();
-  //       img.onerror = (error) => reject(error);
-  //     });
-  //   });
+  useEffect(() => {
+    const imagePromises = shuffledImages.slice(0, 10).map((image) => {
+      return new Promise<void>((resolve, reject) => {
+        const img = new window.Image();
+        img.src = `${BASE_URL}${image}`;
+        img.onload = () => resolve();
+        img.onerror = (error) => reject(error);
+      });
+    });
 
-  //   Promise.all(imagePromises)
-  //     .then(() => setIsLoaded(true))
-  //     .catch((error) => console.error("Error loading images:", error));
-  // }, [images]);
+    Promise.all(imagePromises)
+      .then(() => setIsLoaded(true))
+      .catch((error) => console.error("Error loading images:", error));
+  }, [images]);
 
-  // if (!isLoaded) {
-  //   return (
-  //     <div className="flex h-[10rem] items-center justify-center md:h-[20rem]">
-  //       <Spinner />
-  //     </div>
-  //   );
-  // }
+  if (!isLoaded) {
+    return (
+      <div className="flex h-[10rem] items-center justify-center md:h-[20rem]">
+        <Spinner />
+      </div>
+    );
+  }
 
   const showAnimatedCursor = () => {
     cursorUtilityRef.current?.showCursor();
