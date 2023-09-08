@@ -39,7 +39,11 @@ const Properties = () => {
   const mapRef = useRef<google.maps.Map | null>(null);
   const buttonRef = useRef<HTMLButtonElement>(null);
 
-  const fetchGridData = async (freshData?: boolean, moreLoad?: boolean) => {
+  const fetchGridData = async (
+    dontApplyFilter: boolean,
+    freshData?: boolean,
+    moreLoad?: boolean,
+  ) => {
     setIsLoading(true);
 
     const resp = await getGridProperties(
@@ -47,7 +51,7 @@ const Properties = () => {
       moreLoad,
       freshData ? 0 : gridProperties.length,
       12,
-      filtersState,
+      dontApplyFilter ? undefined : filtersState,
     );
 
     if (resp?.data) {
@@ -68,7 +72,7 @@ const Properties = () => {
     mapRef.current = map;
   }, []);
 
-  const onBoundsChanged = debounce(async () => {
+  const onBoundsChanged = debounce(async (dontApplyFilter?: boolean) => {
     const map = mapRef.current;
     if (map) {
       const newBounds = map.getBounds();
@@ -91,7 +95,7 @@ const Properties = () => {
           bounds.north,
           bounds.west,
           bounds.east,
-          filtersState,
+          dontApplyFilter ? undefined : filtersState,
         );
         if (resp?.data) {
           setMapProperties(resp?.data);
@@ -115,16 +119,16 @@ const Properties = () => {
     styles: MapStyles,
   };
 
-  const handleRefreshData = () => {
+  const handleRefreshData = (dontApplyFilter?: boolean) => {
     if (isList) {
-      fetchGridData(true);
+      fetchGridData(dontApplyFilter, true);
     } else {
-      onBoundsChanged();
+      onBoundsChanged(dontApplyFilter);
     }
   };
 
   useEffect(() => {
-    fetchGridData();
+    fetchGridData(true);
   }, []);
 
   return (

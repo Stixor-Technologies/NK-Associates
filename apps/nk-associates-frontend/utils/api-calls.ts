@@ -70,12 +70,12 @@ export const getGridProperties = async (
   moreLoad: boolean,
   start: number,
   limit = 12,
-  filters?: FiltersStateType,
+  filters?: FiltersStateType | undefined,
 ) => {
   let url = `${BASE_URL}/api/properties?populate=*&pagination[start]=${start}&pagination[limit]=${limit}&sort[1]=id`;
 
   let filtersString = "";
-  if (freshData || moreLoad) {
+  if (freshData || moreLoad ) {
     filtersString = applyFilters(filters);
   }
 
@@ -93,7 +93,7 @@ export const getMapProperties = async (
   northLat: number,
   westLng: number,
   eastLng: number,
-  filters?: FiltersStateType,
+  filters?: FiltersStateType  | undefined,
 ) => {
   let url = `${BASE_URL}/api/properties?populate=*&filters[latitude][$between]=${southLat}&filters[latitude][$between]=${northLat}&filters[longitude][$between]=${westLng}&filters[longitude][$between]=${eastLng}&sort[1]=id`;
   let filtersString = applyFilters(filters);
