@@ -1,5 +1,3 @@
-import React from "react";
-
 import ProjectDetailsVR from "../../../../components/project-details/project-details-vr";
 import { getProjectDetail } from "../../../../utils/api-calls";
 import { Project } from "../../../../utils/types/types";
