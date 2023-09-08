@@ -43,10 +43,10 @@ const CeoMessage: React.FC<CeoMessageProps> = ({
   return (
     <div
       ref={startRef}
-      className="overflow-x-clip grid grid-cols-1 gap-8 lg:grid-cols-[1fr_1fr_250px_1fr_1fr] lg:grid-rows-[300px_300px_1fr] 2xl:grid-rows-[1fr_550px_1fr]"
+      className="overflow-x-clip grid grid-cols-1 gap-8 lg:grid-cols-[1fr_1fr_18.75rem_1fr_1fr] lg:grid-rows-[18.75rem_18.75rem_1fr] 2xl:grid-cols-[1fr_1fr_6.25rem_15.625rem_21.875rem_1fr] 2xl:grid-rows-[15.625rem_21.875rem_15.625rem]"
     >
       <div
-        className="w-full lg:col-start-1 lg:col-span-3 lg:row-start-1 lg:row-end-3 pb-[1.313rem]"
+        className="w-full lg:col-start-1 lg:col-span-3 lg:row-start-1 lg:row-end-3 2xl:col-start-2 2xl:col-span-3 pb-[1.313rem]"
         ref={ceoRef}
       >
         <div className="relative aspect-square h-[100%] w-[100%]">
@@ -61,7 +61,7 @@ const CeoMessage: React.FC<CeoMessageProps> = ({
 
       <div
         className="text-center lg:col-start-3 lg:col-span-3 lg:row-start-2 lg:row-end-4 lg:my-auto lg:text-left bg-gradient-to-b from-nk-gradient-red-one to-nk-gradient-red-two text-nk-white rounded-[1.563rem] 
-      px-3 py-[1.063rem] lg:px-10 lg:py-6"
+      px-3 py-[1.063rem] lg:px-10 lg:py-6 2xl:col-start-4 2xl:col-span-2"
         ref={textRef}
       >
         <div className="font-metropolis-bold text-[2rem] pb-[0.625rem] lg:text-[2.955rem]">
