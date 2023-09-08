@@ -230,27 +230,12 @@ const VRTour = ({ vrTourId }: { vrTourId: number | undefined }) => {
   };
 
   const handleCloseVRTour = async () => {
-    // gsap.to(buttonRef.current, {
-    //   duration: 0.6,
-    //   translateX: -window.innerWidth,
-    //   ease: "ease-in-out",
-    // });
     setTimeout(() => {
       const body = document.body;
       setOpen(!open);
       body.classList.remove("overflow-hidden");
     }, 1000);
   };
-
-  // useLayoutEffect(() => {
-  //   if (open) {
-  //     gsap.to(buttonRef.current, {
-  //       duration: 0.6,
-  //       translateX: -window.innerWidth,
-  //       ease: "ease-in-out",
-  //     });
-  //   }
-  // }, [open]);
 
   return (
     <>
