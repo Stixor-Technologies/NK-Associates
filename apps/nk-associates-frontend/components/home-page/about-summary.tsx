@@ -22,11 +22,7 @@ const AboutSummary: FC<AboutSummaryProp> = ({
 }) => {
   const [windowSize, setWindowSize] = useState<number>(0);
 
-  const totalLength = about_summary?.length;
-  const halfLength = Math.ceil(totalLength / 2);
-
-  const firstHalf = about_summary?.slice(0, halfLength);
-  const secondHalf = about_summary?.slice(halfLength);
+  const [firstHalf, secondHalf] = about_summary?.split(/(?<=\.)/);
 
   const breakPoint = 768;
 
