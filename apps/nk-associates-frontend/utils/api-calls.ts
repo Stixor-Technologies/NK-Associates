@@ -75,7 +75,7 @@ export const getGridProperties = async (
   let url = `${BASE_URL}/api/properties?populate=*&pagination[start]=${start}&pagination[limit]=${limit}&sort[1]=id`;
 
   let filtersString = "";
-  if (freshData || moreLoad ) {
+  if (freshData || moreLoad) {
     filtersString = applyFilters(filters);
   }
 
@@ -93,7 +93,7 @@ export const getMapProperties = async (
   northLat: number,
   westLng: number,
   eastLng: number,
-  filters?: FiltersStateType  | undefined,
+  filters?: FiltersStateType | undefined,
 ) => {
   let url = `${BASE_URL}/api/properties?populate=*&filters[latitude][$between]=${southLat}&filters[latitude][$between]=${northLat}&filters[longitude][$between]=${westLng}&filters[longitude][$between]=${eastLng}&sort[1]=id`;
   let filtersString = applyFilters(filters);
@@ -516,6 +516,9 @@ export const fetchVRTourDetailsById = async (id: number) => {
     const data = await resp.json();
     return data;
   } catch (error) {
-    console.error(`There was an error getting VR Tour information for this ID: ${id}`, error);
+    console.error(
+      `There was an error getting VR Tour information for this ID: ${id}`,
+      error,
+    );
   }
 };
