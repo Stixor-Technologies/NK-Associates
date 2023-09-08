@@ -57,7 +57,7 @@ const Goals: FC<GoalProps> = ({ mission, vision, values, goals }) => {
         scrollTrigger: {
           id: "about-web-trigger",
           trigger: ".card-container",
-          start: "top 20%",
+          start: "top 4%",
           end: `+=${40 * cards.length}%`,
           pin: true,
           scrub: 1,
@@ -79,7 +79,6 @@ const Goals: FC<GoalProps> = ({ mission, vision, values, goals }) => {
               {
                 opacity: 1,
                 y: 0,
-                // rotate: 6,
               },
               "<0.1",
             );
@@ -103,7 +102,7 @@ const Goals: FC<GoalProps> = ({ mission, vision, values, goals }) => {
           scrollTrigger: {
             id: "about-mobile-trigger",
             trigger: card,
-            start: "top 50%",
+            start: "top 75%",
           },
         });
       });
@@ -121,7 +120,7 @@ const Goals: FC<GoalProps> = ({ mission, vision, values, goals }) => {
   }, [component, windowSize]);
 
   return (
-    <div className="container card-container cardTrigger relative md:py-1  lg:h-[60vh] lg:flex lg:flex-col justify-center my-20">
+    <div className="card-container cardTrigger relative md:py-1 lg:h-[100vh] lg:flex lg:flex-col justify-center my-20">
       <>
         <MissionCard about={mission} />
         <VisionCard about={vision} />

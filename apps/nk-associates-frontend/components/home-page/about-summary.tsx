@@ -22,11 +22,7 @@ const AboutSummary: FC<AboutSummaryProp> = ({
 }) => {
   const [windowSize, setWindowSize] = useState<number>(0);
 
-  const totalLength = about_summary?.length;
-  const halfLength = Math.ceil(totalLength / 2);
-
-  const firstHalf = about_summary?.slice(0, halfLength);
-  const secondHalf = about_summary?.slice(halfLength);
+  const [firstHalf, secondHalf] = about_summary?.split(/(?<=\.)/);
 
   const breakPoint = 768;
 
@@ -73,7 +69,7 @@ const AboutSummary: FC<AboutSummaryProp> = ({
                   width={600}
                   height={400}
                   alt={`${summary_image1?.data?.attributes?.name}`}
-                  className="rounded-2xl mt-10 md:h-[23.938rem] order-0 md:order-none object-cover"
+                  className="rounded-2xl mt-10 md:h-[23.938rem] order-0 md:order-none object-cover bg-gray-300"
                 />
               </div>
 
@@ -85,7 +81,7 @@ const AboutSummary: FC<AboutSummaryProp> = ({
                   width={600}
                   height={400}
                   alt={`${summary_image2?.data?.attributes?.name}`}
-                  className="rounded-2xl md:mb-10 md:h-[23.938rem] object-cover"
+                  className="rounded-2xl md:mb-10 md:h-[23.938rem] object-cover bg-gray-300"
                 />
                 <p className="text-base text-nk-black font-metropolis-thin leading-tight md:text-lg">
                   {secondHalf}
