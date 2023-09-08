@@ -19,7 +19,7 @@ import {
 
 interface SearchBarProps {
   isListView?: boolean;
-  onFilter: () => void;
+  onFilter: (dontApplyFilter?: boolean) => void;
 }
 
 const searchTiles = [
@@ -59,7 +59,7 @@ const SearchBar: FC<SearchBarProps> = ({ onFilter, isListView }) => {
       },
     });
 
-    onFilter();
+    onFilter(true);
   };
 
   const getPropertyTypesList = async () => {
@@ -275,7 +275,7 @@ const SearchBar: FC<SearchBarProps> = ({ onFilter, isListView }) => {
           })}
 
           <button
-            onClick={onFilter}
+            onClick={() => onFilter()}
             className="flex items-center justify-center bg-nk-red px-6 py-4 min-w-fit flex-1"
           >
             <svg

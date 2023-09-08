@@ -28,32 +28,30 @@ const AllEvents: FC<AllEventsProps> = ({ data, images }) => {
   return (
     <div
       ref={eventsContainerRef}
-      className="mt-8 w-full rounded-lg p-4 shadow-lg md:rounded-lg md:p-20 md:shadow-none"
+      className="container w-full rounded-lg py-4 md:rounded-lg md:py-20"
     >
-      {data ? (
+      {data && (
         <div className="flex items-center justify-center md:hidden ">
           <MobileCarousel images={images} />
         </div>
-      ) : (
-        <div></div>
       )}
 
       <div className="text-center font-metropolis-extrabold text-3xl text-nk-black md:text-5xl">
         Unveiling Our Journey
       </div>
 
-      <div className="mt-7 text-center font-metropolis-light text-xl text-gray-500 md:text-3xl">
+      <div className="mt-7 text-center font-metropolis-light text-base text-nk-black md:text-3xl">
         <span>
           Explore the Remarkable Journey that has Propelled us to the Forefront
           of the Industry
         </span>
       </div>
 
-      <div className="hidden items-center justify-center md:flex ">
+      <div className="hidden items-center justify-center md:flex">
         <Carousel images={images} cursorUtilityRef={cursorUtilityRef} />
       </div>
 
-      <div className="mt-6 text-center font-metropolis-extrabold text-3xl text-black md:mt-16 md:text-left">
+      <div className="mt-8 text-center font-metropolis-extrabold text-3xl text-black md:mt-16 md:text-left">
         Latest News & Events
       </div>
 
@@ -64,7 +62,7 @@ const AllEvents: FC<AllEventsProps> = ({ data, images }) => {
           </h1>
         </div>
       ) : (
-        <div className="card-component mt-8 grid w-full grid-flow-row gap-14 lg:grid-cols-2">
+        <div className="card-component mt-8 grid w-full grid-flow-row gap-8 lg:grid-cols-2">
           {data
             ?.sort((a, b) => {
               const dateA = new Date(a?.attributes?.event_date);

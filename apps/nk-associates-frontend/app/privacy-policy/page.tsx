@@ -3,7 +3,7 @@ import React from "react";
 
 const Page = () => {
   return (
-    <div className="block pb-[2rem] md:pb-[6.25rem] px-[2rem] md:px-[6.25rem] text-nk-dark-gray container">
+    <div className="block pb-[2rem] md:pb-[6.25rem] px-[2rem] lg:px-[6.25rem] text-nk-dark-gray container">
       <h1 className="font-metropolis-bold text-center text-[1.6rem] md:text-5xl md:p-[2rem] md:pb-[1rem]">
         Privacy Policy
       </h1>
@@ -74,7 +74,7 @@ const Page = () => {
         temporary and are deleted once you close your browser) and persistent
         cookies (which remain on your device for a longer period). Some cookies
         are essential for the proper functioning of our website, while others
-        enhance your browsing experience by remembering your preferences.{" "}
+        enhance your browsing experience by remembering your preferences.
         <br className="pb-1" /> By continuing to use our website or by accepting
         our use of cookies through your browser settings, you consent to the use
         of cookies as described in this policy. You can manage your cookie
@@ -89,7 +89,7 @@ const Page = () => {
       <p className="font-metropolis text-base mb-6 text-[0.875rem] md:text-[1.25rem]">
         You have the right to access, update, and delete your personal
         information. If you have any concerns about your data, please contact us
-        at{" "}
+        at
         <a href="mailto:info@nkassociatesandbuilders.com">
           <span className="underline">info@nkassociatesandbuilders.com</span>
         </a>
@@ -109,10 +109,10 @@ const Page = () => {
         Our website is not directed at children under the age of 18, and we do
         not knowingly collect personal information from them. If you are a
         parent or guardian and become aware that your child has provided
-        personal information, you can contact us at{" "}
+        personal information, you can contact us at
         <a href="mailto:info@nkassociatesandbuilders.com">
           <span className="underline">info@nkassociatesandbuilders.com</span>
-        </a>{" "}
+        </a>
         to have that information removed.
       </p>
       <h2 className="font-metropolis-semibold text-xl md:text-3xl mb-4">
@@ -124,15 +124,15 @@ const Page = () => {
         requests related to your data, including accessing, updating, or
         deleting your personal information, you have several options for
         reaching out to us:
-      </p>{" "}
+      </p>
       <h2 className="font-metropolis-semibold text-[1rem] md:text-2xl mb-4">
         Email:
       </h2>
       <p className="font-metropolis text-base mb-6 text-[0.875rem] md:text-[1.25rem]">
-        You can email us at{" "}
+        You can email us at
         <a href="mailto:info@nkassociatesandbuilders.com">
           <span className="underline">info@nkassociatesandbuilders.com</span>
-        </a>{" "}
+        </a>
         with the subject line &quot;Data Privacy Inquiry&quot; or a relevant
         subject that clearly indicates the nature of your query. We will make
         every effort to respond promptly and address your concerns.
@@ -151,9 +151,8 @@ const Page = () => {
       </h2>
       <p className="font-metropolis text-base mb-6 text-[0.875rem] md:text-[1.25rem]">
         For immediate assistance or inquiries, you can call or WhatsApp our
-        customer support hotline at{" "}
+        customer support hotline at
         <a href="tel:+923331999100">
-          {" "}
           <span className="underline">+923331999100</span>
         </a>
         . Our knowledgeable team will be happy to assist you with your
