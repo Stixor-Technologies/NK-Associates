@@ -191,14 +191,15 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
             )}
 
             <div className="flex items-start">
-              <div className="mr-3 flex w-[12.25px] min-w-[1rem] justify-center md:w-[20px]">
+              <div className="mr-3 flex min-w-[1rem] justify-center">
                 <Image
                   src={
                     primaryColor ? LocationIconSecondary.src : LocationIcon.src
                   }
-                  width={windowWidth < 768 ? 12.25 : 20}
-                  height={windowWidth < 768 ? 17.5 : 28}
-                  alt=""
+                  width={20}
+                  height={28}
+                  alt="location-marker"
+                  className="w-3 md:w-4"
                 />
               </div>
               <div
