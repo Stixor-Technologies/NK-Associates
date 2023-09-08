@@ -20,7 +20,7 @@ const CategoryCard: FC<CategoryCardProps> = ({ category }) => {
           src={`${BASE_URL}${cat_image || "/"}`}
           fill
           alt={`${category?.category_name}-image`}
-          className="object-cover category-image"
+          className="object-cover category-image bg-gray-300"
         />
       </div>
       <p className="category-name absolute w-full bottom-6 text-nk-white text-2xl font-metropolis-bold bg-fade-red backdrop-blur-sm py-3 z-20">
