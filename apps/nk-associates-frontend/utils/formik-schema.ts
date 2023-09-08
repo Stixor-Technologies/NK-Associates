@@ -3,7 +3,7 @@ const FILE_SIZE = 5 * 1000 * 1000;
 
 export const ContactFormSchema = Yup.object().shape({
   name: Yup.string()
-    .matches(/^[A-Za-z]+$/, "Only characters are allowed in the name")
+    .matches(/^[A-Za-z]+$/, "Only characters are allowed")
     .min(3, "Minimum 3 characters")
     .max(20, "Maximum 20 characters")
     .required("Please enter your name"),
