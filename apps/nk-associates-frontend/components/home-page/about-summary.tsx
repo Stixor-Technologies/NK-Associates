@@ -22,7 +22,10 @@ const AboutSummary: FC<AboutSummaryProp> = ({
 }) => {
   const [windowSize, setWindowSize] = useState<number>(0);
 
-  const [firstHalf, secondHalf] = about_summary?.split(/(?<=\.)/);
+  const [firstHalf, secondHalf] =
+    about_summary && typeof about_summary === "string"
+      ? about_summary.split(/(?<=\.)/)
+      : ["", ""];
 
   const breakPoint = 768;
 
