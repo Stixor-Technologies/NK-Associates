@@ -276,7 +276,7 @@ const SearchBar: FC<SearchBarProps> = ({ onFilter, isListView }) => {
 
           <button
             onClick={() => onFilter()}
-            className="flex items-center justify-center bg-nk-red px-6 py-4 min-w-fit flex-1 transition-all duration-300 hover:bg-[#ed1c24]"
+            className="flex items-center justify-center bg-nk-red px-6 py-4 min-w-fit flex-1 transition-all duration-300 hover:opacity-80"
           >
             <svg
               className="w-8 h-8 transform hover:scale-120 transition-transform"
