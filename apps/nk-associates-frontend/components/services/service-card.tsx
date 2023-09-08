@@ -22,7 +22,7 @@ const ServiceCard: FC<CardProps> = ({ service }) => {
           <Link
             href={`services/${id}`}
             rel="noopener noreferrer"
-            className="block relative sm:w-1/2 lg:w-[45%] min-h-[18.75rem] lg:min-h-[25rem] 2xl:min-h-[36rem] w-full h-full rounded-xl overflow-hidden items-center justify-center my-auto"
+            className="block relative sm:w-1/2 lg:w-[45%] min-h-[18.75rem] lg:min-h-[29rem] 2xl:min-h-[36rem] w-full h-full rounded-xl overflow-hidden items-center justify-center my-auto"
           >
             <Image
               src={`${BASE_URL}${thumbnailImage || "/"}`}
@@ -52,15 +52,15 @@ const ServiceCard: FC<CardProps> = ({ service }) => {
                 {company}
               </span>
             </div>
-
             {company_logo && (
-              <Image
-                src={`${BASE_URL}${company_logo}`}
-                alt="service Logo"
-                className="mx-auto pt-2 sm:mx-0 md:pt-0 w-[10.313rem] h-[2.563rem] object-cover 2xl:w-[13rem] 2xl:h-[4rem]"
-                width={190}
-                height={47}
-              />
+              <div className="relative mx-auto pt-2 sm:mx-0 md:pt-0 w-[12rem] h-[6rem] 2xl:w-[13rem] 2xl:h-[7rem]">
+                <Image
+                  src={`${BASE_URL}${company_logo}`}
+                  alt={`${title}-logo`}
+                  fill
+                  className="object-left object-contain"
+                />
+              </div>
             )}
 
             <Link
