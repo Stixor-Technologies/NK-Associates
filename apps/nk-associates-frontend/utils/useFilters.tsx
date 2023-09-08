@@ -33,7 +33,7 @@ type ACTIONTYPE =
     }
   | {
       type: "setSelectedTypeId";
-      payload: string | number;
+      payload: string | number | undefined;
     }
   | {
       type: "setSelectedCompletionStatusId";
