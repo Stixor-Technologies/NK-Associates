@@ -131,16 +131,13 @@ const BannerSlider: FC<BannerImagesProps> = ({ banner_images }) => {
           onMouseLeave={() => {
             setHoveredSlide(null);
             if (slidesRef.current[index]) {
-              // if (activeIndex - 1 !== index) {
-              console.log("first");
               gsap.to(slidesRef.current[index], {
                 width: windowSize >= 640 ? "9.875rem" : "7rem",
                 duration: 0.5,
                 ease: "power3.out",
               });
-              // }
+
               if (activeIndex - 1 !== index) {
-                console.log("second");
                 gsap.to(slidesRef.current[activeIndex - 1], {
                   width: windowSize >= 640 ? "21.938rem" : "15.625rem",
                   duration: 0.5,
