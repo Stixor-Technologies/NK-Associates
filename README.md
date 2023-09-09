@@ -63,15 +63,15 @@ Strapi supports multiple databases, including MongoDB, Postgres, MySQL, and SQLi
 
 ### Front End
 
-##### NextJS:
+#### NextJS:
 
 NextJS is a React-based web framework that enables server-side rendering, automatic code splitting, and easy client-side routing. It allows for fast and optimized website performance and is particularly well-suited for building large-scale, dynamic web applications.
 
-##### Tailwind CSS:
+#### Tailwind CSS:
 
 Tailwind CSS is a utility-first CSS framework that provides a set of pre-defined styles and components. It enables you to quickly and easily create responsive web designs without having to write custom CSS code.
 
-##### Typescript:
+#### Typescript:
 
 Typescript is a superset of JavaScript that adds static type checking and other features to make it easier to write and maintain large-scale JavaScript applications. It provides benefits such as better error handling, code completion, and code refactoring.
 

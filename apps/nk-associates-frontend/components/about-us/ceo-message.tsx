@@ -20,23 +20,20 @@ const CeoMessage: React.FC<CeoMessageProps> = ({
   const startRef = useRef(null);
 
   useEffect(() => {
-    const screenWidth = window.innerWidth;
-    if (screenWidth >= 1024) {
-      const el1 = ceoRef.current;
-      const el2 = textRef.current;
-      const tl = gsap.timeline({
-        scrollTrigger: {
-          id: "ceo-message-trigger",
-          trigger: startRef.current,
-          start: "50% 70%",
-          end: "center 50%",
-        },
-      });
-      tl.from(el2, {
-        x: 1000,
-        duration: 0.8,
-      }).from(el1, { x: -1000, duration: 0.8 }, "<");
-    }
+    const el1 = ceoRef.current;
+    const el2 = textRef.current;
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        id: "ceo-message-trigger",
+        trigger: startRef.current,
+        start: "top 75%",
+        end: "center 50%",
+      },
+    });
+    tl.from(el2, {
+      x: 1000,
+      duration: 0.8,
+    }).from(el1, { x: -1000, duration: 0.8 }, "<");
 
     return () => {
       ScrollTrigger.getById("ceo-message-trigger")?.kill();
@@ -46,10 +43,10 @@ const CeoMessage: React.FC<CeoMessageProps> = ({
   return (
     <div
       ref={startRef}
-      className="overflow-x-clip flex flex-col lg:flex-row items-center justify-center lg:justify-start lg:relative lg:mb-[16.75rem] md:mb-[3.75rem] lg:pt-[7rem] -mt-[2rem]"
+      className="overflow-x-clip grid grid-cols-1 gap-8 lg:grid-cols-[1fr_1fr_18.75rem_1fr_1fr] lg:grid-rows-[18.75rem_18.75rem_1fr] 2xl:grid-cols-[1fr_1fr_6.25rem_15.625rem_21.875rem_1fr] 2xl:grid-rows-[15.625rem_21.875rem_15.625rem]"
     >
       <div
-        className="w-full max-w-[25rem] lg:px-4 pb-[1.313rem] lg:max-w-[39.6rem]"
+        className="w-full lg:col-start-1 lg:col-span-3 lg:row-start-1 lg:row-end-3 2xl:col-start-2 2xl:col-span-3 pb-[1.313rem]"
         ref={ceoRef}
       >
         <div className="relative aspect-square h-[100%] w-[100%]">
@@ -61,15 +58,16 @@ const CeoMessage: React.FC<CeoMessageProps> = ({
           />
         </div>
       </div>
+
       <div
-        className="lg:text-left bg-gradient-to-b from-nk-gradient-red-one to-nk-gradient-red-two text-nk-white rounded-[1.563rem] 
-        px-[2rem] py-[1.063rem] max-w-[25rem] lg:max-w-[39.6rem] lg:mb-[3.6rem] lg:absolute lg:right-[47px] lg:bottom-[-270px]"
+        className="text-center lg:col-start-3 lg:col-span-3 lg:row-start-2 lg:row-end-4 lg:my-auto lg:text-left bg-gradient-to-b from-nk-gradient-red-one to-nk-gradient-red-two text-nk-white rounded-[1.563rem] 
+      px-3 py-[1.063rem] lg:px-10 lg:py-6 2xl:col-start-4 2xl:col-span-2"
         ref={textRef}
       >
         <div className="font-metropolis-bold text-[2rem] pb-[0.625rem] lg:text-[2.955rem]">
           CEO&apos;s Message
         </div>
-        <div className="text-[0.813rem] pb-[0.625rem] lg:text-[1.375rem]">
+        <div className="text-[0.813rem] font-metropolis-thin pb-[0.625rem] lg:text-[1.375rem]">
           {ceoMessage}
         </div>
         <div className="uppercase text-[1.375rem] font-metropolis-semibold lg:hidden">

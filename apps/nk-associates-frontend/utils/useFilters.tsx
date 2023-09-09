@@ -5,7 +5,7 @@ import { FiltersStateType } from "./types/types";
 type ACTIONTYPE =
   | {
       type: "setLocation";
-      payload: string;
+      payload: string | number;
     }
   | {
       type: "setSelectedCategoryId";
@@ -33,7 +33,7 @@ type ACTIONTYPE =
     }
   | {
       type: "setSelectedTypeId";
-      payload: string | number;
+      payload: string | number | undefined;
     }
   | {
       type: "setSelectedCompletionStatusId";
@@ -220,8 +220,8 @@ const reducer = (state: FiltersStateType, action: ACTIONTYPE) => {
 
     case "homeSearch":
       return {
-        ...initialState,
-        ...action.payload,
+        ...state,
+        location: action.payload,
         filterIsSelected: true,
       };
     case "resetFilters":

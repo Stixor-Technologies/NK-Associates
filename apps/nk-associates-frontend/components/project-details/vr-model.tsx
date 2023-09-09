@@ -29,11 +29,16 @@ const VRModel = ({ modelURL }: PropTypes) => {
 
   return (
     <>
-      <Canvas shadows dpr={[1, 2]} className="bg-nk-gray">
+      <Canvas shadows dpr={[1, 2]} className="bg-gray-300">
         <PerspectiveCamera makeDefault position={[0, 0, 7]} fov={25} />
         <Suspense fallback={null}>
           <primitive object={gltf.scene} scale={0.05} />
-          <OrbitControls makeDefault minDistance={5} maxDistance={15} />
+          <OrbitControls
+            makeDefault
+            minDistance={5}
+            maxDistance={15}
+            enableZoom={false}
+          />
         </Suspense>
       </Canvas>
 

@@ -44,6 +44,10 @@ const ProjectIntroduction = ({
       value: coveredArea + " " + coveredAreaUnits,
     },
     {
+      title: "Total Units",
+      value: totalUnits,
+    },
+    {
       title: "Types",
       value: types.join(", "),
     },
@@ -195,7 +199,7 @@ const ProjectIntroduction = ({
               <span className="invisible">{unitsSold}</span> Units Sold
             </p>
 
-            <div className="mt-2 h-2.5 w-full min-w-[11.875rem] rounded-full bg-nk-gray lg:min-w-[13.75rem]">
+            <div className="mt-2 h-2.5 w-full min-w-[11.875rem] rounded-full bg-nk-gray lg:min-w-[13.75rem] overflow-hidden">
               <div
                 className="h-2.5 rounded-full bg-nk-red"
                 style={{ width: `${(unitsSold / totalUnits) * 100}%` }}

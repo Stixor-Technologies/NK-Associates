@@ -58,6 +58,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
+      <head></head>
       <body
         className={`${metropolisRegular.variable} ${metropolisMedium.variable} ${metropolisSemiBold.variable} ${metropolisBold.variable} ${metropolisExtraBold.variable} ${metropolisLight.variable} ${metropolisExtraLight.variable} ${metropolisThin.variable} bg-nk-background font-metropolis`}
       >

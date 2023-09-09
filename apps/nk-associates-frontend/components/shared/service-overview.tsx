@@ -16,20 +16,19 @@ const ServicesOverview = () => {
         toggleActions: "play none none none",
       },
     });
+
     tl.from(".text", {
       opacity: 0,
-      x: -200,
-      y: 200,
-      scale: 0,
+      y: 100,
       duration: 0.5,
-    }),
-      tl.from(".btn", {
-        opacity: 0,
-        xPercent: -60,
-        scale: 0,
-        stagger: 0.2,
-        ease: "circ.out",
-      });
+    });
+
+    tl.from(".btn", {
+      opacity: 0,
+      y: 50,
+      stagger: 0.2,
+      ease: "linear",
+    });
 
     return () => {
       ScrollTrigger.getById("services-overview-trigger")?.kill();
@@ -44,7 +43,7 @@ const ServicesOverview = () => {
       <div className="container relative z-20 mx-auto">
         <div className="max-w-4xl">
           <h3 className="text font-metropolis-semibold text-[1.625rem] md:text-4xl">
-            NK Associates Services
+            NK Associates and Services
           </h3>
           <p className="text py-5 text-base md:font-metropolis-extralight md:text-lg">
             Our core expertise lies in the meticulous design, precise

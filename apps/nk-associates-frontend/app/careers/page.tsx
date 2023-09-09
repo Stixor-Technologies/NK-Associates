@@ -1,13 +1,38 @@
-import React from "react";
+"use client";
+import React, { useRef, useState } from "react";
 import Image from "next/image";
 import Job from "../../public/assets/images/job-application.png";
 import LinkButton from "../../components/button/link-button";
 import Link from "next/link";
 import JobList from "../../components/job-card/job-list";
+import JobModal from "./job-modal";
 
 const Careers = () => {
+  const [isOpen, setIsOpen] = useState<boolean>(false);
+  const openModal = () => {
+    document.body.style.overflow = "hidden";
+    setIsOpen(true);
+  };
+  const closeModal = () => {
+    document.body.style.overflow = "auto";
+    setIsOpen(false);
+  };
+  const targetSectionRef = useRef(null);
+  const scrollToSection = () => {
+    if (targetSectionRef.current) {
+      const offset = -90;
+      const scrollPosition =
+        targetSectionRef.current.getBoundingClientRect().top +
+        window.scrollY +
+        offset;
+      window.scrollTo({
+        top: scrollPosition,
+        behavior: "smooth",
+      });
+    }
+  };
   return (
-    <div className="lg:p-0.50 grid grid-cols-1 p-3 sm:p-6 xl:p-20 2xl:p-32">
+    <div className="lg:p-0.50 grid grid-cols-1 p-3 sm:px-6 sm:pb-6 sm:pt-3 xl:px-20 xl:pb-20 xl:pt-16 2xl:px-32 2xl:pb-32 2xl:pt-14">
       <div className="mb-8">
         <h1 className="mb-8 mt-2 text-center font-metropolis-bold text-3xl text-nk-dark-gray md:text-5xl">
           Career
@@ -29,7 +54,7 @@ const Careers = () => {
         <div className="flex justify-center">
           <LinkButton
             type="solid"
-            navigateTo="#Listing"
+            clickEvent={scrollToSection}
             text="Be a part of our amazing team"
             className="h-10 my-8 w-80 lg:w-96 p-2"
           />
@@ -83,7 +108,10 @@ const Careers = () => {
           </div>
         </div>
       </div>
-      <JobList />
+      <div ref={targetSectionRef}>
+        <JobList />
+      </div>
+
       <div className="mt-16 p-4 sm:p-0">
         <h1 className="my-8 text-center font-metropolis-bold text-3xl text-nk-dark-gray lg:text-4xl ">
           Don’t see the right role for you?
@@ -101,10 +129,11 @@ const Careers = () => {
         <div className="sm: flex justify-center pb-8">
           <LinkButton
             text="Submit Your Resume"
-            navigateTo="#"
+            clickEvent={openModal}
             type="solid"
             className="mt-8 w-96 p-2"
           />
+          <JobModal onClose={closeModal} open={isOpen} />
         </div>
       </div>
     </div>

@@ -69,7 +69,7 @@ const ServicesList: FC = () => {
             trigger: card,
             start: `top-=${index * spacer} 20%`,
             endTrigger: ".card-container",
-            end: `bottom center+=${370 + cards.length * spacer}`,
+            end: `bottom top+=${850 + cards.length * spacer}`,
             pin: true,
             pinSpacing: false,
             id: "service_card-" + index,
@@ -92,7 +92,11 @@ const ServicesList: FC = () => {
   }, [services, windowSize]);
 
   return (
-    <div ref={ref} className="card-container py-8 min-h-screen md:py-1">
+    <div
+      ref={ref}
+      data-cursor-text
+      className="card-container py-8 min-h-screen md:py-1"
+    >
       {isLoading && services.length === 0 ? (
         <div className="my-4 flex justify-center">
           <Spinner />

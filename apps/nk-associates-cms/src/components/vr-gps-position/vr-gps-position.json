@@ -1,0 +1,22 @@
+{
+  "collectionName": "components_vr_gps_position_vr_gps_positions",
+  "info": {
+    "displayName": "VR-GPS-Position",
+    "icon": "pinMap"
+  },
+  "options": {},
+  "attributes": {
+    "latitude": {
+      "type": "float",
+      "required": true
+    },
+    "longitude": {
+      "type": "float",
+      "required": true
+    },
+    "altitude": {
+      "required": false,
+      "type": "float"
+    }
+  }
+}

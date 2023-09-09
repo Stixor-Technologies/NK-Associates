@@ -1,20 +1,21 @@
 {
   "collectionName": "components_price_range_price_ranges",
   "info": {
-    "displayName": "Price-Range"
+    "displayName": "Price-Range",
+    "description": ""
   },
   "options": {},
   "attributes": {
     "minRange": {
       "type": "integer",
-      "default": 0,
-      "required": true,
-      "min": 0
+      "default": 1,
+      "required": true
     },
     "maxRange": {
       "type": "integer",
       "required": true,
-      "min": 0
+      "min": 1,
+      "default": 1
     }
   }
 }

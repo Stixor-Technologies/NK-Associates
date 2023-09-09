@@ -13,7 +13,6 @@ import { getHomeData, getSocials } from "../utils/api-calls";
 export default async function Home() {
   const data = await getHomeData();
   const resp = await getSocials();
-
   const {
     featured_project1,
     featured_project2,
@@ -40,7 +39,7 @@ export default async function Home() {
   ];
 
   const featuredProjects = projectDataArray.filter(
-    (projectData) => projectData !== null,
+    (projectData) => projectData !== null && projectData !== undefined,
   );
 
   const propertyDataArray = [
@@ -50,7 +49,7 @@ export default async function Home() {
   ];
 
   const featuredProperties = propertyDataArray.filter(
-    (propertyData) => propertyData !== null,
+    (propertyData) => propertyData !== null && propertyData !== undefined,
   );
 
   const { playstore, appstore, appgallery } = resp?.data?.attributes || {};
@@ -70,7 +69,7 @@ export default async function Home() {
     },
   ];
 
-  const popularCategories = [
+  const categoryData = [
     {
       category_name: popular_category1,
       category_image: popular_category1_image,
@@ -84,6 +83,10 @@ export default async function Home() {
       category_image: popular_category3_image,
     },
   ];
+
+  const popularCategories = categoryData.filter(
+    (category) => category.category_name && category.category_image,
+  );
 
   return (
     <section className="overflow-hidden">

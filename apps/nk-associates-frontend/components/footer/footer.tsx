@@ -59,8 +59,8 @@ async function Footer() {
   }
 
   const footerPageLinks: footerPageLink[] = [
-    { pathName: "#", label: "Home" },
-    { pathName: "#", label: "About" },
+    { pathName: "/", label: "Home" },
+    { pathName: "/about-us", label: "About" },
     { pathName: "/properties", label: "Property" },
     { pathName: "/projects", label: "Projects" },
     { pathName: "/contact", label: "Contact Us" },
@@ -132,7 +132,7 @@ async function Footer() {
         <div className="mx-5 sm:mx-10 md:mx-auto">
           <div className="md:flex md:justify-between">
             <div className="mb-2 md:mb-0 md:flex md:items-start md:justify-center md:px-12 lg:px-20 xl:px-24">
-              <Link href="#" className="flex w-24 pb-4 md:w-32 lg:m-1">
+              <Link href="/" className="flex w-24 pb-4 md:w-32 lg:m-1">
                 <Image src={Logo} alt="logo" />
               </Link>
             </div>
@@ -160,7 +160,10 @@ async function Footer() {
                   <ul>
                     <li className="mb-5">
                       <div className="flex  h-10 items-center justify-center rounded-md bg-nk-red transition-all duration-300 hover:bg-opacity-75 lg:w-[90] lg:max-h-12 max-w-[11rem]">
-                        <Link href={playstore || "#"}>
+                        <Link
+                          href={playstore || "#"}
+                          target={playstore ? "_blank" : "_self"}
+                        >
                           <Image
                             src={GooglePlayIcon}
                             alt="Google Play"
@@ -171,7 +174,10 @@ async function Footer() {
                     </li>
                     <li className="mb-3">
                       <div className="flex h-10 items-center justify-center rounded-md bg-nk-red transition-all duration-300 hover:bg-opacity-75 lg:w-[90] lg:max-h-12 max-w-[11rem]">
-                        <Link href={appstore || "#"}>
+                        <Link
+                          href={appstore || "#"}
+                          target={appstore ? "_blank" : "_self"}
+                        >
                           <Image
                             src={AppStoreIcon}
                             alt="App Store"
@@ -232,13 +238,13 @@ async function Footer() {
           </span>
           <div className="mx-auto items-center flex justify-center gap-6 py-2 pb-2 text-xs sm:mt-0 md:text-base lg:text-lg">
             <Link
-              href="terms-and-conditions"
+              href="/terms-and-conditions"
               className="bg-gradient-to-r from-nk-white to-nk-white bg-[length:0%_8%] bg-left-bottom bg-no-repeat font-metropolis-thin transition-all duration-500 ease-out hover:bg-[length:100%_8%]"
             >
               Terms of Use
             </Link>
             <Link
-              href="privacy-policy"
+              href="/privacy-policy"
               className="bg-gradient-to-r from-nk-white to-nk-white bg-[length:0%_8%] bg-left-bottom bg-no-repeat font-metropolis-thin transition-all duration-500 ease-out hover:bg-[length:100%_8%]"
             >
               Privacy Policy

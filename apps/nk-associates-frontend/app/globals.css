@@ -2,9 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
+@import url("./cursor-styles.css");
+
 @layer components {
   .container {
-    @apply w-full max-w-container px-4 md:px-8 mx-auto;
+    @apply w-full px-2.5 md:px-4 mx-auto;
   }
 }
 

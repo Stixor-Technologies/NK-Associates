@@ -72,7 +72,7 @@ const Offices = () => {
             </div>
           ) : (
             <div className="flex flex-col gap-8 rounded-[1.25rem] lg:flex-row md:py-5 md:px-2 lg:gap-0 md:bg-nk-red">
-              <div className="lg:w-[40%] max-h-[60vh] hidden overflow-auto px-3 md:flex flex-col gap-3">
+              <div className="lg:w-[40%] max-h-[31.5rem] hidden overflow-auto px-3 md:flex flex-col gap-3">
                 {offices?.map((office, index) => (
                   <button
                     key={index}

@@ -19,6 +19,10 @@ jobs:
         with:
           node-version: "16"
 
+      - name: Create .env file
+        run: |
+          echo "${{ secrets.NK_ASSOCIATES_ENV }}" > apps/nk-associates-frontend/.env
+
       - name: Install dependencies
         run: yarn install
         working-directory: apps/

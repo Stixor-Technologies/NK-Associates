@@ -1,42 +1,52 @@
-import React from "react";
+"use client";
+import React, { useState, useEffect, useRef } from "react";
 import MemberCard from "./member-card";
 import { Member } from "../../utils/types/types";
 import { getMembers } from "../../utils/api-calls";
 
-async function fetchMembers() {
-  try {
-    const response = await getMembers();
-    return response?.data;
-  } catch (error) {
-    console.error("Error fetching social links:", error);
-    throw error;
-  }
-}
+const MembersList = () => {
+  const [members, setMembers] = useState<Member[]>([]);
 
-async function MembersList() {
-  const data: Member[] = await fetchMembers();
+  const fetchMembers = async () => {
+    try {
+      const response = await getMembers();
+      if (response?.data) {
+        setMembers(response?.data);
+      }
+    } catch (error) {
+      console.error("Error fetching members:", error);
+      throw error;
+    }
+  };
+
+  useEffect(() => {
+    fetchMembers();
+  }, []);
 
   const renderMembers = () => {
-    if (data?.length === 0 || !data) {
-      return (
-        <p className="font-metropolis text-nk-dark-gray py-10 text-base">
-          No Members Available
-        </p>
-      );
-    }
-    return data?.map((member, index) => (
+    return members?.map((memberData, index) => (
       <div key={index}>
-        <MemberCard member={member} />
+        <MemberCard member={memberData} />
       </div>
     ));
   };
+
   return (
-    <div>
-      <div className="md:py-1 property-carousel -mr-[2rem] flex flex-nowrap overflow-x-scroll px-4 gap-4 pb-12 md:px-8 md:pb-16 md:gap-6 xl:px-0 mx-auto">
-        {renderMembers()}
-      </div>
-    </div>
+    <>
+      {members?.length > 0 && (
+        <div className="md:container pt-[3.25rem] lg:pt-[6.688rem] text-center">
+          <div className="text-nk-dark-gray font-metropolis-bold text-[2.25rem] text-center">
+            Meet Our Best-In-Class Team
+          </div>
+          <div className="pt-12 xl:-mr-[1.5rem]">
+            <div className="md:py-1 px-4 property-carousel flex flex-nowrap overflow-x-scroll md:px-0 md:grid md:grid-cols-3 xl:grid-cols-4 gap-4 pb-12 md:pb-16 md:gap-6 xl:px-0 mx-auto">
+              {renderMembers()}
+            </div>
+          </div>
+        </div>
+      )}
+    </>
   );
-}
+};
 
 export default MembersList;

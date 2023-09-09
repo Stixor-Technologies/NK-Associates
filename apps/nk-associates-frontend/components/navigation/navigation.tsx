@@ -86,7 +86,7 @@ const Navigation = () => {
         <div className="mx-auto my-auto flex w-[95%] items-center justify-between px-3 py-3">
           <div>
             {/* Will be changed to point to home page once it is developed */}
-            <Link href="#">
+            <Link href="/">
               <Image width={40} height={40} src={Logo} alt="NK logo" />
             </Link>
           </div>
@@ -98,7 +98,7 @@ const Navigation = () => {
 
             <Link
               ref={getInTouch}
-              href="#"
+              href="/contact"
               className=" mr-2 mt-4 hidden h-10 cursor-pointer flex-row items-center rounded-full border border-nk-red bg-transparent px-6 text-center font-metropolis capitalize text-nk-red md:z-50 md:flex"
             >
               Get in touch
