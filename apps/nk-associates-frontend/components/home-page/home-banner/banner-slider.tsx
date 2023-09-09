@@ -91,7 +91,7 @@ const BannerSlider: FC<BannerImagesProps> = ({ banner_images }) => {
     return () => clearInterval(interval);
   }, [
     activeIndex,
-    banner_images.length,
+    banner_images?.length,
     displaySlides?.length,
     hoveredSlide,
     leftMargin,

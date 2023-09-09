@@ -6,7 +6,7 @@ import ChooseUs from "../components/landing/choose-us";
 export default function Home() {
   return (
     <div className="container ">
-      <div className="">
+      <div>
         <Banner />
       </div>
       <div className="pt-2">
