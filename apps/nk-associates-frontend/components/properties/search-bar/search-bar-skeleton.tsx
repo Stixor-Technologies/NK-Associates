@@ -1,6 +1,12 @@
 import React from "react";
 
-const SearchBarSkeleton = ({ actListView }: { actListView: boolean }) => {
+const SearchBarSkeleton = ({
+  actListView,
+  actHome = false,
+}: {
+  actListView: boolean;
+  actHome?: boolean;
+}) => {
   return (
     <section
       className={`container relative flex flex-col ${actListView && "my-4"}`}
@@ -12,12 +18,13 @@ const SearchBarSkeleton = ({ actListView }: { actListView: boolean }) => {
           actListView && "my-6"
         }`}
       ></div>
-
-      <div
-        className={`hidden md:block ml-auto w-[7.408rem] h-[2.25rem] rounded-full animate-pulse bg-nk-skeleton-grey ${
-          !actListView && "absolute top-28 -right-16 z-20"
-        }`}
-      ></div>
+      {!actHome && (
+        <div
+          className={`hidden md:block ml-auto w-[7.408rem] h-[2.25rem] rounded-full animate-pulse bg-nk-skeleton-grey ${
+            !actListView && "absolute top-28 -right-16 z-20"
+          }`}
+        ></div>
+      )}
     </section>
   );
 };

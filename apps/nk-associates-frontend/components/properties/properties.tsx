@@ -45,11 +45,16 @@ const Properties = () => {
   const mapRef = useRef<google.maps.Map | null>(null);
   const buttonRef = useRef<HTMLButtonElement>(null);
 
-  const fetchGridData = async (
-    dontApplyFilter?: boolean,
-    freshData?: boolean,
-    moreLoad?: boolean,
-  ) => {
+  // const fetchGridData = async (
+  //   dontApplyFilter?: boolean,
+  //   freshData?: boolean,
+  //   moreLoad?: boolean,
+  // ) => {
+  const fetchGridData = async ({
+    dontApplyFilter = false,
+    freshData = false,
+    moreLoad = false,
+  } = {}) => {
     setIsLoading(true);
     const resp = await getGridProperties(
       freshData,
@@ -58,7 +63,6 @@ const Properties = () => {
       12,
       dontApplyFilter ? undefined : filtersState,
     );
-
     if (resp?.data) {
       if (freshData) {
         setGridProperties(resp.data);
@@ -72,6 +76,7 @@ const Properties = () => {
     }
     setIsLoading(false);
   };
+  console.log(filtersState?.filterIsSelected);
 
   const onMapLoad = useCallback((map) => {
     mapRef.current = map;
@@ -126,7 +131,8 @@ const Properties = () => {
 
   const handleRefreshData = (dontApplyFilter?: boolean) => {
     if (isList) {
-      fetchGridData(dontApplyFilter, true);
+      // fetchGridData(dontApplyFilter, true);
+      fetchGridData({ dontApplyFilter: dontApplyFilter, freshData: true });
     } else {
       onBoundsChanged(dontApplyFilter);
     }
@@ -134,7 +140,6 @@ const Properties = () => {
 
   useEffect(() => {
     if (Object.keys(queryParams).length > 0) {
-      console.log("params", queryParams);
       const updatedFilters = {
         selectedCategoryId: queryParams.selectedCategoryId
           ? Number(queryParams.selectedCategoryId)
@@ -163,13 +168,12 @@ const Properties = () => {
 
       setFiltersInitialized(true);
     }
-    fetchGridData(true);
   }, []);
 
   useEffect(() => {
     if (filtersInitialized || Object.keys(queryParams).length === 0) {
       console.log("fetch data");
-      fetchGridData();
+      fetchGridData({ freshData: true });
     }
   }, [filtersInitialized]);
 
@@ -198,7 +202,8 @@ const Properties = () => {
               <InfiniteScroll
                 dataLength={gridProperties.length}
                 next={() => {
-                  fetchGridData(false, filtersState?.filterIsSelected);
+                  // fetchGridData(false, filtersState?.filterIsSelected);
+                  fetchGridData({ moreLoad: filtersState?.filterIsSelected });
                 }}
                 hasMore={total !== gridProperties.length}
                 loader={isLoading && <PropertyListSkeleton />}

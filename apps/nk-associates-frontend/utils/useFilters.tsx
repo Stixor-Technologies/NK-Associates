@@ -215,13 +215,15 @@ const reducer = (state: FiltersStateType, action: ACTIONTYPE) => {
         filterIsSelected: false,
       };
     case "setLocation":
-      console.log("do something");
-      break;
-
-    case "homeSearch":
       return {
         ...state,
         location: action.payload,
+        filterIsSelected: true,
+      };
+    case "homeSearch":
+      return {
+        ...initialState,
+        ...action.payload,
         filterIsSelected: true,
       };
     case "resetFilters":
