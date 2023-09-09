@@ -13,6 +13,7 @@ import { BASE_URL } from "../../../utils/constants";
 import ProjectDetailsVR from "../../../components/project-details/project-details-vr";
 import { Suspense, useEffect, useState } from "react";
 import Spinner from "../../../components/spinner";
+import ThreeDModelLoading from "../../../components/project-details/threeD-model-loading";
 
 type ProjectDetailProps = {
   params: {
@@ -40,22 +41,11 @@ function ProjectDetails({ params: { id } }: ProjectDetailProps) {
       ? `${BASE_URL}${project?.attributes?.threeDModel?.data?.attributes?.url}`
       : undefined;
 
-  const Loader = () => {
-    return (
-      <section
-        className="bg-nk-gray transition-all relative w-full flex-shrink-0 h-[16.625rem] 
-      xs:h-[18.625rem] sm:h-[23.625rem] md:h-[28.625rem] lg:min-h-[35.375rem] xl:h-[39.375rem]"
-      >
-        <Spinner />
-      </section>
-    );
-  };
-
   return (
     <>
       {project ? (
         <>
-          <Suspense fallback={<Loader />}>
+          <Suspense fallback={<ThreeDModelLoading />}>
             <ProjectDetailsVR modelURL={modelURL} />
           </Suspense>
           <ProjectIntroduction
