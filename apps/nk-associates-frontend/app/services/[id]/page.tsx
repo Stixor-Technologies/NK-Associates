@@ -77,8 +77,6 @@ async function ServiceDetail({ params: { id } }: ServiceDetailProps) {
                   className="group-hover:block hidden"
                 />
               </Link>
-              {/* <PhoneButton /> */}
-
               <Link
                 href={whatsppChat}
                 target="_blank"
