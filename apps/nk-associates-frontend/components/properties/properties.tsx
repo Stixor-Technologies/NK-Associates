@@ -44,12 +44,13 @@ const Properties = () => {
   const [selectedProperty, setSelectedProperty] = useState<Property | null>(
     null,
   );
+
+  const [filtersInitialized, setFiltersInitialized] = useState(false);
+
   const [hasMapRendered, setHasMapRendered] = useState<boolean>(false);
 
   const mapRef = useRef<google.maps.Map | null>(null);
   const buttonRef = useRef<HTMLButtonElement>(null);
-
-  console.log("useFilterState", filtersState);
 
   const fetchGridData = async (freshData?: boolean) => {
     setIsLoading(true);
@@ -137,30 +138,44 @@ const Properties = () => {
   console.log(filtersState);
 
   useEffect(() => {
-    if (queryParams) {
+    if (Object.keys(queryParams).length > 0) {
+      console.log("params", queryParams);
+      const updatedFilters = {
+        selectedCategoryId: queryParams.selectedCategoryId
+          ? Number(queryParams.selectedCategoryId)
+          : 1,
+        selectedTypeId: queryParams.selectedTypeId
+          ? Number(queryParams.selectedTypeId)
+          : undefined,
+        minSelectedPrice: queryParams.minSelectedPrice
+          ? Number(queryParams.minSelectedPrice)
+          : undefined,
+        maxSelectedPrice: queryParams.maxSelectedPrice
+          ? Number(queryParams.maxSelectedPrice)
+          : undefined,
+        selectedProjectId: queryParams.selectedProjectId
+          ? Number(queryParams.selectedProjectId)
+          : undefined,
+        selectedPurposeId: queryParams.selectedPurposeId
+          ? Number(queryParams.selectedPurposeId)
+          : undefined,
+      };
+
       filtersDispatch({
         type: "homeSearch",
-        payload: {
-          selectedTypeId: queryParams?.selectedTypeId
-            ? Number(queryParams.selectedTypeId)
-            : undefined,
-          minSelectedPrice: queryParams?.minSelectedPrice
-            ? Number(queryParams.minSelectedPrice)
-            : undefined,
-          maxSelectedPrice: queryParams?.maxSelectedPrice
-            ? Number(queryParams.maxSelectedPrice)
-            : undefined,
-          selectedProjectId: queryParams?.selectedProjectId
-            ? Number(queryParams.selectedProjectId)
-            : undefined,
-          selectedPurposeId: queryParams?.selectedPurposeId
-            ? Number(queryParams.selectedPurposeId)
-            : undefined,
-        },
+        payload: updatedFilters,
       });
+
+      setFiltersInitialized(true);
     }
-    // fetchGridData(queryParams ? true : false);
   }, []);
+
+  useEffect(() => {
+    if (filtersInitialized || Object.keys(queryParams).length === 0) {
+      console.log("fetch data");
+      fetchGridData();
+    }
+  }, [filtersInitialized]);
 
   return (
     <>

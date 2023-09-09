@@ -74,6 +74,7 @@ type ACTIONTYPE =
   | {
       type: "homeSearch";
       payload?: {
+        selectedCategoryId?: number;
         selectedTypeId?: number;
         minSelectedPrice?: number;
         maxSelectedPrice?: number;
@@ -221,8 +222,8 @@ const reducer = (state: FiltersStateType, action: ACTIONTYPE) => {
       return {
         ...initialState,
         ...action.payload,
+        filterIsSelected: true,
       };
-
     case "resetFilters":
       return {
         ...initialState,

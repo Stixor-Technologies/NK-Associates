@@ -221,6 +221,7 @@ const SearchBar: FC<SearBarProps> = ({ onFilter, actHome = false }) => {
 
   const handleSearchHome = () => {
     const selectedKeys = [
+      "selectedCategoryId",
       "selectedTypeId",
       "minSelectedPrice",
       "maxSelectedPrice",
@@ -239,6 +240,8 @@ const SearchBar: FC<SearBarProps> = ({ onFilter, actHome = false }) => {
       }
     }
     const queryString = params.toString();
+    // console.log(queryString, filtersState);
+    // localStorage.setItem("resetFilters", "1");
     router.push(`/properties?${queryString}`);
   };
 
