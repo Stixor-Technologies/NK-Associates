@@ -7,7 +7,7 @@ interface ProjectSkeletonProps {
 const ProjectListSkeleton: FC<ProjectSkeletonProps> = ({ actHome }) => {
   const numberOfCards = 5;
   const cardHeight = actHome
-    ? "h-[35rem] sm:h-[16.875rem] md:h-[20.625rem] lg:h-[28.5rem]"
+    ? "h-[35rem] sm:h-[16.875rem] md:h-[20.625rem] lg:h-[29.5rem]"
     : "h-[35rem] sm:h-[21rem] md:h-[26rem] lg:h-[31.25rem]";
   return (
     <div>

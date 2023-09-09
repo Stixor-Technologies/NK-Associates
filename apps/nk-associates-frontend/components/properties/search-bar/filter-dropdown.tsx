@@ -25,7 +25,7 @@ const FilterDropDown: FC<DropDownProps> = ({
       case "Property Type":
         return (
           <PropertyTypeFilter
-            propertyTypesList={filtersProperties.propertyTypesList}
+            propertyTypesList={filtersProperties?.propertyTypesList}
           />
         );
       case "Price Range":

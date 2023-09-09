@@ -26,7 +26,9 @@ const BannerSlider: FC<BannerImagesProps> = ({ banner_images }) => {
   const slideMargin = 20;
   const leftMargin = -((slideWidth + slideMargin) * activeIndex);
 
-  const displaySlides = [...banner_images, ...banner_images];
+  const displaySlides = Array.isArray(banner_images)
+    ? [...banner_images, ...banner_images]
+    : undefined;
 
   useEffect(() => {
     const handleWindowResize = () => {
@@ -53,14 +55,14 @@ const BannerSlider: FC<BannerImagesProps> = ({ banner_images }) => {
           ease: "power3.out",
         });
 
-        setActiveIndex((prevIndex) => (prevIndex + 1) % displaySlides.length);
+        setActiveIndex((prevIndex) => (prevIndex + 1) % displaySlides?.length);
 
         gsap.to(sliderContainerRef.current, {
           marginLeft: `${leftMargin}px`,
           duration: 0.5,
           ease: "power3.out",
           onComplete: () => {
-            if (activeIndex === displaySlides.length / 2) {
+            if (activeIndex === displaySlides?.length / 2) {
               setActiveIndex(1);
               gsap.set(slidesRef.current[0], {
                 width: windowSize >= 640 ? "21.938rem" : "15.625rem",
@@ -68,7 +70,7 @@ const BannerSlider: FC<BannerImagesProps> = ({ banner_images }) => {
               gsap.set(sliderContainerRef.current, {
                 marginLeft: `${-((slideWidth + slideMargin) * 0)}px`,
               });
-              gsap.set(slidesRef.current[displaySlides.length / 2], {
+              gsap.set(slidesRef.current[displaySlides?.length / 2], {
                 width: windowSize >= 640 ? "9.875rem" : "7rem",
               });
               // to cater for delay in setting the state
@@ -77,7 +79,7 @@ const BannerSlider: FC<BannerImagesProps> = ({ banner_images }) => {
           },
         });
 
-        gsap.to(slidesRef.current[(activeIndex - 1) % displaySlides.length], {
+        gsap.to(slidesRef.current[(activeIndex - 1) % displaySlides?.length], {
           width: windowSize >= 640 ? "9.875rem" : "7rem",
           duration: 0.5,
           ease: "power3.out",
@@ -89,8 +91,8 @@ const BannerSlider: FC<BannerImagesProps> = ({ banner_images }) => {
     return () => clearInterval(interval);
   }, [
     activeIndex,
-    banner_images.length,
-    displaySlides.length,
+    banner_images?.length,
+    displaySlides?.length,
     hoveredSlide,
     leftMargin,
     slideWidth,
@@ -102,7 +104,7 @@ const BannerSlider: FC<BannerImagesProps> = ({ banner_images }) => {
       className="slider-container flex overflow-hidden relative z-10"
       ref={sliderContainerRef}
     >
-      {displaySlides.map((img, index) => (
+      {displaySlides?.map((img, index) => (
         <div
           key={index}
           ref={(el) => (slidesRef.current[index] = el)}
