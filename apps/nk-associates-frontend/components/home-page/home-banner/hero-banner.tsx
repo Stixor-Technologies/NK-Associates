@@ -29,24 +29,6 @@ const HomeBanner = ({ children }) => {
       <div className="flex-grow -mr-[10px] flex flex-col justify-center">
         <div className="overflow-hidden">{children}</div>
       </div>
-
-      <div className="flex gap-4 justify-center mt-5 md:hidden">
-        <LinkButton
-          type="solid"
-          text="search"
-          clickEvent={() => {
-            console.log("clicked");
-          }}
-          className="flex-1 py-2.5"
-        />
-
-        <LinkButton
-          type="transparentRed"
-          text="get in touch"
-          navigateTo="/contact"
-          className="flex-1 py-2.5"
-        />
-      </div>
     </div>
   );
 };

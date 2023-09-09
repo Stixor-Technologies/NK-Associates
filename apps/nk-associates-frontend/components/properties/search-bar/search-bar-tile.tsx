@@ -98,7 +98,6 @@ const SearchBarTile = ({
   }, [resize]);
 
   const handleFilterOptionClick = () => {
-    console.log("first");
     setActiveFilter(!activeFilter);
   };
 
@@ -159,8 +158,7 @@ const SearchBarTile = ({
           >
             <p
               className="text-sm lg:text-base text-nk-black mr-2 truncate whitespace-nowrap"
-              // style={{ width: filterWidth + "rem" }}
-              style={{ width: !acthome && filterWidth + "rem" }}
+              style={{ width: filterWidth + "rem" }}
               title={filterValue}
             >
               {filterValue}

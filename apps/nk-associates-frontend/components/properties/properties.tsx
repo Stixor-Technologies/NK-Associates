@@ -45,11 +45,6 @@ const Properties = () => {
   const mapRef = useRef<google.maps.Map | null>(null);
   const buttonRef = useRef<HTMLButtonElement>(null);
 
-  // const fetchGridData = async (
-  //   dontApplyFilter?: boolean,
-  //   freshData?: boolean,
-  //   moreLoad?: boolean,
-  // ) => {
   const fetchGridData = async ({
     dontApplyFilter = false,
     freshData = false,
@@ -76,7 +71,6 @@ const Properties = () => {
     }
     setIsLoading(false);
   };
-  console.log(filtersState?.filterIsSelected);
 
   const onMapLoad = useCallback((map) => {
     mapRef.current = map;
@@ -131,33 +125,36 @@ const Properties = () => {
 
   const handleRefreshData = (dontApplyFilter?: boolean) => {
     if (isList) {
-      // fetchGridData(dontApplyFilter, true);
       fetchGridData({ dontApplyFilter: dontApplyFilter, freshData: true });
     } else {
       onBoundsChanged(dontApplyFilter);
+    }
+
+    if (Object.keys(queryParams).length > 0) {
+      history.replaceState(null, "", "/properties");
     }
   };
 
   useEffect(() => {
     if (Object.keys(queryParams).length > 0) {
       const updatedFilters = {
-        selectedCategoryId: queryParams.selectedCategoryId
-          ? Number(queryParams.selectedCategoryId)
-          : 1,
-        selectedTypeId: queryParams.selectedTypeId
-          ? Number(queryParams.selectedTypeId)
+        selectedCategoryId: queryParams?.selectedCategoryId
+          ? Number(queryParams?.selectedCategoryId)
           : undefined,
-        minSelectedPrice: queryParams.minSelectedPrice
-          ? Number(queryParams.minSelectedPrice)
+        selectedTypeId: queryParams?.selectedTypeId
+          ? Number(queryParams?.selectedTypeId)
           : undefined,
-        maxSelectedPrice: queryParams.maxSelectedPrice
-          ? Number(queryParams.maxSelectedPrice)
+        minSelectedPrice: queryParams?.minSelectedPrice
+          ? Number(queryParams?.minSelectedPrice)
           : undefined,
-        selectedProjectId: queryParams.selectedProjectId
-          ? Number(queryParams.selectedProjectId)
+        maxSelectedPrice: queryParams?.maxSelectedPrice
+          ? Number(queryParams?.maxSelectedPrice)
           : undefined,
-        selectedPurposeId: queryParams.selectedPurposeId
-          ? Number(queryParams.selectedPurposeId)
+        selectedProjectId: queryParams?.selectedProjectId
+          ? Number(queryParams?.selectedProjectId)
+          : undefined,
+        selectedPurposeId: queryParams?.selectedPurposeId
+          ? Number(queryParams?.selectedPurposeId)
           : undefined,
       };
 
@@ -172,7 +169,6 @@ const Properties = () => {
 
   useEffect(() => {
     if (filtersInitialized || Object.keys(queryParams).length === 0) {
-      console.log("fetch data");
       fetchGridData({ freshData: true });
     }
   }, [filtersInitialized]);
@@ -202,7 +198,6 @@ const Properties = () => {
               <InfiniteScroll
                 dataLength={gridProperties.length}
                 next={() => {
-                  // fetchGridData(false, filtersState?.filterIsSelected);
                   fetchGridData({ moreLoad: filtersState?.filterIsSelected });
                 }}
                 hasMore={total !== gridProperties.length}
@@ -304,8 +299,6 @@ const Properties = () => {
     </div>
   );
 };
-
-// export default Properties;
 
 export default function PropertiesWithProvider() {
   return (

@@ -74,6 +74,7 @@ const AreaSection = ({ areaRange, areaUnitsList }: PropTypes) => {
       type: "setMinSelectedArea",
       payload: e.target.value,
     });
+    filtersDispatch({ type: "setFilterIsSelected", payload: true });
   };
 
   const handleMaxAreaChange = (e) => {
@@ -88,6 +89,7 @@ const AreaSection = ({ areaRange, areaUnitsList }: PropTypes) => {
       type: "setMaxSelectedArea",
       payload: e.target.value,
     });
+    filtersDispatch({ type: "setFilterIsSelected", payload: true });
   };
 
   return (

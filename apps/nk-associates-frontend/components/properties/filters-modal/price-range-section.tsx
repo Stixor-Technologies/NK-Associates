@@ -71,6 +71,7 @@ const PriceRangeSection = ({ priceRange }: PropTypes) => {
       type: "setMinSelectedPrice",
       payload: e.target.value,
     });
+    filtersDispatch({ type: "setFilterIsSelected", payload: true });
   };
 
   const handleMaxPriceChange = (e) => {
@@ -85,6 +86,7 @@ const PriceRangeSection = ({ priceRange }: PropTypes) => {
       type: "setMaxSelectedPrice",
       payload: e.target.value,
     });
+    filtersDispatch({ type: "setFilterIsSelected", payload: true });
   };
 
   return (

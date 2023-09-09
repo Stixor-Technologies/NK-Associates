@@ -40,6 +40,7 @@ const AreaDropdown = ({ areaUnitsList }: PropTypes) => {
 
   const handleOptionClick = (option: string) => {
     filtersDispatch({ type: "setSelectedAreaUnit", payload: option });
+    filtersDispatch({ type: "setFilterIsSelected", payload: true });
   };
 
   const handleButtonClick = () => {

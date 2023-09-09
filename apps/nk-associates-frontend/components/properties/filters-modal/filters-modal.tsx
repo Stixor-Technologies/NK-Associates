@@ -10,12 +10,14 @@ import AreaSection from "./area-section";
 
 import { SearchFilterProperties } from "../../../utils/types/types";
 import LocationFilter from "../filters/location-filter";
+import ProjectFilter from "./project-filter";
 
 type PropType = {
   open: boolean;
   onClose: () => void;
   filtersProperties: SearchFilterProperties;
   onFilter: () => void;
+  actHome?: boolean;
 };
 
 const FiltersModal = ({
@@ -23,6 +25,7 @@ const FiltersModal = ({
   onClose,
   filtersProperties,
   onFilter,
+  actHome = false,
 }: PropType) => {
   const handleOnFilter = () => {
     onFilter();
@@ -80,12 +83,21 @@ const FiltersModal = ({
           </button>
         </div>
 
+        {actHome && (
+          <div className="w-full mb-4">
+            <h3 className="text-lg font-metropolis-semibold mb-4">Project</h3>
+            <ProjectFilter projectsList={filtersProperties?.projectsList} />
+          </div>
+        )}
+
         <PriceRangeSection priceRange={filtersProperties.priceRange} />
 
-        <AreaSection
-          areaRange={filtersProperties.areaRange}
-          areaUnitsList={filtersProperties.areaUnitsList}
-        />
+        {!actHome && (
+          <AreaSection
+            areaRange={filtersProperties.areaRange}
+            areaUnitsList={filtersProperties.areaUnitsList}
+          />
+        )}
 
         <PurposeSection
           propertyPurposeList={filtersProperties.propertyPurposeList}
@@ -97,7 +109,7 @@ const FiltersModal = ({
           propertyTypesList={filtersProperties.propertyTypesList}
         />
 
-        <RoomBedsSection />
+        {!actHome && <RoomBedsSection />}
 
         <div className="w-full mb-4">
           <h3 className="text-lg font-metropolis-semibold mb-4">Location</h3>

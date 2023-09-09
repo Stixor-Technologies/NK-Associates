@@ -80,7 +80,6 @@ export const getGridProperties = async (
   }
 
   try {
-    console.log("url", url + filtersString);
     const resp = await fetch(url + filtersString);
     const data = await resp.json();
     return data;

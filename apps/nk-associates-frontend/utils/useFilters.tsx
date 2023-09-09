@@ -157,13 +157,13 @@ const reducer = (state: FiltersStateType, action: ACTIONTYPE) => {
       return {
         ...state,
         minSelectedPrice: action.payload,
-        filterIsSelected: true,
+        // filterIsSelected: true,
       };
     case "setMaxSelectedPrice":
       return {
         ...state,
         maxSelectedPrice: action.payload,
-        filterIsSelected: true,
+        // filterIsSelected: true,
       };
     case "setBothSelectedPrice":
       return {
@@ -188,13 +188,11 @@ const reducer = (state: FiltersStateType, action: ACTIONTYPE) => {
       return {
         ...state,
         minSelectedArea: action.payload,
-        filterIsSelected: true,
       };
     case "setMaxSelectedArea":
       return {
         ...state,
         maxSelectedArea: action.payload,
-        filterIsSelected: true,
       };
     case "setBothSelectedArea":
       return {
@@ -207,12 +205,11 @@ const reducer = (state: FiltersStateType, action: ACTIONTYPE) => {
       return {
         ...state,
         selectedAreaUnit: action.payload,
-        filterIsSelected: true,
       };
     case "setFilterIsSelected":
       return {
         ...state,
-        filterIsSelected: false,
+        filterIsSelected: action.payload,
       };
     case "setLocation":
       return {
