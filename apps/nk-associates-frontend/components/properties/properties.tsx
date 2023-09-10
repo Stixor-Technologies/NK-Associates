@@ -130,7 +130,7 @@ const Properties = () => {
       onBoundsChanged(dontApplyFilter);
     }
 
-    if (Object.keys(queryParams).length > 0) {
+    if (Object.keys(queryParams).length > 0 && dontApplyFilter) {
       history.replaceState(null, "", "/properties");
     }
   };
