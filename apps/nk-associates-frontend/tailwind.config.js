@@ -44,6 +44,7 @@ module.exports = {
         "nk-skeleton-grey": "#E1E5EC", //used in skeletons
         "nk-skeleton-start": "#F1F4F9",
         "nk-skeleton-stop": "#E1E5EC",
+        "nk-range-slider": "#DADADA",
       },
       boxShadow: {
         "3xl": "0.25rem 0.188rem 1.375rem 0rem rgba(0, 0, 0, 0.092)",

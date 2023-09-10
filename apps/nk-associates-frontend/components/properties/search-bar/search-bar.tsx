@@ -172,14 +172,44 @@ const SearchBar: FC<SearchBarProps> = ({ onFilter, isListView }) => {
     const priceRange = respFiltersOptions?.attributes?.priceRange;
     const areaRange = respFiltersOptions?.attributes?.areaRange;
 
-    const areaUnitsList = respFiltersOptions?.attributes?.areaUnits?.data?.map(
-      (unit) => {
-        return {
-          id: unit.id,
-          name: unit.attributes.name,
-        };
-      },
-    );
+    // const areaUnitsList = respFiltersOptions?.attributes?.areaUnits?.data?.map(
+    //   (unit) => {
+    //     return {
+    //       id: unit.id,
+    //       name: unit.attributes.name,
+    //     };
+    //   },
+    // );
+    // const areaUnitsList = respFiltersOptions?.attributes?.areaUnits?.data?.map(
+    //   (unit) => {
+    //     return {
+    //       id: unit.id,
+    //       name: unit.attributes.name,
+    //     };
+    //   },
+    // );
+
+    // const areaUnitsList = [
+    //   { id: undefined, name: "All" },
+    //   ...(respFiltersOptions?.attributes?.areaUnits?.data || [])?.map(
+    //     (unit) => ({
+    //       id: unit.id,
+    //       name: unit.attributes.name,
+    //     }),
+    //   ),
+    // ];
+
+    const areaUnitsData = respFiltersOptions?.attributes?.areaUnits?.data || [];
+
+    const areaUnitsList = areaUnitsData.length
+      ? [
+          { id: undefined, name: "All" },
+          ...areaUnitsData.map((unit) => ({
+            id: unit.id,
+            name: unit.attributes.name,
+          })),
+        ]
+      : [];
 
     setFiltersProperties((oldState) => ({
       ...oldState,

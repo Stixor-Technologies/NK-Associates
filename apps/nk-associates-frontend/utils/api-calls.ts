@@ -53,8 +53,8 @@ const applyFilters = (filters: FiltersStateType) => {
     if (filters.maxSelectedArea) {
       filtersString += `&filters[area][$lte]=${filters.maxSelectedArea}`;
     }
-
-    if (filters.selectedAreaUnit) {
+    console.log(filters?.selectedAreaUnit?.toLowerCase() !== "all");
+    if (filters?.selectedAreaUnit?.toLowerCase() !== "all") {
       filtersString += `&filters[area_unit][name][$eq]=${filters.selectedAreaUnit}`;
     }
 

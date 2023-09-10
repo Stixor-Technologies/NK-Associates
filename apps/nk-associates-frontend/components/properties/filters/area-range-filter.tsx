@@ -1,7 +1,13 @@
 import RangeSelectorSlider from "../../shared/range-selector-slider";
 import useFilters from "../../../utils/useFilters";
 
-const AreaRangeFilter = ({ areaRange }: { areaRange: [number, number] }) => {
+const AreaRangeFilter = ({
+  areaRange,
+  disableSlider,
+}: {
+  areaRange: [number, number];
+  disableSlider: boolean;
+}) => {
   const [filtersState, filtersDispatch] = useFilters();
 
   const handleAreaRangeChange = (
@@ -34,6 +40,7 @@ const AreaRangeFilter = ({ areaRange }: { areaRange: [number, number] }) => {
         thumbLabel={filtersState.selectedAreaUnit}
         values={[filtersState.minSelectedArea, filtersState.maxSelectedArea]}
         onChange={handleAreaRangeChange}
+        disableSlider={disableSlider}
       />
     </>
   );
