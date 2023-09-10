@@ -91,8 +91,6 @@ const AreaSection = ({ areaRange, areaUnitsList }: PropTypes) => {
     });
   };
 
-  console.log("selected Area unit", filtersState?.selectedAreaUnit);
-
   return (
     <>
       <div className="w-full mb-4">
@@ -101,68 +99,6 @@ const AreaSection = ({ areaRange, areaUnitsList }: PropTypes) => {
           <AreaDropdown areaUnitsList={areaUnitsList} />
         </h3>
       </div>
-
-      {/* {filtersState?.selectedAreaUnit?.toLowerCase() !== "all" && (
-        <>
-          <AreaRangeFilter areaRange={areaRange} />
-
-          <div className="w-full mb-4 md:w-1/2 md:pr-2.5">
-            <label
-              htmlFor="Min Area"
-              className="font-metropolis-thin text-nk-black relative capitalize md:text-base"
-            >
-              Min Area
-            </label>
-
-            <input
-              type="number"
-              name="Min Area"
-              className={`font-metropolis-light text-nk-black placeholder-nk-gray placeholder:font-metropolis-thin mt-1 h-[3.625rem] w-full rounded-lg border px-4 py-4 shadow-md placeholder:text-base focus:outline-none ${
-                errorMinArea.error
-                  ? "border-nk-red"
-                  : " focus:border-nk-gray focus:ring-nk-gray"
-              }`}
-              value={filtersState.minSelectedArea}
-              onChange={handleMinAreaChange}
-              placeholder="PKR 100000"
-            />
-
-            {errorMinArea.error && (
-              <p className="text-nk-red mt-2 text-sm italic">
-                {errorMinArea.message as string}
-              </p>
-            )}
-          </div>
-
-          <div className="w-full mb-4 md:w-1/2 md:pl-2.5">
-            <label
-              htmlFor="Max Area"
-              className="font-metropolis-thin text-nk-black relative capitalize md:text-base"
-            >
-              Max Area
-            </label>
-
-            <input
-              type="number"
-              name="Max Area"
-              className={`font-metropolis-light text-nk-black placeholder-nk-gray placeholder:font-metropolis-thin mt-1 h-[3.625rem] w-full rounded-lg border px-4 py-4 shadow-md placeholder:text-base focus:outline-none ${
-                errorMaxArea.error
-                  ? "border-nk-red"
-                  : " focus:border-nk-gray focus:ring-nk-gray"
-              }`}
-              value={filtersState.maxSelectedArea}
-              onChange={handleMaxAreaChange}
-              placeholder="PKR 10000000"
-            />
-
-            {errorMaxArea.error && (
-              <p className="text-nk-red mt-2 text-sm italic">
-                {errorMaxArea.message as string}
-              </p>
-            )}
-          </div>
-        </>
-      )} */}
 
       <AreaRangeFilter areaRange={areaRange} disableSlider={disableInputs} />
 
@@ -177,11 +113,15 @@ const AreaSection = ({ areaRange, areaUnitsList }: PropTypes) => {
         <input
           type="number"
           name="Min Area"
-          className={`font-metropolis-light placeholder:font-metropolis-thin mt-1 h-[3.625rem] w-full rounded-lg border px-4 py-4 shadow-md placeholder:text-base focus:outline-none ${
+          className={`font-metropolis-light placeholder:font-metropolis-thin mt-1 h-[3.625rem] w-full rounded-lg border px-4 py-4 placeholder:text-base focus:outline-none ${
             errorMinArea.error
               ? "border-nk-red"
               : " focus:border-nk-gray focus:ring-nk-gray"
-          } ${disableInputs ? "text-gray-400 bg-gray-200" : "text-nk-gray"}`}
+          } ${
+            disableInputs
+              ? "text-gray-400 bg-gray-200"
+              : "text-nk-gray shadow-md"
+          }`}
           value={filtersState.minSelectedArea}
           onChange={handleMinAreaChange}
           placeholder="PKR 100000"
@@ -206,11 +146,15 @@ const AreaSection = ({ areaRange, areaUnitsList }: PropTypes) => {
         <input
           type="number"
           name="Max Area"
-          className={`font-metropolis-light placeholder-nk-gray placeholder:font-metropolis-thin mt-1 h-[3.625rem] w-full rounded-lg border px-4 py-4 shadow-md placeholder:text-base focus:outline-none ${
+          className={`font-metropolis-light placeholder-nk-gray placeholder:font-metropolis-thin mt-1 h-[3.625rem] w-full rounded-lg border px-4 py-4 placeholder:text-base focus:outline-none ${
             errorMaxArea.error
               ? "border-nk-red"
               : " focus:border-nk-gray focus:ring-nk-gray"
-          } ${disableInputs ? "text-gray-400 bg-gray-200" : "text-nk-gray"}`}
+          } ${
+            disableInputs
+              ? "text-gray-400 bg-gray-200"
+              : "text-nk-gray shadow-md"
+          }`}
           value={filtersState.maxSelectedArea}
           onChange={handleMaxAreaChange}
           placeholder="PKR 10000000"

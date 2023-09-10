@@ -27,3 +27,7 @@
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
+
+.range-slider-track.range-slider-track-1 {
+  background-color: #e74451;
+}
