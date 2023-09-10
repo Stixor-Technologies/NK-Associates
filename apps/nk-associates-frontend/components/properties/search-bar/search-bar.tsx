@@ -344,7 +344,7 @@ const SearchBar: FC<SearchBarProps> = ({
             </div>
           ) : (
             <button
-              onClick={() => filtersState?.filterIsSelected && onFilter()}
+              onClick={() => onFilter()}
               className="flex items-center justify-center bg-nk-red px-6 py-4 min-w-fit flex-1 transition-all duration-300 hover:opacity-80"
             >
               <svg
