@@ -125,6 +125,7 @@ export default function ContactComponent() {
               width={904}
               height={654}
               className=""
+              priority
             />
           </div>
         </div>
