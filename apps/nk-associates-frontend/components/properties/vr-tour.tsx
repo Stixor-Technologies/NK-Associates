@@ -205,7 +205,7 @@ const VRTour = ({ vrTourId }: { vrTourId: number | undefined }) => {
           };
         });
         return {
-          id: slide.id,
+          id: slide.nodeID,
           name: slide.name,
           caption: slide.caption,
           panorama: `${BASE_URL}${slide.panorama?.data?.attributes?.url}`,
