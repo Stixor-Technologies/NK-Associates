@@ -17,7 +17,7 @@ const Spinner: FC<SpinnerProps> = ({
       role="status"
     >
       <svg
-        className={`animate-spin -ml-1 mr-3 ${width} ${height} ${color}`}
+        className={`animate-spin ${width} ${height} ${color}`}
         xmlns="http://www.w3.org/2000/svg"
         fill="none"
         viewBox="0 0 24 24"
