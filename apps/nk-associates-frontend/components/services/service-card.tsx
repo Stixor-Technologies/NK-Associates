@@ -29,6 +29,7 @@ const ServiceCard: FC<CardProps> = ({ service }) => {
               alt="service-card"
               fill
               className="w-full h-full mx-auto object-cover"
+              priority
             />
           </Link>
 

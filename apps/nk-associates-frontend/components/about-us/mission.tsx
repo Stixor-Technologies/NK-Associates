@@ -20,6 +20,7 @@ const MissionCard: FC<CardProps> = ({ about }) => {
             alt="Card Image 1"
             fill
             className="object-cover rounded-2xl lg:-rotate-[4deg]"
+            priority
           />
         </div>
         <div className="text-about flex flex-col font-metropolis text-xl text-center lg:text-left text-nk-black lg:w-[55%] my-auto">
