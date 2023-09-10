@@ -107,13 +107,7 @@ export default function Banner() {
       </div>
       <div className="ml-[1.55rem] flex justify-center">
         {animated && (
-          <Image
-            priority={true}
-            ref={imageOne}
-            src={rectangle3}
-            alt="rectangle"
-            className=""
-          />
+          <Image priority ref={imageOne} src={rectangle3} alt="rectangle" />
         )}
       </div>
     </div>

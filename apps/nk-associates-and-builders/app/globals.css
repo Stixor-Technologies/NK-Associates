@@ -7,3 +7,12 @@
     @apply w-full max-w-container px-4 md:px-8 mx-auto;
   }
 }
+
+.carousel::-webkit-scrollbar {
+  display: none;
+}
+
+.carousel {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}

@@ -109,7 +109,7 @@ export default function Banner() {
       <div className="ml-[1.55rem] flex justify-center">
         {animated && (
           <Image
-            priority={false}
+            priority
             ref={imageOne}
             src={house}
             alt="rectangle"
