@@ -7,7 +7,9 @@ import { Services } from "../../../utils/types/types";
 import ProcessSteps from "../../../components/services/service-detail/process-steps";
 import ExpertiseOutcomes from "../../../components/services/service-detail/expertise-outcomes";
 import WhatsAppIcon from "../../../public/assets/icons/whatsapp-white-icon.svg";
+import WhatsAppAlternateIcon from "../../../public/assets/icons/whatsapp-inverse.svg";
 import PhoneIcon from "../../../public/assets/icons/phone-white-icon.svg";
+import PhoneAlternateIcon from "../../../public/assets/icons/phone-icon.svg";
 
 interface ServiceDetailProps {
   params: {
@@ -57,17 +59,29 @@ async function ServiceDetail({ params: { id } }: ServiceDetailProps) {
                 href={`tel:+${number}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group flex items-center justify-center gap-2 rounded-full border w-[10.5rem] bg-nk-red py-2  text-nk-white text-base transition-all duration-300 ease-in-out hover:bg-nk-gradient-red-sharp-one md:w-[14.125rem] md:py-2.5 md:text-lg"
+                className="group flex items-center justify-center gap-2 rounded-full border hover:text-nk-red w-[10.5rem] bg-nk-red py-2  text-nk-white text-base transition-all duration-300 ease-in-out hover:bg-white md:w-[14.125rem] md:py-2.5 md:text-lg"
               >
                 Call Us
-                <Image src={PhoneIcon} alt="call-icon" width={25} height={25} />
+                <Image
+                  src={PhoneIcon}
+                  alt="call-icon"
+                  width={25}
+                  height={25}
+                  className="group-hover:hidden block"
+                />
+                <Image
+                  src={PhoneAlternateIcon}
+                  alt="call-icon"
+                  width={25}
+                  height={25}
+                  className="group-hover:block hidden"
+                />
               </Link>
-
               <Link
                 href={whatsppChat}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group flex items-center justify-center gap-2 rounded-full border w-[10.5rem] bg-nk-red py-2 text-base text-nk-white transition-all duration-300 ease-in-out hover:bg-nk-gradient-red-sharp-one md:w-[14.125rem] md:py-2.5 md:text-lg"
+                className="group flex items-center justify-center gap-2 rounded-full border hover:text-nk-red w-[10.5rem] bg-nk-red py-2  text-nk-white text-base transition-all duration-300 ease-in-out hover:bg-white md:w-[14.125rem] md:py-2.5 md:text-lg"
               >
                 Whatsapp
                 <Image
@@ -75,6 +89,14 @@ async function ServiceDetail({ params: { id } }: ServiceDetailProps) {
                   alt="whats-app-icon"
                   width={25}
                   height={25}
+                  className="group-hover:hidden block"
+                />
+                <Image
+                  src={WhatsAppAlternateIcon}
+                  alt="whats-app-icon"
+                  width={25}
+                  height={25}
+                  className="group-hover:block hidden"
                 />
               </Link>
             </div>

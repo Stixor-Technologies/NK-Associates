@@ -62,6 +62,11 @@ const Goals: FC<GoalProps> = ({ mission, vision, values, goals }) => {
           pin: true,
           scrub: 1,
           invalidateOnRefresh: true,
+          snap: {
+            snapTo: 1 / (cards.length - 1),
+            duration: 0.5,
+            ease: "power2.out",
+          },
         },
       });
 
@@ -80,7 +85,7 @@ const Goals: FC<GoalProps> = ({ mission, vision, values, goals }) => {
                 opacity: 1,
                 y: 0,
               },
-              "<0.1",
+              "<",
             );
         }
       });

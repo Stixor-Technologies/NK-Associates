@@ -3,7 +3,6 @@
 import { Suspense } from "react";
 import { Canvas, useLoader } from "@react-three/fiber";
 import {
-  Environment,
   OrbitControls,
   PerspectiveCamera,
   useProgress,
@@ -42,11 +41,7 @@ const VRModel = ({ modelURL }: PropTypes) => {
         </Suspense>
       </Canvas>
 
-      <section
-        className={`absolute top-0 left-0 w-full ${
-          progress >= 100 ? "hidden" : ""
-        }`}
-      >
+      <section className={`${progress >= 100 ? "hidden" : ""}`}>
         <ThreeDModelLoading />
       </section>
     </>

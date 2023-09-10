@@ -112,42 +112,37 @@ const BannerSlider: FC<BannerImagesProps> = ({ banner_images }) => {
             setActiveIndex(index);
           }}
           onMouseEnter={() => {
-            if (windowSize > 768) {
-              setHoveredSlide(index);
-              if (slidesRef.current[index]) {
-                gsap.to(slidesRef.current[index], {
-                  width: windowSize >= 640 ? "21.938rem" : "9.875rem",
+            setHoveredSlide(index);
+            if (slidesRef.current[index]) {
+              gsap.to(slidesRef.current[index], {
+                width: windowSize >= 640 ? "21.938rem" : "15.625rem",
+                duration: 0.5,
+                ease: "power3.out",
+              });
+              if (activeIndex - 1 !== index) {
+                gsap.to(slidesRef.current[activeIndex - 1], {
+                  width: windowSize >= 640 ? "9.875rem" : "7rem",
                   duration: 0.5,
                   ease: "power3.out",
                 });
-                if (activeIndex - 1 !== index) {
-                  gsap.to(slidesRef.current[activeIndex - 1], {
-                    width: windowSize >= 640 ? "9.875rem" : "7rem",
-                    duration: 0.5,
-                    ease: "power3.out",
-                  });
-                }
               }
             }
           }}
           onMouseLeave={() => {
-            if (windowSize > 768) {
-              setHoveredSlide(null);
-              if (slidesRef.current[index] && windowSize > 768) {
-                if (activeIndex - 1 !== index) {
-                  gsap.to(slidesRef.current[index], {
-                    width: "7rem",
-                    duration: 0.5,
-                    ease: "power3.out",
-                  });
-                }
-                if (activeIndex - 1 !== index) {
-                  gsap.to(slidesRef.current[activeIndex - 1], {
-                    width: windowSize >= 640 ? "21.938rem" : "9.875rem",
-                    duration: 0.5,
-                    ease: "power3.out",
-                  });
-                }
+            setHoveredSlide(null);
+            if (slidesRef.current[index]) {
+              gsap.to(slidesRef.current[index], {
+                width: windowSize >= 640 ? "9.875rem" : "7rem",
+                duration: 0.5,
+                ease: "power3.out",
+              });
+
+              if (activeIndex - 1 !== index) {
+                gsap.to(slidesRef.current[activeIndex - 1], {
+                  width: windowSize >= 640 ? "21.938rem" : "15.625rem",
+                  duration: 0.5,
+                  ease: "power3.out",
+                });
               }
             }
           }}
