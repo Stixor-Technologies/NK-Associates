@@ -25,7 +25,7 @@ const ProjectFilter: FC<PropsType> = ({ projectsList }) => {
         placeholder="Select Project"
         onChange={handleProjectChange}
       >
-        <option value={undefined}>All Projects</option>
+        <option value={undefined}>Select Project</option>
         {projectsList?.map((project, index) => (
           <option key={index} value={project?.id}>
             {project?.name}
