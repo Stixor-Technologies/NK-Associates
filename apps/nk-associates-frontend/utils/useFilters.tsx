@@ -157,13 +157,11 @@ const reducer = (state: FiltersStateType, action: ACTIONTYPE) => {
       return {
         ...state,
         minSelectedPrice: action.payload,
-        // filterIsSelected: true,
       };
     case "setMaxSelectedPrice":
       return {
         ...state,
         maxSelectedPrice: action.payload,
-        // filterIsSelected: true,
       };
     case "setBothSelectedPrice":
       return {
