@@ -247,29 +247,27 @@ const SearchBar: FC<SearchBarProps> = ({
   }
 
   const handleSearchFromHome = () => {
-    if (filtersState?.filterIsSelected) {
-      const selectedKeys = [
-        "selectedCategoryId",
-        "selectedTypeId",
-        "minSelectedPrice",
-        "maxSelectedPrice",
-        "selectedProjectId",
-        "selectedPurposeId",
-      ];
-      const filterObject = {};
+    const selectedKeys = [
+      "selectedCategoryId",
+      "selectedTypeId",
+      "minSelectedPrice",
+      "maxSelectedPrice",
+      "selectedProjectId",
+      "selectedPurposeId",
+    ];
+    const filterObject = {};
 
-      const params = new URLSearchParams();
+    const params = new URLSearchParams();
 
-      for (const key of selectedKeys) {
-        const value = filtersState[key];
-        if (value !== undefined) {
-          filterObject[key] = value;
-          params.set(key, value);
-        }
+    for (const key of selectedKeys) {
+      const value = filtersState[key];
+      if (value !== undefined) {
+        filterObject[key] = value;
+        params.set(key, value);
       }
-      const queryString = params.toString();
-      router.push(`/properties?${queryString}`);
     }
+    const queryString = params.toString();
+    router.push(`/properties?${queryString}`);
   };
 
   return (
