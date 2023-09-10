@@ -6,7 +6,7 @@ type PropTypes = {
   thumbLabel: string;
   values: [number, number];
   onChange: (value: [number, number], index: number) => void;
-  disableSlider: boolean;
+  disableSlider?: boolean;
 };
 
 const RangeSelectorSlider = ({
