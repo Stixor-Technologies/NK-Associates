@@ -102,7 +102,7 @@ const ServicesList: FC = () => {
           <Spinner />
         </div>
       ) : services.length > 0 ? (
-        services.map((service, index) => (
+        services?.map((service, index) => (
           <ServiceCard key={index} service={service} />
         ))
       ) : (

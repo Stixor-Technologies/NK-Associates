@@ -79,6 +79,7 @@ const ProcessSteps: FC<ProcessStepsProps> = ({ process }) => {
                           fill
                           alt={`process-img-${index}`}
                           className="object-cover"
+                          priority
                         />
                       </div>
                       <div className="lg:w-[60%] 2xl:pr-6">
