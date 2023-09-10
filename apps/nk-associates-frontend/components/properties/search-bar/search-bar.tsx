@@ -1,6 +1,4 @@
 import React, { FC, useState, useEffect, useReducer } from "react";
-import Image from "next/image";
-import FilterDropDown from "./filter-dropdown";
 import { SearchFilterProperties } from "../../../utils/types/types";
 import SearchBarTile from "./search-bar-tile";
 import FiltersModal from "../filters-modal";
@@ -228,7 +226,7 @@ const SearchBar: FC<SearchBarProps> = ({
   };
 
   useEffect(() => {
-    if (!filtersState?.filterIsSelected && filtersProperties?.areaRange) {
+    if (!filtersState?.filterIsSelected && filtersProperties?.priceRange) {
       filtersDispatch({
         type: "setMinSelectedPrice",
         payload: filtersProperties?.priceRange[0],
@@ -238,7 +236,7 @@ const SearchBar: FC<SearchBarProps> = ({
         payload: filtersProperties?.priceRange[1],
       });
     }
-  }, [filtersState?.filterIsSelected, filtersProperties?.areaRange]);
+  }, [filtersState?.filterIsSelected, filtersProperties?.priceRange]);
 
   useEffect(() => {
     fetchFilterProperties();
@@ -338,12 +336,12 @@ const SearchBar: FC<SearchBarProps> = ({
           })}
 
           {actHome ? (
-            <div className="min-w-fit flex-1 flex-grow-[2.5] flex items-center justify-end bg-nk-white">
+            <div className="min-w-[6.563rem] lg:min-w-fit lg:flex-1 lg:flex-grow-[2.5] flex items-center justify-end bg-nk-white">
               <LinkButton
                 text="Search"
                 type="solid"
                 clickEvent={handleSearchFromHome}
-                className="w-full lg:w-[90%] h-[65%]"
+                className="w-full lg:w-[90%] md:h-[56%] lg:h-[65%]"
               />
             </div>
           ) : (

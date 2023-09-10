@@ -7,8 +7,8 @@ import LinkButton from "../button/link-button";
 
 const HomeSearch = () => {
   return (
-    <div className="container md:max-w-3xl lg:max-w-5xl  w-full mx-auto">
-      <div className="flex md:block gap-4 justify-center mt-5 md:mt-0">
+    <div className="container md:max-w-3xl lg:max-w-5xl w-full mx-auto mt-5 md:mt-4 md:mb-20">
+      <div className="flex md:block gap-4 justify-center">
         <div className="w-[50%] md:w-full">
           <SearchBar actHome />
         </div>

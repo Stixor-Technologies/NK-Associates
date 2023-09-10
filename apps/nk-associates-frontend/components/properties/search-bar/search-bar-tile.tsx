@@ -64,7 +64,6 @@ const SearchBarTile = ({
       const windowWidth = window.innerWidth;
 
       const tooCloseToTheEdge = windowWidth - containerPosition.left < 400;
-
       return {
         x: tooCloseToTheEdge
           ? containerPosition.right - 360
@@ -72,7 +71,7 @@ const SearchBarTile = ({
         y:
           windowWidth > 1024
             ? containerPosition.top + containerPosition.height
-            : containerPosition.top + 60,
+            : containerPosition.top + (acthome ? 70 : 60),
         tooCloseToTheEdge,
       };
     }
@@ -134,12 +133,12 @@ const SearchBarTile = ({
     <div
       ref={searchFilterRef}
       className={` bg-white ${
-        acthome ? "max-w-[180px] w-full" : "min-w-fit flex-1 flex-grow-[2]"
+        acthome ? "max-w-[11.25rem] w-full" : "min-w-fit flex-1 flex-grow-[1]"
       }`}
     >
       <div
-        className={`${acthome ? "my-1" : ""} ${
-          acthome && !isLastChild ? "border-r border-nk-black" : ""
+        className={`${acthome ? "my-1.5" : ""} ${
+          acthome && !isLastChild ? "border-r border-nk-gray" : ""
         }`}
       >
         <button
