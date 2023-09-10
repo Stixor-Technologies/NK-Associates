@@ -117,7 +117,7 @@ const AreaDropdown = ({ areaUnitsList, modalElement }: PropTypes) => {
             }`}
           >
             <ul>
-              {areaUnitsList.map((unit, index) => (
+              {areaUnitsList?.map((unit, index) => (
                 <li
                   key={index}
                   className="flex justify-between items-center mb-2 last-of-type:mb-0 cursor-pointer group"

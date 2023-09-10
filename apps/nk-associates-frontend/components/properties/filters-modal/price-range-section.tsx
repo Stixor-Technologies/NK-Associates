@@ -107,7 +107,7 @@ const PriceRangeSection = ({ priceRange }: PropTypes) => {
         <input
           type="number"
           name="Min Price"
-          className={`font-metropolis-light text-nk-black placeholder-nk-gray placeholder:font-metropolis-thin mt-1 h-[3.625rem] w-full rounded-lg border px-4 py-4 shadow-md placeholder:text-base focus:outline-none ${
+          className={`font-metropolis-light text-nk-gray placeholder-nk-gray placeholder:font-metropolis-thin mt-1 h-[3.625rem] w-full rounded-lg border px-4 py-4 shadow-md placeholder:text-base focus:outline-none ${
             errorMinPrice.error
               ? "border-nk-red"
               : " focus:border-nk-gray focus:ring-nk-gray"
@@ -135,7 +135,7 @@ const PriceRangeSection = ({ priceRange }: PropTypes) => {
         <input
           type="number"
           name="Max Price"
-          className={`font-metropolis-light text-nk-black placeholder-nk-gray placeholder:font-metropolis-thin mt-1 h-[3.625rem] w-full rounded-lg border px-4 py-4 shadow-md placeholder:text-base focus:outline-none ${
+          className={`font-metropolis-light text-nk-gray placeholder-nk-gray placeholder:font-metropolis-thin mt-1 h-[3.625rem] w-full rounded-lg border px-4 py-4 shadow-md placeholder:text-base focus:outline-none ${
             errorMaxPrice.error
               ? "border-nk-red"
               : " focus:border-nk-gray focus:ring-nk-gray"

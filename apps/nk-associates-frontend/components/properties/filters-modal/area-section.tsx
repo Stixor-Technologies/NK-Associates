@@ -12,6 +12,7 @@ type PropTypes = {
 
 const AreaSection = ({ areaRange, areaUnitsList, modalElement }: PropTypes) => {
   const [filtersState, filtersDispatch] = useFilters();
+  const disableInputs = filtersState?.selectedAreaUnit?.toLowerCase() === "all";
   const [errorMinArea, setErrorMinArea] = useState({
     error: false,
     message: "",
@@ -105,7 +106,7 @@ const AreaSection = ({ areaRange, areaUnitsList, modalElement }: PropTypes) => {
         </h3>
       </div>
 
-      <AreaRangeFilter areaRange={areaRange} />
+      <AreaRangeFilter areaRange={areaRange} disableSlider={disableInputs} />
 
       <div className="w-full mb-4 md:w-1/2 md:pr-2.5">
         <label
@@ -118,14 +119,19 @@ const AreaSection = ({ areaRange, areaUnitsList, modalElement }: PropTypes) => {
         <input
           type="number"
           name="Min Area"
-          className={`font-metropolis-light text-nk-black placeholder-nk-gray placeholder:font-metropolis-thin mt-1 h-[3.625rem] w-full rounded-lg border px-4 py-4 shadow-md placeholder:text-base focus:outline-none ${
+          className={`font-metropolis-light placeholder:font-metropolis-thin mt-1 h-[3.625rem] w-full rounded-lg border px-4 py-4 placeholder:text-base focus:outline-none ${
             errorMinArea.error
               ? "border-nk-red"
               : " focus:border-nk-gray focus:ring-nk-gray"
+          } ${
+            disableInputs
+              ? "text-gray-400 bg-gray-200"
+              : "text-nk-gray shadow-md"
           }`}
           value={filtersState.minSelectedArea}
           onChange={handleMinAreaChange}
           placeholder="PKR 100000"
+          disabled={disableInputs}
         />
 
         {errorMinArea.error && (
@@ -146,14 +152,19 @@ const AreaSection = ({ areaRange, areaUnitsList, modalElement }: PropTypes) => {
         <input
           type="number"
           name="Max Area"
-          className={`font-metropolis-light text-nk-black placeholder-nk-gray placeholder:font-metropolis-thin mt-1 h-[3.625rem] w-full rounded-lg border px-4 py-4 shadow-md placeholder:text-base focus:outline-none ${
+          className={`font-metropolis-light placeholder-nk-gray placeholder:font-metropolis-thin mt-1 h-[3.625rem] w-full rounded-lg border px-4 py-4 placeholder:text-base focus:outline-none ${
             errorMaxArea.error
               ? "border-nk-red"
               : " focus:border-nk-gray focus:ring-nk-gray"
+          } ${
+            disableInputs
+              ? "text-gray-400 bg-gray-200"
+              : "text-nk-gray shadow-md"
           }`}
           value={filtersState.maxSelectedArea}
           onChange={handleMaxAreaChange}
           placeholder="PKR 10000000"
+          disabled={disableInputs}
         />
 
         {errorMaxArea.error && (

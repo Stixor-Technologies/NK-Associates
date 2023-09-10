@@ -133,7 +133,7 @@ const SearchBarTile = ({
     <div
       ref={searchFilterRef}
       className={` bg-white ${
-        acthome ? "max-w-[11.25rem] w-full" : "min-w-fit flex-1 flex-grow-[1]"
+        acthome ? "max-w-[11.25rem] w-full" : "min-w-fit flex-1 flex-grow-[2]"
       }`}
     >
       <div
