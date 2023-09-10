@@ -5,7 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { Member } from "../../utils/types/types";
 import FbIcon from "../../public/assets/icons/facebook-icon.svg";
-import WhatsAppIcon from "../../public/assets/icons/whatsapp-inverse.svg";
+import WhatsAppIcon from "../../public/assets/icons/whatsapp-white-icon.svg";
 import InstagramIcon from "../../public/assets/icons/instagram-icon.svg";
 import LinkedinIcon from "../../public/assets/icons/linkedIn-icon.svg";
 import CursorUtility from "../../utils/cursor-utility";
