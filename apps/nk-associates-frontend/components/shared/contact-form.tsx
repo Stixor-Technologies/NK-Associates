@@ -222,7 +222,7 @@ const ContactForm: React.FC<ContactFormProps> = ({ categories, heading }) => {
               </div>
               <div className="mx-auto mt-4 flex h-12 cursor-pointer items-center justify-center rounded-full bg-nk-red sm:w-[22.5rem] md:w-[25rem]">
                 {loading ? (
-                  <Spinner color="fill-white" height="h-7" width="w-10" />
+                  <Spinner color="text-white" height="h-7" width="w-10" />
                 ) : (
                   <LinkButton
                     text="Submit"

@@ -7,45 +7,33 @@ interface SpinnerProps {
 }
 
 const Spinner: FC<SpinnerProps> = ({
-  color = "fill-nk-red",
-  width = "w-14",
-  height = "h-14",
+  color = "text-nk-red",
+  width = "w-12",
+  height = "h-12",
 }) => {
   return (
     <div
-      className="m-auto flex items-center justify-center text-center h-full"
+      className="m-auto flex items-center justify-center text-center h-full w-full"
       role="status"
     >
       <svg
+        className={`animate-spin -ml-1 mr-3 ${width} ${height} ${color}`}
         xmlns="http://www.w3.org/2000/svg"
-        xmlnsXlink="http://www.w3.org/1999/xlink"
-        className={`inline-block ${width} ${height} animate-spin ${color} text-gray-200 dark:text-gray-600`}
-        width="80"
-        height="80"
-        viewBox="0 0 100 100"
-        preserveAspectRatio="xMidYMid"
-        aria-label="blocks-loading"
-        data-testid="color-ring-svg"
-        aria-busy="true"
-        role="status"
+        fill="none"
+        viewBox="0 0 24 24"
       >
-        <defs>
-          <mask id="ldio-4offds5dlws-mask">
-            <circle
-              cx="50"
-              cy="50"
-              r="26"
-              fill="transparent"
-              stroke="#fff"
-              strokeLinecap="round"
-              strokeDasharray="122.52211349000194 40.840704496667314"
-              strokeWidth="9"
-            />
-          </mask>
-        </defs>
-        <g mask="url(#ldio-4offds5dlws-mask)">
-          <rect x="14.5" y="14.5" width="70" height="70" />
-        </g>
+        <circle
+          className="opacity-25"
+          stroke="currentColor"
+          stroke-width="4"
+          cx="12"
+          cy="12"
+          r="10"
+        ></circle>
+        <path
+          fill="currentColor"
+          d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+        ></path>
       </svg>
 
       <span className="sr-only">Loading...</span>
