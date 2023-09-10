@@ -1,5 +1,5 @@
 "use client";
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import { createPortal } from "react-dom";
 import LinkButton from "../../button/link-button";
 import PriceRangeSection from "./price-range-section";
@@ -10,12 +10,14 @@ import AreaSection from "./area-section";
 
 import { SearchFilterProperties } from "../../../utils/types/types";
 import LocationFilter from "../filters/location-filter";
+import ProjectFilter from "./project-filter";
 
 type PropType = {
   open: boolean;
   onClose: () => void;
   filtersProperties: SearchFilterProperties;
   onFilter: () => void;
+  actHome?: boolean;
 };
 
 const FiltersModal = ({
@@ -23,7 +25,10 @@ const FiltersModal = ({
   onClose,
   filtersProperties,
   onFilter,
+  actHome = false,
 }: PropType) => {
+  const modalRef = useRef<HTMLDivElement | null>(null);
+
   const handleOnFilter = () => {
     onFilter();
     handleCloseModal();
@@ -43,7 +48,10 @@ const FiltersModal = ({
   }, [open]);
 
   const content = (
-    <div className="fixed bg-black/30 w-full h-full top-0 left-0 z-50 overflow-y-auto md:flex items-center justify-center md:items-start">
+    <div
+      ref={modalRef}
+      className="myModal fixed bg-black/30 w-full h-full top-0 left-0 z-50 overflow-y-auto md:flex items-center justify-center md:items-start"
+    >
       <section className="relative md:max-w-[60rem] md:my-[5rem] flex flex-wrap w-full min-h-full md:w-10/12 lg:w-8/12 md:h-auto md:min-h-fit bg-nk-light-gray p-4 py-6 md:p-6 md:py-10 md:rounded-3xl">
         <div className="w-full mb-8">
           <h1 className="mr-14 md:mr-0 md:text-center text-2xl font-metropolis-bold leading-7">
@@ -80,12 +88,22 @@ const FiltersModal = ({
           </button>
         </div>
 
+        {actHome && (
+          <div className="w-full mb-4">
+            <h3 className="text-lg font-metropolis-semibold mb-4">Project</h3>
+            <ProjectFilter projectsList={filtersProperties?.projectsList} />
+          </div>
+        )}
+
         <PriceRangeSection priceRange={filtersProperties.priceRange} />
 
-        <AreaSection
-          areaRange={filtersProperties.areaRange}
-          areaUnitsList={filtersProperties.areaUnitsList}
-        />
+        {!actHome && (
+          <AreaSection
+            areaRange={filtersProperties.areaRange}
+            areaUnitsList={filtersProperties.areaUnitsList}
+            modalElement={modalRef}
+          />
+        )}
 
         <PurposeSection
           propertyPurposeList={filtersProperties.propertyPurposeList}
@@ -97,7 +115,7 @@ const FiltersModal = ({
           propertyTypesList={filtersProperties.propertyTypesList}
         />
 
-        <RoomBedsSection />
+        {!actHome && <RoomBedsSection />}
 
         <div className="w-full mb-4">
           <h3 className="text-lg font-metropolis-semibold mb-4">Location</h3>

@@ -14,6 +14,7 @@ import MapStyles from "../../utils/map-styles.json";
 import "./map-info-window.css";
 import SearchBar from "./search-bar";
 import PropertyListSkeleton from "../skeletons/property/property-list-skeleton";
+import { useSearchParams } from "next/navigation";
 
 import useFilters, { FiltersProvider } from "../../utils/useFilters";
 
@@ -23,8 +24,10 @@ const center = {
 };
 
 const Properties = () => {
-  const [filtersState, filtersDispatch] = useFilters();
+  const searchParams = useSearchParams();
+  const queryParams = Object.fromEntries(searchParams);
 
+  const [filtersState, filtersDispatch] = useFilters();
   const [isList, setIsList] = useState<boolean>(true);
   const [gridProperties, setGridProperties] = useState<Property[]>([]);
   const [total, setTotal] = useState<number | null>(null);
@@ -34,18 +37,20 @@ const Properties = () => {
   const [selectedProperty, setSelectedProperty] = useState<Property | null>(
     null,
   );
+
+  const [filtersInitialized, setFiltersInitialized] = useState(false);
+
   const [hasMapRendered, setHasMapRendered] = useState<boolean>(false);
 
   const mapRef = useRef<google.maps.Map | null>(null);
   const buttonRef = useRef<HTMLButtonElement>(null);
 
-  const fetchGridData = async (
-    dontApplyFilter: boolean,
-    freshData?: boolean,
-    moreLoad?: boolean,
-  ) => {
+  const fetchGridData = async ({
+    dontApplyFilter = false,
+    freshData = false,
+    moreLoad = false,
+  } = {}) => {
     setIsLoading(true);
-
     const resp = await getGridProperties(
       freshData,
       moreLoad,
@@ -53,7 +58,6 @@ const Properties = () => {
       12,
       dontApplyFilter ? undefined : filtersState,
     );
-
     if (resp?.data) {
       if (freshData) {
         setGridProperties(resp.data);
@@ -121,15 +125,53 @@ const Properties = () => {
 
   const handleRefreshData = (dontApplyFilter?: boolean) => {
     if (isList) {
-      fetchGridData(dontApplyFilter, true);
+      fetchGridData({ dontApplyFilter: dontApplyFilter, freshData: true });
     } else {
       onBoundsChanged(dontApplyFilter);
+    }
+
+    if (Object.keys(queryParams).length > 0 && dontApplyFilter) {
+      history.replaceState(null, "", "/properties");
     }
   };
 
   useEffect(() => {
-    fetchGridData(true);
+    if (Object.keys(queryParams).length > 0) {
+      const updatedFilters = {
+        selectedCategoryId: queryParams?.selectedCategoryId
+          ? Number(queryParams?.selectedCategoryId)
+          : undefined,
+        selectedTypeId: queryParams?.selectedTypeId
+          ? Number(queryParams?.selectedTypeId)
+          : undefined,
+        minSelectedPrice: queryParams?.minSelectedPrice
+          ? Number(queryParams?.minSelectedPrice)
+          : undefined,
+        maxSelectedPrice: queryParams?.maxSelectedPrice
+          ? Number(queryParams?.maxSelectedPrice)
+          : undefined,
+        selectedProjectId: queryParams?.selectedProjectId
+          ? Number(queryParams?.selectedProjectId)
+          : undefined,
+        selectedPurposeId: queryParams?.selectedPurposeId
+          ? Number(queryParams?.selectedPurposeId)
+          : undefined,
+      };
+
+      filtersDispatch({
+        type: "homeSearch",
+        payload: updatedFilters,
+      });
+
+      setFiltersInitialized(true);
+    }
   }, []);
+
+  useEffect(() => {
+    if (filtersInitialized || Object.keys(queryParams).length === 0) {
+      fetchGridData({ freshData: true });
+    }
+  }, [filtersInitialized]);
 
   return (
     <div
@@ -156,7 +198,7 @@ const Properties = () => {
               <InfiniteScroll
                 dataLength={gridProperties.length}
                 next={() => {
-                  fetchGridData(false, filtersState?.filterIsSelected);
+                  fetchGridData({ moreLoad: filtersState?.filterIsSelected });
                 }}
                 hasMore={total !== gridProperties.length}
                 loader={isLoading && <PropertyListSkeleton />}
