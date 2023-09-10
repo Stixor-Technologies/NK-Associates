@@ -11,6 +11,7 @@ import InstagramIcon from "../../public/assets/icons/instagram-icon.svg";
 import LinkedinIcon from "../../public/assets/icons/linkedIn-icon.svg";
 import SnapIcon from "../../public/assets/icons/snapchat-icon.svg";
 import YtIcon from "../../public/assets/icons/youtube-icon.svg";
+import horizontalRule from "../../public/assets/icons/horizontal-rule.svg";
 
 const footerSocialLinks = [
   { pathName: "https://www.facebook.com/NKAssociatesOfficial/", image: FbIcon },
@@ -111,7 +112,7 @@ async function Footer() {
           </Link>
         </div>
       </div>
-      <hr className="w-full border flex flex-row bg-white" />
+      <Image src={horizontalRule} alt="Horizontal Rule" />
       <div className="flex flex-row flex-wrap w-full justify-around font-metropolis-extralight text-center text-nk-white text-[0.813rem] p-2">
         <div className="w-full md:w-fit">
           Copyright © 2023. All Rights Reserved on nkaccosiate
