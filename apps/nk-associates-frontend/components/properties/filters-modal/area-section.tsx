@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState, RefObject } from "react";
 import useFilters from "../../../utils/useFilters";
 
 import AreaRangeFilter from "../filters/area-range-filter";
@@ -7,9 +7,10 @@ import AreaDropdown from "./area-dropdown";
 type PropTypes = {
   areaRange: [number, number];
   areaUnitsList: { id: number; name: string }[];
+  modalElement: RefObject<HTMLDivElement>;
 };
 
-const AreaSection = ({ areaRange, areaUnitsList }: PropTypes) => {
+const AreaSection = ({ areaRange, areaUnitsList, modalElement }: PropTypes) => {
   const [filtersState, filtersDispatch] = useFilters();
   const [errorMinArea, setErrorMinArea] = useState({
     error: false,
@@ -97,7 +98,10 @@ const AreaSection = ({ areaRange, areaUnitsList }: PropTypes) => {
       <div className="w-full mb-4">
         <h3 className="text-lg font-metropolis-semibold capitalize">
           Area ({filtersState.selectedAreaUnit})
-          <AreaDropdown areaUnitsList={areaUnitsList} />
+          <AreaDropdown
+            areaUnitsList={areaUnitsList}
+            modalElement={modalElement}
+          />
         </h3>
       </div>
 
