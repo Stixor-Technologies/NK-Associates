@@ -5,6 +5,10 @@ import { SIMILAR_PROPERTIES_LIMIT } from "./constants";
 
 const applyFilters = (filters: FiltersStateType) => {
   let filtersString = "";
+  console.log(
+    "Is all selected",
+    filters?.selectedAreaUnit?.toLowerCase() !== "all",
+  );
   if (filters) {
     if (filters.minSelectedPrice) {
       filtersString += `&filters[price][$gte]=${filters.minSelectedPrice}`;
@@ -53,7 +57,6 @@ const applyFilters = (filters: FiltersStateType) => {
     if (filters.maxSelectedArea) {
       filtersString += `&filters[area][$lte]=${filters.maxSelectedArea}`;
     }
-    console.log(filters?.selectedAreaUnit?.toLowerCase() !== "all");
     if (filters?.selectedAreaUnit?.toLowerCase() !== "all") {
       filtersString += `&filters[area_unit][name][$eq]=${filters.selectedAreaUnit}`;
     }
@@ -75,6 +78,7 @@ export const getGridProperties = async (
   let url = `${BASE_URL}/api/properties?populate=*&pagination[start]=${start}&pagination[limit]=${limit}&sort[1]=id`;
 
   let filtersString = "";
+  console.log("fresh:", freshData, "moreLoad:", moreLoad);
   if (freshData || moreLoad) {
     filtersString = applyFilters(filters);
   }

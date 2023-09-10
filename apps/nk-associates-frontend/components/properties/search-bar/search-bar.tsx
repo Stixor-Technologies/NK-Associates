@@ -1,6 +1,4 @@
 import React, { FC, useState, useEffect, useReducer } from "react";
-import Image from "next/image";
-import FilterDropDown from "./filter-dropdown";
 import { SearchFilterProperties } from "../../../utils/types/types";
 import SearchBarTile from "./search-bar-tile";
 import FiltersModal from "../filters-modal";

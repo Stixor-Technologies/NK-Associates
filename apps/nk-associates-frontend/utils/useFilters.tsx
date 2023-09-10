@@ -105,6 +105,7 @@ const FiltersContext = createContext<
 >([initialState, () => {}]);
 
 const reducer = (state: FiltersStateType, action: ACTIONTYPE) => {
+  console.log("payload", action.payload);
   switch (action.type) {
     case "setSelectedCategoryId":
       return {
