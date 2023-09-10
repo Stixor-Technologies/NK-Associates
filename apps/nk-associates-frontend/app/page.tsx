@@ -1,5 +1,6 @@
 import HomeBanner from "../components/home-page/home-banner/hero-banner";
 import BannerSlider from "../components/home-page/home-banner/banner-slider";
+import HomeSearch from "../components/home-page/home-search";
 import AboutSummary from "../components/home-page/about-summary";
 import FeaturedProjects from "../components/home-page/featured-projects";
 import FeaturedProperties from "../components/home-page/featured-properties";
@@ -92,6 +93,9 @@ export default async function Home() {
       <HomeBanner>
         <BannerSlider banner_images={banner_images?.data} />
       </HomeBanner>
+
+      <HomeSearch />
+
       <AboutSummary
         about_summary={about_summary}
         summary_image1={summary_image1}

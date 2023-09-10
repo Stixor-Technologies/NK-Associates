@@ -24,11 +24,13 @@ const AreaRangeFilter = ({
         type: "setMaxSelectedArea",
         payload: range[thumbIndex],
       });
+      filtersDispatch({ type: "setFilterIsSelected", payload: true });
     } else {
       filtersDispatch({
         type: "setMinSelectedArea",
         payload: range[thumbIndex],
       });
+      filtersDispatch({ type: "setFilterIsSelected", payload: true });
     }
   };
 

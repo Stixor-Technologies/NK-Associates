@@ -85,7 +85,6 @@ const ContactForm: React.FC<ContactFormProps> = ({ categories, heading }) => {
           resetForm();
         }, 1000);
       } else {
-        console.log(data);
         setToastMessage(`Error: Error sending email`);
         setShowToast(true);
         setTimeout(() => setShowToast(false), 1000);

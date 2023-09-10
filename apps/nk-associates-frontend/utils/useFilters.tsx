@@ -72,6 +72,17 @@ type ACTIONTYPE =
       payload: boolean;
     }
   | {
+      type: "homeSearch";
+      payload?: {
+        selectedCategoryId?: number;
+        selectedTypeId?: number;
+        minSelectedPrice?: number;
+        maxSelectedPrice?: number;
+        selectedProjectId?: number;
+        selectedPurposeId?: number;
+      };
+    }
+  | {
       type: "resetFilters";
       payload?: {
         minSelectedArea: number;
@@ -147,13 +158,11 @@ const reducer = (state: FiltersStateType, action: ACTIONTYPE) => {
       return {
         ...state,
         minSelectedPrice: action.payload,
-        filterIsSelected: true,
       };
     case "setMaxSelectedPrice":
       return {
         ...state,
         maxSelectedPrice: action.payload,
-        filterIsSelected: true,
       };
     case "setBothSelectedPrice":
       return {
@@ -178,13 +187,11 @@ const reducer = (state: FiltersStateType, action: ACTIONTYPE) => {
       return {
         ...state,
         minSelectedArea: action.payload,
-        filterIsSelected: true,
       };
     case "setMaxSelectedArea":
       return {
         ...state,
         maxSelectedArea: action.payload,
-        filterIsSelected: true,
       };
     case "setBothSelectedArea":
       return {
@@ -197,12 +204,11 @@ const reducer = (state: FiltersStateType, action: ACTIONTYPE) => {
       return {
         ...state,
         selectedAreaUnit: action.payload,
-        filterIsSelected: true,
       };
     case "setFilterIsSelected":
       return {
         ...state,
-        filterIsSelected: false,
+        filterIsSelected: action.payload,
       };
     case "setLocation":
       return {
@@ -210,11 +216,18 @@ const reducer = (state: FiltersStateType, action: ACTIONTYPE) => {
         location: action.payload,
         filterIsSelected: true,
       };
+    case "homeSearch":
+      return {
+        ...initialState,
+        ...action.payload,
+        filterIsSelected: true,
+      };
     case "resetFilters":
       return {
         ...initialState,
         ...action.payload,
       };
+
     default:
       throw new Error("Couldn't find provided action");
   }

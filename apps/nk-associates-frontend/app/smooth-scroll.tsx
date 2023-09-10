@@ -13,7 +13,6 @@ const SmoothScrollContainer = ({ children }: { children: ReactNode }) => {
 
   useIsomorphicLayoutEffect(() => {
     gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
-
     // will be used later
 
     // const smootherInstance = ScrollSmoother.create({
