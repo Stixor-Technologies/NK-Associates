@@ -5,64 +5,64 @@ import { SIMILAR_PROPERTIES_LIMIT } from "./constants";
 
 const applyFilters = (filters: FiltersStateType) => {
   let filtersString = "";
-  console.log(
-    "Is all selected",
-    filters?.selectedAreaUnit?.toLowerCase() !== "all",
-  );
+
   if (filters) {
-    if (filters.minSelectedPrice) {
-      filtersString += `&filters[price][$gte]=${filters.minSelectedPrice}`;
+    if (filters?.minSelectedPrice) {
+      filtersString += `&filters[price][$gte]=${filters?.minSelectedPrice}`;
     }
 
-    if (filters.maxSelectedPrice) {
-      filtersString += `&filters[price][$lte]=${filters.maxSelectedPrice}`;
+    if (filters?.maxSelectedPrice) {
+      filtersString += `&filters[price][$lte]=${filters?.maxSelectedPrice}`;
     }
 
-    if (filters.selectedCategoryId) {
-      filtersString += `&filters[property_category][id][$eq]=${filters.selectedCategoryId}`;
+    if (filters?.selectedCategoryId) {
+      filtersString += `&filters[property_category][id][$eq]=${filters?.selectedCategoryId}`;
     }
 
-    if (filters.selectedTypeId) {
-      filtersString += `&filters[property_type][id][$eq]=${filters.selectedTypeId}`;
+    if (filters?.selectedTypeId) {
+      filtersString += `&filters[property_type][id][$eq]=${filters?.selectedTypeId}`;
     }
 
-    if (filters.selectedProjectId) {
-      filtersString += `&filters[project][id][$eq]=${filters.selectedProjectId}`;
+    if (filters?.selectedProjectId) {
+      filtersString += `&filters[project][id][$eq]=${filters?.selectedProjectId}`;
     }
 
-    if (filters.selectedPurposeId) {
-      filtersString += `&filters[property_purpose][id][$eq]=${filters.selectedPurposeId}`;
+    if (filters?.selectedPurposeId) {
+      filtersString += `&filters[property_purpose][id][$eq]=${filters?.selectedPurposeId}`;
     }
 
-    if (filters.selectedCompletionStatusId) {
-      filtersString += `&filters[completion_status][id][$eq]=${filters.selectedCompletionStatusId}`;
+    if (filters?.selectedCompletionStatusId) {
+      filtersString += `&filters[completion_status][id][$eq]=${filters?.selectedCompletionStatusId}`;
     }
 
-    if (filters.selectedRentFrequencyId) {
-      filtersString += `&filters[rent_frequency][id][$eq]=${filters.selectedRentFrequencyId}`;
+    if (filters?.selectedRentFrequencyId) {
+      filtersString += `&filters[rent_frequency][id][$eq]=${filters?.selectedRentFrequencyId}`;
     }
 
-    if (filters.selectedBathRoomsLimit) {
-      filtersString += `&filters[baths][$lte]=${filters.selectedBathRoomsLimit}`;
+    if (filters?.selectedBathRoomsLimit) {
+      filtersString += `&filters[baths][$lte]=${filters?.selectedBathRoomsLimit}`;
     }
 
-    if (filters.selectedRoomsLimit) {
-      filtersString += `&filters[bedrooms][$lte]=${filters.selectedRoomsLimit}`;
+    if (filters?.selectedRoomsLimit) {
+      filtersString += `&filters[bedrooms][$lte]=${filters?.selectedRoomsLimit}`;
     }
 
-    if (filters.minSelectedArea) {
-      filtersString += `&filters[area][$gte]=${filters.minSelectedArea}`;
+    if (filters?.minSelectedArea) {
+      filtersString += `&filters[area][$gte]=${filters?.minSelectedArea}`;
     }
 
-    if (filters.maxSelectedArea) {
-      filtersString += `&filters[area][$lte]=${filters.maxSelectedArea}`;
+    if (filters?.maxSelectedArea) {
+      filtersString += `&filters[area][$lte]=${filters?.maxSelectedArea}`;
     }
-    if (filters?.selectedAreaUnit?.toLowerCase() !== "all") {
-      filtersString += `&filters[area_unit][name][$eq]=${filters.selectedAreaUnit}`;
+    if (
+      filters?.selectedAreaUnit &&
+      filters?.selectedAreaUnit?.toLowerCase() !== "all"
+    ) {
+      filtersString += `&filters[area_unit][name][$eq]=${filters?.selectedAreaUnit}`;
     }
 
-    if (filters.location) {
-      filtersString += `&filters[property_location][id][$eq]=${filters.location}`;
+    if (filters?.location) {
+      filtersString += `&filters[property_location][id][$eq]=${filters?.location}`;
     }
   }
   return filtersString;
@@ -78,7 +78,6 @@ export const getGridProperties = async (
   let url = `${BASE_URL}/api/properties?populate=*&pagination[start]=${start}&pagination[limit]=${limit}&sort[1]=id`;
 
   let filtersString = "";
-  console.log("fresh:", freshData, "moreLoad:", moreLoad);
   if (freshData || moreLoad) {
     filtersString = applyFilters(filters);
   }
