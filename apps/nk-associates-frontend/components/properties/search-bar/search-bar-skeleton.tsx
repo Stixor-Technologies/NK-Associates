@@ -25,7 +25,9 @@ const SearchBarSkeleton = ({
         className={`hidden md:block w-full shadow-3xl animate-pulse bg-nk-skeleton-grey ${
           actListView && "my-6"
         } ${
-          actHome ? "h-20 my-6 rounded-full" : "h-16 lg:h-[4.25rem] rounded-xl "
+          actHome
+            ? "h-[4.5rem] lg:h-20 my-6 rounded-full"
+            : "h-16 lg:h-[4.25rem] rounded-xl "
         }`}
       ></div>
       {!actHome && (
