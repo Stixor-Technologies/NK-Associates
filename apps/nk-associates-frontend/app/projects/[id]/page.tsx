@@ -27,7 +27,6 @@ function ProjectDetails({ params: { id } }: ProjectDetailProps) {
 
   useEffect(() => {
     getProjectDetail(id).then((res) => {
-      console.log(res);
       setProject(res);
     });
   }, [id]);
