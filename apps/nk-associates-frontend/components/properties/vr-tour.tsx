@@ -6,6 +6,7 @@ import { Viewer } from "@photo-sphere-viewer/core";
 import { VirtualTourPlugin } from "@photo-sphere-viewer/virtual-tour-plugin";
 import { MarkersPlugin } from "@photo-sphere-viewer/markers-plugin";
 import gsap from "gsap";
+import { RefObject } from "react";
 
 import "@photo-sphere-viewer/core/index.css";
 import "@photo-sphere-viewer/virtual-tour-plugin/index.css";
@@ -23,6 +24,7 @@ type PropsType = {
   onClose: () => void;
   loading: boolean;
   slides: any;
+  tourButton: RefObject<HTMLButtonElement>;
 };
 
 const VRTourScreen = ({ open, onClose, loading, slides }: PropsType) => {
@@ -244,6 +246,7 @@ const VRTour = ({ vrTourId }: { vrTourId: number | undefined }) => {
         onClose={handleCloseVRTour}
         loading={loading}
         slides={slides}
+        tourButton={buttonRef}
       />
 
       <button
