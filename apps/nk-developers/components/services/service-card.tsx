@@ -1,9 +1,9 @@
 import React, { FC } from "react";
-import Image from "next/image";
+import Image, { StaticImageData } from "next/image";
 import { text } from "stream/consumers";
 
 interface CardProp {
-  image: string;
+  image: StaticImageData;
   text1: string;
   text2: string;
 }
