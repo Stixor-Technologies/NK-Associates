@@ -14,6 +14,7 @@ import ProjectDetailsVR from "../../../components/project-details/project-detail
 import { Suspense, useEffect, useState } from "react";
 import Spinner from "../../../components/spinner";
 import ThreeDModelLoading from "../../../components/project-details/threeD-model-loading";
+import VRTour from "../../../components/properties/vr-tour";
 
 type ProjectDetailProps = {
   params: {
@@ -26,6 +27,7 @@ function ProjectDetails({ params: { id } }: ProjectDetailProps) {
 
   useEffect(() => {
     getProjectDetail(id).then((res) => {
+      console.log(res);
       setProject(res);
     });
   }, [id]);
@@ -41,6 +43,8 @@ function ProjectDetails({ params: { id } }: ProjectDetailProps) {
       ? `${BASE_URL}${project?.attributes?.threeDModel?.data?.attributes?.url}`
       : undefined;
 
+  const vrTourId = project?.attributes?.vr_tour?.data?.id;
+
   return (
     <>
       {project ? (
@@ -48,6 +52,7 @@ function ProjectDetails({ params: { id } }: ProjectDetailProps) {
           <Suspense fallback={<ThreeDModelLoading />}>
             <ProjectDetailsVR modelURL={modelURL} />
           </Suspense>
+          <VRTour vrTourId={vrTourId ? vrTourId : undefined} />
           <ProjectIntroduction
             projectName={project?.attributes.title}
             description={project?.attributes.description}

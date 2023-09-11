@@ -258,7 +258,7 @@ const VRTour = ({ vrTourId }: { vrTourId: number | undefined }) => {
           alt="tour-button"
           className="transition-all delay-200 duration-500 group-hover:scale-110"
         />
-        <span className="overflow-hidden whitespace-nowrap text-[1.375rem] text-nk-black transition-all duration-200 ease-in-out group-hover:w-auto group-hover:text-nk-red">
+        <span className="overflow-hidden whitespace-nowrap text-[1.375rem] text-nk-black transition-all duration-200 ease-in-out group-hover:w-auto capitalize group-hover:text-nk-red">
           View
         </span>
       </button>
