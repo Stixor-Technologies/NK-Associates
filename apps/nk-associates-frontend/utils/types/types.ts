@@ -117,6 +117,9 @@ export interface Project {
     threeDModel: {
       data: { attributes: { url: string } };
     };
+    vr_tour: {
+      data: { id: number; attributes: { name: string } };
+    };
   };
 }
 

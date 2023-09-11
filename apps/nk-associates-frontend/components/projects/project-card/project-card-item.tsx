@@ -44,6 +44,7 @@ const ProjectCardItem = ({
       primaryColor={index % 2 == 0 ? true : false}
       cursorUtilityRef={cursorUtilityRef}
       actHome={actHome}
+      hasVrTour={project?.attributes?.vr_tour?.data ? true : false}
     />
   );
 };

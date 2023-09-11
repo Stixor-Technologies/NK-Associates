@@ -167,6 +167,11 @@
       "repeatable": true,
       "component": "comparison-images.comparison-images",
       "required": true
+    },
+    "vr_tour": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::vr-tour.vr-tour"
     }
   }
 }
