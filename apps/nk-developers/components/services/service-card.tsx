@@ -1,6 +1,4 @@
 import React, { FC } from "react";
-import Image, { StaticImageData } from "next/image";
-import { text } from "stream/consumers";
 
 interface CardProp {
   image: string;
