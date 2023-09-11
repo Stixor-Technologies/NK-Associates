@@ -3,7 +3,7 @@ import Image, { StaticImageData } from "next/image";
 import { text } from "stream/consumers";
 
 interface CardProp {
-  image: StaticImageData;
+  image: string;
   text1: string;
   text2: string;
 }
@@ -12,10 +12,10 @@ const ServiceCard: FC<CardProp> = ({ image, text1, text2 }) => {
     <div>
       <div className="h-[31.5rem] max-w-[24rem] lg:w-max-[15.875rem] mx-auto lg:mx-0">
         <div className="overflow-hidden rounded-2xl relative max-w-[24rem] lg:w-max-[15.875rem] h-[22.813rem]">
-          <Image
+          {/* eslint-disable */}
+          <img
             src={image}
             alt="Service Image"
-            fill
             className="object-cover transition-all duration-700 ease-in-out
             hover:scale-110"
           />

@@ -1,9 +1,5 @@
 import React from "react";
 import ServiceCard from "./service-card";
-import image from "../../public/assets/images/Image.png";
-import image1 from "../../public/assets/images/Image1.png";
-import image2 from "../../public/assets/images/Image2.png";
-import image3 from "../../public/assets/images/Image3.png";
 
 const ServicesList = () => {
   return (
@@ -20,28 +16,28 @@ const ServicesList = () => {
         </div>
         <div className="flex flex-col lg:flex-row gap-[3.125rem] justify-center mt-[2.5rem] mx-auto lg:mx-0">
           <ServiceCard
-            image={image}
+            image="/assets/images/image.png"
             text1="Find Home"
             text2="Lorem ipsum dolor sit amet consectetur. Tincidunt elit proin in non.
           Vulputate vivamus feugiat vitae viverra. Molestie diam dignissim
           tortor morbi rhoncus massa amet."
           />
           <ServiceCard
-            image={image1}
+            image="/assets/images/image1.png"
             text1="Find Home"
             text2="Lorem ipsum dolor sit amet consectetur. Tincidunt elit proin in non.
           Vulputate vivamus feugiat vitae viverra. Molestie diam dignissim
           tortor morbi rhoncus massa amet."
           />
           <ServiceCard
-            image={image2}
+            image="/assets/images/image2.png"
             text1="Find Home"
             text2="Lorem ipsum dolor sit amet consectetur. Tincidunt elit proin in non.
           Vulputate vivamus feugiat vitae viverra. Molestie diam dignissim
           tortor morbi rhoncus massa amet."
           />
           <ServiceCard
-            image={image3}
+            image="/assets/images/image3.png"
             text1="Find Home"
             text2="Lorem ipsum dolor sit amet consectetur. Tincidunt elit proin in non.
           Vulputate vivamus feugiat vitae viverra. Molestie diam dignissim
