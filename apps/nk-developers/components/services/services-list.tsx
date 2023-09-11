@@ -16,28 +16,28 @@ const ServicesList = () => {
         </div>
         <div className="flex flex-col lg:flex-row gap-[3.125rem] justify-center mt-[2.5rem] mx-auto lg:mx-0">
           <ServiceCard
-            image="/assets/images/image.png"
+            image="/assets/images/Image.png"
             text1="Find Home"
             text2="Lorem ipsum dolor sit amet consectetur. Tincidunt elit proin in non.
           Vulputate vivamus feugiat vitae viverra. Molestie diam dignissim
           tortor morbi rhoncus massa amet."
           />
           <ServiceCard
-            image="/assets/images/image1.png"
+            image="/assets/images/Image1.png"
             text1="Find Home"
             text2="Lorem ipsum dolor sit amet consectetur. Tincidunt elit proin in non.
           Vulputate vivamus feugiat vitae viverra. Molestie diam dignissim
           tortor morbi rhoncus massa amet."
           />
           <ServiceCard
-            image="/assets/images/image2.png"
+            image="/assets/images/Image2.png"
             text1="Find Home"
             text2="Lorem ipsum dolor sit amet consectetur. Tincidunt elit proin in non.
           Vulputate vivamus feugiat vitae viverra. Molestie diam dignissim
           tortor morbi rhoncus massa amet."
           />
           <ServiceCard
-            image="/assets/images/image3.png"
+            image="/assets/images/Image3.png"
             text1="Find Home"
             text2="Lorem ipsum dolor sit amet consectetur. Tincidunt elit proin in non.
           Vulputate vivamus feugiat vitae viverra. Molestie diam dignissim
