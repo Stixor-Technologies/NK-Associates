@@ -13,6 +13,7 @@ import "./project-card.css";
 import LocationIcon from "../../../public/assets/icons/area-marker.svg";
 import LocationIconSecondary from "../../../public/assets/images/LocationIconSecondary.svg";
 import NoImageIcon from "../../../public/assets/icons/no-image-svg.svg";
+import TourIcon from "../../../public/assets/icons/tour_icon.svg";
 
 interface ProjectCardProps {
   id: number;
@@ -27,6 +28,7 @@ interface ProjectCardProps {
   primaryColor?: boolean;
   actHome?: boolean;
   cursorUtilityRef: MutableRefObject<CursorUtility | null>;
+  hasVrTour: boolean;
 }
 
 const ProjectCard: React.FC<ProjectCardProps> = ({
@@ -42,6 +44,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
   primaryColor = true,
   actHome,
   cursorUtilityRef,
+  hasVrTour,
 }) => {
   const [windowWidth, setWindowWidth] = useState<number>(0);
   useEffect(() => {
@@ -83,6 +86,12 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
           onMouseLeave={hideAnimatedCursor}
           className="projects-carousel relative h-full min-h-[21rem] w-full sm:h-auto sm:w-[65%]"
         >
+          {hasVrTour && (
+            <div className="absolute w-10 h-10 right-3 top-3 z-10 md:right-5 md:top-5 md:w-16 md:h-16">
+              <Image src={TourIcon} fill alt="Virtual Tour" />
+            </div>
+          )}
+
           {imagesList?.length > 0 ? (
             <Swiper
               grabCursor={true}
