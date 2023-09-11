@@ -371,7 +371,7 @@ const SearchBar: FC<SearchBarProps> = ({
             !isListView && !actHome && "absolute top-28 right-12 z-10"
           }`}
         >
-          {filtersState?.filterIsSelected && (
+          {filtersState?.filterIsSelected && !actHome && (
             <button
               className={`flex items-center justify-center bg-white hover:text-nk-red rounded-full px-5 py-1.5 cursor-pointer shadow-3xl transition-colors ${
                 actHome && "hidden md:flex"
