@@ -91,7 +91,7 @@ const PriceRangeSection = ({ priceRange }: PropTypes) => {
 
   return (
     <>
-      <div className="w-full mb-4">
+      <div className="w-full mb-8">
         <h3 className="text-lg font-metropolis-semibold mb-4">Price range</h3>
         <PriceRangeFilter priceRange={priceRange} />
       </div>

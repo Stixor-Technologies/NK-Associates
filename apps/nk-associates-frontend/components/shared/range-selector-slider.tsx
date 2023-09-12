@@ -19,7 +19,9 @@ const RangeSelectorSlider = ({
 }: PropTypes) => {
   return (
     <ReactSlider
-      className={"w-full h-10 flex items-center cursor-pointer"}
+      className={
+        "w-full h-10 flex items-center cursor-pointer md:w-[90%] mx-auto"
+      }
       onChange={onChange}
       min={min}
       max={max}
@@ -27,20 +29,32 @@ const RangeSelectorSlider = ({
       disabled={disableSlider}
       renderThumb={(prop, state) => {
         const isMax = state.index;
-        let xPosition = isMax ? "right-8" : "left-8";
+        let xPosition = isMax ? "-top-4 -right-0" : "top-10 -left-0";
         return (
           <div data-thumb {...prop}>
-            <span
-              className={`px-2 bg-nk-white whitespace-nowrap capitalize font-metropolis-bold border rounded-full text-xs absolute -top-3 ${xPosition} ${
+            {/* <span
+              className={` whitespace-nowrap capitalize font-metropolis-bold rounded-full text-[9px] absolute ${xPosition} ${
                 disableSlider ? "text-gray-400" : ""
               }`}
             >
               {`${thumbLabel} ${state.valueNow}`}
-            </span>
+            </span> */}
+            <p
+              className={`whitespace-nowrap capitalize font-metropolis-bold rounded-full text-[10px] absolute ${xPosition} ${
+                disableSlider ? "text-gray-400" : ""
+              }`}
+            >
+              <span className="relative">
+                <span className="absolute bottom-2 w-full">
+                  {`${thumbLabel}`}
+                </span>
+                <span>{`${state.valueNow}`}</span>
+              </span>
+            </p>
           </div>
         );
       }}
-      thumbClassName={`w-8 h-8 border-[0.219rem] rounded-full bg-white cursor-grab border relative ${
+      thumbClassName={`w-8 h-8 border-[0.219rem] rounded-full cursor-grab border relative ${
         disableSlider
           ? "!bg-gray-200 border-gray-300"
           : "bg-nk-white border-nk-red"

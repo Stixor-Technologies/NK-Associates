@@ -53,7 +53,7 @@ const FilterDropDown: FC<DropDownProps> = ({
 
   return (
     <div
-      className={`w-full bg-nk-white px-6 py-6 shadow-lg max-h-[15.625rem] overflow-y-auto ${
+      className={`w-full bg-nk-white px-6 py-7 shadow-lg overflow-y-auto ${
         position === "start"
           ? "rounded-r-[1.25rem] rounded-bl-[1.25rem]"
           : "rounded-l-[1.25rem] rounded-br-[1.25rem]"
