@@ -10,6 +10,14 @@
     "nodeID": {
       "type": "integer",
       "required": true
+    },
+    "yaw": {
+      "required": true,
+      "type": "float"
+    },
+    "pitch": {
+      "type": "float",
+      "required": true
     }
   }
 }

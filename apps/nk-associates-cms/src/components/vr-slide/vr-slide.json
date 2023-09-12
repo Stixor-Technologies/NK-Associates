@@ -24,12 +24,6 @@
       "type": "text",
       "required": true
     },
-    "gps_position": {
-      "type": "component",
-      "repeatable": false,
-      "component": "vr-gps-position.vr-gps-position",
-      "required": true
-    },
     "vr_slide_links": {
       "displayName": "VR-Slide-Links",
       "type": "component",
