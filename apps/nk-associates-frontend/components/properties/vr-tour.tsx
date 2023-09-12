@@ -146,8 +146,6 @@ const VRTour = ({ vrTourId }: { vrTourId: number | undefined }) => {
       }
       setOpen(true);
       const resp = await fetchVRTourDetailsById(vrTourId);
-      console.log(resp);
-
       const sanitizedSlides = resp.data.attributes.slides?.map((slide) => {
         const panoData = {};
         if (slide?.pano_data?.fullWidth) {
