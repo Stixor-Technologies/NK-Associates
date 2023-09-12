@@ -22,7 +22,7 @@ const Sidebar: React.ForwardRefRenderFunction<HTMLDivElement, SidebarProps> = (
   const pathName: string = usePathname().slice(1);
 
   const menuItems: MenuItem[] = [
-    { pathName: "#", label: "Home" },
+    { pathName: "", label: "Home" },
     { pathName: "about-us", label: "About Us" },
     { pathName: "properties", label: "Property" },
     { pathName: "projects", label: "Projects" },
