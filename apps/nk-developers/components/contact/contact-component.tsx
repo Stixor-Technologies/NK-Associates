@@ -7,7 +7,7 @@ import instagramIcon from "../../public/assets/icons/instagram.svg";
 import youtubeIcon from "../../public/assets/icons/youtube.svg";
 import twitterIcon from "../../public/assets/icons/Twitter.svg";
 import callIcon from "../../public/assets/icons/call.svg";
-import Family from "../../public/assets/images/family.svg";
+import Family from "../../public/assets/images/family.png";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Link from "next/link";
@@ -115,10 +115,10 @@ export default function ContactComponent() {
         </div>
       </div>
 
-      <div className="flex-grow flex md:flex-col justify-center relative overflow-x-hidden min-h-[21rem] lg:min-h-[35rem]">
-        <div className="relative family-image translate-x-full">
-          <div className="bg-nk-pink max-h-[85%] w-full absolute inset-0 "></div>
-          <div className="relative max-w-[56.5rem] max-h-[40.875rem]">
+      <div className="flex-grow flex md:flex-col justify-start relative overflow-x-hidden min-h-[21rem] lg:min-h-[35rem]">
+        <div className=" family-image translate-x-full">
+          <div className="bg-nk-pink w-full h-full lg:w-[80%] lg:h-[90%] fixed lg:top-0 lg:right-0"></div>
+          <div className="relative max-w-[56.5rem] max-h-[40.875rem] overflow-hidden">
             <Image
               src={Family}
               alt="family"
