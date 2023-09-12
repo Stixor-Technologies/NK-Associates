@@ -11,7 +11,6 @@ import InstagramIcon from "../../public/assets/icons/instagram-icon.svg";
 import LinkedinIcon from "../../public/assets/icons/linkedIn-icon.svg";
 import SnapIcon from "../../public/assets/icons/snapchat-icon.svg";
 import YtIcon from "../../public/assets/icons/youtube-icon.svg";
-import horizontalRule from "../../public/assets/icons/horizontal-rule.svg";
 
 const footerSocialLinks = [
   { pathName: "https://www.facebook.com/NKAssociatesOfficial/", image: FbIcon },
@@ -112,14 +111,33 @@ async function Footer() {
           </Link>
         </div>
       </div>
-      <Image src={horizontalRule} alt="Horizontal Rule" />
-      <div className="flex flex-row flex-wrap w-full justify-around font-metropolis-extralight text-center text-nk-white text-[0.813rem] p-2">
-        <div className="w-full md:w-fit">
-          Copyright © 2023. All Rights Reserved on nkaccosiate
+      <hr className="border-nk-white sm:mx-auto w-full " />
+      <div className="container font-metropolis-thin">
+        <div className="flex flex-col justify-center gap-2 md:gap-10 p-2 text-xs md:flex-row md:items-center md:justify-between lg:mx-14 lg:text-lg xl:mx-24">
+          <span className="text-center text-xs md:text-base lg:text-lg">
+            Copyright © 2023. All Rights Reserved on nkaccosiate.
+          </span>
+          <div className="mx-auto items-center flex justify-center gap-6 py-2 pb-2 text-xs sm:mt-0 md:text-base lg:text-lg">
+            <Link
+              href="https://develop.d2vr74cwsk1kb.amplifyapp.com/terms-and-conditions"
+              className="bg-gradient-to-r from-nk-white to-nk-white bg-[length:0%_8%] bg-left-bottom bg-no-repeat font-metropolis-thin transition-all duration-500 ease-out hover:bg-[length:100%_8%]"
+            >
+              Terms of Use
+            </Link>
+            <Link
+              href="https://develop.d2vr74cwsk1kb.amplifyapp.com/privacy-policy"
+              className="bg-gradient-to-r from-nk-white to-nk-white bg-[length:0%_8%] bg-left-bottom bg-no-repeat font-metropolis-thin transition-all duration-500 ease-out hover:bg-[length:100%_8%]"
+            >
+              Privacy Policy
+            </Link>
+            <Link
+              href="#"
+              className="bg-gradient-to-r from-nk-white to-nk-white bg-[length:0%_8%] bg-left-bottom bg-no-repeat font-metropolis-thin transition-all duration-500 ease-out hover:bg-[length:100%_8%]"
+            >
+              Site Map
+            </Link>
+          </div>
         </div>
-        <div>Terms of Use</div>
-        <div>Privacy Policy</div>
-        <div>Site Map</div>
       </div>
     </footer>
   );
