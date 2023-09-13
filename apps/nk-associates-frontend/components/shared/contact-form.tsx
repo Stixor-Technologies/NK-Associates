@@ -132,30 +132,6 @@ const ContactForm: React.FC<ContactFormProps> = ({
               <div className="grid grid-cols-1 gap-6 py-6 md:grid-cols-2 md:py-8 2xl:px-4">
                 {formFields.map((fieldName) => {
                   const fieldType = fieldTypes[fieldName];
-                  // if (fieldType === "dropdown" && typeInquiries) {
-                  //   // Render a simple input field instead of the category dropdown
-                  //   return (
-                  //     <div key={"inquiries"}>
-                  //       <label
-                  //         htmlFor={"inquiries"}
-                  //         className="relative font-metropolis-thin capitalize text-nk-black md:text-base"
-                  //       >
-                  //         ID Number
-                  //         <sup className="top-[0.031rem] ml-[0.063rem] font-metropolis-thin text-lg text-nk-black">
-                  //           *
-                  //         </sup>
-                  //       </label>
-                  //       <Field
-                  //         type="text" // Use type="text" for a simple input field
-                  //         readOnly
-                  //         value={propertyId}
-                  //         name={"inquiries"}
-                  //         className={`mt-1 flex h-[3.625rem] w-full appearance-none items-center rounded-lg border px-4 py-4 font-metropolis-light text-nk-gray placeholder-nk-gray shadow-md placeholder:font-metropolis-thin placeholder:text-base focus:outline-none `}
-                  //       />
-                  //     </div>
-                  //   );
-                  // }
-
                   if (fieldType === "dropdown") {
                     return (
                       <div key={fieldName}>
@@ -211,7 +187,6 @@ const ContactForm: React.FC<ContactFormProps> = ({
                       </div>
                     );
                   }
-
                   if (fieldType === "textarea") {
                     return (
                       <div key={fieldName} className="md:col-span-2">
