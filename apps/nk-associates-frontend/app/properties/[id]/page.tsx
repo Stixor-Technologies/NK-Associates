@@ -17,10 +17,10 @@ import BedroomIcon from "../../../public/assets/icons/bedrooms-icon.svg";
 import AreaIcon from "../../../public/assets/icons/area-icon.svg";
 import AreaMarker from "../../../public/assets/icons/area-marker.svg";
 import PDFIcon from "../../../public/assets/icons/pdf-file-icon.svg";
-import LinkButton from "../../../components/button/link-button";
 import TileSection from "../../../components/properties/property-detail/tile-section";
 import ServicesOverview from "../../../components/shared/service-overview";
 import VRTour from "../../../components/properties/vr-tour";
+import InquiresModalComp from "../../../components/properties/inquiries-modal-comp";
 
 interface PropertyDetailProps {
   params: {
@@ -129,12 +129,7 @@ async function PropertyDetail({ params: { id } }: PropertyDetailProps) {
                 </div>
               </div>
 
-              <LinkButton
-                text="Inquires"
-                type="solid"
-                navigateTo="#"
-                className="mb-2 w-[11.75rem] text-lg sm:mb-0 md:w-[11.75rem]"
-              />
+              <InquiresModalComp />
             </div>
 
             {/* Tiles section */}
