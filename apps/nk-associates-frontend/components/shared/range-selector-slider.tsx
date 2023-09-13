@@ -54,7 +54,7 @@ const RangeSelectorSlider = ({
           </div>
         );
       }}
-      thumbClassName={`w-8 h-8 border-[0.219rem] rounded-full cursor-grab border relative ${
+      thumbClassName={`!z-0 w-8 h-8 border-[0.219rem] rounded-full cursor-grab border relative ${
         disableSlider
           ? "!bg-gray-200 border-gray-300"
           : "bg-nk-white border-nk-red"

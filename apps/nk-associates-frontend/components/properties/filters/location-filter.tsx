@@ -66,7 +66,6 @@ const LocationFilter = ({ locationsList }: PropsType) => {
   };
 
   const handleLocationChange = (selectOption, ACTIONTYPE) => {
-    console.log(ACTIONTYPE);
     let id = null;
 
     if (ACTIONTYPE?.action === "select-option") {

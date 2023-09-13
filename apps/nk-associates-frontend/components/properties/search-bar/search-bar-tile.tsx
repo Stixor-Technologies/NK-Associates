@@ -36,9 +36,9 @@ const SearchBarTile = ({
         : "Any";
     } else if (tile.name === "Project") {
       const selectedProject = filtersProperties?.projectsList?.filter(
-        (type) => +type.id === +filtersState.selectedProjectId,
+        (type) => +type.id === +filtersState.selectedProjectId[0],
       );
-      return selectedProject && selectedProject.length
+      return selectedProject && selectedProject?.length
         ? selectedProject[0].label
         : "Any";
     } else if (tile.name === "Purpose") {
@@ -50,7 +50,7 @@ const SearchBarTile = ({
         : "Any";
     } else if (tile.name === "Location") {
       const selectedLocation = filtersProperties?.propertyLocationList?.filter(
-        (type) => +type.id === +filtersState.location,
+        (type) => +type.id === +filtersState.location[0],
       );
       return selectedLocation && selectedLocation.length
         ? selectedLocation[0].label

@@ -11,6 +11,10 @@ type PropsType = {
 const ProjectFilter: FC<PropsType> = ({ projectsList }) => {
   const [filtersState, filtersDispatch] = useFilters();
 
+  const selectedProjects = projectsList.filter(
+    (project) => filtersState?.selectedProjectId?.includes(project?.id),
+  );
+
   const customStyles = {
     control: (base) => ({
       ...base,
@@ -19,8 +23,7 @@ const ProjectFilter: FC<PropsType> = ({ projectsList }) => {
       boxShadow: "none",
       fontSize: "14px",
       padding: "10px 12px",
-      zIndex: 3,
-      //   color: "#6B7280",
+      //color: "#6B7280",
     }),
 
     singleValue: (provided, state) => ({
@@ -38,13 +41,26 @@ const ProjectFilter: FC<PropsType> = ({ projectsList }) => {
     //   type: "setSelectedProjectId",
     //   payload: +e.target.value,
     // });
+
+    let id = null;
+
+    if (ACTIONTYPE?.action === "select-option") {
+      id = ACTIONTYPE?.option?.id;
+    } else if (ACTIONTYPE?.action === "remove-value") {
+      id = ACTIONTYPE?.removedValue?.id;
+    }
+
+    filtersDispatch({
+      type: "setSelectedProjectId",
+      payload: [id],
+    });
   };
 
   return (
     <div className="w-full relative mb-4">
       <Select
         closeMenuOnSelect={false}
-        // defaultValue={selectedLocations}
+        defaultValue={selectedProjects}
         placeholder="Select Projects"
         onChange={handleProjectChange}
         isMulti
