@@ -47,21 +47,10 @@ const LocationFilter = ({ locationsList }: PropsType) => {
   const customStyles = {
     control: (base) => ({
       ...base,
-      border: "0px solid #D1D5DB",
-      // This line disable the blue border
+      border: "0px",
       boxShadow: "none",
       fontSize: "14px",
       padding: "10px 12px",
-      //   color: "#6B7280",
-    }),
-
-    singleValue: (provided, state) => ({
-      ...provided,
-      // const opacity = state.isDisabled ? 0.5 : 1;
-      // const transition = 'opacity 300ms';
-      color: "#6B7280",
-
-      // return { ...provided, opacity, transition };
     }),
   };
 
@@ -82,21 +71,6 @@ const LocationFilter = ({ locationsList }: PropsType) => {
 
   return (
     <div className=" relative w-full">
-      {/* <select
-        name="Location"
-        className={`mt-1 h-[3.625rem] w-full rounded-lg border px-4 py-4 pr-14 font-metropolis-light text-nk-black placeholder-nk-gray shadow-md placeholder:font-metropolis-thin placeholder:text-base focus:outline-none focus:border-nk-gray focus:ring-nk-gray`}
-        placeholder="Select Location"
-        value={filtersState.location}
-        onChange={handleLocationChange}
-      >
-        <option value={undefined}>Select Location</option>
-        {locationsList?.map((location, index) => (
-          <option key={index} value={location.id}>
-            {location.name}
-          </option>
-        ))}
-      </select> */}
-
       <Select
         closeMenuOnSelect={false}
         components={{ DropdownIndicator: CustomDropDownIndicator }}

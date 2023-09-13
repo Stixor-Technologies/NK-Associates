@@ -3,23 +3,14 @@ import { createContext, useContext, useReducer } from "react";
 import { FiltersStateType } from "./types/types";
 
 type ACTIONTYPE =
-  | // {
-  //     type: "setLocation";
-  //     payload: string | number;
-  //   }
-  {
+  | {
       type: "setLocation";
-      // payload: string | number;
       payload: number[];
     }
   | {
       type: "setSelectedCategoryId";
       payload: string | number;
     }
-  //  {
-  //     type: "setSelectedProjectId";
-  //     payload: string | number;
-  //   }
   | {
       type: "setSelectedProjectId";
       payload: number[];
@@ -87,9 +78,8 @@ type ACTIONTYPE =
         selectedTypeId?: number;
         minSelectedPrice?: number;
         maxSelectedPrice?: number;
-        // selectedProjectId?: number;
         selectedProjectId?: number[];
-        location?: string[] | number[];
+        location?: number[];
         selectedPurposeId?: number;
       };
     }
@@ -109,7 +99,6 @@ const initialState = {
   selectedRentFrequencyId: undefined,
   selectedCategoryId: undefined,
   selectedTypeId: undefined,
-  // selectedProjectId: undefined,
   selectedProjectId: [],
   selectedPurposeId: undefined,
   minSelectedPrice: undefined,
@@ -119,7 +108,6 @@ const initialState = {
   minSelectedArea: undefined,
   maxSelectedArea: undefined,
   selectedAreaUnit: undefined,
-  // location: undefined,
   location: [],
   filterIsSelected: false,
 };
@@ -129,7 +117,6 @@ const FiltersContext = createContext<
 >([initialState, () => {}]);
 
 const reducer = (state: FiltersStateType, action: ACTIONTYPE) => {
-  // console.log("payload", action.payload);
   switch (action.type) {
     case "setSelectedCategoryId":
       return {
@@ -143,18 +130,7 @@ const reducer = (state: FiltersStateType, action: ACTIONTYPE) => {
         selectedTypeId: action.payload,
         filterIsSelected: true,
       };
-    // case "setSelectedProjectId":
-    //   return {
-    //     ...state,
-    //     selectedProjectId: action.payload,
-    //     filterIsSelected: true,
-    //   };
     case "setSelectedProjectId":
-      // return {
-      //   ...state,
-      //   selectedProjectId: [...state?.selectedProjectId, ...action.payload],
-      //   filterIsSelected: true,
-      // };
       const projectId = action.payload[0];
 
       if (state?.selectedProjectId?.includes(projectId)) {
@@ -249,12 +225,6 @@ const reducer = (state: FiltersStateType, action: ACTIONTYPE) => {
         ...state,
         filterIsSelected: action.payload,
       };
-    // case "setLocation":
-    //   return {
-    //     ...state,
-    //     location: action.payload,
-    //     filterIsSelected: true,
-    //   };
     case "setLocation":
       const locationId = action.payload[0];
       if (state?.location?.includes(locationId)) {

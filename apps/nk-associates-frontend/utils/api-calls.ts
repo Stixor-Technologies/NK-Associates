@@ -2,7 +2,6 @@ import { BASE_URL } from "./constants";
 import { Department, FiltersStateType, Property } from "./types/types";
 
 import { SIMILAR_PROPERTIES_LIMIT } from "./constants";
-import { filter } from "lodash";
 
 const applyFilters = (filters: FiltersStateType) => {
   let filtersString = "";
@@ -24,17 +23,11 @@ const applyFilters = (filters: FiltersStateType) => {
       filtersString += `&filters[property_type][id][$eq]=${filters?.selectedTypeId}`;
     }
 
-    // console.log(
-    //   filters?.selectedProjectId && filters.selectedProjectId.length > 0,
-    //   filters?.selectedProjectId,
-    // );
-
     if (filters?.selectedProjectId && filters?.selectedProjectId?.length > 0) {
       const selectedIds = filters?.selectedProjectId
         .map((id, index) => `filters[project][id][$in][${index}]=${id}`)
         .join("&");
 
-      // filtersString += `&filters[project][id][$eq]=${filters?.selectedProjectId}`;
       filtersString += `&${selectedIds}`;
     }
 
@@ -73,15 +66,11 @@ const applyFilters = (filters: FiltersStateType) => {
     }
 
     if (filters?.location && filters?.location?.length > 0) {
-      // filtersString += `&filters[property_location][id][$eq]=${filters?.location}`;
       const selectedIds = filters?.location
         .map(
           (id, index) => `filters[property_location][id][$in][${index}]=${id}`,
         )
         .join("&");
-
-      console.log(selectedIds);
-      // filtersString += `&filters[project][id][$eq]=${filters?.selectedProjectId}`;
       filtersString += `&${selectedIds}`;
     }
   }

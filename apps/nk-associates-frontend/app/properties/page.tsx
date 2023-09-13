@@ -137,7 +137,6 @@ const PropertyPage = () => {
 
   useEffect(() => {
     if (Object.keys(queryParams).length > 0) {
-      console.log(queryParams?.selectedProjectId);
       const updatedFilters = {
         selectedCategoryId: queryParams?.selectedCategoryId
           ? Number(queryParams?.selectedCategoryId)

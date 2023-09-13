@@ -16,7 +16,6 @@ import {
   fetchPropertyLocationList,
   fetchFilterProjectsList,
 } from "../../../utils/api-calls";
-import { filter } from "lodash";
 
 interface SearchBarProps {
   actHome?: boolean;
@@ -100,8 +99,6 @@ const SearchBar: FC<SearchBarProps> = ({
 
     const normalizedProjectsList = resp?.map((project) => {
       return {
-        // id: project.id,
-        // name: project.attributes.title,
         id: project.id,
         label: project.attributes.title,
       };
@@ -165,10 +162,6 @@ const SearchBar: FC<SearchBarProps> = ({
     const respPropertyLocation = await fetchPropertyLocationList();
 
     const propertyLocationList = respPropertyLocation?.map((status) => {
-      // return {
-      //   id: status?.id,
-      //   name: status?.attributes?.name,
-      // };
       return {
         id: status?.id,
         label: status?.attributes?.name,
@@ -267,7 +260,6 @@ const SearchBar: FC<SearchBarProps> = ({
       "selectedPurposeId",
       "location",
     ];
-    const filterObject = {};
 
     const params = new URLSearchParams();
 

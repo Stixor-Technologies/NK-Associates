@@ -32,13 +32,6 @@ const RangeSelectorSlider = ({
         let xPosition = isMax ? "-top-4 -right-0" : "top-10 -left-0";
         return (
           <div data-thumb {...prop}>
-            {/* <span
-              className={` whitespace-nowrap capitalize font-metropolis-bold rounded-full text-[9px] absolute ${xPosition} ${
-                disableSlider ? "text-gray-400" : ""
-              }`}
-            >
-              {`${thumbLabel} ${state.valueNow}`}
-            </span> */}
             <p
               className={`whitespace-nowrap capitalize font-metropolis-bold rounded-full text-[10px] absolute ${xPosition} ${
                 disableSlider ? "text-gray-400" : ""

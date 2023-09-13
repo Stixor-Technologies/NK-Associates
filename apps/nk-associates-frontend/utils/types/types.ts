@@ -178,7 +178,6 @@ export interface SearchFilterProperties {
   completionStatusList: { id: number; name: string }[] | undefined;
   rentFrequencyList: { id: number; name: string }[] | undefined;
   propertyPurposeList: { id: number; name: string }[] | undefined;
-  // propertyLocationList: { id: number; name: string }[] | undefined;
   propertyLocationList: { id: number; label: string }[] | undefined;
   projectsList: { id: number; label: string }[] | undefined;
   priceRange: [number, number];
@@ -191,7 +190,6 @@ export interface FiltersStateType {
   selectedRentFrequencyId: string | number | undefined;
   selectedCategoryId: string | number | undefined;
   selectedTypeId: string | number | undefined;
-  // selectedProjectId: string | number | undefined;
   selectedProjectId: number[];
   selectedPurposeId: string | number | undefined;
   minSelectedPrice: number;
@@ -201,7 +199,6 @@ export interface FiltersStateType {
   minSelectedArea: number;
   maxSelectedArea: number;
   selectedAreaUnit: string | undefined;
-  // location: string | undefined;
   location: number[];
   filterIsSelected: boolean;
 }
