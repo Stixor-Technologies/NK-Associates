@@ -192,7 +192,6 @@ export interface FiltersStateType {
   selectedTypeId: string | number | undefined;
   // selectedProjectId: string | number | undefined;
   selectedProjectId: number[];
-
   selectedPurposeId: string | number | undefined;
   minSelectedPrice: number;
   maxSelectedPrice: number;
@@ -201,7 +200,8 @@ export interface FiltersStateType {
   minSelectedArea: number;
   maxSelectedArea: number;
   selectedAreaUnit: string | undefined;
-  location: string | undefined;
+  // location: string | undefined;
+  location: number[];
   filterIsSelected: boolean;
 }
 

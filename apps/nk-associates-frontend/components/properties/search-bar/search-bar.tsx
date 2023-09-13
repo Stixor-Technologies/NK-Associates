@@ -164,8 +164,8 @@ const SearchBar: FC<SearchBarProps> = ({
 
     const propertyLocationList = respPropertyLocation?.map((status) => {
       return {
-        id: status.id,
-        name: status.attributes.name,
+        id: status?.id,
+        name: status?.attributes?.name,
       };
     });
 
@@ -259,6 +259,7 @@ const SearchBar: FC<SearchBarProps> = ({
       "maxSelectedPrice",
       "selectedProjectId",
       "selectedPurposeId",
+      "setLocation",
     ];
     const filterObject = {};
 

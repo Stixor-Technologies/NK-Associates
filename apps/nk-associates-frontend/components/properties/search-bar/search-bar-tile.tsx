@@ -38,7 +38,6 @@ const SearchBarTile = ({
       const selectedProject = filtersProperties?.projectsList?.filter(
         (type) => +type.id === +filtersState.selectedProjectId,
       );
-      console.log("selected project", selectedProject);
       return selectedProject && selectedProject.length
         ? selectedProject[0].name
         : "Any";
@@ -53,6 +52,7 @@ const SearchBarTile = ({
       const selectedLocation = filtersProperties?.propertyLocationList?.filter(
         (type) => +type.id === +filtersState.location,
       );
+      console.log("selected location", selectedLocation);
       return selectedLocation && selectedLocation.length
         ? selectedLocation[0].name
         : "Any";

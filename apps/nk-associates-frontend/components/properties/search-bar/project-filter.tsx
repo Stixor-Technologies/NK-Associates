@@ -4,7 +4,6 @@ const ProjectFilter = ({ projectsList }) => {
   const [filtersState, filtersDispatch] = useFilters();
 
   const handleSelectedProjectChange = (id: number) => {
-    console.log(filtersState?.selectedProjectId);
     filtersDispatch({
       type: "setSelectedProjectId",
       payload: [id],
@@ -52,7 +51,7 @@ const ProjectFilter = ({ projectsList }) => {
             
               `}
             >
-              {project.name}
+              {project?.name}
             </label>
           </li>
         ))}

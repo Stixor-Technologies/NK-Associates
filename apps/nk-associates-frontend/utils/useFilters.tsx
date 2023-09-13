@@ -3,9 +3,14 @@ import { createContext, useContext, useReducer } from "react";
 import { FiltersStateType } from "./types/types";
 
 type ACTIONTYPE =
-  | {
+  | // {
+  //     type: "setLocation";
+  //     payload: string | number;
+  //   }
+  {
       type: "setLocation";
-      payload: string | number;
+      // payload: string | number;
+      payload: number[];
     }
   | {
       type: "setSelectedCategoryId";
@@ -84,6 +89,7 @@ type ACTIONTYPE =
         maxSelectedPrice?: number;
         // selectedProjectId?: number;
         selectedProjectId?: number[];
+        location?: string[] | number[];
         selectedPurposeId?: number;
       };
     }
@@ -113,7 +119,8 @@ const initialState = {
   minSelectedArea: undefined,
   maxSelectedArea: undefined,
   selectedAreaUnit: undefined,
-  location: undefined,
+  // location: undefined,
+  location: [],
   filterIsSelected: false,
 };
 
@@ -242,12 +249,31 @@ const reducer = (state: FiltersStateType, action: ACTIONTYPE) => {
         ...state,
         filterIsSelected: action.payload,
       };
+    // case "setLocation":
+    //   return {
+    //     ...state,
+    //     location: action.payload,
+    //     filterIsSelected: true,
+    //   };
     case "setLocation":
-      return {
-        ...state,
-        location: action.payload,
-        filterIsSelected: true,
-      };
+      const locationId = action.payload[0];
+      if (state?.location?.includes(locationId)) {
+        const updatedSelectedLocationId = state?.location?.filter(
+          (id) => id !== locationId,
+        );
+
+        return {
+          ...state,
+          location: updatedSelectedLocationId,
+          filterIsSelected: updatedSelectedLocationId.length > 0,
+        };
+      } else {
+        return {
+          ...state,
+          location: [...state.location, locationId],
+          filterIsSelected: true,
+        };
+      }
     case "homeSearch":
       return {
         ...initialState,
