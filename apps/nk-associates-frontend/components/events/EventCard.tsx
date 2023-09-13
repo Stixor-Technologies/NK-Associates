@@ -84,9 +84,9 @@ const EventCard: FC<EventProps> = ({ dataItem, cursorUtilityRef }) => {
                   className="flex-shrink-0"
                 />
 
-                <div className="font-metropolis-light text-lg text-red-500">
+                <span className="font-metropolis-light line-clamp-1 text-lg text-red-500">
                   {dataItem?.attributes?.event_location}
-                </div>
+                </span>
               </div>
             )}
           </div>
