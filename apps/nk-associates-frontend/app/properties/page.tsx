@@ -155,8 +155,12 @@ const PropertyPage = () => {
         //   ? Number(queryParams?.selectedProjectId)
         //   : undefined,
         selectedProjectId: queryParams?.selectedProjectId
-          ? queryParams.selectedProjectId.split(",").map(Number)
+          ? queryParams.selectedProjectId?.split(",").map(Number)
           : [],
+        location: queryParams?.location
+          ? queryParams?.location?.split(",").map(Number)
+          : [],
+
         selectedPurposeId: queryParams?.selectedPurposeId
           ? Number(queryParams?.selectedPurposeId)
           : undefined,

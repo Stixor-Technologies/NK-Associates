@@ -259,7 +259,7 @@ const SearchBar: FC<SearchBarProps> = ({
       "maxSelectedPrice",
       "selectedProjectId",
       "selectedPurposeId",
-      "setLocation",
+      "location",
     ];
     const filterObject = {};
 
@@ -270,15 +270,15 @@ const SearchBar: FC<SearchBarProps> = ({
       if (value !== undefined) {
         // filterObject[key] = value;
         // params.set(key, value);
-        if (Array.isArray(value) && value.length > 0) {
-          params.set(key, value.join(","));
-        } else if (!Array.isArray(value)) {
+        if (Array?.isArray(value) && value?.length > 0) {
+          params.set(key, value?.join(","));
+        } else if (!Array?.isArray(value)) {
           // For non-array values, set them directly
           params.set(key, value);
         }
       }
     }
-    console.log(filterObject);
+    console.log("Filter Object", filterObject);
     const queryString = params.toString();
     console.log(queryString);
     router.push(`/properties?${queryString}`);
