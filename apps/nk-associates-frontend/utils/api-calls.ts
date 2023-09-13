@@ -34,7 +34,6 @@ const applyFilters = (filters: FiltersStateType) => {
         .map((id, index) => `filters[project][id][$in][${index}]=${id}`)
         .join("&");
 
-      console.log(selectedIds);
       // filtersString += `&filters[project][id][$eq]=${filters?.selectedProjectId}`;
       filtersString += `&${selectedIds}`;
     }

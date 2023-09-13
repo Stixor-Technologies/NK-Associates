@@ -100,8 +100,10 @@ const SearchBar: FC<SearchBarProps> = ({
 
     const normalizedProjectsList = resp?.map((project) => {
       return {
+        // id: project.id,
+        // name: project.attributes.title,
         id: project.id,
-        name: project.attributes.title,
+        label: project.attributes.title,
       };
     });
 
@@ -163,9 +165,13 @@ const SearchBar: FC<SearchBarProps> = ({
     const respPropertyLocation = await fetchPropertyLocationList();
 
     const propertyLocationList = respPropertyLocation?.map((status) => {
+      // return {
+      //   id: status?.id,
+      //   name: status?.attributes?.name,
+      // };
       return {
         id: status?.id,
-        name: status?.attributes?.name,
+        label: status?.attributes?.name,
       };
     });
 
@@ -268,19 +274,14 @@ const SearchBar: FC<SearchBarProps> = ({
     for (const key of selectedKeys) {
       const value = filtersState[key];
       if (value !== undefined) {
-        // filterObject[key] = value;
-        // params.set(key, value);
         if (Array?.isArray(value) && value?.length > 0) {
           params.set(key, value?.join(","));
         } else if (!Array?.isArray(value)) {
-          // For non-array values, set them directly
           params.set(key, value);
         }
       }
     }
-    console.log("Filter Object", filterObject);
     const queryString = params.toString();
-    console.log(queryString);
     router.push(`/properties?${queryString}`);
   };
 

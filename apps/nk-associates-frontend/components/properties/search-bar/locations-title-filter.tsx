@@ -1,7 +1,7 @@
 import useFilters from "../../../utils/useFilters";
 
 type PropsType = {
-  locationsList: { id: number; name: string }[];
+  locationsList: { id: number; label: string }[];
 };
 
 const LocationsTileFilter = ({ locationsList }: PropsType) => {
@@ -40,7 +40,7 @@ const LocationsTileFilter = ({ locationsList }: PropsType) => {
               {location.name}
             </label> */}
             <input
-              id={location?.name}
+              id={location?.label}
               className="peer hidden"
               type="checkbox"
               name="projects-checkbox"
@@ -49,12 +49,12 @@ const LocationsTileFilter = ({ locationsList }: PropsType) => {
               onChange={() => handleSelectedLocationChange(location?.id)}
             />
             <label
-              htmlFor={location?.name}
+              htmlFor={location?.label}
               className={`px-4 py-1.5 cursor-pointer bg-nk-light-gray rounded-full justify-center items-center w-full text-nk-black hover:text-nk-red peer-checked:bg-nk-red peer-checked:text-white text-sm transition-colors
             
               `}
             >
-              {location?.name}
+              {location?.label}
             </label>
           </li>
         ))}
