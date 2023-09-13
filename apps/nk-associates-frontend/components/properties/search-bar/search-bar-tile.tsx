@@ -38,6 +38,7 @@ const SearchBarTile = ({
       const selectedProject = filtersProperties?.projectsList?.filter(
         (type) => +type.id === +filtersState.selectedProjectId,
       );
+      console.log("selected project", selectedProject);
       return selectedProject && selectedProject.length
         ? selectedProject[0].name
         : "Any";

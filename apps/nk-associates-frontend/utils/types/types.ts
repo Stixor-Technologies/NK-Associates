@@ -190,7 +190,9 @@ export interface FiltersStateType {
   selectedRentFrequencyId: string | number | undefined;
   selectedCategoryId: string | number | undefined;
   selectedTypeId: string | number | undefined;
-  selectedProjectId: string | number | undefined;
+  // selectedProjectId: string | number | undefined;
+  selectedProjectId: number[];
+
   selectedPurposeId: string | number | undefined;
   minSelectedPrice: number;
   maxSelectedPrice: number;

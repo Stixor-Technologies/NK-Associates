@@ -11,9 +11,13 @@ type ACTIONTYPE =
       type: "setSelectedCategoryId";
       payload: string | number;
     }
+  //  {
+  //     type: "setSelectedProjectId";
+  //     payload: string | number;
+  //   }
   | {
       type: "setSelectedProjectId";
-      payload: string | number;
+      payload: number[];
     }
   | {
       type: "setSelectedPurposeId";
@@ -78,7 +82,8 @@ type ACTIONTYPE =
         selectedTypeId?: number;
         minSelectedPrice?: number;
         maxSelectedPrice?: number;
-        selectedProjectId?: number;
+        // selectedProjectId?: number;
+        selectedProjectId?: number[];
         selectedPurposeId?: number;
       };
     }
@@ -98,7 +103,8 @@ const initialState = {
   selectedRentFrequencyId: undefined,
   selectedCategoryId: undefined,
   selectedTypeId: undefined,
-  selectedProjectId: undefined,
+  // selectedProjectId: undefined,
+  selectedProjectId: [],
   selectedPurposeId: undefined,
   minSelectedPrice: undefined,
   maxSelectedPrice: undefined,
@@ -116,6 +122,7 @@ const FiltersContext = createContext<
 >([initialState, () => {}]);
 
 const reducer = (state: FiltersStateType, action: ACTIONTYPE) => {
+  console.log("payload", action.payload);
   switch (action.type) {
     case "setSelectedCategoryId":
       return {
@@ -129,12 +136,38 @@ const reducer = (state: FiltersStateType, action: ACTIONTYPE) => {
         selectedTypeId: action.payload,
         filterIsSelected: true,
       };
+    // case "setSelectedProjectId":
+    //   return {
+    //     ...state,
+    //     selectedProjectId: action.payload,
+    //     filterIsSelected: true,
+    //   };
     case "setSelectedProjectId":
-      return {
-        ...state,
-        selectedProjectId: action.payload,
-        filterIsSelected: true,
-      };
+      // return {
+      //   ...state,
+      //   selectedProjectId: [...state?.selectedProjectId, ...action.payload],
+      //   filterIsSelected: true,
+      // };
+      const projectId = action.payload[0];
+
+      if (state?.selectedProjectId?.includes(projectId)) {
+        const updatedSelectedProjectId = state?.selectedProjectId?.filter(
+          (id) => id !== projectId,
+        );
+
+        return {
+          ...state,
+          selectedProjectId: updatedSelectedProjectId,
+          filterIsSelected: updatedSelectedProjectId.length > 0,
+        };
+      } else {
+        return {
+          ...state,
+          selectedProjectId: [...state.selectedProjectId, projectId],
+          filterIsSelected: true,
+        };
+      }
+
     case "setSelectedPurposeId":
       return {
         ...state,

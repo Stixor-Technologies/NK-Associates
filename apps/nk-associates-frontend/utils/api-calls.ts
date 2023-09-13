@@ -23,8 +23,19 @@ const applyFilters = (filters: FiltersStateType) => {
       filtersString += `&filters[property_type][id][$eq]=${filters?.selectedTypeId}`;
     }
 
-    if (filters?.selectedProjectId) {
-      filtersString += `&filters[project][id][$eq]=${filters?.selectedProjectId}`;
+    // console.log(
+    //   filters?.selectedProjectId && filters.selectedProjectId.length > 0,
+    //   filters?.selectedProjectId,
+    // );
+
+    if (filters?.selectedProjectId && filters.selectedProjectId.length > 0) {
+      const selectedIds = filters?.selectedProjectId
+        .map((id, index) => `filters[project][id][$in][${index}]=${id}`)
+        .join("&");
+
+      console.log(selectedIds);
+      // filtersString += `&filters[project][id][$eq]=${filters?.selectedProjectId}`;
+      filtersString += `&${selectedIds}`;
     }
 
     if (filters?.selectedPurposeId) {
