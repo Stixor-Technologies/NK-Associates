@@ -16,6 +16,7 @@ import {
   fetchPropertyLocationList,
   fetchFilterProjectsList,
 } from "../../../utils/api-calls";
+import { filter } from "lodash";
 
 interface SearchBarProps {
   actHome?: boolean;
@@ -266,11 +267,19 @@ const SearchBar: FC<SearchBarProps> = ({
     for (const key of selectedKeys) {
       const value = filtersState[key];
       if (value !== undefined) {
-        filterObject[key] = value;
-        params.set(key, value);
+        // filterObject[key] = value;
+        // params.set(key, value);
+        if (Array.isArray(value) && value.length > 0) {
+          params.set(key, value.join(","));
+        } else if (!Array.isArray(value)) {
+          // For non-array values, set them directly
+          params.set(key, value);
+        }
       }
     }
+    console.log(filterObject);
     const queryString = params.toString();
+    console.log(queryString);
     router.push(`/properties?${queryString}`);
   };
 

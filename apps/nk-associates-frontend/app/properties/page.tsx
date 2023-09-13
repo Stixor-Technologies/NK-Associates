@@ -137,6 +137,7 @@ const PropertyPage = () => {
 
   useEffect(() => {
     if (Object.keys(queryParams).length > 0) {
+      console.log(queryParams?.selectedProjectId);
       const updatedFilters = {
         selectedCategoryId: queryParams?.selectedCategoryId
           ? Number(queryParams?.selectedCategoryId)
@@ -150,9 +151,12 @@ const PropertyPage = () => {
         maxSelectedPrice: queryParams?.maxSelectedPrice
           ? Number(queryParams?.maxSelectedPrice)
           : undefined,
+        // selectedProjectId: queryParams?.selectedProjectId
+        //   ? Number(queryParams?.selectedProjectId)
+        //   : undefined,
         selectedProjectId: queryParams?.selectedProjectId
-          ? Number(queryParams?.selectedProjectId)
-          : undefined,
+          ? queryParams.selectedProjectId.split(",").map(Number)
+          : [],
         selectedPurposeId: queryParams?.selectedPurposeId
           ? Number(queryParams?.selectedPurposeId)
           : undefined,
