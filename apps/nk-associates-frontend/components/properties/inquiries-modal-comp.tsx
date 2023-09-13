@@ -1,7 +1,7 @@
 "use client";
 import React, { useState } from "react";
 import LinkButton from "../button/link-button";
-import InquiriesModal from "./inquiries-modal";
+import InquiriesModal from "../shared/inquiries-modal";
 import { usePathname } from "next/navigation";
 
 const InquiresModal = () => {
@@ -20,11 +20,7 @@ const InquiresModal = () => {
 
   return (
     <div>
-      <InquiriesModal
-        onClose={closeModal}
-        open={isOpen}
-        propetyId={propertyId}
-      />
+      <InquiriesModal onClose={closeModal} open={isOpen} itemId={propertyId} />
       <LinkButton
         text="Inquiries"
         type="solid"

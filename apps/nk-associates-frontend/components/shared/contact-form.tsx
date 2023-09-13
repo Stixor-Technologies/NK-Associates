@@ -17,14 +17,14 @@ interface ContactFormProps {
     };
   }[];
   heading: string;
-  propertyId?: string;
+  itemId?: string;
   closeModal?: () => void;
 }
 
 const ContactForm: React.FC<ContactFormProps> = ({
   categories,
   heading,
-  propertyId,
+  itemId,
   closeModal,
 }) => {
   const typeInquiries = categories === undefined ? true : false;
@@ -54,7 +54,7 @@ const ContactForm: React.FC<ContactFormProps> = ({
     phone: "",
     subject: "",
     message: "",
-    ...(typeInquiries ? { inquiry: propertyId } : { category: "" }),
+    ...(typeInquiries ? { inquiry: itemId } : { category: "" }),
   };
 
   const formFields = [

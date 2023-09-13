@@ -2,15 +2,15 @@
 import { ModalOptions, Modal } from "flowbite";
 import React, { useEffect, useMemo, useRef } from "react";
 
-import ContactForm from "../shared/contact-form";
+import ContactForm from "./contact-form";
 
 interface ModalProps {
   open: boolean;
   onClose: () => void;
-  propetyId: string;
+  itemId: string;
 }
 
-const InquiriesModal: React.FC<ModalProps> = ({ open, onClose, propetyId }) => {
+const InquiriesModal: React.FC<ModalProps> = ({ open, onClose, itemId }) => {
   const modalElement = useRef<HTMLDivElement | null>(null);
 
   const closeModal = () => {
@@ -88,7 +88,7 @@ const InquiriesModal: React.FC<ModalProps> = ({ open, onClose, propetyId }) => {
           <div className="font-metropolis text-nk-black flex flex-wrap text-left text-[0.938rem] ">
             <ContactForm
               heading="Get in touch"
-              propertyId={propetyId}
+              itemId={itemId}
               closeModal={closeModal}
             />
           </div>
