@@ -7,15 +7,13 @@ import { VirtualTourPlugin } from "@photo-sphere-viewer/virtual-tour-plugin";
 import { MarkersPlugin } from "@photo-sphere-viewer/markers-plugin";
 import gsap from "gsap";
 import { RefObject } from "react";
+import { BASE_URL } from "../../utils/constants";
 
 import "@photo-sphere-viewer/core/index.css";
 import "@photo-sphere-viewer/virtual-tour-plugin/index.css";
 import "@photo-sphere-viewer/markers-plugin/index.css";
 
 import { fetchVRTourDetailsById } from "../../utils/api-calls";
-import { BASE_URL } from "../../utils/constants";
-
-const baseUrl = "https://photo-sphere-viewer-data.netlify.app/assets/";
 
 import TourIcon from "../../public/assets/icons/360-icon.svg";
 
@@ -46,46 +44,24 @@ const VRTourScreen = ({ open, onClose, loading, slides }: PropsType) => {
     }
   }, [open]);
 
-  const markerLighthouse = {
-    id: "marker-1",
-    imageLayer: baseUrl + "pictos/pin-red.png",
-    tooltip: "Cape Florida Light, Key Biscayne",
-    size: { width: 32, height: 32 },
-    anchor: "bottom center",
-    gps: [-80.155973, 25.666601, 29 + 3],
-  };
-
-  const customArrowStyle = {
-    color: 0xe74451,
-    hoverColor: 0xf42f4d,
-    outlineColor: 0xffffff,
-    size: 0.5,
-  };
-
-  const customMarkerStyle = {
-    element: null,
-    imageLayer: "/assets/images/ProjectSampleImage.png",
-    size: { width: 80, height: 80 },
-    anchor: "bottom center",
-  };
   useEffect(() => {
     if (ScreenRef?.current && open && !loading) {
       const viewer = new Viewer({
         container: ScreenRef.current,
-        loadingImg: baseUrl + "loader.gif",
+        loadingImg: "/assets/icons/nk-logo.svg",
         touchmoveTwoFingers: true,
         mousewheelCtrlKey: true,
-        defaultYaw: "130deg",
+        defaultYaw: "0deg",
         navbar: "zoom move caption fullscreen",
+        defaultZoomLvl: 0,
         plugins: [
           MarkersPlugin,
 
           [
             VirtualTourPlugin,
             {
-              positionMode: "gps",
-              renderMode: "3d",
-              arrowStyle: customArrowStyle,
+              positionMode: "manual",
+              renderMode: "markers",
             },
           ],
         ],
@@ -93,7 +69,6 @@ const VRTourScreen = ({ open, onClose, loading, slides }: PropsType) => {
 
       const virtualTour =
         viewer.getPlugin<VirtualTourPlugin>(VirtualTourPlugin);
-
       virtualTour.setNodes(slides);
     }
   }, [ScreenRef.current, open, loading]);
@@ -171,7 +146,6 @@ const VRTour = ({ vrTourId }: { vrTourId: number | undefined }) => {
       }
       setOpen(true);
       const resp = await fetchVRTourDetailsById(vrTourId);
-
       const sanitizedSlides = resp.data.attributes.slides?.map((slide) => {
         const panoData = {};
         if (slide?.pano_data?.fullWidth) {
@@ -201,9 +175,13 @@ const VRTour = ({ vrTourId }: { vrTourId: number | undefined }) => {
         if (slide?.pano_data?.poseRoll) {
           panoData["poseRoll"] = slide?.pano_data?.poseRoll;
         }
-        const slideLinks = slide?.vr_slide_links.map((link) => {
+        const slideLinks = slide?.vr_slide_links?.map((link) => {
           return {
             nodeId: link?.nodeID,
+            position: {
+              yaw: link?.yaw,
+              pitch: link?.pitch,
+            },
           };
         });
         return {
@@ -213,11 +191,6 @@ const VRTour = ({ vrTourId }: { vrTourId: number | undefined }) => {
           panorama: `${BASE_URL}${slide.panorama?.data?.attributes?.url}`,
           panoData: panoData,
           links: slideLinks,
-          gps: [
-            slide.gps_position.longitude,
-            slide.gps_position.latitude,
-            slide.gps_position.altitude,
-          ],
         };
       });
 
