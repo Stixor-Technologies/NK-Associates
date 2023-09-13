@@ -1,8 +1,6 @@
-import React, { FC, ChangeEvent } from "react";
+import React, { FC } from "react";
 import useFilters from "../../../utils/useFilters";
-import Image from "next/image";
-import ArrowDown from "../../../public/assets/icons/arrow-down.svg";
-import Select, { components, DropdownIndicatorProps } from "react-select";
+import Select, { StylesConfig } from "react-select";
 
 type PropsType = {
   projectsList: { id: number; label: string }[];
@@ -15,13 +13,20 @@ const ProjectFilter: FC<PropsType> = ({ projectsList }) => {
     (project) => filtersState?.selectedProjectId?.includes(project?.id),
   );
 
-  const customStyles = {
+  const customStyles: StylesConfig = {
     control: (base) => ({
       ...base,
       border: "0px",
       boxShadow: "none",
       fontSize: "14px",
       padding: "10px 12px",
+    }),
+    multiValueRemove: (styles) => ({
+      ...styles,
+      ":hover": {
+        cursor: "pointer",
+        color: "#E74451",
+      },
     }),
   };
 
