@@ -7,7 +7,7 @@ sudo chmod -R 777 /home/ubuntu/app
 
 cd /home/ubuntu/app
 sudo rm -rf /home/ubuntu/app/node_modules
-yarn install
+yarn install --no-cache
 # yarn turbo build --filter=stixor-cms
 
 # Navigate to your project directory and start the app
