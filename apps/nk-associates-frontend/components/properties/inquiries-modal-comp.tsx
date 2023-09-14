@@ -1,11 +1,11 @@
 "use client";
-import { usePathname } from "next/navigation";
+import React, { useState } from "react";
 import LinkButton from "../button/link-button";
 import InquiriesModal from "../shared/inquiries-modal";
-import { useState } from "react";
+import { usePathname } from "next/navigation";
 
-const InquiresCompnent = () => {
-  const projectId: string = usePathname().slice(1).split("/")[1];
+const InquiresModal = () => {
+  const propertyId: string = usePathname().slice(1).split("/")[1];
   const [isOpen, setIsOpen] = useState<boolean>(false);
 
   const openModal = () => {
@@ -20,14 +20,15 @@ const InquiresCompnent = () => {
 
   return (
     <div>
-      <InquiriesModal onClose={closeModal} open={isOpen} itemId={projectId} />
+      <InquiriesModal onClose={closeModal} open={isOpen} itemId={propertyId} />
       <LinkButton
-        text="Inquires"
+        text="Inquiries"
+        type="solid"
         clickEvent={openModal}
-        className="px-6 min-w-[8.125rem] lg:min-w-[11.75rem]"
+        className="mb-2 w-[11.75rem] text-lg sm:mb-0 md:w-[11.75rem]"
       />
     </div>
   );
 };
 
-export default InquiresCompnent;
+export default InquiresModal;

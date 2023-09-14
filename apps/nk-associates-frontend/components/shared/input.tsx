@@ -21,7 +21,7 @@ const Input: React.FC<InputProps> = ({
   isRequired = true,
 }) => {
   return (
-    <div className="">
+    <div>
       <label
         htmlFor={name}
         className="font-metropolis-thin text-nk-black relative capitalize md:text-base"
@@ -35,11 +35,12 @@ const Input: React.FC<InputProps> = ({
       </label>
       <Field
         name={name}
+        readOnly={name === "inquiry" ? true : false}
         className={`font-metropolis-light text-nk-black placeholder-nk-gray placeholder:font-metropolis-thin mt-1 h-[3.625rem] w-full rounded-lg border px-4 py-4 shadow-md placeholder:text-base focus:outline-none ${
           isTouched && hasError
             ? "border-nk-red"
             : " focus:border-nk-gray focus:ring-nk-gray"
-        }`}
+        } ${name === "inquiry" && "text-nk-gray"} `}
         placeholder={placeholder}
       />
       {isTouched && hasError && (
