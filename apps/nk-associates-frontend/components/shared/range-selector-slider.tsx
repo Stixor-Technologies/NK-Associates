@@ -33,7 +33,7 @@ const RangeSelectorSlider = ({
         return (
           <div data-thumb {...prop}>
             <p
-              className={`whitespace-nowrap capitalize font-metropolis-bold rounded-full text-[10px] absolute ${xPosition} ${
+              className={`whitespace-nowrap capitalize font-metropolis-bold rounded-full text-[0.625rem] absolute ${xPosition} ${
                 disableSlider ? "text-gray-400" : ""
               }`}
             >
