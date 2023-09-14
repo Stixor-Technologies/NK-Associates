@@ -108,7 +108,7 @@ const AreaSection = ({ areaRange, areaUnitsList, modalElement }: PropTypes) => {
 
       <AreaRangeFilter areaRange={areaRange} disableSlider={disableInputs} />
 
-      <div className="w-full mb-4 md:w-1/2 md:pr-2.5">
+      <div className="w-full mb-4 md:w-1/2 md:pr-2.5 mt-8">
         <label
           htmlFor="Min Area"
           className="font-metropolis-thin text-nk-black relative capitalize md:text-base"
@@ -141,7 +141,7 @@ const AreaSection = ({ areaRange, areaUnitsList, modalElement }: PropTypes) => {
         )}
       </div>
 
-      <div className="w-full mb-4 md:w-1/2 md:pl-2.5">
+      <div className="w-full mb-4 md:w-1/2 md:pl-2.5 mt-8">
         <label
           htmlFor="Max Area"
           className="font-metropolis-thin text-nk-black relative capitalize md:text-base"

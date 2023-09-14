@@ -100,7 +100,7 @@ const SearchBar: FC<SearchBarProps> = ({
     const normalizedProjectsList = resp?.map((project) => {
       return {
         id: project.id,
-        name: project.attributes.title,
+        label: project.attributes.title,
       };
     });
 
@@ -163,8 +163,8 @@ const SearchBar: FC<SearchBarProps> = ({
 
     const propertyLocationList = respPropertyLocation?.map((status) => {
       return {
-        id: status.id,
-        name: status.attributes.name,
+        id: status?.id,
+        label: status?.attributes?.name,
       };
     });
 
@@ -258,16 +258,19 @@ const SearchBar: FC<SearchBarProps> = ({
       "maxSelectedPrice",
       "selectedProjectId",
       "selectedPurposeId",
+      "location",
     ];
-    const filterObject = {};
 
     const params = new URLSearchParams();
 
     for (const key of selectedKeys) {
       const value = filtersState[key];
       if (value !== undefined) {
-        filterObject[key] = value;
-        params.set(key, value);
+        if (Array?.isArray(value) && value?.length > 0) {
+          params.set(key, value?.join(","));
+        } else if (!Array?.isArray(value)) {
+          params.set(key, value);
+        }
       }
     }
     const queryString = params.toString();

@@ -151,8 +151,11 @@ const PropertyPage = () => {
           ? Number(queryParams?.maxSelectedPrice)
           : undefined,
         selectedProjectId: queryParams?.selectedProjectId
-          ? Number(queryParams?.selectedProjectId)
-          : undefined,
+          ? queryParams.selectedProjectId?.split(",").map(Number)
+          : [],
+        location: queryParams?.location
+          ? queryParams?.location?.split(",").map(Number)
+          : [],
         selectedPurposeId: queryParams?.selectedPurposeId
           ? Number(queryParams?.selectedPurposeId)
           : undefined,
