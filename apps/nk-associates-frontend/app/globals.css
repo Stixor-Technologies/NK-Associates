@@ -28,7 +28,7 @@
   scrollbar-width: none;
 }
 
-.follower {
+/* .follower {
   position: fixed;
   top: 0;
   left: 0;
@@ -96,7 +96,7 @@ body:not(:hover) {
   .follower {
     display: none;
   }
-}
+} */
 
 .range-slider-track.range-slider-track-1 {
   background-color: #e74451;

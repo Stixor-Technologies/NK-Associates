@@ -7,7 +7,6 @@ import "swiper/css/effect-coverflow";
 import "swiper/css/pagination";
 import { Pagination } from "swiper/modules";
 import CursorUtility from "../../../utils/cursor-utility";
-import Carousel from "react-simply-carousel";
 
 import "./project-card.css";
 
@@ -48,8 +47,6 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
   hasVrTour,
 }) => {
   const [windowWidth, setWindowWidth] = useState<number>(0);
-  const [activeSlide, setActiveSlide] = useState(0);
-
   useEffect(() => {
     const handleResize = () => {
       setWindowWidth(window.innerWidth);
@@ -63,10 +60,12 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
   }, []);
 
   const showAnimatedCursor = () => {
+    console.log("enter");
     cursorUtilityRef?.current?.showCursor();
   };
 
   const hideAnimatedCursor = () => {
+    console.log("leave");
     cursorUtilityRef?.current?.hideCursor();
   };
 
@@ -102,6 +101,10 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
               initialSlide={0}
               pagination={true}
               modules={[Pagination]}
+              // touchStartPreventDefault={false}
+              allowTouchMove={true}
+              // touchStartPreventDefault={false}
+              // touchMoveStopPropagation={true}
               className="mySwiper carousel-slider h-full w-full"
             >
               {imagesList?.map((url, index) => {
