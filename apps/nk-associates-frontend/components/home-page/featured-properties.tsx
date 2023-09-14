@@ -1,10 +1,8 @@
 "use client";
-import React, { FC, useRef, useEffect } from "react";
+import React, { FC } from "react";
 import PropertyCard from "../properties/property-card";
 import { Property } from "../../utils/types/types";
 import LinkButton from "../button/link-button";
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 
 interface FeaturedPropertyProps {
   featuredProperties: Property[];
@@ -13,36 +11,10 @@ interface FeaturedPropertyProps {
 const FeaturedProperties: FC<FeaturedPropertyProps> = ({
   featuredProperties,
 }) => {
-  const featuredPropertiesSection = useRef<HTMLDivElement | null>(null);
-
-  useEffect(() => {
-    if (featuredProperties?.length > 0) {
-      gsap.set(".property-image", { scale: 1 });
-      const tl = gsap.timeline({
-        scrollTrigger: {
-          id: "featured-properties-trigger",
-          trigger: featuredPropertiesSection.current,
-          start: "top 80%",
-        },
-      });
-      tl.from(".property-image", {
-        scale: 2.5,
-        duration: 0.7,
-        stagger: 0.3,
-      });
-    }
-    return () => {
-      ScrollTrigger.getById("featured-properties-trigger")?.kill();
-    };
-  }, [featuredProperties]);
-
   return (
     <>
       {featuredProperties?.length > 0 && (
-        <div
-          ref={featuredPropertiesSection}
-          className="md:container py-10 md:py-16"
-        >
+        <div className="md:container py-10 md:py-16">
           <h6 className="text-[2rem] text-nk-black text-center font-metropolis-semibold mb-7 md:mb-9 md:text-4xl xl:px-0">
             Featured Properties
           </h6>
