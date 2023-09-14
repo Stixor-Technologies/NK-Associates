@@ -31,15 +31,22 @@ export default function Projects() {
       if (selectedButton != "All") {
         res = await getProjects({
           category: selectedButton,
-          start: projectsData.length,
+          start: buttonSwitched ? 0 : projectsData?.length,
         });
       } else {
-        res = await getProjects({ start: projectsData.length });
+        res = await getProjects({
+          start: buttonSwitched ? 0 : projectsData?.length,
+        });
       }
       const resJson = await res.json();
-      setProjectsData((prevProjects) => [...prevProjects, ...resJson.data]);
+      if (buttonSwitched) {
+        setProjectsData(resJson.data);
+      } else {
+        setProjectsData((prevProjects) => [...prevProjects, ...resJson.data]);
+      }
       setTotal(resJson.meta.pagination.total);
       setLoading(false);
+      setButtonSwitched(false);
     } catch (error) {
       setLoading(false);
       setError(true);
@@ -64,16 +71,12 @@ export default function Projects() {
   useEffect(() => {
     //if a button is switched (1) empty the array, (2) get new projects data, and (3) set button switched to false.
     if (buttonSwitched) {
-      setProjectsData([]);
-      if (projectsData.length == 0 && buttonSwitched) {
-        getProjectsData();
-        setButtonSwitched(false);
-      }
+      getProjectsData();
     }
   }, [buttonSwitched, projectsData]);
 
   useLayoutEffect(() => {
-    if (projectsData.length > -1) {
+    if (projectsData?.length > -1) {
       const ctx = gsap.context((self) => {
         if (self && self.selector) {
           const boxes = self.selector(".project-card");
@@ -127,36 +130,41 @@ export default function Projects() {
         </div>
 
         <div className="container my-12 flex flex-col items-center md:my-6">
-          {error && !loading ? (
-            <div className="text-md mb-18 font-metropolis-bold text-nk-black">
-              Error loading projects.
-            </div>
-          ) : projectsData.length == 0 && !loading ? (
-            <div className="min-h-[50vh] text-md mb-18 font-metropolis-bold text-nk-black">
-              No projects found.
-            </div>
+          {loading ? (
+            <ProjectListSkeleton />
           ) : (
             <div className="w-full overflow-hidden py-4">
               <InfiniteScroll
-                dataLength={projectsData.length}
+                dataLength={projectsData?.length ?? 0}
                 next={getProjectsData}
-                hasMore={total !== projectsData.length}
+                hasMore={total !== (projectsData?.length ?? 0)}
                 loader={loading && <ProjectListSkeleton />}
               >
                 <div
                   ref={main}
                   className="flex flex-col justify-center overflow-hidden"
                 >
-                  {projectsData.map((project, index) => (
-                    <ProjectCardItem
-                      key={index}
-                      project={project}
-                      index={index}
-                      cursorUtilityRef={cursorUtilityRef}
-                    />
-                  ))}
+                  {projectsData.length === 0 && !loading ? (
+                    <div className="min-h-[50vh] xl:min-h-[70vh] text-md flex items-center justify-center font-metropolis-bold text-nk-black">
+                      No projects found.
+                    </div>
+                  ) : (
+                    projectsData?.map((project, index) => (
+                      <ProjectCardItem
+                        key={index}
+                        project={project}
+                        index={index}
+                        cursorUtilityRef={cursorUtilityRef}
+                      />
+                    ))
+                  )}
                 </div>
               </InfiniteScroll>
+            </div>
+          )}
+          {error && !loading && (
+            <div className="text-md mb-18 font-metropolis-bold text-nk-black">
+              Error loading projects.
             </div>
           )}
         </div>

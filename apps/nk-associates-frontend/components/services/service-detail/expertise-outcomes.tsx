@@ -53,7 +53,7 @@ const ExpertiseOutcomes: FC<OutcomesProps> = ({
         scrollTrigger: {
           id: "expertiseTrigger",
           trigger: "[data-expertise-outcomes]",
-          start: "top 15%",
+          start: "top 7%",
           end: `+=${40 * panels.length}%`,
           pin: true,
           scrub: 1,
@@ -138,14 +138,14 @@ const ExpertiseOutcomes: FC<OutcomesProps> = ({
   return (
     <div
       data-expertise-outcomes
-      className="container relative lg:h-[70vh] lg:flex lg:flex-col lg:my-[5.625rem] lg:justify-center"
+      className="container mt-24 relative lg:h-[90vh] lg:mt-0 lg:flex lg:flex-col lg:my-[5.625rem] lg:justify-center"
     >
       {/* expertise */}
       <div
         data-expertise
-        className="panels my-10 flex flex-col w-full gap-10 sm:my-0 lg:flex-row lg:my-0 lg:absolute"
+        className="panels my-10 flex flex-col w-full gap-10 lg:gap-4 xl:gap-8 sm:my-0 lg:flex-row lg:my-0 lg:absolute"
       >
-        <div className="images-panel self-center w-[90%] max-w-[22rem] mx-auto -translate-x-full opacity-0 sm:w-full md:max-w-[27rem] lg:-translate-x-0 lg:w-[45%] lg:opacity-100 lg:-rotate-6 lg:mx-10">
+        <div className="images-panel self-center w-[90%] max-w-[22rem] mx-auto -translate-x-full opacity-0 sm:w-full md:max-w-[19.5rem] xl:max-w-[27rem] lg:-translate-x-0 lg:w-[45%] lg:opacity-100 lg:-rotate-6 lg:mx-10 2xl:max-w-[36rem] 2xl:w-[90%]">
           <div className="relative aspect-square w-full">
             <Image
               src={`${BASE_URL}${expertise_image || "/"}`}
@@ -158,11 +158,11 @@ const ExpertiseOutcomes: FC<OutcomesProps> = ({
         </div>
         <div className="text-panel self-center text-panel w-full bg-transparent text-center lg:text-left lg:w-[55%]">
           <div className="overflow-hidden">
-            <h2 className="text-[1.75rem] font-metropolis-bold text-nk-black md:text-5xl">
+            <h2 className="text-[1.75rem] font-metropolis-bold text-nk-black md:text-[2.125rem] xl:text-5xl 2xl:text-6xl">
               Areas of Expertise
             </h2>
           </div>
-          <p className="text-base font-metropolis-thin text-nk-black md:py-4 md:text-xl">
+          <p className="text-base font-metropolis-thin text-nk-black md:py-4 md:text-lg xl:text-xl 2xl:text-2xl">
             {expertise}
           </p>
         </div>
@@ -171,9 +171,9 @@ const ExpertiseOutcomes: FC<OutcomesProps> = ({
       {/* outcomes */}
       <div
         data-outcome
-        className="panels my-10 flex flex-col w-full gap-10 lg:flex-row lg:my-0 lg:absolute"
+        className="panels my-16 flex flex-col w-full gap-10 lg:gap-4 xl:gap-8 lg:flex-row lg:my-0 lg:absolute"
       >
-        <div className="images-panel self-center w-[90%] max-w-[22rem] mx-auto -translate-x-full opacity-0 sm:w-full md:max-w-[27rem] lg:-translate-x-0 lg:w-[45%] lg:translate-y-[300%] lg:opacity-100 lg:mx-10">
+        <div className="images-panel self-center w-[90%] max-w-[22rem] mx-auto -translate-x-full opacity-0 sm:w-full md:max-w-[19.5rem] xl:max-w-[27rem] lg:-translate-x-0 lg:w-[45%] lg:translate-y-[300%] lg:opacity-100 lg:mx-10 2xl:max-w-[36rem] 2xl:w-[90%]">
           <div className="relative aspect-square w-full">
             <Image
               src={`${BASE_URL}${outcome_image || "/"}`}
@@ -186,11 +186,11 @@ const ExpertiseOutcomes: FC<OutcomesProps> = ({
         </div>
         <div className="text-panel self-center w-full bg-transparent text-center lg:text-left lg:w-[55%] lg:opacity-0">
           <div className="overflow-hidden">
-            <h2 className="text-[1.75rem] font-metropolis-bold text-nk-black md:text-5xl">
+            <h2 className="text-[1.75rem] font-metropolis-bold text-nk-black md:text-[2.125rem] xl:text-5xl 2xl:text-6xl">
               Outcomes
             </h2>
           </div>
-          <p className="text-base font-metropolis-thin text-nk-black md:py-4 md:text-xl">
+          <p className="text-base font-metropolis-thin text-nk-black md:py-4 md:text-lg xl:text-xl 2xl:text-2xl">
             {outcome}
           </p>
         </div>

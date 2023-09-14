@@ -23,7 +23,7 @@ interface CarouselProps {
 }
 
 const Carousel: FC<CarouselProps> = ({ images, cursorUtilityRef }) => {
-  const shuffledImages = images?.slice().sort(() => Math.random() - 0.5);
+  const shuffledImages = images?.slice()?.sort(() => Math.random() - 0.5);
   const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
@@ -90,7 +90,7 @@ const Carousel: FC<CarouselProps> = ({ images, cursorUtilityRef }) => {
         modules={[EffectCoverflow, Pagination, Autoplay]}
         className="mySwiper carousel-slider mx-auto mt-7 h-full w-full"
       >
-        {shuffledImages.slice(0, 10)?.map((image, index) => {
+        {shuffledImages?.slice(0, 10)?.map((image, index) => {
           return (
             <SwiperSlide key={index} className="aspect-square drop-shadow-lg">
               <Image
@@ -98,6 +98,7 @@ const Carousel: FC<CarouselProps> = ({ images, cursorUtilityRef }) => {
                 alt="Carousel Image"
                 fill
                 className="h-full w-full border-8 border-white object-cover md:border-[1.5rem]"
+                priority
               />
             </SwiperSlide>
           );

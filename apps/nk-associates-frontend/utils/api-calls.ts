@@ -5,61 +5,64 @@ import { SIMILAR_PROPERTIES_LIMIT } from "./constants";
 
 const applyFilters = (filters: FiltersStateType) => {
   let filtersString = "";
+
   if (filters) {
-    if (filters.minSelectedPrice) {
-      filtersString += `&filters[price][$gte]=${filters.minSelectedPrice}`;
+    if (filters?.minSelectedPrice) {
+      filtersString += `&filters[price][$gte]=${filters?.minSelectedPrice}`;
     }
 
-    if (filters.maxSelectedPrice) {
-      filtersString += `&filters[price][$lte]=${filters.maxSelectedPrice}`;
+    if (filters?.maxSelectedPrice) {
+      filtersString += `&filters[price][$lte]=${filters?.maxSelectedPrice}`;
     }
 
-    if (filters.selectedCategoryId) {
-      filtersString += `&filters[property_category][id][$eq]=${filters.selectedCategoryId}`;
+    if (filters?.selectedCategoryId) {
+      filtersString += `&filters[property_category][id][$eq]=${filters?.selectedCategoryId}`;
     }
 
-    if (filters.selectedTypeId) {
-      filtersString += `&filters[property_type][id][$eq]=${filters.selectedTypeId}`;
+    if (filters?.selectedTypeId) {
+      filtersString += `&filters[property_type][id][$eq]=${filters?.selectedTypeId}`;
     }
 
-    if (filters.selectedProjectId) {
-      filtersString += `&filters[project][id][$eq]=${filters.selectedProjectId}`;
+    if (filters?.selectedProjectId) {
+      filtersString += `&filters[project][id][$eq]=${filters?.selectedProjectId}`;
     }
 
-    if (filters.selectedPurposeId) {
-      filtersString += `&filters[property_purpose][id][$eq]=${filters.selectedPurposeId}`;
+    if (filters?.selectedPurposeId) {
+      filtersString += `&filters[property_purpose][id][$eq]=${filters?.selectedPurposeId}`;
     }
 
-    if (filters.selectedCompletionStatusId) {
-      filtersString += `&filters[completion_status][id][$eq]=${filters.selectedCompletionStatusId}`;
+    if (filters?.selectedCompletionStatusId) {
+      filtersString += `&filters[completion_status][id][$eq]=${filters?.selectedCompletionStatusId}`;
     }
 
-    if (filters.selectedRentFrequencyId) {
-      filtersString += `&filters[rent_frequency][id][$eq]=${filters.selectedRentFrequencyId}`;
+    if (filters?.selectedRentFrequencyId) {
+      filtersString += `&filters[rent_frequency][id][$eq]=${filters?.selectedRentFrequencyId}`;
     }
 
-    if (filters.selectedBathRoomsLimit) {
-      filtersString += `&filters[baths][$lte]=${filters.selectedBathRoomsLimit}`;
+    if (filters?.selectedBathRoomsLimit) {
+      filtersString += `&filters[baths][$lte]=${filters?.selectedBathRoomsLimit}`;
     }
 
-    if (filters.selectedRoomsLimit) {
-      filtersString += `&filters[bedrooms][$lte]=${filters.selectedRoomsLimit}`;
+    if (filters?.selectedRoomsLimit) {
+      filtersString += `&filters[bedrooms][$lte]=${filters?.selectedRoomsLimit}`;
     }
 
-    if (filters.minSelectedArea) {
-      filtersString += `&filters[area][$gte]=${filters.minSelectedArea}`;
+    if (filters?.minSelectedArea) {
+      filtersString += `&filters[area][$gte]=${filters?.minSelectedArea}`;
     }
 
-    if (filters.maxSelectedArea) {
-      filtersString += `&filters[area][$lte]=${filters.maxSelectedArea}`;
+    if (filters?.maxSelectedArea) {
+      filtersString += `&filters[area][$lte]=${filters?.maxSelectedArea}`;
+    }
+    if (
+      filters?.selectedAreaUnit &&
+      filters?.selectedAreaUnit?.toLowerCase() !== "all"
+    ) {
+      filtersString += `&filters[area_unit][name][$eq]=${filters?.selectedAreaUnit}`;
     }
 
-    if (filters.selectedAreaUnit) {
-      filtersString += `&filters[area_unit][name][$eq]=${filters.selectedAreaUnit}`;
-    }
-
-    if (filters.location) {
-      filtersString += `&filters[property_location][id][$eq]=${filters.location}`;
+    if (filters?.location) {
+      filtersString += `&filters[property_location][id][$eq]=${filters?.location}`;
     }
   }
   return filtersString;
@@ -70,7 +73,7 @@ export const getGridProperties = async (
   moreLoad: boolean,
   start: number,
   limit = 12,
-  filters?: FiltersStateType,
+  filters?: FiltersStateType | undefined,
 ) => {
   let url = `${BASE_URL}/api/properties?populate=*&pagination[start]=${start}&pagination[limit]=${limit}&sort[1]=id`;
 
@@ -93,7 +96,7 @@ export const getMapProperties = async (
   northLat: number,
   westLng: number,
   eastLng: number,
-  filters?: FiltersStateType,
+  filters?: FiltersStateType | undefined,
 ) => {
   let url = `${BASE_URL}/api/properties?populate=*&filters[latitude][$between]=${southLat}&filters[latitude][$between]=${northLat}&filters[longitude][$between]=${westLng}&filters[longitude][$between]=${eastLng}&sort[1]=id`;
   let filtersString = applyFilters(filters);
@@ -507,5 +510,18 @@ export const getAbout = async () => {
     return data;
   } catch (error) {
     console.error("There was an error getting company information", error);
+  }
+};
+
+export const fetchVRTourDetailsById = async (id: number) => {
+  try {
+    const resp = await fetch(`${BASE_URL}/api/vr-tours/${id}?populate=deep`);
+    const data = await resp.json();
+    return data;
+  } catch (error) {
+    console.error(
+      `There was an error getting VR Tour information for this ID: ${id}`,
+      error,
+    );
   }
 };

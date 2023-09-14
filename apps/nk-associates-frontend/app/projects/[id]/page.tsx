@@ -1,5 +1,6 @@
+"use client";
+
 import Link from "next/link";
-import { gsap } from "gsap";
 import ProjectIntroduction from "../../../components/project-details/project-introduction";
 import ProjectGallery from "../../../components/project-details/project-gallery";
 import ProjectTimeline from "../../../components/project-details/project-timeline";
@@ -9,6 +10,11 @@ import ProjectMap from "../../../components/project-details/project-map";
 import { Project } from "../../../utils/types/types";
 import { getProjectDetail } from "../../../utils/api-calls";
 import { BASE_URL } from "../../../utils/constants";
+import ProjectDetailsVR from "../../../components/project-details/project-details-vr";
+import { Suspense, useEffect, useState } from "react";
+import Spinner from "../../../components/spinner";
+import ThreeDModelLoading from "../../../components/project-details/threeD-model-loading";
+import VRTour from "../../../components/properties/vr-tour";
 
 type ProjectDetailProps = {
   params: {
@@ -16,42 +22,71 @@ type ProjectDetailProps = {
   };
 };
 
-async function ProjectDetails({ params: { id } }: ProjectDetailProps) {
-  const { attributes: project }: Project = await getProjectDetail(id);
+function ProjectDetails({ params: { id } }: ProjectDetailProps) {
+  const [project, setProject] = useState<Project | null>(null);
 
-  const pdfUrl: string = project?.pdf?.data?.attributes?.url;
+  useEffect(() => {
+    getProjectDetail(id).then((res) => {
+      setProject(res);
+    });
+  }, [id]);
 
-  const picturesArr = project?.pictures?.data?.map((picture) => {
+  const pdfUrl: string = project?.attributes?.pdf?.data?.attributes?.url;
+
+  const picturesArr = project?.attributes.pictures?.data?.map((picture) => {
     return `${BASE_URL}${picture?.attributes?.url}`;
   });
 
+  const modelURL =
+    project?.attributes?.threeDModel && project?.attributes?.threeDModel.data
+      ? `${BASE_URL}${project?.attributes?.threeDModel?.data?.attributes?.url}`
+      : undefined;
+
+  const vrTourId = project?.attributes?.vr_tour?.data?.id;
+
   return (
     <>
-      <ProjectIntroduction
-        projectName={project.title}
-        description={project.description}
-        totalUnits={project.totalUnits}
-        unitsSold={project.unitsSold}
-        price={project.price}
-        coveredArea={project.coveredArea}
-        coveredAreaUnits={project.coveredAreaUnits}
-        category={project.category}
-        city={project.city}
-        types={project.types}
-        numberOfBathRooms={project.numberOfBathRooms}
-        numberOfRooms={project.numberOfRooms}
-      />
-      <ProjectGallery pictures={picturesArr} />
-      <ProjectTimeline />
-      <ProjectComparison projectId={+id} />
-      <ProjectOutcome
-        outcomeDescription={project.projectOutcomeDescription}
-        outcomeImage={`${BASE_URL}${project.projectOutcomeImage.data.attributes.url}`}
-      />
-      <ProjectMap
-        address={`${project.address}, ${project.city}`}
-        coordinates={{ lat: project.latitude, lng: project.longitude }}
-      />
+      {project ? (
+        <>
+          <Suspense fallback={<ThreeDModelLoading />}>
+            <ProjectDetailsVR modelURL={modelURL} />
+          </Suspense>
+          <VRTour vrTourId={vrTourId ? vrTourId : undefined} />
+          <ProjectIntroduction
+            projectName={project?.attributes.title}
+            description={project?.attributes.description}
+            totalUnits={project?.attributes.totalUnits}
+            unitsSold={project?.attributes.unitsSold}
+            price={project?.attributes.price}
+            coveredArea={project?.attributes.coveredArea}
+            coveredAreaUnits={project?.attributes.coveredAreaUnits}
+            category={project?.attributes.category}
+            city={project?.attributes.city}
+            types={project?.attributes.types}
+            numberOfBathRooms={project?.attributes.numberOfBathRooms}
+            numberOfRooms={project?.attributes.numberOfRooms}
+          />
+          <ProjectGallery pictures={picturesArr} />
+          <ProjectTimeline />
+          <ProjectComparison projectId={+id} />
+          <ProjectOutcome
+            outcomeDescription={project?.attributes.projectOutcomeDescription}
+            outcomeImage={`${BASE_URL}${project?.attributes.projectOutcomeImage.data.attributes.url}`}
+          />
+
+          <ProjectMap
+            address={`${project?.attributes.address}, ${project?.attributes.city}`}
+            coordinates={{
+              lat: project?.attributes.latitude,
+              lng: project?.attributes.longitude,
+            }}
+          />
+        </>
+      ) : (
+        <div className="min-h-screen flex">
+          <Spinner />
+        </div>
+      )}
 
       {pdfUrl && (
         <Link

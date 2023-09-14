@@ -22,11 +22,11 @@ const AboutUs = async () => {
   const goals = aboutInfo?.data?.attributes?.Goals;
   return (
     <div className="bg-right-top bg-no-repeat md:bg-nk-bg">
-      <div className="text-center text-black container">
-        <div className="text-[1.875rem] md:text-[3rem] font-metropolis-extrabold pt-[1rem]  md:pt-[3rem]">
+      <div className="text-center text-nk-black container">
+        <div className="text-[1.875rem] mb-6 md:text-[3rem] font-metropolis-bold pt-[1rem] md:pt-[3rem]">
           About Us
         </div>
-        <div className="pb-[1.563rem] text-[0.875rem] md:text-[1.25rem] md:pb-[2.563rem]">
+        <div className="pb-[1.563rem] text-[0.875rem] font-metropolis-thin md:text-[1.25rem] md:pb-[2.563rem]">
           Established in 2004, NK Associates & Builders Pvt Ltd is a prominent
           figure in real estate development, construction, and investment
           consultancy. Specializing in the bulk sourcing and sale of properties
@@ -42,7 +42,7 @@ const AboutUs = async () => {
           />
         </div>
       </div>
-      <div className="container md:h-[230vh]">
+      <div className="container lg:h-[230vh]">
         <Goals
           mission={mission}
           vision={vision}
@@ -51,7 +51,7 @@ const AboutUs = async () => {
         />
       </div>
 
-      <div className="container">
+      <div className="container mb-28 lg:mt-[20rem]">
         <CeoMessage
           ceoImage={ceoImage}
           ceoMessage={ceoMessage}
@@ -60,18 +60,11 @@ const AboutUs = async () => {
       </div>
 
       <ServicesOverview />
+      <MembersList />
 
-      <div className="xl:container pt-[3.25rem] lg:pt-[6.688rem] text-center">
-        <div className="text-nk-dark-gray font-metropolis-bold text-[2.25rem] text-center">
-          Meet Our Best-In-Class Team
-        </div>
-        <div className="pt-12 xl:-mr-[1.5rem]">
-          <MembersList />
-        </div>
-      </div>
       <div
         id="form"
-        className="pb-[2.958rem] md:pb-[3.603rem] pt-[5.05rem] lg:flex lg:justify-center lg:m-0"
+        className="container pb-[2.958rem] md:pb-[3.603rem] pt-[5.05rem] lg:flex lg:justify-center"
       >
         <ContactForm categories={categories} heading="Get In Touch" />
       </div>

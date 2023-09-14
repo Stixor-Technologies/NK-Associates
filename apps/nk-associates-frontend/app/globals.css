@@ -6,7 +6,7 @@
 
 @layer components {
   .container {
-    @apply w-full px-4 md:px-8 mx-auto;
+    @apply w-full px-2.5 md:px-4 mx-auto;
   }
 }
 
@@ -96,4 +96,8 @@ body:not(:hover) {
   .follower {
     display: none;
   }
+}
+
+.range-slider-track.range-slider-track-1 {
+  background-color: #e74451;
 }

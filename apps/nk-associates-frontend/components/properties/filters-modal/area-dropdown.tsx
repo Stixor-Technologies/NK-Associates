@@ -1,11 +1,12 @@
-import { useRef, useState, useMemo, useEffect } from "react";
+import React, { useRef, useState, useMemo, useEffect, RefObject } from "react";
 import useFilters from "../../../utils/useFilters";
 
 type PropTypes = {
   areaUnitsList: { id: number; name: string }[];
+  modalElement: RefObject<HTMLDivElement>;
 };
 
-const AreaDropdown = ({ areaUnitsList }: PropTypes) => {
+const AreaDropdown = ({ areaUnitsList, modalElement }: PropTypes) => {
   const [filtersState, filtersDispatch] = useFilters();
   const buttonRef = useRef<HTMLButtonElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
@@ -40,6 +41,10 @@ const AreaDropdown = ({ areaUnitsList }: PropTypes) => {
 
   const handleOptionClick = (option: string) => {
     filtersDispatch({ type: "setSelectedAreaUnit", payload: option });
+    filtersDispatch({ type: "setFilterIsSelected", payload: true });
+    setTimeout(() => {
+      setActive(false);
+    }, 500);
   };
 
   const handleButtonClick = () => {
@@ -55,19 +60,29 @@ const AreaDropdown = ({ areaUnitsList }: PropTypes) => {
     }
   };
 
-  const handleScroll = (e) => {
-    setScroll(window.scrollY);
+  const handleScroll = () => {
+    if (modalElement.current) {
+      const scrollPosition = modalElement.current.scrollTop;
+      setScroll(scrollPosition);
+    }
   };
 
   useEffect(() => {
+    const modalElementRef = modalElement.current;
     document.addEventListener("mousedown", handleOutsideClick);
-    window.addEventListener("scroll", handleScroll);
+
+    if (modalElementRef) {
+      modalElementRef.addEventListener("scroll", handleScroll);
+    }
 
     return () => {
       document.removeEventListener("mousedown", handleOutsideClick);
-      window.removeEventListener("scroll", handleScroll);
+
+      if (modalElementRef) {
+        modalElementRef.removeEventListener("scroll", handleScroll);
+      }
     };
-  }, []);
+  }, [modalElement]);
 
   return (
     <div ref={containerRef} className="inline">
@@ -102,7 +117,7 @@ const AreaDropdown = ({ areaUnitsList }: PropTypes) => {
             }`}
           >
             <ul>
-              {areaUnitsList.map((unit, index) => (
+              {areaUnitsList?.map((unit, index) => (
                 <li
                   key={index}
                   className="flex justify-between items-center mb-2 last-of-type:mb-0 cursor-pointer group"

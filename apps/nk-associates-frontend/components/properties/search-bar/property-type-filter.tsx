@@ -7,17 +7,28 @@ const PropertyTypeFilter = ({
 }) => {
   const [filtersState, filtersDispatch] = useFilters();
 
-  const selectedCategoryIndex = filtersState.selectedCategoryId
-    ? propertyTypesList.findIndex(
-        (category) => category.id === filtersState.selectedCategoryId,
+  const selectedCategoryIndex = filtersState?.selectedCategoryId
+    ? propertyTypesList?.findIndex(
+        (category) => category.id === filtersState?.selectedCategoryId,
       )
     : undefined;
 
   const selectedCategoryTypes = selectedCategoryIndex
-    ? propertyTypesList[selectedCategoryIndex].types
-    : propertyTypesList[0].types;
+    ? propertyTypesList[selectedCategoryIndex]?.types
+    : propertyTypesList[0]?.types;
 
   const handleSelectedCategoryChange = (id: number) => {
+    if (
+      filtersState?.selectedCategoryId &&
+      filtersState?.selectedTypeId &&
+      filtersState?.selectedCategoryId !== id
+    ) {
+      filtersDispatch({
+        type: "setSelectedTypeId",
+        payload: undefined,
+      });
+    }
+
     filtersDispatch({
       type: "setSelectedCategoryId",
       payload: id,
@@ -25,6 +36,8 @@ const PropertyTypeFilter = ({
   };
 
   const handleSelectedTypeChange = (id: number) => {
+    console.log("sub type", id);
+
     filtersDispatch({
       type: "setSelectedTypeId",
       payload: id,
@@ -34,7 +47,7 @@ const PropertyTypeFilter = ({
   return (
     <>
       <ul className="flex flex-wrap justify-center gap-2">
-        {propertyTypesList.map((val, index) => (
+        {propertyTypesList?.map((val, index) => (
           <li key={index}>
             <input
               id={val.name}
@@ -58,7 +71,7 @@ const PropertyTypeFilter = ({
       <hr className="my-4" />
 
       <ul className="flex flex-wrap justify-center gap-2">
-        {selectedCategoryTypes.map((val, index) => (
+        {selectedCategoryTypes?.map((val, index) => (
           <li key={index}>
             <input
               id={val.name}
@@ -66,7 +79,7 @@ const PropertyTypeFilter = ({
               type="radio"
               name="types-radio"
               value={val.id}
-              checked={filtersState.selectedTypeId === val.id}
+              checked={filtersState?.selectedTypeId === val.id}
               onChange={() => handleSelectedTypeChange(val.id)}
             />
             <label

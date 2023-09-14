@@ -7,9 +7,16 @@ import useFilters from "../../../utils/useFilters";
 type PropsType = {
   tile: { name: string };
   filtersProperties: SearchFilterProperties;
+  acthome?: boolean;
+  isLastChild?: boolean;
 };
 
-const SearchBarTile = ({ tile, filtersProperties }: PropsType) => {
+const SearchBarTile = ({
+  tile,
+  filtersProperties,
+  acthome,
+  isLastChild,
+}: PropsType) => {
   const searchFilterRef = useRef<HTMLDivElement>(null);
   const [activeFilter, setActiveFilter] = useState<boolean>(false);
 
@@ -57,7 +64,6 @@ const SearchBarTile = ({ tile, filtersProperties }: PropsType) => {
       const windowWidth = window.innerWidth;
 
       const tooCloseToTheEdge = windowWidth - containerPosition.left < 400;
-
       return {
         x: tooCloseToTheEdge
           ? containerPosition.right - 360
@@ -65,7 +71,7 @@ const SearchBarTile = ({ tile, filtersProperties }: PropsType) => {
         y:
           windowWidth > 1024
             ? containerPosition.top + containerPosition.height
-            : containerPosition.top + 60,
+            : containerPosition.top + (acthome ? 70 : 60),
         tooCloseToTheEdge,
       };
     }
@@ -126,58 +132,68 @@ const SearchBarTile = ({ tile, filtersProperties }: PropsType) => {
   return (
     <div
       ref={searchFilterRef}
-      className="min-w-fit flex-1 flex-grow-[2] bg-white"
+      className={` bg-white ${
+        acthome ? "max-w-[11.25rem] w-full" : "min-w-fit flex-1 flex-grow-[2]"
+      }`}
     >
-      <button
-        className="h-full w-full bg-nk-white px-4 py-2 text-left"
-        onClick={handleFilterOptionClick}
+      <div
+        className={`${acthome ? "my-1.5" : ""} ${
+          acthome && !isLastChild ? "border-r border-nk-gray" : ""
+        }`}
       >
-        <p
-          data-filter-tile-title={tile.name}
-          className="text-base lg:text-lg text-nk-gray"
+        <button
+          className="h-full w-full bg-nk-white px-4 py-2 text-left"
+          onClick={handleFilterOptionClick}
         >
-          {tile.name}
-        </p>
-
-        <div className="flex justify-between items-center">
           <p
-            className="text-sm lg:text-base text-nk-black mr-2 truncate whitespace-nowrap"
-            style={{ width: filterWidth + "rem" }}
-            title={filterValue}
+            data-filter-tile-title={tile.name}
+            className="text-base lg:text-lg text-nk-gray"
           >
-            {filterValue}
+            {tile.name}
           </p>
 
-          <svg
-            className="w-3 h-3"
-            viewBox="0 0 20 12"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
+          <div
+            className={`flex items-center ${acthome ? "" : "justify-between"}`}
           >
-            <path
-              d="M1.04639 1.0459L10.0697 10.0691L19.0929 1.0459"
-              stroke="#697388"
-              strokeWidth="2"
-            />
-          </svg>
-        </div>
-      </button>
+            <p
+              className="text-sm lg:text-base text-nk-black mr-2 truncate whitespace-nowrap"
+              style={{ width: filterWidth + "rem" }}
+              title={filterValue}
+            >
+              {filterValue}
+            </p>
 
-      {activeFilter && (
-        <div
-          className="w-[22.5rem] fixed z-50"
-          style={{
-            left: filterPosition.x,
-            top: filterPosition.y + 10,
-          }}
-        >
-          <FilterDropDown
-            position={filterPosition.tooCloseToTheEdge ? "end" : "start"}
-            filterName={tile.name}
-            filtersProperties={filtersProperties}
-          />
-        </div>
-      )}
+            <svg
+              className="w-3 h-3 shrink-0"
+              viewBox="0 0 20 12"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M1.04639 1.0459L10.0697 10.0691L19.0929 1.0459"
+                stroke="#697388"
+                strokeWidth="2"
+              />
+            </svg>
+          </div>
+        </button>
+
+        {activeFilter && (
+          <div
+            className="w-[22.5rem] fixed z-50"
+            style={{
+              left: filterPosition.x,
+              top: filterPosition.y + 10,
+            }}
+          >
+            <FilterDropDown
+              position={filterPosition.tooCloseToTheEdge ? "end" : "start"}
+              filterName={tile.name}
+              filtersProperties={filtersProperties}
+            />
+          </div>
+        )}
+      </div>
     </div>
   );
 };

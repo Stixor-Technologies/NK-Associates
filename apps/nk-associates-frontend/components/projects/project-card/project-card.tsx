@@ -14,6 +14,7 @@ import "./project-card.css";
 import LocationIcon from "../../../public/assets/icons/area-marker.svg";
 import LocationIconSecondary from "../../../public/assets/images/LocationIconSecondary.svg";
 import NoImageIcon from "../../../public/assets/icons/no-image-svg.svg";
+import TourIcon from "../../../public/assets/icons/tour_icon.svg";
 
 interface ProjectCardProps {
   id: number;
@@ -28,6 +29,7 @@ interface ProjectCardProps {
   primaryColor?: boolean;
   actHome?: boolean;
   cursorUtilityRef: MutableRefObject<CursorUtility | null>;
+  hasVrTour: boolean;
 }
 
 const ProjectCard: React.FC<ProjectCardProps> = ({
@@ -43,6 +45,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
   primaryColor = true,
   actHome,
   cursorUtilityRef,
+  hasVrTour,
 }) => {
   const [windowWidth, setWindowWidth] = useState<number>(0);
   const [activeSlide, setActiveSlide] = useState(0);
@@ -73,7 +76,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
   const textColor = primaryColor ? "text-white" : "text-black";
   const flexDirection = primaryColor ? "sm:flex-row-reverse" : "sm:flex-row";
   const cardHeight = actHome
-    ? "h-[35rem] sm:h-[16.875rem] md:h-[20.625rem] lg:h-[28.5rem]"
+    ? "h-[35rem] sm:h-[16.875rem] md:h-[20.625rem] lg:h-[30rem]"
     : "h-[35rem] sm:h-[21rem] md:h-[26rem] lg:h-[31.25rem]";
 
   return (
@@ -86,6 +89,12 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
           onMouseLeave={hideAnimatedCursor}
           className="projects-carousel z-0 relative h-full min-h-[21rem] w-full sm:h-auto sm:w-[65%]"
         >
+          {hasVrTour && (
+            <div className="absolute w-10 h-10 right-3 top-3 z-10 md:right-5 md:top-5 md:w-16 md:h-16">
+              <Image src={TourIcon} fill alt="Virtual Tour" />
+            </div>
+          )}
+
           {imagesList?.length > 0 ? (
             // <Swiper
             //   grabCursor={true}
@@ -109,6 +118,21 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
             //     );
             //   })}
             // </Swiper>
+
+            // {imagesList?.map((url, index) => {
+            //   return (
+            //     <SwiperSlide key={index}>
+            //       <Image
+            //         src={url}
+            //         alt="Carousel Image"
+            //         layout="fill"
+            //         objectFit="cover"
+            //         className="h-full w-full object-cover bg-gray-300"
+            //       />
+            //     </SwiperSlide>
+            //   );
+            // })}
+
             <Carousel
               containerProps={{
                 style: {
@@ -270,14 +294,15 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
             )}
 
             <div className="flex items-start">
-              <div className="mr-3 flex w-[12.25px] min-w-[1rem] justify-center md:w-[20px]">
+              <div className="mr-3 flex min-w-[1rem] justify-center">
                 <Image
                   src={
                     primaryColor ? LocationIconSecondary.src : LocationIcon.src
                   }
-                  width={windowWidth < 768 ? 12.25 : 20}
-                  height={windowWidth < 768 ? 17.5 : 28}
-                  alt=""
+                  width={20}
+                  height={28}
+                  alt="location-marker"
+                  className="w-3 md:w-4"
                 />
               </div>
               <div

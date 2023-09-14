@@ -85,7 +85,6 @@ const ContactForm: React.FC<ContactFormProps> = ({ categories, heading }) => {
           resetForm();
         }, 1000);
       } else {
-        console.log(data);
         setToastMessage(`Error: Error sending email`);
         setShowToast(true);
         setTimeout(() => setShowToast(false), 1000);
@@ -105,7 +104,7 @@ const ContactForm: React.FC<ContactFormProps> = ({ categories, heading }) => {
     >
       {({ errors, touched }) => (
         <>
-          <div className="rounded-3xl bg-nk-light-gray px-4 py-7 md:px-12 md:py-14 w-[47rem] container 2xl:w-full">
+          <div className="rounded-3xl bg-nk-light-gray px-4 py-7 md:px-12 md:py-14 container ">
             {showToast && <Toast message={toastMessage} />}
             <h4 className="text-center font-metropolis-bold text-[1.75rem] text-nk-black md:text-5xl">
               {heading}
@@ -222,7 +221,7 @@ const ContactForm: React.FC<ContactFormProps> = ({ categories, heading }) => {
               </div>
               <div className="mx-auto mt-4 flex h-12 cursor-pointer items-center justify-center rounded-full bg-nk-red sm:w-[22.5rem] md:w-[25rem]">
                 {loading ? (
-                  <Spinner color="fill-white" height="h-7" width="w-10" />
+                  <Spinner color="text-white" height="h-7" width="w-10" />
                 ) : (
                   <LinkButton
                     text="Submit"

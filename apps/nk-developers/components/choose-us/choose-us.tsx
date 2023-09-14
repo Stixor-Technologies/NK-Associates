@@ -33,10 +33,10 @@ const ChooseUs = () => {
         <Image src={Valley} alt="Valley" width={618} height={610} />
       </div>
       <div className="flex-col max-w-[42.375rem]">
-        <h1 className="text-nk-red font-metropolis-bold text-[2.673rem] lg:pt-[4.188rem]">
+        <h1 className="text-nk-red font-metropolis-bold text-[2.673rem] lg:pt-[4.188rem] text-center md:text-left">
           Why you should choose us.
         </h1>
-        <div className="text-nk-dark-gray font-metropolis-light text-[1.313rem] pt-[1.625rem] flex-col">
+        <div className="text-nk-dark-gray font-metropolis-light text-[1.313rem] pt-[1.625rem] flex-col text-center md:text-left">
           <p>
             Lorem ipsum dolor sit amet consectetur. Non morbi sed quam quis sed
             phasellus sit malesuada. Turpis a tristique eget porttitor a in

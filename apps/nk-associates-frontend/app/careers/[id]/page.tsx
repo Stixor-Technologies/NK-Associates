@@ -105,7 +105,7 @@ function JobDetail({ params: { id } }: JobDetailProps) {
           <LinkButton
             text="Apply Now"
             type="solid"
-            className="h-[2.75rem] md:h-[3.063rem] w-[19.25] md:w-[22.125rem] border-2 "
+            className="h-[2.75rem] md:h-[3.063rem] w-[19.25rem] md:w-[22.125rem] border-2 "
             clickEvent={openModal}
           />
 
@@ -173,7 +173,7 @@ function JobDetail({ params: { id } }: JobDetailProps) {
             <LinkButton
               text="Apply Now"
               type="solid"
-              className="h-[2.75rem] md:h-[3.063rem] w-[19.25] md:w-[22.125rem] border-2"
+              className="h-[2.75rem] md:h-[3.063rem] w-[19.25rem] md:w-[22.125rem] border-2"
               clickEvent={openModal}
             />
           </div>

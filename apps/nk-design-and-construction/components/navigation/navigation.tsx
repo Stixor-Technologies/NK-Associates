@@ -18,7 +18,7 @@ const Navigation = () => {
           </div>
           <div className="flex justify-between">
             <Link
-              href="#"
+              href="https://develop.d2vr74cwsk1kb.amplifyapp.com/contact"
               className=" mr-2 mt-4 h-10 cursor-pointer flex flex-row items-center rounded-full border border-nk-red bg-transparent px-6 text-center font-metropolis capitalize text-nk-red md:z-50"
             >
               Get in touch

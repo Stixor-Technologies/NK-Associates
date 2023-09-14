@@ -12,17 +12,18 @@ const ValuesCard: FC<CardProps> = ({ about }) => {
   const cardIcon = about?.card_icon?.data?.attributes?.url;
 
   return (
-    <div className="card lg:absolute w-full mb-12 lg:mb-0 overflow-hidden lg:overflow-visible">
+    <div className="card lg:absolute w-full mb-28 lg:mb-0 overflow-hidden lg:overflow-visible">
       <div className="flex flex-col lg:flex-row gap-2 lg:gap-10 xl:gap-5 px-0 about-card">
-        <div className="relative images-about max-w-[28rem]  w-full min-h-[38rem] lg:min-h-[40rem] mx-auto mb-8 lg:mb-0 translate-x-[200%] lg:translate-x-0 lg:translate-y-[250%]">
+        <div className="relative images-about max-w-[28rem] w-full h-[30rem] sm:max-w-[34rem] sm:h-[36rem] lg:max-w-[25rem] lg:h-[34rem] 2xl:h-[38rem] 2xl:max-w-[28rem] mx-auto mb-8 lg:mb-0 translate-x-[200%] lg:translate-x-0 lg:translate-y-[250%]">
           <Image
             src={`${BASE_URL}${cardImage || "/"}`}
             alt="Card Image 1"
             fill
             className="object-cover rounded-2xl lg:-rotate-[8deg]"
+            priority
           />
         </div>
-        <div className="text-about flex flex-col font-metropolis text-xl text-center lg:text-left text-nk-dark-gray lg:w-[55%] my-auto lg:opacity-0">
+        <div className="text-about flex flex-col font-metropolis text-xl text-center lg:text-left text-nk-black lg:w-[55%] my-auto lg:opacity-0">
           <div className="relative max-w-[6rem] w-full min-h-[5rem] my-1 mx-auto lg:mx-0">
             <Image src={`${BASE_URL}${cardIcon || "/"}`} alt="Card Icon" fill />
           </div>
@@ -45,16 +46,16 @@ const ValuesCard: FC<CardProps> = ({ about }) => {
                     width={32}
                   />
                 </div>
-                <div className="font-metropolis-light text-nk-dark-gray text-left text-base lg:pr-10">
+                <div className="font-metropolis-light text-nk-black text-left text-base lg:pr-10">
                   {item.description.includes(":") ? (
-                    <p>
+                    <p className="font-metropolis-thin">
                       <span className="font-metropolis-semibold text-[1.375rem]]">
                         {item.description.split(":")[0].trim() + " : "}
                       </span>
                       {item.description.split(":")[1]}
                     </p>
                   ) : (
-                    <p>
+                    <p className="font-metropolis-thin">
                       <span>{item.description}</span>
                     </p>
                   )}

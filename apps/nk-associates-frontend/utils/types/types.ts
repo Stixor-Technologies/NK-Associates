@@ -73,6 +73,9 @@ export interface Property {
     property_type: {
       data: { id: number; attributes: { name: string } };
     };
+    vr_tour: {
+      data: { id: number; attributes: { name: string } };
+    };
   };
   id: number;
 }
@@ -113,6 +116,9 @@ export interface Project {
     }[];
     threeDModel: {
       data: { attributes: { url: string } };
+    };
+    vr_tour: {
+      data: { id: number; attributes: { name: string } };
     };
   };
 }

@@ -7,7 +7,7 @@ import instagramIcon from "../../public/assets/icons/instagram.svg";
 import youtubeIcon from "../../public/assets/icons/youtube.svg";
 import twitterIcon from "../../public/assets/icons/Twitter.svg";
 import callIcon from "../../public/assets/icons/call.svg";
-import Family from "../../public/assets/images/family.svg";
+import Family from "../../public/assets/images/family.png";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Link from "next/link";
@@ -15,6 +15,11 @@ import Link from "next/link";
 gsap.registerPlugin(ScrollTrigger);
 
 export default function ContactComponent() {
+  const facebookUrl = "https://www.facebook.com/NKAssociatesOfficial/";
+  const instagramUrl = "https://www.instagram.com/nkassociatesofficial/";
+  const twitterUrl = "https://twitter.com/NKAssociates6";
+  const youtubeUrl = "https://www.youtube.com/channel/UCUdSaD4ZjxDYxXiQXZIM7tw";
+  const phoneNumber = "tel:+923103365966";
   useEffect(() => {
     const cards: HTMLElement[] = gsap.utils.toArray(".family-image");
 
@@ -53,8 +58,8 @@ export default function ContactComponent() {
           <div className="flex divide-x mb-[2.639rem] justify-center lg:justify-start">
             <div className="flex font-metropolis-semibold text-[1.06rem]">
               <Link
-                href="tel:923103365966"
-                target="_blank"
+                href={phoneNumber || "#"}
+                target={phoneNumber ? "_blank" : "_self"}
                 rel="noopener noreferrer"
                 className="px-2 shrink-0 flex gap-2"
               >
@@ -64,8 +69,8 @@ export default function ContactComponent() {
             </div>
             <div className="flex ml-2">
               <Link
-                href="https://www.facebook.com/NKAssociatesOfficial/"
-                target="_blank"
+                href={facebookUrl || "#"}
+                target={facebookUrl ? "_blank" : "_self"}
                 rel="noopener noreferrer"
                 className="px-2 shrink-0"
               >
@@ -77,24 +82,24 @@ export default function ContactComponent() {
                 />
               </Link>
               <Link
-                href="https://www.youtube.com/channel/UCUdSaD4ZjxDYxXiQXZIM7tw"
-                target="_blank"
+                href={youtubeUrl || "#"}
+                target={youtubeUrl ? "_blank" : "_self"}
                 rel="noopener noreferrer"
                 className="px-2 shrink-0 my-auto"
               >
                 <Image src={youtubeIcon} width={20} height={30} alt="Youtube" />
               </Link>
               <Link
-                href="https://twitter.com/NKAssociates6"
-                target="_blank"
+                href={twitterUrl || "#"}
+                target={twitterUrl ? "_blank" : "_self"}
                 rel="noopener noreferrer"
                 className="px-2 shrink-0"
               >
                 <Image src={twitterIcon} width={20} height={30} alt="Twitter" />
               </Link>
               <Link
-                href="https://www.instagram.com/nkassociatesofficial/"
-                target="_blank"
+                href={instagramUrl || "#"}
+                target={instagramUrl ? "_blank" : "_self"}
                 rel="noopener noreferrer"
                 className="px-2 shrink-0"
               >
@@ -110,16 +115,17 @@ export default function ContactComponent() {
         </div>
       </div>
 
-      <div className="flex-grow flex md:flex-col justify-center relative overflow-x-hidden min-h-[21rem] lg:min-h-[35rem]">
-        <div className="relative family-image translate-x-full">
-          <div className="bg-nk-pink max-h-[85%] w-full absolute inset-0 "></div>
-          <div className="relative max-w-[56.5rem] max-h-[40.875rem]">
+      <div className="flex-grow flex md:flex-col justify-start relative overflow-x-hidden min-h-[21rem] lg:min-h-[35rem]">
+        <div className=" family-image translate-x-full">
+          <div className="bg-nk-pink w-full h-full lg:w-[80%] lg:h-[90%] fixed lg:top-0 lg:right-0"></div>
+          <div className="relative max-w-[56.5rem] max-h-[40.875rem] overflow-hidden">
             <Image
               src={Family}
               alt="family"
               width={904}
               height={654}
               className=""
+              priority
             />
           </div>
         </div>

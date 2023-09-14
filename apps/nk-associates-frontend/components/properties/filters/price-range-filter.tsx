@@ -18,11 +18,13 @@ const PriceRangeFilter = ({ priceRange }: { priceRange: [number, number] }) => {
         type: "setMaxSelectedPrice",
         payload: range[thumbIndex],
       });
+      filtersDispatch({ type: "setFilterIsSelected", payload: true });
     } else {
       filtersDispatch({
         type: "setMinSelectedPrice",
         payload: range[thumbIndex],
       });
+      filtersDispatch({ type: "setFilterIsSelected", payload: true });
     }
   };
 

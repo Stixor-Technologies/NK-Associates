@@ -69,7 +69,7 @@ const ServicesList: FC = () => {
             trigger: card,
             start: `top-=${index * spacer} 20%`,
             endTrigger: ".card-container",
-            end: `bottom center+=${370 + cards.length * spacer}`,
+            end: `bottom top+=${850 + cards.length * spacer}`,
             pin: true,
             pinSpacing: false,
             id: "service_card-" + index,
@@ -102,7 +102,7 @@ const ServicesList: FC = () => {
           <Spinner />
         </div>
       ) : services.length > 0 ? (
-        services.map((service, index) => (
+        services?.map((service, index) => (
           <ServiceCard key={index} service={service} />
         ))
       ) : (

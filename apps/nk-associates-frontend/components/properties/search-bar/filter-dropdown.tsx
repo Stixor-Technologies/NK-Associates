@@ -4,6 +4,7 @@ import PropertyTypeFilter from "./property-type-filter";
 import PriceRangeFilter from "../filters/price-range-filter";
 import ProjectFilter from "./project-filter";
 import LocationFilter from "../filters/location-filter";
+import LocationsTileFilter from "./locations-title-filter";
 import PurposeFilter from "./purpose-filter";
 
 import { SearchFilterProperties } from "../../../utils/types/types";
@@ -24,7 +25,7 @@ const FilterDropDown: FC<DropDownProps> = ({
       case "Property Type":
         return (
           <PropertyTypeFilter
-            propertyTypesList={filtersProperties.propertyTypesList}
+            propertyTypesList={filtersProperties?.propertyTypesList}
           />
         );
       case "Price Range":
@@ -33,7 +34,7 @@ const FilterDropDown: FC<DropDownProps> = ({
         return <ProjectFilter projectsList={filtersProperties.projectsList} />;
       case "Location":
         return (
-          <LocationFilter
+          <LocationsTileFilter
             locationsList={filtersProperties.propertyLocationList}
           />
         );

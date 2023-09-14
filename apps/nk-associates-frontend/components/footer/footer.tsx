@@ -132,7 +132,7 @@ async function Footer() {
         <div className="mx-5 sm:mx-10 md:mx-auto">
           <div className="md:flex md:justify-between">
             <div className="mb-2 md:mb-0 md:flex md:items-start md:justify-center md:px-12 lg:px-20 xl:px-24">
-              <Link href="#" className="flex w-24 pb-4 md:w-32 lg:m-1">
+              <Link href="/" className="flex w-24 pb-4 md:w-32 lg:m-1">
                 <Image src={Logo} alt="logo" />
               </Link>
             </div>
@@ -160,7 +160,10 @@ async function Footer() {
                   <ul>
                     <li className="mb-5">
                       <div className="flex  h-10 items-center justify-center rounded-md bg-nk-red transition-all duration-300 hover:bg-opacity-75 lg:w-[90] lg:max-h-12 max-w-[11rem]">
-                        <Link href={playstore || "#"}>
+                        <Link
+                          href={playstore || "#"}
+                          target={playstore ? "_blank" : "_self"}
+                        >
                           <Image
                             src={GooglePlayIcon}
                             alt="Google Play"
@@ -171,7 +174,10 @@ async function Footer() {
                     </li>
                     <li className="mb-3">
                       <div className="flex h-10 items-center justify-center rounded-md bg-nk-red transition-all duration-300 hover:bg-opacity-75 lg:w-[90] lg:max-h-12 max-w-[11rem]">
-                        <Link href={appstore || "#"}>
+                        <Link
+                          href={appstore || "#"}
+                          target={appstore ? "_blank" : "_self"}
+                        >
                           <Image
                             src={AppStoreIcon}
                             alt="App Store"
