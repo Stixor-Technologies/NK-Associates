@@ -96,119 +96,28 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
           )}
 
           {imagesList?.length > 0 ? (
-            // <Swiper
-            //   grabCursor={true}
-            //   centeredSlides={true}
-            //   initialSlide={0}
-            //   pagination={true}
-            //   modules={[Pagination]}
-            //   className="mySwiper carousel-slider h-full w-full"
-            // >
-            //   {imagesList?.map((url, index) => {
-            //     return (
-            //       <SwiperSlide key={index}>
-            //         <Image
-            //           src={url}
-            //           alt="Carousel Image"
-            //           layout="fill"
-            //           objectFit="cover"
-            //           className="h-full w-full object-cover"
-            //         />
-            //       </SwiperSlide>
-            //     );
-            //   })}
-            // </Swiper>
-
-            // {imagesList?.map((url, index) => {
-            //   return (
-            //     <SwiperSlide key={index}>
-            //       <Image
-            //         src={url}
-            //         alt="Carousel Image"
-            //         layout="fill"
-            //         objectFit="cover"
-            //         className="h-full w-full object-cover bg-gray-300"
-            //       />
-            //     </SwiperSlide>
-            //   );
-            // })}
-
-            <Carousel
-              containerProps={{
-                style: {
-                  width: "100%",
-                  justifyContent: "space-between",
-                  userSelect: "none",
-                },
-              }}
-              preventScrollOnSwipe
-              swipeTreshold={60}
-              activeSlideIndex={activeSlide}
-              activeSlideProps={{
-                style: {
-                  background: "blue",
-                },
-              }}
-              onRequestChange={setActiveSlide}
-              forwardBtnProps={{
-                children: ">",
-                style: {
-                  width: 60,
-                  height: 60,
-                  minWidth: 60,
-                  alignSelf: "center",
-                },
-              }}
-              backwardBtnProps={{
-                children: "<",
-                style: {
-                  width: 60,
-                  height: 60,
-                  minWidth: 60,
-                  alignSelf: "center",
-                },
-              }}
-              dotsNav={{
-                show: true,
-                itemBtnProps: {
-                  style: {
-                    height: 16,
-                    width: 16,
-                    borderRadius: "50%",
-                    border: 0,
-                  },
-                },
-                activeItemBtnProps: {
-                  style: {
-                    height: 16,
-                    width: 16,
-                    borderRadius: "50%",
-                    border: 0,
-                    background: "black",
-                  },
-                },
-              }}
-              itemsToShow={2}
-              speed={400}
-              centerMode
+            <Swiper
+              grabCursor={true}
+              centeredSlides={true}
+              initialSlide={0}
+              pagination={true}
+              modules={[Pagination]}
+              className="mySwiper carousel-slider h-full w-full"
             >
-              {Array.from({ length: 10 }).map((item, index) => (
-                <div
-                  style={{
-                    background: "yellow",
-                    width: 300,
-                    height: 300,
-                    border: "30px solid white",
-                    textAlign: "center",
-                    lineHeight: "240px",
-                    boxSizing: "border-box",
-                  }}
-                  key={index}
-                >
-                  {index}
-                </div>
-              ))}
-            </Carousel>
+              {imagesList?.map((url, index) => {
+                return (
+                  <SwiperSlide key={index}>
+                    <Image
+                      src={url}
+                      alt="Carousel Image"
+                      layout="fill"
+                      objectFit="cover"
+                      className="h-full w-full object-cover"
+                    />
+                  </SwiperSlide>
+                );
+              })}
+            </Swiper>
           ) : (
             <div className="flex h-full w-full items-center justify-center bg-white text-black">
               <Image
