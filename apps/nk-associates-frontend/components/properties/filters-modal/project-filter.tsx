@@ -1,6 +1,7 @@
 import React, { FC } from "react";
 import useFilters from "../../../utils/useFilters";
-import Select, { StylesConfig } from "react-select";
+import Select from "react-select";
+import customStyles from "../../../utils/select-lib-styles";
 
 type PropsType = {
   projectsList: { id: number; label: string }[];
@@ -12,23 +13,6 @@ const ProjectFilter: FC<PropsType> = ({ projectsList }) => {
   const selectedProjects = projectsList.filter(
     (project) => filtersState?.selectedProjectId?.includes(project?.id),
   );
-
-  const customStyles: StylesConfig = {
-    control: (base) => ({
-      ...base,
-      border: "0px",
-      boxShadow: "none",
-      fontSize: "14px",
-      padding: "10px 12px",
-    }),
-    multiValueRemove: (styles) => ({
-      ...styles,
-      ":hover": {
-        cursor: "pointer",
-        color: "#E74451",
-      },
-    }),
-  };
 
   const handleProjectChange = (selectOption, ACTIONTYPE) => {
     let id = null;

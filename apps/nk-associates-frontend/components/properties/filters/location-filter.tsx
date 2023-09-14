@@ -1,10 +1,7 @@
 import React, { FC } from "react";
 import useFilters from "../../../utils/useFilters";
-import Select, {
-  components,
-  DropdownIndicatorProps,
-  StylesConfig,
-} from "react-select";
+import Select, { components, DropdownIndicatorProps } from "react-select";
+import customStyles from "../../../utils/select-lib-styles";
 
 const CustomDropDownIndicator: FC<DropdownIndicatorProps> = (props) => {
   return (
@@ -47,23 +44,6 @@ const LocationFilter = ({ locationsList }: PropsType) => {
   const selectedLocations = locationsList.filter(
     (location) => filtersState?.location?.includes(location?.id),
   );
-
-  const customStyles: StylesConfig = {
-    control: (base) => ({
-      ...base,
-      border: "0px",
-      boxShadow: "none",
-      fontSize: "14px",
-      padding: "10px 12px",
-    }),
-    multiValueRemove: (styles) => ({
-      ...styles,
-      ":hover": {
-        cursor: "pointer",
-        color: "#E74451",
-      },
-    }),
-  };
 
   const handleLocationChange = (selectOption, ACTIONTYPE) => {
     let id = null;
