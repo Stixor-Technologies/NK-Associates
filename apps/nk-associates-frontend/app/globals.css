@@ -27,3 +27,73 @@
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
+
+.follower {
+  position: fixed;
+  top: 0;
+  left: 0;
+  border-radius: 50%;
+  pointer-events: none;
+  transform-origin: center;
+  width: 8rem;
+  height: 8rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.follower__inner__bottom {
+  background-color: "#ccc";
+}
+
+.follower__content {
+  color: #fff;
+  font-size: 1.0625rem;
+  font-weight: 400;
+  height: 0;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  position: relative;
+  white-space: nowrap;
+  transform-origin: center;
+}
+
+.follower__inner__bottom {
+  position: absolute;
+  width: 0.8rem;
+  height: 0.8rem;
+  border-radius: 50%;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  background-color: red;
+  opacity: 1;
+  transform-origin: center;
+  z-index: 20;
+}
+.follower__inner__top {
+  position: absolute;
+  width: 0.8rem;
+  height: 0.8rem;
+  border-radius: 50%;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  background-color: beige;
+  opacity: 0;
+  transform-origin: center;
+}
+
+body:not(:hover) {
+  .follower {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion) {
+  .follower {
+    display: none;
+  }
+}

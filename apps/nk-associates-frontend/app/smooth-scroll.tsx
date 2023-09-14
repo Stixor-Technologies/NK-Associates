@@ -41,7 +41,16 @@ const SmoothScrollContainer = ({ children }: { children: ReactNode }) => {
     };
   }, [pathname]);
 
-  return <div className="pt-[5.5rem]">{children}</div>;
+  return (
+    <div className="pt-[5.5rem]">
+      {children}
+      <div className="follower">
+        <div className="follower__inner__bottom"></div>
+        <div className="follower__inner__top"></div>
+        <span className="follower__content"></span>
+      </div>
+    </div>
+  );
 };
 
 export default SmoothScrollContainer;
