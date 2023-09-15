@@ -16,7 +16,7 @@ const HowWorks: React.FC<props> = ({ title1, title2, src1, src2, src3 }) => {
         <div className=" text-nk-red text-[2rem] md:texts-[2.537rem] font-metropolis-bold mb-[0.589rem] md:mb-[1rem]">
           {title1}
         </div>
-        <div className="text-[1rem] md:text-[1.688rem] text-nk-black mb-[2.313rem] md:mb-[3.571rem] font-metropolis-extralight">
+        <div className="text-[1.313rem] text-nk-black mb-[2.313rem] md:mb-[3.571rem] font-metropolis-extralight">
           {title2}
         </div>
         <div className="flex flex-col md:flex-row justify-center">

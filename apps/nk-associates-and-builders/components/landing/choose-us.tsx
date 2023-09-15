@@ -35,11 +35,17 @@ export default function ChooseUs() {
   return (
     <div className="flex flex-col lg2:flex-row-reverse">
       <div className="flex flex-col w-full lg2:max-w-[560px]">
-        <div className="flex text-[2.25rem] md:text-[3.5rem] text-nk-red font-metropolis-medium text-center lg2:text-left mb-[0.938rem] md:mb-[0.75rem] leading-tight">
+        <div className="flex text-[2.673rem] text-nk-red font-metropolis-medium text-center lg2:text-left mb-[0.938rem] md:mb-[0.75rem] leading-tight">
           Helping you find the property of your dreams.
         </div>
-        <div className="flex w-full justify-center text-nk-black text-[1.25rem] md:text-[1.75rem] text-center md:text-left font-metropolis-extralight">
-          Creating quality lifestyles, building stronger communities
+        <div className="flex w-full justify-center text-nk-black text-[1.313rem] text-center md:text-left font-metropolis-extralight">
+          With a blend of innovation, creativity, and expertise, NK Associates &
+          Builders specializes in curating extraordinary living and working
+          spaces. From conceptualizing unique architectural designs to
+          meticulous construction execution, they redefine the boundaries of
+          real estate. Their commitment to excellence extends beyond
+          conventional practices, as they seek to create inspiring environments
+          that elevate the human experience.
         </div>
         <div className="flex mt-[2.064rem] md:mt-[3rem] justify-center lg2:justify-normal mb-[1.875rem] md:mb-[2.7rem]">
           <LinkButton

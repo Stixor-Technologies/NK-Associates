@@ -18,7 +18,18 @@ export default function Home() {
       <div className="pt-2">
         <HowWorks
           title1="How it works."
-          title2="This is how our products work."
+          title2="NK Design and Construction is a real estate development company that
+          specializes in providing bespoke services for residential and
+          commercial properties in Pakistan. The company's mastery of
+          architecture, construction, and interior design results in spectacular
+          outcomes that prioritize client satisfaction. NK Design and
+          Construction is committed to providing its clients with the highest
+          quality real estate development services, and its team of experienced
+          professionals is dedicated to creating beautiful and functional
+          spaces. NK Design and Construction company has a proven track record
+          of delivering exceptional outcomes for its clients, and its team of
+          experienced professionals is dedicated to creating spaces that are
+          both beautiful and functional."
           src1={rectangle9}
           src2={rectangle10}
           src3={rectangle11}
