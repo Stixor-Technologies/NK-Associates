@@ -104,6 +104,12 @@
       "repeatable": false,
       "component": "featured-properties.featured-properties",
       "required": true
+    },
+    "featured_projects": {
+      "type": "component",
+      "repeatable": false,
+      "required": true,
+      "component": "featured-projects.featured-projects"
     }
   }
 }

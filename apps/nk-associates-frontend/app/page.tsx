@@ -34,26 +34,33 @@ export default async function Home() {
     summary_image1,
     summary_image2,
     banner_images,
+    featured_projects,
     featured_properties,
   } = data?.data?.attributes || {};
 
-  const prefixToFilter = "featured_property";
+  const propertyPrefix = "featured_property";
   const featuredProperties = extractObjectsWithPrefix(
     featured_properties,
-    prefixToFilter,
+    propertyPrefix,
   );
 
-  console.log("fatten values", featuredProperties);
-
-  const projectDataArray = [
-    featured_project1?.data,
-    featured_project2?.data,
-    featured_project3?.data,
-  ];
-
-  const featuredProjects = projectDataArray.filter(
-    (projectData) => projectData !== null && projectData !== undefined,
+  const projectPrefix = "featured_project";
+  const featuredProjects = extractObjectsWithPrefix(
+    featured_projects,
+    projectPrefix,
   );
+
+  console.log("fatten values", featuredProjects);
+
+  // const projectDataArray = [
+  //   featured_project1?.data,
+  //   featured_project2?.data,
+  //   featured_project3?.data,
+  // ];
+
+  // const featuredProjects = projectDataArray.filter(
+  //   (projectData) => projectData !== null && projectData !== undefined,
+  // );
 
   // const propertyDataArray = [
   //   featured_property1?.data,
