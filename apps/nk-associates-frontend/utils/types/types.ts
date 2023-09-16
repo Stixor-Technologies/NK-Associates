@@ -242,7 +242,13 @@ export interface Services {
 }
 
 export interface PopularCategory {
-  category_name: string;
+  category_name: {
+    data: {
+      attributes: {
+        name: string;
+      };
+    };
+  };
   category_image: {
     data: MediaAttributes;
   };
