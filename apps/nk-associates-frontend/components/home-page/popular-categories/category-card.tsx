@@ -10,7 +10,6 @@ type CategoryCardProps = {
 
 const CategoryCard: FC<CategoryCardProps> = ({ category }) => {
   const cat_name = category?.category_name?.data?.attributes?.name;
-  console.log(cat_name);
   const cat_image = category?.category_image?.data?.attributes?.url;
   return (
     <Link
@@ -26,7 +25,6 @@ const CategoryCard: FC<CategoryCardProps> = ({ category }) => {
         />
       </div>
       <p className="category-name absolute w-full bottom-6 text-nk-white text-2xl font-metropolis-bold bg-fade-red backdrop-blur-sm py-3 z-20">
-        {/* <span className="mx-8">{category.category_name}</span> */}
         <span className="mx-8">{cat_name}</span>
       </p>
     </Link>
