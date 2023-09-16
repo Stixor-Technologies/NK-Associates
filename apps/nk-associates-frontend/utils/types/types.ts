@@ -77,7 +77,7 @@ export interface Property {
       data: { id: number; attributes: { name: string } };
     };
   };
-  id: number;
+  id?: number;
 }
 
 export interface Project {

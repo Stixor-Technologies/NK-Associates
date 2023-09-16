@@ -51,3 +51,23 @@ export const whatsAppChatLink = (number: string) => {
   const encodedText = encodeURIComponent(DEFAULT_CHAT_MESSAGE);
   return `https://wa.me/${number}?text=${encodedText}`;
 };
+
+export const extractObjectsWithPrefix = (inputObject, prefix: string) => {
+  const extractData = (obj) => {
+    if (!obj || typeof obj !== "object") {
+      return null;
+    }
+
+    const result = {
+      attributes: { ...obj.attributes },
+    };
+
+    return result;
+  };
+  const extractedDataArray = Object.keys(inputObject)
+    .filter((key) => key.startsWith(prefix))
+    .map((key) => extractData(inputObject[key].data))
+    .filter((item) => item !== null);
+
+  return extractedDataArray;
+};

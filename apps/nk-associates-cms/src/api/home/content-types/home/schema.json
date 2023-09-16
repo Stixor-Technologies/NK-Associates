@@ -57,21 +57,6 @@
       "relation": "oneToOne",
       "target": "api::project.project"
     },
-    "featured_property1": {
-      "type": "relation",
-      "relation": "oneToOne",
-      "target": "api::property.property"
-    },
-    "featured_property2": {
-      "type": "relation",
-      "relation": "oneToOne",
-      "target": "api::property.property"
-    },
-    "featured_property3": {
-      "type": "relation",
-      "relation": "oneToOne",
-      "target": "api::property.property"
-    },
     "popular_category1": {
       "type": "string",
       "minLength": 3,
@@ -113,6 +98,12 @@
       "allowedTypes": [
         "images"
       ]
+    },
+    "featured_properties": {
+      "type": "component",
+      "repeatable": false,
+      "component": "featured-properties.featured-properties",
+      "required": true
     }
   }
 }

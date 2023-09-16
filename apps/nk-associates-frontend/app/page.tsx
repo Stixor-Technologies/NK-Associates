@@ -1,3 +1,4 @@
+// "use client";
 import HomeBanner from "../components/home-page/home-banner/hero-banner";
 import BannerSlider from "../components/home-page/home-banner/banner-slider";
 import HomeSearch from "../components/home-page/home-search";
@@ -9,17 +10,20 @@ import NkApp from "../components/home-page/mobile-app";
 import PopularCategories from "../components/home-page/popular-categories/popular-categories";
 import Offices from "../components/home-page/offices";
 import { getHomeData, getSocials } from "../utils/api-calls";
+import { extractObjectsWithPrefix } from "../utils/utils";
 
 export default async function Home() {
   const data = await getHomeData();
   const resp = await getSocials();
+  console.log(
+    "featured Properties",
+    data?.data?.attributes?.featured_properties,
+  );
+
   const {
     featured_project1,
     featured_project2,
     featured_project3,
-    featured_property1,
-    featured_property2,
-    featured_property3,
     popular_category1,
     popular_category1_image,
     popular_category2,
@@ -30,7 +34,16 @@ export default async function Home() {
     summary_image1,
     summary_image2,
     banner_images,
+    featured_properties,
   } = data?.data?.attributes || {};
+
+  const prefixToFilter = "featured_property";
+  const featuredProperties = extractObjectsWithPrefix(
+    featured_properties,
+    prefixToFilter,
+  );
+
+  console.log("fatten values", featuredProperties);
 
   const projectDataArray = [
     featured_project1?.data,
@@ -42,15 +55,15 @@ export default async function Home() {
     (projectData) => projectData !== null && projectData !== undefined,
   );
 
-  const propertyDataArray = [
-    featured_property1?.data,
-    featured_property2?.data,
-    featured_property3?.data,
-  ];
+  // const propertyDataArray = [
+  //   featured_property1?.data,
+  //   featured_property2?.data,
+  //   featured_property3?.data,
+  // ];
 
-  const featuredProperties = propertyDataArray.filter(
-    (propertyData) => propertyData !== null && propertyData !== undefined,
-  );
+  // const featuredProperties = propertyDataArray.filter(
+  //   (propertyData) => propertyData !== null && propertyData !== undefined,
+  // );
 
   const { playstore, appstore, appgallery } = resp?.data?.attributes || {};
 
