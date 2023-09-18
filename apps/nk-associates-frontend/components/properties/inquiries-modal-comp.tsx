@@ -22,7 +22,7 @@ const InquiresModal = () => {
     <div>
       <InquiriesModal onClose={closeModal} open={isOpen} itemId={propertyId} />
       <LinkButton
-        text="Inquiries"
+        text="Inquire"
         type="solid"
         clickEvent={openModal}
         className="mb-2 w-[11.75rem] text-lg sm:mb-0 md:w-[11.75rem]"

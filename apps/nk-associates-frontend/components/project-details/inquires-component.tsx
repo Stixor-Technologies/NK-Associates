@@ -22,7 +22,7 @@ const InquiresCompnent = () => {
     <div>
       <InquiriesModal onClose={closeModal} open={isOpen} itemId={projectId} />
       <LinkButton
-        text="Inquires"
+        text="Inquire"
         clickEvent={openModal}
         className="px-6 min-w-[8.125rem] lg:min-w-[11.75rem]"
       />
