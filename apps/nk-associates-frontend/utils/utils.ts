@@ -53,8 +53,16 @@ export const whatsAppChatLink = (number: string) => {
 };
 
 export const extractObjectsWithPrefix = (inputObject, prefix: string) => {
+  if (!inputObject || typeof inputObject !== "object") {
+    return [];
+  }
+
   const extractData = (obj) => {
     if (!obj || typeof obj !== "object") {
+      return null;
+    }
+
+    if (!obj.attributes) {
       return null;
     }
 
