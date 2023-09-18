@@ -7,9 +7,21 @@ interface props {
   src1: string;
   src2: string;
   src3: string;
+  card1: string;
+  card2: string;
+  card3: string;
 }
 
-const HowWorks: React.FC<props> = ({ title1, title2, src1, src2, src3 }) => {
+const HowWorks: React.FC<props> = ({
+  title1,
+  title2,
+  src1,
+  src2,
+  src3,
+  card1,
+  card2,
+  card3,
+}) => {
   return (
     <div>
       <div className="flex flex-col text-center">
@@ -22,19 +34,19 @@ const HowWorks: React.FC<props> = ({ title1, title2, src1, src2, src3 }) => {
         <div className="flex flex-col md:flex-row justify-center">
           <Cards
             src={src2}
-            text1="Find Home"
+            text1={card1}
             text2="Lorem ipsum dolor sit amet consectetur. Massa nec mi justo pulvinar
           iaculis. Id massa a aenean lacus orci sit vehicula."
           />
           <Cards
             src={src1}
-            text1="Find Home"
+            text1={card2}
             text2="Lorem ipsum dolor sit amet consectetur. Massa nec mi justo pulvinar
           iaculis. Id massa a aenean lacus orci sit vehicula."
           />
           <Cards
             src={src3}
-            text1="Find Home"
+            text1={card3}
             text2="Lorem ipsum dolor sit amet consectetur. Massa nec mi justo pulvinar
           iaculis. Id massa a aenean lacus orci sit vehicula."
           />

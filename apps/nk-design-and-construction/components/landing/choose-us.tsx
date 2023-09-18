@@ -38,14 +38,10 @@ export default function ChooseUs() {
           Helping you find the property of your dreams.
         </div>
         <div className="flex w-full justify-center text-nk-black text-[1.313rem] text-center md:text-left font-metropolis-extralight">
-          NK Design and Construction is a real estate development company that
-          specializes in residential and commercial architecture, interior
-          design, and construction management. The company has a proven track
-          record of delivering exceptional outcomes for its clients, and its
-          team of experienced professionals is dedicated to creating beautiful
-          and functional spaces. If you are looking for a real estate
-          development company that can help you achieve your goals, NK Design
-          and Construction is the perfect choice.{" "}
+          NK Design and Construction company has a proven track record of
+          delivering exceptional outcomes for its clients, and its team of
+          experienced professionals is dedicated to creating spaces that are
+          both beautiful and functional.
         </div>
         <div className="flex mt-[2.064rem] md:mt-[3rem] justify-center lg2:justify-normal mb-[1.875rem] md:mb-[2.7rem]">
           <LinkButton

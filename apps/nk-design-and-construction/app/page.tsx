@@ -18,21 +18,13 @@ export default function Home() {
       <div className="pt-2">
         <HowWorks
           title1="How it works."
-          title2="NK Design and Construction is a real estate development company that
-          specializes in providing bespoke services for residential and
-          commercial properties in Pakistan. The company's mastery of
-          architecture, construction, and interior design results in spectacular
-          outcomes that prioritize client satisfaction. NK Design and
-          Construction is committed to providing its clients with the highest
-          quality real estate development services, and its team of experienced
-          professionals is dedicated to creating beautiful and functional
-          spaces. NK Design and Construction company has a proven track record
-          of delivering exceptional outcomes for its clients, and its team of
-          experienced professionals is dedicated to creating spaces that are
-          both beautiful and functional."
+          title2="NK Design and Construction offer bespoke services for residential and commercial edifices within Pakistan. Our mastery in architecture, construction, and interior design results in spectacular outcomes and prioritizes client satisfaction. Entrust us with your dream residential or commercial project, and witness our unwavering dedication to excellence firsthand."
           src1={rectangle9}
           src2={rectangle10}
           src3={rectangle11}
+          card1="Book your appointment"
+          card2="Consultation"
+          card3="Start Planning"
         />
       </div>
       <div>
@@ -45,6 +37,9 @@ export default function Home() {
           src1={rectangle18}
           src2={rectangle19}
           src3={rectangle20}
+          card1="Architecture"
+          card2="Construction"
+          card3="Interior Design"
         />
       </div>
       <div>
