@@ -489,7 +489,7 @@ export const getHomeData = async () => {
 
 export const getMembers = async () => {
   try {
-    let apiUrl = `${BASE_URL}/api/teams?populate=*`;
+    let apiUrl = `${BASE_URL}/api/teams?populate=*&sort[9]=rank`;
     const resp = await fetch(apiUrl, {
       cache: "no-store",
     });
