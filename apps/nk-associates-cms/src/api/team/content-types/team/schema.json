@@ -51,6 +51,12 @@
     "facebook": {
       "type": "string",
       "required": false
+    },
+    "rank": {
+      "type": "integer",
+      "required": true,
+      "unique": true,
+      "min": 1
     }
   }
 }

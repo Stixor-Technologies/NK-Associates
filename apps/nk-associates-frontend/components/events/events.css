@@ -35,6 +35,9 @@
   border-radius: 0.5rem;
   overflow: hidden;
 }
+.mySwiper2 .swiper-slide {
+  opacity: 1 !important;
+}
 
 .mySwiper3 .swiper-slide-thumb-active {
   opacity: 1;
