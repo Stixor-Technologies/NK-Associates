@@ -249,12 +249,6 @@ async function Footer() {
             >
               Privacy Policy
             </Link>
-            <Link
-              href="#"
-              className="bg-gradient-to-r from-nk-white to-nk-white bg-[length:0%_8%] bg-left-bottom bg-no-repeat font-metropolis-thin transition-all duration-500 ease-out hover:bg-[length:100%_8%]"
-            >
-              Site Map
-            </Link>
           </div>
         </div>
       </div>
