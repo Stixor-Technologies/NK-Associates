@@ -46,7 +46,7 @@ const PropertyTypeFilter = ({
 
   return (
     <>
-      <ul className="flex flex-wrap justify-center gap-2">
+      <ul className="flex flex-wrap justify-center gap-3">
         {propertyTypesList?.map((val, index) => (
           <li key={index}>
             <input
