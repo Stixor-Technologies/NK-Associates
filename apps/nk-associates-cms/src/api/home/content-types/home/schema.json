@@ -42,77 +42,23 @@
         "images"
       ]
     },
-    "featured_project1": {
-      "type": "relation",
-      "relation": "oneToOne",
-      "target": "api::project.project"
-    },
-    "featured_project2": {
-      "type": "relation",
-      "relation": "oneToOne",
-      "target": "api::project.project"
-    },
-    "featured_project3": {
-      "type": "relation",
-      "relation": "oneToOne",
-      "target": "api::project.project"
-    },
-    "featured_property1": {
-      "type": "relation",
-      "relation": "oneToOne",
-      "target": "api::property.property"
-    },
-    "featured_property2": {
-      "type": "relation",
-      "relation": "oneToOne",
-      "target": "api::property.property"
-    },
-    "featured_property3": {
-      "type": "relation",
-      "relation": "oneToOne",
-      "target": "api::property.property"
-    },
-    "popular_category1": {
-      "type": "string",
-      "minLength": 3,
-      "maxLength": 20,
+    "featured_properties": {
+      "type": "component",
+      "repeatable": false,
+      "component": "featured-properties.featured-properties",
       "required": true
     },
-    "popular_category1_image": {
-      "type": "media",
-      "multiple": false,
+    "featured_projects": {
+      "type": "component",
+      "repeatable": false,
       "required": true,
-      "allowedTypes": [
-        "images"
-      ]
+      "component": "featured-projects.featured-projects"
     },
-    "popular_category2": {
-      "type": "string",
-      "minLength": 3,
-      "maxLength": 20,
-      "required": true
-    },
-    "popular_category2_image": {
-      "type": "media",
-      "multiple": false,
+    "popular_categories": {
+      "type": "component",
+      "repeatable": false,
       "required": true,
-      "allowedTypes": [
-        "images"
-      ]
-    },
-    "popular_category3": {
-      "type": "string",
-      "required": true,
-      "minLength": 3,
-      "maxLength": 20
-    },
-    "popular_category3_image": {
-      "type": "media",
-      "multiple": false,
-      "required": true,
-      "allowedTypes": [
-        "images"
-      ]
+      "component": "popular-categories.popular-categories"
     }
   }
 }

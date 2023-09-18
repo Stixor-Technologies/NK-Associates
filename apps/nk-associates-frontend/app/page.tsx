@@ -9,47 +9,32 @@ import NkApp from "../components/home-page/mobile-app";
 import PopularCategories from "../components/home-page/popular-categories/popular-categories";
 import Offices from "../components/home-page/offices";
 import { getHomeData, getSocials } from "../utils/api-calls";
+import { extractObjectsWithPrefix } from "../utils/utils";
 
 export default async function Home() {
   const data = await getHomeData();
   const resp = await getSocials();
+
   const {
-    featured_project1,
-    featured_project2,
-    featured_project3,
-    featured_property1,
-    featured_property2,
-    featured_property3,
-    popular_category1,
-    popular_category1_image,
-    popular_category2,
-    popular_category2_image,
-    popular_category3,
-    popular_category3_image,
     about_summary,
     summary_image1,
     summary_image2,
     banner_images,
+    featured_projects,
+    featured_properties,
+    popular_categories,
   } = data?.data?.attributes || {};
 
-  const projectDataArray = [
-    featured_project1?.data,
-    featured_project2?.data,
-    featured_project3?.data,
-  ];
-
-  const featuredProjects = projectDataArray.filter(
-    (projectData) => projectData !== null && projectData !== undefined,
+  const propertyPrefix = "featured_property";
+  const featuredProperties = extractObjectsWithPrefix(
+    featured_properties,
+    propertyPrefix,
   );
 
-  const propertyDataArray = [
-    featured_property1?.data,
-    featured_property2?.data,
-    featured_property3?.data,
-  ];
-
-  const featuredProperties = propertyDataArray.filter(
-    (propertyData) => propertyData !== null && propertyData !== undefined,
+  const projectPrefix = "featured_project";
+  const featuredProjects = extractObjectsWithPrefix(
+    featured_projects,
+    projectPrefix,
   );
 
   const { playstore, appstore, appgallery } = resp?.data?.attributes || {};
@@ -71,20 +56,20 @@ export default async function Home() {
 
   const categoryData = [
     {
-      category_name: popular_category1,
-      category_image: popular_category1_image,
+      category_name: popular_categories?.popular_category1,
+      category_image: popular_categories?.popular_category1_image,
     },
     {
-      category_name: popular_category2,
-      category_image: popular_category2_image,
+      category_name: popular_categories?.popular_category2,
+      category_image: popular_categories?.popular_category2_image,
     },
     {
-      category_name: popular_category3,
-      category_image: popular_category3_image,
+      category_name: popular_categories?.popular_category3,
+      category_image: popular_categories?.popular_category3_image,
     },
   ];
 
-  const popularCategories = categoryData.filter(
+  const popularCategories = categoryData?.filter(
     (category) => category.category_name && category.category_image,
   );
 

@@ -77,11 +77,11 @@ export interface Property {
       data: { id: number; attributes: { name: string } };
     };
   };
-  id: number;
+  id?: number;
 }
 
 export interface Project {
-  id: number;
+  id?: number;
   attributes: {
     pictures: {
       data: Array<{ attributes: { url: string } }>;
@@ -242,7 +242,13 @@ export interface Services {
 }
 
 export interface PopularCategory {
-  category_name: string;
+  category_name: {
+    data: {
+      attributes: {
+        name: string;
+      };
+    };
+  };
   category_image: {
     data: MediaAttributes;
   };
