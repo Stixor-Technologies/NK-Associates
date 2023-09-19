@@ -1,7 +1,7 @@
 "use client";
 import React, { useEffect } from "react";
 import Image from "next/image";
-import Valley from "../../public/assets/images/valley.svg";
+import Valley from "../../public/assets/images/valley.jpg";
 import LinkButton from "../button/link-button";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";

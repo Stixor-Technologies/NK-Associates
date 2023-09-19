@@ -34,9 +34,10 @@ export default function ChooseUs() {
   return (
     <div className="flex flex-col lg2:flex-row-reverse">
       <div className="flex flex-col w-full lg2:max-w-[560px]">
-        <div className="flex text-[2.673rem] text-nk-red font-metropolis-medium text-center lg2:text-left mb-[0.938rem] md:mb-[0.75rem] leading-tight">
+        <h1 className="text-nk-red font-metropolis-bold text-[2rem] md:texts-[3.2rem] lg:pt-[4.188rem] text-center md:text-left">
           Helping you find the property of your dreams.
-        </div>
+        </h1>
+
         <div className="flex w-full justify-center text-nk-black text-[1.313rem] text-center md:text-left font-metropolis-extralight">
           NK Design and Construction company has a proven track record of
           delivering exceptional outcomes for its clients, and its team of

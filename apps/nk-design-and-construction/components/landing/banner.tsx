@@ -39,9 +39,9 @@ export default function Banner() {
   return (
     <div className="flex flex-col lg2:flex-row">
       <div className="flex flex-col w-full lg2:max-w-[560px]">
-        <div className="flex text-[2.25rem] md:text-[3.5rem] text-nk-red font-metropolis-medium text-center lg2:text-left mb-[0.938rem] md:mb-[0.75rem] leading-tight">
+        <h1 className="text-nk-red font-metropolis-bold text-[2rem] md:texts-[3.2rem] lg:pt-[4.188rem] text-center md:text-left">
           Entrust us with your dream residential or commercial project
-        </div>
+        </h1>
         <div className="flex w-full justify-center text-nk-black text-[1.25rem] md:text-[1.75rem] text-center md:text-left font-metropolis-extralight">
           Creating quality lifestyles, building stronger communities
         </div>

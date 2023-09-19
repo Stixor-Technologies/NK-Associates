@@ -5,14 +5,14 @@ import Person from "../../../public/assets/icons/person.svg";
 const ClientList = () => {
   return (
     <div className="flex justify-center flex-col">
-      <div className="container max-w-[607px] mx-auto text-center">
-        <h1 className="font-metropolis-semibold text-nk-dark-gray text-[3rem]">
-          What Clients Say
+      <div className="container w-[80%] mx-auto text-center">
+        <h1 className="font-metropolis-semibold text-nk-dark-gray text-[1.5rem] md:text-[2rem]">
+          Discover What Our Valued Clients Say
         </h1>
-        <p className="font-metropolis-light text-nk-dark-gray text-[1.125rem] flex flex-col">
-          <span>Problems trying to resolve the conflict between</span>
+        <p className="font-metropolis-light text-nk-dark-gray text-[1rem] md:text-[1.125rem] flex flex-col w-full md:w-[75%] mx-auto my-2">
           <span>
-            the two major realms of Classical physics: Newtonian mechanics
+            Explore the experiences of others who have chosen us for their real
+            estate needs!
           </span>
         </p>
       </div>
