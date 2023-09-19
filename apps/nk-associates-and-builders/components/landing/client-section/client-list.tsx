@@ -5,14 +5,14 @@ import Person from "../../../public/assets/icons/person.svg";
 const ClientList = () => {
   return (
     <div className="flex justify-center flex-col">
-      <div className="container max-w-[607px] mx-auto text-center">
-        <h1 className="font-metropolis-semibold text-nk-dark-gray text-[3rem]">
-          What Clients Say
+      <div className="container w-[80%] mx-auto text-center">
+        <h1 className="font-metropolis-semibold text-nk-dark-gray text-[1.5rem] md:text-[2rem]">
+          Discover What Our Valued Clients Say
         </h1>
-        <p className="font-metropolis-light text-nk-dark-gray text-[1.125rem] flex flex-col">
-          <span>Problems trying to resolve the conflict between</span>
+        <p className="font-metropolis-light text-nk-dark-gray text-[1rem] md:text-[1.125rem] flex flex-col w-full md:w-[75%] mx-auto my-2">
           <span>
-            the two major realms of Classical physics: Newtonian mechanics
+            Explore the experiences of others who have chosen us for their real
+            estate needs!
           </span>
         </p>
       </div>
@@ -22,22 +22,19 @@ const ClientList = () => {
             <ClientCard
               reviewerImage={Person}
               center={false}
-              reviewDescription="Slate helps you see how many more days you need to work to reach your
-          financial goal."
+              reviewDescription="Exceptional service from start to finish! The team at NK Associates and Builders went above and beyond to help me find my dream home."
               reviewerName="Regina Miles"
             />
             <ClientCard
               reviewerImage={Person}
               center={false}
-              reviewDescription="Slate helps you see how many more days you need to work to reach your
-          financial goal."
+              reviewDescription="Their knowledge of the local market was impressive, and they made the entire buying process smooth and stress-free."
               reviewerName="Regina Miles"
             />
             <ClientCard
               reviewerImage={Person}
               center={false}
-              reviewDescription="Slate helps you see how many more days you need to work to reach your
-          financial goal."
+              reviewDescription="They guided me through every step and offered valuable insights. I highly recommend NK Associates and Builders to anyone looking for top-notch real estate service."
               reviewerName="Regina Miles"
             />
           </div>

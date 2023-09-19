@@ -1,7 +1,7 @@
 "use client";
 import React, { useEffect } from "react";
 import Image from "next/image";
-import Valley from "../../public/assets/images/valley.svg";
+import Valley from "../../public/assets/images/valley.jpg";
 import LinkButton from "../button/link-button";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -38,16 +38,12 @@ const ChooseUs = () => {
         </h1>
         <div className="text-nk-dark-gray font-metropolis-light text-[1.313rem] pt-[1.625rem] flex-col text-center md:text-left">
           <p>
-            Lorem ipsum dolor sit amet consectetur. Non morbi sed quam quis sed
-            phasellus sit malesuada. Turpis a tristique eget porttitor a in
-            mattis. Amet non quisque ornare id diam lectus. Nulla risus lectus
-            diam mattis. Sapien arcu nunc elit nec volutpat ultrices pulvinar.
-          </p>
-          <p>
-            Lorem ipsum dolor sit amet consectetur. Non morbi sed quam quis sed
-            phasellus sit malesuada. Turpis a tristique eget porttitor a in
-            mattis. Amet non quisque ornare id diam lectus. Nulla risus lectus
-            diam mattis. Sapien arcu nunc elit nec volutpat ultrices pulvinar.
+            NK Developer specializes in visionary real estate development, with
+            expertise in creating landmark projects that enhance communities.
+            The company&apos;s areas of expertise include strategic site
+            selection, feasibility analysis, project planning, design
+            coordination, construction management, and the creation of
+            sustainable and modern living spaces.
           </p>
         </div>
         <div className="flex mt-[2.064rem] md:mt-[1.75rem] justify-center lg:justify-normal mb-[1.875rem] md:mb-[2.7rem]">

@@ -7,7 +7,7 @@ import instagramIcon from "../../public/assets/icons/instagram.svg";
 import youtubeIcon from "../../public/assets/icons/youtube.svg";
 import twitterIcon from "../../public/assets/icons/Twitter.svg";
 import callIcon from "../../public/assets/icons/call.svg";
-import Family from "../../public/assets/images/family.png";
+import Family from "../../public/assets/images/develop.png";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Link from "next/link";
@@ -41,9 +41,9 @@ export default function ContactComponent() {
     <div className="flex flex-col lg:flex-row ">
       <div className="lg:ml-10 lg:w-1/2 pt-[6.188rem]">
         <div className="flex flex-col w-full lg:max-w-[560px] mx-auto">
-          <div className="flex text-[2.25rem] md:text-[3.5rem] text-nk-red font-metropolis-medium text-center lg:text-left mb-[0.938rem] md:mb-[0.75rem] leading-tight py-4 sm:px-24 lg:p-0">
-            Helping you find the property of your dreams.
-          </div>
+          <h1 className="text-nk-red font-metropolis-bold text-[2.673rem] lg:pt-[4.188rem] text-center md:text-left">
+            NK Developers excels in transformative real estate development
+          </h1>
           <div className="flex w-full justify-center text-nk-black text-[1.25rem] md:text-[1.75rem] text-center md:text-left font-metropolis-extralight">
             Creating quality lifestyles, building stronger communities
           </div>
