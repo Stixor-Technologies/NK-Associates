@@ -5,7 +5,7 @@ const HomeList = () => {
   return (
     <div>
       <div className="text-center">
-        <h1 className="text-nk-red font-metropolis-bold text-[2.5rem] py-[1rem] mt-[3.625rem]">
+        <h1 className="text-nk-red font-metropolis-bold text-[2.5rem] py-4 mt-[3.625rem]">
           How it works.
         </h1>
         <p className="text-nk-dark-gray text-[1.313rem] font-metropolis-light mb-[3.438rem] px-24 lg:px-16">
