@@ -22,22 +22,19 @@ const ClientList = () => {
             <ClientCard
               reviewerImage={Person}
               center={false}
-              reviewDescription="Slate helps you see how many more days you need to work to reach your
-          financial goal."
+              reviewDescription="Exceptional service from start to finish! The team at NK Associates and Builders went above and beyond to help me find my dream home."
               reviewerName="Regina Miles"
             />
             <ClientCard
               reviewerImage={Person}
               center={false}
-              reviewDescription="Slate helps you see how many more days you need to work to reach your
-          financial goal."
+              reviewDescription="Their knowledge of the local market was impressive, and they made the entire buying process smooth and stress-free."
               reviewerName="Regina Miles"
             />
             <ClientCard
               reviewerImage={Person}
               center={false}
-              reviewDescription="Slate helps you see how many more days you need to work to reach your
-          financial goal."
+              reviewDescription="They guided me through every step and offered valuable insights. I highly recommend NK Associates and Builders to anyone looking for top-notch real estate service."
               reviewerName="Regina Miles"
             />
           </div>

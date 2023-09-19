@@ -20,20 +20,17 @@ const ClientList = () => {
           <div className="carousel flex flex-nowrap overflow-x-scroll px-4 gap-4 py-8 pb-12 md:px-8 md:pb-16 md:gap-6 xl:px-0 lg:justify-center">
             <ClientCard
               center={false}
-              reviewDesc="Slate helps you see how many more days you need to work to reach your
-          financial goal."
+              reviewDesc="Exceptional service from start to finish! The team at NK design and construction went above and beyond to help me find my dream home."
               reviewerName="Regina Miles"
             />
             <ClientCard
               center={false}
-              reviewDesc="Slate helps you see how many more days you need to work to reach your
-          financial goal."
+              reviewDesc="Their knowledge of the local market was impressive, and they made the entire buying process smooth and stress-free."
               reviewerName="Regina Miles"
             />
             <ClientCard
               center={false}
-              reviewDesc="Slate helps you see how many more days you need to work to reach your
-          financial goal."
+              reviewDesc="They guided me through every step and offered valuable insights. I highly recommend NK design and construction to anyone looking for top-notch real estate service."
               reviewerName="Regina Miles"
             />
           </div>

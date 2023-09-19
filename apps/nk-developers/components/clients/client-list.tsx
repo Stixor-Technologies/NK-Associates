@@ -20,20 +20,17 @@ const ClientList = () => {
           <div className="carousel flex flex-nowrap overflow-x-scroll px-4 gap-4 py-8 pb-12 md:px-8 md:pb-16 md:gap-6 xl:px-0 lg:justify-center">
             <ClientCard
               center={false}
-              text1="Slate helps you see how many more days you need to work to reach your
-          financial goal."
+              text1="Exceptional service from start to finish! The team at NK developers went above and beyond to help me find my dream home."
               text2="Regina Miles"
             />
             <ClientCard
               center={false}
-              text1="Slate helps you see how many more days you need to work to reach your
-          financial goal."
+              text1="Their knowledge of the local market was impressive, and they made the entire buying process smooth and stress-free."
               text2="Regina Miles"
             />
             <ClientCard
               center={false}
-              text1="Slate helps you see how many more days you need to work to reach your
-          financial goal."
+              text1="They guided me through every step and offered valuable insights. I highly recommend NK developers to anyone looking for top-notch real estate service."
               text2="Regina Miles"
             />
           </div>

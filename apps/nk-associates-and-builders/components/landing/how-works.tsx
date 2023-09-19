@@ -36,7 +36,7 @@ const HowWorks: React.FC<Props> = ({ title1, title2 }) => {
   return (
     <div>
       <div className="flex flex-col text-center">
-        <div className="text-nk-red text-[2rem] md:texts-[2.537rem] font-metropolis-bold mb-[0.589rem] md:mb-[1rem]">
+        <div className="text-nk-red text-[2rem] md:text-[2.537rem] font-metropolis-bold mb-[0.589rem] md:mb-[1rem]">
           {title1}
         </div>
         <div className="text-[1.313rem] text-nk-black mb-[2.313rem] md:mb-[3.571rem] font-metropolis-extralight">
