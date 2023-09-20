@@ -36,8 +36,6 @@ const PropertyTypeFilter = ({
   };
 
   const handleSelectedTypeChange = (id: number) => {
-    console.log("sub type", id);
-
     filtersDispatch({
       type: "setSelectedTypeId",
       payload: id,

@@ -68,6 +68,10 @@ type ACTIONTYPE =
       payload: string;
     }
   | {
+      type: "setSelectedTopPick";
+      payload: number;
+    }
+  | {
       type: "setFilterIsSelected";
       payload: boolean;
     }
@@ -108,6 +112,7 @@ const initialState = {
   minSelectedArea: undefined,
   maxSelectedArea: undefined,
   selectedAreaUnit: undefined,
+  selectedTopPick: undefined,
   location: [],
   filterIsSelected: false,
 };
@@ -244,6 +249,11 @@ const reducer = (state: FiltersStateType, action: ACTIONTYPE) => {
           filterIsSelected: true,
         };
       }
+    case "setSelectedTopPick":
+      return {
+        ...state,
+        selectedTopPick: action.payload,
+      };
     case "homeSearch":
       return {
         ...initialState,
@@ -253,6 +263,7 @@ const reducer = (state: FiltersStateType, action: ACTIONTYPE) => {
     case "resetFilters":
       return {
         ...initialState,
+        selectedTopPick: state.selectedTopPick,
         ...action.payload,
       };
 

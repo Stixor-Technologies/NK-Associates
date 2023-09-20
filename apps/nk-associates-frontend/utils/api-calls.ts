@@ -240,6 +240,16 @@ export const fetchPropertyLocationList = async () => {
   }
 };
 
+export const fetchPropertyTopPickList = async () => {
+  try {
+    const resp = await fetch(`${BASE_URL}/api/property-top-picks`);
+    const data = await resp.json();
+    return data?.data;
+  } catch (error) {
+    console.error("There was an error getting the Property Top Pick", error);
+  }
+};
+
 export const fetchCompletionStatusList = async () => {
   try {
     const resp = await fetch(`${BASE_URL}/api/completion-statuses`);
@@ -340,7 +350,7 @@ export const getHeadOffice = async () => {
     const data = await resp.json();
     return data?.data;
   } catch (error) {
-    console.error("There was an error getting the Property List", error);
+    console.error("There was an error getting the Head Office", error);
   }
 };
 

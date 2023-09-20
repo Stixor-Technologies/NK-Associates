@@ -6,6 +6,7 @@ import useFilters from "../../../utils/useFilters";
 import SearchBarSkeleton from "./search-bar-skeleton";
 import LinkButton from "../../button/link-button";
 import { useRouter } from "next/navigation";
+import FilterTabs from "./tabs-filter";
 
 import {
   fetchPropertyCategoriesList,
@@ -15,6 +16,7 @@ import {
   fetchFilterOptionsList,
   fetchPropertyLocationList,
   fetchFilterProjectsList,
+  fetchPropertyTopPickList,
 } from "../../../utils/api-calls";
 
 interface SearchBarProps {
@@ -45,6 +47,7 @@ const SearchBar: FC<SearchBarProps> = ({
       propertyLocationList: undefined,
       projectsList: undefined,
       completionStatusList: undefined,
+      topPickList: undefined,
       rentFrequencyList: undefined,
       priceRange: undefined,
       areaRange: undefined,
@@ -57,11 +60,11 @@ const SearchBar: FC<SearchBarProps> = ({
     filtersDispatch({
       type: "resetFilters",
       payload: {
-        minSelectedArea: filtersProperties.areaRange[0],
-        maxSelectedArea: filtersProperties.areaRange[1],
-        minSelectedPrice: filtersProperties.priceRange[0],
-        maxSelectedPrice: filtersProperties.priceRange[1],
-        selectedAreaUnit: filtersProperties.areaUnitsList[0].name,
+        minSelectedArea: filtersProperties?.areaRange[0],
+        maxSelectedArea: filtersProperties?.areaRange[1],
+        minSelectedPrice: filtersProperties?.priceRange[0],
+        maxSelectedPrice: filtersProperties?.priceRange[1],
+        selectedAreaUnit: filtersProperties?.areaUnitsList[0]?.name,
       },
     });
 
@@ -213,6 +216,21 @@ const SearchBar: FC<SearchBarProps> = ({
     });
   };
 
+  const getPropertyTopPicks = async () => {
+    const pickList = await fetchPropertyTopPickList();
+    const topList = pickList?.map((list) => {
+      return {
+        id: list.id,
+        name: list.attributes.name,
+      };
+    });
+
+    setFiltersProperties((oldState) => ({
+      ...oldState,
+      topPickList: topList,
+    }));
+  };
+
   const fetchFilterProperties = async () => {
     setLoading(true);
     try {
@@ -223,6 +241,7 @@ const SearchBar: FC<SearchBarProps> = ({
       await getPropertyLocationList();
       await getRentFrequencyList();
       await getFiltersOptionsList();
+      !actHome && (await getPropertyTopPicks());
       setLoading(false);
     } catch (error) {
       console.error(error);
@@ -279,6 +298,7 @@ const SearchBar: FC<SearchBarProps> = ({
 
   return (
     <section className="relative">
+      <FilterTabs topPicks={filtersProperties?.topPickList} />
       <div
         className={`flex flex-col ${isListView && "my-4"} ${
           !actHome && "container"
