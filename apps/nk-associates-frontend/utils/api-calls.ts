@@ -73,6 +73,10 @@ const applyFilters = (filters: FiltersStateType) => {
         .join("&");
       filtersString += `&${selectedIds}`;
     }
+
+    if (filters?.selectedTopPick) {
+      filtersString += `&filters[property_purpose][id][$eq]=${filters?.selectedTopPick}`;
+    }
   }
   return filtersString;
 };
@@ -90,6 +94,8 @@ export const getGridProperties = async (
   if (freshData || moreLoad) {
     filtersString = applyFilters(filters);
   }
+
+  console.log("filter String", filtersString);
 
   try {
     const resp = await fetch(url + filtersString);
