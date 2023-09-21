@@ -274,7 +274,13 @@ const SearchBar: FC<SearchBarProps> = ({
   }, []);
 
   if (loading) {
-    return <SearchBarSkeleton actListView={isListView} actHome={actHome} />;
+    return (
+      <SearchBarSkeleton
+        actListView={isListView}
+        actHome={actHome}
+        // tabsLength={filtersProperties?.topPickList?.length}
+      />
+    );
   }
 
   const handleSearchFromHome = () => {
@@ -396,12 +402,12 @@ const SearchBar: FC<SearchBarProps> = ({
           )}
         </div>
 
-        <div className="flex flex-col gap-8  md:flex-row md:gap-0 md:items-center">
+        <div className="flex flex-col gap-6 md:flex-row md:gap-0 md:items-center">
           <div
             className={`flex ${
               !isListView && !actHome && "absolute top-28 left-12 z-10"
             } justify-start gap-3 pr-12 lg:flex-row ${
-              isListView && "border-r-[1px] border-nk-red"
+              isListView && "md:border-r-[1px] md:border-nk-red"
             }`}
           >
             {!actHome && (
@@ -460,8 +466,7 @@ const SearchBar: FC<SearchBarProps> = ({
               </button>
             )}
           </div>
-          {/* border-r-[1px] border-nk-red */}
-          {/* <div className="hidden md:block h-[38px] w-[1px] ml-12 bg-nk-red"></div> */}
+
           {isListView && (
             <FilterTabs topPicks={filtersProperties?.topPickList} />
           )}

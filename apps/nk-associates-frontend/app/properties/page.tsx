@@ -51,7 +51,7 @@ const PropertyPage = () => {
     moreLoad = false,
   } = {}) => {
     console.log(dontApplyFilter);
-    setIsLoading(true);
+    // setIsLoading(true);
     const resp = await getGridProperties(
       freshData,
       moreLoad,
