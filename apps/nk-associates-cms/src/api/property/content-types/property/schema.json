@@ -141,9 +141,9 @@
     },
     "property_top_picks": {
       "type": "relation",
-      "relation": "oneToMany",
+      "relation": "manyToMany",
       "target": "api::property-top-pick.property-top-pick",
-      "mappedBy": "property"
+      "mappedBy": "properties"
     }
   }
 }

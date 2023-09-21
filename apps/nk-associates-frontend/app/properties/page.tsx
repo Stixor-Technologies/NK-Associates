@@ -50,12 +50,14 @@ const PropertyPage = () => {
     freshData = false,
     moreLoad = false,
   } = {}) => {
+    console.log(dontApplyFilter);
     setIsLoading(true);
     const resp = await getGridProperties(
       freshData,
       moreLoad,
       freshData ? 0 : gridProperties.length,
       12,
+      filtersState?.selectedTopPick,
       dontApplyFilter ? undefined : filtersState,
     );
     if (resp?.data) {

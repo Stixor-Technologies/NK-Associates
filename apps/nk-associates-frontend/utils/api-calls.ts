@@ -3,9 +3,12 @@ import { Department, FiltersStateType, Property } from "./types/types";
 
 import { SIMILAR_PROPERTIES_LIMIT } from "./constants";
 
-const applyFilters = (filters: FiltersStateType) => {
+const applyFilters = (
+  filters: FiltersStateType,
+  tabFilter?: number | undefined,
+) => {
   let filtersString = "";
-
+  console.log(filters);
   if (filters) {
     if (filters?.minSelectedPrice) {
       filtersString += `&filters[price][$gte]=${filters?.minSelectedPrice}`;
@@ -51,17 +54,24 @@ const applyFilters = (filters: FiltersStateType) => {
       filtersString += `&filters[bedrooms][$lte]=${filters?.selectedRoomsLimit}`;
     }
 
-    if (filters?.minSelectedArea) {
+    if (
+      filters?.selectedAreaUnit?.toLowerCase() !== "all" &&
+      filters?.minSelectedArea
+    ) {
       filtersString += `&filters[area][$gte]=${filters?.minSelectedArea}`;
     }
 
-    if (filters?.maxSelectedArea) {
+    if (
+      filters?.selectedAreaUnit?.toLowerCase() !== "all" &&
+      filters?.maxSelectedArea
+    ) {
       filtersString += `&filters[area][$lte]=${filters?.maxSelectedArea}`;
     }
     if (
       filters?.selectedAreaUnit &&
       filters?.selectedAreaUnit?.toLowerCase() !== "all"
     ) {
+      console.log("selected area unit");
       filtersString += `&filters[area_unit][name][$eq]=${filters?.selectedAreaUnit}`;
     }
 
@@ -74,9 +84,13 @@ const applyFilters = (filters: FiltersStateType) => {
       filtersString += `&${selectedIds}`;
     }
 
-    if (filters?.selectedTopPick) {
-      filtersString += `&filters[property_purpose][id][$eq]=${filters?.selectedTopPick}`;
-    }
+    // if (filters?.selectedTopPick) {
+    //   filtersString += `&filters[property_top_picks][id][$eq]=${filters?.selectedTopPick}`;
+    // }
+  }
+
+  if (tabFilter) {
+    filtersString += `&filters[property_top_picks][id][$eq]=${tabFilter}`;
   }
   return filtersString;
 };
@@ -86,16 +100,17 @@ export const getGridProperties = async (
   moreLoad: boolean,
   start: number,
   limit = 12,
+  tabFilter: number | undefined,
   filters?: FiltersStateType | undefined,
 ) => {
   let url = `${BASE_URL}/api/properties?populate=*&pagination[start]=${start}&pagination[limit]=${limit}&sort[1]=id`;
-
+  // console.log("filters", filters);
   let filtersString = "";
   if (freshData || moreLoad) {
-    filtersString = applyFilters(filters);
+    filtersString = applyFilters(filters, tabFilter);
   }
 
-  console.log("filter String", filtersString);
+  // console.log("filter String", filtersString);
 
   try {
     const resp = await fetch(url + filtersString);

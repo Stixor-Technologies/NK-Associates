@@ -32,8 +32,8 @@ const SearchBarSkeleton = ({
       ></div>
       {!actHome && (
         <div
-          className={`hidden md:block ml-auto w-[7.408rem] h-[2.25rem] rounded-full animate-pulse bg-nk-skeleton-grey ${
-            !actListView && "absolute top-28 -right-16 z-20"
+          className={`hidden md:block w-[7.408rem] h-[2.25rem] rounded-full animate-pulse bg-nk-skeleton-grey ${
+            !actListView && "absolute top-28 left-12 z-20"
           }`}
         ></div>
       )}

@@ -17,9 +17,9 @@
       "minLength": 3,
       "maxLength": 20
     },
-    "property": {
+    "properties": {
       "type": "relation",
-      "relation": "manyToOne",
+      "relation": "manyToMany",
       "target": "api::property.property",
       "inversedBy": "property_top_picks"
     }
