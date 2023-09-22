@@ -401,7 +401,9 @@ const SearchBar: FC<SearchBarProps> = ({
             className={`flex ${
               !isListView && !actHome && "absolute top-28 left-12 z-10"
             } justify-start gap-3 pr-12 lg:flex-row ${
-              isListView && "md:border-r-[1px] md:border-nk-red"
+              isListView &&
+              filtersProperties?.topPickList?.length > 0 &&
+              "md:border-r-[1px] md:border-nk-red"
             }`}
           >
             {!actHome && (
