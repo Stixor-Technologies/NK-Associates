@@ -8,7 +8,6 @@ const applyFilters = (
   tabFilter?: number | undefined,
 ) => {
   let filtersString = "";
-  console.log(filters);
   if (filters) {
     if (filters?.minSelectedPrice) {
       filtersString += `&filters[price][$gte]=${filters?.minSelectedPrice}`;
@@ -71,7 +70,6 @@ const applyFilters = (
       filters?.selectedAreaUnit &&
       filters?.selectedAreaUnit?.toLowerCase() !== "all"
     ) {
-      console.log("selected area unit");
       filtersString += `&filters[area_unit][name][$eq]=${filters?.selectedAreaUnit}`;
     }
 
@@ -83,10 +81,6 @@ const applyFilters = (
         .join("&");
       filtersString += `&${selectedIds}`;
     }
-
-    // if (filters?.selectedTopPick) {
-    //   filtersString += `&filters[property_top_picks][id][$eq]=${filters?.selectedTopPick}`;
-    // }
   }
 
   if (tabFilter) {
@@ -104,13 +98,10 @@ export const getGridProperties = async (
   filters?: FiltersStateType | undefined,
 ) => {
   let url = `${BASE_URL}/api/properties?populate=*&pagination[start]=${start}&pagination[limit]=${limit}&sort[1]=id`;
-  // console.log("filters", filters);
   let filtersString = "";
   if (freshData || moreLoad) {
     filtersString = applyFilters(filters, tabFilter);
   }
-
-  // console.log("filter String", filtersString);
 
   try {
     const resp = await fetch(url + filtersString);
