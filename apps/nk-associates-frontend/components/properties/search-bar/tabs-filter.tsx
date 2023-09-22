@@ -7,7 +7,7 @@ import "swiper/css/free-mode";
 import { FreeMode } from "swiper/modules";
 
 type FilterTabsProps = {
-  topPicks: any;
+  topPicks: { id: number; name: string }[];
 };
 
 const FilterTabs: FC<FilterTabsProps> = ({ topPicks }) => {
@@ -47,10 +47,10 @@ const FilterTabs: FC<FilterTabsProps> = ({ topPicks }) => {
                   onChange={() => handleTopPickChange(item?.id)}
                 />
                 <label
-                  htmlFor={item.name}
+                  htmlFor={item?.name}
                   className="w-[9.549rem] h-[2.25rem] text-center text-base cursor-pointer rounded-full flex justify-center items-center text-nk-gray border border-nk-red  peer-checked:bg-nk-red peer-checked:text-white transition-all duration-300 ease-in-out md:hover:bg-nk-red md:hover:text-white"
                 >
-                  {item.name}
+                  {item?.name}
                 </label>
               </div>
             </SwiperSlide>

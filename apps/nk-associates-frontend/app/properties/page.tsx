@@ -50,7 +50,6 @@ const PropertyPage = () => {
     freshData = false,
     moreLoad = false,
   } = {}) => {
-    // setIsLoading(true);
     const resp = await getGridProperties(
       freshData,
       moreLoad,

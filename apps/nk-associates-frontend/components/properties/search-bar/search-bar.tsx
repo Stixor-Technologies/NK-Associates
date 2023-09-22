@@ -274,13 +274,7 @@ const SearchBar: FC<SearchBarProps> = ({
   }, []);
 
   if (loading) {
-    return (
-      <SearchBarSkeleton
-        actListView={isListView}
-        actHome={actHome}
-        // tabsLength={filtersProperties?.topPickList?.length}
-      />
-    );
+    return <SearchBarSkeleton actListView={isListView} actHome={actHome} />;
   }
 
   const handleSearchFromHome = () => {
