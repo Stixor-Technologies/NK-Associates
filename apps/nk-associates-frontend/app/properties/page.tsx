@@ -206,6 +206,7 @@ const PropertyPage = () => {
                 <InfiniteScroll
                   dataLength={gridProperties.length}
                   next={() => {
+                    setIsLoading(true);
                     fetchGridData({ moreLoad: filtersState?.filterIsSelected });
                   }}
                   hasMore={total !== gridProperties.length}
