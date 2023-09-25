@@ -41,7 +41,6 @@ const FlipBook = () => {
 
   useEffect(() => {
     const handleWindowResize = () => {
-      console.log("width", window.innerWidth);
       setWindowSize(window.innerWidth);
     };
     handleWindowResize();
@@ -71,14 +70,11 @@ const FlipBook = () => {
   }, [flipBook]);
 
   function onDocumentLoadSuccess({ numPages }: { numPages: number }): void {
-    console.log("pages", numPages);
     setNumPages(numPages);
   }
 
   const nextButtonClick = () => {
-    console.log(flipBook.current);
     if (flipBook?.current) {
-      console.log("next clicked");
       flipBook?.current?.getPageFlip().flipNext();
     }
   };
@@ -88,8 +84,6 @@ const FlipBook = () => {
       // flipBook?.current?.getPageFlip().flipPrev();
     }
   };
-
-  console.log("flipbook", flipBook.current);
 
   return (
     <div className="h-[100vh] flex items-center justify-center">

@@ -140,7 +140,6 @@ export const getSimilarProperties = async (
   },
   currentPropertyId: string,
 ) => {
-  console.log(type?.data?.attributes?.name, category?.data?.attributes?.name);
   const FILTER_PRIORITY = [
     { key: "property_type", value: "" },
     { key: "property_category", value: "" },

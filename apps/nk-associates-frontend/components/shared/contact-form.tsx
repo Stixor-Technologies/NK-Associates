@@ -153,7 +153,6 @@ const ContactForm: React.FC<ContactFormProps> = ({
                               Select Category
                             </option>
                             {categories?.map((category, index) => {
-                              console.log(category);
                               return (
                                 <option
                                   key={index}

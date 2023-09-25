@@ -219,8 +219,6 @@ const SearchBar: FC<SearchBarProps> = ({
       type: "setSelectedAreaUnit",
       payload: areaUnitsList[0]?.name,
     });
-
-    console.log("area units", areaUnitsList);
   };
 
   const fetchFilterProperties = async () => {
