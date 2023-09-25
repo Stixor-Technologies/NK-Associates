@@ -140,9 +140,10 @@ export const getSimilarProperties = async (
   },
   currentPropertyId: string,
 ) => {
+  console.log(type?.data?.attributes?.name, category?.data?.attributes?.name);
   const FILTER_PRIORITY = [
-    { key: "type", value: "" },
-    { key: "category", value: "" },
+    { key: "property_type", value: "" },
+    { key: "property_category", value: "" },
   ];
   try {
     let properties: Property[] = [];
@@ -152,12 +153,12 @@ export const getSimilarProperties = async (
     FILTER_PRIORITY[1].value = category?.data?.attributes?.name;
 
     for (let filter of FILTER_PRIORITY) {
-      if (properties.length >= 4) break;
+      if (properties?.length >= 4) break;
 
       const resp = await getPropertiesByFilter(filter, currentPropertyId);
       const data = await resp.json();
-      for (let prop of data.data) {
-        if (!uniquePropertyIds.has(prop.id) && properties.length < 4) {
+      for (let prop of data?.data) {
+        if (!uniquePropertyIds.has(prop.id) && properties?.length < 4) {
           properties.push(prop);
           uniquePropertyIds.add(prop.id);
         }
@@ -175,7 +176,7 @@ const getPropertiesByFilter = async (
   excludeId: string,
 ) => {
   return fetch(
-    `${BASE_URL}/api/properties?populate=*&filters[id][$ne]=${excludeId}&filters[${filter.key}]=${filter.value}&pagination[limit]=${SIMILAR_PROPERTIES_LIMIT}&sort[1]=id`,
+    `${BASE_URL}/api/properties?populate=*&filters[id][$ne]=${excludeId}&filters[${filter.key}][name]=${filter.value}&pagination[limit]=${SIMILAR_PROPERTIES_LIMIT}&sort[1]=id`,
 
     { cache: "no-store" },
   );

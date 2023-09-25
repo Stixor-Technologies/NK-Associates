@@ -28,6 +28,7 @@ const PropertyCard: FC<CardProps> = ({
     price,
     address,
     property_category,
+    property_type,
     property_purpose,
   } = property?.attributes;
   const id = property?.id;
@@ -115,7 +116,7 @@ const PropertyCard: FC<CardProps> = ({
               <span
                 className={`rounded-full bg-white px-4 py-1 text-nk-gray shadow-lg ${categoryTextSize}`}
               >
-                {property_purpose?.data?.attributes?.name}
+                {property_type?.data?.attributes?.name}
               </span>
             )}
           </div>
