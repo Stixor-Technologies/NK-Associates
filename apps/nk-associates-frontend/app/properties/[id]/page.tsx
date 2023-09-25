@@ -1,3 +1,4 @@
+"use client";
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
@@ -60,14 +61,16 @@ async function PropertyDetail({ params: { id } }: PropertyDetailProps) {
   const center = { lat: latitude, lng: longitude };
 
   const phoneResponse = await getContactNumber();
-  const phoneNumber = phoneResponse?.data?.attributes?.number;
-
+  console.log("phone", phoneResponse?.data?.attributes);
+  const { whatsapp_number, phone_number } = phoneResponse?.data?.attributes;
+  console.log(whatsapp_number);
   return (
     <>
       <section>
         <DetailSlider
           property_images={property_images?.data}
-          phone={phoneNumber}
+          phone={phone_number}
+          whatsapp={whatsapp_number}
         />
 
         <div className="relative mt-14 md:mt-3">

@@ -12,10 +12,15 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "number": {
+    "whatsapp_number": {
       "type": "string",
       "required": true,
-      "regex": "^((\\92)[0-9]{10})$"
+      "regex": "^((\\+92|0|92)[0-9]{10})$"
+    },
+    "phone_number": {
+      "type": "string",
+      "required": true,
+      "regex": "^(?:\\+\\d{2}-\\d{2}-\\d{3}-\\d{3}-\\d{3}|051\\d{9}|\\d{11})$"
     }
   }
 }
