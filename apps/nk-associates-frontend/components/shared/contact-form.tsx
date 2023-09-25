@@ -10,12 +10,7 @@ import Image from "next/image";
 import LinkButton from "../button/link-button";
 
 interface ContactFormProps {
-  categories?: {
-    attributes: {
-      value: string;
-      category: string;
-    };
-  }[];
+  categories?: String[];
   heading: string;
   itemName?: string;
   closeModal?: () => void;
@@ -76,7 +71,7 @@ const ContactForm: React.FC<ContactFormProps> = ({
         ${values.message}</div>`
         : `<div>
         <p>You've got a new mail from ${values.name}, their email is: ${values.email}, their number is ${values?.phone} </p>
-        <p><span>Selected Category:</span> ${values.category} </p>
+        <p><span>Selected Department:</span> ${values.category} </p>
         ${values.message}</div>`;
       const res = await fetch("/api/contact", {
         headers: {
@@ -158,12 +153,13 @@ const ContactForm: React.FC<ContactFormProps> = ({
                               Select Category
                             </option>
                             {categories?.map((category, index) => {
+                              console.log(category);
                               return (
                                 <option
                                   key={index}
-                                  value={`${category?.attributes?.category?.toLowerCase()}`}
+                                  value={`${category?.toLowerCase()}`}
                                 >
-                                  {category?.attributes?.category}
+                                  {category}
                                 </option>
                               );
                             })}

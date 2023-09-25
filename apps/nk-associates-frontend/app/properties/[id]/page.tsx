@@ -35,7 +35,6 @@ async function PropertyDetail({ params: { id } }: PropertyDetailProps) {
     bedrooms,
     baths,
     area,
-    area_unit,
     area_type,
     price,
     description,

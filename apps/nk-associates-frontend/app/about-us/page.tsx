@@ -1,7 +1,7 @@
 import React from "react";
 import LinkButton from "../../components/button/link-button";
 import ContactForm from "../../components/shared/contact-form";
-import { getCategories } from "../../utils/api-calls";
+import { getDepartments } from "../../utils/api-calls";
 import ServicesOverview from "../../components/shared/service-overview";
 import CeoMessage from "../../components/about-us/ceo-message";
 import { getAbout } from "../../utils/api-calls";
@@ -11,7 +11,8 @@ import MembersList from "../../components/members/member-list";
 import Goals from "../../components/about-us/goals";
 
 const AboutUs = async () => {
-  const categories = await getCategories();
+  const departments = await getDepartments();
+
   const aboutInfo: About = await getAbout();
   const ceoMessage: string = aboutInfo?.data?.attributes?.ceo_message;
   const ceoImage: string = `${BASE_URL}${aboutInfo?.data?.attributes?.ceo_image?.data?.attributes?.url}`;
@@ -66,7 +67,7 @@ const AboutUs = async () => {
         id="form"
         className="container pb-[2.958rem] md:pb-[3.603rem] pt-[5.05rem] lg:flex lg:justify-center"
       >
-        <ContactForm categories={categories} heading="Get In Touch" />
+        <ContactForm categories={departments} heading="Get In Touch" />
       </div>
     </div>
   );
