@@ -12,6 +12,7 @@
     "@photo-sphere-viewer/core": "^5.3.0",
     "@photo-sphere-viewer/virtual-tour-plugin": "^5.3.0",
     "@react-google-maps/api": "^2.19.2",
+    "@react-pdf/renderer": "^3.1.12",
     "@react-three/drei": "^9.80.3",
     "@react-three/fiber": "^8.13.6",
     "@sendgrid/mail": "^7.7.0",

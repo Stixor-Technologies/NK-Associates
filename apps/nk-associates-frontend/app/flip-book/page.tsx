@@ -2,6 +2,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import HTMLFlipBook from "react-pageflip";
 import { pdfjs, Document, Page as ReactPdfPage } from "react-pdf";
+
 // import NKBooklet from "../../public/nk-booklet.pdf";
 // import NKBooklet from "raw-loader!../../public/sample.pdf";
 import NKBooklet from "../../public/sample.pdf";
@@ -10,28 +11,27 @@ import "./book-style.css";
 // const width = 600;
 // const height = 724;
 
-const width = 500;
-const height = 600;
+const width = 600;
+const height = 657;
 
-const Page = React.forwardRef<HTMLDivElement, { pageNumber: number }>(
+const Pages = React.forwardRef<HTMLDivElement, { pageNumber: number }>(
   ({ pageNumber }, ref) => {
     return (
-      <div ref={ref} className={`page !h-[600px] !top-0 overflow-hidden`}>
+      <div ref={ref} className={`page !top-0`}>
         <ReactPdfPage
           renderTextLayer={false}
           renderAnnotationLayer={false}
           pageNumber={pageNumber}
-          scale={1}
-
-          // width={615}
-          // height={600}
+          // scale={1.1}
+          width={600}
+          height={300}
         />
       </div>
     );
   },
 );
 
-Page.displayName = "Page";
+Pages.displayName = "Pages";
 
 const FlipBook = () => {
   const [numPages, setNumPages] = useState<number>();
@@ -132,7 +132,7 @@ const FlipBook = () => {
           ref={flipBook}
         >
           {Array.from(new Array(numPages), (el, index) => (
-            <Page key={`page_${index + 1}`} pageNumber={index + 1} />
+            <Pages key={`page_${index + 1}`} pageNumber={index + 1} />
           ))}
         </HTMLFlipBook>
         {/* <div className="container">
