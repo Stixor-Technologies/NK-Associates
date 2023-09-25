@@ -64,9 +64,6 @@ export interface Property {
     property_pdf: {
       data: MediaAttributes;
     };
-    area_unit: {
-      data: { id: number; attributes: { name: string } };
-    };
     property_purpose: {
       data: { id: number; attributes: { name: string } };
     };
