@@ -1,35 +1,35 @@
 {
   "kind": "collectionType",
-  "collectionName": "mobile_maps",
+  "collectionName": "maps",
   "info": {
-    "singularName": "mobile-map",
-    "pluralName": "mobile-maps",
-    "displayName": "mobile-map"
+    "singularName": "map",
+    "pluralName": "maps",
+    "displayName": "Maps"
   },
   "options": {
-    "draftAndPublish": true
+    "draftAndPublish": false
   },
   "pluginOptions": {},
   "attributes": {
-    "map_image": {
+    "map_name": {
+      "type": "string",
+      "required": true,
+      "minLength": 1,
+      "maxLength": 20
+    },
+    "map_zone": {
+      "type": "string",
+      "required": true,
+      "minLength": 1,
+      "maxLength": 20
+    },
+    "zone_image": {
       "allowedTypes": [
         "images"
       ],
       "type": "media",
       "multiple": false,
       "required": true
-    },
-    "map_name": {
-      "type": "string",
-      "required": true,
-      "minLength": 1,
-      "maxLength": 40
-    },
-    "map_zone": {
-      "type": "string",
-      "required": true,
-      "maxLength": 30,
-      "minLength": 1
     },
     "map_pdf": {
       "allowedTypes": [
