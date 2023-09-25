@@ -1,3 +1,4 @@
+// "use client";
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
@@ -30,11 +31,13 @@ interface PropertyDetailProps {
 
 async function PropertyDetail({ params: { id } }: PropertyDetailProps) {
   const data: Property = await getPropertyDetail(id);
+  console.log(data);
   const {
     title,
     bedrooms,
     baths,
     area,
+    area_unit,
     area_type,
     price,
     description,
@@ -124,6 +127,7 @@ async function PropertyDetail({ params: { id } }: PropertyDetailProps) {
                     <Image src={AreaIcon} width={27} height={27} alt="" />
                     <span className="font-metropolis-semibold text-lg text-nk-black">
                       {`${convertAreaToSqFeet(area, area_type)} Sq.Ft`}
+                      {/* {`${area} ${area_unit?.data?.attributes?.name}`} */}
                     </span>
                   </div>
                 </div>

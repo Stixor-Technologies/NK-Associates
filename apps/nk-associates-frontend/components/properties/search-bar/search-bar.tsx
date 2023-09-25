@@ -15,6 +15,7 @@ import {
   fetchFilterOptionsList,
   fetchPropertyLocationList,
   fetchFilterProjectsList,
+  fetchAreaUnits,
 } from "../../../utils/api-calls";
 
 interface SearchBarProps {
@@ -180,22 +181,22 @@ const SearchBar: FC<SearchBarProps> = ({
     const priceRange = respFiltersOptions?.attributes?.priceRange;
     const areaRange = respFiltersOptions?.attributes?.areaRange;
 
-    const areaUnitsData = respFiltersOptions?.attributes?.areaUnits?.data || [];
+    // const areaUnitsData = respFiltersOptions?.attributes?.areaUnits?.data || [];
 
-    const areaUnitsList = areaUnitsData?.length
-      ? [
-          { id: undefined, name: "All" },
-          ...areaUnitsData?.map((unit) => ({
-            id: unit?.id,
-            name: unit?.attributes.name,
-          })),
-        ]
-      : [];
+    // const areaUnitsList = areaUnitsData?.length
+    //   ? [
+    //       { id: undefined, name: "All" },
+    //       ...areaUnitsData?.map((unit) => ({
+    //         id: unit?.id,
+    //         name: unit?.attributes.name,
+    //       })),
+    //     ]
+    //   : [];
 
     setFiltersProperties((oldState) => ({
       ...oldState,
       areaRange: [areaRange?.minRange, areaRange?.maxRange],
-      areaUnitsList: areaUnitsList,
+      // areaUnitsList: areaUnitsList,
       priceRange: [priceRange?.minRange, priceRange?.maxRange],
     }));
 
@@ -207,10 +208,37 @@ const SearchBar: FC<SearchBarProps> = ({
       type: "setMaxSelectedArea",
       payload: areaRange?.maxRange,
     });
+    // filtersDispatch({
+    //   type: "setSelectedAreaUnit",
+    //   payload: areaUnitsList[0]?.name,
+    // });
+  };
+
+  const getAreaUnits = async () => {
+    const areaUnits = await fetchAreaUnits();
+    console.log("area units", areaUnits);
+    const areaUnitsData = areaUnits || [];
+
+    const areaUnitsList = areaUnitsData?.length
+      ? [
+          { id: undefined, name: "All" },
+          ...areaUnitsData?.map((unit, index) => ({
+            id: index,
+            name: unit,
+          })),
+        ]
+      : [];
+    setFiltersProperties((oldState) => ({
+      ...oldState,
+      areaUnitsList: areaUnitsList,
+    }));
+
     filtersDispatch({
       type: "setSelectedAreaUnit",
       payload: areaUnitsList[0]?.name,
     });
+
+    console.log("area units", areaUnitsList);
   };
 
   const fetchFilterProperties = async () => {
@@ -223,6 +251,8 @@ const SearchBar: FC<SearchBarProps> = ({
       await getPropertyLocationList();
       await getRentFrequencyList();
       await getFiltersOptionsList();
+      await getAreaUnits();
+
       setLoading(false);
     } catch (error) {
       console.error(error);

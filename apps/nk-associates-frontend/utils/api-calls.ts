@@ -273,6 +273,18 @@ export const fetchFilterOptionsList = async () => {
   }
 };
 
+export const fetchAreaUnits = async () => {
+  try {
+    const response = await fetch(
+      `${BASE_URL}/api/content-type-builder/content-types/api::property.property`,
+    );
+    const propertyContentType = await response.json();
+    return propertyContentType?.data?.schema?.attributes?.area_type?.enum;
+  } catch (error) {
+    console.error("Error fetching property Area Units", error);
+  }
+};
+
 export const getJobDetail = async (id: string) => {
   try {
     const resp = await fetch(`${BASE_URL}/api/jobs/${id}?populate=*`, {
