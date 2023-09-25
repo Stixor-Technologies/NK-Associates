@@ -1,4 +1,3 @@
-"use client";
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
@@ -31,7 +30,6 @@ interface PropertyDetailProps {
 
 async function PropertyDetail({ params: { id } }: PropertyDetailProps) {
   const data: Property = await getPropertyDetail(id);
-  console.log(data);
   const {
     title,
     bedrooms,
