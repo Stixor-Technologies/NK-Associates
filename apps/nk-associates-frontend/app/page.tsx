@@ -5,6 +5,7 @@ import AboutSummary from "../components/home-page/about-summary";
 import FeaturedProjects from "../components/home-page/featured-projects";
 import FeaturedProperties from "../components/home-page/featured-properties";
 import ServicesOverview from "../components/shared/service-overview";
+import Booklet from "../components/home-page/booklet";
 import NkApp from "../components/home-page/mobile-app";
 import PopularCategories from "../components/home-page/popular-categories/popular-categories";
 import Offices from "../components/home-page/offices";
@@ -88,7 +89,8 @@ export default async function Home() {
       />
       <FeaturedProjects featuredProjects={featuredProjects} />
       <FeaturedProperties featuredProperties={featuredProperties} />
-      <ServicesOverview />
+      {/* <ServicesOverview /> */}
+      <Booklet />
       <NkApp storeLinks={storeLinks} />
       <PopularCategories popularCategories={popularCategories} />
       <Offices />

@@ -35,6 +35,8 @@
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-infinite-scroll-component": "^6.1.0",
+    "react-pageflip": "^2.0.3",
+    "react-pdf": "^7.3.3",
     "react-select": "^5.7.4",
     "react-slider": "^2.0.6",
     "split-type": "^0.3.3",
@@ -46,6 +48,7 @@
     "yup": "^1.2.0"
   },
   "devDependencies": {
-    "@types/react-infinite-scroll-component": "^5.0.0"
+    "@types/react-infinite-scroll-component": "^5.0.0",
+    "raw-loader": "^4.0.2"
   }
 }
