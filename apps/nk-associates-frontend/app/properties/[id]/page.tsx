@@ -73,7 +73,7 @@ async function PropertyDetail({ params: { id } }: PropertyDetailProps) {
         <div className="relative mt-14 md:mt-3">
           <VRTour vrTourId={vrTourId ? vrTourId : undefined} />
 
-          <div className="container mx-auto py-4">
+          <div className="container mx-auto pb-4 pt-16">
             {/* Property Info section */}
             <div className="flex flex-col items-center gap-5 sm:flex-row sm:items-start sm:justify-between lg:items-center">
               <div

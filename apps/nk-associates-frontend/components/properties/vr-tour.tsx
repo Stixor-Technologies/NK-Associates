@@ -225,7 +225,7 @@ const VRTour = ({ vrTourId }: { vrTourId: number | undefined }) => {
         <button
           ref={buttonRef}
           onClick={handleOpenClick}
-          className="group sticky top-[31.25rem] mb-4 z-30 ml-auto hidden w-[6rem] items-center gap-3 rounded-l-xl bg-nk-white px-4 py-3.5 shadow-3xl transition-all duration-500 ease-in-out hover:w-44 md:flex"
+          className="group sticky top-[31.25rem] z-30 ml-auto hidden w-[6rem] items-center gap-3 rounded-l-xl bg-nk-white px-4 py-3.5 shadow-3xl transition-all duration-500 ease-in-out hover:w-44 md:flex"
         >
           <Image
             src={TourIcon}
