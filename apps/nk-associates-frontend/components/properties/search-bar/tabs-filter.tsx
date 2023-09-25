@@ -1,7 +1,6 @@
 import React, { FC } from "react";
 import useFilters from "../../../utils/useFilters";
 import { Swiper, SwiperSlide } from "swiper/react";
-
 import "swiper/css";
 import "swiper/css/free-mode";
 import { FreeMode } from "swiper/modules";

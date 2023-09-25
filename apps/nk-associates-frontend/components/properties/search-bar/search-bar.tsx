@@ -216,13 +216,6 @@ const SearchBar: FC<SearchBarProps> = ({
 
   const getPropertyTopPicks = async () => {
     const pickList = await fetchPropertyTopPickList();
-    // const topList = pickList?.map((list) => {
-    //   return {
-    //     id: list.id,
-    //     name: list.attributes.name,
-    //   };
-    // });
-
     const topList = pickList?.length
       ? [
           { id: undefined, name: "All" },
@@ -403,7 +396,7 @@ const SearchBar: FC<SearchBarProps> = ({
             } justify-start gap-3 pr-12 lg:flex-row ${
               isListView &&
               filtersProperties?.topPickList?.length > 0 &&
-              "md:border-r-[1px] md:border-nk-red"
+              "md:border-r md:border-nk-red"
             }`}
           >
             {!actHome && (

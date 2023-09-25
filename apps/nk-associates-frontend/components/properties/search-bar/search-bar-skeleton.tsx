@@ -6,7 +6,6 @@ const SearchBarSkeleton = ({
 }: {
   actListView: boolean;
   actHome?: boolean;
-  // tabsLength: any;
 }) => {
   return (
     <section
