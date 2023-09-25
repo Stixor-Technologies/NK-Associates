@@ -26,6 +26,7 @@
     "date-fns": "^2.30.0",
     "eslint": "8.45.0",
     "eslint-config-custom": "*",
+    "file-saver": "^2.0.5",
     "flowbite": "^1.8.0",
     "formik": "^2.4.2",
     "gsap": "./gsap-bonus.tgz",
