@@ -1,11 +1,10 @@
 "use client";
 import React, { useState } from "react";
 import LinkButton from "../button/link-button";
-import InquiriesModal from "../shared/inquiries-modal";
+import InquiriesModal from "./inquiries-modal";
 import { usePathname } from "next/navigation";
 
-const InquiresModal = () => {
-  const propertyId: string = usePathname().slice(1).split("/")[1];
+const InquiresModal = ({ itemName }: { itemName: string }) => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
 
   const openModal = () => {
@@ -20,7 +19,7 @@ const InquiresModal = () => {
 
   return (
     <div>
-      <InquiriesModal onClose={closeModal} open={isOpen} itemId={propertyId} />
+      <InquiriesModal onClose={closeModal} open={isOpen} itemName={itemName} />
       <LinkButton
         text="Inquire"
         type="solid"

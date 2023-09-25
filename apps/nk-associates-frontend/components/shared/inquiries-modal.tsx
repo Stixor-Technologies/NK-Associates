@@ -7,10 +7,10 @@ import ContactForm from "./contact-form";
 interface ModalProps {
   open: boolean;
   onClose: () => void;
-  itemId: string;
+  itemName: string;
 }
 
-const InquiriesModal: React.FC<ModalProps> = ({ open, onClose, itemId }) => {
+const InquiriesModal: React.FC<ModalProps> = ({ open, onClose, itemName }) => {
   const modalElement = useRef<HTMLDivElement | null>(null);
 
   const closeModal = () => {
@@ -88,7 +88,7 @@ const InquiriesModal: React.FC<ModalProps> = ({ open, onClose, itemId }) => {
           <div className="font-metropolis text-nk-black flex flex-wrap text-left text-[0.938rem] ">
             <ContactForm
               heading="Get in touch"
-              itemId={itemId}
+              itemName={itemName}
               closeModal={closeModal}
             />
           </div>

@@ -20,7 +20,7 @@ import PDFIcon from "../../../public/assets/icons/pdf-file-icon.svg";
 import TileSection from "../../../components/properties/property-detail/tile-section";
 import ServicesOverview from "../../../components/shared/service-overview";
 import VRTour from "../../../components/properties/vr-tour";
-import InquiresModalComp from "../../../components/properties/inquiries-modal-comp";
+import InquiresModalComp from "../../../components/shared/inquiries-modal-comp";
 
 interface PropertyDetailProps {
   params: {
@@ -129,7 +129,7 @@ async function PropertyDetail({ params: { id } }: PropertyDetailProps) {
                 </div>
               </div>
 
-              <InquiresModalComp />
+              <InquiresModalComp itemName={title} />
             </div>
 
             {/* Tiles section */}

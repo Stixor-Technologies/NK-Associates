@@ -3,7 +3,7 @@ import { useEffect } from "react";
 import { gsap } from "gsap";
 
 import { convertToPakistaniNumbering } from "../../utils/utils";
-import InquiresComponent from "./inquires-component";
+import InquiresModalComp from "../shared/inquiries-modal-comp";
 
 type PropTypes = {
   projectName: string;
@@ -206,8 +206,7 @@ const ProjectIntroduction = ({
               ></div>
             </div>
           </div>
-
-          <InquiresComponent />
+          <InquiresModalComp itemName={projectName} />
         </div>
       </section>
 
