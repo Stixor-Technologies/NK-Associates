@@ -62,7 +62,6 @@ const applyFilters = (filters: FiltersStateType) => {
       filters?.selectedAreaUnit &&
       filters?.selectedAreaUnit?.toLowerCase() !== "all"
     ) {
-      // filtersString += `&filters[area_unit][name][$eq]=${filters?.selectedAreaUnit}`;
       filtersString += `&filters[area_type][$eq]=${filters?.selectedAreaUnit}`;
     }
 

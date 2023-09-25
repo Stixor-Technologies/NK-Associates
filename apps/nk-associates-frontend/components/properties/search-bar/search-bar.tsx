@@ -181,22 +181,9 @@ const SearchBar: FC<SearchBarProps> = ({
     const priceRange = respFiltersOptions?.attributes?.priceRange;
     const areaRange = respFiltersOptions?.attributes?.areaRange;
 
-    // const areaUnitsData = respFiltersOptions?.attributes?.areaUnits?.data || [];
-
-    // const areaUnitsList = areaUnitsData?.length
-    //   ? [
-    //       { id: undefined, name: "All" },
-    //       ...areaUnitsData?.map((unit) => ({
-    //         id: unit?.id,
-    //         name: unit?.attributes.name,
-    //       })),
-    //     ]
-    //   : [];
-
     setFiltersProperties((oldState) => ({
       ...oldState,
       areaRange: [areaRange?.minRange, areaRange?.maxRange],
-      // areaUnitsList: areaUnitsList,
       priceRange: [priceRange?.minRange, priceRange?.maxRange],
     }));
 
@@ -208,15 +195,10 @@ const SearchBar: FC<SearchBarProps> = ({
       type: "setMaxSelectedArea",
       payload: areaRange?.maxRange,
     });
-    // filtersDispatch({
-    //   type: "setSelectedAreaUnit",
-    //   payload: areaUnitsList[0]?.name,
-    // });
   };
 
   const getAreaUnits = async () => {
     const areaUnits = await fetchAreaUnits();
-    console.log("area units", areaUnits);
     const areaUnitsData = areaUnits || [];
 
     const areaUnitsList = areaUnitsData?.length
