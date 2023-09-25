@@ -8,14 +8,7 @@ const nextConfig = {
 
 module.exports = {
   ...nextConfig,
-  // target: "serverless",
-  // rules: [
-  //   {
-  //     test: /\.pdf$/i,
-  //     use: "raw-loader",
-  //   },
-  // ],
-  // future: { webpack5: true },
+
   images: {
     remotePatterns: [
       {
@@ -30,8 +23,7 @@ module.exports = {
       },
     ],
   },
-  // webpack: (config, options) => {
-  webpack: (config, { buildId, dev, isServer, defaultLoaders, webpack }) => {
+  webpack: (config, options) => {
     config.resolve.alias.canvas = false;
     config.resolve.alias.encoding = false;
     config.module.rules.push({

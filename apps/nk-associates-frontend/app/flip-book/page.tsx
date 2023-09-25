@@ -5,7 +5,7 @@ import { pdfjs, Document, Page as ReactPdfPage } from "react-pdf";
 
 // import NKBooklet from "../../public/nk-booklet.pdf";
 // import NKBooklet from "raw-loader!../../public/sample.pdf";
-import NKBooklet from "../../public/sample.pdf";
+// import NKBooklet from "../../public/sample.pdf";
 import "./book-style.css";
 
 // const width = 600;
