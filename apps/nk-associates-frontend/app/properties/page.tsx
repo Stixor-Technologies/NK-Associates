@@ -50,12 +50,12 @@ const PropertyPage = () => {
     freshData = false,
     moreLoad = false,
   } = {}) => {
-    setIsLoading(true);
     const resp = await getGridProperties(
       freshData,
       moreLoad,
       freshData ? 0 : gridProperties.length,
       12,
+      filtersState?.selectedTopPick,
       dontApplyFilter ? undefined : filtersState,
     );
     if (resp?.data) {
@@ -119,7 +119,6 @@ const PropertyPage = () => {
     keyboardShortcuts: false,
     minZoom: 5,
     maxZoom: 40,
-
     styles: MapStyles,
   };
 
@@ -174,7 +173,7 @@ const PropertyPage = () => {
     if (filtersInitialized || Object.keys(queryParams).length === 0) {
       fetchGridData({ freshData: true });
     }
-  }, [filtersInitialized]);
+  }, [filtersInitialized, filtersState?.selectedTopPick]);
 
   return (
     <section className="flex flex-col bg-right-top bg-no-repeat md:bg-nk-bg">
@@ -205,6 +204,7 @@ const PropertyPage = () => {
                 <InfiniteScroll
                   dataLength={gridProperties.length}
                   next={() => {
+                    setIsLoading(true);
                     fetchGridData({ moreLoad: filtersState?.filterIsSelected });
                   }}
                   hasMore={total !== gridProperties.length}
