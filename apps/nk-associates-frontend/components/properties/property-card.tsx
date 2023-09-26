@@ -29,10 +29,12 @@ const PropertyCard: FC<CardProps> = ({
     address,
     property_category,
     property_purpose,
+    property_top_picks,
   } = property?.attributes;
   const id = property?.id;
   const thumbnailImage =
     property?.attributes?.image_thumbnail?.data?.attributes?.url;
+  console.log(property_top_picks);
   const categoryTextSize = actFeatured
     ? "text-[0.688rem] md:text-base"
     : actMap || actSim
@@ -76,6 +78,7 @@ const PropertyCard: FC<CardProps> = ({
         href={`/properties/${id}`}
         target={actMap ? "_blank" : "_self"}
         rel={actMap ? "noopener noreferrer" : undefined}
+        className="relative"
       >
         <div
           className={`aspect-w-1 aspect-h-1 group relative w-full max-w-[37.5rem] overflow-hidden ${
@@ -95,6 +98,15 @@ const PropertyCard: FC<CardProps> = ({
             }`}
           />
         </div>
+
+        {property_top_picks?.data[0]?.attributes?.name.toLowerCase() ===
+          "hot selling" && (
+          <div className="w-11 h-11 top-2 right-2 bg-nk-white text-nk-red text-[0.563rem] font-metropolis-bold rounded-full flex justify-center items-center absolute">
+            <span className="text-center">
+              {property_top_picks?.data[0]?.attributes?.name}
+            </span>
+          </div>
+        )}
       </Link>
 
       <div

@@ -138,6 +138,12 @@
       "type": "relation",
       "relation": "oneToOne",
       "target": "api::property-location.property-location"
+    },
+    "property_top_picks": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::property-top-pick.property-top-pick",
+      "mappedBy": "properties"
     }
   }
 }

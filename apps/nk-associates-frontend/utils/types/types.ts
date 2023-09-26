@@ -76,6 +76,14 @@ export interface Property {
     vr_tour: {
       data: { id: number; attributes: { name: string } };
     };
+    property_top_picks: {
+      data: {
+        id: number;
+        attributes: {
+          name: string;
+        };
+      };
+    };
   };
   id?: number;
 }
@@ -179,6 +187,7 @@ export interface SearchFilterProperties {
   rentFrequencyList: { id: number; name: string }[] | undefined;
   propertyPurposeList: { id: number; name: string }[] | undefined;
   propertyLocationList: { id: number; label: string }[] | undefined;
+  topPickList: { id: number; name: string }[] | undefined;
   projectsList: { id: number; label: string }[] | undefined;
   priceRange: [number, number];
   areaRange: [number, number];
@@ -199,6 +208,7 @@ export interface FiltersStateType {
   minSelectedArea: number;
   maxSelectedArea: number;
   selectedAreaUnit: string | undefined;
+  selectedTopPick: number | undefined;
   location: number[];
   filterIsSelected: boolean;
 }

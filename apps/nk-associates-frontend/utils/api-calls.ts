@@ -3,9 +3,11 @@ import { Department, FiltersStateType, Property } from "./types/types";
 
 import { SIMILAR_PROPERTIES_LIMIT } from "./constants";
 
-const applyFilters = (filters: FiltersStateType) => {
+const applyFilters = (
+  filters: FiltersStateType,
+  tabFilter?: number | undefined,
+) => {
   let filtersString = "";
-
   if (filters) {
     if (filters?.minSelectedPrice) {
       filtersString += `&filters[price][$gte]=${filters?.minSelectedPrice}`;
@@ -51,11 +53,17 @@ const applyFilters = (filters: FiltersStateType) => {
       filtersString += `&filters[bedrooms][$lte]=${filters?.selectedRoomsLimit}`;
     }
 
-    if (filters?.minSelectedArea) {
+    if (
+      filters?.selectedAreaUnit?.toLowerCase() !== "all" &&
+      filters?.minSelectedArea
+    ) {
       filtersString += `&filters[area][$gte]=${filters?.minSelectedArea}`;
     }
 
-    if (filters?.maxSelectedArea) {
+    if (
+      filters?.selectedAreaUnit?.toLowerCase() !== "all" &&
+      filters?.maxSelectedArea
+    ) {
       filtersString += `&filters[area][$lte]=${filters?.maxSelectedArea}`;
     }
     if (
@@ -74,6 +82,10 @@ const applyFilters = (filters: FiltersStateType) => {
       filtersString += `&${selectedIds}`;
     }
   }
+
+  if (tabFilter) {
+    filtersString += `&filters[property_top_picks][id][$eq]=${tabFilter}`;
+  }
   return filtersString;
 };
 
@@ -82,13 +94,13 @@ export const getGridProperties = async (
   moreLoad: boolean,
   start: number,
   limit = 12,
+  tabFilter: number | undefined,
   filters?: FiltersStateType | undefined,
 ) => {
   let url = `${BASE_URL}/api/properties?populate=*&pagination[start]=${start}&pagination[limit]=${limit}&sort[1]=id`;
-
   let filtersString = "";
   if (freshData || moreLoad) {
-    filtersString = applyFilters(filters);
+    filtersString = applyFilters(filters, tabFilter);
   }
 
   try {
@@ -240,6 +252,16 @@ export const fetchPropertyLocationList = async () => {
   }
 };
 
+export const fetchPropertyTopPickList = async () => {
+  try {
+    const resp = await fetch(`${BASE_URL}/api/property-top-picks`);
+    const data = await resp.json();
+    return data?.data;
+  } catch (error) {
+    console.error("There was an error getting the Property Top Pick", error);
+  }
+};
+
 export const fetchCompletionStatusList = async () => {
   try {
     const resp = await fetch(`${BASE_URL}/api/completion-statuses`);
@@ -340,7 +362,7 @@ export const getHeadOffice = async () => {
     const data = await resp.json();
     return data?.data;
   } catch (error) {
-    console.error("There was an error getting the Property List", error);
+    console.error("There was an error getting the Head Office", error);
   }
 };
 
