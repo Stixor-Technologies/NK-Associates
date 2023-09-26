@@ -4,7 +4,6 @@ import HomeSearch from "../components/home-page/home-search";
 import AboutSummary from "../components/home-page/about-summary";
 import FeaturedProjects from "../components/home-page/featured-projects";
 import FeaturedProperties from "../components/home-page/featured-properties";
-import ServicesOverview from "../components/shared/service-overview";
 import Booklet from "../components/home-page/booklet";
 import NkApp from "../components/home-page/mobile-app";
 import PopularCategories from "../components/home-page/popular-categories/popular-categories";
@@ -24,6 +23,7 @@ export default async function Home() {
     featured_projects,
     featured_properties,
     popular_categories,
+    booklet,
   } = data?.data?.attributes || {};
 
   const propertyPrefix = "featured_property";
@@ -89,8 +89,10 @@ export default async function Home() {
       />
       <FeaturedProjects featuredProjects={featuredProjects} />
       <FeaturedProperties featuredProperties={featuredProperties} />
-      {/* <ServicesOverview /> */}
-      <Booklet />
+      <Booklet
+        bookletUrl={booklet?.data?.attributes?.url}
+        bookletName={booklet?.data?.attributes?.name}
+      />
       <NkApp storeLinks={storeLinks} />
       <PopularCategories popularCategories={popularCategories} />
       <Offices />

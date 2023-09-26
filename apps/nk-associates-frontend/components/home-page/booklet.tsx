@@ -8,9 +8,17 @@ import Image from "next/image";
 import Spinner from "../spinner";
 import { saveAs } from "file-saver";
 import Toast from "../shared/toast";
+import { BASE_URL } from "../../utils/constants";
 
-const Booklet = () => {
+const Booklet = ({
+  bookletUrl,
+  bookletName,
+}: {
+  bookletUrl: string;
+  bookletName: string;
+}) => {
   const [isDownloading, setdownloading] = useState<boolean>(false);
+  console.log(bookletUrl, bookletName);
   const [showToast, setShowToast] = useState<boolean>(false);
   const [toastMessage, setToastMessage] = useState<string>("");
   const ref = useRef<HTMLDivElement | null>(null);
@@ -50,9 +58,7 @@ const Booklet = () => {
   const downloadPDF = async () => {
     setdownloading(true);
     try {
-      const response = await fetch(
-        "https://strapi-dev.nkgroupofcompanies.com/uploads/nk_booklet1_1_177b422618.pdf",
-      );
+      const response = await fetch(`${BASE_URL}${bookletUrl}`);
 
       if (!response.ok) {
         throw new Error("Network response was not ok");
@@ -60,7 +66,7 @@ const Booklet = () => {
 
       const pdfBlob = await response.blob();
 
-      saveAs(pdfBlob, "nk_booklet.pdf");
+      saveAs(pdfBlob, bookletName);
 
       setdownloading(false);
       setToastMessage("File is downloaded");
