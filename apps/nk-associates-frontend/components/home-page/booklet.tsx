@@ -18,28 +18,32 @@ const Booklet = () => {
   useEffect(() => {
     const tl = gsap.timeline({
       scrollTrigger: {
-        id: "services-overview-trigger",
+        id: "booklet-trigger",
         trigger: ref.current,
         start: "top 70%",
         toggleActions: "play none none none",
       },
     });
-
     tl.from(".text", {
       opacity: 0,
       y: 100,
       duration: 0.5,
     });
-
     tl.from(".btn", {
       opacity: 0,
       y: 50,
       stagger: 0.2,
       ease: "linear",
     });
+    tl.from(".booklet", {
+      opacity: 0,
+      x: 250,
+      duration: 0.5,
+      stagger: 0.2,
+    });
 
     return () => {
-      ScrollTrigger.getById("services-overview-trigger")?.kill();
+      ScrollTrigger.getById("booklet-trigger")?.kill();
     };
   }, []);
 
@@ -130,7 +134,7 @@ const Booklet = () => {
               height={670}
               alt="nk-manual"
               priority={true}
-              className="mx-auto"
+              className="booklet mx-auto"
             />
           </div>
         </div>
