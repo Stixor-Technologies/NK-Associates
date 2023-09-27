@@ -35,7 +35,6 @@ const PropertyCard: FC<CardProps> = ({
   const id = property?.id;
   const thumbnailImage =
     property?.attributes?.image_thumbnail?.data?.attributes?.url;
-  console.log(property_top_picks);
   const categoryTextSize = actFeatured
     ? "text-[0.688rem] md:text-base"
     : actMap || actSim

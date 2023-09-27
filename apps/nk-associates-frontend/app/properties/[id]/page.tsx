@@ -1,4 +1,3 @@
-"use client";
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
@@ -61,9 +60,7 @@ async function PropertyDetail({ params: { id } }: PropertyDetailProps) {
   const center = { lat: latitude, lng: longitude };
 
   const phoneResponse = await getContactNumber();
-  console.log("phone", phoneResponse?.data?.attributes);
   const { whatsapp_number, phone_number } = phoneResponse?.data?.attributes;
-  console.log(whatsapp_number);
   return (
     <>
       <section>

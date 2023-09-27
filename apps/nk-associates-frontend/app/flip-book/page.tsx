@@ -3,14 +3,6 @@ import React, { useEffect, useRef, useState } from "react";
 import HTMLFlipBook from "react-pageflip";
 import { pdfjs, Document, Page as ReactPdfPage } from "react-pdf";
 
-// import NKBooklet from "../../public/nk-booklet.pdf";
-// import NKBooklet from "raw-loader!../../public/sample.pdf";
-// import NKBooklet from "../../public/sample.pdf";
-import "./book-style.css";
-
-// const width = 600;
-// const height = 724;
-
 const width = 600;
 const height = 657;
 
@@ -22,7 +14,6 @@ const Pages = React.forwardRef<HTMLDivElement, { pageNumber: number }>(
           renderTextLayer={false}
           renderAnnotationLayer={false}
           pageNumber={pageNumber}
-          // scale={1.1}
           width={600}
           height={300}
         />
@@ -63,12 +54,6 @@ const FlipBook = () => {
     ).toString();
   }, []);
 
-  useEffect(() => {
-    if (flipBook?.current) {
-      // setTotalPage(flipBookRef.current.getPageFlip().getPageCount());
-    }
-  }, [flipBook]);
-
   function onDocumentLoadSuccess({ numPages }: { numPages: number }): void {
     setNumPages(numPages);
   }
@@ -81,7 +66,6 @@ const FlipBook = () => {
 
   const prevButtonClick = () => {
     if (flipBook.current) {
-      // flipBook?.current?.getPageFlip().flipPrev();
     }
   };
 
@@ -89,13 +73,8 @@ const FlipBook = () => {
     <div className="h-[100vh] flex items-center justify-center">
       <Document
         file={
-          // "https://strapi-dev.nkgroupofcompanies.com/uploads/sample_d5aa72a3d9.pdf"
-          // "https://strapi-dev.nkgroupofcompanies.com//uploads/dummy_f2108328f8.pdf"
           "https://strapi-dev.nkgroupofcompanies.com/uploads/nk_booklet1_1_177b422618.pdf"
         }
-        onLoadError={(error) => {
-          console.error(error);
-        }}
         onLoadSuccess={onDocumentLoadSuccess}
       >
         <HTMLFlipBook
@@ -129,15 +108,6 @@ const FlipBook = () => {
             <Pages key={`page_${index + 1}`} pageNumber={index + 1} />
           ))}
         </HTMLFlipBook>
-        {/* <div className="container">
-        <div>
-          <button type="button">Previous page</button>
-          <span>20</span> of <span>30</span>
-          <button type="button" onClick={nextButtonClick}>
-            Next page
-          </button>
-        </div>
-      </div> */}
       </Document>
     </div>
   );

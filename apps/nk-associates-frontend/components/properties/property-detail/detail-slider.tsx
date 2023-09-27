@@ -25,7 +25,6 @@ const DetailSlider: FC<SliderProps> = ({
   phone,
 }) => {
   const whatsappMessage = `https://wa.me/${whatsapp}?text=I'm%20interested%20in%20your%20property`;
-  console.log(whatsapp);
   return (
     <div className="relative bg-right-top bg-no-repeat md:bg-nk-bg">
       <Swiper

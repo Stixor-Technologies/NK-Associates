@@ -18,7 +18,6 @@ const Booklet = ({
   bookletName: string;
 }) => {
   const [isDownloading, setdownloading] = useState<boolean>(false);
-  console.log(bookletUrl, bookletName);
   const [showToast, setShowToast] = useState<boolean>(false);
   const [toastMessage, setToastMessage] = useState<string>("");
   const ref = useRef<HTMLDivElement | null>(null);

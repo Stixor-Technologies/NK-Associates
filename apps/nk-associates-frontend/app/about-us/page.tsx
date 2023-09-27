@@ -1,10 +1,9 @@
 import React from "react";
 import LinkButton from "../../components/button/link-button";
 import ContactForm from "../../components/shared/contact-form";
-import { getDepartments } from "../../utils/api-calls";
+import { getDepartments, getAbout } from "../../utils/api-calls";
 import ServicesOverview from "../../components/shared/service-overview";
 import CeoMessage from "../../components/about-us/ceo-message";
-import { getAbout } from "../../utils/api-calls";
 import { About } from "../../utils/types/types";
 import { BASE_URL } from "../../utils/constants";
 import MembersList from "../../components/members/member-list";
