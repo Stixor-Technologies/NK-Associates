@@ -136,7 +136,7 @@ const Page = () => {
         <a href="mailto:info@nkassociatesandbuilders.com">
           <span className="underline">{`info@nkassociatesandbuilders.com`}</span>
         </a>
-        {` with the subject line &quot;Data Privacy Inquiry&quot; or a relevant
+        {` with the subject line "Data Privacy Inquiry" or a relevant
         subject that clearly indicates the nature of your query. We will make
         every effort to respond promptly and address your concerns.`}
       </p>

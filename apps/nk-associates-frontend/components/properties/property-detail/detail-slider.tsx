@@ -72,7 +72,7 @@ const DetailSlider: FC<SliderProps> = ({
                     )}
                     {phone && (
                       <Link
-                        href={`tel:+${phone}`}
+                        href={`tel:${phone}`}
                         rel="noopener noreferrer"
                         target="_blank"
                         className="group flex h-8 w-10 items-center justify-center overflow-hidden rounded-md border bg-nk-white transition-all delay-200 duration-500 hover:shadow-lg sm:h-10 sm:w-12 md:h-12 md:w-14"
