@@ -124,11 +124,6 @@
       "target": "api::project.project",
       "inversedBy": "properties"
     },
-    "area_unit": {
-      "type": "relation",
-      "relation": "oneToOne",
-      "target": "api::area-unit.area-unit"
-    },
     "vr_tour": {
       "type": "relation",
       "relation": "oneToOne",

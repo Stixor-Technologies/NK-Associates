@@ -8,6 +8,7 @@ const nextConfig = {
 
 module.exports = {
   ...nextConfig,
+
   images: {
     remotePatterns: [
       {
@@ -23,9 +24,16 @@ module.exports = {
     ],
   },
   webpack: (config, options) => {
+    config.resolve.alias.canvas = false;
+    config.resolve.alias.encoding = false;
     config.module.rules.push({
       test: /\.(glb|gltf)$/,
       type: "asset/resource",
+    });
+
+    config.module.rules.push({
+      test: /\.pdf/,
+      use: "raw-loader",
     });
 
     return config;

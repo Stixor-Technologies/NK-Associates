@@ -87,9 +87,10 @@ const Page = () => {
         Your Rights
       </h2>
       <p className="font-metropolis text-base mb-6 text-[0.875rem] md:text-[1.25rem]">
+        {`
         You have the right to access, update, and delete your personal
         information. If you have any concerns about your data, please contact us
-        at
+        at `}
         <a href="mailto:info@nkassociatesandbuilders.com">
           <span className="underline">info@nkassociatesandbuilders.com</span>
         </a>
@@ -106,14 +107,15 @@ const Page = () => {
         Children&apos;s Privacy
       </h2>
       <p className="font-metropolis text-base mb-6 text-[0.875rem] md:text-[1.25rem]">
+        {`
         Our website is not directed at children under the age of 18, and we do
         not knowingly collect personal information from them. If you are a
         parent or guardian and become aware that your child has provided
-        personal information, you can contact us at
+        personal information, you can contact us at `}
         <a href="mailto:info@nkassociatesandbuilders.com">
-          <span className="underline">info@nkassociatesandbuilders.com</span>
+          <span className="underline">{`info@nkassociatesandbuilders.com`}</span>
         </a>
-        to have that information removed.
+        {` to have that information removed.`}
       </p>
       <h2 className="font-metropolis-semibold text-xl md:text-3xl mb-4">
         Contacting Us Regarding Data Concerns
@@ -129,13 +131,14 @@ const Page = () => {
         Email:
       </h2>
       <p className="font-metropolis text-base mb-6 text-[0.875rem] md:text-[1.25rem]">
-        You can email us at
+        {`
+        You can email us at `}
         <a href="mailto:info@nkassociatesandbuilders.com">
-          <span className="underline">info@nkassociatesandbuilders.com</span>
+          <span className="underline">{`info@nkassociatesandbuilders.com`}</span>
         </a>
-        with the subject line &quot;Data Privacy Inquiry&quot; or a relevant
+        {` with the subject line &quot;Data Privacy Inquiry&quot; or a relevant
         subject that clearly indicates the nature of your query. We will make
-        every effort to respond promptly and address your concerns.
+        every effort to respond promptly and address your concerns.`}
       </p>
       <h2 className="font-metropolis-semibold text-[1rem] md:text-2xl mb-4">
         Contact Form:
@@ -150,13 +153,14 @@ const Page = () => {
         Phone:
       </h2>
       <p className="font-metropolis text-base mb-6 text-[0.875rem] md:text-[1.25rem]">
+        {`
         For immediate assistance or inquiries, you can call or WhatsApp our
-        customer support hotline at
+        customer support hotline at `}
         <a href="tel:+923331999100">
-          <span className="underline">+923331999100</span>
+          <span className="underline">{`+923331999100`}</span>
         </a>
-        . Our knowledgeable team will be happy to assist you with your
-        data-related questions.
+        {` . Our knowledgeable team will be happy to assist you with your
+        data-related questions.`}
       </p>
       <p className="font-metropolis text-base mb-6 text-[0.875rem] md:text-[1.25rem]">
         We take the security and privacy of your personal information seriously

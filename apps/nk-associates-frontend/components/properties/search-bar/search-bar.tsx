@@ -16,6 +16,7 @@ import {
   fetchFilterOptionsList,
   fetchPropertyLocationList,
   fetchFilterProjectsList,
+  fetchAreaUnits,
   fetchPropertyTopPickList,
 } from "../../../utils/api-calls";
 
@@ -181,22 +182,9 @@ const SearchBar: FC<SearchBarProps> = ({
     const priceRange = respFiltersOptions?.attributes?.priceRange;
     const areaRange = respFiltersOptions?.attributes?.areaRange;
 
-    const areaUnitsData = respFiltersOptions?.attributes?.areaUnits?.data || [];
-
-    const areaUnitsList = areaUnitsData?.length
-      ? [
-          { id: undefined, name: "All" },
-          ...areaUnitsData?.map((unit) => ({
-            id: unit?.id,
-            name: unit?.attributes.name,
-          })),
-        ]
-      : [];
-
     setFiltersProperties((oldState) => ({
       ...oldState,
       areaRange: [areaRange?.minRange, areaRange?.maxRange],
-      areaUnitsList: areaUnitsList,
       priceRange: [priceRange?.minRange, priceRange?.maxRange],
     }));
 
@@ -208,6 +196,26 @@ const SearchBar: FC<SearchBarProps> = ({
       type: "setMaxSelectedArea",
       payload: areaRange?.maxRange,
     });
+  };
+
+  const getAreaUnits = async () => {
+    const areaUnits = await fetchAreaUnits();
+    const areaUnitsData = areaUnits || [];
+
+    const areaUnitsList = areaUnitsData?.length
+      ? [
+          { id: undefined, name: "All" },
+          ...areaUnitsData?.map((unit, index) => ({
+            id: index,
+            name: unit,
+          })),
+        ]
+      : [];
+    setFiltersProperties((oldState) => ({
+      ...oldState,
+      areaUnitsList: areaUnitsList,
+    }));
+
     filtersDispatch({
       type: "setSelectedAreaUnit",
       payload: areaUnitsList[0]?.name,
@@ -242,6 +250,7 @@ const SearchBar: FC<SearchBarProps> = ({
       await getPropertyLocationList();
       await getRentFrequencyList();
       await getFiltersOptionsList();
+      await getAreaUnits();
       !actHome && (await getPropertyTopPicks());
       setLoading(false);
     } catch (error) {

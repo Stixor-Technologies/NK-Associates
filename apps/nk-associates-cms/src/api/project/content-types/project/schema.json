@@ -66,11 +66,11 @@
     "coveredAreaUnits": {
       "type": "enumeration",
       "enum": [
-        "Sq. Feet",
-        "Sq. Yard(s)",
-        "Sq. Meter(s)",
-        "Marla(s)",
-        "Kanal(s)"
+        "Sq.Yd",
+        "Sq.Ft",
+        "Sq.M",
+        "Marla",
+        "Kanal"
       ],
       "required": true
     },

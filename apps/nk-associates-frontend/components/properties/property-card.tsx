@@ -28,13 +28,13 @@ const PropertyCard: FC<CardProps> = ({
     price,
     address,
     property_category,
+    property_type,
     property_purpose,
     property_top_picks,
   } = property?.attributes;
   const id = property?.id;
   const thumbnailImage =
     property?.attributes?.image_thumbnail?.data?.attributes?.url;
-  console.log(property_top_picks);
   const categoryTextSize = actFeatured
     ? "text-[0.688rem] md:text-base"
     : actMap || actSim
@@ -127,7 +127,7 @@ const PropertyCard: FC<CardProps> = ({
               <span
                 className={`rounded-full bg-white px-4 py-1 text-nk-gray shadow-lg ${categoryTextSize}`}
               >
-                {property_purpose?.data?.attributes?.name}
+                {property_type?.data?.attributes?.name}
               </span>
             )}
           </div>

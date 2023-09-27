@@ -70,7 +70,7 @@ const applyFilters = (
       filters?.selectedAreaUnit &&
       filters?.selectedAreaUnit?.toLowerCase() !== "all"
     ) {
-      filtersString += `&filters[area_unit][name][$eq]=${filters?.selectedAreaUnit}`;
+      filtersString += `&filters[area_type][$eq]=${filters?.selectedAreaUnit}`;
     }
 
     if (filters?.location && filters?.location?.length > 0) {
@@ -153,8 +153,8 @@ export const getSimilarProperties = async (
   currentPropertyId: string,
 ) => {
   const FILTER_PRIORITY = [
-    { key: "type", value: "" },
-    { key: "category", value: "" },
+    { key: "property_type", value: "" },
+    { key: "property_category", value: "" },
   ];
   try {
     let properties: Property[] = [];
@@ -164,12 +164,12 @@ export const getSimilarProperties = async (
     FILTER_PRIORITY[1].value = category?.data?.attributes?.name;
 
     for (let filter of FILTER_PRIORITY) {
-      if (properties.length >= 4) break;
+      if (properties?.length >= 4) break;
 
       const resp = await getPropertiesByFilter(filter, currentPropertyId);
       const data = await resp.json();
-      for (let prop of data.data) {
-        if (!uniquePropertyIds.has(prop.id) && properties.length < 4) {
+      for (let prop of data?.data) {
+        if (!uniquePropertyIds.has(prop.id) && properties?.length < 4) {
           properties.push(prop);
           uniquePropertyIds.add(prop.id);
         }
@@ -187,7 +187,7 @@ const getPropertiesByFilter = async (
   excludeId: string,
 ) => {
   return fetch(
-    `${BASE_URL}/api/properties?populate=*&filters[id][$ne]=${excludeId}&filters[${filter.key}]=${filter.value}&pagination[limit]=${SIMILAR_PROPERTIES_LIMIT}&sort[1]=id`,
+    `${BASE_URL}/api/properties?populate=*&filters[id][$ne]=${excludeId}&filters[${filter.key}][name]=${filter.value}&pagination[limit]=${SIMILAR_PROPERTIES_LIMIT}&sort[1]=id`,
 
     { cache: "no-store" },
   );
@@ -295,6 +295,18 @@ export const fetchFilterOptionsList = async () => {
   }
 };
 
+export const fetchAreaUnits = async () => {
+  try {
+    const response = await fetch(
+      `${BASE_URL}/api/content-type-builder/content-types/api::property.property`,
+    );
+    const propertyContentType = await response.json();
+    return propertyContentType?.data?.schema?.attributes?.area_type?.enum;
+  } catch (error) {
+    console.error("Error fetching property Area Units", error);
+  }
+};
+
 export const getJobDetail = async (id: string) => {
   try {
     const resp = await fetch(`${BASE_URL}/api/jobs/${id}?populate=*`, {
@@ -363,21 +375,6 @@ export const getHeadOffice = async () => {
     return data?.data;
   } catch (error) {
     console.error("There was an error getting the Head Office", error);
-  }
-};
-
-export const getCategories = async () => {
-  try {
-    const response = await fetch(`${BASE_URL}/api/categories`, {
-      cache: "no-store",
-    });
-    if (!response.ok) {
-      throw new Error("Network response was not OK");
-    }
-    const data = await response.json();
-    return data?.data;
-  } catch (error) {
-    console.error(error);
   }
 };
 

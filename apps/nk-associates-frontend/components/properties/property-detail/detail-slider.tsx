@@ -16,10 +16,15 @@ import PhoneIcon from "../../../public/assets/icons/phone-icon.svg";
 interface SliderProps {
   property_images: MediaAttributes[];
   phone: string;
+  whatsapp: string;
 }
 
-const DetailSlider: FC<SliderProps> = ({ property_images, phone }) => {
-  const whatsapp = `https://wa.me/${phone}?text=I'm%20interested%20in%20your%20property`;
+const DetailSlider: FC<SliderProps> = ({
+  property_images,
+  whatsapp,
+  phone,
+}) => {
+  const whatsappMessage = `https://wa.me/${whatsapp}?text=I'm%20interested%20in%20your%20property`;
   return (
     <div className="relative bg-right-top bg-no-repeat md:bg-nk-bg">
       <Swiper
@@ -46,11 +51,13 @@ const DetailSlider: FC<SliderProps> = ({ property_images, phone }) => {
                     height={900}
                     alt={name}
                   />
-                  {phone && phone.length === 12 && (
-                    <div className="absolute bottom-2 right-4 z-20 flex items-center justify-center gap-2 md:gap-2 md:bottom-3 md:right-3 lg:bottom-6 lg:right-6">
+                  {/* {phone && phone.length === 12 && ( */}
+
+                  <div className="absolute bottom-2 right-4 z-20 flex items-center justify-center gap-2 md:gap-2 md:bottom-3 md:right-3 lg:bottom-6 lg:right-6">
+                    {whatsapp && (
                       <Link
                         className="group flex h-8 w-10 z-50 items-center justify-center overflow-hidden rounded-md border bg-nk-white transition-all delay-200 duration-500 hover:shadow-lg sm:h-10 sm:w-12 md:h-12 md:w-14"
-                        href={whatsapp}
+                        href={whatsappMessage}
                         rel="noopener noreferrer"
                         target="_blank"
                       >
@@ -62,6 +69,8 @@ const DetailSlider: FC<SliderProps> = ({ property_images, phone }) => {
                           className="w-5 transition-all z-10 delay-200 duration-500 group-hover:scale-110 sm:w-6 md:w-8"
                         />
                       </Link>
+                    )}
+                    {phone && (
                       <Link
                         href={`tel:+${phone}`}
                         rel="noopener noreferrer"
@@ -76,8 +85,8 @@ const DetailSlider: FC<SliderProps> = ({ property_images, phone }) => {
                           className="w-5 transition-all delay-200 duration-500 group-hover:scale-110 sm:w-6 md:w-8"
                         />
                       </Link>
-                    </div>
-                  )}
+                    )}
+                  </div>
                 </div>
               </SwiperSlide>
             );
