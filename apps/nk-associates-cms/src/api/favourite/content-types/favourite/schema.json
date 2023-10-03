@@ -1,0 +1,24 @@
+{
+  "kind": "collectionType",
+  "collectionName": "favourites",
+  "info": {
+    "singularName": "favourite",
+    "pluralName": "favourites",
+    "displayName": "favourites"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "userId": {
+      "required": true,
+      "type": "integer"
+    },
+    "favouriteProperties": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::property.property"
+    }
+  }
+}
