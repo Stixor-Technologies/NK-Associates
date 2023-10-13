@@ -1,0 +1,26 @@
+{
+  "applinks": {
+    "apps": [],
+    "details": [
+      {
+        "appID": "6PSAL9LJH6.stixor.nk-associates-app",
+        "paths": [
+          "/Login",
+          "/NewPassword"
+        ],
+        "components": [
+          {
+            "/": "/Login"
+          },
+          {
+            "/": "/NewPassword",
+            "?": {
+              "code": "?*"
+            },
+            "comment": "Matches any URL whose path starts with /NewPassword and which has a query item with name 'code' and a value of one or more characters"
+          }
+        ]
+      }
+    ]
+  }
+}
