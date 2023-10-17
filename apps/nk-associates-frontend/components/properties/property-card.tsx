@@ -64,6 +64,12 @@ const PropertyCard: FC<CardProps> = ({
     : actSim
     ? "text-xs md:text-xs"
     : "text-sm md:text-xs";
+
+  const property_cat =
+    property_category?.data?.attributes?.name?.length > 12
+      ? `${property_category?.data?.attributes?.name.slice(0, 12)}...`
+      : property_category?.data?.attributes?.name;
+
   return (
     <div
       className={`property-card ${(actSim || actFeatured) && "flex-grow"} ${
@@ -120,14 +126,14 @@ const PropertyCard: FC<CardProps> = ({
               <span
                 className={`rounded-full bg-white px-4 py-1 text-nk-gray shadow-lg ${categoryTextSize}`}
               >
-                {property_category?.data?.attributes?.name}
+                {property_cat}
               </span>
             )}
             {property_purpose && property_purpose?.data && (
               <span
                 className={`rounded-full bg-white px-4 py-1 text-nk-gray shadow-lg ${categoryTextSize}`}
               >
-                {property_type?.data?.attributes?.name}
+                {property_purpose?.data?.attributes?.name}
               </span>
             )}
           </div>

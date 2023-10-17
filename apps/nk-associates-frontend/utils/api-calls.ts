@@ -457,6 +457,20 @@ export const getDepartments = async () => {
   }
 };
 
+export const getContactCategory = async () => {
+  try {
+    const resp = await fetch(`${BASE_URL}/api/contact-categories?populate=*`);
+    const data = await resp.json();
+    const categories = data?.data?.map(
+      (data: { id: number; attributes: { category: string } }) =>
+        data?.attributes?.category,
+    );
+    return categories;
+  } catch (error) {
+    console.error("There was an error getting categories", error);
+  }
+};
+
 export const getSocials = async () => {
   try {
     const resp = await fetch(`${BASE_URL}/api/social`, {
