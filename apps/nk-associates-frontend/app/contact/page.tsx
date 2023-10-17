@@ -19,8 +19,6 @@ const ContactUs = async () => {
   const headOfficeAddress = await getHeadOffice();
   const categories = await getContactCategory();
 
-  console.log("categories", categories);
-
   const combinedAddresses: Offices[] = [
     ...(headOfficeAddress
       ? [{ ...headOfficeAddress, isHeadOffice: true }]
