@@ -467,7 +467,7 @@ export const getContactCategory = async () => {
     );
     return categories;
   } catch (error) {
-    console.error("There was an error getting catgeories", error);
+    console.error("There was an error getting categories", error);
   }
 };
 
