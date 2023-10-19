@@ -1,0 +1,46 @@
+.gm-style .gm-style-iw-c {
+  /* border-radius: 0.75rem; */
+  padding: 0;
+  background-color: transparent;
+  /* width: 16.25rem; */
+  max-width: 18.75rem !important;
+  top: -1.5rem;
+}
+
+.gm-style .gm-style-iw-d {
+  padding: 0;
+  border-radius: 0.75rem;
+  background-color: transparent;
+  overflow: hidden !important;
+}
+
+.gm-style-iw-tc {
+  display: none;
+}
+
+.gm-ui-hover-effect {
+  width: 1.2rem !important;
+  height: 1.2rem !important;
+  border-width: 0.063rem;
+  border-style: solid;
+  background-color: rgba(0, 0, 0, 0.15) !important;
+  opacity: 1;
+  right: 0.325rem !important;
+  top: 0.325rem !important;
+  border-radius: 50%;
+  border: none;
+  padding: 0;
+  display: flex !important;
+  justify-content: center;
+  align-items: center;
+}
+
+.gm-ui-hover-effect > span {
+  background-color: white;
+  transition: transform 0.3s ease-in-out;
+  margin: 0 !important;
+}
+
+.gm-ui-hover-effect:hover span {
+  transform: scale(1.2);
+}
