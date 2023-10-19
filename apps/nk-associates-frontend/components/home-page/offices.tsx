@@ -19,8 +19,6 @@ const Offices = () => {
 
   const [isLoading, setIsLoading] = useState<boolean>(true);
 
-  console.log(offices);
-
   const collectCoordinates = (offices: Offices[]) => {
     return (
       offices?.map((office) => ({
