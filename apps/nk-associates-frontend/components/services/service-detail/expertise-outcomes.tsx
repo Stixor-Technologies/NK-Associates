@@ -98,15 +98,21 @@ const ExpertiseOutcomes: FC<OutcomesProps> = ({
         },
       });
 
-      expertiseTl.to("[data-expertise] .images-panel:first-child", {
-        x: 0,
-        opacity: 1,
-        duration: 0.7,
-        ease: "power2.out",
-      });
-      expertiseTl.to("[data-expertise] .images-panel:first-child", {
-        rotate: -6,
-      });
+      expertiseTl
+        .to("[data-expertise] .images-panel:first-child", {
+          x: 0,
+          opacity: 1,
+          duration: 0.7,
+          ease: "power2.out",
+        })
+        .to(
+          "[data-expertise] .images-panel:first-child",
+          {
+            rotate: -6,
+            duration: 0.7,
+          },
+          "<0.1",
+        );
 
       const outComeTl = gsap.timeline({
         scrollTrigger: {
@@ -116,16 +122,21 @@ const ExpertiseOutcomes: FC<OutcomesProps> = ({
         },
       });
 
-      outComeTl.to("[data-outcome] .images-panel:first-child", {
-        x: 0,
-        opacity: 1,
-        duration: 0.7,
-        ease: "power2.out",
-      });
-
-      outComeTl.to("[data-outcome] .images-panel:first-child", {
-        rotate: -6,
-      });
+      outComeTl
+        .to("[data-outcome] .images-panel:first-child", {
+          x: 0,
+          opacity: 1,
+          duration: 0.7,
+          ease: "power2.out",
+        })
+        .to(
+          "[data-outcome] .images-panel:first-child",
+          {
+            duration: 0.7,
+            rotate: -6,
+          },
+          "<0.1",
+        );
     }
 
     return () => {
