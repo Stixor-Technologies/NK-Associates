@@ -22,7 +22,11 @@ const AboutSummary: FC<AboutSummaryProp> = ({
 }) => {
   const [windowSize, setWindowSize] = useState<number>(0);
 
-  const sentences = about_summary.split(/(\.\s+(?=[A-Z]))/);
+  const sentences =
+    about_summary && typeof about_summary === "string"
+      ? about_summary.split(/(\.\s+(?=[A-Z]))/)
+      : ["", ""];
+
   const firstHalf = sentences.slice(0, 2).join("").trim();
   const secondHalf = sentences.slice(2).join("").trim();
 

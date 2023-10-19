@@ -20,7 +20,7 @@ interface Location {
 interface IProps {
   locations: Location | Location[];
   selectedOfficeIndex?: number | null;
-  offices: Offices[];
+  offices?: Offices[];
 }
 
 const MapComponent: FC<IProps> = ({
