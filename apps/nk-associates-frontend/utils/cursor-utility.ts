@@ -7,48 +7,43 @@ class CursorUtility {
   private mediaElement: HTMLDivElement | null = null;
   private mediaBox: HTMLDivElement | null = null;
   private imageElement: HTMLImageElement | null = null;
-  private minSkew: number = 0.0005;
+  private minSkew: number = 0.009;
   private maxSkew: number = 0.004;
+  private isCursorVisible: boolean = false;
+  private containerClass: HTMLElement | null = null;
+  private pointerMoveListener: (e: MouseEvent) => void;
 
   private followerAnim: gsap.core.Timeline;
   constructor(containerClass: HTMLElement) {
     MouseFollower.registerGSAP(gsap);
     this.followerAnim = gsap.timeline({ paused: true, overwrite: "auto" });
+    this.containerClass = containerClass;
 
     this.mainElement = document.createElement("div");
     this.mainElement.className = "mf-cursor";
 
-    this.innerElement = document.createElement("div");
-    this.innerElement.className = "inner-elem";
+    /* COMMENTED CODE WILL BE USED LATER */
+
+    // this.innerElement = document.createElement("div");
+    // this.innerElement.className = "inner-elem";
 
     this.mediaElement = document.createElement("div");
     this.mediaElement.className = "mf-cursor-media";
 
-    this.mediaBox = document.createElement("div");
-    this.mediaBox.className = "mf-cursor-media-box";
+    // this.mediaBox = document.createElement("div");
+    // this.mediaBox.className = "mf-cursor-media-box";
 
-    this.imageElement = document.createElement("img");
-    // this.imageElement.className = "mf-cursor-media-box";
-    this.imageElement.src = "/assets/icons/cursor-icon.svg";
-    // this.media.appendChild(this.mediaBox);
-    // this.inner.appendChild(this.media);
-    this.innerElement.appendChild(this.mediaElement);
-    this.mediaElement.appendChild(this.imageElement);
-    this.mainElement.appendChild(this.innerElement);
+    // this.imageElement = document.createElement("img");
+    // this.imageElement.src = "/assets/icons/cursor-icon.svg";
+
+    // this.innerElement.appendChild(this.mediaElement);
+    // this.mediaElement.appendChild(this.imageElement);
+    // this.mainElement.appendChild(this.innerElement);
+
+    // this.mediaElement.appendChild(this.imageElement);
+    this.mainElement.appendChild(this.mediaElement);
+
     containerClass.appendChild(this.mainElement);
-
-    // gsap.set(".mf-cursor", { xPercent: -50, yPercent: -50 });
-    // let xTo = gsap.quickTo(".mf-cursor", "x", {
-    //     duration: 0.5,
-    //     ease: "power3",
-    //   }),
-    //   yTo = gsap.quickTo(".mf-cursor", "y", { duration: 0.5, ease: "power3" });
-
-    // containerClass.addEventListener("pointermove", (e) => {
-    //   xTo(e.clientX);
-    //   yTo(e.clientY);
-    // });
-
     gsap.set(".mf-cursor", { xPercent: -50, yPercent: -50 });
 
     // Initialize skewing factors
@@ -62,30 +57,59 @@ class CursorUtility {
       ease: "power3",
     });
 
-    containerClass.addEventListener("pointermove", (e) => {
-      // const skewX = (e.clientX - window.innerWidth / 2) * this.skewFactor;
-      // const skewY = (e.clientY - window.innerHeight / 2) * this.skewFactor;
+    // containerClass.addEventListener("pointermove", (e) => {
+    //   if (this.isCursorVisible) {
+    //     const vel = {
+    //       x: e.clientX - -window.innerWidth,
+    //       y: e.clientY - -window.innerHeight,
+    //     };
 
-      // this.mainElement!.style.transform = `translate(${e.clientX}px, ${e.clientY}px) skew(${skewX}deg, ${skewY}deg)`;
-      // this.innerElement!.style.transform = `rotate(-${skewX}deg)`;
-      const vel = {
-        x: e.clientX - -window.innerWidth,
-        y: e.clientY - -window.innerHeight,
-      };
+    //     const distance = Math.sqrt(Math.pow(vel.x, 2) + Math.pow(vel.y, 2));
+    //     const scale = Math.min(distance * this.minSkew, this.maxSkew) * 2;
+    //     const angle = (Math.atan2(vel.y, vel.x) * 180) / Math.PI;
 
-      const distance = Math.sqrt(Math.pow(vel.x, 2) + Math.pow(vel.y, 2));
-      const scale = Math.min(distance * this.minSkew, this.maxSkew) * 2;
-      const angle = (Math.atan2(vel.y, vel.x) * 180) / Math.PI;
+    //     xTo(e.clientX);
+    //     yTo(e.clientY);
+    //   }
+    // });
+    this.pointerMoveListener = (e) => {
+      if (this.isCursorVisible) {
+        const vel = {
+          x: e.clientX - -window.innerWidth,
+          y: e.clientY - -window.innerHeight,
+        };
 
-      xTo(e.clientX);
-      yTo(e.clientY);
-    });
+        const distance = Math.sqrt(Math.pow(vel.x, 2) + Math.pow(vel.y, 2));
+        const angle = (Math.atan2(vel.y, vel.x) * 180) / Math.PI;
+        const scale = Math.min(distance * this.minSkew, this.maxSkew);
+        console.log(distance, 1 + scale, 1 - scale, angle);
+
+        // Apply skew and rotation to the cursor
+        gsap.to(".mf-cursor-media", {
+          duration: 0.3,
+          // scale: scale,
+          // skewX: angle + 10,
+          // rotate: angle,
+          scaleX: 1 + scale,
+          scaleY: 1 - scale,
+          // skewY: -skew,
+          // rotation: angle,
+          ease: "power3.out",
+        });
+
+        // Implement the xTo and yTo functions as needed
+        xTo(e.clientX);
+        yTo(e.clientY);
+      }
+    };
+    this.containerClass.addEventListener(
+      "pointermove",
+      this.pointerMoveListener,
+    );
   }
   showCursor() {
-    console.log("show cursor");
-    if (this.mainElement) {
-      // this.mainElement.style.visibility = "visible";
-
+    if (this.mainElement && !this.isCursorVisible) {
+      this.isCursorVisible = true;
       gsap.fromTo(
         this.mainElement,
         {
@@ -100,22 +124,24 @@ class CursorUtility {
       );
     }
   }
+
   hideCursor() {
-    console.log("hide cursor");
-    if (this.mainElement) {
-      gsap.to(this.mainElement, {
-        duration: 0.3,
-        scale: 0,
-        ease: "power3.inOut",
-        onComplete: () => {
-          // this.mainElement.style.display = "none";
-        },
-      });
+    if (this.mainElement && this.isCursorVisible) {
+      // gsap.to(this.mainElement, {
+      //   duration: 0.3,
+      //   scale: 0,
+      //   ease: "power3.inOut",
+      // });
     }
+    this.isCursorVisible = false;
   }
+
   destroy() {
-    if (this.cursor) {
-      this.cursor.destroy();
+    if (this.pointerMoveListener && this.containerClass) {
+      this.containerClass.removeEventListener(
+        "pointermove",
+        this.pointerMoveListener,
+      );
     }
   }
 }

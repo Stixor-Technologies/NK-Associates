@@ -104,9 +104,11 @@
 
 .mf-cursor-media {
   position: absolute;
-  width: 90px;
-  height: 90px;
-  margin: -45px 0 0 -45px;
+  width: 70px;
+  height: 70px;
+  margin: -35px 0 0 -35px;
+  background-color: aqua;
+  border-radius: 9999px;
 }
 
 .mf-cursor-media img,

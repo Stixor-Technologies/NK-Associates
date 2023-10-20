@@ -60,12 +60,12 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
   }, []);
 
   const showAnimatedCursor = () => {
-    console.log("enter");
+    // console.log("enter");
     cursorUtilityRef?.current?.showCursor();
   };
 
   const hideAnimatedCursor = () => {
-    console.log("leave");
+    // console.log("leave");
     cursorUtilityRef?.current?.hideCursor();
   };
 
@@ -86,7 +86,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
         <div
           onMouseEnter={showAnimatedCursor}
           onMouseLeave={hideAnimatedCursor}
-          className="projects-carousel z-0 relative h-full min-h-[21rem] w-full sm:h-auto sm:w-[65%]"
+          className="cursor-container projects-carousel z-0 relative h-full min-h-[21rem] w-full sm:h-auto sm:w-[65%]"
         >
           {hasVrTour && (
             <div className="absolute w-10 h-10 right-3 top-3 z-10 md:right-5 md:top-5 md:w-16 md:h-16">
