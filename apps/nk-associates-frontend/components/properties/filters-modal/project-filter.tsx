@@ -1,41 +1,46 @@
-import React, { FC, ChangeEvent } from "react";
+import React, { FC } from "react";
 import useFilters from "../../../utils/useFilters";
-import Image from "next/image";
-import ArrowDown from "../../../public/assets/icons/arrow-down.svg";
+import Select from "react-select";
+import customStyles from "../../../utils/select-lib-styles";
 
 type PropsType = {
-  projectsList: { id: number; name: string }[];
+  projectsList: { id: number; label: string }[];
 };
 
 const ProjectFilter: FC<PropsType> = ({ projectsList }) => {
   const [filtersState, filtersDispatch] = useFilters();
 
-  const handleProjectChange = (e: ChangeEvent<HTMLSelectElement>) => {
+  const selectedProjects = projectsList.filter(
+    (project) => filtersState?.selectedProjectId?.includes(project?.id),
+  );
+
+  const handleProjectChange = (selectOption, ACTIONTYPE) => {
+    let id = null;
+    if (ACTIONTYPE?.action === "select-option") {
+      id = ACTIONTYPE?.option?.id;
+    } else if (ACTIONTYPE?.action === "remove-value") {
+      id = ACTIONTYPE?.removedValue?.id;
+    }
+
     filtersDispatch({
       type: "setSelectedProjectId",
-      payload: +e.target.value,
+      payload: [id],
     });
   };
 
   return (
-    <div className="flex items-center relative">
-      <select
-        name="Project"
-        className={`flex items-center h-[3.625rem] w-full rounded-lg border px-4 py-4 pr-14 font-metropolis-light text-nk-black placeholder-nk-gray shadow-md placeholder:font-metropolis-thin placeholder:text-base focus:outline-none focus:border-nk-gray focus:ring-nk-gray`}
-        placeholder="Select Project"
+    <div className="w-full relative mb-4">
+      <Select
+        closeMenuOnSelect={false}
+        defaultValue={selectedProjects}
+        placeholder="Select Projects"
         onChange={handleProjectChange}
-      >
-        <option value={undefined}>Select Project</option>
-        {projectsList?.map((project, index) => (
-          <option key={index} value={project?.id}>
-            {project?.name}
-          </option>
-        ))}
-      </select>
-
-      <div className="absolute right-1 pr-4 bg-white pointer-events-none top-1/2 flex -translate-y-1/2">
-        <Image src={ArrowDown} width={20} height={20} alt="dropdown" />
-      </div>
+        isMulti
+        options={projectsList}
+        getOptionValue={(option) => `${option["id"]}`}
+        styles={customStyles}
+        isClearable={false}
+      />
     </div>
   );
 };

@@ -33,12 +33,16 @@ export default function ChooseUs() {
   }, [animated]);
   return (
     <div className="flex flex-col lg2:flex-row-reverse">
-      <div className="flex flex-col w-full lg2:max-w-[560px]">
-        <div className="flex text-[2.25rem] md:text-[3.5rem] text-nk-red font-metropolis-medium text-center lg2:text-left mb-[0.938rem] md:mb-[0.75rem] leading-tight">
+      <div className="flex flex-col w-full lg2:max-w-[100rem]">
+        <h1 className="text-nk-red font-metropolis-bold text-[2rem] md:texts-[3.2rem] lg:pt-[4.188rem] text-center xl:text-left">
           Helping you find the property of your dreams.
-        </div>
-        <div className="flex w-full justify-center text-nk-black text-[1.25rem] md:text-[1.75rem] text-center md:text-left font-metropolis-extralight">
-          Creating quality lifestyles, building stronger communities
+        </h1>
+
+        <div className="flex w-full justify-center text-nk-black text-[1.313rem] text-center xl:text-left font-metropolis-extralight">
+          NK Design and Construction company has a proven track record of
+          delivering exceptional outcomes for its clients, and its team of
+          experienced professionals is dedicated to creating spaces that are
+          both beautiful and functional.
         </div>
         <div className="flex mt-[2.064rem] md:mt-[3rem] justify-center lg2:justify-normal mb-[1.875rem] md:mb-[2.7rem]">
           <LinkButton

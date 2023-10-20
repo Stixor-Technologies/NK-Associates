@@ -1,17 +1,17 @@
 import React from "react";
 import LinkButton from "../../components/button/link-button";
 import ContactForm from "../../components/shared/contact-form";
-import { getCategories } from "../../utils/api-calls";
+import { getAbout, getContactCategory } from "../../utils/api-calls";
 import ServicesOverview from "../../components/shared/service-overview";
 import CeoMessage from "../../components/about-us/ceo-message";
-import { getAbout } from "../../utils/api-calls";
 import { About } from "../../utils/types/types";
 import { BASE_URL } from "../../utils/constants";
 import MembersList from "../../components/members/member-list";
 import Goals from "../../components/about-us/goals";
 
 const AboutUs = async () => {
-  const categories = await getCategories();
+  const categories = await getContactCategory();
+
   const aboutInfo: About = await getAbout();
   const ceoMessage: string = aboutInfo?.data?.attributes?.ceo_message;
   const ceoImage: string = `${BASE_URL}${aboutInfo?.data?.attributes?.ceo_image?.data?.attributes?.url}`;

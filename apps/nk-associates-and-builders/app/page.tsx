@@ -12,7 +12,8 @@ export default function Home() {
       <div className="pt-2">
         <HowWorks
           title1="How it works."
-          title2="This is how our products work."
+          title2="The company specializes in the bulk acquisition and sales of properties within Bahria Town and DHA and is a trailblazing Proptech company with a real estate license. NK Associates & Builders Pvt Ltd is committed to providing its clients with the highest quality real estate services, and its team of experienced professionals is dedicated to helping them achieve their real estate goals.
+          "
         />
       </div>
       <div>

@@ -13,10 +13,7 @@ export async function POST(request: NextRequest) {
       replyTo: data?.email,
       subject: data.subject,
       body: data.message,
-      html: `<div>
-      <p>You've got a new mail from ${data.name}, their email is: ${data.email}, their number is ${data?.phone} </p>
-      <p><span>Selected Category:</span> ${data.category} </p>
-      ${data.message}</div>`,
+      html: data.htmlContent,
     };
     const res = await sendgrid.send(msg);
     return NextResponse.json(res[0].statusCode);

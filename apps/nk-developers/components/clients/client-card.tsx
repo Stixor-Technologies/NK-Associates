@@ -15,7 +15,7 @@ const ClientCard: FC<CardProp> = ({ center, text1, text2 }) => {
     justify = "text-center justify-center";
   }
   return (
-    <div className="bg-nk-white flex-grow rounded font-metropolis text-nk-dark-gray text-[.875rem] border border-nk-light-gray min-w-[19.125rem] max-w-[20.625rem] h-[15.625rem]">
+    <div className="bg-nk-white flex-grow rounded font-metropolis text-nk-dark-gray text-[.875rem] border border-nk-light-gray min-w-[19.125rem] max-w-[20.625rem]">
       <div className="p-[1.875rem] flex flex-col">
         <div className="mb-[1.875rem]">
           <Image src={Stars} alt="stars rating" width={130} height={22} />

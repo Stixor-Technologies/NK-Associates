@@ -124,11 +124,6 @@
       "target": "api::project.project",
       "inversedBy": "properties"
     },
-    "area_unit": {
-      "type": "relation",
-      "relation": "oneToOne",
-      "target": "api::area-unit.area-unit"
-    },
     "vr_tour": {
       "type": "relation",
       "relation": "oneToOne",
@@ -138,6 +133,12 @@
       "type": "relation",
       "relation": "oneToOne",
       "target": "api::property-location.property-location"
+    },
+    "property_top_picks": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::property-top-pick.property-top-pick",
+      "mappedBy": "properties"
     }
   }
 }

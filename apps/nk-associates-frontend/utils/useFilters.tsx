@@ -5,7 +5,7 @@ import { FiltersStateType } from "./types/types";
 type ACTIONTYPE =
   | {
       type: "setLocation";
-      payload: string | number;
+      payload: number[];
     }
   | {
       type: "setSelectedCategoryId";
@@ -13,7 +13,7 @@ type ACTIONTYPE =
     }
   | {
       type: "setSelectedProjectId";
-      payload: string | number;
+      payload: number[];
     }
   | {
       type: "setSelectedPurposeId";
@@ -68,6 +68,10 @@ type ACTIONTYPE =
       payload: string;
     }
   | {
+      type: "setSelectedTopPick";
+      payload: number;
+    }
+  | {
       type: "setFilterIsSelected";
       payload: boolean;
     }
@@ -78,7 +82,8 @@ type ACTIONTYPE =
         selectedTypeId?: number;
         minSelectedPrice?: number;
         maxSelectedPrice?: number;
-        selectedProjectId?: number;
+        selectedProjectId?: number[];
+        location?: number[];
         selectedPurposeId?: number;
       };
     }
@@ -98,7 +103,7 @@ const initialState = {
   selectedRentFrequencyId: undefined,
   selectedCategoryId: undefined,
   selectedTypeId: undefined,
-  selectedProjectId: undefined,
+  selectedProjectId: [],
   selectedPurposeId: undefined,
   minSelectedPrice: undefined,
   maxSelectedPrice: undefined,
@@ -107,7 +112,8 @@ const initialState = {
   minSelectedArea: undefined,
   maxSelectedArea: undefined,
   selectedAreaUnit: undefined,
-  location: undefined,
+  selectedTopPick: undefined,
+  location: [],
   filterIsSelected: false,
 };
 
@@ -130,11 +136,26 @@ const reducer = (state: FiltersStateType, action: ACTIONTYPE) => {
         filterIsSelected: true,
       };
     case "setSelectedProjectId":
-      return {
-        ...state,
-        selectedProjectId: action.payload,
-        filterIsSelected: true,
-      };
+      const projectId = action.payload[0];
+
+      if (state?.selectedProjectId?.includes(projectId)) {
+        const updatedSelectedProjectId = state?.selectedProjectId?.filter(
+          (id) => id !== projectId,
+        );
+
+        return {
+          ...state,
+          selectedProjectId: updatedSelectedProjectId,
+          filterIsSelected: updatedSelectedProjectId.length > 0,
+        };
+      } else {
+        return {
+          ...state,
+          selectedProjectId: [...state.selectedProjectId, projectId],
+          filterIsSelected: true,
+        };
+      }
+
     case "setSelectedPurposeId":
       return {
         ...state,
@@ -210,10 +231,28 @@ const reducer = (state: FiltersStateType, action: ACTIONTYPE) => {
         filterIsSelected: action.payload,
       };
     case "setLocation":
+      const locationId = action.payload[0];
+      if (state?.location?.includes(locationId)) {
+        const updatedSelectedLocationId = state?.location?.filter(
+          (id) => id !== locationId,
+        );
+
+        return {
+          ...state,
+          location: updatedSelectedLocationId,
+          filterIsSelected: updatedSelectedLocationId.length > 0,
+        };
+      } else {
+        return {
+          ...state,
+          location: [...state.location, locationId],
+          filterIsSelected: true,
+        };
+      }
+    case "setSelectedTopPick":
       return {
         ...state,
-        location: action.payload,
-        filterIsSelected: true,
+        selectedTopPick: action.payload,
       };
     case "homeSearch":
       return {
@@ -224,6 +263,7 @@ const reducer = (state: FiltersStateType, action: ACTIONTYPE) => {
     case "resetFilters":
       return {
         ...initialState,
+        selectedTopPick: state.selectedTopPick,
         ...action.payload,
       };
 

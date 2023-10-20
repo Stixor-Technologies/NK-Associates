@@ -2,66 +2,78 @@
 import React, { useState } from "react";
 import { Formik, Field, Form } from "formik";
 import Input from "./input";
-import { ContactFormSchema } from "../../utils/formik-schema";
+import { InquiriesSchema } from "../../utils/formik-schema";
 import Spinner from "../spinner";
 import Toast from "./toast";
 import ArrowDown from "../../public/assets/icons/arrow-down.svg";
 import Image from "next/image";
 import LinkButton from "../button/link-button";
 
-const fieldTypes = {
-  name: "text",
-  email: "text",
-  phone: "text",
-  subject: "text",
-  category: "dropdown",
-  message: "textarea",
-};
-
-const placeholders = {
-  name: "Write your name here",
-  email: "Write your email address",
-  phone: "Write your phone number here",
-  subject: "Write your subject here",
-};
-
-const initialValues = {
-  name: "",
-  email: "",
-  phone: "",
-  subject: "",
-  category: "",
-  message: "",
-};
-
 interface ContactFormProps {
-  categories: {
-    attributes: {
-      value: string;
-      category: string;
-    };
-  }[];
+  categories?: String[];
   heading: string;
+  itemName?: string;
+  closeModal?: () => void;
 }
 
-const ContactForm: React.FC<ContactFormProps> = ({ categories, heading }) => {
+const ContactForm: React.FC<ContactFormProps> = ({
+  categories,
+  heading,
+  itemName,
+  closeModal,
+}) => {
+  const typeInquiries = categories === undefined ? true : false;
   const [loading, setLoading] = useState<boolean>(false);
   const [showToast, setShowToast] = useState<boolean>(false);
   const [toastMessage, setToastMessage] = useState<string>("");
+
+  const fieldTypes = {
+    name: "text",
+    email: "text",
+    phone: "text",
+    subject: "text",
+    message: "textarea",
+    ...(typeInquiries ? { inquiry: "text" } : { category: "dropdown" }),
+  };
+
+  const placeholders = {
+    name: "Write your name here",
+    email: "Write your email address",
+    phone: "Write your phone number here",
+    subject: "Write your subject here",
+  };
+
+  const initialValues = {
+    name: "",
+    email: "",
+    phone: "",
+    subject: "",
+    message: "",
+    ...(typeInquiries ? { inquiry: itemName } : { category: "" }),
+  };
 
   const formFields = [
     "name",
     "email",
     "phone",
     "subject",
-    "category",
+    typeInquiries ? "inquiry" : "category",
     "message",
   ];
 
   const onSubmit = async (values, { resetForm }) => {
     setLoading(true);
     try {
-      const res = await fetch("api/contact", {
+      const emailTemplate = typeInquiries
+        ? `<div>
+        <p>You've got a new inquiry from ${values.name}, their email is: ${values.email}, their number is ${values?.phone} </p>
+        <p>They are inquiring about property ${values.inquiry} </p>
+        ${values.message}</div>`
+        : `<div>
+        <p>You've got a new mail from ${values.name}, their email is: ${values.email}, their number is ${values?.phone} </p>
+        <p><span>Selected Department:</span> ${values.category} </p>
+        ${values.message}</div>`;
+      const res = await fetch("/api/contact", {
         headers: {
           "Content-Type": "application/json",
         },
@@ -73,6 +85,7 @@ const ContactForm: React.FC<ContactFormProps> = ({ categories, heading }) => {
           subject: values.subject,
           category: values.category,
           message: values.message,
+          htmlContent: emailTemplate,
         }),
       });
 
@@ -83,6 +96,7 @@ const ContactForm: React.FC<ContactFormProps> = ({ categories, heading }) => {
         setTimeout(() => {
           setShowToast(false);
           resetForm();
+          typeInquiries && closeModal();
         }, 1000);
       } else {
         setToastMessage(`Error: Error sending email`);
@@ -100,7 +114,7 @@ const ContactForm: React.FC<ContactFormProps> = ({ categories, heading }) => {
     <Formik
       initialValues={initialValues}
       onSubmit={onSubmit}
-      validationSchema={ContactFormSchema}
+      validationSchema={InquiriesSchema}
     >
       {({ errors, touched }) => (
         <>
@@ -113,7 +127,6 @@ const ContactForm: React.FC<ContactFormProps> = ({ categories, heading }) => {
               <div className="grid grid-cols-1 gap-6 py-6 md:grid-cols-2 md:py-8 2xl:px-4">
                 {formFields.map((fieldName) => {
                   const fieldType = fieldTypes[fieldName];
-
                   if (fieldType === "dropdown") {
                     return (
                       <div key={fieldName}>
@@ -143,9 +156,9 @@ const ContactForm: React.FC<ContactFormProps> = ({ categories, heading }) => {
                               return (
                                 <option
                                   key={index}
-                                  value={`${category?.attributes?.category?.toLowerCase()}`}
+                                  value={`${category?.toLowerCase()}`}
                                 >
-                                  {category?.attributes?.category}
+                                  {category}
                                 </option>
                               );
                             })}
@@ -169,7 +182,6 @@ const ContactForm: React.FC<ContactFormProps> = ({ categories, heading }) => {
                       </div>
                     );
                   }
-
                   if (fieldType === "textarea") {
                     return (
                       <div key={fieldName} className="md:col-span-2">
@@ -203,19 +215,21 @@ const ContactForm: React.FC<ContactFormProps> = ({ categories, heading }) => {
                   }
 
                   return (
-                    <Input
-                      key={fieldName}
-                      hasError={errors[fieldName]}
-                      isTouched={touched[fieldName]}
-                      label={
-                        fieldName === "subject"
-                          ? fieldName
-                          : `Your ${fieldName}`
-                      }
-                      name={fieldName}
-                      placeholder={placeholders[fieldName]}
-                      errorMessage={errors[fieldName]}
-                    />
+                    <>
+                      <Input
+                        key={fieldName}
+                        hasError={errors[fieldName]}
+                        isTouched={touched[fieldName]}
+                        label={
+                          fieldName === "subject"
+                            ? fieldName
+                            : `Your ${fieldName}`
+                        }
+                        name={fieldName}
+                        placeholder={placeholders[fieldName]}
+                        errorMessage={errors[fieldName]}
+                      />
+                    </>
                   );
                 })}
               </div>

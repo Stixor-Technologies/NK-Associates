@@ -54,7 +54,8 @@ const CeoMessage: React.FC<CeoMessageProps> = ({
             src={ceoImage}
             alt="Ceo Image"
             fill
-            className="rounded-[1.563rem] object-cover"
+            priority
+            className="rounded-[1.563rem] object-cover bg-gray-300"
           />
         </div>
       </div>

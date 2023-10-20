@@ -36,8 +36,6 @@ const PropertyTypeFilter = ({
   };
 
   const handleSelectedTypeChange = (id: number) => {
-    console.log("sub type", id);
-
     filtersDispatch({
       type: "setSelectedTypeId",
       payload: id,
@@ -46,7 +44,7 @@ const PropertyTypeFilter = ({
 
   return (
     <>
-      <ul className="flex flex-wrap justify-center gap-2">
+      <ul className="flex flex-wrap justify-center gap-3">
         {propertyTypesList?.map((val, index) => (
           <li key={index}>
             <input

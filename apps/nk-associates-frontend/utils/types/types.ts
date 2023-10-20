@@ -76,12 +76,20 @@ export interface Property {
     vr_tour: {
       data: { id: number; attributes: { name: string } };
     };
+    property_top_picks: {
+      data: {
+        id: number;
+        attributes: {
+          name: string;
+        };
+      };
+    };
   };
-  id: number;
+  id?: number;
 }
 
 export interface Project {
-  id: number;
+  id?: number;
   attributes: {
     pictures: {
       data: Array<{ attributes: { url: string } }>;
@@ -178,8 +186,9 @@ export interface SearchFilterProperties {
   completionStatusList: { id: number; name: string }[] | undefined;
   rentFrequencyList: { id: number; name: string }[] | undefined;
   propertyPurposeList: { id: number; name: string }[] | undefined;
-  propertyLocationList: { id: number; name: string }[] | undefined;
-  projectsList: { id: number; name: string }[] | undefined;
+  propertyLocationList: { id: number; label: string }[] | undefined;
+  topPickList: { id: number; name: string }[] | undefined;
+  projectsList: { id: number; label: string }[] | undefined;
   priceRange: [number, number];
   areaRange: [number, number];
   areaUnitsList: { id: number; name: string }[] | undefined;
@@ -190,7 +199,7 @@ export interface FiltersStateType {
   selectedRentFrequencyId: string | number | undefined;
   selectedCategoryId: string | number | undefined;
   selectedTypeId: string | number | undefined;
-  selectedProjectId: string | number | undefined;
+  selectedProjectId: number[];
   selectedPurposeId: string | number | undefined;
   minSelectedPrice: number;
   maxSelectedPrice: number;
@@ -199,7 +208,8 @@ export interface FiltersStateType {
   minSelectedArea: number;
   maxSelectedArea: number;
   selectedAreaUnit: string | undefined;
-  location: string | undefined;
+  selectedTopPick: number | undefined;
+  location: number[];
   filterIsSelected: boolean;
 }
 
@@ -242,7 +252,13 @@ export interface Services {
 }
 
 export interface PopularCategory {
-  category_name: string;
+  category_name: {
+    data: {
+      attributes: {
+        name: string;
+      };
+    };
+  };
   category_image: {
     data: MediaAttributes;
   };

@@ -83,7 +83,7 @@ const BathRoomsFilter = () => {
 const RoomBedsSection = () => {
   return (
     <div className="w-full mb-4">
-      <h3 className="text-lg font-metropolis-semibold mb-4">Rooms and beds</h3>
+      <h3 className="text-lg font-metropolis-semibold mb-4">Rooms and Beds</h3>
 
       <BedRoomsFilter />
       <BathRoomsFilter />

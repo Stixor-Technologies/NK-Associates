@@ -12,6 +12,7 @@
     "@photo-sphere-viewer/core": "^5.3.0",
     "@photo-sphere-viewer/virtual-tour-plugin": "^5.3.0",
     "@react-google-maps/api": "^2.19.2",
+    "@react-pdf/renderer": "^3.1.12",
     "@react-three/drei": "^9.80.3",
     "@react-three/fiber": "^8.13.6",
     "@sendgrid/mail": "^7.7.0",
@@ -25,6 +26,7 @@
     "date-fns": "^2.30.0",
     "eslint": "8.45.0",
     "eslint-config-custom": "*",
+    "file-saver": "^2.0.5",
     "flowbite": "^1.8.0",
     "formik": "^2.4.2",
     "gsap": "./gsap-bonus.tgz",
@@ -35,6 +37,9 @@
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-infinite-scroll-component": "^6.1.0",
+    "react-pageflip": "^2.0.3",
+    "react-pdf": "^7.3.3",
+    "react-select": "^5.7.4",
     "react-slider": "^2.0.6",
     "split-type": "^0.3.3",
     "swiper": "^10.0.4",
@@ -45,6 +50,7 @@
     "yup": "^1.2.0"
   },
   "devDependencies": {
-    "@types/react-infinite-scroll-component": "^5.0.0"
+    "@types/react-infinite-scroll-component": "^5.0.0",
+    "raw-loader": "^4.0.2"
   }
 }

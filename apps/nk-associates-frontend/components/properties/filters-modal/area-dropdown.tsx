@@ -17,13 +17,9 @@ const AreaDropdown = ({ areaUnitsList, modalElement }: PropTypes) => {
     if (buttonRef.current) {
       const containerPosition = buttonRef.current.getBoundingClientRect();
       const windowWidth = window.innerWidth;
-
-      const tooCloseToTheEdge = windowWidth - containerPosition.left < 400;
-
+      const tooCloseToTheEdge = windowWidth - containerPosition.left < 220;
       return {
-        x: tooCloseToTheEdge
-          ? containerPosition.right - 360
-          : containerPosition.left + 10,
+        x: tooCloseToTheEdge ? 16 : containerPosition.left + 10,
         y:
           windowWidth > 1024
             ? containerPosition.top + containerPosition.height

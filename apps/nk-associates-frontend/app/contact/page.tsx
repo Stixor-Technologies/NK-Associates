@@ -6,7 +6,7 @@ import { Offices } from "../../utils/types/types";
 import {
   getOfficeAddress,
   getHeadOffice,
-  getCategories,
+  getContactCategory,
 } from "../../utils/api-calls";
 
 interface Location {
@@ -17,7 +17,7 @@ interface Location {
 const ContactUs = async () => {
   const data: Offices[] = await getOfficeAddress();
   const headOfficeAddress = await getHeadOffice();
-  const categories = await getCategories();
+  const categories = await getContactCategory();
 
   const combinedAddresses: Offices[] = [
     ...(headOfficeAddress

@@ -28,7 +28,9 @@ const PropertyCard: FC<CardProps> = ({
     price,
     address,
     property_category,
+    property_type,
     property_purpose,
+    property_top_picks,
   } = property?.attributes;
   const id = property?.id;
   const thumbnailImage =
@@ -62,6 +64,12 @@ const PropertyCard: FC<CardProps> = ({
     : actSim
     ? "text-xs md:text-xs"
     : "text-sm md:text-xs";
+
+  const property_cat =
+    property_category?.data?.attributes?.name?.length > 12
+      ? `${property_category?.data?.attributes?.name.slice(0, 12)}...`
+      : property_category?.data?.attributes?.name;
+
   return (
     <div
       className={`property-card ${(actSim || actFeatured) && "flex-grow"} ${
@@ -76,6 +84,7 @@ const PropertyCard: FC<CardProps> = ({
         href={`/properties/${id}`}
         target={actMap ? "_blank" : "_self"}
         rel={actMap ? "noopener noreferrer" : undefined}
+        className="relative"
       >
         <div
           className={`aspect-w-1 aspect-h-1 group relative w-full max-w-[37.5rem] overflow-hidden ${
@@ -95,6 +104,15 @@ const PropertyCard: FC<CardProps> = ({
             }`}
           />
         </div>
+
+        {property_top_picks?.data[0]?.attributes?.name.toLowerCase() ===
+          "hot selling" && (
+          <div className="w-11 h-11 top-2 right-2 bg-nk-white text-nk-red text-[0.563rem] font-metropolis-bold rounded-full flex justify-center items-center absolute">
+            <span className="text-center">
+              {property_top_picks?.data[0]?.attributes?.name}
+            </span>
+          </div>
+        )}
       </Link>
 
       <div
@@ -108,7 +126,7 @@ const PropertyCard: FC<CardProps> = ({
               <span
                 className={`rounded-full bg-white px-4 py-1 text-nk-gray shadow-lg ${categoryTextSize}`}
               >
-                {property_category?.data?.attributes?.name}
+                {property_cat}
               </span>
             )}
             {property_purpose && property_purpose?.data && (

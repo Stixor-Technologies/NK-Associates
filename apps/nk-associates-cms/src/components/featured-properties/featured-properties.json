@@ -1,0 +1,25 @@
+{
+  "collectionName": "components_featured_properties",
+  "info": {
+    "displayName": "Featured Properties",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "featured_property1": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::property.property"
+    },
+    "featured_property2": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::property.property"
+    },
+    "featured_property3": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::property.property"
+    }
+  }
+}

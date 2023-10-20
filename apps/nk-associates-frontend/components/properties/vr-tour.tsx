@@ -221,23 +221,24 @@ const VRTour = ({ vrTourId }: { vrTourId: number | undefined }) => {
         slides={slides}
         tourButton={buttonRef}
       />
-
-      <button
-        ref={buttonRef}
-        onClick={handleOpenClick}
-        className="group sticky top-[31.25rem] mb-4 z-30 ml-auto hidden w-[6rem] items-center gap-3 rounded-l-xl bg-nk-white px-4 py-3.5 shadow-3xl transition-all duration-500 ease-in-out hover:w-44 md:flex"
-      >
-        <Image
-          src={TourIcon}
-          width={56}
-          height={35}
-          alt="tour-button"
-          className="transition-all delay-200 duration-500 group-hover:scale-110"
-        />
-        <span className="overflow-hidden whitespace-nowrap text-[1.375rem] text-nk-black transition-all duration-200 ease-in-out group-hover:w-auto capitalize group-hover:text-nk-red">
-          View
-        </span>
-      </button>
+      {vrTourId !== undefined && (
+        <button
+          ref={buttonRef}
+          onClick={handleOpenClick}
+          className="group sticky top-[31.25rem] z-30 ml-auto hidden w-[6rem] items-center gap-3 rounded-l-xl bg-nk-white px-4 py-3.5 shadow-3xl transition-all duration-500 ease-in-out hover:w-44 md:flex"
+        >
+          <Image
+            src={TourIcon}
+            width={56}
+            height={35}
+            alt="tour-button"
+            className="transition-all delay-200 duration-500 group-hover:scale-110"
+          />
+          <span className="overflow-hidden whitespace-nowrap text-[1.375rem] text-nk-black transition-all duration-200 ease-in-out group-hover:w-auto capitalize group-hover:text-nk-red">
+            View
+          </span>
+        </button>
+      )}
     </>
   );
 };

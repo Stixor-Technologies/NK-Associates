@@ -18,6 +18,16 @@ const PropertyTypeSection = ({
     : propertyTypesList[0].types;
 
   const handleSelectedCategoryChange = (id: number) => {
+    if (
+      filtersState?.selectedCategoryId &&
+      filtersState?.selectedTypeId &&
+      filtersState?.selectedCategoryId !== id
+    ) {
+      filtersDispatch({
+        type: "setSelectedTypeId",
+        payload: undefined,
+      });
+    }
     filtersDispatch({
       type: "setSelectedCategoryId",
       payload: id,

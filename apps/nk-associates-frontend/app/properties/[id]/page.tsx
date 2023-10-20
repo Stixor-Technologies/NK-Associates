@@ -17,10 +17,10 @@ import BedroomIcon from "../../../public/assets/icons/bedrooms-icon.svg";
 import AreaIcon from "../../../public/assets/icons/area-icon.svg";
 import AreaMarker from "../../../public/assets/icons/area-marker.svg";
 import PDFIcon from "../../../public/assets/icons/pdf-file-icon.svg";
-import LinkButton from "../../../components/button/link-button";
 import TileSection from "../../../components/properties/property-detail/tile-section";
 import ServicesOverview from "../../../components/shared/service-overview";
 import VRTour from "../../../components/properties/vr-tour";
+import InquiresModalComp from "../../../components/shared/inquiries-modal-comp";
 
 interface PropertyDetailProps {
   params: {
@@ -60,20 +60,20 @@ async function PropertyDetail({ params: { id } }: PropertyDetailProps) {
   const center = { lat: latitude, lng: longitude };
 
   const phoneResponse = await getContactNumber();
-  const phoneNumber = phoneResponse?.data?.attributes?.number;
-
+  const { whatsapp_number, phone_number } = phoneResponse?.data?.attributes;
   return (
     <>
       <section>
         <DetailSlider
           property_images={property_images?.data}
-          phone={phoneNumber}
+          phone={phone_number}
+          whatsapp={whatsapp_number}
         />
 
         <div className="relative mt-14 md:mt-3">
           <VRTour vrTourId={vrTourId ? vrTourId : undefined} />
 
-          <div className="container mx-auto py-4">
+          <div className="container mx-auto pb-4 pt-16">
             {/* Property Info section */}
             <div className="flex flex-col items-center gap-5 sm:flex-row sm:items-start sm:justify-between lg:items-center">
               <div
@@ -124,17 +124,13 @@ async function PropertyDetail({ params: { id } }: PropertyDetailProps) {
                     <Image src={AreaIcon} width={27} height={27} alt="" />
                     <span className="font-metropolis-semibold text-lg text-nk-black">
                       {`${convertAreaToSqFeet(area, area_type)} Sq.Ft`}
+                      {/* {`${area} ${area_unit?.data?.attributes?.name}`} */}
                     </span>
                   </div>
                 </div>
               </div>
 
-              <LinkButton
-                text="Inquires"
-                type="solid"
-                navigateTo="#"
-                className="mb-2 w-[11.75rem] text-lg sm:mb-0 md:w-[11.75rem]"
-              />
+              <InquiresModalComp itemName={title} />
             </div>
 
             {/* Tiles section */}
