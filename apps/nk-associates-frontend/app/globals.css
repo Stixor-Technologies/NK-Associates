@@ -101,3 +101,50 @@ body:not(:hover) {
 .range-slider-track.range-slider-track-1 {
   background-color: #e74451;
 }
+
+.container-div {
+  width: 100%;
+}
+/* Jelly Blob Div */
+.mfs_cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 70px;
+  height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-style: solid;
+  /* border-width: 2px; */
+  border-color: black;
+  border-radius: 75px;
+  /* scale: 0; */
+  -webkit-transform-origin: 50% 50%;
+  -moz-transform-origin: 50% 50%;
+  -o-transform-origin: 50% 50%;
+  -ms-transform-origin: 50% 50%;
+  transform-origin: 50% 50%;
+
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  -o-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+
+  will-change: width, height, transform, border;
+  z-index: 999;
+  pointer-events: none;
+}
+/* Text Inside Jelly Blob */
+.media-element {
+  width: 100%;
+  opacity: 1;
+  color: white;
+  font-size: 18px;
+  text-align: center;
+  font-weight: 600;
+  scale: 0;
+}

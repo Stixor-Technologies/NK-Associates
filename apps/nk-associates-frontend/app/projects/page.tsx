@@ -67,7 +67,7 @@ export default function Projects() {
       }
     };
   }, []);
-  console.log(main.current);
+  // console.log(main.current);
   useEffect(() => {
     //if a button is switched (1) empty the array, (2) get new projects data, and (3) set button switched to false.
     if (buttonSwitched) {
@@ -136,7 +136,7 @@ export default function Projects() {
           {loading ? (
             <ProjectListSkeleton />
           ) : (
-            <div className="w-full overflow-hidden py-4">
+            <div className="cursor-container w-full overflow-hidden py-4">
               <InfiniteScroll
                 dataLength={projectsData?.length}
                 next={getProjectsData}

@@ -4,6 +4,7 @@ import { usePathname } from "next/navigation";
 import { gsap } from "gsap";
 import { ScrollSmoother } from "gsap/dist/ScrollSmoother";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
+import JellyBlob from "../components/jelly-blob";
 
 const SmoothScrollContainer = ({ children }: { children: ReactNode }) => {
   const pathname = usePathname();
@@ -43,6 +44,7 @@ const SmoothScrollContainer = ({ children }: { children: ReactNode }) => {
   return (
     <div className="pt-[5.5rem]">
       {children}
+      {/* <JellyBlob /> */}
       <div className="follower">
         <div className="follower__inner__bottom"></div>
         <div className="follower__inner__top"></div>
