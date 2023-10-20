@@ -99,6 +99,7 @@ const Offices = () => {
                 <MapComponent
                   locations={coordinates}
                   selectedOfficeIndex={selectedOfficeIndex}
+                  offices={offices}
                 />
               </div>
             </div>
