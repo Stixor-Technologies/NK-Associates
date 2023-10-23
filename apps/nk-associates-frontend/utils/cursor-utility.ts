@@ -1,5 +1,6 @@
 import MouseFollower from "mouse-follower";
 import { gsap } from "gsap";
+
 class CursorUtility {
   private cursorContainer: HTMLDivElement | null = null;
   private mediaElement: HTMLDivElement | null = null;
@@ -92,13 +93,33 @@ class CursorUtility {
     }
   };
 
+  createQuickSetter = (
+    target: any,
+    property: string,
+    unit?: string,
+  ): ((value: any) => void) =>
+    gsap.quickSetter(target, property, unit) as (value: any) => void;
+
   public initialize = (): void => {
-    this.set.x = gsap.quickSetter(this.cursorContainer, "x", "px");
-    this.set.y = gsap.quickSetter(this.cursorContainer, "y", "px");
-    this.set.r = gsap.quickSetter(this.cursorContainer, "rotate", "deg");
-    this.set.sx = gsap.quickSetter(this.cursorContainer, "scaleX");
-    this.set.sy = gsap.quickSetter(this.cursorContainer, "scaleY");
-    this.set.rt = gsap.quickSetter(this.mediaElement, "rotate", "deg");
+    // TODO: need to change type later
+    this.set.x = this.createQuickSetter(this.cursorContainer, "x", "px") as (
+      value: any,
+    ) => void;
+    this.set.y = gsap.quickSetter(this.cursorContainer, "y", "px") as (
+      value: any,
+    ) => void;
+    this.set.r = gsap.quickSetter(this.cursorContainer, "rotate", "deg") as (
+      value: any,
+    ) => void;
+    this.set.sx = gsap.quickSetter(this.cursorContainer, "scaleX") as (
+      value: any,
+    ) => void;
+    this.set.sy = gsap.quickSetter(this.cursorContainer, "scaleY") as (
+      value: any,
+    ) => void;
+    this.set.rt = gsap.quickSetter(this.mediaElement, "rotate", "deg") as (
+      value: any,
+    ) => void;
 
     this.containerClass.addEventListener("pointermove", this.setFromEvent);
     gsap.ticker.add(this.loop);
