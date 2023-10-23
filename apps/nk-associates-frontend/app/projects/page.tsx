@@ -67,7 +67,6 @@ export default function Projects() {
       }
     };
   }, []);
-
   useEffect(() => {
     //if a button is switched (1) empty the array, (2) get new projects data, and (3) set button switched to false.
     if (buttonSwitched) {
@@ -129,22 +128,22 @@ export default function Projects() {
           </div>
         </div>
 
-        <div className="container my-12 flex flex-col items-center md:my-6">
+        <div
+          ref={main}
+          className="container my-12 flex flex-col items-center md:my-6"
+        >
           {loading ? (
             <ProjectListSkeleton />
           ) : (
-            <div className="w-full overflow-hidden py-4">
+            <div className="cursor-container w-full overflow-hidden py-4">
               <InfiniteScroll
-                dataLength={projectsData?.length ?? 0}
+                dataLength={projectsData?.length}
                 next={getProjectsData}
-                hasMore={total !== (projectsData?.length ?? 0)}
+                hasMore={total !== projectsData?.length}
                 loader={loading && <ProjectListSkeleton />}
               >
-                <div
-                  ref={main}
-                  className="flex flex-col justify-center overflow-hidden"
-                >
-                  {projectsData.length === 0 && !loading ? (
+                <div className="flex flex-col justify-center overflow-hidden">
+                  {projectsData.length === 0 && !loading && !error ? (
                     <div className="min-h-[50vh] xl:min-h-[70vh] text-md flex items-center justify-center font-metropolis-bold text-nk-black">
                       No projects found.
                     </div>
@@ -163,7 +162,7 @@ export default function Projects() {
             </div>
           )}
           {error && !loading && (
-            <div className="text-md mb-18 font-metropolis-bold text-nk-black">
+            <div className="min-h-[50vh] text-md mb-18 font-metropolis-bold text-nk-black">
               Error loading projects.
             </div>
           )}

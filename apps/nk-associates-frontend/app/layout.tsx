@@ -65,12 +65,12 @@ export default function RootLayout({
       >
         <div id="smooth-wrapper">
           <Navigation />
-          <div id="smooth-content">
+          <main id="smooth-content">
             <MapApiProvider>
               <SmoothScrollContainer>{children}</SmoothScrollContainer>
             </MapApiProvider>
             <Footer />
-          </div>
+          </main>
         </div>
       </body>
     </html>

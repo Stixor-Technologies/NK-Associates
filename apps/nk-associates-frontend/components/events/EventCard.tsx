@@ -44,7 +44,7 @@ const EventCard: FC<EventProps> = ({ dataItem, cursorUtilityRef }) => {
           <div
             onMouseEnter={showAnimatedCursor}
             onMouseLeave={hideAnimatedCursor}
-            className="slide-container relative mb-3 overflow-hidden rounded-lg"
+            className="z-0 slide-container relative mb-3 overflow-hidden rounded-lg"
           >
             <Swiper
               grabCursor={true}
