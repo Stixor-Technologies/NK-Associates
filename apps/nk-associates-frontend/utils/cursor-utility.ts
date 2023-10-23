@@ -1,7 +1,6 @@
 import MouseFollower from "mouse-follower";
 import { gsap } from "gsap";
 class CursorUtility {
-  // private cursorContainer: HTMLDivElement | null = null;
   private cursorContainer: HTMLDivElement | null = null;
   private mediaElement: HTMLDivElement | null = null;
   private imageElement: HTMLImageElement | null = null;
@@ -10,6 +9,8 @@ class CursorUtility {
   private containerClass: HTMLElement | null = null;
   private pos: { x: number; y: number } = { x: 0, y: 0 };
   private vel: { x: number; y: number } = { x: 0, y: 0 };
+
+  // TODO: need to figure this out later
   private set: {
     x: (value: any) => any;
     y: (value: any) => any;
@@ -103,26 +104,13 @@ class CursorUtility {
     gsap.ticker.add(this.loop);
   };
 
-  public destroy = (): void => {
-    window.removeEventListener("pointermove", this.setFromEvent);
-    gsap.ticker.remove(this.loop);
-  };
-
   showCursor() {
     if (this.cursorContainer && !this.isCursorVisible) {
       this.isCursorVisible = true;
-      gsap.to(
-        this.mediaElement,
-        {
-          scale: 1,
-          transformOrigin: "center center",
-        },
-        // {
-        //   duration: 0.3,
-        //   scale: 1,
-        //   ease: "power3.inOut",
-        // },
-      );
+      gsap.to(this.mediaElement, {
+        scale: 1,
+        transformOrigin: "center center",
+      });
     }
   }
 
@@ -137,51 +125,11 @@ class CursorUtility {
     this.isCursorVisible = false;
   }
 
-  // destroy() {
-  //   if (this.pointerMoveListener && this.containerClass) {
-  //     this.containerClass.removeEventListener(
-  //       "pointermove",
-  //       this.pointerMoveListener,
-  //     );
-  //   }
-  // }
+  public destroy = (): void => {
+    if (this.setFromEvent && this.containerClass) {
+      window.removeEventListener("pointermove", this.setFromEvent);
+      gsap.ticker.remove(this.loop);
+    }
+  };
 }
 export default CursorUtility;
-
-// import MouseFollower from "mouse-follower";
-// import { gsap } from "gsap";
-// import { Container } from "postcss";
-// class CursorUtility {
-//   private cursor: MouseFollower | null = null;
-//   private followerAnim: gsap.core.Timeline;
-//   constructor(containerClass: string | HTMLElement) {
-//     MouseFollower.registerGSAP(gsap);
-//     if (window.matchMedia("(pointer:fine)").matches) {
-//       this.cursor = new MouseFollower({
-//         el: null,
-//         container: containerClass,
-//         className: "mf-cursor",
-//         visible: false,
-//       });
-//     }
-//   }
-//   showCursor() {
-//     if (this.cursor) {
-//       this.cursor.show();
-//       this.cursor.setImg("/assets/icons/cursor-icon.svg");
-//       this.cursor.setSkewing(3);
-//     }
-//   }
-//   hideCursor() {
-//     if (this.cursor) {
-//       this.cursor.hide();
-//       this.cursor.removeImg();
-//     }
-//   }
-//   destroy() {
-//     if (this.cursor) {
-//       this.cursor.destroy();
-//     }
-//   }
-// }
-// export default CursorUtility;

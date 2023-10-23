@@ -60,12 +60,10 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
   }, []);
 
   const showAnimatedCursor = () => {
-    // console.log("enter");
     cursorUtilityRef?.current?.showCursor();
   };
 
   const hideAnimatedCursor = () => {
-    // console.log("leave");
     cursorUtilityRef?.current?.hideCursor();
   };
 
