@@ -99,10 +99,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
               initialSlide={0}
               pagination={true}
               modules={[Pagination]}
-              // touchStartPreventDefault={false}
               allowTouchMove={true}
-              // touchStartPreventDefault={false}
-              // touchMoveStopPropagation={true}
               className="mySwiper carousel-slider h-full w-full"
             >
               {imagesList?.map((url, index) => {
