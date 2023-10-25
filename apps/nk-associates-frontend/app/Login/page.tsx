@@ -30,7 +30,7 @@ const Login = () => {
           <LinkButton
             text="open app"
             clickEvent={() => {
-              window.location.replace(encodeURIComponent("nkapp://app/Login"));
+              window.location.replace("nkapp://app/Login");
               // router.push("https://nkapp://app/Login");
             }}
           />
