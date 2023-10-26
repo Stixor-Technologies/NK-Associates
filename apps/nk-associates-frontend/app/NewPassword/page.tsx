@@ -1,6 +1,7 @@
 "use client";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useSearchParams } from "next/navigation";
+import { notFound } from "next/navigation";
 import LinkButton from "../../components/button/link-button";
 
 const PasswordRedirect = () => {
@@ -8,35 +9,37 @@ const PasswordRedirect = () => {
 
   const code = searchParams.get("code");
 
-  console.log(code);
-
+  const [isMobile, setIsMobile] = useState<boolean>(false);
   useEffect(() => {
-    console.log("useEffect called");
-    window.location.href = "nkapp://app/NewPassword?code=1234";
-  }, []);
+    if (
+      /iPad|iPhone|iPod/.test(navigator.userAgent) ||
+      /Android/.test(navigator.userAgent)
+    ) {
+      setIsMobile(true);
+      window.location.href = `nkapp://app/NewPassword?code=${code}`;
+    } else {
+      notFound();
+    }
+  }, [isMobile]);
 
   return (
     <div className="min-h-[50vh] flex items-center justify-center">
-      <LinkButton
-        text="open app"
-        clickEvent={() => {
-          window.location.href = "nkapp://app/NewPassword?code=1234";
-        }}
-      />
-      {/* {isMobile && (
-        <div className="flex flex-col justify-center">
-          <h3 className="font-metropolis-semibold text-2xl max-w-md text-nk-red mb-4">
-            Thank you for verification
+      {isMobile && (
+        <div className="flex flex-col justify-center max-w-md">
+          <h3 className="font-metropolis-semibold text-center text-2xl max-w-md text-nk-red mb-4">
+            Password Reset Request
           </h3>
-          <h4 className="text-center mb-7">You can continue using the App</h4>
+          <h4 className="text-center mb-7">
+            You can change your password by clicking on the button below
+          </h4>
           <LinkButton
             text="open app"
             clickEvent={() => {
-              window.location.href = "nkapp://app/Login";
+              window.location.href = `nkapp://app/NewPassword?code=${code}`;
             }}
           />
         </div>
-      )} */}
+      )}
     </div>
   );
 };
