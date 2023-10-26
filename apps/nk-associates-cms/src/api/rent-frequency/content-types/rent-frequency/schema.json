@@ -16,6 +16,12 @@
       "type": "string",
       "required": true,
       "unique": true
+    },
+    "property_purposes": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::property-purpose.property-purpose",
+      "mappedBy": "rent_frequencies"
     }
   }
 }
