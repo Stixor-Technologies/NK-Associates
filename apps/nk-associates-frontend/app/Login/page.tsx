@@ -10,7 +10,9 @@ const Login = () => {
   useEffect(() => {
     // window.location.href = "https://nkapp://app/Login";
     // window.location.href = "nkapp://app";
-    window.open("nkapp://app/login");
+    console.log(window);
+    // window.open("nkapp://app/login");
+    window.location.href = "nkapp://app/Login";
 
     if (
       /iPad|iPhone|iPod/.test(navigator.userAgent) ||
@@ -36,7 +38,7 @@ const Login = () => {
             clickEvent={() => {
               // window.location.href = encodeURI("nkapp://app/Login");
               // router.push(encodeURI("nkapp://app/Login"));
-              window.location.href = "nkapp://app";
+              window.location.href = "nkapp://app/Login";
 
               // "https://play.google.com/store/apps/details?id=com.example.app"; // Android
             }}
