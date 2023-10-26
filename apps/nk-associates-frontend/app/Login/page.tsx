@@ -18,7 +18,7 @@ const LoginRedirect = () => {
   }, [isMobile]);
 
   return (
-    <div className="min-h-[50vh] flex items-center justify-center">
+    <div className="container min-h-[50vh] flex items-center justify-center">
       {isMobile && (
         <div className="flex flex-col justify-center max-w-md">
           <h3 className="font-metropolis-semibold text-center text-2xl  text-nk-red mb-4">
@@ -26,7 +26,7 @@ const LoginRedirect = () => {
           </h3>
           <h4 className="text-center mb-7">You can continue using the App</h4>
           <LinkButton
-            text="open app"
+            text="Open App"
             clickEvent={() => {
               window.location.href = "nkapp://app/Login";
             }}

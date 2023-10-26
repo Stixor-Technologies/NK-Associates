@@ -23,7 +23,7 @@ const PasswordRedirect = () => {
   }, [isMobile]);
 
   return (
-    <div className="min-h-[50vh] flex items-center justify-center">
+    <div className="container min-h-[50vh] flex items-center justify-center">
       {isMobile && (
         <div className="flex flex-col justify-center max-w-md">
           <h3 className="font-metropolis-semibold text-center text-2xl max-w-md text-nk-red mb-4">
@@ -33,7 +33,7 @@ const PasswordRedirect = () => {
             You can change your password by clicking on the button below
           </h4>
           <LinkButton
-            text="open app"
+            text="Open App"
             clickEvent={() => {
               window.location.href = `nkapp://app/NewPassword?code=${code}`;
             }}
