@@ -8,6 +8,10 @@ const Login = () => {
   const [isMobile, setIsMobile] = useState<boolean>(true);
   const router = useRouter();
   useEffect(() => {
+    // window.location.href = "https://nkapp://app/Login";
+    // window.location.href = "nkapp://app";
+    window.open("nkapp://app/login");
+
     if (
       /iPad|iPhone|iPod/.test(navigator.userAgent) ||
       /Android/.test(navigator.userAgent)
@@ -30,8 +34,11 @@ const Login = () => {
           <LinkButton
             text="open app"
             clickEvent={() => {
-              window.location.replace("nkapp://app/Login");
-              // router.push("https://nkapp://app/Login");
+              // window.location.href = encodeURI("nkapp://app/Login");
+              // router.push(encodeURI("nkapp://app/Login"));
+              window.location.href = "nkapp://app";
+
+              // "https://play.google.com/store/apps/details?id=com.example.app"; // Android
             }}
           />
         </div>
