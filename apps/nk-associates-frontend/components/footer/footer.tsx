@@ -234,7 +234,7 @@ async function Footer() {
       <div className="container font-metropolis-thin">
         <div className="flex flex-col justify-center gap-2 md:gap-10 p-2 text-xs md:flex-row md:items-center md:justify-between lg:mx-14 lg:text-lg xl:mx-24">
           <span className="text-center text-xs md:text-base lg:text-lg">
-            Copyright © 2023. All Rights Reserved on nkaccosiate.
+            Copyright © 2023. All Rights Reserved on Nk Associates.
           </span>
           <div className="mx-auto items-center flex justify-center gap-6 py-2 pb-2 text-xs sm:mt-0 md:text-base lg:text-lg">
             <Link
