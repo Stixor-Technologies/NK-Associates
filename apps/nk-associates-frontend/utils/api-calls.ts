@@ -143,6 +143,7 @@ export const getPropertyDetail = async (id: string) => {
   }
 };
 
+
 export const getSimilarProperties = async (
   type: {
     data: { id: number; attributes: { name: string } };
@@ -565,5 +566,31 @@ export const fetchVRTourDetailsById = async (id: number) => {
       `There was an error getting VR Tour information for this ID: ${id}`,
       error,
     );
+  }
+};
+export const resetPassword = async (
+  passwordInfo: {
+    password: string;
+    confirmPassword: string;
+  },
+  verificationCode: string
+) => {
+  try {
+    const body = {
+      code: verificationCode,
+      password: passwordInfo?.password,
+      passwordConfirmation: passwordInfo.confirmPassword,
+    };
+    const resp = await fetch(`${BASE_URL}/api/auth/reset-password`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(body),
+    });
+    const data = await resp.json();
+    return data;
+  } catch (error) {
+    console.error("There was an error resetting the password", error);
   }
 };
