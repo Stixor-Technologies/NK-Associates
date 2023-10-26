@@ -33,7 +33,7 @@ const PasswordRedirect = () => {
             You can change your password by clicking on the button below
           </h4>
           <LinkButton
-            text="Open App"
+            text="Change Password"
             clickEvent={() => {
               window.location.href = `nkapp://app/NewPassword?code=${code}`;
             }}
