@@ -20,7 +20,7 @@ const PasswordRedirect = () => {
     } else {
       notFound();
     }
-  }, [isMobile]);
+  }, [isMobile, code]);
 
   return (
     <div className="container min-h-[50vh] flex items-center justify-center">
