@@ -99,8 +99,8 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
               initialSlide={0}
               pagination={true}
               modules={[Pagination]}
-              longSwipes={false}
               shortSwipes={true}
+              longSwipesMs={10000}
               className="mySwiper carousel-slider h-full w-full"
             >
               {imagesList?.map((url, index) => {

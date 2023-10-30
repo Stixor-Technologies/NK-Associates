@@ -85,8 +85,8 @@ const ProjectGallery = ({ pictures }: PropTypes) => {
                 thumbs={{
                   swiper: thumbsSwiper,
                 }}
-                longSwipes={false}
                 shortSwipes={true}
+                longSwipesMs={10000}
                 className="mySwiper carousel-slider h-[25rem] w-full rounded-xl sm:aspect-video sm:h-auto"
                 modules={[Thumbs, FreeMode]}
               >
