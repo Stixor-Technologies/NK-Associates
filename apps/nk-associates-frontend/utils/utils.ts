@@ -67,6 +67,7 @@ export const extractObjectsWithPrefix = (inputObject, prefix: string) => {
     }
 
     const result = {
+      id: obj.id,
       attributes: { ...obj.attributes },
     };
 
