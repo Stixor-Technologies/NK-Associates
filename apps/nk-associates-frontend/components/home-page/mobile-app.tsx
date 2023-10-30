@@ -80,14 +80,14 @@ const NkApp: FC<NKAppProps> = ({ storeLinks }) => {
                   href={store?.link || "#"}
                   target={store?.link ? "_blank" : "_self"}
                   rel="noopener noreferrer"
-                  className="relative bg-black rounded-xl inline-flex items-center justify-center w-full h-[5.5rem] sm:w-[18.75rem] md:w-[21.875rem] lg:w-[24.625rem] transition-all duration-300 hover:!scale-[1.015]"
+                  className="group relative bg-black rounded-xl inline-flex items-center justify-center w-full h-[5.5rem] sm:w-[18.75rem] md:w-[21.875rem] lg:w-[24.625rem]"
                 >
                   <Image
                     src={`/assets/icons/${store?.name}.svg`}
                     width={300}
                     height={200}
                     alt={`${store.name}`}
-                    className=" object-contain"
+                    className="object-contain transition-all duration-300 group-hover:scale-[1.065]"
                   />
                 </Link>
               </div>
