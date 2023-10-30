@@ -28,14 +28,14 @@ const DetailSlider: FC<SliderProps> = ({
   return (
     <div className="relative bg-right-top bg-no-repeat md:bg-nk-bg">
       <Swiper
-        cssMode={true}
         navigation={true}
         keyboard={true}
         loop={true}
         pagination={{
           clickable: true,
         }}
-        simulateTouch={false}
+        simulateTouch={true}
+        longSwipesMs={10000}
         modules={[Navigation, Pagination, Keyboard]}
         className="mySwiper"
       >

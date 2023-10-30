@@ -114,8 +114,8 @@ const EventModal: React.FC<ModalProps> = ({ open, onClose, eventData }) => {
               initialSlide={0}
               thumbs={{ swiper: thumbsSwiper }}
               modules={[Pagination, Thumbs]}
-              longSwipes={false}
               shortSwipes={true}
+              longSwipesMs={10000}
               className="mySwiper2 h-[19.5rem] md:h-[32rem] 2xl:h-[50rem]"
             >
               {eventData?.attributes?.event_image?.data?.map(

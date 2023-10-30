@@ -51,8 +51,8 @@ const EventCard: FC<EventProps> = ({ dataItem, cursorUtilityRef }) => {
               slidesPerView={1}
               pagination={true}
               modules={[Pagination]}
-              longSwipes={false}
               shortSwipes={true}
+              longSwipesMs={10000}
               className="mySwiper h-[20rem] w-full xl:h-[25rem]"
             >
               {dataItem?.attributes?.event_image?.data?.map(
