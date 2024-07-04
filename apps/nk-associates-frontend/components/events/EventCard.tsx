@@ -36,7 +36,6 @@ const EventCard: FC<EventProps> = ({ dataItem, cursorUtilityRef }) => {
   const hideAnimatedCursor = () => {
     cursorUtilityRef?.current?.hideCursor();
   };
-
   return (
     <>
       <div className="my-container flex flex-1 flex-col overflow-hidden rounded-lg">

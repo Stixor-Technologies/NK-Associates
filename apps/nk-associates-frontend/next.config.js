@@ -12,7 +12,7 @@ module.exports = {
     remotePatterns: [
       {
         protocol: "https",
-        hostname: "strapi-dev.nkgroupofcompanies.com",
+        hostname: "nk-backend.stixor.com",
         pathname: "/uploads/**",
       },
       {
