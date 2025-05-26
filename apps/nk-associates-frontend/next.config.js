@@ -16,6 +16,11 @@ module.exports = {
         pathname: "/uploads/**",
       },
       {
+        protocol: "https",
+        hostname: "ow4ck0swwss4owcss8o0gsks.stixor.com",
+        pathname: "/uploads/**",
+      },
+      {
         protocol: "http",
         hostname: "127.0.0.1",
         pathname: "/uploads/**",
